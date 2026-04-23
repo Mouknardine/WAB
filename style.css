@@ -1,0 +1,898 @@
+/* ============================================
+   WAB. — WeAreBrothers Studio
+   ============================================ */
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ── Variables ── */
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --accent: #FF3C78;
+    --muted: rgba(0, 0, 0, 0.55);
+    --border: rgba(0, 0, 0, 0.1);
+    --font-display: 'IBM Plex Mono', monospace;
+    --font-body: 'Inclusive Sans', sans-serif;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --vh: 1vh;
+}
+
+::selection {
+    background: var(--accent);
+    color: var(--white);
+}
+
+html {
+    scroll-behavior: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ── Layout ── */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 clamp(24px, 4vw, 60px);
+}
+
+.section {
+    padding: clamp(40px, 6vw, 80px) 0;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px clamp(24px, 4vw, 60px);
+    transition: transform 0.5s var(--ease);
+}
+
+.header.hide-up {
+    transform: translateY(-100%);
+}
+
+.header-logo {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    z-index: 110;
+    transition: color 0.3s ease;
+}
+
+.header.hero-visible .header-logo {
+    color: var(--white);
+}
+
+.header.nav-open .header-logo {
+    color: var(--black);
+}
+
+.header.hero-visible .menu-line {
+    background: var(--white);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header-menu-btn {
+    z-index: 110;
+    width: 32px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.menu-line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--black);
+    transition: transform 0.4s var(--ease), background 0.3s ease;
+    transform-origin: center;
+}
+
+.header-menu-btn.active .menu-line {
+    background: var(--black);
+}
+
+.header-menu-btn.active .menu-line:first-child {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.header-menu-btn.active .menu-line:last-child {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* ============================================
+   NAV OVERLAY
+   ============================================ */
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s var(--ease);
+}
+
+.nav-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.nav-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-link {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    transition: color 0.3s ease, transform 0.3s var(--ease);
+    display: block;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--accent);
+    transition: width 0.4s var(--ease);
+}
+
+.nav-link:hover {
+    color: var(--accent);
+    transform: translateX(12px);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-email-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 40px;
+    padding: 18px 36px;
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    border-radius: 4px;
+    transition: background 0.5s var(--ease), transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+
+.nav-email-btn:hover {
+    background: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px -10px rgba(255, 60, 120, 0.3);
+}
+
+.nav-email-btn svg {
+    transition: transform 0.4s var(--ease);
+}
+
+.nav-email-btn:hover svg {
+    transform: translate(3px, -3px);
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero-wrapper {
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    height: 100svh;
+}
+
+.hero {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    height: 100svh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    background: linear-gradient(150deg, #FFCCE5 0%, #FF2D9B 55%, #CC0055 100%);
+    z-index: 1;
+}
+
+/* ── Bird Canvas ── */
+#birdCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    image-rendering: pixelated;
+}
+
+.content-body {
+    position: relative;
+    z-index: 10;
+    background: var(--white);
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    min-height: 100vh;
+    isolation: isolate;
+}
+
+.hero-inner {
+    padding: 0 clamp(24px, 4vw, 60px) clamp(40px, 6vw, 80px);
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.2rem, 10vw, 10rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    color: var(--white);
+}
+
+.hero-line {
+    display: block;
+    overflow: hidden;
+}
+
+.hero-word,
+.hero-dot {
+    display: inline-block;
+    transform: translateY(120%);
+    opacity: 0;
+}
+
+.hero-dot {
+    color: var(--white);
+}
+
+.hero-scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    right: clamp(24px, 4vw, 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.hero-scroll-hint span {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.scroll-line {
+    width: 1px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-line::after {
+    content: '';
+    position: absolute;
+    top: -40%;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to bottom, transparent, var(--white), transparent);
+    animation: scrollPulse 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes scrollPulse {
+    0%   { top: -40%; opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* ============================================
+   INTRO / ABOUT
+   ============================================ */
+.intro {
+    border-bottom: 1px solid var(--border);
+}
+
+.intro-text {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3.5vw, 2.8rem);
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+    max-width: 1000px;
+    color: var(--black);
+}
+
+.intro-text + .intro-text {
+    margin-top: 32px;
+    color: var(--muted);
+}
+
+/* ============================================
+   PROJECTS
+   ============================================ */
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: clamp(24px, 3vw, 40px);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(24px, 3vw, 40px);
+}
+
+.project-card {
+    display: block;
+    color: inherit;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: clamp(24px, 3vw, 40px);
+    transition: transform 0.5s var(--ease);
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+}
+
+.project-image-container {
+    width: 100%;
+    position: relative;
+    padding-top: 62.5%;
+    overflow: hidden;
+    border-radius: 6px;
+    margin-bottom: clamp(16px, 2vw, 24px);
+    background-color: #ffffff;
+}
+
+@supports (aspect-ratio: 16 / 10) {
+    .project-image-container {
+        padding-top: 0;
+        aspect-ratio: 16 / 10;
+    }
+}
+
+.project-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #ffffff;
+    transition: transform 0.8s var(--ease);
+}
+
+@supports (aspect-ratio: 16 / 10) {
+    .project-image {
+        position: relative;
+        top: auto;
+        left: auto;
+    }
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.05);
+}
+
+.project-info-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+}
+
+.project-name {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+}
+
+.project-index {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+}
+
+.project-desc {
+    font-size: clamp(0.85rem, 1.2vw, 1rem);
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 520px;
+}
+
+/* ============================================
+   SERVICES
+   ============================================ */
+.services {
+    position: relative;
+    z-index: 10;
+    background: var(--white);
+    padding-bottom: 0 !important;
+}
+
+.services .section-title {
+    margin-bottom: clamp(24px, 3vw, 40px);
+}
+
+.services-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.service-row {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    background-color: var(--white);
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    transition: background-color 0.4s ease, opacity 0.5s var(--ease);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.service-row:first-child {
+    border-top: 1px solid var(--border);
+}
+
+.service-row:last-child {
+    border-bottom: none;
+}
+
+.service-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 48px;
+    padding: clamp(24px, 3.5vw, 48px) clamp(24px, 4vw, 60px);
+    width: 100%;
+}
+
+.service-row::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background:
+        radial-gradient(ellipse 60% 80% at 15% 50%, #FF8ABF 0%, transparent 70%),
+        radial-gradient(ellipse 50% 70% at 75% 30%, #FF1493 0%, transparent 70%),
+        radial-gradient(ellipse 55% 65% at 60% 80%, #FF0066 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 35% 20%, #FF3D85 0%, transparent 70%);
+    background-color: #F7609B;
+    background-size: 200% 200%;
+    animation: serviceGradientShift 8s ease-in-out infinite;
+}
+
+@keyframes serviceGradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
+}
+
+.service-row:hover::before {
+    opacity: 1;
+}
+
+.services-list:hover .service-row:not(:hover) {
+    opacity: 0.3;
+}
+
+.service-name {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 9vw, 8rem);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 0.9;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--black);
+    flex-shrink: 0;
+    transition: color 0.4s ease;
+}
+
+.service-row:hover .service-name {
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+}
+
+.service-desc {
+    font-size: clamp(1rem, 1.2vw, 1.25rem);
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 1.6;
+    max-width: 380px;
+    text-align: left;
+    flex-shrink: 0;
+    transition: color 0.4s ease;
+}
+
+.service-row:hover .service-desc {
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================
+   CONTACT
+   ============================================ */
+.contact {
+    border-top: 1px solid var(--border);
+    padding-top: clamp(60px, 8vw, 100px);
+}
+
+.contact-subtitle {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 3.6rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: clamp(48px, 6vw, 80px);
+}
+
+.contact-actions {
+    margin-top: 24px;
+}
+
+.email-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--black);
+    color: var(--white);
+    padding: 24px 48px;
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    transition: background 0.5s var(--ease), transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.email-btn:hover {
+    background: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px -12px rgba(255, 60, 120, 0.35);
+    border-color: var(--accent);
+}
+
+.email-btn svg {
+    transition: transform 0.4s var(--ease);
+}
+
+.email-btn:hover svg {
+    transform: translate(4px, -4px);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+    position: relative;
+    padding: clamp(60px, 8vw, 120px) 0 clamp(32px, 4vw, 60px);
+    border-top: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.footer-watermark {
+    position: absolute;
+    bottom: -15%;
+    left: -2%;
+    font-family: var(--font-display);
+    font-size: clamp(12rem, 28vw, 28rem);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    color: rgba(0, 0, 0, 0.03);
+    pointer-events: none;
+    user-select: none;
+    line-height: 0.85;
+    white-space: nowrap;
+}
+
+.footer-content {
+    position: relative;
+    z-index: 1;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 48px;
+    margin-bottom: clamp(48px, 6vw, 80px);
+}
+
+.footer-status {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.footer-copy {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-link {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+    transition: color 0.4s var(--ease);
+}
+
+.footer-link:hover {
+    color: var(--accent);
+}
+
+.footer-tagline {
+    font-size: clamp(0.85rem, 1.2vw, 1rem);
+    color: var(--muted);
+    font-weight: 400;
+}
+
+/* ============================================
+   REVEAL ANIMATION
+   ============================================ */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (min-width: 769px) {
+    .intro-text {
+        font-size: clamp(1.25rem, 1.6vw, 1.55rem);
+        line-height: 1.6;
+        letter-spacing: -0.01em;
+        font-weight: 400;
+    }
+
+    .service-name {
+        font-size: clamp(2.5rem, 7vw, 6.5rem);
+    }
+
+    .service-desc {
+        font-size: clamp(1.05rem, 1.3vw, 1.4rem);
+    }
+
+    .contact-subtitle {
+        font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-row {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .service-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .service-name {
+        font-size: clamp(2rem, 9vw, 4.5rem);
+        white-space: normal;
+    }
+
+    .service-desc {
+        max-width: 100%;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .footer-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .nav-link {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+    }
+
+    .email-btn {
+        padding: 16px 24px;
+        font-size: 1rem;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .email-btn span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .nav-email-btn {
+        padding: 14px 28px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 390px) {
+    .email-btn span {
+        font-size: 0.85rem;
+        white-space: normal;
+        overflow: visible;
+    }
+}
+
+/* ── Touch devices ── */
+@media (hover: none) {
+    .nav-link:hover {
+        color: inherit;
+        transform: none;
+    }
+
+    .nav-link:hover::after {
+        width: 0;
+    }
+
+    .project-card:hover {
+        transform: none;
+    }
+
+    .project-card:hover .project-image {
+        transform: none;
+    }
+
+    .email-btn:hover {
+        background: var(--black);
+        color: var(--white);
+        transform: none;
+        box-shadow: none;
+        border-color: transparent;
+    }
+
+    .email-btn:hover svg {
+        transform: none;
+    }
+
+    .nav-email-btn:hover {
+        background: var(--black);
+        transform: none;
+        box-shadow: none;
+    }
+
+    .services-list:hover .service-row:not(:hover) {
+        opacity: 1;
+    }
+
+    .service-row::before {
+        animation: none;
+    }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+    .service-row::before {
+        animation: none;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}

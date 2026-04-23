@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#F7609B">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>WAB. — WeAreBrothers Studio</title>
+    <meta name="description"
+        content="WeAreBrothers — A creative studio building interactive web experiences with studio-level polish.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inclusive+Sans&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css?v=18">
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"></script>
+
+    <!-- Main Script -->
+    <script src="script.js?v=9" defer></script>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <a href="#hero" class="header-logo">WAB.</a>
+        <button class="header-menu-btn" id="menuToggle" aria-label="Toggle navigation">
+            <span class="menu-line"></span>
+            <span class="menu-line"></span>
+        </button>
+    </header>
+
+    <!-- NAV OVERLAY -->
+    <nav class="nav-overlay" id="navOverlay">
+        <div class="nav-content">
+            <div class="nav-links">
+                <a href="#hero" class="nav-link" data-nav-link>HOME</a>
+                <a href="#prestations" class="nav-link" data-nav-link>PROJECTS</a>
+                <a href="#about" class="nav-link" data-nav-link>ABOUT</a>
+                <a href="#contact" class="nav-link" data-nav-link>CONTACT</a>
+            </div>
+            <a href="mailto:contact@wearebrothers.ch" class="nav-email-btn">
+                <span>contact@wearebrothers.ch</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- HERO -->
+        <div class="hero-wrapper">
+            <section class="hero" id="hero">
+                <canvas id="birdCanvas"></canvas>
+                <div class="hero-inner">
+                    <h1 class="hero-title" id="heroTitle">
+                        <span class="hero-line">
+                            <span class="hero-word">We</span><span class="hero-word">Are</span>
+                        </span>
+                        <span class="hero-line">
+                            <span class="hero-word">Brothers</span><span class="hero-dot">.</span>
+                        </span>
+                    </h1>
+                </div>
+                <div class="hero-scroll-hint">
+                    <span>Scroll</span>
+                    <div class="scroll-line"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="content-body">
+
+            <!-- INTRO / ABOUT -->
+            <section class="section intro" id="about">
+                <div class="container">
+                    <p class="intro-text reveal">
+                        Nous sommes deux frères passionnés par la technologie et le design.
+                        Notre mission est simple : on s'assure que votre entreprise reste branchée et dans l'air du
+                        temps pendant que vous vous concentrez sur ce que vous faites de mieux. On ne se contente pas de
+                        faire du 'beau' ; nous créons des outils taillés pour transformer les clics en clients.
+                    </p>
+                    <p class="intro-text reveal">
+                        Nous privilégions une relation simple et directe avec nos clients. Proches, flexibles et
+                        accessibles, on aime échanger naturellement, comprendre vos besoins et construire chaque projet
+                        dans un esprit de collaboration — idéalement autour d'un café.
+                    </p>
+                </div>
+            </section>
+
+            <!-- PROJECTS -->
+            <section class="section projects" id="prestations">
+                <div class="container">
+                    <h2 class="section-title reveal">PRESTATIONS</h2>
+                    <div class="projects-grid">
+
+                        <a href="https://la-slack.com/" target="_blank" rel="noopener noreferrer" class="project-card reveal">
+                            <div class="project-image-container">
+                                <div class="project-image" style="background-image: url('assets/images/project-slack.png')"></div>
+                            </div>
+                            <div class="project-info">
+                                <div class="project-info-top">
+                                    <h3 class="project-name">La Slack</h3>
+                                    <span class="project-index">P / 01</span>
+                                </div>
+                                <p class="project-desc">Portfolio créatif aux allures de bureau virtuel — architecture, objets et design graphique organisés comme des dossiers.</p>
+                            </div>
+                        </a>
+
+                        <a href="https://nadegemouine.ch" target="_blank" rel="noopener noreferrer" class="project-card reveal">
+                            <div class="project-image-container">
+                                <div class="project-image" style="background-image: url('assets/images/project-nadege.png')"></div>
+                            </div>
+                            <div class="project-info">
+                                <div class="project-info-top">
+                                    <h3 class="project-name">Nadège Mouine</h3>
+                                    <span class="project-index">P / 02</span>
+                                </div>
+                                <p class="project-desc">Site personnel élégant et épuré mettant en valeur le travail et l'univers d'une créatrice suisse.</p>
+                            </div>
+                        </a>
+
+                        <a href="https://commissione-entretien.ch/" target="_blank" rel="noopener noreferrer" class="project-card reveal">
+                            <div class="project-image-container">
+                                <div class="project-image" style="background-image: url('assets/images/project-commissione.png')"></div>
+                            </div>
+                            <div class="project-info">
+                                <div class="project-info-top">
+                                    <h3 class="project-name">Commissione Entretien</h3>
+                                    <span class="project-index">P / 03</span>
+                                </div>
+                                <p class="project-desc">Un site professionnel dédié aux services d'entretien, alliant clarté et efficacité pour mettre en valeur leur savoir-faire.</p>
+                            </div>
+                        </a>
+
+                        <a href="https://lazizze-git.github.io/DJ/#/" target="_blank" rel="noopener noreferrer" class="project-card reveal">
+                            <div class="project-image-container">
+                                <div class="project-image" style="background-image: url('assets/images/project-dj.png');"></div>
+                            </div>
+                            <div class="project-info">
+                                <div class="project-info-top">
+                                    <h3 class="project-name">LAZIZZE DJ</h3>
+                                    <span class="project-index">P / 04</span>
+                                </div>
+                                <p class="project-desc">Portfolio immersif pour un DJ House de Lausanne — esthétique neon underground, typographie brutale et énergie dancefloor.</p>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- SERVICES -->
+            <section class="section services" id="services">
+                <div class="container">
+                    <h2 class="section-title reveal">SERVICES</h2>
+                </div>
+                <div class="services-list">
+                    <div class="service-row reveal" data-service="web-dev">
+                        <div class="container service-inner">
+                            <h3 class="service-name">Web Dev</h3>
+                            <p class="service-desc">Architecture web scalable, rapide et pensée pour la performance et le référencement.</p>
+                        </div>
+                    </div>
+                    <div class="service-row reveal" data-service="web-design">
+                        <div class="container service-inner">
+                            <h3 class="service-name">Web Design</h3>
+                            <p class="service-desc">Des interfaces précises, lisibles et conçues pour une navigation fluide et naturelle.</p>
+                        </div>
+                    </div>
+                    <div class="service-row reveal" data-service="branding">
+                        <div class="container service-inner">
+                            <h3 class="service-name">Branding</h3>
+                            <p class="service-desc">Une identité digitale cohérente à toutes les échelles, du site au branding global.</p>
+                        </div>
+                    </div>
+                    <div class="service-row reveal" data-service="motion">
+                        <div class="container service-inner">
+                            <h3 class="service-name">Motion</h3>
+                            <p class="service-desc">Des animations fluides et des micro-interactions maîtrisées, jamais excessives.</p>
+                        </div>
+                    </div>
+                    <div class="service-row reveal" data-service="custom-code">
+                        <div class="container service-inner">
+                            <h3 class="service-name">Custom Code</h3>
+                            <p class="service-desc">Des solutions sur mesure pour les projets qui sortent du cadre standard.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTACT -->
+            <section class="section contact" id="contact">
+                <div class="container">
+                    <h2 class="section-title reveal">CONTACT</h2>
+                    <p class="contact-subtitle reveal">Donnons vie à votre projet.</p>
+                    <div class="contact-actions reveal">
+                        <a href="mailto:contact@wearebrothers.ch" class="email-btn">
+                            <span>contact@wearebrothers.ch</span>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="footer" id="footer">
+                <div class="footer-watermark">WAB.</div>
+                <div class="container footer-content">
+                    <div class="footer-top">
+                        <div class="footer-info">
+                            <p class="footer-status">AVAILABLE FOR SELECT PROJECTS</p>
+                            <p class="footer-copy">&copy; 2026 WAB.STUDIO</p>
+                        </div>
+                        <div class="footer-links">
+                            <a href="#prestations" class="footer-link" data-nav-link>Projects</a>
+                            <a href="#about" class="footer-link" data-nav-link>About</a>
+                            <a href="#contact" class="footer-link" data-nav-link>Contact</a>
+                        </div>
+                    </div>
+                    <p class="footer-tagline">Creating experiences that last in the memory</p>
+                </div>
+            </footer>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>
