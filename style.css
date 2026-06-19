@@ -13,20 +13,69 @@
 
 /* ── Variables ── */
 :root {
-    --black: #000000;
+    color-scheme: light;
+
+    /* Neutral gray scale (light) — inspired by animations.dev */
+    --gray-100: #fcfcfc;
+    --gray-200: #f7f7f7;
+    --gray-300: #f0f0f0;
+    --gray-400: #e8e8e8;
+    --gray-500: #e0e0e0;
+    --gray-600: #d9d9d9;
+    --gray-700: #cecece;
+    --gray-800: #bbbbbb;
+    --gray-900: #8d8d8d;
+    --gray-1000: #838383;
+    --gray-1100: #646464;
+    --gray-1200: #202020;
+
+    /* Semantic tokens (theme-aware) */
+    --bg: var(--gray-100);
+    --surface: var(--gray-200);
+    --text: var(--gray-1200);
+    --text-muted: var(--gray-1100);
+    --text-subtle: var(--gray-1000);
+    --border: var(--gray-400);
+    --border-strong: var(--gray-600);
+
+    /* Fixed colors — used over the fuchsia hero / accent (must not flip) */
     --white: #ffffff;
+    --black: #000000;
     --accent: #FF3C78;
-    --muted: rgba(0, 0, 0, 0.55);
-    --border: rgba(0, 0, 0, 0.1);
+
+    /* Type */
     --font-display: 'IBM Plex Mono', monospace;
     --font-body: 'Inclusive Sans', sans-serif;
+
+    /* Motion — strong custom easings (Emil Kowalski) */
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
     --vh: 1vh;
+}
+
+/* Neutral gray scale (dark) */
+:root.dark {
+    color-scheme: dark;
+
+    --gray-100: #0f0f0f;
+    --gray-200: #171717;
+    --gray-300: #1f1f1f;
+    --gray-400: #2a2a2a;
+    --gray-500: #313131;
+    --gray-600: #3a3a3a;
+    --gray-700: #484848;
+    --gray-800: #606060;
+    --gray-900: #6e6e6e;
+    --gray-1000: #7b7b7b;
+    --gray-1100: #a0a0a0;
+    --gray-1200: #ededed;
 }
 
 ::selection {
     background: var(--accent);
-    color: var(--white);
+    color: #ffffff;
 }
 
 html {
@@ -39,10 +88,11 @@ html {
 
 body {
     font-family: var(--font-body);
-    background: var(--white);
-    color: var(--black);
+    background: var(--bg);
+    color: var(--text);
     overflow-x: hidden;
     line-height: 1.5;
+    transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
 }
 
 a {
@@ -61,6 +111,13 @@ button {
 img {
     max-width: 100%;
     display: block;
+}
+
+/* ── Keyboard focus (visible everywhere) ── */
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
 }
 
 /* ── Layout ── */
@@ -109,12 +166,69 @@ img {
 }
 
 .header.nav-open .header-logo {
-    color: var(--black);
+    color: var(--text);
 }
 
 .header.hero-visible .menu-line {
     background: var(--white);
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ── Header right cluster ── */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    z-index: 110;
+}
+
+/* ── Theme toggle ── */
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: var(--text);
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.15s var(--ease-out);
+}
+
+.theme-toggle:hover {
+    background: color-mix(in srgb, var(--text) 8%, transparent);
+}
+
+.theme-toggle:active {
+    transform: scale(0.92);
+}
+
+.header.hero-visible .theme-toggle {
+    color: var(--white);
+}
+
+.header.nav-open .theme-toggle {
+    color: var(--text);
+}
+
+.theme-toggle svg {
+    width: 18px;
+    height: 18px;
+}
+
+.theme-toggle .icon-sun {
+    display: none;
+}
+
+.theme-toggle .icon-moon {
+    display: block;
+}
+
+:root.dark .theme-toggle .icon-sun {
+    display: block;
+}
+
+:root.dark .theme-toggle .icon-moon {
+    display: none;
 }
 
 .header-menu-btn {
@@ -131,13 +245,13 @@ img {
     display: block;
     width: 100%;
     height: 2px;
-    background: var(--black);
+    background: var(--text);
     transition: transform 0.4s var(--ease), background 0.3s ease;
     transform-origin: center;
 }
 
 .header-menu-btn.active .menu-line {
-    background: var(--black);
+    background: var(--text);
 }
 
 .header-menu-btn.active .menu-line:first-child {
@@ -158,7 +272,7 @@ img {
     right: 0;
     bottom: 0;
     z-index: 99;
-    background: var(--white);
+    background: var(--bg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -192,6 +306,7 @@ img {
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.05;
+    color: var(--text);
     transition: color 0.3s ease, transform 0.3s var(--ease);
     display: block;
     position: relative;
@@ -223,20 +338,25 @@ img {
     gap: 12px;
     margin-top: 40px;
     padding: 18px 36px;
-    background: var(--black);
-    color: var(--white);
+    background: var(--text);
+    color: var(--bg);
     font-family: var(--font-display);
     font-size: 1rem;
     font-weight: 700;
     letter-spacing: -0.01em;
     border-radius: 4px;
-    transition: background 0.5s var(--ease), transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+    transition: background 0.4s var(--ease), color 0.4s var(--ease), transform 0.3s var(--ease-out), box-shadow 0.4s var(--ease);
 }
 
 .nav-email-btn:hover {
     background: var(--accent);
+    color: var(--white);
     transform: translateY(-3px);
     box-shadow: 0 20px 40px -10px rgba(255, 60, 120, 0.3);
+}
+
+.nav-email-btn:active {
+    transform: scale(0.97);
 }
 
 .nav-email-btn svg {
@@ -287,11 +407,12 @@ img {
 .content-body {
     position: relative;
     z-index: 10;
-    background: var(--white);
+    background: var(--bg);
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     min-height: 100vh;
     isolation: isolate;
+    transition: background-color 0.4s var(--ease);
 }
 
 .hero-inner {
@@ -381,12 +502,12 @@ img {
     line-height: 1.35;
     letter-spacing: -0.02em;
     max-width: 1000px;
-    color: var(--black);
+    color: var(--text);
 }
 
 .intro-text + .intro-text {
     margin-top: 32px;
-    color: var(--muted);
+    color: var(--text-muted);
 }
 
 /* ============================================
@@ -398,7 +519,7 @@ img {
     font-weight: 700;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: var(--black);
+    color: var(--text);
     margin-bottom: clamp(24px, 3vw, 40px);
 }
 
@@ -413,7 +534,7 @@ img {
     color: inherit;
     border-bottom: 1px solid var(--border);
     padding-bottom: clamp(24px, 3vw, 40px);
-    transition: transform 0.5s var(--ease);
+    transition: transform 0.4s var(--ease-out);
 }
 
 .project-card:hover {
@@ -427,7 +548,7 @@ img {
     overflow: hidden;
     border-radius: 6px;
     margin-bottom: clamp(16px, 2vw, 24px);
-    background-color: #ffffff;
+    background-color: var(--surface);
 }
 
 @supports (aspect-ratio: 16 / 10) {
@@ -486,7 +607,7 @@ img {
 
 .project-desc {
     font-size: clamp(0.85rem, 1.2vw, 1rem);
-    color: var(--muted);
+    color: var(--text-muted);
     line-height: 1.6;
     max-width: 520px;
 }
@@ -497,8 +618,9 @@ img {
 .services {
     position: relative;
     z-index: 10;
-    background: var(--white);
+    background: var(--bg);
     padding-bottom: 0 !important;
+    transition: background-color 0.4s var(--ease);
 }
 
 .services .section-title {
@@ -514,7 +636,7 @@ img {
 .service-row {
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    background-color: var(--white);
+    background-color: var(--bg);
     position: relative;
     z-index: 2;
     cursor: pointer;
@@ -582,7 +704,7 @@ img {
     line-height: 0.9;
     text-transform: uppercase;
     white-space: nowrap;
-    color: var(--black);
+    color: var(--text);
     flex-shrink: 0;
     transition: color 0.4s ease;
 }
@@ -595,7 +717,7 @@ img {
 
 .service-desc {
     font-size: clamp(1rem, 1.2vw, 1.25rem);
-    color: rgba(0, 0, 0, 0.6);
+    color: var(--text-muted);
     line-height: 1.6;
     max-width: 380px;
     text-align: left;
@@ -633,14 +755,14 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 16px;
-    background: var(--black);
-    color: var(--white);
+    background: var(--text);
+    color: var(--bg);
     padding: 24px 48px;
     font-family: var(--font-display);
     font-size: clamp(1.2rem, 2vw, 1.5rem);
     font-weight: 700;
     letter-spacing: -0.01em;
-    transition: background 0.5s var(--ease), transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+    transition: background 0.4s var(--ease), color 0.4s var(--ease), transform 0.3s var(--ease-out), box-shadow 0.4s var(--ease);
     border: 1px solid transparent;
     border-radius: 4px;
     -webkit-tap-highlight-color: transparent;
@@ -650,9 +772,14 @@ img {
 
 .email-btn:hover {
     background: var(--accent);
+    color: var(--white);
     transform: translateY(-4px);
     box-shadow: 0 24px 48px -12px rgba(255, 60, 120, 0.35);
     border-color: var(--accent);
+}
+
+.email-btn:active {
+    transform: scale(0.97);
 }
 
 .email-btn svg {
@@ -681,7 +808,7 @@ img {
     font-size: clamp(12rem, 28vw, 28rem);
     font-weight: 700;
     letter-spacing: -0.05em;
-    color: rgba(0, 0, 0, 0.03);
+    color: color-mix(in srgb, var(--text) 4%, transparent);
     pointer-events: none;
     user-select: none;
     line-height: 0.85;
@@ -713,7 +840,7 @@ img {
 .footer-copy {
     font-size: 13px;
     font-weight: 500;
-    color: var(--muted);
+    color: var(--text-muted);
 }
 
 .footer-links {
@@ -726,7 +853,7 @@ img {
     font-family: var(--font-display);
     font-size: 14px;
     font-weight: 500;
-    color: var(--muted);
+    color: var(--text-muted);
     transition: color 0.4s var(--ease);
 }
 
@@ -736,7 +863,7 @@ img {
 
 .footer-tagline {
     font-size: clamp(0.85rem, 1.2vw, 1rem);
-    color: var(--muted);
+    color: var(--text-muted);
     font-weight: 400;
 }
 
@@ -860,8 +987,8 @@ img {
     }
 
     .email-btn:hover {
-        background: var(--black);
-        color: var(--white);
+        background: var(--text);
+        color: var(--bg);
         transform: none;
         box-shadow: none;
         border-color: transparent;
@@ -872,7 +999,8 @@ img {
     }
 
     .nav-email-btn:hover {
-        background: var(--black);
+        background: var(--text);
+        color: var(--bg);
         transform: none;
         box-shadow: none;
     }
@@ -888,6 +1016,14 @@ img {
 
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
     .service-row::before {
         animation: none;
     }

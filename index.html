@@ -11,13 +11,25 @@
     <meta name="description"
         content="WeAreBrothers — A creative studio building interactive web experiences with studio-level polish.">
 
+    <!-- Theme (anti-flash : appliqué avant le rendu) -->
+    <script>
+        (function () {
+            try {
+                var stored = localStorage.getItem('theme');
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var isDark = stored ? stored === 'dark' : prefersDark;
+                document.documentElement.classList.toggle('dark', isDark);
+            } catch (e) { /* localStorage indisponible : on garde le thème clair */ }
+        })();
+    </script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inclusive+Sans&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css?v=18">
+    <link rel="stylesheet" href="style.css?v=19">
 
     <!-- GSAP -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
@@ -25,7 +37,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"></script>
 
     <!-- Main Script -->
-    <script src="script.js?v=9" defer></script>
+    <script src="script.js?v=10" defer></script>
 </head>
 
 <body>
@@ -33,10 +45,21 @@
     <!-- HEADER -->
     <header class="header" id="header">
         <a href="#hero" class="header-logo">WAB.</a>
-        <button class="header-menu-btn" id="menuToggle" aria-label="Toggle navigation">
-            <span class="menu-line"></span>
-            <span class="menu-line"></span>
-        </button>
+        <div class="header-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème" aria-pressed="false">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4" />
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                </svg>
+            </button>
+            <button class="header-menu-btn" id="menuToggle" aria-label="Toggle navigation">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+            </button>
+        </div>
     </header>
 
     <!-- NAV OVERLAY -->

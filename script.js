@@ -11,6 +11,27 @@ document.addEventListener('DOMContentLoaded', () => {
     setVh();
     window.addEventListener('resize', setVh, { passive: true });
 
+    /* ── Theme toggle (dark / light) ── */
+    (function initTheme() {
+        const toggle = document.getElementById('themeToggle');
+        if (!toggle) return;
+
+        const root = document.documentElement;
+
+        function syncAria() {
+            toggle.setAttribute('aria-pressed', String(root.classList.contains('dark')));
+        }
+        syncAria();
+
+        toggle.addEventListener('click', () => {
+            const isDark = root.classList.toggle('dark');
+            try {
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            } catch (e) { /* localStorage indisponible : le choix ne sera pas mémorisé */ }
+            syncAria();
+        });
+    })();
+
     /* ── GSAP ── */
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
         document.querySelectorAll('.reveal, .hero-word, .hero-dot').forEach((el) => {
