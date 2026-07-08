@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#F7609B">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>À propos — WAB. WeAreBrothers Studio</title>
+    <meta name="description"
+        content="WeAreBrothers — Deux frères, un studio digital à Lausanne. Découvrez notre philosophie, notre équipe et nos valeurs.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inclusive+Sans&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css?v=26">
+    <link rel="stylesheet" href="about.css?v=12">
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+
+    <!-- Scripts -->
+    <script src="fill-text.js?v=3" defer></script>
+    <script src="about.js?v=5" defer></script>
+</head>
+
+<body>
+
+    <!-- Fond « verre dépoli » : dégradé fixe flouté à travers le contenu -->
+    <div class="page-backdrop" aria-hidden="true"></div>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <a href="index.html" class="header-logo">WAB.</a>
+        <div class="header-actions">
+            <button class="header-menu-btn" id="menuToggle" aria-label="Toggle navigation">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- NAV OVERLAY -->
+    <nav class="nav-overlay" id="navOverlay">
+        <div class="nav-content">
+            <div class="nav-links">
+                <a href="index.html#hero" class="nav-link">HOME</a>
+                <a href="work.html" class="nav-link">WORK</a>
+                <a href="about.html" class="nav-link">ABOUT</a>
+                <a href="index.html#contact" class="nav-link">CONTACT</a>
+            </div>
+            <a href="mailto:contact@wearebrothers.ch" class="nav-email-btn">
+                <span>contact@wearebrothers.ch</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <main class="main content-body content-body--soft">
+
+        <!-- 1. HERO — déclaration typographique -->
+        <section class="about-hero" id="hero">
+            <div class="container">
+                <p class="about-hero__label">À propos</p>
+                <h1 class="about-hero__title">
+                    <span class="about-hero__line"><span class="about-hero__line-inner">Un studio digital</span></span>
+                    <span class="about-hero__line"><span class="about-hero__line-inner">fondé par <span class="accent">deux frères.</span></span></span>
+                    <span class="about-hero__line"><span class="about-hero__line-inner">Petit par choix.</span></span>
+                    <span class="about-hero__line"><span class="about-hero__line-inner">Obsédé par le détail.</span></span>
+                </h1>
+                <p class="about-hero__meta">
+                    <span class="meta-dot"></span>
+                    Lausanne, Suisse — Design &amp; Développement
+                </p>
+                <figure class="about-hero__figure">
+                    <img src="assets/images/hero-freres.jpg" alt="Eliott et Matt Pina enfants, déjà complices" draggable="false">
+                    <figcaption class="about-hero__caption">Déjà complices</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- 2. MANIFESTE — texte qui se remplit au scroll -->
+        <section class="about-section about-manifesto" id="philosophie">
+            <div class="container">
+                <p class="section-label">Notre philosophie</p>
+                <p class="manifesto-text" data-fill-text>
+                    On ne fait pas du web pour faire du web. On crée des expériences
+                    qui restent dans la mémoire — des outils taillés pour transformer
+                    les clics en clients, construits avec le soin de l'artisan.
+                </p>
+            </div>
+        </section>
+
+        <!-- 3. VALEURS — liste éditoriale numérotée -->
+        <section class="about-section about-values" id="valeurs">
+            <div class="container">
+                <p class="section-label reveal">Nos valeurs</p>
+                <div class="values-list">
+                    <article class="value-row reveal">
+                        <p class="value-row__num">(01)</p>
+                        <h2 class="value-row__title">Proximité</h2>
+                        <p class="value-row__desc">Une relation simple et directe. On échange naturellement, idéalement autour d'un café.</p>
+                    </article>
+                    <article class="value-row reveal">
+                        <p class="value-row__num">(02)</p>
+                        <h2 class="value-row__title">Craft</h2>
+                        <p class="value-row__desc">Le soin de l'artisan : chaque ligne de code et chaque pixel sont pensés, jamais de « assez bien ».</p>
+                    </article>
+                    <article class="value-row reveal">
+                        <p class="value-row__num">(03)</p>
+                        <h2 class="value-row__title">Performance</h2>
+                        <p class="value-row__desc">Rapidité, fluidité et référencement : la beauté ne sert à rien si c'est lent.</p>
+                    </article>
+                    <article class="value-row reveal">
+                        <p class="value-row__num">(04)</p>
+                        <h2 class="value-row__title">Transparence</h2>
+                        <p class="value-row__desc">Des échanges clairs, des prix honnêtes, aucune surprise en cours de route.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. EN CHIFFRES -->
+        <section class="about-section about-numbers" id="chiffres">
+            <div class="container">
+                <p class="section-label reveal">En chiffres</p>
+                <div class="stats">
+                    <div class="stat reveal">
+                        <p class="stat__num" data-count="2">02</p>
+                        <p class="stat__label">Frères fondateurs</p>
+                    </div>
+                    <div class="stat reveal">
+                        <p class="stat__num" data-count="5">05</p>
+                        <p class="stat__label">Expertises maîtrisées</p>
+                    </div>
+                    <div class="stat reveal">
+                        <p class="stat__num" data-count="1">01</p>
+                        <p class="stat__label">Studio, à Lausanne</p>
+                    </div>
+                    <div class="stat reveal">
+                        <p class="stat__num">∞</p>
+                        <p class="stat__label">Cafés partagés</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. GALERIE — bande à glisser -->
+        <section class="about-section about-gallery" id="galerie">
+            <div class="container gallery__head">
+                <p class="section-label reveal">Alignés par la même vision</p>
+                <p class="gallery__hint reveal" aria-hidden="true">( glisser )</p>
+            </div>
+            <div class="gallery__track" id="galleryTrack">
+                <figure class="gallery__item">
+                    <img src="assets/images/project-slack.png" alt="Projet La Slack — portfolio créatif" draggable="false">
+                </figure>
+                <figure class="gallery__item">
+                    <img src="assets/images/project-dj.png" alt="Projet LAZIZZE DJ — portfolio immersif" draggable="false">
+                </figure>
+                <figure class="gallery__item">
+                    <img src="assets/images/project-nadege.png" alt="Projet Nadège Mouine — site personnel" draggable="false">
+                </figure>
+                <figure class="gallery__item">
+                    <img src="assets/images/project-commissione.png" alt="Projet Commissione Entretien — site professionnel" draggable="false">
+                </figure>
+            </div>
+        </section>
+
+        <!-- 6. ÉQUIPE -->
+        <section class="about-section about-team" id="equipe">
+            <div class="container">
+                <p class="section-label reveal">C'est nous</p>
+                <div class="team__grid">
+
+                    <article class="profile reveal">
+                        <div class="profile__media profile__media--dev">
+                            <img src="assets/images/team-eliott.jpg" alt="Eliott Pina, lead développeur" loading="lazy" draggable="false">
+                        </div>
+                        <p class="profile__role">Lead Dev</p>
+                        <h2 class="profile__name">Eliott Pina</h2>
+                        <p class="profile__bio">
+                            Développeur full-stack passionné par la performance et l'architecture propre.
+                            Il transforme des idées complexes en interfaces fluides, rapides et durables —
+                            là où la technique disparaît au profit de l'expérience.
+                        </p>
+                        <div class="profile__skills">
+                            <span class="skill-badge">Next.js</span>
+                            <span class="skill-badge">TypeScript</span>
+                            <span class="skill-badge">Node.js</span>
+                            <span class="skill-badge">Supabase</span>
+                            <span class="skill-badge">PostgreSQL</span>
+                            <span class="skill-badge">GSAP</span>
+                        </div>
+                        <div class="profile__socials">
+                            <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                            <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">Instagram</a>
+                        </div>
+                    </article>
+
+                    <article class="profile reveal">
+                        <div class="profile__media profile__media--design">
+                            <img src="assets/images/team-matt.jpg" alt="Matt Pina, lead designer" loading="lazy" draggable="false">
+                        </div>
+                        <p class="profile__role">Lead Design</p>
+                        <h2 class="profile__name">Matt Pina</h2>
+                        <p class="profile__bio">
+                            Designer et directeur artistique, il façonne des identités fortes et des
+                            interfaces sensibles. Du branding au motion, il cherche le détail juste —
+                            celui qui transforme un site en émotion mémorable.
+                        </p>
+                        <div class="profile__skills">
+                            <span class="skill-badge">Figma</span>
+                            <span class="skill-badge">Motion Design</span>
+                            <span class="skill-badge">Branding</span>
+                            <span class="skill-badge">GSAP</span>
+                            <span class="skill-badge">Three.js</span>
+                            <span class="skill-badge">After Effects</span>
+                        </div>
+                        <div class="profile__socials">
+                            <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">Behance</a>
+                            <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">Dribbble</a>
+                            <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                            <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">Instagram</a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. CTA -->
+        <section class="about-section about-cta" id="contact">
+            <div class="container">
+                <p class="section-label reveal">Travaillons ensemble</p>
+                <h2 class="about-cta__title reveal">Donnons vie à<br><span class="accent">votre projet.</span></h2>
+                <div class="about-cta__actions reveal">
+                    <a href="mailto:contact@wearebrothers.ch" class="email-btn">
+                        <span>contact@wearebrothers.ch</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H7M17 7V17" />
+                        </svg>
+                    </a>
+                </div>
+                <p class="about-cta__meta reveal">
+                    <span class="meta-dot"></span>
+                    Lausanne, Suisse — <time id="localTime">--:--</time> heure locale
+                </p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer" id="footer">
+            <div class="footer-watermark">WAB.</div>
+            <div class="container footer-content">
+                <div class="footer-top">
+                    <div class="footer-info">
+                        <p class="footer-status">AVAILABLE FOR SELECT PROJECTS</p>
+                        <p class="footer-copy">&copy; 2026 WAB.STUDIO</p>
+                    </div>
+                    <div class="footer-links">
+                        <a href="work.html" class="footer-link">Work</a>
+                        <a href="about.html" class="footer-link">About</a>
+                        <a href="index.html#contact" class="footer-link">Contact</a>
+                    </div>
+                </div>
+                <p class="footer-tagline">Creating experiences that last in the memory</p>
+            </div>
+        </footer>
+
+    </main>
+
+</body>
+
+</html>

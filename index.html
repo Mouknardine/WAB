@@ -11,33 +11,22 @@
     <meta name="description"
         content="WeAreBrothers — A creative studio building interactive web experiences with studio-level polish.">
 
-    <!-- Theme (anti-flash : appliqué avant le rendu) -->
-    <script>
-        (function () {
-            try {
-                var stored = localStorage.getItem('theme');
-                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                var isDark = stored ? stored === 'dark' : prefersDark;
-                document.documentElement.classList.toggle('dark', isDark);
-            } catch (e) { /* localStorage indisponible : on garde le thème clair */ }
-        })();
-    </script>
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inclusive+Sans&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css?v=19">
+    <link rel="stylesheet" href="style.css?v=26">
 
     <!-- GSAP -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"></script>
 
-    <!-- Main Script -->
-    <script src="script.js?v=10" defer></script>
+    <!-- Scripts -->
+    <script src="fill-text.js?v=3" defer></script>
+    <script src="script.js?v=14" defer></script>
 </head>
 
 <body>
@@ -46,15 +35,6 @@
     <header class="header" id="header">
         <a href="#hero" class="header-logo">WAB.</a>
         <div class="header-actions">
-            <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème" aria-pressed="false">
-                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                </svg>
-                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <circle cx="12" cy="12" r="4" />
-                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-                </svg>
-            </button>
             <button class="header-menu-btn" id="menuToggle" aria-label="Toggle navigation">
                 <span class="menu-line"></span>
                 <span class="menu-line"></span>
@@ -67,8 +47,8 @@
         <div class="nav-content">
             <div class="nav-links">
                 <a href="#hero" class="nav-link" data-nav-link>HOME</a>
-                <a href="#prestations" class="nav-link" data-nav-link>PROJECTS</a>
-                <a href="#about" class="nav-link" data-nav-link>ABOUT</a>
+                <a href="work.html" class="nav-link">WORK</a>
+                <a href="about.html" class="nav-link">ABOUT</a>
                 <a href="#contact" class="nav-link" data-nav-link>CONTACT</a>
             </div>
             <a href="mailto:contact@wearebrothers.ch" class="nav-email-btn">
@@ -110,13 +90,13 @@
             <!-- INTRO / ABOUT -->
             <section class="section intro" id="about">
                 <div class="container">
-                    <p class="intro-text reveal">
+                    <p class="intro-text" data-fill-text>
                         Nous sommes deux frères passionnés par la technologie et le design.
                         Notre mission est simple : on s'assure que votre entreprise reste branchée et dans l'air du
                         temps pendant que vous vous concentrez sur ce que vous faites de mieux. On ne se contente pas de
                         faire du 'beau' ; nous créons des outils taillés pour transformer les clics en clients.
                     </p>
-                    <p class="intro-text reveal">
+                    <p class="intro-text" data-fill-text>
                         Nous privilégions une relation simple et directe avec nos clients. Proches, flexibles et
                         accessibles, on aime échanger naturellement, comprendre vos besoins et construire chaque projet
                         dans un esprit de collaboration — idéalement autour d'un café.
@@ -183,6 +163,12 @@
                         </a>
 
                     </div>
+                    <a href="work.html" class="projects-more reveal">
+                        <span>Découvrir chaque projet en détail</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H7M17 7V17" />
+                        </svg>
+                    </a>
                 </div>
             </section>
 
@@ -229,7 +215,7 @@
             <section class="section contact" id="contact">
                 <div class="container">
                     <h2 class="section-title reveal">CONTACT</h2>
-                    <p class="contact-subtitle reveal">Donnons vie à votre projet.</p>
+                    <p class="contact-subtitle" data-fill-text>Donnons vie à votre projet.</p>
                     <div class="contact-actions reveal">
                         <a href="mailto:contact@wearebrothers.ch" class="email-btn">
                             <span>contact@wearebrothers.ch</span>
@@ -251,8 +237,8 @@
                             <p class="footer-copy">&copy; 2026 WAB.STUDIO</p>
                         </div>
                         <div class="footer-links">
-                            <a href="#prestations" class="footer-link" data-nav-link>Projects</a>
-                            <a href="#about" class="footer-link" data-nav-link>About</a>
+                            <a href="work.html" class="footer-link">Work</a>
+                            <a href="about.html" class="footer-link">About</a>
                             <a href="#contact" class="footer-link" data-nav-link>Contact</a>
                         </div>
                     </div>

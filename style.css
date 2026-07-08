@@ -29,7 +29,7 @@
     --gray-1100: #646464;
     --gray-1200: #202020;
 
-    /* Semantic tokens (theme-aware) */
+    /* Semantic tokens */
     --bg: var(--gray-100);
     --surface: var(--gray-200);
     --text: var(--gray-1200);
@@ -55,24 +55,6 @@
     --vh: 1vh;
 }
 
-/* Neutral gray scale (dark) */
-:root.dark {
-    color-scheme: dark;
-
-    --gray-100: #0f0f0f;
-    --gray-200: #171717;
-    --gray-300: #1f1f1f;
-    --gray-400: #2a2a2a;
-    --gray-500: #313131;
-    --gray-600: #3a3a3a;
-    --gray-700: #484848;
-    --gray-800: #606060;
-    --gray-900: #6e6e6e;
-    --gray-1000: #7b7b7b;
-    --gray-1100: #a0a0a0;
-    --gray-1200: #ededed;
-}
-
 ::selection {
     background: var(--accent);
     color: #ffffff;
@@ -92,7 +74,6 @@ body {
     color: var(--text);
     overflow-x: hidden;
     line-height: 1.5;
-    transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
 }
 
 a {
@@ -182,55 +163,6 @@ img {
     z-index: 110;
 }
 
-/* ── Theme toggle ── */
-.theme-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    color: var(--text);
-    transition: color 0.3s ease, background-color 0.3s ease, transform 0.15s var(--ease-out);
-}
-
-.theme-toggle:hover {
-    background: color-mix(in srgb, var(--text) 8%, transparent);
-}
-
-.theme-toggle:active {
-    transform: scale(0.92);
-}
-
-.header.hero-visible .theme-toggle {
-    color: var(--white);
-}
-
-.header.nav-open .theme-toggle {
-    color: var(--text);
-}
-
-.theme-toggle svg {
-    width: 18px;
-    height: 18px;
-}
-
-.theme-toggle .icon-sun {
-    display: none;
-}
-
-.theme-toggle .icon-moon {
-    display: block;
-}
-
-:root.dark .theme-toggle .icon-sun {
-    display: block;
-}
-
-:root.dark .theme-toggle .icon-moon {
-    display: none;
-}
-
 .header-menu-btn {
     z-index: 110;
     width: 32px;
@@ -272,7 +204,9 @@ img {
     right: 0;
     bottom: 0;
     z-index: 99;
-    background: var(--bg);
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    -webkit-backdrop-filter: blur(28px) saturate(115%);
+    backdrop-filter: blur(28px) saturate(115%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -404,15 +338,81 @@ img {
     image-rendering: pixelated;
 }
 
+/* Verre dépoli : le hero rose et ses oiseaux restent visibles
+   derrière tout le contenu, floutés à travers la plaque de verre */
 .content-body {
     position: relative;
     z-index: 10;
-    background: var(--bg);
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
+    background: color-mix(in srgb, var(--bg) 68%, transparent);
+    -webkit-backdrop-filter: blur(32px) saturate(115%);
+    backdrop-filter: blur(32px) saturate(115%);
     min-height: 100vh;
     isolation: isolate;
-    transition: background-color 0.4s var(--ease);
+}
+
+/* Variante pour les pages riches en texte (About, Work) :
+   voile un peu plus opaque pour garder une lecture confortable */
+.content-body--soft {
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+}
+
+/* ── Fond « verre dépoli » partagé (pages internes) ──
+   Reproduit l'ambiance de l'accueil : un dégradé fuchsia
+   fixe avec deux halos qui dérivent lentement, adouci à
+   travers la plaque de verre .content-body posée dessus. */
+.page-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(150deg, #FFCCE5 0%, #FF2D9B 55%, #CC0055 100%);
+    overflow: hidden;
+}
+
+.page-backdrop::before,
+.page-backdrop::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    will-change: transform;
+}
+
+.page-backdrop::before {
+    width: 60vmax;
+    height: 60vmax;
+    top: -22vmax;
+    right: -16vmax;
+    background: radial-gradient(closest-side, rgba(255, 255, 255, 0.65), transparent 72%);
+    animation: backdropDrift 26s ease-in-out infinite alternate;
+}
+
+.page-backdrop::after {
+    width: 50vmax;
+    height: 50vmax;
+    bottom: -20vmax;
+    left: -14vmax;
+    background: radial-gradient(closest-side, rgba(110, 0, 55, 0.55), transparent 72%);
+    animation: backdropDrift 34s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes backdropDrift {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to   { transform: translate3d(-7vmax, 6vmax, 0) scale(1.18); }
+}
+
+/* Navigateurs sans backdrop-filter : fond plein classique */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .content-body {
+        background: var(--bg);
+    }
+
+    .page-backdrop {
+        display: none;
+    }
+
+    .nav-overlay {
+        background: var(--bg);
+    }
 }
 
 .hero-inner {
@@ -612,15 +612,55 @@ img {
     max-width: 520px;
 }
 
+.projects-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: clamp(28px, 4vw, 48px);
+    font-family: var(--font-display);
+    font-size: clamp(0.9rem, 1.1vw, 1rem);
+    font-weight: 700;
+    color: var(--text);
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+.projects-more::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--border-strong);
+    transition: background 0.3s ease;
+}
+
+.projects-more svg {
+    transition: transform 0.4s var(--ease);
+}
+
+.projects-more:hover {
+    color: var(--accent);
+}
+
+.projects-more:hover::after {
+    background: var(--accent);
+}
+
+.projects-more:hover svg {
+    transform: translate(3px, -3px);
+}
+
 /* ============================================
    SERVICES
    ============================================ */
 .services {
     position: relative;
     z-index: 10;
-    background: var(--bg);
+    background: transparent;
     padding-bottom: 0 !important;
-    transition: background-color 0.4s var(--ease);
 }
 
 .services .section-title {
@@ -636,11 +676,11 @@ img {
 .service-row {
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    background-color: var(--bg);
+    background-color: transparent;
     position: relative;
     z-index: 2;
     cursor: pointer;
-    transition: background-color 0.4s ease, opacity 0.5s var(--ease);
+    transition: opacity 0.5s var(--ease);
     border-bottom: 1px solid var(--border);
     overflow: hidden;
     -webkit-tap-highlight-color: transparent;
@@ -663,37 +703,26 @@ img {
     width: 100%;
 }
 
+/* Fine barre d'accent qui se déploie le long du bord gauche */
 .service-row::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    background:
-        radial-gradient(ellipse 60% 80% at 15% 50%, #FF8ABF 0%, transparent 70%),
-        radial-gradient(ellipse 50% 70% at 75% 30%, #FF1493 0%, transparent 70%),
-        radial-gradient(ellipse 55% 65% at 60% 80%, #FF0066 0%, transparent 70%),
-        radial-gradient(ellipse 50% 60% at 35% 20%, #FF3D85 0%, transparent 70%);
-    background-color: #F7609B;
-    background-size: 200% 200%;
-    animation: serviceGradientShift 8s ease-in-out infinite;
-}
-
-@keyframes serviceGradientShift {
-    0%, 100% { background-position: 0% 50%; }
-    50%      { background-position: 100% 50%; }
+    width: 3px;
+    height: 100%;
+    background: var(--accent);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.5s var(--ease);
 }
 
 .service-row:hover::before {
-    opacity: 1;
+    transform: scaleY(1);
 }
 
 .services-list:hover .service-row:not(:hover) {
-    opacity: 0.3;
+    opacity: 0.35;
 }
 
 .service-name {
@@ -706,13 +735,12 @@ img {
     white-space: nowrap;
     color: var(--text);
     flex-shrink: 0;
-    transition: color 0.4s ease;
+    transition: color 0.35s ease, transform 0.5s var(--ease);
 }
 
 .service-row:hover .service-name {
-    color: var(--white);
-    position: relative;
-    z-index: 1;
+    color: var(--accent);
+    transform: translateX(14px);
 }
 
 .service-desc {
@@ -722,13 +750,11 @@ img {
     max-width: 380px;
     text-align: left;
     flex-shrink: 0;
-    transition: color 0.4s ease;
+    transition: color 0.35s ease;
 }
 
 .service-row:hover .service-desc {
-    color: var(--white);
-    position: relative;
-    z-index: 1;
+    color: var(--text);
 }
 
 /* ============================================
@@ -813,6 +839,7 @@ img {
     user-select: none;
     line-height: 0.85;
     white-space: nowrap;
+    will-change: transform;
 }
 
 .footer-content {
@@ -986,6 +1013,18 @@ img {
         transform: none;
     }
 
+    .projects-more:hover {
+        color: var(--text);
+    }
+
+    .projects-more:hover::after {
+        background: var(--border-strong);
+    }
+
+    .projects-more:hover svg {
+        transform: none;
+    }
+
     .email-btn:hover {
         background: var(--text);
         color: var(--bg);
@@ -1009,8 +1048,17 @@ img {
         opacity: 1;
     }
 
-    .service-row::before {
-        animation: none;
+    .service-row:hover::before {
+        transform: scaleY(0);
+    }
+
+    .service-row:hover .service-name {
+        color: var(--text);
+        transform: none;
+    }
+
+    .service-row:hover .service-desc {
+        color: var(--text-muted);
     }
 }
 
@@ -1022,10 +1070,6 @@ img {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
-    }
-
-    .service-row::before {
-        animation: none;
     }
 
     html {

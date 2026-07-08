@@ -1,0 +1,471 @@
+/* ============================================
+   WAB. — Page À PROPOS
+   Réutilise les tokens globaux de style.css
+   (couleurs, polices, easings).
+   Lié APRÈS style.css dans about.html.
+   Design inspiré éditorial : typographie géante,
+   listes numérotées, whitespace généreux.
+   ============================================ */
+
+.accent {
+    color: var(--accent);
+}
+
+/* ── Rythme des sections ── */
+.about-section {
+    padding: clamp(56px, 8vw, 120px) 0;
+}
+
+.section-label {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: clamp(28px, 4vw, 56px);
+}
+
+.meta-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* ============================================
+   1. HERO — déclaration typographique
+   ============================================ */
+.about-hero {
+    /* Occupe tout l'écran : la section suivante reste sous le pli */
+    min-height: calc(var(--vh, 1vh) * 100);
+    display: flex;
+    padding: clamp(120px, 16vh, 160px) 0 clamp(40px, 6vw, 80px);
+}
+
+.about-hero .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.about-hero__label {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: clamp(20px, 3vw, 36px);
+    opacity: 0;
+}
+
+.about-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5.8vw, 5.2rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.04;
+    color: var(--text);
+    max-width: 1200px;
+}
+
+.about-hero__line {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.08em;
+    margin-bottom: -0.08em;
+}
+
+.about-hero__line-inner {
+    display: block;
+    transform: translateY(112%);
+}
+
+.about-hero__meta {
+    font-size: clamp(0.85rem, 1.2vw, 1rem);
+    color: var(--text-muted);
+    margin-top: clamp(20px, 3vw, 36px);
+    margin-bottom: clamp(32px, 5vw, 72px);
+    opacity: 0;
+}
+
+/* Photo des frères : pleine largeur, remplit l'espace
+   restant du hero (jamais de vide sous le texte) */
+.about-hero__figure {
+    position: relative;
+    width: 100%;
+    flex: 1 1 auto;
+    min-height: clamp(220px, 56vw, 460px);
+    max-height: 68vh;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: clamp(32px, 5vw, 64px);
+    background: var(--surface);
+    opacity: 0;
+    transform: translateY(32px);
+}
+
+.about-hero__figure img {
+    position: absolute;
+    top: -3%;
+    left: 0;
+    width: 100%;
+    height: 106%;
+    object-fit: cover;
+    object-position: 50% 45%;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.about-hero__caption {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+    padding: 8px 14px;
+    border-radius: 100px;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* ============================================
+   2. MANIFESTE — texte rempli au scroll
+   ============================================ */
+.about-manifesto {
+    border-top: 1px solid var(--border);
+}
+
+.manifesto-text {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3.8vw, 3.4rem);
+    font-weight: 500;
+    line-height: 1.32;
+    letter-spacing: -0.02em;
+    max-width: 1150px;
+}
+
+/* ============================================
+   3. VALEURS — liste éditoriale numérotée
+   ============================================ */
+.about-values {
+    border-top: 1px solid var(--border);
+}
+
+.values-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(56px, 9vw, 88px) clamp(48px, 6vw, 96px);
+}
+
+.value-row__num {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+    margin-bottom: clamp(12px, 2vw, 20px);
+}
+
+.value-row__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 5.5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: clamp(10px, 1.5vw, 16px);
+}
+
+.value-row__desc {
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 480px;
+}
+
+/* ============================================
+   4. EN CHIFFRES
+   ============================================ */
+.about-numbers {
+    border-top: 1px solid var(--border);
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(32px, 5vw, 64px) clamp(24px, 3vw, 48px);
+}
+
+.stat__num {
+    font-family: var(--font-display);
+    font-size: clamp(3.2rem, 9vw, 7rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--text);
+}
+
+.stat__label {
+    font-size: clamp(0.85rem, 1.1vw, 1rem);
+    color: var(--text-muted);
+    margin-top: 12px;
+}
+
+/* ============================================
+   5. GALERIE — bande à glisser
+   ============================================ */
+.about-gallery {
+    border-top: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.gallery__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+}
+
+.gallery__hint {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+}
+
+.gallery__track {
+    display: flex;
+    gap: clamp(12px, 2vw, 24px);
+    padding: 0 clamp(24px, 4vw, 60px);
+    overflow-x: auto;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.gallery__track::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery__track.is-dragging {
+    cursor: grabbing;
+    scroll-behavior: auto;
+}
+
+.gallery__item {
+    flex: 0 0 auto;
+    width: clamp(260px, 55vw, 520px);
+    aspect-ratio: 4 / 3;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--surface);
+}
+
+.gallery__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+/* ============================================
+   6. ÉQUIPE
+   ============================================ */
+.about-team {
+    border-top: 1px solid var(--border);
+}
+
+.team__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(48px, 6vw, 80px);
+}
+
+.profile__media {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: clamp(20px, 3vw, 32px);
+    background: var(--surface);
+}
+
+.profile__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Cadrage : garder les visages bien placés */
+.profile__media--dev img {
+    object-position: 50% 35%;
+}
+
+.profile__media--design img {
+    object-position: 50% 32%;
+}
+
+.profile__role {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.profile__name {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+}
+
+.profile__bio {
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+    color: var(--text-muted);
+    line-height: 1.65;
+    max-width: 520px;
+    margin-bottom: 24px;
+}
+
+.profile__skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.skill-badge {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: 100px;
+    color: var(--text-muted);
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.skill-badge:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.profile__socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.social-link {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.social-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.3s var(--ease);
+}
+
+.social-link:hover {
+    color: var(--accent);
+}
+
+.social-link:hover::after {
+    width: 100%;
+}
+
+/* ============================================
+   7. CTA
+   ============================================ */
+.about-cta {
+    border-top: 1px solid var(--border);
+}
+
+.about-cta__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 8vw, 6.5rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.02;
+    margin-bottom: clamp(36px, 5vw, 64px);
+}
+
+.about-cta__meta {
+    font-size: clamp(0.85rem, 1.1vw, 1rem);
+    color: var(--text-muted);
+    margin-top: clamp(28px, 4vw, 48px);
+}
+
+/* ============================================
+   RESPONSIVE — enrichissement desktop
+   ============================================ */
+@media (min-width: 769px) {
+    /* Desktop : cadrage 3:2, borné par la hauteur d'écran →
+       la photo entière tient dans le viewport quand on scrolle */
+    .about-hero__figure {
+        flex: 0 0 auto;
+        aspect-ratio: 3 / 2;
+        width: min(100%, calc((100vh - 200px) * 1.5));
+        margin-left: auto;
+        margin-right: auto;
+        min-height: 0;
+        max-height: none;
+    }
+
+    .values-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .team__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ── Touch : pas d'états hover persistants ── */
+@media (hover: none) {
+    .skill-badge:hover {
+        border-color: var(--border-strong);
+        color: var(--text-muted);
+    }
+
+    .social-link:hover {
+        color: var(--text-muted);
+    }
+
+    .social-link:hover::after {
+        width: 0;
+    }
+}

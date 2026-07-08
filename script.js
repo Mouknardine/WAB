@@ -11,27 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setVh();
     window.addEventListener('resize', setVh, { passive: true });
 
-    /* ── Theme toggle (dark / light) ── */
-    (function initTheme() {
-        const toggle = document.getElementById('themeToggle');
-        if (!toggle) return;
-
-        const root = document.documentElement;
-
-        function syncAria() {
-            toggle.setAttribute('aria-pressed', String(root.classList.contains('dark')));
-        }
-        syncAria();
-
-        toggle.addEventListener('click', () => {
-            const isDark = root.classList.toggle('dark');
-            try {
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            } catch (e) { /* localStorage indisponible : le choix ne sera pas mémorisé */ }
-            syncAria();
-        });
-    })();
-
     /* ── GSAP ── */
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
         document.querySelectorAll('.reveal, .hero-word, .hero-dot').forEach((el) => {
@@ -142,26 +121,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ════════════════════════════════════════════
        HEADER SCROLL BEHAVIOR
+       (optimisé : rAF + métriques en cache, aucune lecture
+        de layout pendant le scroll → supprime les saccades)
        ════════════════════════════════════════════ */
     let lastScrollY  = 0;
     let headerHidden = false;
+    let heroVisible  = true;
+    let ticking      = false;
+
+    // Métriques mesurées une seule fois (et au resize), jamais pendant le scroll
+    let heroSwapPoint = 0;
+
+    function measureHero() {
+        heroSwapPoint = heroSection.offsetTop + heroSection.offsetHeight - 80;
+    }
+    measureHero();
+    window.addEventListener('resize', measureHero, { passive: true });
+    window.addEventListener('load', measureHero);
+
     header.classList.add('hero-visible');
 
-    function onScroll() {
-        const scroll     = window.scrollY || window.pageYOffset;
-        const heroHeight = window.innerHeight;
+    function updateOnScroll() {
+        ticking = false;
+        const scroll = window.scrollY || window.pageYOffset;
 
-        // Hide hero when far past it
-        heroSection.style.visibility = scroll > heroHeight * 1.5 ? 'hidden' : 'visible';
+        // Le hero fixe reste toujours visible : il sert de fond
+        // permanent (rose + oiseaux) derrière le verre dépoli.
 
-        // Header color swap
-        if (scroll < heroSection.offsetTop + heroSection.offsetHeight - 80) {
-            header.classList.add('hero-visible');
-        } else {
-            header.classList.remove('hero-visible');
+        // Couleur du header (toggle seulement si l'état change)
+        const shouldBeHeroVisible = scroll < heroSwapPoint;
+        if (shouldBeHeroVisible !== heroVisible) {
+            heroVisible = shouldBeHeroVisible;
+            header.classList.toggle('hero-visible', shouldBeHeroVisible);
         }
 
-        // Auto-hide header on scroll down
+        // Auto-masquage du header au scroll vers le bas
         if (scroll > 100) {
             if (scroll > lastScrollY && !headerHidden) {
                 header.classList.add('hide-up');
@@ -170,12 +164,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 header.classList.remove('hide-up');
                 headerHidden = false;
             }
-        } else {
+        } else if (headerHidden) {
             header.classList.remove('hide-up');
             headerHidden = false;
         }
 
         lastScrollY = scroll;
+    }
+
+    function onScroll() {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(updateOnScroll);
+        }
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -371,14 +372,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let lastTime = performance.now();
 
+        let needsResize = false;
+        let inView      = true;
+        let running     = false;
+        let rafId       = null;
+
+        function resizeCanvas() {
+            canvas.width  = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+
         function animate(now) {
-            requestAnimationFrame(animate);
             const delta = Math.min(now - lastTime, 100);
             lastTime = now;
 
-            if (canvas.width !== canvas.offsetWidth || canvas.height !== canvas.offsetHeight) {
-                canvas.width  = canvas.offsetWidth;
-                canvas.height = canvas.offsetHeight;
+            if (needsResize) {
+                resizeCanvas();
+                needsResize = false;
             }
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -407,14 +417,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 drawBird(FRAME_SEQUENCE[bird.frameIndex], bird.x, bird.y, bird.color, bird.dir === -1);
             }
+
+            if (running) rafId = requestAnimationFrame(animate);
         }
 
-        requestAnimationFrame(animate);
+        function start() {
+            if (running) return;
+            running  = true;
+            lastTime = performance.now();
+            rafId    = requestAnimationFrame(animate);
+        }
 
-        window.addEventListener('resize', () => {
-            canvas.width  = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
-        });
+        function stop() {
+            running = false;
+            if (rafId !== null) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+        }
+
+        function syncPlayback() {
+            if (inView && !document.hidden) start();
+            else stop();
+        }
+
+        // Démarre l'animation
+        syncPlayback();
+
+        // Pause des oiseaux quand le hero quitte l'écran
+        // → plus aucun calcul canvas pendant le scroll du contenu
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver((entries) => {
+                inView = entries[0].isIntersecting;
+                syncPlayback();
+            }, { threshold: 0 });
+            io.observe(canvas);
+        }
+
+        // Pause quand l'onglet est masqué
+        document.addEventListener('visibilitychange', syncPlayback);
+
+        window.addEventListener('resize', () => { needsResize = true; }, { passive: true });
     })();
 
     /* ════════════════════════════════════════════
