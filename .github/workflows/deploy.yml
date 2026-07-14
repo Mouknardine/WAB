@@ -19,6 +19,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           local-dir: ./
+          server-dir: /sites/wearebrothers.ch/
           exclude: |
             **/.git*
             **/.git*/**
