@@ -88,20 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
         navOverlay.classList.toggle('open', menuOpen);
         header.classList.toggle('nav-open', menuOpen);
 
-        if (menuOpen) {
-            document.body.style.overflow = 'hidden';
-
-            gsap.fromTo('.nav-link',
-                { y: 80, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.7, stagger: 0.06, ease: 'power4.out', delay: 0.1 }
-            );
-            gsap.fromTo('.nav-email-btn',
-                { y: 20, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: 0.4 }
-            );
-        } else {
-            document.body.style.overflow = '';
-        }
+        // L'apparition en cascade des liens est gérée en CSS (classe .open)
+        document.body.style.overflow = menuOpen ? 'hidden' : '';
     }
 
     menuToggle.addEventListener('click', toggleMenu);

@@ -204,7 +204,7 @@ img {
     right: 0;
     bottom: 0;
     z-index: 99;
-    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
     -webkit-backdrop-filter: blur(28px) saturate(115%);
     backdrop-filter: blur(28px) saturate(115%);
     display: flex;
@@ -220,85 +220,148 @@ img {
     pointer-events: auto;
 }
 
+/* Composition éditoriale : grands liens numérotés à gauche,
+   infos pratiques en bas — apparition en cascade (CSS pur,
+   pilotée par la classe .open) */
 .nav-content {
-    text-align: center;
+    width: 100%;
+    height: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: clamp(96px, 14vh, 150px) clamp(24px, 4vw, 60px) clamp(28px, 5vh, 56px);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 48px;
+    justify-content: space-between;
+    gap: 40px;
+    overflow-y: auto;
 }
 
 .nav-links {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    align-items: flex-start;
 }
 
 .nav-link {
+    display: block;
+    overflow: hidden;
     font-family: var(--font-display);
-    font-size: clamp(3rem, 8vw, 7rem);
+    font-size: clamp(2.2rem, 8vw, 6rem);
     font-weight: 700;
     letter-spacing: -0.03em;
-    line-height: 1.05;
+    line-height: 1.12;
     color: var(--text);
-    transition: color 0.3s ease, transform 0.3s var(--ease);
-    display: block;
-    position: relative;
+    /* Marge pour le glissement au survol (12px) :
+       sans elle, l'overflow hidden coupe la dernière lettre */
+    padding-right: 20px;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.nav-link::after {
+.nav-link__inner {
+    display: flex;
+    align-items: baseline;
+    gap: clamp(12px, 2vw, 24px);
+    transform: translateY(115%);
+    transition: transform 0.7s var(--ease);
+    will-change: transform;
+}
+
+.nav-overlay.open .nav-link__inner {
+    transform: translateY(0);
+}
+
+.nav-overlay.open .nav-link:nth-child(1) .nav-link__inner { transition-delay: 0.10s; }
+.nav-overlay.open .nav-link:nth-child(2) .nav-link__inner { transition-delay: 0.18s; }
+.nav-overlay.open .nav-link:nth-child(3) .nav-link__inner { transition-delay: 0.26s; }
+.nav-overlay.open .nav-link:nth-child(4) .nav-link__inner { transition-delay: 0.34s; }
+
+.nav-link__num {
+    font-size: clamp(0.8rem, 1.1vw, 0.95rem);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text-subtle);
+    transition: color 0.3s ease;
+}
+
+.nav-link__label {
+    display: inline-block;
+    transition: transform 0.4s var(--ease), color 0.3s ease;
+}
+
+.nav-link:hover .nav-link__label {
+    color: var(--accent);
+    transform: translateX(12px);
+}
+
+.nav-link:hover .nav-link__num {
+    color: var(--accent);
+}
+
+/* Page courante : son numéro reste allumé en rose */
+.nav-link[aria-current="page"] .nav-link__num {
+    color: var(--accent);
+}
+
+/* ── Infos pratiques en bas du menu ── */
+.nav-footer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s var(--ease);
+}
+
+.nav-overlay.open .nav-footer {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.38s;
+}
+
+.nav-info__label {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+}
+
+.nav-info__value {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.5;
+}
+
+a.nav-info__value {
+    display: inline-block;
+    position: relative;
+    padding: 2px 0;
+    transition: color 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    word-break: break-all;
+}
+
+a.nav-info__value::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 0;
-    height: 3px;
+    height: 1px;
     background: var(--accent);
-    transition: width 0.4s var(--ease);
+    transition: width 0.3s var(--ease);
 }
 
-.nav-link:hover {
+a.nav-info__value:hover {
     color: var(--accent);
-    transform: translateX(12px);
 }
 
-.nav-link:hover::after {
+a.nav-info__value:hover::after {
     width: 100%;
-}
-
-.nav-email-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 40px;
-    padding: 18px 36px;
-    background: var(--text);
-    color: var(--bg);
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    border-radius: 4px;
-    transition: background 0.4s var(--ease), color 0.4s var(--ease), transform 0.3s var(--ease-out), box-shadow 0.4s var(--ease);
-}
-
-.nav-email-btn:hover {
-    background: var(--accent);
-    color: var(--white);
-    transform: translateY(-3px);
-    box-shadow: 0 20px 40px -10px rgba(255, 60, 120, 0.3);
-}
-
-.nav-email-btn:active {
-    transform: scale(0.97);
-}
-
-.nav-email-btn svg {
-    transition: transform 0.4s var(--ease);
-}
-
-.nav-email-btn:hover svg {
-    transform: translate(3px, -3px);
 }
 
 /* ============================================
@@ -338,22 +401,23 @@ img {
     image-rendering: pixelated;
 }
 
-/* Verre dépoli : le hero rose et ses oiseaux restent visibles
-   derrière tout le contenu, floutés à travers la plaque de verre */
+/* Verre dépoli BLANC : le fond reste blanc, le dégradé rose
+   et ses halos ne transparaissent qu'en lueur très discrète,
+   floutés à travers la plaque de verre */
 .content-body {
     position: relative;
     z-index: 10;
-    background: color-mix(in srgb, var(--bg) 68%, transparent);
+    background: color-mix(in srgb, var(--bg) 90%, transparent);
     -webkit-backdrop-filter: blur(32px) saturate(115%);
     backdrop-filter: blur(32px) saturate(115%);
     min-height: 100vh;
     isolation: isolate;
 }
 
-/* Variante pour les pages riches en texte (About, Work) :
-   voile un peu plus opaque pour garder une lecture confortable */
+/* Variante pour les pages riches en texte (About, Work, Contact) :
+   voile encore un peu plus opaque pour une lecture confortable */
 .content-body--soft {
-    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
 }
 
 /* ── Fond « verre dépoli » partagé (pages internes) ──
@@ -906,6 +970,12 @@ img {
    RESPONSIVE
    ============================================ */
 @media (min-width: 769px) {
+    .nav-footer {
+        grid-template-columns: repeat(3, auto);
+        justify-content: start;
+        column-gap: clamp(48px, 7vw, 120px);
+    }
+
     .intro-text {
         font-size: clamp(1.25rem, 1.6vw, 1.55rem);
         line-height: 1.6;
@@ -963,7 +1033,7 @@ img {
     }
 
     .nav-link {
-        font-size: clamp(2.5rem, 12vw, 4rem);
+        font-size: clamp(2rem, 11vw, 3.4rem);
     }
 
     .email-btn {
@@ -979,11 +1049,6 @@ img {
         overflow: hidden;
         text-overflow: ellipsis;
     }
-
-    .nav-email-btn {
-        padding: 14px 28px;
-        font-size: 0.9rem;
-    }
 }
 
 @media (max-width: 390px) {
@@ -996,12 +1061,24 @@ img {
 
 /* ── Touch devices ── */
 @media (hover: none) {
-    .nav-link:hover {
+    .nav-link:hover .nav-link__label {
         color: inherit;
         transform: none;
     }
 
-    .nav-link:hover::after {
+    .nav-link:hover .nav-link__num {
+        color: var(--text-subtle);
+    }
+
+    .nav-link[aria-current="page"] .nav-link__num {
+        color: var(--accent);
+    }
+
+    a.nav-info__value:hover {
+        color: var(--text);
+    }
+
+    a.nav-info__value:hover::after {
         width: 0;
     }
 
@@ -1035,13 +1112,6 @@ img {
 
     .email-btn:hover svg {
         transform: none;
-    }
-
-    .nav-email-btn:hover {
-        background: var(--text);
-        color: var(--bg);
-        transform: none;
-        box-shadow: none;
     }
 
     .services-list:hover .service-row:not(:hover) {

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#F7609B">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Contact — WAB. WeAreBrothers Studio</title>
+    <meta name="description"
+        content="Parlez-nous de votre projet — site web, branding, motion. WeAreBrothers, studio digital à Lausanne. Réponse sous 24h ouvrées.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inclusive+Sans&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css?v=29">
+    <link rel="stylesheet" href="contact.css?v=2">
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+
+    <!-- Scripts -->
+    <script src="nav-clock.js?v=1" defer></script>
+    <script src="contact.js?v=2" defer></script>
+    <script src="contact-form.js?v=1" defer></script>
+</head>
+
+<body>
+
+    <!-- Fond « verre dépoli » : dégradé fixe flouté à travers le contenu -->
+    <div class="page-backdrop" aria-hidden="true"></div>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <a href="index.html" class="header-logo">WAB.</a>
+        <div class="header-actions">
+            <button class="header-menu-btn" id="menuToggle" aria-label="Toggle navigation">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- NAV OVERLAY -->
+    <nav class="nav-overlay" id="navOverlay">
+        <div class="nav-content">
+            <div class="nav-links">
+                <a href="index.html#hero" class="nav-link"><span class="nav-link__inner"><span class="nav-link__num">( 01 )</span><span class="nav-link__label">HOME</span></span></a>
+                <a href="work.html" class="nav-link"><span class="nav-link__inner"><span class="nav-link__num">( 02 )</span><span class="nav-link__label">WORK</span></span></a>
+                <a href="about.html" class="nav-link"><span class="nav-link__inner"><span class="nav-link__num">( 03 )</span><span class="nav-link__label">ABOUT</span></span></a>
+                <a href="contact.html" class="nav-link" aria-current="page"><span class="nav-link__inner"><span class="nav-link__num">( 04 )</span><span class="nav-link__label">CONTACT</span></span></a>
+            </div>
+            <div class="nav-footer">
+                <div class="nav-info">
+                    <p class="nav-info__label">Email</p>
+                    <a href="mailto:contact@wearebrothers.ch" class="nav-info__value">contact@wearebrothers.ch</a>
+                </div>
+                <div class="nav-info">
+                    <p class="nav-info__label">Studio</p>
+                    <p class="nav-info__value">Lausanne, Suisse — <time data-local-time>--:--</time></p>
+                </div>
+                <div class="nav-info">
+                    <p class="nav-info__label">Disponibilité</p>
+                    <p class="nav-info__value">Available for select projects</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main content-body content-body--soft">
+
+        <!-- 1. HERO — déclaration typographique -->
+        <section class="contact-hero" id="hero">
+            <div class="container">
+                <p class="contact-hero__label">Contact</p>
+                <h1 class="contact-hero__title">
+                    <span class="contact-hero__line"><span class="contact-hero__line-inner">Un projet, une idée,</span></span>
+                    <span class="contact-hero__line"><span class="contact-hero__line-inner">une simple question ?</span></span>
+                    <span class="contact-hero__line"><span class="contact-hero__line-inner"><span class="accent">Parlons-en.</span></span></span>
+                </h1>
+                <p class="contact-hero__meta">
+                    <span class="meta-dot"></span>
+                    Réponse sous 24h ouvrées — sans engagement, sans jargon
+                </p>
+            </div>
+        </section>
+
+        <!-- 2. FORMULAIRE + INFOS -->
+        <section class="contact-main" id="formulaire">
+            <div class="container contact-main__grid">
+
+                <!-- Formulaire (en premier dans le DOM : priorité mobile) -->
+                <form class="contact-form" id="contactForm" action="https://formsubmit.co/contact@wearebrothers.ch" method="POST" novalidate>
+
+                    <!-- Configuration FormSubmit -->
+                    <input type="hidden" name="_subject" id="formSubject" value="Nouveau message — wearebrothers.ch">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <!-- Piège anti-spam : invisible pour les humains -->
+                    <div class="hp-field" aria-hidden="true">
+                        <label for="hpInput">Ne pas remplir</label>
+                        <input type="text" name="_honey" id="hpInput" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <div class="form-field reveal">
+                        <div class="field-head">
+                            <span class="field-num">( 01 )</span>
+                            <label class="field-label" for="fieldName">Votre nom</label>
+                        </div>
+                        <input type="text" id="fieldName" name="Nom" autocomplete="name" autocapitalize="words" enterkeyhint="next" placeholder="Jean Dupont" required>
+                        <p class="form-error" id="errorName">Dites-nous au moins comment vous appeler.</p>
+                    </div>
+
+                    <div class="form-field reveal">
+                        <div class="field-head">
+                            <span class="field-num">( 02 )</span>
+                            <label class="field-label" for="fieldEmail">Votre email</label>
+                        </div>
+                        <input type="email" id="fieldEmail" name="Email" autocomplete="email" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="next" placeholder="jean@entreprise.ch" required>
+                        <p class="form-error" id="errorEmail">Il nous faut un email valide pour vous répondre.</p>
+                    </div>
+
+                    <fieldset class="form-field reveal">
+                        <legend class="field-head">
+                            <span class="field-num">( 03 )</span>
+                            <span class="field-label">Votre besoin</span>
+                            <span class="field-hint">optionnel — plusieurs choix possibles</span>
+                        </legend>
+                        <div class="chips">
+                            <label class="chip"><input type="checkbox" name="Besoin" value="Nouveau site"><span>Nouveau site</span></label>
+                            <label class="chip"><input type="checkbox" name="Besoin" value="Refonte"><span>Refonte</span></label>
+                            <label class="chip"><input type="checkbox" name="Besoin" value="Branding"><span>Branding</span></label>
+                            <label class="chip"><input type="checkbox" name="Besoin" value="Motion"><span>Motion</span></label>
+                            <label class="chip"><input type="checkbox" name="Besoin" value="Autre"><span>Autre</span></label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-field reveal">
+                        <legend class="field-head">
+                            <span class="field-num">( 04 )</span>
+                            <span class="field-label">Budget envisagé</span>
+                            <span class="field-hint">optionnel — pour mieux vous orienter</span>
+                        </legend>
+                        <div class="chips">
+                            <label class="chip"><input type="radio" name="Budget" value="Moins de CHF 3'000"><span>&lt; CHF 3'000</span></label>
+                            <label class="chip"><input type="radio" name="Budget" value="CHF 3'000 - 8'000"><span>CHF 3'000–8'000</span></label>
+                            <label class="chip"><input type="radio" name="Budget" value="Plus de CHF 8'000"><span>&gt; CHF 8'000</span></label>
+                            <label class="chip"><input type="radio" name="Budget" value="A definir ensemble"><span>À définir ensemble</span></label>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-field reveal">
+                        <div class="field-head">
+                            <span class="field-num">( 05 )</span>
+                            <label class="field-label" for="fieldMessage">Votre message</label>
+                        </div>
+                        <textarea id="fieldMessage" name="Message" rows="5" placeholder="Parlez-nous de votre projet, de vos envies, de vos délais…" required></textarea>
+                        <p class="form-error" id="errorMessage">Quelques mots sur votre projet nous aideront à bien vous répondre.</p>
+                    </div>
+
+                    <div class="form-submit-row reveal">
+                        <button type="submit" class="email-btn" id="submitBtn">
+                            <span id="submitLabel">Envoyer le message</span>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17" />
+                            </svg>
+                        </button>
+                        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+                    </div>
+
+                    <!-- Confirmation après envoi -->
+                    <div class="form-success" id="formSuccess" hidden>
+                        <p class="form-success__title">Message envoyé<span class="accent">.</span></p>
+                        <p class="form-success__text">
+                            Merci ! On vous répond sous 24h ouvrées —
+                            idéalement pour convenir d'un café ou d'un appel.
+                        </p>
+                    </div>
+
+                </form>
+
+                <!-- Colonne infos (à gauche sur desktop, sous le formulaire sur mobile) -->
+                <aside class="contact-aside">
+                    <div class="aside-block reveal">
+                        <p class="aside-label">Email direct</p>
+                        <div class="email-copy-row">
+                            <a href="mailto:contact@wearebrothers.ch" class="email-link">contact@wearebrothers.ch</a>
+                            <button type="button" class="copy-btn" id="copyEmailBtn" data-email="contact@wearebrothers.ch">Copier</button>
+                        </div>
+                    </div>
+
+                    <div class="aside-block reveal">
+                        <p class="aside-label">Heure locale — Lausanne</p>
+                        <p class="aside-clock"><time data-local-time>--:--</time></p>
+                    </div>
+
+                    <div class="aside-block reveal">
+                        <p class="aside-label">Studio</p>
+                        <p class="aside-value">Lausanne, Suisse<br>Design &amp; Développement</p>
+                    </div>
+
+                    <div class="aside-block reveal">
+                        <p class="aside-label">Disponibilité</p>
+                        <p class="aside-value"><span class="meta-dot"></span>Available for select projects</p>
+                    </div>
+                </aside>
+
+            </div>
+        </section>
+
+        <!-- 3. QUESTIONS FRÉQUENTES -->
+        <section class="contact-faq" id="faq">
+            <div class="container">
+                <p class="section-label reveal">Questions fréquentes</p>
+                <div class="faq-list reveal">
+
+                    <details class="faq-item">
+                        <summary>
+                            <span>Combien coûte un site web ?</span>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </summary>
+                        <p class="faq-answer">
+                            Chaque projet est différent : le prix dépend du périmètre, du design et des
+                            fonctionnalités. Après un premier échange, on vous envoie une proposition
+                            claire et détaillée — des prix honnêtes, aucune surprise en cours de route.
+                        </p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>
+                            <span>Quels sont les délais ?</span>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </summary>
+                        <p class="faq-answer">
+                            Comptez généralement 3 à 6 semaines pour un site vitrine, davantage pour un
+                            projet sur mesure. On fixe le planning ensemble dès le départ et on s'y tient.
+                        </p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>
+                            <span>Comment se déroule un projet ?</span>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </summary>
+                        <p class="faq-answer">
+                            Un café (ou un appel) pour comprendre vos besoins, une proposition, puis le
+                            design et le développement avec des points réguliers. Vous échangez directement
+                            avec les deux personnes qui font le travail — pas d'intermédiaire.
+                        </p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>
+                            <span>Et après la mise en ligne ?</span>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </summary>
+                        <p class="faq-answer">
+                            On ne disparaît pas : maintenance, évolutions, petites retouches — on reste
+                            proches et accessibles pour que votre site vive et reste dans l'air du temps.
+                        </p>
+                    </details>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer" id="footer">
+            <div class="footer-watermark">WAB.</div>
+            <div class="container footer-content">
+                <div class="footer-top">
+                    <div class="footer-info">
+                        <p class="footer-status">AVAILABLE FOR SELECT PROJECTS</p>
+                        <p class="footer-copy">&copy; 2026 WAB.STUDIO</p>
+                    </div>
+                    <div class="footer-links">
+                        <a href="work.html" class="footer-link">Work</a>
+                        <a href="about.html" class="footer-link">About</a>
+                        <a href="contact.html" class="footer-link">Contact</a>
+                    </div>
+                </div>
+                <p class="footer-tagline">Creating experiences that last in the memory</p>
+            </div>
+        </footer>
+
+    </main>
+
+</body>
+
+</html>

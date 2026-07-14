@@ -1,9 +1,8 @@
 /**
- * WAB. — Page À PROPOS
- * Autonome : navigation, comportement du header, animations
- * d'entrée et au scroll, compteurs et galerie à glisser.
- * L'effet « texte rose au scroll » est géré par fill-text.js,
- * l'horloge locale par nav-clock.js (partagés entre pages).
+ * WAB. — Page CONTACT
+ * Navigation, comportement du header et animations d'entrée /
+ * au scroll. La logique du formulaire est gérée par
+ * contact-form.js, l'horloge locale par nav-clock.js.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -83,37 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     })();
 
-    /* ── Galerie : glisser à la souris (le tactile scrolle nativement) ── */
-    (function initGalleryDrag() {
-        const track = document.getElementById('galleryTrack');
-        if (!track) return;
-
-        let isDown      = false;
-        let startX      = 0;
-        let startScroll = 0;
-
-        track.addEventListener('pointerdown', (e) => {
-            if (e.pointerType !== 'mouse') return;
-            isDown      = true;
-            startX      = e.clientX;
-            startScroll = track.scrollLeft;
-            track.classList.add('is-dragging');
-            track.setPointerCapture(e.pointerId);
-        });
-
-        track.addEventListener('pointermove', (e) => {
-            if (!isDown) return;
-            track.scrollLeft = startScroll - (e.clientX - startX);
-        });
-
-        function endDrag() {
-            isDown = false;
-            track.classList.remove('is-dragging');
-        }
-        track.addEventListener('pointerup', endDrag);
-        track.addEventListener('pointercancel', endDrag);
-    })();
-
     /* ── Animations (GSAP) ── */
     (function initAnimations() {
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -121,11 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Sécurité : sans GSAP ou en mode « réduire les animations », on affiche tout.
         if (!hasGsap || reduceMotion) {
-            document.querySelectorAll('.reveal, .about-hero__label, .about-hero__meta').forEach((el) => {
+            document.querySelectorAll('.reveal, .contact-hero__label, .contact-hero__meta').forEach((el) => {
                 el.style.opacity = '1';
                 el.style.transform = 'none';
             });
-            document.querySelectorAll('.about-hero__line-inner').forEach((el) => {
+            document.querySelectorAll('.contact-hero__line-inner').forEach((el) => {
                 el.style.transform = 'none';
             });
             return;
@@ -135,34 +103,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Entrée du hero : label, lignes du titre, meta
         gsap.timeline({ delay: 0.15 })
-            .to('.about-hero__label', { opacity: 1, duration: 0.6, ease: 'power2.out' })
-            .to('.about-hero__line-inner', {
+            .to('.contact-hero__label', { opacity: 1, duration: 0.6, ease: 'power2.out' })
+            .to('.contact-hero__line-inner', {
                 y: 0, duration: 1.1, stagger: 0.1, ease: 'power4.out',
             }, '-=0.3')
-            .to('.about-hero__meta', { opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.5');
+            .to('.contact-hero__meta', { opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.5');
 
         // FadeUp générique
         gsap.utils.toArray('.reveal').forEach((el) => {
             gsap.to(el, {
                 y: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
                 scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
-            });
-        });
-
-        // Compteurs des chiffres
-        gsap.utils.toArray('.stat__num[data-count]').forEach((el) => {
-            const target = parseInt(el.dataset.count, 10);
-            if (Number.isNaN(target)) return;
-
-            const counter = { value: 0 };
-            gsap.to(counter, {
-                value: target,
-                duration: 1.4,
-                ease: 'power2.out',
-                scrollTrigger: { trigger: el, start: 'top 88%', once: true },
-                onUpdate() {
-                    el.textContent = String(Math.round(counter.value)).padStart(2, '0');
-                },
             });
         });
     })();

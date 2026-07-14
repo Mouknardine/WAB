@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inclusive+Sans&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css?v=26">
+    <link rel="stylesheet" href="style.css?v=29">
     <link rel="stylesheet" href="work.css?v=2">
 
     <!-- GSAP -->
@@ -25,6 +25,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 
     <!-- Scripts -->
+    <script src="nav-clock.js?v=1" defer></script>
     <script src="work.js?v=1" defer></script>
 </head>
 
@@ -48,17 +49,25 @@
     <nav class="nav-overlay" id="navOverlay">
         <div class="nav-content">
             <div class="nav-links">
-                <a href="index.html#hero" class="nav-link">HOME</a>
-                <a href="work.html" class="nav-link">WORK</a>
-                <a href="about.html" class="nav-link">ABOUT</a>
-                <a href="index.html#contact" class="nav-link">CONTACT</a>
+                <a href="index.html#hero" class="nav-link"><span class="nav-link__inner"><span class="nav-link__num">( 01 )</span><span class="nav-link__label">HOME</span></span></a>
+                <a href="work.html" class="nav-link" aria-current="page"><span class="nav-link__inner"><span class="nav-link__num">( 02 )</span><span class="nav-link__label">WORK</span></span></a>
+                <a href="about.html" class="nav-link"><span class="nav-link__inner"><span class="nav-link__num">( 03 )</span><span class="nav-link__label">ABOUT</span></span></a>
+                <a href="contact.html" class="nav-link"><span class="nav-link__inner"><span class="nav-link__num">( 04 )</span><span class="nav-link__label">CONTACT</span></span></a>
             </div>
-            <a href="mailto:contact@wearebrothers.ch" class="nav-email-btn">
-                <span>contact@wearebrothers.ch</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 17L17 7M17 7H7M17 7V17" />
-                </svg>
-            </a>
+            <div class="nav-footer">
+                <div class="nav-info">
+                    <p class="nav-info__label">Email</p>
+                    <a href="mailto:contact@wearebrothers.ch" class="nav-info__value">contact@wearebrothers.ch</a>
+                </div>
+                <div class="nav-info">
+                    <p class="nav-info__label">Studio</p>
+                    <p class="nav-info__value">Lausanne, Suisse — <time data-local-time>--:--</time></p>
+                </div>
+                <div class="nav-info">
+                    <p class="nav-info__label">Disponibilité</p>
+                    <p class="nav-info__value">Available for select projects</p>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -268,7 +277,7 @@
                     <div class="footer-links">
                         <a href="work.html" class="footer-link">Work</a>
                         <a href="about.html" class="footer-link">About</a>
-                        <a href="index.html#contact" class="footer-link">Contact</a>
+                        <a href="contact.html" class="footer-link">Contact</a>
                     </div>
                 </div>
                 <p class="footer-tagline">Creating experiences that last in the memory</p>

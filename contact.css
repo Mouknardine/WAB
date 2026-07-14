@@ -1,0 +1,551 @@
+/* ============================================
+   WAB. — Page CONTACT
+   Réutilise les tokens globaux de style.css
+   (couleurs, polices, easings).
+   Lié APRÈS style.css dans contact.html.
+   Design éditorial : champs numérotés ( 01 ),
+   grande horloge locale, chips sélectionnables.
+   ============================================ */
+
+.accent {
+    color: var(--accent);
+}
+
+/* ============================================
+   1. HERO — déclaration typographique
+   ============================================ */
+.contact-hero {
+    padding: clamp(110px, 18vh, 220px) 0 clamp(40px, 7vw, 96px);
+}
+
+.contact-hero__label {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: clamp(20px, 3vw, 36px);
+    opacity: 0;
+}
+
+.contact-hero__title {
+    font-family: var(--font-display);
+    /* Min à 1.4rem : la ligne la plus longue tient sur un écran de 320px
+       sans casser le mot-à-mot (police mono = largeur prévisible) */
+    font-size: clamp(1.4rem, 7vw, 5.6rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.04;
+    color: var(--text);
+    max-width: 1200px;
+}
+
+.contact-hero__line {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.08em;
+    margin-bottom: -0.08em;
+}
+
+.contact-hero__line-inner {
+    display: block;
+    transform: translateY(112%);
+}
+
+.contact-hero__meta {
+    font-size: clamp(0.85rem, 1.2vw, 1rem);
+    color: var(--text-muted);
+    margin-top: clamp(20px, 3vw, 36px);
+    opacity: 0;
+}
+
+/* ============================================
+   2. FORMULAIRE + INFOS
+   ============================================ */
+.contact-main {
+    border-top: 1px solid var(--border);
+    padding: clamp(56px, 8vw, 120px) 0;
+}
+
+.contact-main__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(48px, 7vw, 96px);
+}
+
+/* ── Colonne infos ──
+   Sur mobile elle vient APRÈS le formulaire (ordre du DOM) :
+   un filet la sépare visuellement. Sur desktop elle repasse
+   à gauche, sans filet. */
+.contact-aside {
+    border-top: 1px solid var(--border);
+    padding-top: clamp(36px, 6vw, 56px);
+}
+
+.aside-block + .aside-block {
+    margin-top: clamp(28px, 4vw, 44px);
+}
+
+.aside-label {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.aside-value {
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* L'élément inattendu : l'heure de Lausanne en très grand,
+   vivante — le studio existe quelque part, maintenant. */
+.aside-clock {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 11vw, 4.4rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+}
+
+.email-copy-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.email-link {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    font-weight: 500;
+    color: var(--text);
+    position: relative;
+    padding: 6px 0;
+    transition: color 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    word-break: break-all;
+}
+
+.email-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.3s var(--ease);
+}
+
+.email-link:hover {
+    color: var(--accent);
+}
+
+.email-link:hover::after {
+    width: 100%;
+}
+
+.copy-btn {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 500;
+    min-height: 40px;
+    padding: 10px 18px;
+    border: 1px solid var(--border-strong);
+    border-radius: 100px;
+    color: var(--text-muted);
+    transition: border-color 0.3s ease, color 0.3s ease, transform 0.2s var(--ease-out);
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.copy-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.copy-btn:active {
+    transform: scale(0.95);
+}
+
+.copy-btn.copied {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* ── Formulaire ── */
+.contact-form {
+    --error: #c62f2f;
+    width: 100%;
+    min-width: 0;
+}
+
+.form-field {
+    display: grid;
+    gap: 14px;
+    /* Le champ ciblé (erreur, ancre) ne se cache pas sous le header fixe */
+    scroll-margin-top: 110px;
+    padding: clamp(24px, 3.5vw, 40px) 0;
+    border-top: 1px solid var(--border);
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    margin: 0;
+}
+
+fieldset.form-field {
+    min-width: 0;
+}
+
+.field-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.field-num {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+}
+
+.field-label {
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+}
+
+.field-hint {
+    font-size: 12px;
+    color: var(--text-subtle);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border-strong);
+    border-radius: 0;
+    padding: 12px 2px 16px;
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+    font-weight: 500;
+    color: var(--text);
+    transition: border-color 0.3s ease;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--gray-800);
+    opacity: 1;
+}
+
+/* Auto-remplissage iOS/Chrome : on garde le fond transparent
+   et la couleur de texte du site (au lieu du jaune système) */
+.contact-form input:-webkit-autofill,
+.contact-form textarea:-webkit-autofill {
+    -webkit-text-fill-color: var(--text);
+    transition: background-color 99999s ease-out;
+}
+
+/* Le focus est signalé par le soulignement accent
+   (indicateur clair, pas besoin du double contour global) */
+.contact-form input[type="text"]:focus-visible,
+.contact-form input[type="email"]:focus-visible,
+.contact-form textarea:focus-visible {
+    outline: none;
+    border-bottom-color: var(--accent);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 140px;
+    line-height: 1.5;
+}
+
+/* ── Chips (besoin / budget) ── */
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.chip {
+    position: relative;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.chip input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.chip span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 18px;
+    border: 1px solid var(--border-strong);
+    border-radius: 100px;
+    color: var(--text-muted);
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.2s var(--ease-out);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.chip:hover span {
+    border-color: var(--text);
+    color: var(--text);
+}
+
+.chip:active span {
+    transform: scale(0.96);
+}
+
+.chip input:checked + span {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--white);
+}
+
+.chip input:focus-visible + span {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* ── Erreurs de validation ── */
+.form-error {
+    display: none;
+    font-size: 13px;
+    color: var(--error);
+}
+
+.form-field.has-error .form-error {
+    display: block;
+}
+
+.form-field.has-error input,
+.form-field.has-error textarea {
+    border-bottom-color: var(--error);
+}
+
+/* ── Envoi ── */
+.form-submit-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding-top: clamp(28px, 4vw, 44px);
+    border-top: 1px solid var(--border);
+}
+
+.email-btn:disabled {
+    opacity: 0.55;
+    cursor: default;
+    pointer-events: none;
+}
+
+.form-status {
+    font-size: 14px;
+    color: var(--text-muted);
+    max-width: 480px;
+    line-height: 1.5;
+}
+
+.form-status.error {
+    color: var(--error);
+}
+
+.form-status a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* ── Confirmation après envoi ── */
+.contact-form.is-sent .form-field,
+.contact-form.is-sent .form-submit-row {
+    display: none;
+}
+
+.form-success {
+    padding: clamp(32px, 5vw, 56px) 0;
+    border-top: 1px solid var(--border);
+}
+
+.form-success__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+}
+
+.form-success__text {
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+    color: var(--text-muted);
+    line-height: 1.65;
+    max-width: 520px;
+}
+
+/* ── Piège anti-spam (honeypot) ── */
+.hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+}
+
+/* ============================================
+   3. QUESTIONS FRÉQUENTES
+   ============================================ */
+.contact-faq {
+    border-top: 1px solid var(--border);
+    padding: clamp(56px, 8vw, 120px) 0;
+}
+
+.faq-item {
+    border-top: 1px solid var(--border);
+}
+
+.faq-item:last-child {
+    border-bottom: 1px solid var(--border);
+}
+
+.faq-item summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: clamp(20px, 3vw, 30px) 0;
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 1.8vw, 1.4rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    transition: color 0.3s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary:hover {
+    color: var(--accent);
+}
+
+.faq-icon {
+    flex-shrink: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    font-weight: 500;
+    color: var(--accent);
+    line-height: 1;
+    transition: transform 0.4s var(--ease);
+}
+
+.faq-item[open] .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    padding: 0 0 clamp(20px, 3vw, 30px);
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+    color: var(--text-muted);
+    line-height: 1.65;
+    max-width: 720px;
+}
+
+/* ============================================
+   RESPONSIVE — enrichissement desktop
+   ============================================ */
+@media (min-width: 960px) {
+    .contact-main__grid {
+        grid-template-columns: minmax(300px, 1fr) minmax(0, 1.7fr);
+        align-items: start;
+    }
+
+    /* La colonne infos repasse à gauche du formulaire */
+    .contact-aside {
+        grid-column: 1;
+        grid-row: 1;
+        position: sticky;
+        top: 120px;
+        border-top: none;
+        padding-top: 0;
+    }
+
+    .contact-form {
+        grid-column: 2;
+        grid-row: 1;
+    }
+}
+
+/* ── Touch : pas d'états hover persistants ── */
+@media (hover: none) {
+    .email-link:hover {
+        color: var(--text);
+    }
+
+    .email-link:hover::after {
+        width: 0;
+    }
+
+    .copy-btn:hover {
+        border-color: var(--border-strong);
+        color: var(--text-muted);
+    }
+
+    .copy-btn.copied {
+        border-color: var(--accent);
+        color: var(--accent);
+    }
+
+    .chip:hover span {
+        border-color: var(--border-strong);
+        color: var(--text-muted);
+    }
+
+    .chip input:checked + span {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: var(--white);
+    }
+
+    .faq-item summary:hover {
+        color: var(--text);
+    }
+}
