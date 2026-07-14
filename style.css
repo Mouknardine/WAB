@@ -1032,8 +1032,36 @@ a.nav-info__value:hover::after {
         gap: 16px;
     }
 
+    /* ── Menu plein écran : version mobile ──
+       Liens plus grands et centrés verticalement dans
+       l'espace libre (au lieu d'être perdus en haut),
+       numéros centrés sur la hauteur des lettres. */
+    .nav-content {
+        padding-top: clamp(84px, 12vh, 110px);
+        padding-bottom: calc(24px + env(safe-area-inset-bottom));
+    }
+
+    .nav-links {
+        margin: auto 0;
+        gap: 12px;
+    }
+
     .nav-link {
-        font-size: clamp(2rem, 11vw, 3.4rem);
+        font-size: clamp(2.4rem, 13.5vw, 4rem);
+        padding-right: 14px;
+    }
+
+    .nav-link__inner {
+        align-items: center;
+        gap: 12px;
+    }
+
+    .nav-link__num {
+        font-size: 0.75rem;
+    }
+
+    .nav-footer {
+        gap: 18px;
     }
 
     .email-btn {
