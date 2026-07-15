@@ -1,22 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://wearebrothers.ch/</loc>
         <lastmod>2026-07-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://wearebrothers.ch/assets/og-image.png</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://wearebrothers.ch/work.html</loc>
         <lastmod>2026-07-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://wearebrothers.ch/assets/images/project-slack.png</image:loc>
+            <image:caption>La Slack — portfolio créatif conçu par WeAreBrothers Lausanne</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://wearebrothers.ch/assets/images/project-nadege.png</image:loc>
+            <image:caption>Nadège Mouine — site personnel conçu par WeAreBrothers Lausanne</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://wearebrothers.ch/assets/images/project-commissione.png</image:loc>
+            <image:caption>Commissione Entretien — site professionnel conçu par WeAreBrothers Lausanne</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://wearebrothers.ch/assets/images/project-dj.png</image:loc>
+            <image:caption>LAZIZZE DJ — portfolio immersif conçu par WeAreBrothers Lausanne</image:caption>
+        </image:image>
     </url>
     <url>
         <loc>https://wearebrothers.ch/about.html</loc>
         <lastmod>2026-07-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://wearebrothers.ch/assets/images/team-eliott.jpg</image:loc>
+            <image:caption>Eliott Pina, développeur web full-stack chez WeAreBrothers Studio à Lausanne</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://wearebrothers.ch/assets/images/team-matt.jpg</image:loc>
+            <image:caption>Matt Pina, designer et directeur artistique chez WeAreBrothers Studio à Lausanne</image:caption>
+        </image:image>
     </url>
     <url>
         <loc>https://wearebrothers.ch/contact.html</loc>
