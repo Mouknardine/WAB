@@ -13,11 +13,6 @@
 
     <!-- SEO -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="author" content="WeAreBrothers Studio">
-    <meta name="geo.region" content="CH-VD">
-    <meta name="geo.placename" content="Lausanne">
-    <meta name="geo.position" content="46.5197;6.6323">
-    <meta name="ICBM" content="46.5197, 6.6323">
     <link rel="canonical" href="https://wearebrothers.ch/work.html">
     <link rel="alternate" hreflang="fr-CH" href="https://wearebrothers.ch/work.html">
     <link rel="alternate" hreflang="x-default" href="https://wearebrothers.ch/work.html">
@@ -45,8 +40,8 @@
         "@context": "https://schema.org",
         "@graph": [
             {
-                "@type": ["ProfessionalService", "LocalBusiness", "Organization"],
-                "@id": "https://wearebrothers.ch/#studio",
+                "@type": ["ProfessionalService", "Organization"],
+                "@id": "https://wearebrothers.ch/#organization",
                 "name": "WeAreBrothers Studio",
                 "alternateName": ["WAB.", "WeAreBrothers", "WAB Studio"],
                 "description": "Studio digital fondé par deux frères à Lausanne : création de sites web sur-mesure, web design, branding, motion design et e-commerce pour les PME et indépendants de l'arc lémanique.",
@@ -55,22 +50,16 @@
                 "email": "contact@wearebrothers.ch",
                 "image": "https://wearebrothers.ch/assets/og-image.png",
                 "logo": "https://wearebrothers.ch/assets/og-image.png",
+                "priceRange": "CHF 3'000 - CHF 8'000+",
                 "numberOfEmployees": 2,
                 "foundingLocation": { "@type": "Place", "name": "Lausanne, Suisse" },
                 "address": {
                     "@type": "PostalAddress",
                     "addressLocality": "Lausanne",
-                    "addressRegion": "Vaud",
+                    "addressRegion": "VD",
                     "addressCountry": "CH"
                 },
-                "geo": { "@type": "GeoCoordinates", "latitude": 46.5197, "longitude": 6.6323 },
                 "areaServed": ["Lausanne", "Genève", "Vevey", "Nyon", "Morges", "Renens", "Vaud", "Arc lémanique", "Suisse romande"],
-                "openingHoursSpecification": {
-                    "@type": "OpeningHoursSpecification",
-                    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                    "opens": "09:00",
-                    "closes": "18:00"
-                },
                 "serviceType": ["Création de site web", "Web design", "Branding", "Motion design", "Développement e-commerce", "SEO"],
                 "knowsLanguage": ["fr", "en"],
                 "knowsAbout": ["Création de site web", "Développement front-end", "Développement full-stack", "Next.js", "TypeScript", "Node.js", "Design d'interface UI/UX", "Branding", "Identité visuelle", "Motion design", "Animation web", "Référencement SEO", "E-commerce"],
@@ -96,14 +85,14 @@
                 "url": "https://wearebrothers.ch/",
                 "name": "WeAreBrothers Studio",
                 "inLanguage": "fr-CH",
-                "publisher": { "@id": "https://wearebrothers.ch/#studio" }
+                "publisher": { "@id": "https://wearebrothers.ch/#organization" }
             },
             {
                 "@type": "Person",
                 "@id": "https://wearebrothers.ch/#eliott",
                 "name": "Eliott Pina",
                 "jobTitle": "Lead développeur",
-                "worksFor": { "@id": "https://wearebrothers.ch/#studio" },
+                "worksFor": { "@id": "https://wearebrothers.ch/#organization" },
                 "knowsAbout": ["Next.js", "TypeScript", "Node.js", "Supabase", "PostgreSQL", "GSAP", "Développement full-stack"]
             },
             {
@@ -111,7 +100,7 @@
                 "@id": "https://wearebrothers.ch/#matt",
                 "name": "Matt Pina",
                 "jobTitle": "Lead designer",
-                "worksFor": { "@id": "https://wearebrothers.ch/#studio" },
+                "worksFor": { "@id": "https://wearebrothers.ch/#organization" },
                 "knowsAbout": ["Figma", "Motion Design", "Branding", "GSAP", "Three.js", "After Effects", "Direction artistique"]
             },
             {
@@ -121,15 +110,15 @@
                 "name": "Réalisations — WeAreBrothers Studio",
                 "description": "Sélection de sites web, portfolios et sites vitrines réalisés par WeAreBrothers pour des clients de Lausanne et de Suisse romande.",
                 "isPartOf": { "@id": "https://wearebrothers.ch/#website" },
-                "about": { "@id": "https://wearebrothers.ch/#studio" },
+                "about": { "@id": "https://wearebrothers.ch/#organization" },
                 "inLanguage": "fr-CH",
                 "mainEntity": {
                     "@type": "ItemList",
                     "itemListElement": [
-                        { "@type": "ListItem", "position": 1, "item": { "@type": "CreativeWork", "name": "La Slack", "url": "https://la-slack.com/", "image": "https://wearebrothers.ch/assets/images/project-slack.png", "creator": { "@id": "https://wearebrothers.ch/#studio" }, "description": "Un portfolio pensé comme un bureau virtuel : architecture, objets et design graphique rangés comme des dossiers qu'on ouvre et qu'on explore." } },
-                        { "@type": "ListItem", "position": 2, "item": { "@type": "CreativeWork", "name": "Nadège Mouine", "url": "https://nadegemouine.ch", "image": "https://wearebrothers.ch/assets/images/project-nadege.png", "creator": { "@id": "https://wearebrothers.ch/#studio" }, "description": "Un écrin numérique épuré pour une architecte en formation à l'EPFL : ses projets d'abord, l'interface s'efface." } },
-                        { "@type": "ListItem", "position": 3, "item": { "@type": "CreativeWork", "name": "Commissione Entretien", "url": "https://commissione-entretien.ch/", "image": "https://wearebrothers.ch/assets/images/project-commissione.png", "creator": { "@id": "https://wearebrothers.ch/#studio" }, "description": "Le site d'une entreprise familiale d'entretien et de débouchage basée à Bavois : clair, direct, pensé pour transformer les visites en demandes de devis." } },
-                        { "@type": "ListItem", "position": 4, "item": { "@type": "CreativeWork", "name": "LAZIZZE DJ", "url": "https://lazizze-git.github.io/DJ/#/", "image": "https://wearebrothers.ch/assets/images/project-dj.png", "creator": { "@id": "https://wearebrothers.ch/#studio" }, "description": "Portfolio immersif pour un DJ house de Lausanne — esthétique neon underground, typographie brutale et énergie dancefloor." } }
+                        { "@type": "ListItem", "position": 1, "item": { "@type": "CreativeWork", "name": "La Slack", "url": "https://la-slack.com/", "image": "https://wearebrothers.ch/assets/images/project-slack.png", "creator": { "@id": "https://wearebrothers.ch/#organization" }, "description": "Un portfolio pensé comme un bureau virtuel : architecture, objets et design graphique rangés comme des dossiers qu'on ouvre et qu'on explore." } },
+                        { "@type": "ListItem", "position": 2, "item": { "@type": "CreativeWork", "name": "Nadège Mouine", "url": "https://nadegemouine.ch", "image": "https://wearebrothers.ch/assets/images/project-nadege.png", "creator": { "@id": "https://wearebrothers.ch/#organization" }, "description": "Un écrin numérique épuré pour une architecte en formation à l'EPFL : ses projets d'abord, l'interface s'efface." } },
+                        { "@type": "ListItem", "position": 3, "item": { "@type": "CreativeWork", "name": "Commissione Entretien", "url": "https://commissione-entretien.ch/", "image": "https://wearebrothers.ch/assets/images/project-commissione.png", "creator": { "@id": "https://wearebrothers.ch/#organization" }, "description": "Le site d'une entreprise familiale d'entretien et de débouchage basée à Bavois : clair, direct, pensé pour transformer les visites en demandes de devis." } },
+                        { "@type": "ListItem", "position": 4, "item": { "@type": "CreativeWork", "name": "LAZIZZE DJ", "url": "https://lazizze-git.github.io/DJ/#/", "image": "https://wearebrothers.ch/assets/images/project-dj.png", "creator": { "@id": "https://wearebrothers.ch/#organization" }, "description": "Portfolio immersif pour un DJ house de Lausanne — esthétique neon underground, typographie brutale et énergie dancefloor." } }
                     ]
                 }
             }
