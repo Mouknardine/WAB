@@ -11,7 +11,7 @@
         </image:image>
     </url>
     <url>
-        <loc>https://wearebrothers.ch/work.html</loc>
+        <loc>https://wearebrothers.ch/realisations</loc>
         <lastmod>2026-07-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -33,7 +33,7 @@
         </image:image>
     </url>
     <url>
-        <loc>https://wearebrothers.ch/about.html</loc>
+        <loc>https://wearebrothers.ch/studio</loc>
         <lastmod>2026-07-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -47,7 +47,7 @@
         </image:image>
     </url>
     <url>
-        <loc>https://wearebrothers.ch/contact.html</loc>
+        <loc>https://wearebrothers.ch/contact</loc>
         <lastmod>2026-07-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>

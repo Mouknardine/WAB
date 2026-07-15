@@ -10,6 +10,26 @@
     RewriteCond %{HTTP_HOST} ^www\. [NC]
     RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
     RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+    # ── URLs propres (sans .html) ──
+    # 1. Rediriger les anciennes adresses .html vers les adresses propres
+    #    (seulement les requêtes directes du navigateur, pas les réécritures internes).
+    RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+    RewriteRule ^ / [R=301,L]
+    RewriteCond %{THE_REQUEST} \s/+work\.html[\s?] [NC]
+    RewriteRule ^ /realisations [R=301,L]
+    RewriteCond %{THE_REQUEST} \s/+about\.html[\s?] [NC]
+    RewriteRule ^ /studio [R=301,L]
+    RewriteCond %{THE_REQUEST} \s/+contact\.html[\s?] [NC]
+    RewriteRule ^ /contact [R=301,L]
+
+    # 2. Enlever un slash final éventuel (garde les chemins d'assets relatifs corrects).
+    RewriteRule ^(realisations|studio|contact)/$ /$1 [R=301,L]
+
+    # 3. Servir les adresses propres avec les fichiers physiques (réécriture interne).
+    RewriteRule ^realisations$ work.html [L]
+    RewriteRule ^studio$ about.html [L]
+    RewriteRule ^contact$ contact.html [L]
 </IfModule>
 
 # ── Compression (gzip / deflate) ──
