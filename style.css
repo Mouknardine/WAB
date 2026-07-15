@@ -508,6 +508,17 @@ a.nav-info__value:hover::after {
     color: var(--white);
 }
 
+.hero-subtitle {
+    margin-top: 18px;
+    font-family: var(--font-display);
+    font-size: clamp(0.7rem, 1.4vw, 0.85rem);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    opacity: 0;
+}
+
 .hero-scroll-hint {
     position: absolute;
     bottom: 40px;

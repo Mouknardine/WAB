@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr-CH">
 
 <head>
     <meta charset="UTF-8">
@@ -7,9 +7,67 @@
     <meta name="theme-color" content="#F7609B">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <title>Work — WAB. WeAreBrothers Studio</title>
+    <title>Nos Réalisations — Sites Web Lausanne & Suisse | WeAreBrothers</title>
     <meta name="description"
-        content="Les projets réalisés par WeAreBrothers — portfolios, sites vitrines et expériences web conçus et développés à Lausanne, avec le détail de ce qui a été fait.">
+        content="Portfolio de sites web, branding et expériences digitales réalisés pour des clients de Lausanne, Vaud et la région lémanique, avec le détail de chaque projet.">
+
+    <!-- SEO -->
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://wearebrothers.ch/work.html">
+    <link rel="alternate" hreflang="fr-CH" href="https://wearebrothers.ch/work.html">
+    <link rel="alternate" hreflang="x-default" href="https://wearebrothers.ch/work.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Nos Réalisations — Sites Web Lausanne & Suisse | WeAreBrothers">
+    <meta property="og:description" content="Portfolio de sites web, branding et expériences digitales réalisés à Lausanne et dans l'arc lémanique.">
+    <meta property="og:url" content="https://wearebrothers.ch/work.html">
+    <meta property="og:image" content="https://wearebrothers.ch/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="fr_CH">
+    <meta property="og:site_name" content="WeAreBrothers Studio">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nos Réalisations — Sites Web Lausanne & Suisse | WeAreBrothers">
+    <meta name="twitter:description" content="Portfolio de sites web, branding et expériences digitales réalisés à Lausanne et dans l'arc lémanique.">
+    <meta name="twitter:image" content="https://wearebrothers.ch/assets/og-image.png">
+
+    <!-- Données structurées : studio local (Lausanne / arc lémanique) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": "https://wearebrothers.ch/#studio",
+        "name": "WeAreBrothers Studio",
+        "alternateName": "WAB.",
+        "description": "Studio digital fondé par deux frères à Lausanne : création de sites web sur-mesure, web design, branding, motion design et e-commerce pour les PME de l'arc lémanique.",
+        "url": "https://wearebrothers.ch/",
+        "email": "contact@wearebrothers.ch",
+        "image": "https://wearebrothers.ch/assets/og-image.png",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lausanne",
+            "addressRegion": "Vaud",
+            "addressCountry": "CH"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 46.5197, "longitude": 6.6323 },
+        "areaServed": ["Lausanne", "Genève", "Vevey", "Nyon", "Morges", "Vaud", "Arc lémanique", "Suisse romande"],
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
+        },
+        "serviceType": ["Création de site web", "Web design", "Branding", "Motion design", "Développement e-commerce", "SEO"],
+        "knowsLanguage": ["fr", "en"],
+        "founder": [
+            { "@type": "Person", "name": "Eliott Pina", "jobTitle": "Lead développeur" },
+            { "@type": "Person", "name": "Matt Pina", "jobTitle": "Lead designer" }
+        ]
+    }
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,12 +75,12 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inclusive+Sans&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css?v=30">
+    <link rel="stylesheet" href="style.css?v=31">
     <link rel="stylesheet" href="work.css?v=2">
 
     <!-- GSAP -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=1" defer></script>
@@ -65,7 +123,7 @@
                 </div>
                 <div class="nav-info">
                     <p class="nav-info__label">Disponibilité</p>
-                    <p class="nav-info__value">Available for select projects</p>
+                    <p class="nav-info__value">Disponible pour de nouveaux projets</p>
                 </div>
             </div>
         </div>
@@ -107,7 +165,7 @@
                     </aside>
                     <div class="work-item__content">
                         <a href="https://la-slack.com/" target="_blank" rel="noopener noreferrer" class="work-item__media" aria-label="Voir le site de La Slack">
-                            <img src="assets/images/project-slack.png" alt="Capture du site La Slack" loading="lazy" draggable="false">
+                            <img src="assets/images/project-slack.png" alt="Capture du site La Slack, portfolio créatif conçu par WeAreBrothers Lausanne" loading="lazy" draggable="false">
                         </a>
                         <h2 class="work-item__title">La Slack</h2>
                         <p class="work-item__desc">
@@ -145,7 +203,7 @@
                     </aside>
                     <div class="work-item__content">
                         <a href="https://nadegemouine.ch" target="_blank" rel="noopener noreferrer" class="work-item__media" aria-label="Voir le site de Nadège Mouine">
-                            <img src="assets/images/project-nadege.png" alt="Capture du site de Nadège Mouine" loading="lazy" draggable="false">
+                            <img src="assets/images/project-nadege.png" alt="Capture du site de Nadège Mouine, site personnel conçu par WeAreBrothers Lausanne" loading="lazy" draggable="false">
                         </a>
                         <h2 class="work-item__title">Nadège Mouine</h2>
                         <p class="work-item__desc">
@@ -184,7 +242,7 @@
                     </aside>
                     <div class="work-item__content">
                         <a href="https://commissione-entretien.ch/" target="_blank" rel="noopener noreferrer" class="work-item__media" aria-label="Voir le site de Commissione Entretien">
-                            <img src="assets/images/project-commissione.png" alt="Capture du site Commissione Entretien" loading="lazy" draggable="false">
+                            <img src="assets/images/project-commissione.png" alt="Capture du site Commissione Entretien, site professionnel conçu par WeAreBrothers Lausanne" loading="lazy" draggable="false">
                         </a>
                         <h2 class="work-item__title">Commissione Entretien</h2>
                         <p class="work-item__desc">
@@ -223,7 +281,7 @@
                     </aside>
                     <div class="work-item__content">
                         <a href="https://lazizze-git.github.io/DJ/#/" target="_blank" rel="noopener noreferrer" class="work-item__media" aria-label="Voir le site de LAZIZZE DJ">
-                            <img src="assets/images/project-dj.png" alt="Capture du site LAZIZZE DJ" loading="lazy" draggable="false">
+                            <img src="assets/images/project-dj.png" alt="Capture du site LAZIZZE DJ, portfolio immersif conçu par WeAreBrothers Lausanne" loading="lazy" draggable="false">
                         </a>
                         <h2 class="work-item__title">LAZIZZE DJ</h2>
                         <p class="work-item__desc">
@@ -271,7 +329,7 @@
             <div class="container footer-content">
                 <div class="footer-top">
                     <div class="footer-info">
-                        <p class="footer-status">AVAILABLE FOR SELECT PROJECTS</p>
+                        <p class="footer-status">DISPONIBLE POUR DE NOUVEAUX PROJETS</p>
                         <p class="footer-copy">&copy; 2026 WAB.STUDIO</p>
                     </div>
                     <div class="footer-links">
@@ -280,7 +338,7 @@
                         <a href="contact.html" class="footer-link">Contact</a>
                     </div>
                 </div>
-                <p class="footer-tagline">Creating experiences that last in the memory</p>
+                <p class="footer-tagline">Des expériences qui restent dans la mémoire</p>
             </div>
         </footer>
 

@@ -1,0 +1,30 @@
+# WeAreBrothers Studio — wearebrothers.ch
+# Tout est ouvert à l'indexation, y compris pour les moteurs de réponse IA.
+
+User-agent: *
+Allow: /
+Disallow: /send-message.php
+
+# Robots des moteurs de réponse IA — explicitement bienvenus
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://wearebrothers.ch/sitemap.xml

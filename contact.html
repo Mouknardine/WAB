@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr-CH">
 
 <head>
     <meta charset="UTF-8">
@@ -7,9 +7,107 @@
     <meta name="theme-color" content="#F7609B">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <title>Contact — WAB. WeAreBrothers Studio</title>
+    <title>Contactez-nous — Agence Web Lausanne | WeAreBrothers</title>
     <meta name="description"
-        content="Parlez-nous de votre projet — site web, branding, motion. WeAreBrothers, studio digital à Lausanne. Réponse sous 24h ouvrées.">
+        content="Parlons de votre projet web. Studio digital à Lausanne, disponible dans toute la région lémanique. Réponse sous 24h ouvrées, devis gratuit.">
+
+    <!-- SEO -->
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://wearebrothers.ch/contact.html">
+    <link rel="alternate" hreflang="fr-CH" href="https://wearebrothers.ch/contact.html">
+    <link rel="alternate" hreflang="x-default" href="https://wearebrothers.ch/contact.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Contactez-nous — Agence Web Lausanne | WeAreBrothers">
+    <meta property="og:description" content="Parlons de votre projet web. Studio digital à Lausanne, réponse sous 24h ouvrées.">
+    <meta property="og:url" content="https://wearebrothers.ch/contact.html">
+    <meta property="og:image" content="https://wearebrothers.ch/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="fr_CH">
+    <meta property="og:site_name" content="WeAreBrothers Studio">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contactez-nous — Agence Web Lausanne | WeAreBrothers">
+    <meta name="twitter:description" content="Parlons de votre projet web. Studio digital à Lausanne, réponse sous 24h ouvrées.">
+    <meta name="twitter:image" content="https://wearebrothers.ch/assets/og-image.png">
+
+    <!-- Données structurées : studio local + FAQ de la page -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": "https://wearebrothers.ch/#studio",
+        "name": "WeAreBrothers Studio",
+        "alternateName": "WAB.",
+        "description": "Studio digital fondé par deux frères à Lausanne : création de sites web sur-mesure, web design, branding, motion design et e-commerce pour les PME de l'arc lémanique.",
+        "url": "https://wearebrothers.ch/",
+        "email": "contact@wearebrothers.ch",
+        "image": "https://wearebrothers.ch/assets/og-image.png",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lausanne",
+            "addressRegion": "Vaud",
+            "addressCountry": "CH"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 46.5197, "longitude": 6.6323 },
+        "areaServed": ["Lausanne", "Genève", "Vevey", "Nyon", "Morges", "Vaud", "Arc lémanique", "Suisse romande"],
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
+        },
+        "serviceType": ["Création de site web", "Web design", "Branding", "Motion design", "Développement e-commerce", "SEO"],
+        "knowsLanguage": ["fr", "en"],
+        "founder": [
+            { "@type": "Person", "name": "Eliott Pina", "jobTitle": "Lead développeur" },
+            { "@type": "Person", "name": "Matt Pina", "jobTitle": "Lead designer" }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Combien coûte un site web ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Chaque projet est différent : le prix dépend du périmètre, du design et des fonctionnalités. Après un premier échange, WeAreBrothers envoie une proposition claire et détaillée — des prix honnêtes, aucune surprise en cours de route."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Quels sont les délais ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Comptez généralement 3 à 6 semaines pour un site vitrine, davantage pour un projet sur mesure. Le planning est fixé ensemble dès le départ."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Comment se déroule un projet ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Un café ou un appel pour comprendre vos besoins, une proposition, puis le design et le développement avec des points réguliers. Vous échangez directement avec les deux fondateurs du studio à Lausanne — pas d'intermédiaire."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Et après la mise en ligne ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Le studio reste disponible après la mise en ligne : maintenance, évolutions et retouches pour que votre site vive et reste dans l'air du temps."
+                }
+            }
+        ]
+    }
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,12 +115,12 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inclusive+Sans&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css?v=30">
+    <link rel="stylesheet" href="style.css?v=31">
     <link rel="stylesheet" href="contact.css?v=2">
 
     <!-- GSAP -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=1" defer></script>
@@ -66,7 +164,7 @@
                 </div>
                 <div class="nav-info">
                     <p class="nav-info__label">Disponibilité</p>
-                    <p class="nav-info__value">Available for select projects</p>
+                    <p class="nav-info__value">Disponible pour de nouveaux projets</p>
                 </div>
             </div>
         </div>
@@ -202,7 +300,7 @@
 
                     <div class="aside-block reveal">
                         <p class="aside-label">Disponibilité</p>
-                        <p class="aside-value"><span class="meta-dot"></span>Available for select projects</p>
+                        <p class="aside-value"><span class="meta-dot"></span>Disponible pour de nouveaux projets</p>
                     </div>
                 </aside>
 
@@ -271,7 +369,7 @@
             <div class="container footer-content">
                 <div class="footer-top">
                     <div class="footer-info">
-                        <p class="footer-status">AVAILABLE FOR SELECT PROJECTS</p>
+                        <p class="footer-status">DISPONIBLE POUR DE NOUVEAUX PROJETS</p>
                         <p class="footer-copy">&copy; 2026 WAB.STUDIO</p>
                     </div>
                     <div class="footer-links">
@@ -280,7 +378,7 @@
                         <a href="contact.html" class="footer-link">Contact</a>
                     </div>
                 </div>
-                <p class="footer-tagline">Creating experiences that last in the memory</p>
+                <p class="footer-tagline">Des expériences qui restent dans la mémoire</p>
             </div>
         </footer>
 

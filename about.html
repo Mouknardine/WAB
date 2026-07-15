@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr-CH">
 
 <head>
     <meta charset="UTF-8">
@@ -7,9 +7,67 @@
     <meta name="theme-color" content="#F7609B">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <title>À propos — WAB. WeAreBrothers Studio</title>
+    <title>Notre Studio — Agence Web à Lausanne | WeAreBrothers</title>
     <meta name="description"
-        content="WeAreBrothers — Deux frères, un studio digital à Lausanne. Découvrez notre philosophie, notre équipe et nos valeurs.">
+        content="Deux frères, un studio digital à Lausanne. Design, développement web et branding sur-mesure pour l'arc lémanique. Rencontrons-nous autour d'un café.">
+
+    <!-- SEO -->
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://wearebrothers.ch/about.html">
+    <link rel="alternate" hreflang="fr-CH" href="https://wearebrothers.ch/about.html">
+    <link rel="alternate" hreflang="x-default" href="https://wearebrothers.ch/about.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Notre Studio — Agence Web à Lausanne | WeAreBrothers">
+    <meta property="og:description" content="Deux frères, un studio digital à Lausanne. Design, développement web et branding sur-mesure.">
+    <meta property="og:url" content="https://wearebrothers.ch/about.html">
+    <meta property="og:image" content="https://wearebrothers.ch/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="fr_CH">
+    <meta property="og:site_name" content="WeAreBrothers Studio">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Notre Studio — Agence Web à Lausanne | WeAreBrothers">
+    <meta name="twitter:description" content="Deux frères, un studio digital à Lausanne. Design, développement web et branding sur-mesure.">
+    <meta name="twitter:image" content="https://wearebrothers.ch/assets/og-image.png">
+
+    <!-- Données structurées : studio local (Lausanne / arc lémanique) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": "https://wearebrothers.ch/#studio",
+        "name": "WeAreBrothers Studio",
+        "alternateName": "WAB.",
+        "description": "Studio digital fondé par deux frères à Lausanne : création de sites web sur-mesure, web design, branding, motion design et e-commerce pour les PME de l'arc lémanique.",
+        "url": "https://wearebrothers.ch/",
+        "email": "contact@wearebrothers.ch",
+        "image": "https://wearebrothers.ch/assets/og-image.png",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lausanne",
+            "addressRegion": "Vaud",
+            "addressCountry": "CH"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 46.5197, "longitude": 6.6323 },
+        "areaServed": ["Lausanne", "Genève", "Vevey", "Nyon", "Morges", "Vaud", "Arc lémanique", "Suisse romande"],
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
+        },
+        "serviceType": ["Création de site web", "Web design", "Branding", "Motion design", "Développement e-commerce", "SEO"],
+        "knowsLanguage": ["fr", "en"],
+        "founder": [
+            { "@type": "Person", "name": "Eliott Pina", "jobTitle": "Lead développeur" },
+            { "@type": "Person", "name": "Matt Pina", "jobTitle": "Lead designer" }
+        ]
+    }
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,12 +75,12 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inclusive+Sans&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css?v=30">
+    <link rel="stylesheet" href="style.css?v=31">
     <link rel="stylesheet" href="about.css?v=13">
 
     <!-- GSAP -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
 
     <!-- Scripts -->
     <script src="fill-text.js?v=3" defer></script>
@@ -66,7 +124,7 @@
                 </div>
                 <div class="nav-info">
                     <p class="nav-info__label">Disponibilité</p>
-                    <p class="nav-info__value">Available for select projects</p>
+                    <p class="nav-info__value">Disponible pour de nouveaux projets</p>
                 </div>
             </div>
         </div>
@@ -165,16 +223,16 @@
             </div>
             <div class="gallery__track" id="galleryTrack">
                 <figure class="gallery__item">
-                    <img src="assets/images/project-slack.png" alt="Projet La Slack — portfolio créatif" draggable="false">
+                    <img src="assets/images/project-slack.png" alt="Projet La Slack — portfolio créatif réalisé par WeAreBrothers, studio web à Lausanne" draggable="false">
                 </figure>
                 <figure class="gallery__item">
-                    <img src="assets/images/project-dj.png" alt="Projet LAZIZZE DJ — portfolio immersif" draggable="false">
+                    <img src="assets/images/project-dj.png" alt="Projet LAZIZZE DJ — portfolio immersif réalisé par WeAreBrothers, studio web à Lausanne" draggable="false">
                 </figure>
                 <figure class="gallery__item">
-                    <img src="assets/images/project-nadege.png" alt="Projet Nadège Mouine — site personnel" draggable="false">
+                    <img src="assets/images/project-nadege.png" alt="Projet Nadège Mouine — site personnel réalisé par WeAreBrothers, studio web à Lausanne" draggable="false">
                 </figure>
                 <figure class="gallery__item">
-                    <img src="assets/images/project-commissione.png" alt="Projet Commissione Entretien — site professionnel" draggable="false">
+                    <img src="assets/images/project-commissione.png" alt="Projet Commissione Entretien — site professionnel réalisé par WeAreBrothers, studio web à Lausanne" draggable="false">
                 </figure>
             </div>
         </section>
@@ -187,7 +245,7 @@
 
                     <article class="profile reveal">
                         <div class="profile__media profile__media--dev">
-                            <img src="assets/images/team-eliott.jpg" alt="Eliott Pina, lead développeur" loading="lazy" draggable="false">
+                            <img src="assets/images/team-eliott.jpg" alt="Eliott Pina, développeur web full-stack chez WeAreBrothers Studio à Lausanne" loading="lazy" draggable="false">
                         </div>
                         <p class="profile__role">Lead Dev</p>
                         <h2 class="profile__name">Eliott Pina</h2>
@@ -213,7 +271,7 @@
 
                     <article class="profile reveal">
                         <div class="profile__media profile__media--design">
-                            <img src="assets/images/team-matt.jpg" alt="Matt Pina, lead designer" loading="lazy" draggable="false">
+                            <img src="assets/images/team-matt.jpg" alt="Matt Pina, designer et directeur artistique chez WeAreBrothers Studio à Lausanne" loading="lazy" draggable="false">
                         </div>
                         <p class="profile__role">Lead Design</p>
                         <h2 class="profile__name">Matt Pina</h2>
@@ -268,7 +326,7 @@
             <div class="container footer-content">
                 <div class="footer-top">
                     <div class="footer-info">
-                        <p class="footer-status">AVAILABLE FOR SELECT PROJECTS</p>
+                        <p class="footer-status">DISPONIBLE POUR DE NOUVEAUX PROJETS</p>
                         <p class="footer-copy">&copy; 2026 WAB.STUDIO</p>
                     </div>
                     <div class="footer-links">
@@ -277,7 +335,7 @@
                         <a href="contact.html" class="footer-link">Contact</a>
                     </div>
                 </div>
-                <p class="footer-tagline">Creating experiences that last in the memory</p>
+                <p class="footer-tagline">Des expériences qui restent dans la mémoire</p>
             </div>
         </footer>
 

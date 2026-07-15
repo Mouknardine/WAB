@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ── GSAP ── */
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-        document.querySelectorAll('.reveal, .hero-word, .hero-dot').forEach((el) => {
+        document.querySelectorAll('.reveal, .hero-word, .hero-dot, .hero-subtitle').forEach((el) => {
             el.style.opacity = '1';
             el.style.transform = 'none';
         });
@@ -41,7 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
             duration: 1.4,
             stagger: 0.1,
             ease: 'power4.out',
-        });
+        })
+        .to('.hero-subtitle', { opacity: 1, duration: 0.8, ease: 'power2.out' }, '-=0.7');
 
     // Scroll hint: fade in then fade out on scroll
     if (scrollHint) {

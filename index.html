@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr-CH">
 
 <head>
     <meta charset="UTF-8">
@@ -7,9 +7,67 @@
     <meta name="theme-color" content="#F7609B">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <title>WAB. — WeAreBrothers Studio</title>
+    <title>Agence Web Lausanne — WeAreBrothers Studio | Design & Dev</title>
     <meta name="description"
-        content="WeAreBrothers — A creative studio building interactive web experiences with studio-level polish.">
+        content="Studio digital à Lausanne. Création de sites web sur-mesure, branding et e-commerce pour les PME de l'arc lémanique. Devis gratuit, réponse sous 24h.">
+
+    <!-- SEO -->
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://wearebrothers.ch/">
+    <link rel="alternate" hreflang="fr-CH" href="https://wearebrothers.ch/">
+    <link rel="alternate" hreflang="x-default" href="https://wearebrothers.ch/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Agence Web Lausanne — WeAreBrothers Studio">
+    <meta property="og:description" content="Studio digital à Lausanne. Sites web sur-mesure, branding et e-commerce pour l'arc lémanique.">
+    <meta property="og:url" content="https://wearebrothers.ch/">
+    <meta property="og:image" content="https://wearebrothers.ch/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="fr_CH">
+    <meta property="og:site_name" content="WeAreBrothers Studio">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Agence Web Lausanne — WeAreBrothers Studio">
+    <meta name="twitter:description" content="Studio digital à Lausanne. Sites web sur-mesure, branding et e-commerce pour l'arc lémanique.">
+    <meta name="twitter:image" content="https://wearebrothers.ch/assets/og-image.png">
+
+    <!-- Données structurées : studio local (Lausanne / arc lémanique) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": "https://wearebrothers.ch/#studio",
+        "name": "WeAreBrothers Studio",
+        "alternateName": "WAB.",
+        "description": "Studio digital fondé par deux frères à Lausanne : création de sites web sur-mesure, web design, branding, motion design et e-commerce pour les PME de l'arc lémanique.",
+        "url": "https://wearebrothers.ch/",
+        "email": "contact@wearebrothers.ch",
+        "image": "https://wearebrothers.ch/assets/og-image.png",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lausanne",
+            "addressRegion": "Vaud",
+            "addressCountry": "CH"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 46.5197, "longitude": 6.6323 },
+        "areaServed": ["Lausanne", "Genève", "Vevey", "Nyon", "Morges", "Vaud", "Arc lémanique", "Suisse romande"],
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
+        },
+        "serviceType": ["Création de site web", "Web design", "Branding", "Motion design", "Développement e-commerce", "SEO"],
+        "knowsLanguage": ["fr", "en"],
+        "founder": [
+            { "@type": "Person", "name": "Eliott Pina", "jobTitle": "Lead développeur" },
+            { "@type": "Person", "name": "Matt Pina", "jobTitle": "Lead designer" }
+        ]
+    }
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,17 +75,17 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inclusive+Sans&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css?v=30">
+    <link rel="stylesheet" href="style.css?v=31">
 
     <!-- GSAP -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js" defer></script>
 
     <!-- Scripts -->
     <script src="fill-text.js?v=3" defer></script>
     <script src="nav-clock.js?v=1" defer></script>
-    <script src="script.js?v=15" defer></script>
+    <script src="script.js?v=16" defer></script>
 </head>
 
 <body>
@@ -63,7 +121,7 @@
                 </div>
                 <div class="nav-info">
                     <p class="nav-info__label">Disponibilité</p>
-                    <p class="nav-info__value">Available for select projects</p>
+                    <p class="nav-info__value">Disponible pour de nouveaux projets</p>
                 </div>
             </div>
         </div>
@@ -85,6 +143,7 @@
                             <span class="hero-word">Brothers</span><span class="hero-dot">.</span>
                         </span>
                     </h1>
+                    <p class="hero-subtitle">Studio digital à Lausanne — Web, Design &amp; Branding</p>
                 </div>
                 <div class="hero-scroll-hint">
                     <span>Scroll</span>
@@ -100,8 +159,8 @@
             <section class="section intro" id="about">
                 <div class="container">
                     <p class="intro-text" data-fill-text>
-                        Nous sommes deux frères passionnés par la technologie et le design.
-                        Notre mission est simple : on s'assure que votre entreprise reste branchée et dans l'air du
+                        Nous sommes deux frères passionnés par la technologie et le design,
+                        à la tête d'un studio digital à Lausanne. Notre mission est simple : on s'assure que votre entreprise reste branchée et dans l'air du
                         temps pendant que vous vous concentrez sur ce que vous faites de mieux. On ne se contente pas de
                         faire du 'beau' ; nous créons des outils taillés pour transformer les clics en clients.
                     </p>
@@ -189,8 +248,8 @@
                 <div class="services-list">
                     <div class="service-row reveal" data-service="web-dev">
                         <div class="container service-inner">
-                            <h3 class="service-name">Web Dev</h3>
-                            <p class="service-desc">Architecture web scalable, rapide et pensée pour la performance et le référencement.</p>
+                            <h3 class="service-name">Développement</h3>
+                            <p class="service-desc">Développement web scalable, rapide et pensé pour la performance et le référencement.</p>
                         </div>
                     </div>
                     <div class="service-row reveal" data-service="web-design">
@@ -207,14 +266,14 @@
                     </div>
                     <div class="service-row reveal" data-service="motion">
                         <div class="container service-inner">
-                            <h3 class="service-name">Motion</h3>
+                            <h3 class="service-name">Motion Design</h3>
                             <p class="service-desc">Des animations fluides et des micro-interactions maîtrisées, jamais excessives.</p>
                         </div>
                     </div>
                     <div class="service-row reveal" data-service="custom-code">
                         <div class="container service-inner">
-                            <h3 class="service-name">Custom Code</h3>
-                            <p class="service-desc">Des solutions sur mesure pour les projets qui sortent du cadre standard.</p>
+                            <h3 class="service-name">Sur-mesure</h3>
+                            <p class="service-desc">Du code et des solutions sur-mesure pour les projets qui sortent du cadre standard.</p>
                         </div>
                     </div>
                 </div>
@@ -242,7 +301,7 @@
                 <div class="container footer-content">
                     <div class="footer-top">
                         <div class="footer-info">
-                            <p class="footer-status">AVAILABLE FOR SELECT PROJECTS</p>
+                            <p class="footer-status">DISPONIBLE POUR DE NOUVEAUX PROJETS</p>
                             <p class="footer-copy">&copy; 2026 WAB.STUDIO</p>
                         </div>
                         <div class="footer-links">
@@ -251,7 +310,7 @@
                             <a href="contact.html" class="footer-link">Contact</a>
                         </div>
                     </div>
-                    <p class="footer-tagline">Creating experiences that last in the memory</p>
+                    <p class="footer-tagline">Des expériences qui restent dans la mémoire</p>
                 </div>
             </footer>
 
