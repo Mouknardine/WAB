@@ -891,44 +891,76 @@ a.nav-info__value:hover::after {
     transform: translate(4px, -4px);
 }
 
-/* ── CTA secondaire : bouton contour vers une autre page ── */
+/* ── CTA subtil : lien mono, fine ligne rose qui se dessine au survol ── */
 .page-cta {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
-    margin-top: clamp(28px, 4vw, 48px);
-    padding: 16px 28px;
-    border: 1px solid var(--border-strong);
-    border-radius: 4px;
+    gap: 10px;
+    margin-top: clamp(28px, 4vw, 52px);
     font-family: var(--font-display);
-    font-size: clamp(0.85rem, 1.3vw, 1rem);
+    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
     font-weight: 700;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.01em;
     color: var(--text);
-    background: transparent;
-    transition: background 0.4s var(--ease), color 0.4s var(--ease),
-                border-color 0.4s var(--ease), transform 0.3s var(--ease-out);
+    position: relative;
+    padding-bottom: 8px;
+    transition: color 0.35s var(--ease);
     -webkit-tap-highlight-color: transparent;
 }
 
-.page-cta:hover {
+.page-cta::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1.5px;
     background: var(--accent);
-    color: var(--white);
-    border-color: var(--accent);
-    transform: translateY(-3px);
-    box-shadow: 0 18px 36px -12px rgba(255, 60, 120, 0.35);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s var(--ease);
 }
 
-.page-cta:active {
-    transform: scale(0.98);
+.page-cta:hover {
+    color: var(--accent);
+}
+
+.page-cta:hover::after {
+    transform: scaleX(1);
 }
 
 .page-cta svg {
+    width: clamp(18px, 1.6vw, 22px);
+    height: clamp(18px, 1.6vw, 22px);
+    flex-shrink: 0;
     transition: transform 0.4s var(--ease);
 }
 
 .page-cta:hover svg {
-    transform: translate(3px, -3px);
+    transform: translate(4px, -4px);
+}
+
+/* Variante plus marquée (2e lien → réalisations) : grand texte rose */
+.page-cta--lg {
+    font-size: clamp(1.5rem, 3.2vw, 2.3rem);
+    letter-spacing: -0.02em;
+    color: var(--accent);
+    gap: 14px;
+    padding-bottom: 0;
+    transition: color 0.35s var(--ease), gap 0.35s var(--ease);
+}
+
+.page-cta--lg::after {
+    display: none;
+}
+
+.page-cta--lg:hover {
+    gap: 22px;
+}
+
+.page-cta--lg svg {
+    width: clamp(26px, 3vw, 38px);
+    height: clamp(26px, 3vw, 38px);
 }
 
 /* ============================================
