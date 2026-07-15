@@ -4,14 +4,16 @@
  * WAB. — Envoi du formulaire de contact
  * Reçoit le POST du formulaire (AJAX ou classique), valide les
  * champs, neutralise les tentatives d'injection, puis envoie
- * l'email via le serveur Infomaniak. Répond en JSON pour l'AJAX,
- * ou redirige vers contact.html pour un envoi sans JavaScript.
+ * l'email via le SMTP authentifié d'Infomaniak (smtp-mailer.php).
+ * Répond en JSON pour l'AJAX, ou redirige vers contact.html
+ * pour un envoi sans JavaScript.
  */
 
 declare(strict_types=1);
 
+require __DIR__ . '/smtp-mailer.php';
+
 const RECIPIENT = 'contact@wearebrothers.ch';
-const SENDER    = 'no-reply@wearebrothers.ch';
 
 function respond(bool $ok, string $error = ''): void
 {
@@ -67,16 +69,28 @@ $corps = "Nouveau message depuis wearebrothers.ch\n"
     . ($budget !== '' ? "Budget  : {$budget}\n" : '')
     . "\nMessage :\n{$message}\n";
 
-$sujet = '=?UTF-8?B?' . base64_encode("Nouveau message de {$nom} — wearebrothers.ch") . '?=';
+// Identifiants SMTP : fichier généré au déploiement depuis les
+// secrets GitHub (SMTP_USER / SMTP_PASSWORD), absent du dépôt.
+$configFile = __DIR__ . '/mail-config.php';
+if (!is_file($configFile)) {
+    respond(false, 'Configuration email manquante sur le serveur');
+}
+require $configFile;
 
-$entetes = implode("\r\n", [
-    'From: WAB. Site <' . SENDER . '>',
-    'Reply-To: ' . $email,
-    'MIME-Version: 1.0',
-    'Content-Type: text/plain; charset=UTF-8',
-    'Content-Transfer-Encoding: 8bit',
-]);
+$smtpUser = base64_decode(SMTP_USER_B64, true) ?: '';
+$smtpPass = base64_decode(SMTP_PASS_B64, true) ?: '';
+if ($smtpUser === '' || $smtpPass === '') {
+    respond(false, 'Configuration email incomplète sur le serveur');
+}
 
-$envoye = mail(RECIPIENT, $sujet, $corps, $entetes, '-f' . SENDER);
+$erreur = smtp_send(
+    $smtpUser,
+    $smtpPass,
+    $smtpUser, // l'expéditeur doit être l'adresse authentifiée
+    RECIPIENT,
+    "Nouveau message de {$nom} — wearebrothers.ch",
+    $corps,
+    $email
+);
 
-respond($envoye, $envoye ? '' : "L'envoi a échoué côté serveur");
+respond($erreur === null, $erreur === null ? '' : "L'envoi a échoué : {$erreur}");

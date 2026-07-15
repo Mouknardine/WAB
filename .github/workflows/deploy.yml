@@ -11,6 +11,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Génère les identifiants SMTP du formulaire de contact à partir
+      # des secrets GitHub (encodés en base64 : sûrs quels que soient
+      # les caractères du mot de passe). Le fichier est téléversé avec
+      # le site mais n'existe jamais dans le dépôt.
+      - name: Générer la configuration email
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASSWORD }}
+        run: |
+          {
+            echo '<?php'
+            echo "const SMTP_USER_B64 = '$(printf %s "$SMTP_USER" | base64 -w0)';"
+            echo "const SMTP_PASS_B64 = '$(printf %s "$SMTP_PASS" | base64 -w0)';"
+          } > mail-config.php
+
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
