@@ -27,7 +27,7 @@
     <!-- Scripts -->
     <script src="nav-clock.js?v=1" defer></script>
     <script src="contact.js?v=2" defer></script>
-    <script src="contact-form.js?v=1" defer></script>
+    <script src="contact-form.js?v=2" defer></script>
 </head>
 
 <body>
@@ -95,12 +95,8 @@
             <div class="container contact-main__grid">
 
                 <!-- Formulaire (en premier dans le DOM : priorité mobile) -->
-                <form class="contact-form" id="contactForm" action="https://formsubmit.co/contact@wearebrothers.ch" method="POST" novalidate>
+                <form class="contact-form" id="contactForm" action="send-message.php" method="POST" novalidate>
 
-                    <!-- Configuration FormSubmit -->
-                    <input type="hidden" name="_subject" id="formSubject" value="Nouveau message — wearebrothers.ch">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
                     <!-- Piège anti-spam : invisible pour les humains -->
                     <div class="hp-field" aria-hidden="true">
                         <label for="hpInput">Ne pas remplir</label>
@@ -132,11 +128,11 @@
                             <span class="field-hint">optionnel — plusieurs choix possibles</span>
                         </legend>
                         <div class="chips">
-                            <label class="chip"><input type="checkbox" name="Besoin" value="Nouveau site"><span>Nouveau site</span></label>
-                            <label class="chip"><input type="checkbox" name="Besoin" value="Refonte"><span>Refonte</span></label>
-                            <label class="chip"><input type="checkbox" name="Besoin" value="Branding"><span>Branding</span></label>
-                            <label class="chip"><input type="checkbox" name="Besoin" value="Motion"><span>Motion</span></label>
-                            <label class="chip"><input type="checkbox" name="Besoin" value="Autre"><span>Autre</span></label>
+                            <label class="chip"><input type="checkbox" name="Besoin[]" value="Nouveau site"><span>Nouveau site</span></label>
+                            <label class="chip"><input type="checkbox" name="Besoin[]" value="Refonte"><span>Refonte</span></label>
+                            <label class="chip"><input type="checkbox" name="Besoin[]" value="Branding"><span>Branding</span></label>
+                            <label class="chip"><input type="checkbox" name="Besoin[]" value="Motion"><span>Motion</span></label>
+                            <label class="chip"><input type="checkbox" name="Besoin[]" value="Autre"><span>Autre</span></label>
                         </div>
                     </fieldset>
 

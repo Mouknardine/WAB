@@ -1,15 +1,16 @@
 /**
  * WAB. — Page CONTACT : logique du formulaire
- * Validation côté client, envoi via FormSubmit (AJAX) avec
- * repli sur l'email direct en cas d'échec, bouton « Copier »
- * de l'adresse. Sans JavaScript, le formulaire s'envoie
- * quand même via l'attribut action classique.
+ * Validation côté client, envoi vers notre propre serveur
+ * (send-message.php sur l'hébergement Infomaniak) avec repli
+ * sur l'email direct en cas d'échec, bouton « Copier » de
+ * l'adresse. Sans JavaScript, le formulaire s'envoie quand
+ * même via l'attribut action classique.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     const CONTACT_EMAIL = 'contact@wearebrothers.ch';
-    const ENDPOINT      = 'https://formsubmit.co/ajax/' + CONTACT_EMAIL;
+    const ENDPOINT      = 'send-message.php';
 
     /* ── Bouton « Copier » l'adresse email ── */
     (function initCopyEmail() {
@@ -61,8 +62,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const label     = document.getElementById('submitLabel');
         const status    = document.getElementById('formStatus');
         const success   = document.getElementById('formSuccess');
-        const subject   = document.getElementById('formSubject');
         if (!form || !submitBtn || !label || !status || !success) return;
+
+        // Retour d'un envoi sans JavaScript : le serveur redirige
+        // vers contact.html?sent=1 → on affiche la confirmation.
+        if (new URLSearchParams(window.location.search).get('sent') === '1') {
+            form.classList.add('is-sent');
+            success.hidden = false;
+            history.replaceState(null, '', window.location.pathname);
+        }
 
         const fields = {
             name:    { input: document.getElementById('fieldName'),    error: document.getElementById('errorName') },
@@ -145,10 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!validate()) return;
 
-            if (subject) {
-                subject.value = 'Nouveau message de ' + fields.name.input.value.trim() + ' — wearebrothers.ch';
-            }
-
             setSending(true);
             status.classList.remove('error');
             status.textContent = '';
@@ -165,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 const data = await response.json().catch(() => null);
-                const ok = response.ok && data && String(data.success) === 'true';
+                const ok = response.ok && data && data.success === true;
 
                 if (ok) {
                     showSuccess();
