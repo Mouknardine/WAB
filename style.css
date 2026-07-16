@@ -774,9 +774,9 @@ a.nav-info__value:hover::after {
    verticale, quelle que soit la longueur du titre. Reset des styles <button>. */
 .service-inner {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 360px) auto;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 340px) auto;
     align-items: center;
-    column-gap: clamp(32px, 5vw, 80px);
+    column-gap: clamp(28px, 4vw, 72px);
     background: none;
     border: none;
     font: inherit;
@@ -811,7 +811,7 @@ a.nav-info__value:hover::after {
 
 .service-name {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 5vw, 4.2rem);
+    font-size: clamp(1.9rem, 4vw, 3.6rem);
     font-weight: 700;
     letter-spacing: -0.04em;
     line-height: 0.95;
@@ -1093,14 +1093,6 @@ a.nav-info__value:hover::after {
         line-height: 1.6;
         letter-spacing: -0.01em;
         font-weight: 400;
-    }
-
-    .service-name {
-        font-size: clamp(2.5rem, 7vw, 6.5rem);
-    }
-
-    .service-desc {
-        font-size: clamp(1.05rem, 1.3vw, 1.4rem);
     }
 
     .contact-subtitle {
