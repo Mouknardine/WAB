@@ -832,6 +832,55 @@ a.nav-info__value:hover::after {
     color: var(--text);
 }
 
+/* Ligne de service en accordéon (<details>/<summary>) */
+.service-inner {
+    list-style: none;
+}
+
+.service-inner::-webkit-details-marker {
+    display: none;
+}
+
+.service-icon {
+    flex-shrink: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    font-weight: 500;
+    color: var(--accent);
+    line-height: 1;
+    transition: transform 0.4s var(--ease);
+}
+
+.service-row[open] .service-icon {
+    transform: rotate(45deg);
+}
+
+.service-detail {
+    padding: 0 clamp(24px, 4vw, 60px) clamp(24px, 3.5vw, 40px);
+}
+
+.service-detail__list {
+    max-width: 620px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.service-detail__list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: clamp(0.9rem, 1.1vw, 1rem);
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.service-detail__list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
 /* ============================================
    CONTACT
    ============================================ */
@@ -1090,9 +1139,17 @@ a.nav-info__value:hover::after {
     }
 
     .service-inner {
+        position: relative;
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
+        padding-right: clamp(56px, 12vw, 72px);
+    }
+
+    .service-icon {
+        position: absolute;
+        top: clamp(24px, 3.5vw, 48px);
+        right: clamp(24px, 4vw, 60px);
     }
 
     .service-name {

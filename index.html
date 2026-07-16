@@ -73,8 +73,6 @@
                     "itemListElement": [
                         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Développement", "description": "Développement web scalable, rapide et pensé pour la performance et le référencement." } },
                         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Design", "description": "Des interfaces précises, lisibles et conçues pour une navigation fluide et naturelle." } },
-                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Branding", "description": "Une identité digitale cohérente à toutes les échelles, du site au branding global." } },
-                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Motion Design", "description": "Des animations fluides et des micro-interactions maîtrisées, jamais excessives." } },
                         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sur-mesure", "description": "Du code et des solutions sur-mesure pour les projets qui sortent du cadre standard." } }
                     ]
                 }
@@ -124,7 +122,7 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inclusive+Sans&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css?v=41">
+    <link rel="stylesheet" href="style.css?v=42">
 
     <!-- GSAP -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
@@ -302,36 +300,47 @@
                     <h2 class="section-title reveal">SERVICES</h2>
                 </div>
                 <div class="services-list">
-                    <div class="service-row reveal" data-service="web-dev">
-                        <div class="container service-inner">
+                    <details class="service-row reveal" data-service="web-dev">
+                        <summary class="container service-inner">
                             <h3 class="service-name">Développement</h3>
                             <p class="service-desc">Développement web scalable, rapide et pensé pour la performance et le référencement.</p>
+                            <span class="service-icon" aria-hidden="true">+</span>
+                        </summary>
+                        <div class="container service-detail">
+                            <ul class="service-detail__list">
+                                <li>Sites en "Full Code" — pas de WordPress/Wix, programmation directe</li>
+                                <li>Chargement quasi instantané sur mobile, pensé pour le SEO naturel</li>
+                                <li>Hébergement Suisse sécurisé (Infomaniak) + guide pour gérer l'hébergement en autonomie</li>
+                            </ul>
                         </div>
-                    </div>
-                    <div class="service-row reveal" data-service="web-design">
-                        <div class="container service-inner">
+                    </details>
+                    <details class="service-row reveal" data-service="web-design">
+                        <summary class="container service-inner">
                             <h3 class="service-name">Web Design</h3>
                             <p class="service-desc">Des interfaces précises, lisibles et conçues pour une navigation fluide et naturelle.</p>
+                            <span class="service-icon" aria-hidden="true">+</span>
+                        </summary>
+                        <div class="container service-detail">
+                            <ul class="service-detail__list">
+                                <li>Design épuré, micro-animations qui guident vers l'action (appel, formulaire)</li>
+                                <li>Interfaces pensées pour la conversion, pas juste l'esthétique</li>
+                                <li>Navigation testée en priorité sur mobile</li>
+                            </ul>
                         </div>
-                    </div>
-                    <div class="service-row reveal" data-service="branding">
-                        <div class="container service-inner">
-                            <h3 class="service-name">Branding</h3>
-                            <p class="service-desc">Une identité digitale cohérente à toutes les échelles, du site au branding global.</p>
-                        </div>
-                    </div>
-                    <div class="service-row reveal" data-service="motion">
-                        <div class="container service-inner">
-                            <h3 class="service-name">Motion Design</h3>
-                            <p class="service-desc">Des animations fluides et des micro-interactions maîtrisées, jamais excessives.</p>
-                        </div>
-                    </div>
-                    <div class="service-row reveal" data-service="custom-code">
-                        <div class="container service-inner">
+                    </details>
+                    <details class="service-row reveal" data-service="custom-code">
+                        <summary class="container service-inner">
                             <h3 class="service-name">Sur-mesure</h3>
                             <p class="service-desc">Du code et des solutions sur-mesure pour les projets qui sortent du cadre standard.</p>
+                            <span class="service-icon" aria-hidden="true">+</span>
+                        </summary>
+                        <div class="container service-detail">
+                            <ul class="service-detail__list">
+                                <li>Structures multi-pages, suivi de conversion avancé, fonctionnalités spécifiques</li>
+                                <li>Accompagnement continu après livraison (ajout de pages, nouvelles fonctionnalités)</li>
+                            </ul>
                         </div>
-                    </div>
+                    </details>
                 </div>
             </section>
 
