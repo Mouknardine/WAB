@@ -855,30 +855,28 @@ a.nav-info__value:hover::after {
     transform: rotate(45deg);
 }
 
-.service-detail {
-    padding: 0 clamp(24px, 4vw, 60px) clamp(24px, 3.5vw, 40px);
-}
-
-.service-detail__list {
-    max-width: 620px;
+/* Ligne étendue : réutilise le même gabarit que .service-inner
+   (titre fantôme invisible pour aligner le texte sous la description). */
+.service-detail-inner {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 48px;
+    padding: 0 clamp(24px, 4vw, 60px) clamp(24px, 3.5vw, 40px);
+    width: 100%;
 }
 
-.service-detail__list li {
-    position: relative;
-    padding-left: 22px;
-    font-size: clamp(0.9rem, 1.1vw, 1rem);
+.service-name--ghost {
+    visibility: hidden;
+}
+
+.service-detail-text {
+    font-size: clamp(1rem, 1.2vw, 1.25rem);
     color: var(--text-muted);
     line-height: 1.6;
-}
-
-.service-detail__list li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
+    max-width: 380px;
+    text-align: left;
+    margin-top: -0.4em;
 }
 
 /* ============================================
@@ -1159,6 +1157,15 @@ a.nav-info__value:hover::after {
 
     .service-desc {
         max-width: 100%;
+    }
+
+    .service-name--ghost {
+        display: none;
+    }
+
+    .service-detail-text {
+        max-width: 100%;
+        margin-top: 0;
     }
 
     .footer-top {
