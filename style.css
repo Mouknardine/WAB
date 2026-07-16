@@ -835,20 +835,14 @@ a.nav-info__value:hover::after {
     max-width: 380px;
     text-align: left;
     flex-shrink: 0;
-    transition: color 0.35s ease, grid-template-columns 0.4s var(--ease), opacity 0.3s ease;
-    display: grid;
-    grid-template-columns: 0fr;
+    transition: color 0.35s ease, max-height 0.4s var(--ease), opacity 0.3s ease;
+    max-height: 0;
     overflow: hidden;
     opacity: 0;
 }
 
-.service-desc span {
-    min-width: 0;
-    overflow: hidden;
-}
-
 .service-row.is-open .service-desc {
-    grid-template-columns: 1fr;
+    max-height: 220px;
     opacity: 1;
 }
 
