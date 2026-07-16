@@ -769,17 +769,17 @@ a.nav-info__value:hover::after {
     border-bottom: none;
 }
 
+/* Bouton pleine largeur (reset des styles natifs de <button>) */
 .service-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 48px;
+    display: block;
+    background: none;
+    border: none;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
     padding: clamp(24px, 3.5vw, 48px) clamp(24px, 4vw, 60px);
     width: 100%;
-}
-
-.service-icon {
-    align-self: center;
 }
 
 /* Fine barre d'accent qui se déploie le long du bord gauche */
@@ -804,6 +804,14 @@ a.nav-info__value:hover::after {
     opacity: 0.35;
 }
 
+.service-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+}
+
 .service-name {
     font-family: var(--font-display);
     font-size: clamp(2.5rem, 9vw, 8rem);
@@ -811,47 +819,13 @@ a.nav-info__value:hover::after {
     letter-spacing: -0.05em;
     line-height: 0.9;
     text-transform: uppercase;
-    white-space: nowrap;
     color: var(--text);
-    flex-shrink: 0;
     transition: color 0.35s ease, transform 0.5s var(--ease);
 }
 
 .service-row:hover .service-name {
     color: var(--accent);
     transform: translateX(14px);
-}
-
-/* Bouton pleine largeur (reset des styles natifs de <button>) */
-.service-inner {
-    background: none;
-    border: none;
-    font: inherit;
-    color: inherit;
-    text-align: left;
-    cursor: pointer;
-}
-
-.service-desc {
-    font-size: clamp(1rem, 1.2vw, 1.25rem);
-    color: var(--text-muted);
-    line-height: 1.6;
-    max-width: 380px;
-    text-align: left;
-    flex-shrink: 0;
-    transition: color 0.35s ease, max-height 0.4s var(--ease), opacity 0.3s ease;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-}
-
-.service-row.is-open .service-desc {
-    max-height: 400px;
-    opacity: 1;
-}
-
-.service-row:hover .service-desc {
-    color: var(--text);
 }
 
 .service-icon {
@@ -866,6 +840,30 @@ a.nav-info__value:hover::after {
 
 .service-row.is-open .service-icon {
     transform: rotate(45deg);
+}
+
+/* Texte sous le titre, même marge gauche, séparé par un filet pointillé */
+.service-detail {
+    display: block;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s var(--ease), opacity 0.3s ease, margin-top 0.4s var(--ease);
+}
+
+.service-row.is-open .service-detail {
+    max-height: 400px;
+    opacity: 1;
+    margin-top: clamp(20px, 2.5vw, 28px);
+}
+
+.service-desc {
+    padding-top: clamp(16px, 2vw, 24px);
+    border-top: 1px dashed var(--border);
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    color: var(--text-muted);
+    line-height: 1.65;
+    max-width: 620px;
 }
 
 /* ============================================
@@ -1127,23 +1125,8 @@ a.nav-info__value:hover::after {
         margin-left: 0;
     }
 
-    .service-inner {
-        position: relative;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-        padding-right: clamp(56px, 12vw, 72px);
-    }
-
-    .service-icon {
-        position: absolute;
-        top: clamp(24px, 3.5vw, 48px);
-        right: clamp(24px, 4vw, 60px);
-    }
-
     .service-name {
         font-size: clamp(2rem, 9vw, 4.5rem);
-        white-space: normal;
     }
 
     .service-desc {
