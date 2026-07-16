@@ -124,7 +124,7 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inclusive+Sans&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css?v=38">
+    <link rel="stylesheet" href="style.css?v=39">
 
     <!-- GSAP -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
@@ -339,23 +339,46 @@
             <section class="section pricing" id="tarifs">
                 <div class="container">
                     <h2 class="section-title reveal">TARIFS</h2>
-                    <div class="pricing-grid">
-                        <div class="pricing-card reveal">
-                            <p class="pricing-card__name">Site Vitrine</p>
-                            <p class="pricing-card__price">900 CHF</p>
-                            <p class="pricing-card__desc">La base : un site professionnel complet, en Full Code, optimisé mobile et référencement.</p>
-                        </div>
-                        <div class="pricing-card reveal">
-                            <p class="pricing-card__name">Page supplémentaire</p>
-                            <p class="pricing-card__price">200 CHF</p>
-                            <p class="pricing-card__desc">Pour étendre votre site vitrine avec une page dédiée (services, portfolio, équipe...).</p>
-                        </div>
-                        <div class="pricing-card reveal">
-                            <p class="pricing-card__name">Pack Visibilité Locale</p>
-                            <p class="pricing-card__price">150 CHF</p>
-                            <p class="pricing-card__desc">Optimisation de votre fiche Google Business pour dominer les recherches de proximité.</p>
+                </div>
+                <div class="services-list">
+                    <div class="service-row reveal" data-service="tarif-vitrine">
+                        <div class="container service-inner">
+                            <div class="pricing-head">
+                                <h3 class="service-name">Site Vitrine</h3>
+                                <p class="pricing-price">900 CHF</p>
+                            </div>
+                            <p class="service-desc">La base : un site professionnel complet, en Full Code, optimisé mobile et référencement.</p>
                         </div>
                     </div>
+                    <div class="service-row reveal" data-service="tarif-page">
+                        <div class="container service-inner">
+                            <div class="pricing-head">
+                                <h3 class="service-name">Page suppl.</h3>
+                                <p class="pricing-price">200 CHF</p>
+                            </div>
+                            <p class="service-desc">Pour étendre votre site vitrine avec une page dédiée (services, portfolio, équipe...).</p>
+                        </div>
+                    </div>
+                    <div class="service-row reveal" data-service="tarif-visibilite">
+                        <div class="container service-inner">
+                            <div class="pricing-head">
+                                <h3 class="service-name">Visibilité Locale</h3>
+                                <p class="pricing-price">150 CHF</p>
+                            </div>
+                            <p class="service-desc">Optimisation de votre fiche Google Business pour dominer les recherches de proximité.</p>
+                        </div>
+                    </div>
+                    <div class="service-row reveal" data-service="tarif-app">
+                        <div class="container service-inner">
+                            <div class="pricing-head">
+                                <h3 class="service-name">Application interne</h3>
+                                <p class="pricing-price">Sur devis</p>
+                            </div>
+                            <p class="service-desc">Développement d'un outil ou d'une application interne sur mesure pour votre entreprise.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
                     <p class="pricing-note reveal">Paiement possible en 2 mensualités pour faciliter votre trésorerie.</p>
                 </div>
             </section>
