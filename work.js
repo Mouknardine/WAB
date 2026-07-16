@@ -57,6 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
             ticking = false;
             const scroll = window.scrollY || window.pageYOffset;
 
+            // Nav complète en haut de page, burger seul dès qu'on scrolle (desktop)
+            header.classList.toggle('header--scrolled', scroll > 40);
+
             if (scroll > 100) {
                 if (scroll > lastScrollY && !headerHidden) {
                     header.classList.add('hide-up');
