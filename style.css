@@ -842,24 +842,24 @@ a.nav-info__value:hover::after {
     transform: rotate(45deg);
 }
 
-/* Texte sous le titre, même marge gauche, séparé par un filet pointillé */
+/* Texte sous le titre, même marge gauche — enchaînement naturel, sans séparateur */
 .service-detail {
     display: block;
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    transition: max-height 0.4s var(--ease), opacity 0.3s ease, margin-top 0.4s var(--ease);
+    transform: translateY(-8px);
+    transition: max-height 0.45s var(--ease), opacity 0.35s ease, transform 0.45s var(--ease), margin-top 0.45s var(--ease);
 }
 
 .service-row.is-open .service-detail {
     max-height: 400px;
     opacity: 1;
-    margin-top: clamp(20px, 2.5vw, 28px);
+    transform: translateY(0);
+    margin-top: clamp(10px, 1.4vw, 16px);
 }
 
 .service-desc {
-    padding-top: clamp(16px, 2vw, 24px);
-    border-top: 1px dashed var(--border);
     font-size: clamp(1rem, 1.2vw, 1.15rem);
     color: var(--text-muted);
     line-height: 1.65;
