@@ -190,6 +190,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ════════════════════════════════════════════
+       SERVICES — Toggle description au clic
+       ════════════════════════════════════════════ */
+    document.querySelectorAll('.service-inner').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            btn.closest('.service-row').classList.toggle('is-open');
+        });
+    });
+
+    /* ════════════════════════════════════════════
        PROJECT CARDS — Image reveal
        ════════════════════════════════════════════ */
     document.querySelectorAll('.project-card').forEach((card) => {

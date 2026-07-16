@@ -818,6 +818,16 @@ a.nav-info__value:hover::after {
     transform: translateX(14px);
 }
 
+/* Bouton pleine largeur (reset des styles natifs de <button>) */
+.service-inner {
+    background: none;
+    border: none;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
 .service-desc {
     font-size: clamp(1rem, 1.2vw, 1.25rem);
     color: var(--text-muted);
@@ -825,20 +835,25 @@ a.nav-info__value:hover::after {
     max-width: 380px;
     text-align: left;
     flex-shrink: 0;
-    transition: color 0.35s ease;
+    transition: color 0.35s ease, grid-template-columns 0.4s var(--ease), opacity 0.3s ease;
+    display: grid;
+    grid-template-columns: 0fr;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.service-desc span {
+    min-width: 0;
+    overflow: hidden;
+}
+
+.service-row.is-open .service-desc {
+    grid-template-columns: 1fr;
+    opacity: 1;
 }
 
 .service-row:hover .service-desc {
     color: var(--text);
-}
-
-/* Ligne de service en accordéon (<details>/<summary>) */
-.service-inner {
-    list-style: none;
-}
-
-.service-inner::-webkit-details-marker {
-    display: none;
 }
 
 .service-icon {
@@ -851,32 +866,8 @@ a.nav-info__value:hover::after {
     transition: transform 0.4s var(--ease);
 }
 
-.service-row[open] .service-icon {
+.service-row.is-open .service-icon {
     transform: rotate(45deg);
-}
-
-/* Ligne étendue : réutilise le même gabarit que .service-inner
-   (titre fantôme invisible pour aligner le texte sous la description). */
-.service-detail-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 48px;
-    padding: 0 clamp(24px, 4vw, 60px) clamp(24px, 3.5vw, 40px);
-    width: 100%;
-}
-
-.service-name--ghost {
-    visibility: hidden;
-}
-
-.service-detail-text {
-    font-size: clamp(1rem, 1.2vw, 1.25rem);
-    color: var(--text-muted);
-    line-height: 1.6;
-    max-width: 380px;
-    text-align: left;
-    margin-top: -0.4em;
 }
 
 /* ============================================
@@ -1159,15 +1150,6 @@ a.nav-info__value:hover::after {
 
     .service-desc {
         max-width: 100%;
-    }
-
-    .service-name--ghost {
-        display: none;
-    }
-
-    .service-detail-text {
-        max-width: 100%;
-        margin-top: 0;
     }
 
     .footer-top {
