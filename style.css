@@ -774,9 +774,9 @@ a.nav-info__value:hover::after {
    verticale, quelle que soit la longueur du titre. Reset des styles <button>. */
 .service-inner {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 340px) auto;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 520px) auto;
     align-items: center;
-    column-gap: clamp(28px, 4vw, 72px);
+    column-gap: clamp(28px, 4vw, 64px);
     background: none;
     border: none;
     font: inherit;
