@@ -940,7 +940,9 @@ a.nav-info__value:hover::after {
 
 /* ── CTA subtil : lien mono, fine ligne rose qui se dessine au survol ── */
 .page-cta {
-    display: inline-flex;
+    display: flex;
+    width: fit-content;
+    margin-left: auto;
     align-items: center;
     gap: 10px;
     margin-top: clamp(28px, 4vw, 52px);
