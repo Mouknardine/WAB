@@ -769,9 +769,14 @@ a.nav-info__value:hover::after {
     border-bottom: none;
 }
 
-/* Bouton pleine largeur (reset des styles natifs de <button>) */
+/* Grille fixe : colonne titre | colonne texte (même départ pour les 3) | icône.
+   Le texte de chaque service démarre donc exactement sur la même ligne
+   verticale, quelle que soit la longueur du titre. Reset des styles <button>. */
 .service-inner {
-    display: block;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 360px) auto;
+    align-items: center;
+    column-gap: clamp(32px, 5vw, 80px);
     background: none;
     border: none;
     font: inherit;
@@ -804,21 +809,14 @@ a.nav-info__value:hover::after {
     opacity: 0.35;
 }
 
-.service-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 24px;
-    width: 100%;
-}
-
 .service-name {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 9vw, 8rem);
+    font-size: clamp(2rem, 5vw, 4.2rem);
     font-weight: 700;
-    letter-spacing: -0.05em;
-    line-height: 0.9;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
     text-transform: uppercase;
+    white-space: nowrap;
     color: var(--text);
     transition: color 0.35s ease, transform 0.5s var(--ease);
 }
@@ -842,28 +840,23 @@ a.nav-info__value:hover::after {
     transform: rotate(45deg);
 }
 
-/* Texte sous le titre, même marge gauche — enchaînement naturel, sans séparateur */
-.service-detail {
-    display: block;
+/* Texte dans la 2e colonne (même départ vertical pour les 3).
+   Réserve la largeur en permanence, mais aucune hauteur tant que fermé. */
+.service-desc {
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    transform: translateY(-8px);
-    transition: max-height 0.45s var(--ease), opacity 0.35s ease, transform 0.45s var(--ease), margin-top 0.45s var(--ease);
+    transform: translateY(6px);
+    transition: max-height 0.45s var(--ease), opacity 0.35s ease, transform 0.45s var(--ease);
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+    color: var(--text-muted);
+    line-height: 1.65;
 }
 
-.service-row.is-open .service-detail {
+.service-row.is-open .service-desc {
     max-height: 400px;
     opacity: 1;
     transform: translateY(0);
-    margin-top: clamp(10px, 1.4vw, 16px);
-}
-
-.service-desc {
-    font-size: clamp(1rem, 1.2vw, 1.15rem);
-    color: var(--text-muted);
-    line-height: 1.65;
-    max-width: 620px;
 }
 
 /* ============================================
@@ -1125,12 +1118,23 @@ a.nav-info__value:hover::after {
         margin-left: 0;
     }
 
+    /* Grille repliée : titre + icône sur une ligne, texte en dessous */
+    .service-inner {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+    }
+
     .service-name {
         font-size: clamp(2rem, 9vw, 4.5rem);
+        white-space: normal;
     }
 
     .service-desc {
-        max-width: 100%;
+        grid-column: 1 / -1;
+    }
+
+    .service-row.is-open .service-desc {
+        margin-top: clamp(12px, 3vw, 20px);
     }
 
     .footer-top {
