@@ -137,9 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Le hero fixe reste toujours visible : il sert de fond
         // permanent (rose + oiseaux) derrière le verre dépoli.
 
-        // Nav complète en haut de page, burger seul dès qu'on scrolle (desktop)
-        header.classList.toggle('header--scrolled', scroll > 40);
-
         // Couleur du header (toggle seulement si l'état change)
         const shouldBeHeroVisible = scroll < heroSwapPoint;
         if (shouldBeHeroVisible !== heroVisible) {
