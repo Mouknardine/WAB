@@ -89,17 +89,17 @@
                 "@type": "Person",
                 "@id": "https://wearebrothers.ch/#eliott",
                 "name": "Eliott Pina",
-                "jobTitle": "Lead développeur",
+                "jobTitle": "Lead designer",
                 "worksFor": { "@id": "https://wearebrothers.ch/#organization" },
-                "knowsAbout": ["Next.js", "TypeScript", "Node.js", "Supabase", "PostgreSQL", "GSAP", "Développement full-stack"]
+                "knowsAbout": ["Figma", "Motion Design", "Branding", "GSAP", "Three.js", "After Effects", "Direction artistique"]
             },
             {
                 "@type": "Person",
                 "@id": "https://wearebrothers.ch/#matt",
                 "name": "Matt Pina",
-                "jobTitle": "Lead designer",
+                "jobTitle": "Lead développeur",
                 "worksFor": { "@id": "https://wearebrothers.ch/#organization" },
-                "knowsAbout": ["Figma", "Motion Design", "Branding", "GSAP", "Three.js", "After Effects", "Direction artistique"]
+                "knowsAbout": ["Next.js", "TypeScript", "Node.js", "Supabase", "PostgreSQL", "GSAP", "Développement full-stack"]
             },
             {
                 "@type": "AboutPage",
@@ -123,7 +123,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="style.css?v=56">
-    <link rel="stylesheet" href="about.css?v=13">
+    <link rel="stylesheet" href="about.css?v=14">
 
     <!-- GSAP -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
@@ -132,7 +132,7 @@
     <!-- Scripts -->
     <script src="fill-text.js?v=3" defer></script>
     <script src="nav-clock.js?v=1" defer></script>
-    <script src="about.js?v=7" defer></script>
+    <script src="about.js?v=8" defer></script>
 </head>
 
 <body>
@@ -186,9 +186,8 @@
                 <h1 class="about-hero__title">
                     <span class="about-hero__line"><span class="about-hero__line-inner">Un studio digital</span></span>
                     <span class="about-hero__line"><span class="about-hero__line-inner">fondé par <span class="accent">deux frères.</span></span></span>
-                    <span class="about-hero__line"><span class="about-hero__line-inner">Petit par choix.</span></span>
-                    <span class="about-hero__line"><span class="about-hero__line-inner">Obsédé par le détail.</span></span>
                 </h1>
+                <p class="about-hero__intro">Nous réunissons design et développement pour créer des sites modernes, clairs et adaptés à chaque projet.</p>
                 <p class="about-hero__meta">
                     <span class="meta-dot"></span>
                     Lausanne, Suisse — Design &amp; Développement
@@ -201,9 +200,11 @@
             <div class="container">
                 <p class="section-label">Notre philosophie</p>
                 <p class="manifesto-text" data-fill-text>
-                    On ne fait pas du web pour faire du web. On crée des expériences
-                    qui restent dans la mémoire — des outils taillés pour transformer
-                    les clics en clients, construits avec le soin de l'artisan.
+                    Nous ne concevons pas des sites à la chaîne. Chaque projet est
+                    travaillé dans le détail, du concept à la mise en ligne, pour créer
+                    une expérience visuelle forte, fluide et cohérente. Le design et la
+                    technique avancent ensemble afin de produire un site distinctif,
+                    durable et réellement adapté à l'identité de chaque client.
                 </p>
             </div>
         </section>
@@ -267,36 +268,13 @@
 
                     <article class="profile reveal">
                         <div class="profile__media profile__media--dev">
-                            <img src="assets/images/team-eliott.jpg" alt="Eliott Pina, développeur web full-stack chez WeAreBrothers Studio à Lausanne" loading="lazy" decoding="async" draggable="false">
+                            <img src="assets/images/team-eliott.jpg" alt="Eliott Pina, designer et directeur artistique chez WeAreBrothers Studio à Lausanne" loading="lazy" decoding="async" draggable="false">
                         </div>
                         <h2 class="profile__name">Eliott Pina</h2>
                         <p class="profile__bio">
-                            Actuellement en Master en Systèmes d'Information Digitaux à l'Université de Lausanne (UNIL),
-                            après un Bachelor en Droit. Il conçoit et développe l'architecture technique des projets du
-                            studio, du premier prototype à la mise en ligne, avec une attention constante portée à la
-                            performance et à la fiabilité du code. Son Bachelor en Droit apporte en plus une expertise
-                            sur la conformité contractuelle et la protection des données (LPD).
-                        </p>
-                        <div class="profile__skills">
-                            <span class="skill-badge">Next.js</span>
-                            <span class="skill-badge">TypeScript</span>
-                            <span class="skill-badge">Node.js</span>
-                            <span class="skill-badge">Supabase</span>
-                            <span class="skill-badge">PostgreSQL</span>
-                            <span class="skill-badge">GSAP</span>
-                        </div>
-                    </article>
-
-                    <article class="profile reveal">
-                        <div class="profile__media profile__media--design">
-                            <img src="assets/images/team-matt.jpg?v=4" alt="Matt Pina, designer et directeur artistique chez WeAreBrothers Studio à Lausanne" loading="lazy" decoding="async" draggable="false">
-                        </div>
-                        <h2 class="profile__name">Matt Pina</h2>
-                        <p class="profile__bio">
-                            Collaborateur au Centre Patronal, où il développe une connaissance pratique du tissu
-                            économique romand et des problématiques de gestion d'entreprise. Il met ce regard au
-                            service du développement numérique et du code des projets du studio, avec le souci
-                            constant que chaque solution serve la croissance réelle de l'entreprise cliente.
+                            Eliott s'occupe de la direction artistique des projets. Il travaille sur l'identité
+                            visuelle, la mise en page, les animations et l'expérience utilisateur. Il veille à ce que
+                            chaque site ait une identité cohérente et corresponde réellement à l'image du client.
                         </p>
                         <div class="profile__skills">
                             <span class="skill-badge">Figma</span>
@@ -305,6 +283,26 @@
                             <span class="skill-badge">GSAP</span>
                             <span class="skill-badge">Three.js</span>
                             <span class="skill-badge">After Effects</span>
+                        </div>
+                    </article>
+
+                    <article class="profile reveal">
+                        <div class="profile__media profile__media--design">
+                            <img src="assets/images/team-matt.jpg?v=4" alt="Matt Pina, développeur web full-stack chez WeAreBrothers Studio à Lausanne" loading="lazy" decoding="async" draggable="false">
+                        </div>
+                        <h2 class="profile__name">Matt Pina</h2>
+                        <p class="profile__bio">
+                            Matt prend en charge la partie technique des projets, du développement jusqu'à la mise
+                            en ligne. Il construit des sites rapides, fiables et adaptés à tous les écrans, tout en
+                            s'assurant qu'ils restent faciles à faire évoluer.
+                        </p>
+                        <div class="profile__skills">
+                            <span class="skill-badge">Next.js</span>
+                            <span class="skill-badge">TypeScript</span>
+                            <span class="skill-badge">Node.js</span>
+                            <span class="skill-badge">Supabase</span>
+                            <span class="skill-badge">PostgreSQL</span>
+                            <span class="skill-badge">GSAP</span>
                         </div>
                     </article>
 

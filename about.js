@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Sécurité : sans GSAP ou en mode « réduire les animations », on affiche tout.
         if (!hasGsap || reduceMotion) {
-            document.querySelectorAll('.reveal, .about-hero__label, .about-hero__meta').forEach((el) => {
+            document.querySelectorAll('.reveal, .about-hero__label, .about-hero__intro, .about-hero__meta').forEach((el) => {
                 el.style.opacity = '1';
                 el.style.transform = 'none';
             });
@@ -139,7 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .to('.about-hero__line-inner', {
                 y: 0, duration: 1.1, stagger: 0.1, ease: 'power4.out',
             }, '-=0.3')
-            .to('.about-hero__meta', { opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.5');
+            .to('.about-hero__intro', { opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.5')
+            .to('.about-hero__meta', { opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.4');
 
         // FadeUp générique
         gsap.utils.toArray('.reveal').forEach((el) => {
