@@ -20,6 +20,7 @@
   - Commissione Entretien — site vitrine d'une entreprise familiale d'entretien à Bavois (VD) (https://commissione-entretien.ch/)
   - LAZIZZE DJ — portfolio immersif pour un DJ house de Lausanne (https://lazizze-git.github.io/DJ/#/)
   - Maison Alliani — site vitrine haute joaillerie pour un atelier suisse de grillz sur mesure (https://lazizze-git.github.io/grillz/)
+  - Géotechnologie — site vitrine pour un bureau d'études géotechniques à Morzine, esthétique de document d'ingénierie (https://lazizze-git.github.io/G-otechnoligie/)
 - [À propos](https://wearebrothers.ch/studio) : philosophie, valeurs (proximité, craft, performance, transparence) et équipe
 - [Contact](https://wearebrothers.ch/contact) : formulaire de contact, FAQ (prix, délais, déroulement d'un projet)
 
