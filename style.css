@@ -1101,6 +1101,17 @@ a.nav-info__value:hover::after {
 }
 
 @media (max-width: 768px) {
+    /* Sous-titre du hero : deux lignes équilibrées, à distance
+       de l'indicateur de scroll en bas à droite */
+    .hero-subtitle__line {
+        display: block;
+    }
+
+    .hero-subtitle {
+        line-height: 1.7;
+        padding-right: 72px;
+    }
+
     .projects-grid {
         grid-template-columns: 1fr;
     }
