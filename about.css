@@ -16,25 +16,7 @@
     padding: clamp(56px, 8vw, 120px) 0;
 }
 
-.section-label {
-    font-family: var(--font-display);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: clamp(28px, 4vw, 56px);
-}
-
-.meta-dot {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    margin-right: 10px;
-    vertical-align: middle;
-}
+/* .section-label et .meta-dot sont définis dans style.css (partagés) */
 
 /* ============================================
    1. HERO — déclaration typographique
