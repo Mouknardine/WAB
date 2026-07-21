@@ -278,7 +278,9 @@
 
 .work-cta__title {
     font-family: var(--font-display);
-    font-size: clamp(2.4rem, 8vw, 6.5rem);
+    /* Min à 1.5rem : sous 480px la taille suit 8vw, pour que la ligne
+       la plus longue (« c'était le vôtre ? ») tienne sur un écran de 320px */
+    font-size: clamp(1.5rem, 8vw, 6.5rem);
     font-weight: 700;
     letter-spacing: -0.04em;
     line-height: 1.02;
