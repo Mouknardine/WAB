@@ -257,6 +257,10 @@
     object-position: 50% 32%;
 }
 
+.profile__media--sales img {
+    object-position: 50% 30%;
+}
+
 .profile__role {
     font-family: var(--font-display);
     font-size: 12px;
@@ -376,6 +380,12 @@
 
     .team__grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1100px) {
+    .team__grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 

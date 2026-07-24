@@ -4,7 +4,7 @@
 
 ## Le studio
 
-- **Qui** : Eliott Pina (lead développeur full-stack) et Matt Pina (lead designer / directeur artistique), deux frères.
+- **Qui** : Eliott Pina (lead développeur full-stack) et Matt Pina (lead designer / directeur artistique), deux frères, accompagnés d'Ivan Jakovlevski (commercial et relation client).
 - **Où** : Lausanne, canton de Vaud, Suisse. Zone d'intervention : tout l'arc lémanique et la Suisse romande.
 - **Quoi** : création de sites web sur-mesure, refonte de sites, web design, branding et identité visuelle, motion design, e-commerce, code sur-mesure, SEO.
 - **Comment** : relation directe avec les deux fondateurs, sans intermédiaire. Réponse sous 24h ouvrées, sans engagement. Un site vitrine prend généralement 3 à 6 semaines.
@@ -21,8 +21,9 @@
   - LAZIZZE DJ — portfolio immersif pour un DJ house de Lausanne (https://lazizze-git.github.io/DJ/#/)
   - Maison Alliani — site vitrine haute joaillerie pour un atelier suisse de grillz sur mesure (https://lazizze-git.github.io/grillz/)
   - Géotechnologie — site vitrine pour un bureau d'études géotechniques à Morzine, esthétique de document d'ingénierie (https://lazizze-git.github.io/G-otechnoligie/)
+  - VEG Consulting — site vitrine pour une fiduciaire lausannoise établie depuis 1999, élégance de banque privée (https://www.vegconsulting.ch/)
 - [À propos](https://wearebrothers.ch/studio) : philosophie, valeurs (proximité, craft, performance, transparence) et équipe
-- [Contact](https://wearebrothers.ch/contact) : formulaire de contact, FAQ (prix, délais, déroulement d'un projet)
+- [Contact](https://wearebrothers.ch/contact) : formulaire de contact, FAQ (délais, déroulement d'un projet, suivi après mise en ligne)
 
 ## À retenir
 
