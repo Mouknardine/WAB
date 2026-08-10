@@ -174,9 +174,12 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ════════════════════════════════════════════
        SERVICES — Toggle description au clic
        ════════════════════════════════════════════ */
-    document.querySelectorAll('.service-inner').forEach((btn) => {
+    document.querySelectorAll('.service-toggle').forEach((btn) => {
         btn.addEventListener('click', () => {
-            btn.closest('.service-row').classList.toggle('is-open');
+            const row = btn.closest('.service-row');
+            if (!row) return;
+            const isOpen = row.classList.toggle('is-open');
+            btn.setAttribute('aria-expanded', String(isOpen));
         });
     });
 
@@ -445,10 +448,12 @@ document.addEventListener('DOMContentLoaded', () => {
        ════════════════════════════════════════════ */
     const watermark = document.querySelector('.footer-watermark');
     if (watermark) {
+        // Le filigrane descend jusqu'à sa position finale sans jamais passer
+        // sous le bas du pied de page, sinon il serait tranché au défilement.
         gsap.fromTo(watermark,
-            { yPercent: 30 },
+            { yPercent: -10 },
             {
-                yPercent: -10,
+                yPercent: 0,
                 ease: 'none',
                 scrollTrigger: {
                     trigger: '.footer',

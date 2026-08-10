@@ -70,9 +70,9 @@
                     "@type": "OfferCatalog",
                     "name": "Services WeAreBrothers Studio",
                     "itemListElement": [
-                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Développement", "description": "Développement web scalable, rapide et pensé pour la performance et le référencement." } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Développement", "description": "Un développement rapide, évolutif et pensé pour la performance comme pour le référencement." } },
                         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Design", "description": "Des interfaces précises, lisibles et conçues pour une navigation fluide et naturelle." } },
-                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sur-mesure", "description": "Du code et des solutions sur-mesure pour les projets qui sortent du cadre standard." } }
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sur-mesure", "description": "Du code et des solutions sur mesure pour les projets qui sortent du cadre standard." } }
                     ]
                 }
             },
@@ -88,17 +88,17 @@
                 "@type": "Person",
                 "@id": "https://wearebrothers.ch/#eliott",
                 "name": "Eliott Pina",
-                "jobTitle": "Lead développeur",
+                "jobTitle": "Lead designer",
                 "worksFor": { "@id": "https://wearebrothers.ch/#organization" },
-                "knowsAbout": ["Next.js", "TypeScript", "Node.js", "Supabase", "PostgreSQL", "GSAP", "Développement full-stack"]
+                "knowsAbout": ["Figma", "Motion Design", "Branding", "GSAP", "Three.js", "After Effects", "Direction artistique"]
             },
             {
                 "@type": "Person",
                 "@id": "https://wearebrothers.ch/#matt",
                 "name": "Matt Pina",
-                "jobTitle": "Lead designer",
+                "jobTitle": "Lead développeur",
                 "worksFor": { "@id": "https://wearebrothers.ch/#organization" },
-                "knowsAbout": ["Figma", "Motion Design", "Branding", "GSAP", "Three.js", "After Effects", "Direction artistique"]
+                "knowsAbout": ["Next.js", "TypeScript", "Node.js", "Supabase", "PostgreSQL", "GSAP", "Développement full-stack"]
             },
             {
                 "@type": "WebPage",
@@ -121,7 +121,7 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inclusive+Sans&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css?v=58">
+    <link rel="stylesheet" href="style.css?v=60">
 
     <!-- GSAP -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
@@ -131,7 +131,7 @@
     <!-- Scripts -->
     <script src="fill-text.js?v=3" defer></script>
     <script src="nav-clock.js?v=1" defer></script>
-    <script src="script.js?v=17" defer></script>
+    <script src="script.js?v=19" defer></script>
 </head>
 
 <body>
@@ -201,16 +201,16 @@
             <section class="section intro" id="about">
                 <div class="container">
                     <p class="intro-text" data-fill-text>
-                        Nous sommes deux frères, basés à Lausanne, passionnés par la technologie et le design.
-                        Notre mission : créer des sites internet sur mesure qui gardent votre entreprise dans
-                        l'air du temps pendant que vous vous concentrez sur ce que vous faites de mieux. On ne
-                        se contente pas de faire du "beau" ; nous développons des outils taillés pour
-                        transformer les clics en clients.
+                        Un visiteur se fait une opinion de votre entreprise en quelques secondes, bien avant
+                        d'avoir lu la première ligne. Un site lent ou daté installe le doute ; un site clair,
+                        rapide et soigné inspire confiance immédiatement. Une première impression ne se joue
+                        qu'une fois — notre métier est de vous éviter de rater la vôtre.
                     </p>
                     <p class="intro-text" data-fill-text>
-                        Nous privilégions une relation simple et directe avec nos clients. Proches, flexibles et
-                        accessibles, on aime échanger naturellement, comprendre vos besoins et construire chaque projet
-                        dans un esprit de collaboration — idéalement autour d'un café.
+                        Nous sommes deux frères basés à Lausanne, passionnés de technologie et de design. Nous
+                        créons des sites sur mesure qui portent cette confiance dès le premier écran et
+                        transforment vos visiteurs en clients. Proches, flexibles et accessibles, nous
+                        construisons chaque projet avec vous — idéalement autour d'un café.
                     </p>
                     <a href="about.html" class="page-cta reveal">
                         <span>Découvrir le studio</span>
@@ -335,25 +335,40 @@
                 </div>
                 <div class="services-list">
                     <div class="service-row reveal" data-service="web-dev">
-                        <button type="button" class="container service-inner">
+                        <div class="container service-inner">
                             <h3 class="service-name">Développement</h3>
-                            <p class="service-desc">Développement web scalable, rapide et pensé pour la performance et le référencement. Nous développons en "Full Code", sans WordPress ni Wix, pour un chargement quasi instantané sur mobile. L'hébergement Suisse sécurisé (Infomaniak) est fourni avec un guide pour le gérer en toute autonomie.</p>
+                            <div class="service-desc" id="service-web-dev">
+                                <p>Un développement rapide, évolutif et pensé pour la performance comme pour le référencement. Nous codons chaque site de A à Z, sans WordPress ni Wix, pour un chargement quasi instantané sur mobile. L'hébergement suisse sécurisé (Infomaniak) est inclus, avec un guide pour le gérer en toute autonomie.</p>
+                            </div>
                             <span class="service-icon" aria-hidden="true">+</span>
-                        </button>
+                            <button type="button" class="service-toggle" aria-expanded="false" aria-controls="service-web-dev">
+                                <span class="sr-only">Développement</span>
+                            </button>
+                        </div>
                     </div>
                     <div class="service-row reveal" data-service="web-design">
-                        <button type="button" class="container service-inner">
+                        <div class="container service-inner">
                             <h3 class="service-name">Web Design</h3>
-                            <p class="service-desc">Des interfaces précises, lisibles et conçues pour une navigation fluide et naturelle. Un design épuré, des micro-animations qui guident vers l'action (appel, formulaire) et une navigation pensée en priorité pour mobile.</p>
+                            <div class="service-desc" id="service-web-design">
+                                <p>Des interfaces précises, lisibles et conçues pour une navigation fluide et naturelle. Un design épuré, des animations qui guident vos visiteurs vers l'action — appel, formulaire, devis — et une expérience pensée en priorité pour le mobile.</p>
+                            </div>
                             <span class="service-icon" aria-hidden="true">+</span>
-                        </button>
+                            <button type="button" class="service-toggle" aria-expanded="false" aria-controls="service-web-design">
+                                <span class="sr-only">Web Design</span>
+                            </button>
+                        </div>
                     </div>
                     <div class="service-row reveal" data-service="custom-code">
-                        <button type="button" class="container service-inner">
+                        <div class="container service-inner">
                             <h3 class="service-name">Sur-mesure</h3>
-                            <p class="service-desc">Du code et des solutions sur-mesure pour les projets qui sortent du cadre standard. Structures multi-pages, suivi de conversion avancé, et un accompagnement continu après la mise en ligne pour faire évoluer l'outil avec votre entreprise.</p>
+                            <div class="service-desc" id="service-custom-code">
+                                <p>Du code et des solutions sur mesure pour les projets qui sortent du cadre standard. Structures multi-pages, suivi de conversion avancé, et un accompagnement continu après la mise en ligne pour faire évoluer votre site au rythme de votre entreprise.</p>
+                            </div>
                             <span class="service-icon" aria-hidden="true">+</span>
-                        </button>
+                            <button type="button" class="service-toggle" aria-expanded="false" aria-controls="service-custom-code">
+                                <span class="sr-only">Sur-mesure</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </section>

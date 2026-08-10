@@ -1,7 +1,7 @@
 /**
  * WAB. — Page À PROPOS
  * Autonome : navigation, comportement du header, animations
- * d'entrée et au scroll, compteurs et galerie à glisser.
+ * d'entrée et au scroll.
  * L'effet « texte rose au scroll » est géré par fill-text.js,
  * l'horloge locale par nav-clock.js (partagés entre pages).
  */
@@ -83,37 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     })();
 
-    /* ── Galerie : glisser à la souris (le tactile scrolle nativement) ── */
-    (function initGalleryDrag() {
-        const track = document.getElementById('galleryTrack');
-        if (!track) return;
-
-        let isDown      = false;
-        let startX      = 0;
-        let startScroll = 0;
-
-        track.addEventListener('pointerdown', (e) => {
-            if (e.pointerType !== 'mouse') return;
-            isDown      = true;
-            startX      = e.clientX;
-            startScroll = track.scrollLeft;
-            track.classList.add('is-dragging');
-            track.setPointerCapture(e.pointerId);
-        });
-
-        track.addEventListener('pointermove', (e) => {
-            if (!isDown) return;
-            track.scrollLeft = startScroll - (e.clientX - startX);
-        });
-
-        function endDrag() {
-            isDown = false;
-            track.classList.remove('is-dragging');
-        }
-        track.addEventListener('pointerup', endDrag);
-        track.addEventListener('pointercancel', endDrag);
-    })();
-
     /* ── Animations (GSAP) ── */
     (function initAnimations() {
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -147,23 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
             gsap.to(el, {
                 y: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
                 scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
-            });
-        });
-
-        // Compteurs des chiffres
-        gsap.utils.toArray('.stat__num[data-count]').forEach((el) => {
-            const target = parseInt(el.dataset.count, 10);
-            if (Number.isNaN(target)) return;
-
-            const counter = { value: 0 };
-            gsap.to(counter, {
-                value: target,
-                duration: 1.4,
-                ease: 'power2.out',
-                scrollTrigger: { trigger: el, start: 'top 88%', once: true },
-                onUpdate() {
-                    el.textContent = String(Math.round(counter.value)).padStart(2, '0');
-                },
             });
         });
     })();

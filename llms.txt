@@ -4,11 +4,11 @@
 
 ## Le studio
 
-- **Qui** : Eliott Pina (lead développeur full-stack) et Matt Pina (lead designer / directeur artistique), deux frères, accompagnés d'Ivan Jakovlevski (commercial et relation client).
+- **Qui** : Eliott Pina (lead designer / directeur artistique) et Matt Pina (lead développeur full-stack), deux frères, accompagnés d'Ivan Jakovlevski (commercial et relation client).
 - **Où** : Lausanne, canton de Vaud, Suisse. Zone d'intervention : tout l'arc lémanique et la Suisse romande.
 - **Quoi** : création de sites web sur-mesure, refonte de sites, web design, branding et identité visuelle, motion design, e-commerce, code sur-mesure, SEO.
 - **Comment** : relation directe avec les deux fondateurs, sans intermédiaire. Réponse sous 24h ouvrées, sans engagement. Un site vitrine prend généralement 3 à 6 semaines.
-- **Stack technique** : développement en Next.js, TypeScript et Node.js (Eliott Pina), avec Supabase et PostgreSQL côté données. Design et animation sous Figma, GSAP, Three.js et After Effects (Matt Pina).
+- **Stack technique** : développement en Next.js, TypeScript et Node.js (Matt Pina), avec Supabase et PostgreSQL côté données. Design et animation sous Figma, GSAP, Three.js et After Effects (Eliott Pina).
 - **Contact** : contact@wearebrothers.ch — https://wearebrothers.ch/contact
 
 ## Pages

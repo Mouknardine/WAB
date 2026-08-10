@@ -73,9 +73,9 @@
                     "@type": "OfferCatalog",
                     "name": "Services WeAreBrothers Studio",
                     "itemListElement": [
-                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Développement", "description": "Développement web scalable, rapide et pensé pour la performance et le référencement." } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Développement", "description": "Un développement rapide, évolutif et pensé pour la performance comme pour le référencement." } },
                         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Design", "description": "Des interfaces précises, lisibles et conçues pour une navigation fluide et naturelle." } },
-                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sur-mesure", "description": "Du code et des solutions sur-mesure pour les projets qui sortent du cadre standard." } }
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sur-mesure", "description": "Du code et des solutions sur mesure pour les projets qui sortent du cadre standard." } }
                     ]
                 }
             },
@@ -135,8 +135,8 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inclusive+Sans&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css?v=58">
-    <link rel="stylesheet" href="about.css?v=16">
+    <link rel="stylesheet" href="style.css?v=60">
+    <link rel="stylesheet" href="about.css?v=18">
 
     <!-- GSAP -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
@@ -145,7 +145,7 @@
     <!-- Scripts -->
     <script src="fill-text.js?v=3" defer></script>
     <script src="nav-clock.js?v=1" defer></script>
-    <script src="about.js?v=8" defer></script>
+    <script src="about.js?v=9" defer></script>
 </head>
 
 <body>
@@ -200,7 +200,7 @@
                     <span class="about-hero__line"><span class="about-hero__line-inner">Un studio digital</span></span>
                     <span class="about-hero__line"><span class="about-hero__line-inner">fondé par <span class="accent">deux frères.</span></span></span>
                 </h1>
-                <p class="about-hero__intro">Nous réunissons design et développement pour créer des sites modernes, clairs et adaptés à chaque projet.</p>
+                <p class="about-hero__intro">Nous réunissons le design et le développement sous un même toit, pour créer des sites clairs, modernes et taillés pour chaque projet.</p>
                 <p class="about-hero__meta">
                     <span class="meta-dot"></span>
                     Lausanne, Suisse — Design &amp; Développement
@@ -213,11 +213,11 @@
             <div class="container">
                 <p class="section-label">Notre philosophie</p>
                 <p class="manifesto-text" data-fill-text>
-                    Nous ne concevons pas des sites à la chaîne. Chaque projet est
-                    travaillé dans le détail, du concept à la mise en ligne, pour créer
-                    une expérience visuelle forte, fluide et cohérente. Le design et la
-                    technique avancent ensemble afin de produire un site distinctif,
-                    durable et réellement adapté à l'identité de chaque client.
+                    Nous ne produisons pas des sites à la chaîne. Nous travaillons chaque
+                    projet dans le détail, du premier croquis à la mise en ligne, pour
+                    livrer une expérience forte, fluide et cohérente. Le design et la
+                    technique avancent ensemble : c'est ce qui donne un site distinctif,
+                    durable et vraiment fidèle à l'identité de chaque client.
                 </p>
             </div>
         </section>
@@ -230,64 +230,42 @@
                     <article class="value-row reveal">
                         <p class="value-row__num">(01)</p>
                         <h2 class="value-row__title">Proximité</h2>
-                        <p class="value-row__desc">Une relation simple et directe. On échange naturellement, idéalement autour d'un café.</p>
+                        <p class="value-row__desc">Une relation simple et directe. Nous échangeons sans détour, idéalement autour d'un café.</p>
                     </article>
                     <article class="value-row reveal">
                         <p class="value-row__num">(02)</p>
                         <h2 class="value-row__title">Craft</h2>
-                        <p class="value-row__desc">Le soin de l'artisan : chaque ligne de code et chaque pixel sont pensés, jamais de « assez bien ».</p>
+                        <p class="value-row__desc">Le soin de l'artisan : nous pesons chaque ligne de code et chaque pixel. Jamais d'« assez bien ».</p>
                     </article>
                     <article class="value-row reveal">
                         <p class="value-row__num">(03)</p>
                         <h2 class="value-row__title">Performance</h2>
-                        <p class="value-row__desc">Rapidité, fluidité et référencement : la beauté ne sert à rien si c'est lent.</p>
+                        <p class="value-row__desc">Rapidité, fluidité et référencement : un site lent ne convainc personne, aussi beau soit-il.</p>
                     </article>
                     <article class="value-row reveal">
                         <p class="value-row__num">(04)</p>
                         <h2 class="value-row__title">Transparence</h2>
-                        <p class="value-row__desc">Des échanges clairs, des prix honnêtes, aucune surprise en cours de route.</p>
+                        <p class="value-row__desc">Des échanges clairs, des tarifs justes et aucune surprise en cours de route.</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- 5. GALERIE — bande à glisser -->
-        <section class="about-section about-gallery" id="galerie">
-            <div class="container gallery__head">
-                <p class="section-label reveal">Alignés par la même vision</p>
-                <p class="gallery__hint reveal" aria-hidden="true">( glisser )</p>
-            </div>
-            <div class="gallery__track" id="galleryTrack">
-                <figure class="gallery__item">
-                    <img src="assets/images/project-slack.png" alt="Projet La Slack — portfolio créatif réalisé par WeAreBrothers, studio web à Lausanne" loading="lazy" decoding="async" draggable="false">
-                </figure>
-                <figure class="gallery__item">
-                    <img src="assets/images/project-dj.png" alt="Projet LAZIZZE DJ — portfolio immersif réalisé par WeAreBrothers, studio web à Lausanne" loading="lazy" decoding="async" draggable="false">
-                </figure>
-                <figure class="gallery__item">
-                    <img src="assets/images/project-nadege.png" alt="Projet Nadège Mouine — site personnel réalisé par WeAreBrothers, studio web à Lausanne" loading="lazy" decoding="async" draggable="false">
-                </figure>
-                <figure class="gallery__item">
-                    <img src="assets/images/project-commissione.png" alt="Projet Commissione Entretien — site professionnel réalisé par WeAreBrothers, studio web à Lausanne" loading="lazy" decoding="async" draggable="false">
-                </figure>
-            </div>
-        </section>
-
-        <!-- 6. ÉQUIPE -->
+        <!-- 4. ÉQUIPE -->
         <section class="about-section about-team" id="equipe">
             <div class="container">
                 <p class="section-label reveal">C'est nous</p>
                 <div class="team__grid">
 
                     <article class="profile reveal">
-                        <div class="profile__media profile__media--dev">
+                        <div class="profile__media profile__media--eliott">
                             <img src="assets/images/team-eliott.jpg" alt="Eliott Pina, designer et directeur artistique chez WeAreBrothers Studio à Lausanne" loading="lazy" decoding="async" draggable="false">
                         </div>
                         <h2 class="profile__name">Eliott Pina</h2>
                         <p class="profile__bio">
-                            Eliott s'occupe de la direction artistique des projets. Il travaille sur l'identité
-                            visuelle, la mise en page, les animations et l'expérience utilisateur. Il veille à ce que
-                            chaque site ait une identité cohérente et corresponde réellement à l'image du client.
+                            Eliott signe la direction artistique des projets : identité visuelle, mise en page,
+                            animations et expérience utilisateur. Il veille à ce que chaque site tienne d'un seul
+                            trait et reflète fidèlement l'image de son client.
                         </p>
                         <div class="profile__skills">
                             <span class="skill-badge">Figma</span>
@@ -300,14 +278,14 @@
                     </article>
 
                     <article class="profile reveal">
-                        <div class="profile__media profile__media--design">
+                        <div class="profile__media profile__media--matt">
                             <img src="assets/images/team-matt.jpg?v=4" alt="Matt Pina, développeur web full-stack chez WeAreBrothers Studio à Lausanne" loading="lazy" decoding="async" draggable="false">
                         </div>
                         <h2 class="profile__name">Matt Pina</h2>
                         <p class="profile__bio">
-                            Matt prend en charge la partie technique des projets, du développement jusqu'à la mise
-                            en ligne. Il construit des sites rapides, fiables et adaptés à tous les écrans, tout en
-                            s'assurant qu'ils restent faciles à faire évoluer.
+                            Matt pilote toute la partie technique, du développement à la mise en ligne. Il construit
+                            des sites rapides, fiables et impeccables sur tous les écrans, pensés dès le départ pour
+                            évoluer sans tout reconstruire.
                         </p>
                         <div class="profile__skills">
                             <span class="skill-badge">Next.js</span>
@@ -320,15 +298,15 @@
                     </article>
 
                     <article class="profile reveal">
-                        <div class="profile__media profile__media--sales">
+                        <div class="profile__media profile__media--ivan">
                             <img src="assets/images/team-ivan.jpg" alt="Ivan Jakovlevski, commercial et responsable relation client chez WeAreBrothers Studio à Lausanne" loading="lazy" decoding="async" draggable="false">
                         </div>
                         <h2 class="profile__name">Ivan Jakovlevski</h2>
                         <p class="profile__bio">
-                            Ivan s'occupe de la partie commerciale du studio. Il accompagne les clients du premier
-                            contact jusqu'au lancement du projet, avec une approche conviviale et de proximité. En
+                            Ivan est le premier interlocuteur de nos clients. Il les accompagne du premier contact
+                            jusqu'au lancement du projet, avec une approche conviviale et beaucoup de proximité. En
                             parallèle, il travaille en recherche et développement chez VEG Consulting, une fiduciaire
-                            lausannoise établie depuis plusieurs années.
+                            lausannoise établie de longue date.
                         </p>
                         <div class="profile__skills">
                             <span class="skill-badge">Relation client</span>
@@ -343,7 +321,7 @@
             </div>
         </section>
 
-        <!-- 7. CTA -->
+        <!-- 5. CTA -->
         <section class="about-section about-cta" id="contact">
             <div class="container">
                 <p class="section-label reveal">Travaillons ensemble</p>
