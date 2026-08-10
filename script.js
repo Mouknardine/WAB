@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroSection  = document.getElementById('hero');
     const menuToggle   = document.getElementById('menuToggle');
     const navOverlay   = document.getElementById('navOverlay');
-    const scrollHint   = document.querySelector('.hero-scroll-hint');
     const navLinks     = document.querySelectorAll('[data-nav-link]');
 
     /* ════════════════════════════════════════════
@@ -43,23 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
             ease: 'power4.out',
         })
         .to('.hero-subtitle', { opacity: 1, duration: 0.8, ease: 'power2.out' }, '-=0.7');
-
-    // Scroll hint: fade in then fade out on scroll
-    if (scrollHint) {
-        gsap.fromTo(scrollHint,
-            { opacity: 0 },
-            { opacity: 1, duration: 0.8, delay: 1.5, ease: 'power2.out' }
-        );
-        gsap.to(scrollHint, {
-            opacity: 0,
-            scrollTrigger: {
-                trigger: '.hero',
-                start: 'top top',
-                end: '25% top',
-                scrub: true,
-            },
-        });
-    }
 
     /* ════════════════════════════════════════════
        SCROLL REVEALS
