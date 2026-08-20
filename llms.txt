@@ -21,7 +21,6 @@
   - LAZIZZE DJ — portfolio immersif pour un DJ house de Lausanne (https://lazizze-git.github.io/DJ/#/)
   - Maison Alliani — site vitrine haute joaillerie pour un atelier suisse de grillz sur mesure (https://lazizze-git.github.io/grillz/)
   - Géotechnologie — site vitrine pour un bureau d'études géotechniques à Morzine, esthétique de document d'ingénierie (https://lazizze-git.github.io/G-otechnoligie/)
-  - VEG Consulting — site vitrine pour une fiduciaire lausannoise établie depuis 1999, élégance de banque privée (https://www.vegconsulting.ch/)
 - [À propos](https://wearebrothers.ch/studio) : philosophie, valeurs (proximité, craft, performance, transparence) et équipe
 - [Contact](https://wearebrothers.ch/contact) : formulaire de contact, FAQ (délais, déroulement d'un projet, suivi après mise en ligne)
 
