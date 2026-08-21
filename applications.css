@@ -83,43 +83,6 @@
     margin-top: clamp(18px, 2.5vw, 28px);
 }
 
-/* ── Le constat : trois blocs numérotés ── */
-.app-points {
-    display: grid;
-    gap: clamp(28px, 4vw, 48px);
-    margin-top: clamp(40px, 6vw, 72px);
-}
-
-.app-point {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: clamp(16px, 3vw, 40px);
-    align-items: start;
-    padding-top: clamp(20px, 3vw, 32px);
-    border-top: 1px dashed var(--border);
-}
-
-.app-point__num {
-    font-family: var(--font-display);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: var(--accent);
-    padding-top: 0.35em;
-}
-
-.app-point__text {
-    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
-    line-height: 1.7;
-    color: var(--text-muted);
-    max-width: 62ch;
-}
-
-.app-point__text strong {
-    color: var(--text);
-    font-weight: 400;
-}
-
 /* ── Principes de conception ── */
 .app-principles {
     display: grid;
@@ -421,15 +384,6 @@
 
 /* ── Petits écrans ── */
 @media (max-width: 640px) {
-    .app-point {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-
-    .app-point__num {
-        padding-top: 0;
-    }
-
     .app-stack__value {
         text-align: left;
         flex-basis: 100%;
