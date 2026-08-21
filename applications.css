@@ -173,16 +173,21 @@
     min-width: 0;
 }
 
-/* Le filigrane : le mot de la question, calé en haut de sa figure */
+/* Le filigrane : le mot de la question, posé derrière son annotation.
+   Derrière la capture il n'en dépassait qu'un fragment, qui se lisait
+   comme un défaut. Ici le mot est entier ; seuls les plus longs
+   sortent latéralement, comme le filigrane de la page Réalisations. */
 .app-shot__mark {
     position: absolute;
-    top: -0.26em;
-    left: -0.05em;
+    top: -0.16em;
+    left: -0.04em;
+    z-index: 0;
     font-family: var(--font-display);
-    font-size: clamp(3.5rem, 11vw, 7rem);
+    font-size: clamp(2.6rem, 8vw, 5.6rem);
     font-weight: 700;
     letter-spacing: -0.05em;
-    line-height: 0.8;
+    line-height: 0.82;
+    white-space: nowrap;
     text-transform: uppercase;
     color: color-mix(in srgb, var(--text) 5%, transparent);
     pointer-events: none;
@@ -193,7 +198,6 @@
 /* ── Figures ── */
 .app-figure {
     position: relative;
-    z-index: 1;
     margin: 0;
 }
 
@@ -256,6 +260,8 @@
 }
 
 .app-shot__idx {
+    position: relative;
+    z-index: 1;
     display: block;
     font-family: var(--font-display);
     font-size: 12px;
@@ -266,6 +272,8 @@
 }
 
 .app-shot__q {
+    position: relative;
+    z-index: 1;
     font-family: var(--font-display);
     font-size: clamp(1.1rem, 1.9vw, 1.55rem);
     font-weight: 700;
@@ -276,6 +284,8 @@
 }
 
 .app-shot__p {
+    position: relative;
+    z-index: 1;
     font-size: clamp(0.9rem, 1.2vw, 1rem);
     line-height: 1.7;
     color: var(--text-muted);
@@ -283,6 +293,8 @@
 }
 
 .app-shot__gain {
+    position: relative;
+    z-index: 1;
     font-family: var(--font-display);
     font-size: clamp(0.8rem, 1.05vw, 0.92rem);
     font-weight: 700;
@@ -382,6 +394,31 @@
 .app-lightbox__close:focus-visible {
     background: color-mix(in srgb, var(--white) 14%, transparent);
 }
+
+/* Sur petit écran, ramener la capture à la largeur de l'écran la rend
+   illisible : on l'affiche à sa taille native et on laisse balayer. */
+@media (max-width: 900px) {
+    .app-lightbox {
+        display: block;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 0;
+    }
+
+    .app-lightbox__img {
+        max-width: none;
+        max-height: none;
+        width: 1280px;
+        height: auto;
+        margin: 64px 16px 32px;
+        border: 0;
+    }
+
+    .app-lightbox__close {
+        position: fixed;
+    }
+}
+
 
 /* ── Fiche technique ── */
 .app-stack {
