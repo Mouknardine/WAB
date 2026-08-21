@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr-CH">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#F7609B">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!-- Favicon & icônes d'application -->
+    <link rel="icon" href="/favicon.ico?v=2" sizes="32x32">
+    <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>Applications Métier Sur Mesure — WeAreBrothers Studio | Lausanne</title>
+    <meta name="description"
+        content="Nous concevons et développons des applications web sur mesure pour les PME de l'arc lémanique : gestion de projets, suivi du temps, facturation. Des outils taillés pour une façon de travailler précise.">
+
+    <!-- SEO -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://wearebrothers.ch/applications">
+    <link rel="alternate" hreflang="fr-CH" href="https://wearebrothers.ch/applications">
+    <link rel="alternate" hreflang="x-default" href="https://wearebrothers.ch/applications">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Applications métier sur mesure — WeAreBrothers Studio">
+    <meta property="og:description" content="Quand aucun logiciel du marché ne fait exactement ce dont vous avez besoin. Développement d'applications web sur mesure à Lausanne.">
+    <meta property="og:url" content="https://wearebrothers.ch/applications">
+    <meta property="og:image" content="https://wearebrothers.ch/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="fr_CH">
+    <meta property="og:site_name" content="WeAreBrothers Studio">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Applications métier sur mesure — WeAreBrothers Studio">
+    <meta name="twitter:description" content="Quand aucun logiciel du marché ne fait exactement ce dont vous avez besoin. Développement sur mesure à Lausanne.">
+    <meta name="twitter:image" content="https://wearebrothers.ch/assets/og-image.png">
+
+    <!-- Données structurées (JSON-LD) — page, service, fil d'Ariane -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "@id": "https://wearebrothers.ch/applications#webpage",
+                "url": "https://wearebrothers.ch/applications",
+                "name": "Applications métier sur mesure — WeAreBrothers Studio",
+                "description": "Conception et développement d'applications web sur mesure pour les PME de l'arc lémanique.",
+                "inLanguage": "fr-CH",
+                "isPartOf": { "@id": "https://wearebrothers.ch/#website" },
+                "about": { "@id": "https://wearebrothers.ch/#organization" }
+            },
+            {
+                "@type": "Service",
+                "@id": "https://wearebrothers.ch/applications#service",
+                "name": "Développement d'applications métier sur mesure",
+                "serviceType": "Développement d'application web sur mesure",
+                "description": "Conception et développement d'outils internes sur mesure : gestion de projets, suivi du temps passé, facturation et rentabilité. Pensés pour un métier précis, sans fonctionnalité superflue.",
+                "provider": { "@id": "https://wearebrothers.ch/#organization" },
+                "areaServed": ["Lausanne", "Genève", "Vevey", "Nyon", "Morges", "Renens", "Vaud", "Arc lémanique", "Suisse romande"],
+                "availableLanguage": ["fr", "en"]
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://wearebrothers.ch/applications#breadcrumb",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://wearebrothers.ch/" },
+                    { "@type": "ListItem", "position": 2, "name": "Applications sur mesure", "item": "https://wearebrothers.ch/applications" }
+                ]
+            }
+        ]
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inclusive+Sans&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css?v=60">
+    <link rel="stylesheet" href="applications.css?v=1">
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
+
+    <!-- Scripts -->
+    <script src="nav-clock.js?v=1" defer></script>
+    <script src="applications.js?v=1" defer></script>
+</head>
+
+<body>
+
+    <!-- Fond « verre dépoli » : dégradé fixe flouté à travers le contenu -->
+    <div class="page-backdrop" aria-hidden="true"></div>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <a href="index.html" class="header-logo">WAB.</a>
+        <div class="header-actions">
+            <button class="header-menu-btn" id="menuToggle" aria-label="Toggle navigation">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- NAV OVERLAY -->
+    <nav class="nav-overlay" id="navOverlay">
+        <div class="nav-content">
+            <div class="nav-links">
+                <a href="index.html#hero" class="nav-link"><span class="nav-link__inner"><span class="nav-link__num">( 01 )</span><span class="nav-link__label">HOME</span></span></a>
+                <a href="work.html" class="nav-link"><span class="nav-link__inner"><span class="nav-link__num">( 02 )</span><span class="nav-link__label">WORK</span></span></a>
+                <a href="applications.html" class="nav-link" aria-current="page"><span class="nav-link__inner"><span class="nav-link__num">( 03 )</span><span class="nav-link__label">APPS</span></span></a>
+                <a href="about.html" class="nav-link"><span class="nav-link__inner"><span class="nav-link__num">( 04 )</span><span class="nav-link__label">ABOUT</span></span></a>
+                <a href="contact.html" class="nav-link"><span class="nav-link__inner"><span class="nav-link__num">( 05 )</span><span class="nav-link__label">CONTACT</span></span></a>
+            </div>
+            <div class="nav-footer">
+                <div class="nav-info">
+                    <p class="nav-info__label">Email</p>
+                    <a href="mailto:contact@wearebrothers.ch" class="nav-info__value">contact@wearebrothers.ch</a>
+                </div>
+                <div class="nav-info">
+                    <p class="nav-info__label">Studio</p>
+                    <p class="nav-info__value">Lausanne, Suisse — <time data-local-time>--:--</time></p>
+                </div>
+                <div class="nav-info">
+                    <p class="nav-info__label">Disponibilité</p>
+                    <p class="nav-info__value">Disponible pour de nouveaux projets</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main content-body content-body--soft">
+
+        <!-- 1. HERO -->
+        <section class="app-hero" id="hero">
+            <div class="container">
+                <p class="app-hero__label">Applications sur mesure</p>
+                <h1 class="app-hero__title">
+                    <span class="app-hero__line"><span class="app-hero__line-inner">Quand aucun logiciel</span></span>
+                    <span class="app-hero__line"><span class="app-hero__line-inner">ne fait <span class="accent">exactement</span></span></span>
+                    <span class="app-hero__line"><span class="app-hero__line-inner">ce dont vous avez besoin.</span></span>
+                </h1>
+                <p class="app-hero__intro">Nous ne faisons pas que des sites. Nous concevons et développons des applications métier — des outils taillés pour une façon de travailler précise, la vôtre.</p>
+                <p class="app-hero__meta">
+                    <span class="meta-dot"></span>
+                    Lausanne, Suisse — Développement sur mesure
+                </p>
+            </div>
+        </section>
+
+        <!-- 2. LE CONSTAT -->
+        <section class="app-section">
+            <div class="container">
+                <p class="section-label reveal">Le constat</p>
+                <h2 class="app-section__title reveal">Les outils génériques finissent tous de la même façon.</h2>
+                <p class="app-section__lead reveal">Une entreprise n'abandonne pas un logiciel parce qu'il est mauvais. Elle l'abandonne parce qu'il lui demande trop pour ce qu'il lui rend.</p>
+
+                <div class="app-points">
+                    <div class="app-point reveal">
+                        <span class="app-point__num">( 01 )</span>
+                        <p class="app-point__text"><strong>L'information se disperse.</strong> Un devis sur le Drive, des tâches dans un outil de gestion, des chiffres dans un tableur, les fichiers ailleurs encore. Reprendre un dossier laissé de côté trois semaines demande vingt minutes rien que pour se resituer.</p>
+                    </div>
+                    <div class="app-point reveal">
+                        <span class="app-point__num">( 02 )</span>
+                        <p class="app-point__text"><strong>Les logiciels du marché voient trop large.</strong> Ils sont conçus pour convenir à tout le monde, donc parfaitement à personne. Vous payez mille fonctions, vous en utilisez cinquante, et chaque saisie réclame des champs qui ne vous servent à rien.</p>
+                    </div>
+                    <div class="app-point reveal">
+                        <span class="app-point__num">( 03 )</span>
+                        <p class="app-point__text"><strong>Alors on cesse de les remplir.</strong> Un outil qu'on ne nourrit plus est un outil mort : les données repartent dans un tableur partagé, et on se retrouve au point de départ.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. NOTRE APPROCHE -->
+        <section class="app-section">
+            <div class="container">
+                <p class="section-label reveal">Notre approche</p>
+                <h2 class="app-section__title reveal">Construire moins, mais exactement.</h2>
+                <p class="app-section__lead reveal">Un outil sur mesure n'a pas à impressionner. Il a à être utilisé tous les jours sans qu'on y pense. Quatre règles guident tout ce que nous développons.</p>
+
+                <div class="app-principles">
+                    <div class="reveal">
+                        <h3 class="app-principle__title">Moins de dix secondes par saisie</h3>
+                        <p class="app-principle__desc">Si enregistrer une information prend plus de temps que de la griffonner sur un papier, personne ne le fera. Les actions fréquentes tiennent en deux clics, avec des valeurs déjà remplies.</p>
+                    </div>
+                    <div class="reveal">
+                        <h3 class="app-principle__title">Uniquement ce qui sert</h3>
+                        <p class="app-principle__desc">Pas de module qu'on n'ouvre jamais, pas de champ obligatoire inutile. Ce qui ne répond pas à un besoin réel n'est simplement pas construit.</p>
+                    </div>
+                    <div class="reveal">
+                        <h3 class="app-principle__title">Consultable depuis le téléphone</h3>
+                        <p class="app-principle__desc">On ouvre un dossier chez un client, debout, entre deux rendez-vous. L'interface est pensée pour le petit écran d'abord, pas adaptée après coup.</p>
+                    </div>
+                    <div class="reveal">
+                        <h3 class="app-principle__title">Rien ne se perd</h3>
+                        <p class="app-principle__desc">Les données s'archivent au lieu de disparaître. Une suppression définitive reste possible, mais elle est toujours explicite et annoncée.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. UN EXEMPLE -->
+        <section class="app-section">
+            <div class="container">
+                <p class="section-label reveal">Un exemple</p>
+                <h2 class="app-section__title reveal">Agenda WAB, un cockpit d'agence.</h2>
+                <p class="app-section__lead reveal">Une application que nous avons conçue et développée de bout en bout : elle réunit les projets, les tâches, le temps passé et l'argent au même endroit. L'objectif tenait en une phrase — ouvrir la fiche d'un projet et savoir en dix secondes où l'on en est, ce qu'il reste à faire, et où sont les fichiers.</p>
+
+                <div class="app-modules">
+                    <div class="reveal">
+                        <h3 class="app-module__name">Projets</h3>
+                        <p class="app-module__desc">Un pipeline qui suit le cycle réel, de la première discussion à la maintenance. Vue Kanban ou tableau, changement d'étape en un clic, historisé — on sait combien de temps un dossier est resté à chaque étape.</p>
+                    </div>
+                    <div class="reveal">
+                        <h3 class="app-module__name">Tâches</h3>
+                        <p class="app-module__desc">Assignation à plusieurs personnes sans hiérarchie, échéances, catégories. Une vue « ma journée » rassemble ce qui est en retard et ce qui tombe aujourd'hui, tous projets confondus.</p>
+                    </div>
+                    <div class="reveal">
+                        <h3 class="app-module__name">Temps</h3>
+                        <p class="app-module__desc">Un chronomètre qui survit au rechargement de la page, parce qu'il vit en base et non dans le navigateur. Et la saisie manuelle a posteriori, pour toutes les fois où on l'oublie.</p>
+                    </div>
+                    <div class="reveal">
+                        <h3 class="app-module__name">Argent</h3>
+                        <p class="app-module__desc">Devis, factures à numérotation continue, paiements par virement, TWINT ou carte, dépenses ponctuelles et abonnements. Un tableau de bord montre l'encaissé, le dû, et qui n'a pas encore payé.</p>
+                    </div>
+                    <div class="reveal">
+                        <h3 class="app-module__name">Rentabilité</h3>
+                        <p class="app-module__desc">Deux lectures côte à côte : ce qui reste réellement en caisse, et la marge une fois les heures valorisées à leur coût. Un projet peut être payé et perdre de l'argent — c'est précisément ce qu'on veut voir.</p>
+                    </div>
+                    <div class="reveal">
+                        <h3 class="app-module__name">Ressources</h3>
+                        <p class="app-module__desc">Documents, contrats et modèles réutilisables. Les liens vers le dépôt de code, la maquette ou le site en production, épinglés sur le projet et reconnaissables d'un coup d'œil.</p>
+                    </div>
+                </div>
+
+                <!-- CAPTURES D'ÉCRAN
+                     Déposer les fichiers dans assets/images/ puis retirer ce commentaire.
+                     Format conseillé : WebP, 1600 px de large.
+                     Renseigner width et height (dimensions réelles du fichier) pour
+                     éviter que la page ne saute au chargement.
+
+                <div class="app-shots">
+                    <figure class="app-figure reveal">
+                        <img src="assets/images/app-agenda-projets.webp" width="1600" height="1000"
+                             alt="Vue des projets d'Agenda WAB : pipeline en colonnes, de la discussion initiale à la maintenance"
+                             loading="lazy" decoding="async" draggable="false">
+                        <figcaption>Le pipeline des projets — changement d'étape en un clic.</figcaption>
+                    </figure>
+                    <figure class="app-figure reveal">
+                        <img src="assets/images/app-agenda-taches.webp" width="1600" height="1000"
+                             alt="Vue des tâches d'Agenda WAB, groupées par échéance et filtrables par personne et par projet"
+                             loading="lazy" decoding="async" draggable="false">
+                        <figcaption>Les tâches, groupées par échéance.</figcaption>
+                    </figure>
+                    <figure class="app-figure reveal">
+                        <img src="assets/images/app-agenda-finances.webp" width="1600" height="1000"
+                             alt="Tableau de bord financier d'Agenda WAB : encaissé du mois, montants dus et retards de paiement"
+                             loading="lazy" decoding="async" draggable="false">
+                        <figcaption>Le tableau de bord financier.</figcaption>
+                    </figure>
+                </div>
+                -->
+            </div>
+        </section>
+
+        <!-- 5. LA TECHNIQUE -->
+        <section class="app-section">
+            <div class="container">
+                <p class="section-label reveal">Sous le capot</p>
+                <h2 class="app-section__title reveal">Des choix techniques qui tiennent dans le temps.</h2>
+                <p class="app-section__lead reveal">Une application métier vit des années. Elle mérite des fondations solides, pas la solution la plus rapide à assembler.</p>
+
+                <div class="app-stack reveal">
+                    <div class="app-stack__row">
+                        <span class="app-stack__label">Interface</span>
+                        <span class="app-stack__value">Next.js, TypeScript strict</span>
+                    </div>
+                    <div class="app-stack__row">
+                        <span class="app-stack__label">Données</span>
+                        <span class="app-stack__value">PostgreSQL, sécurité au niveau de chaque ligne</span>
+                    </div>
+                    <div class="app-stack__row">
+                        <span class="app-stack__label">Fichiers</span>
+                        <span class="app-stack__value">Stockage privé, accès par lien signé temporaire</span>
+                    </div>
+                    <div class="app-stack__row">
+                        <span class="app-stack__label">Accès</span>
+                        <span class="app-stack__value">Mot de passe ou lien par e-mail, aucune inscription libre</span>
+                    </div>
+                    <div class="app-stack__row">
+                        <span class="app-stack__label">Hébergement</span>
+                        <span class="app-stack__value">Mise en ligne automatique à chaque validation</span>
+                    </div>
+                </div>
+
+                <p class="app-stack__note reveal">Un détail qui en dit long : les montants ne sont jamais stockés en nombres à virgule, mais en centimes entiers. C'est ce qui évite les totaux qui tombent à un centime près — l'erreur la plus courante des outils de facturation improvisés.</p>
+            </div>
+        </section>
+
+        <!-- 6. EST-CE POUR VOUS -->
+        <section class="app-section">
+            <div class="container">
+                <p class="section-label reveal">Est-ce pour vous&nbsp;?</p>
+                <h2 class="app-section__title reveal">Quatre signes qu'un outil sur mesure vaut le coup.</h2>
+
+                <ul class="app-signals reveal">
+                    <li>Un fichier Excel partagé qui a grossi jusqu'à devenir illisible, et que plus personne n'ose réorganiser.</li>
+                    <li>Les mêmes informations recopiées à la main d'un outil à l'autre, plusieurs fois par semaine.</li>
+                    <li>Un abonnement mensuel pour un logiciel dont vous utilisez à peine le dixième.</li>
+                    <li>Un processus que vous êtes seul à connaître, qui n'est écrit nulle part.</li>
+                </ul>
+
+                <p class="app-stack__note reveal">Si vous vous reconnaissez dans une seule de ces lignes, il y a probablement un outil à construire. Nous commençons toujours par regarder comment vous travaillez aujourd'hui — souvent, la bonne réponse est plus petite que ce qu'on imagine.</p>
+            </div>
+        </section>
+
+        <!-- 7. APPEL À L'ACTION -->
+        <section class="app-cta">
+            <div class="container">
+                <h2 class="app-cta__title reveal">Parlons de votre façon de travailler.</h2>
+                <a href="contact.html" class="app-cta__link reveal">Nous écrire →</a>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer" id="footer">
+            <div class="footer-watermark">WAB.</div>
+            <div class="container footer-content">
+                <div class="footer-top">
+                    <div class="footer-info">
+                        <p class="footer-status">DISPONIBLE POUR DE NOUVEAUX PROJETS</p>
+                        <p class="footer-copy">&copy; 2026 WAB.STUDIO</p>
+                    </div>
+                    <div class="footer-links">
+                        <a href="work.html" class="footer-link">Work</a>
+                        <a href="applications.html" class="footer-link">Apps</a>
+                        <a href="about.html" class="footer-link">About</a>
+                        <a href="contact.html" class="footer-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+</body>
+
+</html>
