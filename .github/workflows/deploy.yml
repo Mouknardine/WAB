@@ -40,3 +40,25 @@ jobs:
             **/.git*/**
             **/.github/**
             indexnow.sh
+
+      # Signale les pages à Bing / Yandex dès qu'elles sont en ligne.
+      # La clé de vérification part avec le site à l'étape précédente.
+      # N'échoue jamais le déploiement : un ping raté n'est pas bloquant.
+      - name: Notifier IndexNow
+        continue-on-error: true
+        run: |
+          KEY=0515e9f961a495712d522e48173e1a6f
+          curl -sS -X POST "https://api.indexnow.org/indexnow" \
+               -H "Content-Type: application/json; charset=utf-8" \
+               -w '\nIndexNow a répondu : %{http_code} (200/202 = accepté)\n' \
+               -d "{
+                     \"host\": \"wearebrothers.ch\",
+                     \"key\": \"$KEY\",
+                     \"keyLocation\": \"https://wearebrothers.ch/$KEY.txt\",
+                     \"urlList\": [
+                       \"https://wearebrothers.ch/\",
+                       \"https://wearebrothers.ch/realisations\",
+                       \"https://wearebrothers.ch/studio\",
+                       \"https://wearebrothers.ch/contact\"
+                     ]
+                   }"
