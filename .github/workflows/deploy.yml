@@ -39,3 +39,4 @@ jobs:
             **/.git*
             **/.git*/**
             **/.github/**
+            indexnow.sh
