@@ -59,5 +59,11 @@
     Header set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 
+# Types MIME (le manifeste n'est pas connu de tous les serveurs)
+<IfModule mod_mime.c>
+    AddType application/manifest+json .webmanifest
+    AddType image/x-icon .ico
+</IfModule>
+
 # UTF-8 par défaut
 AddDefaultCharset UTF-8
