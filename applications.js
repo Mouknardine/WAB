@@ -82,20 +82,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ── Visionneuse des captures ──
        Le lien pointe déjà sur l'image en pleine résolution : sans
-       JavaScript, le clic l'ouvre dans un onglet. Ici on l'intercepte. */
+       JavaScript, le clic l'ouvre dans un onglet. Ici on l'intercepte.
+       L'image s'ouvre entière ; un clic la passe à sa taille native
+       dans un cadre défilable, centré sur l'endroit touché. */
     (function initLightbox() {
         const box   = document.getElementById('lightbox');
+        const frame = document.getElementById('lightboxFrame');
         const img   = document.getElementById('lightboxImg');
+        const hint  = document.getElementById('lightboxHint');
         const close = document.getElementById('lightboxClose');
         const zooms = document.querySelectorAll('.app-figure__zoom');
-        if (!box || !img || !close || !zooms.length) return;
+        if (!box || !frame || !img || !close || !zooms.length) return;
 
+        const TEXTE_ZOOM   = 'Agrandir \u00e0 la taille r\u00e9elle';
+        const TEXTE_RETOUR = 'Revenir \u00e0 l\u2019image enti\u00e8re';
         let opener = null;
+
+        function unzoom() {
+            box.classList.remove('is-zoomed');
+            frame.scrollTo(0, 0);
+            if (hint) hint.textContent = TEXTE_ZOOM;
+        }
 
         function open(link) {
             opener = link;
             img.src = link.getAttribute('href');
-            img.alt = link.querySelector('img')?.alt || '';
+            img.alt = link.querySelector('img') ? link.querySelector('img').alt : '';
+            unzoom();
             box.hidden = false;
             document.body.style.overflow = 'hidden';
             close.focus();
@@ -103,21 +116,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function shut() {
             box.hidden = true;
+            unzoom();
             img.src = '';
             document.body.style.overflow = '';
             if (opener) { opener.focus(); opener = null; }
         }
 
-        zooms.forEach((link) => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                open(link);
+        // Bascule entre image entière et taille native, en gardant sous
+        // les yeux la zone touchée.
+        function toggleZoom(e) {
+            e.stopPropagation();
+            if (box.classList.contains('is-zoomed')) { unzoom(); return; }
+
+            const r  = img.getBoundingClientRect();
+            const rx = (e.clientX - r.left) / r.width;
+            const ry = (e.clientY - r.top) / r.height;
+
+            box.classList.add('is-zoomed');
+            if (hint) hint.textContent = TEXTE_RETOUR;
+
+            // après le changement de mise en page, on recentre
+            requestAnimationFrame(() => {
+                frame.scrollLeft = rx * img.offsetWidth  - frame.clientWidth  / 2;
+                frame.scrollTop  = ry * img.offsetHeight - frame.clientHeight / 2;
             });
+        }
+
+        zooms.forEach((link) => {
+            link.addEventListener('click', (e) => { e.preventDefault(); open(link); });
         });
 
+        img.addEventListener('click', toggleZoom);
         close.addEventListener('click', shut);
-        // Clic sur le fond, mais pas sur l'image elle-même
-        box.addEventListener('click', (e) => { if (e.target === box) shut(); });
+        // Clic hors de l'image : on ferme
+        box.addEventListener('click', (e) => {
+            if (e.target === box || e.target === frame) shut();
+        });
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && !box.hidden) shut();
         });

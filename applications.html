@@ -407,7 +407,10 @@
     <!-- Visionneuse : ouverte au clic sur une capture, fermée par Échap -->
     <div class="app-lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Capture agrandie" hidden>
         <button type="button" class="app-lightbox__close" id="lightboxClose" aria-label="Fermer">Fermer&nbsp;✕</button>
-        <img class="app-lightbox__img" id="lightboxImg" src="" alt="">
+        <div class="app-lightbox__frame" id="lightboxFrame">
+            <img class="app-lightbox__img" id="lightboxImg" src="" alt="">
+        </div>
+        <p class="app-lightbox__hint" id="lightboxHint">Agrandir à la taille réelle</p>
     </div>
 
 </body>
