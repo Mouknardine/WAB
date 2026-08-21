@@ -80,6 +80,49 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     })();
 
+    /* ── Visionneuse des captures ──
+       Le lien pointe déjà sur l'image en pleine résolution : sans
+       JavaScript, le clic l'ouvre dans un onglet. Ici on l'intercepte. */
+    (function initLightbox() {
+        const box   = document.getElementById('lightbox');
+        const img   = document.getElementById('lightboxImg');
+        const close = document.getElementById('lightboxClose');
+        const zooms = document.querySelectorAll('.app-figure__zoom');
+        if (!box || !img || !close || !zooms.length) return;
+
+        let opener = null;
+
+        function open(link) {
+            opener = link;
+            img.src = link.getAttribute('href');
+            img.alt = link.querySelector('img')?.alt || '';
+            box.hidden = false;
+            document.body.style.overflow = 'hidden';
+            close.focus();
+        }
+
+        function shut() {
+            box.hidden = true;
+            img.src = '';
+            document.body.style.overflow = '';
+            if (opener) { opener.focus(); opener = null; }
+        }
+
+        zooms.forEach((link) => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                open(link);
+            });
+        });
+
+        close.addEventListener('click', shut);
+        // Clic sur le fond, mais pas sur l'image elle-même
+        box.addEventListener('click', (e) => { if (e.target === box) shut(); });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !box.hidden) shut();
+        });
+    })();
+
     /* ── Animations (GSAP) ── */
     (function initAnimations() {
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -110,9 +153,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Parallaxe douce des captures : elles glissent un peu moins vite
         // que la page, ce qui décolle la composition sans distraire.
-        gsap.utils.toArray('.app-figure').forEach((el) => {
-            gsap.fromTo(el, { y: 22 }, {
-                y: -22, ease: 'none',
+        gsap.utils.toArray('.app-figure__zoom').forEach((el) => {
+            gsap.fromTo(el, { y: 14 }, {
+                y: -14, ease: 'none',
                 scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: 0.6 },
             });
         });

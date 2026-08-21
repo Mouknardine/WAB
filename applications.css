@@ -134,55 +134,140 @@
     color: var(--text-muted);
 }
 
-/* ── Cas d'usage ─────────────────────────────────────────────
-   Trois compositions asymétriques, pas une pile d'images. Chaque
-   capture déborde d'un côté de la page ; le filigrane géant reprend
-   l'élément signature de la page Réalisations.
-   Base = mobile empilé, l'asymétrie n'arrive qu'au-dessus de 900 px.
+/* ── La planche ──────────────────────────────────────────────
+   Trois figures annotées, à des échelles et des positions
+   différentes, posées sur un papier millimétré très pâle.
+   Reprend l'esthétique de document technique déjà employée
+   sur le projet Géotechnologie.
    ──────────────────────────────────────────────────────────── */
-.app-cases {
-    --gutter: clamp(24px, 4vw, 60px);
-    /* Aligne le texte sur la marge du .container, même au-delà de 1400 px */
-    --edge: max(var(--gutter), calc((100% - 1400px) / 2 + var(--gutter)));
-    display: grid;
-    gap: clamp(64px, 10vw, 150px);
-    margin-top: clamp(44px, 6vw, 84px);
+.app-section--plate {
+    padding-bottom: 0;
 }
 
-.app-case {
+.app-plate {
     position: relative;
-    /* rogne le filigrane qui déborde, sans couper la capture */
+    margin-top: clamp(40px, 6vw, 80px);
+    padding: clamp(60px, 7vw, 120px) 0 clamp(56px, 8vw, 120px);
+    border-top: 1px dashed var(--border-strong);
+    border-bottom: 1px dashed var(--border-strong);
     overflow: clip;
-    display: grid;
-    gap: clamp(20px, 3vw, 36px);
-    padding: 34px var(--gutter);
+    /* Le quadrillage : deux traits d'un pour cent d'encre */
+    background-image:
+        linear-gradient(to right, color-mix(in srgb, var(--text) 4%, transparent) 1px, transparent 1px),
+        linear-gradient(to bottom, color-mix(in srgb, var(--text) 4%, transparent) 1px, transparent 1px);
+    background-size: 34px 34px;
+    background-position: center top;
 }
 
-/* Filigrane : le mot de la question, posé très clair derrière tout */
-.app-case__mark {
+.app-plate__inner {
+    --gutter: clamp(24px, 4vw, 60px);
+    /* Aligne la planche sur la marge du .container au-delà de 1400 px */
+    --edge: max(var(--gutter), calc((100% - 1400px) / 2 + var(--gutter)));
+    padding: 0 var(--edge);
+    display: grid;
+    gap: clamp(52px, 8vw, 88px);
+}
+
+.app-shot {
+    position: relative;
+    min-width: 0;
+}
+
+/* Le filigrane : le mot de la question, calé en haut de sa figure */
+.app-shot__mark {
     position: absolute;
-    top: -0.1em;
-    right: -0.06em;
+    top: -0.26em;
+    left: -0.05em;
     font-family: var(--font-display);
-    font-size: clamp(4.5rem, 20vw, 8rem);
+    font-size: clamp(3.5rem, 11vw, 7rem);
     font-weight: 700;
     letter-spacing: -0.05em;
     line-height: 0.8;
     text-transform: uppercase;
-    color: color-mix(in srgb, var(--text) 4%, transparent);
+    color: color-mix(in srgb, var(--text) 5%, transparent);
     pointer-events: none;
     user-select: none;
     -webkit-user-select: none;
 }
 
-.app-case__text {
+/* ── Figures ── */
+.app-figure {
     position: relative;
     z-index: 1;
+    margin: 0;
 }
 
-.app-case__q {
+.app-figure__zoom {
+    position: relative;
+    display: block;
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    cursor: zoom-in;
+    transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 14px 36px -18px rgba(0, 0, 0, 0.2);
+}
+
+.app-figure__zoom:hover,
+.app-figure__zoom:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), 0 26px 54px -20px rgba(0, 0, 0, 0.26);
+}
+
+.app-figure__zoom img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Repères d'angle, comme les traits de coupe d'une planche imprimée */
+.app-figure__corner {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    border: 1px solid var(--accent);
+    pointer-events: none;
+}
+.app-figure__corner--tl { top: -1px;    left: -1px;    border-right: 0; border-bottom: 0; }
+.app-figure__corner--tr { top: -1px;    right: -1px;   border-left: 0;  border-bottom: 0; }
+.app-figure__corner--bl { bottom: -1px; left: -1px;    border-right: 0; border-top: 0; }
+.app-figure__corner--br { bottom: -1px; right: -1px;   border-left: 0;  border-top: 0; }
+
+.app-figure figcaption {
     font-family: var(--font-display);
-    font-size: clamp(1.15rem, 2vw, 1.7rem);
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    color: var(--text-subtle);
+    margin-top: 10px;
+}
+
+.app-figure__hint {
+    color: var(--accent);
+    white-space: nowrap;
+}
+
+/* ── Annotation ── */
+.app-shot__note {
+    position: relative;
+    z-index: 1;
+    margin-top: clamp(18px, 2.5vw, 28px);
+    padding-top: clamp(14px, 2vw, 20px);
+    border-top: 1px dashed var(--border-strong);
+    max-width: 62ch;
+}
+
+.app-shot__idx {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.app-shot__q {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 1.9vw, 1.55rem);
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.22;
@@ -190,91 +275,112 @@
     text-wrap: balance;
 }
 
-.app-case__p {
+.app-shot__p {
     font-size: clamp(0.9rem, 1.2vw, 1rem);
     line-height: 1.7;
     color: var(--text-muted);
-    margin-top: clamp(14px, 2vw, 20px);
+    margin-top: clamp(12px, 1.6vw, 16px);
 }
 
-/* Le gain concret : c'est l'argument de vente, il est traité comme tel */
-.app-case__gain {
+.app-shot__gain {
     font-family: var(--font-display);
-    font-size: clamp(0.82rem, 1.1vw, 0.95rem);
+    font-size: clamp(0.8rem, 1.05vw, 0.92rem);
     font-weight: 700;
     letter-spacing: -0.01em;
     line-height: 1.45;
     color: var(--accent);
-    margin-top: clamp(18px, 2.5vw, 28px);
-    padding-top: clamp(14px, 2vw, 18px);
-    border-top: 1px dashed var(--border-strong);
+    margin-top: clamp(14px, 2vw, 20px);
 }
 
-/* ── Captures ── */
-.app-figure {
-    position: relative;
-    z-index: 1;
-    margin: 0;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
-    background: var(--surface);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 18px 44px -16px rgba(0, 0, 0, 0.18);
-}
-
-.app-figure img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-.app-figure figcaption {
-    font-family: var(--font-display);
-    font-size: 11px;
-    letter-spacing: 0.04em;
-    color: var(--text-subtle);
-    padding: 12px clamp(14px, 2vw, 18px);
-    border-top: 1px dashed var(--border);
-}
-
-/* ── Au-delà de 900 px : la grille se désaxe et les captures débordent ── */
+/* ── Au-delà de 900 px : la planche se compose ──
+   Trois échelles, trois ancrages horizontaux, et une figure
+   qui remonte dans la rangée précédente. */
 @media (min-width: 901px) {
-    .app-case {
+    .app-plate__inner {
         grid-template-columns: repeat(12, 1fr);
-        align-items: center;
-        gap: clamp(24px, 3vw, 48px);
+        column-gap: clamp(20px, 2.6vw, 44px);
+        row-gap: clamp(64px, 8vw, 104px);
     }
 
-    /* 1 — texte serré à gauche, capture qui sort par la droite */
-    .app-case--right {
-        padding-left: var(--edge);
+    /* 01 et 02 partagent la rangée : la cascade se fait vers le bas,
+       jamais vers le haut — une marge négative sortirait de la planche
+       et se ferait rogner par le « clip ». */
+    .app-shot--1 {
+        grid-column: 1 / 8;
+        grid-row: 1;
+    }
+
+    /* 02 — format réduit à droite, décalé plus bas */
+    .app-shot--2 {
+        grid-column: 8 / -1;
+        grid-row: 1;
+        margin-top: clamp(72px, 10vw, 168px);
+    }
+
+    /* 03 — grand format, sort par le bord droit */
+    .app-shot--3 {
+        grid-column: 3 / -1;
+        grid-row: 2;
+        margin-right: calc(-1 * var(--edge));
         padding-right: 0;
     }
-    .app-case--right .app-case__text { grid-column: 1 / 5; }
-    .app-case--right .app-figure     { grid-column: 6 / -1; }
-    .app-case--right .app-case__mark { left: var(--edge); right: auto; }
+    .app-shot--3 .app-shot__note {
+        margin-right: var(--edge);
+    }
+    .app-shot--3 .app-figure figcaption {
+        margin-right: var(--edge);
+    }
+}
 
-    /* 2 — miroir : la capture sort par la gauche, le texte passe à droite */
-    .app-case--left {
-        padding-right: var(--edge);
-        padding-left: 0;
-    }
-    .app-case--left .app-case__text { grid-column: 9 / -1; }
-    .app-case--left .app-figure     { grid-column: 1 / 8; grid-row: 1; }
-    .app-case--left .app-case__mark { right: var(--edge); left: auto; }
+/* ── Visionneuse plein écran ── */
+.app-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(16px, 4vw, 56px);
+    background: color-mix(in srgb, var(--gray-1200) 88%, transparent);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    cursor: zoom-out;
+}
 
-    /* 3 — capture large, texte remonté en haut à gauche */
-    .app-case--wide {
-        padding-left: var(--edge);
-        padding-right: 0;
-        align-items: start;
-    }
-    .app-case--wide .app-case__text {
-        grid-column: 1 / 4;
-        padding-top: clamp(24px, 5vw, 88px);
-    }
-    .app-case--wide .app-figure     { grid-column: 5 / -1; }
-    .app-case--wide .app-case__mark { left: var(--edge); right: auto; }
+.app-lightbox[hidden] {
+    display: none;
+}
+
+.app-lightbox__img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    border: 1px solid color-mix(in srgb, var(--white) 20%, transparent);
+    cursor: default;
+}
+
+.app-lightbox__close {
+    position: absolute;
+    top: clamp(12px, 2.5vw, 28px);
+    right: clamp(12px, 2.5vw, 28px);
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: none;
+    border: 1px solid color-mix(in srgb, var(--white) 35%, transparent);
+    border-radius: 3px;
+    padding: 9px 14px;
+    cursor: pointer;
+    transition: background 0.25s var(--ease);
+}
+
+.app-lightbox__close:hover,
+.app-lightbox__close:focus-visible {
+    background: color-mix(in srgb, var(--white) 14%, transparent);
 }
 
 /* ── Fiche technique ── */

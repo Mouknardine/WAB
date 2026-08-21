@@ -167,59 +167,97 @@
             </div>
         </section>
 
-        <!-- 2. UN EXEMPLE — compositions asymétriques, une question par écran -->
-        <section class="app-section">
+        <!-- 2. UN EXEMPLE — planche annotée, trois figures à des échelles différentes -->
+        <section class="app-section app-section--plate">
             <div class="container">
                 <p class="section-label reveal">Un exemple</p>
                 <h2 class="app-section__title reveal">Un exemple&nbsp;: une application de gestion complète.</h2>
                 <p class="app-section__lead reveal">Un outil que nous avons conçu et développé de bout en bout pour une agence. Il réunit les projets, les tâches et les chiffres, et s'organise autour des trois questions que l'équipe se pose chaque jour.</p>
             </div>
 
-            <div class="app-cases">
-                <article class="app-case app-case--right reveal">
-                    <span class="app-case__mark" aria-hidden="true">Où</span>
-                    <div class="app-case__text">
-                        <h3 class="app-case__q">«&nbsp;Où en est ce dossier&nbsp;?&nbsp;»</h3>
-                        <p class="app-case__p">L'écran d'ouverture réunit les projets en cours, la trésorerie du mois, les montants restant à encaisser et les tâches du jour. Une équipe qui reprend un dossier après trois semaines en retrouve l'état complet sur une seule page.</p>
-                        <p class="app-case__gain">L'état de l'activité, lisible en un écran.</p>
-                    </div>
+            <div class="app-plate">
+                <div class="app-plate__inner">
+                <article class="app-shot app-shot--1 reveal">
+                    <span class="app-shot__mark" aria-hidden="true">Où</span>
                     <figure class="app-figure">
-                        <img src="assets/images/app-agenda-aujourdhui.webp" width="1600" height="530"
-                             alt="Tableau de bord d'une application de gestion sur mesure : projets en cours, trésorerie du mois, montants restant à encaisser et tâches du jour"
-                             loading="lazy" decoding="async" draggable="false">
-                        <figcaption>L'écran d'ouverture. Données de démonstration.</figcaption>
+                        <a class="app-figure__zoom" href="assets/images/app-agenda-aujourdhui-2560.webp"
+                           aria-label="Agrandir&nbsp;: L'écran d'ouverture">
+                            <img src="assets/images/app-agenda-aujourdhui-1280.webp"
+                                 srcset="assets/images/app-agenda-aujourdhui-1280.webp 1280w,
+                                         assets/images/app-agenda-aujourdhui-2560.webp 2560w"
+                                 sizes="(max-width: 900px) 100vw, 55vw"
+                                 width="1280" height="520"
+                                 alt="Tableau de bord d'une application de gestion sur mesure : projets en cours, trésorerie du mois, montants restant à encaisser et tâches du jour"
+                                 loading="lazy" decoding="async" draggable="false">
+                            <span class="app-figure__corner app-figure__corner--tl" aria-hidden="true"></span>
+                            <span class="app-figure__corner app-figure__corner--tr" aria-hidden="true"></span>
+                            <span class="app-figure__corner app-figure__corner--bl" aria-hidden="true"></span>
+                            <span class="app-figure__corner app-figure__corner--br" aria-hidden="true"></span>
+                        </a>
+                        <figcaption>L'écran d'ouverture — données de démonstration. <span class="app-figure__hint">Cliquer pour agrandir</span></figcaption>
                     </figure>
+                    <div class="app-shot__note">
+                        <span class="app-shot__idx">( 01 )</span>
+                        <h3 class="app-shot__q">«&nbsp;Où en est ce dossier&nbsp;?&nbsp;»</h3>
+                        <p class="app-shot__p">L'écran d'ouverture réunit les projets en cours, la trésorerie du mois, les montants restant à encaisser et les tâches du jour. Une équipe qui reprend un dossier après trois semaines en retrouve l'état complet sur une seule page.</p>
+                        <p class="app-shot__gain">L'état de l'activité, lisible en un écran.</p>
+                    </div>
                 </article>
 
-                <article class="app-case app-case--left reveal">
-                    <span class="app-case__mark" aria-hidden="true">Qui</span>
-                    <div class="app-case__text">
-                        <h3 class="app-case__q">«&nbsp;Qui fait quoi, et pour quand&nbsp;?&nbsp;»</h3>
-                        <p class="app-case__p">Toutes les tâches tiennent dans une vue unique, groupées par échéance et filtrables par personne, par projet ou par type de travail. Une tâche peut être assignée à plusieurs personnes à égalité, parce que c'est ainsi que cette équipe travaille.</p>
-                        <p class="app-case__gain">Chaque échéance visible par tout le monde, au même endroit.</p>
-                    </div>
+                <article class="app-shot app-shot--2 reveal">
+                    <span class="app-shot__mark" aria-hidden="true">Qui</span>
                     <figure class="app-figure">
-                        <img src="assets/images/app-agenda-taches.webp" width="1600" height="850"
-                             alt="Vue des tâches groupées par échéance, filtrables par personne, par projet et par catégorie"
-                             loading="lazy" decoding="async" draggable="false">
-                        <figcaption>Les tâches, groupées par échéance. Données de démonstration.</figcaption>
+                        <a class="app-figure__zoom" href="assets/images/app-agenda-taches-2560.webp"
+                           aria-label="Agrandir&nbsp;: Les tâches, groupées par échéance">
+                            <img src="assets/images/app-agenda-taches-1280.webp"
+                                 srcset="assets/images/app-agenda-taches-1280.webp 1280w,
+                                         assets/images/app-agenda-taches-2560.webp 2560w"
+                                 sizes="(max-width: 900px) 100vw, 38vw"
+                                 width="1280" height="840"
+                                 alt="Vue des tâches groupées par échéance, filtrables par personne, par projet et par catégorie"
+                                 loading="lazy" decoding="async" draggable="false">
+                            <span class="app-figure__corner app-figure__corner--tl" aria-hidden="true"></span>
+                            <span class="app-figure__corner app-figure__corner--tr" aria-hidden="true"></span>
+                            <span class="app-figure__corner app-figure__corner--bl" aria-hidden="true"></span>
+                            <span class="app-figure__corner app-figure__corner--br" aria-hidden="true"></span>
+                        </a>
+                        <figcaption>Les tâches, groupées par échéance — données de démonstration. <span class="app-figure__hint">Cliquer pour agrandir</span></figcaption>
                     </figure>
+                    <div class="app-shot__note">
+                        <span class="app-shot__idx">( 02 )</span>
+                        <h3 class="app-shot__q">«&nbsp;Qui fait quoi, et pour quand&nbsp;?&nbsp;»</h3>
+                        <p class="app-shot__p">Toutes les tâches tiennent dans une vue unique, groupées par échéance et filtrables par personne, par projet ou par type de travail. Une tâche peut être assignée à plusieurs personnes à égalité, parce que c'est ainsi que cette équipe travaille.</p>
+                        <p class="app-shot__gain">Chaque échéance visible par tout le monde, au même endroit.</p>
+                    </div>
                 </article>
 
-                <article class="app-case app-case--wide reveal">
-                    <span class="app-case__mark" aria-hidden="true">Combien</span>
-                    <div class="app-case__text">
-                        <h3 class="app-case__q">«&nbsp;Est-ce qu'on gagne de l'argent&nbsp;?&nbsp;»</h3>
-                        <p class="app-case__p">Le suivi financier affiche ce qui est signé, ce qui est facturé, ce qui est réellement encaissé et ce qu'il reste à recevoir. Les heures pointées sont valorisées au coût interne, ce qui donne la marge réelle projet par projet&nbsp;: un projet entièrement payé peut afficher une marge négative, et l'écran le montre.</p>
-                        <p class="app-case__gain">La rentabilité d'un projet, connue pendant qu'il tourne.</p>
-                    </div>
+                <article class="app-shot app-shot--3 reveal">
+                    <span class="app-shot__mark" aria-hidden="true">Combien</span>
                     <figure class="app-figure">
-                        <img src="assets/images/app-agenda-finances.webp" width="1600" height="1010"
-                             alt="Tableau de bord financier : montants signés, facturés et encaissés, évolution sur douze mois et derniers paiements reçus"
-                             loading="lazy" decoding="async" draggable="false">
-                        <figcaption>Le suivi financier. Données de démonstration.</figcaption>
+                        <a class="app-figure__zoom" href="assets/images/app-agenda-finances-2560.webp"
+                           aria-label="Agrandir&nbsp;: Le suivi financier">
+                            <img src="assets/images/app-agenda-finances-1280.webp"
+                                 srcset="assets/images/app-agenda-finances-1280.webp 1280w,
+                                         assets/images/app-agenda-finances-2560.webp 2560w"
+                                 sizes="(max-width: 900px) 100vw, 75vw"
+                                 width="1280" height="1000"
+                                 alt="Tableau de bord financier : montants signés, facturés et encaissés, évolution sur douze mois et derniers paiements reçus"
+                                 loading="lazy" decoding="async" draggable="false">
+                            <span class="app-figure__corner app-figure__corner--tl" aria-hidden="true"></span>
+                            <span class="app-figure__corner app-figure__corner--tr" aria-hidden="true"></span>
+                            <span class="app-figure__corner app-figure__corner--bl" aria-hidden="true"></span>
+                            <span class="app-figure__corner app-figure__corner--br" aria-hidden="true"></span>
+                        </a>
+                        <figcaption>Le suivi financier — données de démonstration. <span class="app-figure__hint">Cliquer pour agrandir</span></figcaption>
                     </figure>
+                    <div class="app-shot__note">
+                        <span class="app-shot__idx">( 03 )</span>
+                        <h3 class="app-shot__q">«&nbsp;Est-ce qu'on gagne de l'argent&nbsp;?&nbsp;»</h3>
+                        <p class="app-shot__p">Le suivi financier affiche ce qui est signé, ce qui est facturé, ce qui est réellement encaissé et ce qu'il reste à recevoir. Les heures pointées sont valorisées au coût interne, ce qui donne la marge réelle projet par projet&nbsp;: un projet entièrement payé peut afficher une marge négative, et l'écran le montre.</p>
+                        <p class="app-shot__gain">La rentabilité d'un projet, connue pendant qu'il tourne.</p>
+                    </div>
                 </article>
+                </div>
             </div>
 
             <div class="container">
@@ -368,6 +406,12 @@
         </footer>
 
     </main>
+
+    <!-- Visionneuse : ouverte au clic sur une capture, fermée par Échap -->
+    <div class="app-lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Capture agrandie" hidden>
+        <button type="button" class="app-lightbox__close" id="lightboxClose" aria-label="Fermer">Fermer&nbsp;✕</button>
+        <img class="app-lightbox__img" id="lightboxImg" src="" alt="">
+    </div>
 
 </body>
 
