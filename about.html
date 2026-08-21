@@ -7,6 +7,12 @@
     <meta name="theme-color" content="#F7609B">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!-- Favicon & icônes d'application -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
     <title>Notre Studio — Agence Web à Lausanne | WeAreBrothers</title>
     <meta name="description"
         content="Deux frères, un studio digital à Lausanne. Design, développement web et branding sur-mesure pour l'arc lémanique. Rencontrons-nous autour d'un café.">
@@ -49,7 +55,12 @@
                 "url": "https://wearebrothers.ch/",
                 "email": "contact@wearebrothers.ch",
                 "image": "https://wearebrothers.ch/assets/og-image.png",
-                "logo": "https://wearebrothers.ch/assets/og-image.png",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://wearebrothers.ch/assets/icon-512.png",
+                    "width": 512,
+                    "height": 512
+                },
                 "numberOfEmployees": 3,
                 "foundingLocation": { "@type": "Place", "name": "Lausanne, Suisse" },
                 "address": {
