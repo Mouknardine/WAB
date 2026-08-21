@@ -324,3 +324,34 @@
         flex-basis: 100%;
     }
 }
+
+/* ── Questions fréquentes ── */
+.app-faq {
+    margin-top: clamp(40px, 6vw, 72px);
+    max-width: 820px;
+}
+
+.app-faq__item {
+    padding: clamp(20px, 3vw, 32px) 0;
+    border-bottom: 1px dashed var(--border);
+}
+
+.app-faq__item:first-child {
+    border-top: 1px dashed var(--border);
+}
+
+.app-faq__q {
+    font-family: var(--font-display);
+    font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.app-faq__a {
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin: 0;
+}
