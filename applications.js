@@ -108,6 +108,15 @@ document.addEventListener('DOMContentLoaded', () => {
             .to('.app-hero__intro', { opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.5')
             .to('.app-hero__meta', { opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.4');
 
+        // Parallaxe douce des captures : elles glissent un peu moins vite
+        // que la page, ce qui décolle la composition sans distraire.
+        gsap.utils.toArray('.app-figure').forEach((el) => {
+            gsap.fromTo(el, { y: 22 }, {
+                y: -22, ease: 'none',
+                scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: 0.6 },
+            });
+        });
+
         // FadeUp générique
         gsap.utils.toArray('.reveal').forEach((el) => {
             gsap.to(el, {

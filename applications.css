@@ -171,37 +171,58 @@
     color: var(--text-muted);
 }
 
-/* ── Cas d'usage : une question, une réponse, une capture ──
-   Les colonnes alternent pour que la lecture serpente au lieu
-   d'empiler trois images identiques. */
+/* ── Cas d'usage ─────────────────────────────────────────────
+   Trois compositions asymétriques, pas une pile d'images. Chaque
+   capture déborde d'un côté de la page ; le filigrane géant reprend
+   l'élément signature de la page Réalisations.
+   Base = mobile empilé, l'asymétrie n'arrive qu'au-dessus de 900 px.
+   ──────────────────────────────────────────────────────────── */
 .app-cases {
+    --gutter: clamp(24px, 4vw, 60px);
+    /* Aligne le texte sur la marge du .container, même au-delà de 1400 px */
+    --edge: max(var(--gutter), calc((100% - 1400px) / 2 + var(--gutter)));
     display: grid;
-    gap: clamp(56px, 9vw, 128px);
-    margin-top: clamp(44px, 6vw, 80px);
+    gap: clamp(64px, 10vw, 150px);
+    margin-top: clamp(44px, 6vw, 84px);
 }
 
 .app-case {
+    position: relative;
+    /* rogne le filigrane qui déborde, sans couper la capture */
+    overflow: clip;
     display: grid;
-    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-    gap: clamp(24px, 4vw, 64px);
-    align-items: center;
+    gap: clamp(20px, 3vw, 36px);
+    padding: 34px var(--gutter);
 }
 
-/* Un cas sur deux inverse l'ordre : capture à gauche, texte à droite. */
-.app-case--flip {
-    grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.82fr);
+/* Filigrane : le mot de la question, posé très clair derrière tout */
+.app-case__mark {
+    position: absolute;
+    top: -0.1em;
+    right: -0.06em;
+    font-family: var(--font-display);
+    font-size: clamp(4.5rem, 20vw, 8rem);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 0.8;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--text) 4%, transparent);
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
-.app-case--flip .app-case__text {
-    order: 2;
+.app-case__text {
+    position: relative;
+    z-index: 1;
 }
 
 .app-case__q {
     font-family: var(--font-display);
-    font-size: clamp(1.15rem, 2vw, 1.6rem);
+    font-size: clamp(1.15rem, 2vw, 1.7rem);
     font-weight: 700;
     letter-spacing: -0.03em;
-    line-height: 1.25;
+    line-height: 1.22;
     color: var(--text);
     text-wrap: balance;
 }
@@ -213,27 +234,29 @@
     margin-top: clamp(14px, 2vw, 20px);
 }
 
-/* Le gain concret : c'est l'argument, il est traité comme tel. */
+/* Le gain concret : c'est l'argument de vente, il est traité comme tel */
 .app-case__gain {
     font-family: var(--font-display);
-    font-size: clamp(0.8rem, 1.05vw, 0.9rem);
+    font-size: clamp(0.82rem, 1.1vw, 0.95rem);
     font-weight: 700;
     letter-spacing: -0.01em;
     line-height: 1.45;
     color: var(--accent);
-    margin-top: clamp(18px, 2.5vw, 26px);
+    margin-top: clamp(18px, 2.5vw, 28px);
     padding-top: clamp(14px, 2vw, 18px);
     border-top: 1px dashed var(--border-strong);
 }
 
-/* ── Captures d'écran ── */
+/* ── Captures ── */
 .app-figure {
+    position: relative;
+    z-index: 1;
     margin: 0;
     border: 1px solid var(--border);
     border-radius: 6px;
     overflow: hidden;
     background: var(--surface);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 32px -12px rgba(0, 0, 0, 0.14);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 18px 44px -16px rgba(0, 0, 0, 0.18);
 }
 
 .app-figure img {
@@ -249,6 +272,46 @@
     color: var(--text-subtle);
     padding: 12px clamp(14px, 2vw, 18px);
     border-top: 1px dashed var(--border);
+}
+
+/* ── Au-delà de 900 px : la grille se désaxe et les captures débordent ── */
+@media (min-width: 901px) {
+    .app-case {
+        grid-template-columns: repeat(12, 1fr);
+        align-items: center;
+        gap: clamp(24px, 3vw, 48px);
+    }
+
+    /* 1 — texte serré à gauche, capture qui sort par la droite */
+    .app-case--right {
+        padding-left: var(--edge);
+        padding-right: 0;
+    }
+    .app-case--right .app-case__text { grid-column: 1 / 5; }
+    .app-case--right .app-figure     { grid-column: 6 / -1; }
+    .app-case--right .app-case__mark { left: var(--edge); right: auto; }
+
+    /* 2 — miroir : la capture sort par la gauche, le texte passe à droite */
+    .app-case--left {
+        padding-right: var(--edge);
+        padding-left: 0;
+    }
+    .app-case--left .app-case__text { grid-column: 9 / -1; }
+    .app-case--left .app-figure     { grid-column: 1 / 8; grid-row: 1; }
+    .app-case--left .app-case__mark { right: var(--edge); left: auto; }
+
+    /* 3 — capture large, texte remonté en haut à gauche */
+    .app-case--wide {
+        padding-left: var(--edge);
+        padding-right: 0;
+        align-items: start;
+    }
+    .app-case--wide .app-case__text {
+        grid-column: 1 / 4;
+        padding-top: clamp(24px, 5vw, 88px);
+    }
+    .app-case--wide .app-figure     { grid-column: 5 / -1; }
+    .app-case--wide .app-case__mark { left: var(--edge); right: auto; }
 }
 
 /* ── Fiche technique ── */
@@ -357,18 +420,6 @@
 }
 
 /* ── Petits écrans ── */
-@media (max-width: 900px) {
-    .app-case,
-    .app-case--flip {
-        grid-template-columns: 1fr;
-        gap: clamp(20px, 4vw, 32px);
-    }
-
-    .app-case--flip .app-case__text {
-        order: 0;
-    }
-}
-
 @media (max-width: 640px) {
     .app-point {
         grid-template-columns: 1fr;
