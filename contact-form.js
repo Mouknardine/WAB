@@ -55,6 +55,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     })();
 
+    /* ── Besoin pré-coché ──
+       Les liens venant de la page Applications arrivent avec
+       ?besoin=logiciel : la case correspondante est déjà cochée. */
+    (function initBesoinPrecoche() {
+        const demande = new URLSearchParams(window.location.search).get('besoin');
+        if (demande !== 'logiciel') return;
+
+        const chip = document.getElementById('chipLogiciel');
+        if (!chip) return;
+
+        chip.checked = true;
+        chip.dispatchEvent(new Event('change', { bubbles: true }));
+    })();
+
     /* ── Formulaire ── */
     (function initForm() {
         const form      = document.getElementById('contactForm');

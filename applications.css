@@ -91,21 +91,25 @@
     margin-top: clamp(40px, 6vw, 72px);
 }
 
-/* Un repère rose court plutôt qu'un filet pleine largeur : sur mobile,
-   cinq filets identiques donnaient un pavé uniforme. */
+/* Le numéro tient la marge gauche et le texte s'aligne à sa droite :
+   sur petit écran, les cinq blocs se lisent comme une liste numérotée
+   plutôt que comme cinq paragraphes empilés. */
 .app-principle {
-    position: relative;
-    padding-top: clamp(18px, 2.4vw, 26px);
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: clamp(14px, 2vw, 20px);
+    padding-top: clamp(16px, 2.2vw, 22px);
+    border-top: 1px dashed var(--border);
 }
 
-.app-principle::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 28px;
-    height: 2px;
-    background: var(--accent);
+.app-principle__idx {
+    grid-row: 1 / span 2;
+    font-family: var(--font-display);
+    font-size: clamp(0.72rem, 1vw, 0.8rem);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.7;
+    color: var(--accent);
 }
 
 .app-principle__title {
@@ -117,12 +121,14 @@
     color: var(--text);
     margin-bottom: 10px;
     text-wrap: balance;
+    grid-column: 2;
 }
 
 .app-principle__desc {
     font-size: clamp(0.9rem, 1.2vw, 1rem);
     line-height: 1.7;
     color: var(--text-muted);
+    grid-column: 2;
 }
 
 /* ── Modules de l'exemple ── */
@@ -531,37 +537,139 @@
     max-width: 68ch;
 }
 
-/* ── Appel à l'action ── */
+/* ── Appel à l'action ──────────────────────────────────────
+   La fin de page reprend le quadrillage de la planche et
+   déroule les trois temps du projet, avant la barre qui mène
+   au formulaire de contact.
+   ──────────────────────────────────────────────────────────── */
 .app-cta {
-    padding: clamp(72px, 11vw, 160px) 0;
+    padding: clamp(72px, 10vw, 140px) 0 clamp(80px, 12vw, 160px);
     border-top: 1px dashed var(--border-strong);
+    background-image:
+        linear-gradient(to right, color-mix(in srgb, var(--text) 4%, transparent) 1px, transparent 1px),
+        linear-gradient(to bottom, color-mix(in srgb, var(--text) 4%, transparent) 1px, transparent 1px);
+    background-size: 34px 34px;
+    background-position: center top;
 }
 
 .app-cta__title {
     font-family: var(--font-display);
-    font-size: clamp(1.8rem, 4.6vw, 4rem);
+    font-size: clamp(1.75rem, 4.2vw, 3.4rem);
     font-weight: 700;
     letter-spacing: -0.04em;
     line-height: 1.08;
     color: var(--text);
-    max-width: 18ch;
+    max-width: 22ch;
+    text-wrap: balance;
 }
 
-.app-cta__link {
-    display: inline-block;
+.app-cta__steps {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: clamp(30px, 4vw, 48px);
+    margin-top: clamp(40px, 6vw, 72px);
+}
+
+.app-cta__step {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: clamp(14px, 2vw, 20px);
+    padding-top: clamp(16px, 2.2vw, 22px);
+    border-top: 1px solid var(--border-strong);
+}
+
+.app-cta__step-idx {
+    grid-row: 1 / span 2;
     font-family: var(--font-display);
-    font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+    font-size: clamp(0.72rem, 1vw, 0.8rem);
     font-weight: 700;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.1em;
+    line-height: 1.7;
     color: var(--accent);
-    margin-top: clamp(28px, 4vw, 48px);
-    padding-bottom: 4px;
-    border-bottom: 1px solid currentColor;
-    transition: opacity 0.3s var(--ease);
 }
 
-.app-cta__link:hover {
-    opacity: 0.7;
+.app-cta__step-title {
+    grid-column: 2;
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+
+.app-cta__step-desc {
+    grid-column: 2;
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    line-height: 1.7;
+    color: var(--text-muted);
+}
+
+/* La barre finale : toute la largeur cliquable, remplie de rose au survol */
+.app-cta__action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(18px, 3vw, 40px);
+    margin-top: clamp(44px, 6vw, 80px);
+    padding: clamp(22px, 3vw, 34px) clamp(20px, 3vw, 36px);
+    border: 1px solid var(--text);
+    color: var(--text);
+    background: transparent;
+    -webkit-tap-highlight-color: transparent;
+    transition:
+        background 0.45s var(--ease),
+        border-color 0.45s var(--ease),
+        color 0.45s var(--ease);
+}
+
+.app-cta__action-main {
+    display: grid;
+    gap: 7px;
+    min-width: 0;
+}
+
+.app-cta__action-label {
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 2.6vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+.app-cta__action-sub {
+    font-size: clamp(0.82rem, 1.1vw, 0.95rem);
+    line-height: 1.5;
+    color: var(--text-muted);
+    transition: color 0.45s var(--ease);
+}
+
+.app-cta__action-arrow {
+    width: clamp(26px, 3vw, 40px);
+    height: auto;
+    flex-shrink: 0;
+    transition: transform 0.45s var(--ease);
+}
+
+.app-cta__action:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--white);
+}
+
+.app-cta__action:hover .app-cta__action-sub {
+    color: var(--white);
+}
+
+.app-cta__action:hover .app-cta__action-arrow {
+    transform: translate(5px, -5px);
+}
+
+.app-cta__action:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
 }
 
 /* ── Petits écrans ── */
@@ -587,8 +695,19 @@
     }
 
     .app-shot__q,
-    .app-principle__title {
+    .app-principle__title,
+    .app-cta__step-title {
         font-size: 1.06rem;
+    }
+
+    .app-cta__step-desc {
+        font-size: 0.95rem;
+        line-height: 1.78;
+    }
+
+    /* Les principes numérotés : de l'air entre chaque entrée */
+    .app-principles {
+        gap: 30px;
     }
 
     /* De l'air entre les figures de la planche */

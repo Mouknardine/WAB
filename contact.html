@@ -15,7 +15,7 @@
     <link rel="manifest" href="/site.webmanifest">
     <title>Contactez-nous — Agence Web Lausanne | WeAreBrothers</title>
     <meta name="description"
-        content="Parlons de votre projet web. Studio digital à Lausanne, disponible dans toute la région lémanique. Réponse sous 24h ouvrées, sans engagement.">
+        content="Parlons de votre projet : site web ou logiciel sur mesure. Studio digital à Lausanne, disponible dans toute la région lémanique. Réponse sous 24h ouvrées, sans engagement.">
 
     <!-- SEO -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -26,7 +26,7 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Contactez-nous — Agence Web Lausanne | WeAreBrothers">
-    <meta property="og:description" content="Parlons de votre projet web. Studio digital à Lausanne, réponse sous 24h ouvrées.">
+    <meta property="og:description" content="Parlons de votre projet : site web ou logiciel sur mesure. Studio digital à Lausanne, réponse sous 24h ouvrées.">
     <meta property="og:url" content="https://wearebrothers.ch/contact">
     <meta property="og:image" content="https://wearebrothers.ch/assets/og-image.png">
     <meta property="og:image:width" content="1200">
@@ -37,7 +37,7 @@
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Contactez-nous — Agence Web Lausanne | WeAreBrothers">
-    <meta name="twitter:description" content="Parlons de votre projet web. Studio digital à Lausanne, réponse sous 24h ouvrées.">
+    <meta name="twitter:description" content="Parlons de votre projet : site web ou logiciel sur mesure. Studio digital à Lausanne, réponse sous 24h ouvrées.">
     <meta name="twitter:image" content="https://wearebrothers.ch/assets/og-image.png">
 
     <!-- Données structurées (JSON-LD) — studio, site, fondateurs + page -->
@@ -116,7 +116,7 @@
                 "@id": "https://wearebrothers.ch/contact#webpage",
                 "url": "https://wearebrothers.ch/contact",
                 "name": "Contact — WeAreBrothers Studio, agence web à Lausanne",
-                "description": "Contactez WeAreBrothers Studio à Lausanne pour votre projet web : réponse sous 24h ouvrées, sans engagement.",
+                "description": "Contactez WeAreBrothers Studio à Lausanne pour votre site web ou votre logiciel sur mesure : réponse sous 24h ouvrées, sans engagement.",
                 "isPartOf": { "@id": "https://wearebrothers.ch/#website" },
                 "about": { "@id": "https://wearebrothers.ch/#organization" },
                 "mainEntity": { "@id": "https://wearebrothers.ch/#organization" },
@@ -286,24 +286,21 @@
                         <div class="chips">
                             <label class="chip"><input type="checkbox" name="Besoin[]" value="Nouveau site"><span>Nouveau site</span></label>
                             <label class="chip"><input type="checkbox" name="Besoin[]" value="Refonte"><span>Refonte</span></label>
+                            <label class="chip"><input type="checkbox" name="Besoin[]" value="Logiciel sur mesure" id="chipLogiciel"><span>Logiciel sur mesure</span></label>
                             <label class="chip"><input type="checkbox" name="Besoin[]" value="Branding"><span>Branding</span></label>
                             <label class="chip"><input type="checkbox" name="Besoin[]" value="Motion"><span>Motion</span></label>
                             <label class="chip"><input type="checkbox" name="Besoin[]" value="Autre"><span>Autre</span></label>
                         </div>
                     </fieldset>
 
-                    <fieldset class="form-field reveal">
-                        <legend class="field-head">
+                    <div class="form-field reveal">
+                        <div class="field-head">
                             <span class="field-num">( 04 )</span>
-                            <span class="field-label">Budget envisagé</span>
-                            <span class="field-hint">optionnel — pour mieux vous orienter</span>
-                        </legend>
-                        <div class="chips">
-                            <label class="chip"><input type="radio" name="Budget" value="Site vitrine"><span>Site vitrine</span></label>
-                            <label class="chip"><input type="radio" name="Budget" value="Projet sur mesure"><span>Projet sur mesure</span></label>
-                            <label class="chip"><input type="radio" name="Budget" value="A definir ensemble"><span>À définir ensemble</span></label>
+                            <label class="field-label" for="fieldBudget">Votre budget</label>
+                            <span class="field-hint">optionnel — une ligne, avec vos mots</span>
                         </div>
-                    </fieldset>
+                        <input type="text" id="fieldBudget" name="Budget" maxlength="160" enterkeyhint="next" placeholder="Ce que vous avez en tête">
+                    </div>
 
                     <div class="form-field reveal">
                         <div class="field-head">
@@ -352,7 +349,7 @@
 
                     <div class="aside-block reveal">
                         <p class="aside-label">Studio</p>
-                        <p class="aside-value">Lausanne, Suisse<br>Design &amp; Développement</p>
+                        <p class="aside-value">Lausanne, Suisse<br>Sites, identités &amp; logiciels sur mesure</p>
                     </div>
 
                     <div class="aside-block reveal">

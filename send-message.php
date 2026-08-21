@@ -47,7 +47,7 @@ if (!empty($_POST['_honey'])) {
 
 $nom     = clean((string) ($_POST['Nom'] ?? ''), 120);
 $email   = clean((string) ($_POST['Email'] ?? ''), 200);
-$budget  = clean((string) ($_POST['Budget'] ?? ''), 60);
+$budget  = clean((string) ($_POST['Budget'] ?? ''), 200);
 $message = trim((string) ($_POST['Message'] ?? ''));
 
 $besoins = $_POST['Besoin'] ?? [];
