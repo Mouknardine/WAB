@@ -172,7 +172,7 @@
             <div class="container">
                 <p class="section-label reveal">Un exemple</p>
                 <h2 class="app-section__title reveal">Un exemple&nbsp;: une application de gestion complète.</h2>
-                <p class="app-section__lead reveal">Un outil que nous avons conçu et développé de bout en bout pour une agence. Il réunit les projets, les tâches et les chiffres, et s'organise autour des trois questions que l'équipe se pose chaque jour.</p>
+                <p class="app-section__lead reveal">Un outil que nous avons conçu et développé de bout en bout pour une agence. Il couvre les projets, les tâches, le temps passé, les clients, les documents et la facturation. En voici trois écrans.</p>
             </div>
 
             <div class="app-plate">
@@ -258,31 +258,11 @@
             </div>
 
             <div class="container">
-                <p class="app-stack__note reveal">S'y ajoutent le pointage des heures, les fiches clients et les documents du projet. <strong>Trois modules ont été écartés en cours de construction</strong> parce que l'équipe n'en avait pas l'usage&nbsp;: décider ce qui reste dehors fait partie du travail.</p>
+                <p class="app-stack__note reveal">L'outil compte d'autres écrans&nbsp;: le pipeline des projets, le pointage des heures, les fiches clients, les ressources. <strong>Plusieurs modules ont été écartés en cours de construction</strong> parce que l'équipe n'en avait pas l'usage&nbsp;: décider ce qui reste dehors fait partie du travail.</p>
             </div>
         </section>
 
-        <!-- 3. CE QUE NOUS CONSTRUISONS -->
-        <section class="app-section">
-            <div class="container">
-                <p class="section-label reveal">Ce que nous construisons</p>
-                <h2 class="app-section__title reveal">Des outils de gestion taillés pour un métier.</h2>
-                <p class="app-section__lead reveal">Chaque entreprise a ses propres règles, mais certains besoins reviennent. Voici ce que nous développons le plus souvent pour les sociétés de la région.</p>
-
-                <ul class="app-signals reveal">
-                    <li>Le suivi de dossiers, de chantiers ou de commandes, de la demande initiale à la facture.</li>
-                    <li>Le pointage des heures et le calcul de rentabilité, par projet et par personne.</li>
-                    <li>Les devis et la facturation, avec numérotation continue et suivi des paiements.</li>
-                    <li>La planification des équipes, du matériel ou des interventions.</li>
-                    <li>Les tableaux de bord qui réunissent des chiffres répartis aujourd'hui entre plusieurs fichiers.</li>
-                    <li>La reprise de vos données existantes, importées depuis vos tableurs.</li>
-                </ul>
-
-                <p class="app-stack__note reveal">Un outil se construit module par module, chacun mis en service dès qu'il est terminé. Vous vous en servez pendant que la suite se développe.</p>
-            </div>
-        </section>
-
-        <!-- 4. NOTRE APPROCHE -->
+        <!-- 3. NOTRE APPROCHE -->
         <section class="app-section">
             <div class="container">
                 <p class="section-label reveal">Notre approche</p>
@@ -314,7 +294,7 @@
             </div>
         </section>
 
-        <!-- 5. SOUS LE CAPOT -->
+        <!-- 4. SOUS LE CAPOT -->
         <section class="app-section">
             <div class="container">
                 <p class="section-label reveal">Sous le capot</p>
@@ -348,34 +328,49 @@
             </div>
         </section>
 
-        <!-- 6. QUESTIONS FRÉQUENTES -->
+        <!-- 5. QUESTIONS FRÉQUENTES -->
         <section class="app-section">
             <div class="container">
                 <p class="section-label reveal">Questions fréquentes</p>
                 <h2 class="app-section__title reveal">Ce qu'on nous demande le plus souvent.</h2>
 
-                <dl class="app-faq">
-                    <div class="app-faq__item reveal">
-                        <dt class="app-faq__q">Combien coûte un logiciel sur mesure&nbsp;?</dt>
-                        <dd class="app-faq__a">Le prix suit le périmètre. Nous commençons par la plus petite version réellement utile&nbsp;: vous voyez l'outil fonctionner tôt, et vous décidez ensuite de ce qui mérite d'être construit. Un devis chiffré vous parvient sous 24&nbsp;h ouvrées après un premier échange.</dd>
-                    </div>
-                    <div class="app-faq__item reveal">
-                        <dt class="app-faq__q">Combien de temps faut-il pour développer une application de gestion&nbsp;?</dt>
-                        <dd class="app-faq__a">Nous livrons module par module, chacun utilisable en production dès qu'il est terminé. Concrètement&nbsp;: la gestion des dossiers d'abord, le suivi du temps ensuite, la facturation après. Vous vous en servez pendant que la suite se construit.</dd>
-                    </div>
-                    <div class="app-faq__item reveal">
-                        <dt class="app-faq__q">Faut-il remplacer tous vos outils d'un coup&nbsp;?</dt>
-                        <dd class="app-faq__a">Le premier module traite le besoin le plus pressant, souvent celui qui vit dans un tableur partagé. Vos données existantes sont reprises par import, pour que l'outil soit rempli dès sa mise en service. Le reste suit à votre rythme.</dd>
-                    </div>
-                    <div class="app-faq__item reveal">
-                        <dt class="app-faq__q">Nos données sont-elles en sécurité&nbsp;?</dt>
-                        <dd class="app-faq__a">Les documents sont déposés sur un stockage privé, accessible uniquement par lien signé à durée limitée. La base applique une règle d'accès sur chaque ligne, et seules les adresses que vous autorisez peuvent ouvrir un compte.</dd>
-                    </div>
-                </dl>
+                <div class="app-faq">
+                    <details class="app-faq__item reveal">
+                        <summary>
+                            <span>Combien coûte un logiciel sur mesure&nbsp;?</span>
+                            <span class="app-faq__icon" aria-hidden="true">+</span>
+                        </summary>
+                        <p class="app-faq__a">Le prix suit le périmètre. Nous commençons par la plus petite version réellement utile&nbsp;: vous voyez l'outil fonctionner tôt, et vous décidez ensuite de ce qui mérite d'être construit. Un devis chiffré vous parvient sous 24&nbsp;h ouvrées après un premier échange.</p>
+                    </details>
+
+                    <details class="app-faq__item reveal">
+                        <summary>
+                            <span>Combien de temps faut-il pour développer une application de gestion&nbsp;?</span>
+                            <span class="app-faq__icon" aria-hidden="true">+</span>
+                        </summary>
+                        <p class="app-faq__a">Nous livrons module par module, chacun utilisable en production dès qu'il est terminé. Concrètement&nbsp;: la gestion des dossiers d'abord, le suivi du temps ensuite, la facturation après. Vous vous en servez pendant que la suite se construit.</p>
+                    </details>
+
+                    <details class="app-faq__item reveal">
+                        <summary>
+                            <span>Faut-il remplacer tous vos outils d'un coup&nbsp;?</span>
+                            <span class="app-faq__icon" aria-hidden="true">+</span>
+                        </summary>
+                        <p class="app-faq__a">Le premier module traite le besoin le plus pressant, souvent celui qui vit dans un tableur partagé. Vos données existantes sont reprises par import, pour que l'outil soit rempli dès sa mise en service. Le reste suit à votre rythme.</p>
+                    </details>
+
+                    <details class="app-faq__item reveal">
+                        <summary>
+                            <span>Nos données sont-elles en sécurité&nbsp;?</span>
+                            <span class="app-faq__icon" aria-hidden="true">+</span>
+                        </summary>
+                        <p class="app-faq__a">Les documents sont déposés sur un stockage privé, accessible uniquement par lien signé à durée limitée. La base applique une règle d'accès sur chaque ligne, et seules les adresses que vous autorisez peuvent ouvrir un compte.</p>
+                    </details>
+                </div>
             </div>
         </section>
 
-        <!-- 7. APPEL À L'ACTION -->
+        <!-- 6. APPEL À L'ACTION -->
         <section class="app-cta">
             <div class="container">
                 <h2 class="app-cta__title reveal">Parlons de votre logiciel sur mesure.</h2>
