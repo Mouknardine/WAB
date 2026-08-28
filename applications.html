@@ -94,13 +94,14 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="style.css?v=60">
-    <link rel="stylesheet" href="applications.css?v=1">
+    <link rel="stylesheet" href="applications.css?v=2">
 
     <!-- GSAP -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
 
     <!-- Scripts -->
+    <script src="fill-text.js?v=3" defer></script>
     <script src="nav-clock.js?v=1" defer></script>
     <script src="applications.js?v=1" defer></script>
 </head>
@@ -337,15 +338,19 @@
             </div>
         </section>
 
-        <!-- 5. APPEL À L'ACTION — une barre, rien de plus -->
+        <!-- 5. APPEL À L'ACTION — même bloc contact que la page d'accueil -->
         <section class="app-cta">
             <div class="container">
-                <a href="contact.html?besoin=logiciel#formulaire" class="app-cta__action reveal">
-                    <span class="app-cta__action-label">Parlons de votre projet</span>
-                    <svg class="app-cta__action-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path d="M7 17L17 7M17 7H7M17 7V17" />
-                    </svg>
-                </a>
+                <h2 class="section-title reveal">CONTACT</h2>
+                <p class="contact-subtitle" data-fill-text>Donnons vie à votre projet.</p>
+                <div class="contact-actions reveal">
+                    <a href="contact.html?besoin=logiciel#formulaire" class="email-btn">
+                        <span>Démarrer un projet</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M7 17L17 7M17 7H7M17 7V17" />
+                        </svg>
+                    </a>
+                </div>
             </div>
         </section>
 

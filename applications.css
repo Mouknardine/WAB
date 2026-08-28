@@ -538,58 +538,12 @@
 }
 
 /* ── Appel à l'action ──
-   Une seule barre, toute la largeur cliquable, qui mène au contact. */
+   Le bloc contact de la page d'accueil, posé sur la trame de cette page :
+   filet pointillé en haut et respiration généreuse avant le pied de page. */
 .app-cta {
     padding: clamp(56px, 8vw, 110px) 0 clamp(64px, 9vw, 130px);
     border-top: 1px dashed var(--border-strong);
 }
-
-.app-cta__action {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: clamp(18px, 3vw, 40px);
-    padding: clamp(24px, 3vw, 36px) clamp(20px, 3vw, 36px);
-    border: 1px solid var(--text);
-    color: var(--text);
-    -webkit-tap-highlight-color: transparent;
-    transition:
-        background 0.45s var(--ease),
-        border-color 0.45s var(--ease),
-        color 0.45s var(--ease);
-}
-
-.app-cta__action-label {
-    font-family: var(--font-display);
-    font-size: clamp(1.15rem, 2.6vw, 2rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-}
-
-.app-cta__action-arrow {
-    width: clamp(26px, 3vw, 40px);
-    height: auto;
-    flex-shrink: 0;
-    transition: transform 0.45s var(--ease);
-}
-
-.app-cta__action:hover {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: var(--white);
-}
-
-.app-cta__action:hover .app-cta__action-arrow {
-    transform: translate(5px, -5px);
-}
-
-.app-cta__action:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 4px;
-}
-
-/* ── Petits écrans ── */
 
 /* ── Petits écrans : lecture plus aérée ──
    Un texte plus grand et davantage interligné réduit l'effet « pavé »,
