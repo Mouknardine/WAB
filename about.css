@@ -31,7 +31,7 @@
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-text);
     margin-bottom: clamp(20px, 3vw, 36px);
     opacity: 0;
 }
@@ -178,7 +178,7 @@
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-text);
     margin-bottom: 8px;
 }
 
@@ -218,7 +218,7 @@
 
 .skill-badge:hover {
     border-color: var(--accent);
-    color: var(--accent);
+    color: var(--accent-text);
 }
 
 /* ============================================
@@ -268,4 +268,10 @@
         border-color: var(--border-strong);
         color: var(--text-muted);
     }
+}
+
+/* Sur petit écran chaque ligne du titre se replie en deux :
+   `balance` répartit les mots pour éviter un mot orphelin. */
+.about-hero__line-inner {
+    text-wrap: balance;
 }

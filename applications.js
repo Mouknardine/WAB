@@ -94,6 +94,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const zooms = document.querySelectorAll('.app-figure__zoom');
         if (!box || !frame || !img || !close || !zooms.length) return;
 
+        // Pixel transparent : l'élément reste valide et ne déclenche
+        // aucune requête tant qu'aucune capture n'est ouverte.
+        const VIDE = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
         const TEXTE_ZOOM   = 'Agrandir \u00e0 la taille r\u00e9elle';
         const TEXTE_RETOUR = 'Revenir \u00e0 l\u2019image enti\u00e8re';
         let opener = null;
@@ -117,7 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
         function shut() {
             box.hidden = true;
             unzoom();
-            img.src = '';
+            img.src = VIDE;
+            img.alt = '';
             document.body.style.overflow = '';
             if (opener) { opener.focus(); opener = null; }
         }

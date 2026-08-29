@@ -25,7 +25,7 @@
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-text);
     margin-bottom: clamp(20px, 3vw, 36px);
     opacity: 0;
 }
@@ -102,7 +102,7 @@
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.05em;
-    color: var(--accent);
+    color: var(--accent-text);
     margin-bottom: 10px;
 }
 
@@ -180,7 +180,7 @@
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-text);
     margin-bottom: 4px;
 }
 
@@ -203,7 +203,7 @@
     content: '—';
     position: absolute;
     left: 0;
-    color: var(--accent);
+    color: var(--accent-text);
     font-family: var(--font-display);
     font-weight: 700;
 }
@@ -237,7 +237,7 @@
 }
 
 .work-item__link:hover {
-    color: var(--accent);
+    color: var(--accent-text);
 }
 
 .work-item__link:hover::after {
@@ -301,4 +301,10 @@
     .work-item__link:hover svg {
         transform: none;
     }
+}
+
+/* Sur petit écran chaque ligne du titre se replie en deux :
+   `balance` répartit les mots pour éviter un mot orphelin. */
+.work-hero__line-inner {
+    text-wrap: balance;
 }

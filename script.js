@@ -424,23 +424,65 @@ document.addEventListener('DOMContentLoaded', () => {
             else stop();
         }
 
-        // Démarre l'animation
-        syncPlayback();
+        /* Mouvement réduit : les oiseaux sont dessinés une seule fois,
+           dans le haut du ciel, et ne bougent plus. La scène garde sa
+           personnalité sans imposer d'animation continue à quelqu'un
+           qui a demandé à son système de les limiter. */
+        const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        function drawStill() {
+            stop();
+            resizeCanvas();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Les positions sont exprimées sur la largeur réellement
+            // disponible (largeur du canvas moins celle d'un oiseau) :
+            // aucun oiseau n'est coupé par le bord, même sur un écran
+            // de 320px. Sous deux largeurs d'oiseau, on n'en garde qu'un.
+            const libre = Math.max(0, canvas.width - BIRD_W);
+            const perches = canvas.width < BIRD_W * 2
+                ? [{ fx: 0.5, fy: 0.12, color: BASE_COLORS[0], flipped: false }]
+                : [
+                    { fx: 0.05, fy: 0.13, color: BASE_COLORS[0], flipped: false },
+                    { fx: 0.60, fy: 0.05, color: BASE_COLORS[3], flipped: true },
+                    { fx: 1.00, fy: 0.28, color: BASE_COLORS[1], flipped: false },
+                ];
+
+            for (const perche of perches) {
+                drawBird(0, libre * perche.fx, canvas.height * perche.fy, perche.color, perche.flipped);
+            }
+        }
+
+        function applyMotionPreference() {
+            if (motionQuery.matches) drawStill();
+            else syncPlayback();
+        }
+
+        applyMotionPreference();
+
+        if (typeof motionQuery.addEventListener === 'function') {
+            motionQuery.addEventListener('change', applyMotionPreference);
+        }
 
         // Pause des oiseaux quand le hero quitte l'écran
         // → plus aucun calcul canvas pendant le scroll du contenu
         if ('IntersectionObserver' in window) {
             const io = new IntersectionObserver((entries) => {
                 inView = entries[0].isIntersecting;
-                syncPlayback();
+                if (!motionQuery.matches) syncPlayback();
             }, { threshold: 0 });
             io.observe(canvas);
         }
 
         // Pause quand l'onglet est masqué
-        document.addEventListener('visibilitychange', syncPlayback);
+        document.addEventListener('visibilitychange', () => {
+            if (!motionQuery.matches) syncPlayback();
+        });
 
-        window.addEventListener('resize', () => { needsResize = true; }, { passive: true });
+        window.addEventListener('resize', () => {
+            if (motionQuery.matches) drawStill();
+            else needsResize = true;
+        }, { passive: true });
     })();
 
     /* ════════════════════════════════════════════

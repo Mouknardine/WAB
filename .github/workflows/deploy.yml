@@ -42,6 +42,12 @@ jobs:
             **/.git*
             **/.git*/**
             **/.github/**
+            **/.DS_Store
+            **/.claude/**
+            **/.impeccable/**
+            PRODUCT.md
+            DESIGN.md
+            README.md
             indexnow.sh
 
       # Signale les pages à Bing / Yandex dès qu'elles sont en ligne.

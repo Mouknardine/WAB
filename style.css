@@ -42,6 +42,11 @@
     --white: #ffffff;
     --black: #000000;
     --accent: #FF3C78;
+    /* Même teinte que --accent, assombrie pour que les petits textes
+       (étiquettes, index, liens survolés) passent le seuil WCAG AA
+       de 4.5:1 sur les fonds clairs. --accent reste la couleur des
+       aplats, des filets et des grands titres, où 3:1 suffit. */
+    --accent-text: #D1265B;
 
     /* Type */
     --font-display: 'IBM Plex Mono', monospace;
@@ -60,7 +65,17 @@
     color: #ffffff;
 }
 
+/* Les éléments dessinés par le navigateur portent eux aussi la
+   couleur du studio : curseur de saisie, cases à cocher, boutons
+   radio et barres de progression natives. */
+input,
+textarea,
+select {
+    caret-color: var(--accent);
+}
+
 html {
+    accent-color: var(--accent);
     scroll-behavior: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -133,7 +148,7 @@ img {
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-text);
     margin-bottom: clamp(28px, 4vw, 56px);
 }
 
@@ -156,6 +171,12 @@ img {
     left: 0;
     right: 0;
     z-index: 100;
+    /* Même gabarit que .container : logo et bouton de menu tombent
+       exactement sur les marges du contenu, à toutes les largeurs.
+       Sans cela, sur un écran large, ils restaient collés aux bords
+       alors que la page se centrait sur 1400px. */
+    max-width: 1400px;
+    margin-inline: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -323,17 +344,17 @@ img {
 }
 
 .nav-link:hover .nav-link__label {
-    color: var(--accent);
+    color: var(--accent-text);
     transform: translateX(12px);
 }
 
 .nav-link:hover .nav-link__num {
-    color: var(--accent);
+    color: var(--accent-text);
 }
 
 /* Page courante : son numéro reste allumé en rose */
 .nav-link[aria-current="page"] .nav-link__num {
-    color: var(--accent);
+    color: var(--accent-text);
 }
 
 /* ── Infos pratiques en bas du menu ── */
@@ -354,11 +375,11 @@ img {
 
 .nav-info__label {
     font-family: var(--font-display);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-text);
     margin-bottom: 6px;
 }
 
@@ -393,7 +414,7 @@ a.nav-info__value::after {
 }
 
 a.nav-info__value:hover {
-    color: var(--accent);
+    color: var(--accent-text);
 }
 
 a.nav-info__value:hover::after {
@@ -515,7 +536,16 @@ a.nav-info__value:hover::after {
     }
 }
 
+/* Au-dessus du canvas (z-index 2) : aucun oiseau ne peut passer
+   devant le nom du studio, qui est la première chose lue.
+   Même gabarit que .container et que l'en-tête : le titre démarre
+   sur la même verticale que tout le contenu de la page. */
 .hero-inner {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1400px;
+    margin-inline: auto;
     padding: 0 clamp(24px, 4vw, 60px) clamp(40px, 6vw, 80px);
 }
 
@@ -668,7 +698,7 @@ a.nav-info__value:hover::after {
 .project-index {
     font-size: 13px;
     font-weight: 500;
-    color: var(--accent);
+    color: var(--accent-text);
     letter-spacing: 0.05em;
 }
 
@@ -709,7 +739,7 @@ a.nav-info__value:hover::after {
 }
 
 .projects-more:hover {
-    color: var(--accent);
+    color: var(--accent-text);
 }
 
 .projects-more:hover::after {
@@ -776,24 +806,6 @@ a.nav-info__value:hover::after {
     width: 100%;
 }
 
-/* Fine barre d'accent qui se déploie le long du bord gauche */
-.service-row::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3px;
-    height: 100%;
-    background: var(--accent);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 0.5s var(--ease);
-}
-
-.service-row:hover::before {
-    transform: scaleY(1);
-}
-
 .services-list:hover .service-row:not(:hover) {
     opacity: 0.35;
 }
@@ -820,7 +832,7 @@ a.nav-info__value:hover::after {
     font-family: var(--font-display);
     font-size: clamp(1.3rem, 2vw, 1.7rem);
     font-weight: 500;
-    color: var(--accent);
+    color: var(--accent-text);
     line-height: 1;
     transition: transform 0.4s var(--ease);
 }
@@ -964,7 +976,7 @@ a.nav-info__value:hover::after {
 }
 
 .page-cta:hover {
-    color: var(--accent);
+    color: var(--accent-text);
 }
 
 .page-cta:hover::after {
@@ -1055,7 +1067,7 @@ a.nav-info__value:hover::after {
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-text);
     margin-bottom: 8px;
 }
 
@@ -1080,7 +1092,7 @@ a.nav-info__value:hover::after {
 }
 
 .footer-link:hover {
-    color: var(--accent);
+    color: var(--accent-text);
 }
 
 /* ============================================
@@ -1237,7 +1249,7 @@ a.nav-info__value:hover::after {
     }
 
     .nav-link[aria-current="page"] .nav-link__num {
-        color: var(--accent);
+        color: var(--accent-text);
     }
 
     a.nav-info__value:hover {

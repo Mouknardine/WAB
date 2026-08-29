@@ -24,7 +24,7 @@
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-text);
     margin-bottom: clamp(20px, 3vw, 36px);
     opacity: 0;
 }
@@ -93,7 +93,7 @@
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-text);
     margin-bottom: 10px;
 }
 
@@ -135,23 +135,27 @@
     word-break: break-all;
 }
 
+/* Animé en transform plutôt qu'en width : la ligne se déploie
+   sans provoquer de recalcul de mise en page à chaque image. */
 .email-link::after {
     content: '';
     position: absolute;
     bottom: -3px;
     left: 0;
-    width: 0;
+    width: 100%;
     height: 1px;
     background: var(--accent);
-    transition: width 0.3s var(--ease);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.3s var(--ease);
 }
 
 .email-link:hover {
-    color: var(--accent);
+    color: var(--accent-text);
 }
 
 .email-link:hover::after {
-    width: 100%;
+    transform: scaleX(1);
 }
 
 .copy-btn {
@@ -170,7 +174,7 @@
 
 .copy-btn:hover {
     border-color: var(--accent);
-    color: var(--accent);
+    color: var(--accent-text);
 }
 
 .copy-btn:active {
@@ -179,7 +183,7 @@
 
 .copy-btn.copied {
     border-color: var(--accent);
-    color: var(--accent);
+    color: var(--accent-text);
 }
 
 /* ── Formulaire ── */
@@ -194,8 +198,11 @@
     gap: 14px;
     /* Le champ ciblé (erreur, ancre) ne se cache pas sous le header fixe */
     scroll-margin-top: 110px;
-    padding: clamp(24px, 3.5vw, 40px) 0;
-    border-top: 1px solid var(--border);
+    /* Un seul filet par champ : c'est le soulignement du champ lui-même
+       qui sépare les blocs. Le filet supérieur du bloc suivant faisait
+       doublon et créait une double ligne à quelques pixels d'écart. */
+    padding: clamp(28px, 4vw, 48px) 0 0;
+    border-top: none;
     border-left: none;
     border-right: none;
     border-bottom: none;
@@ -204,6 +211,33 @@
 
 fieldset.form-field {
     min-width: 0;
+}
+
+/* Un <legend> se place par défaut sur le bord du fieldset et ignore
+   son padding : l'en-tête « Votre besoin » remontait donc coller au
+   champ précédent. Le flotter le remet dans le flux normal — ce qui
+   suppose un conteneur en flux, d'où le display: block ici plutôt
+   que la grille utilisée par les autres champs. */
+fieldset.form-field {
+    display: block;
+}
+
+fieldset.form-field > legend.field-head {
+    float: left;
+    width: 100%;
+    padding: 0;
+}
+
+fieldset.form-field > .chips {
+    clear: both;
+    margin-top: 14px;
+}
+
+/* Le premier champ garde un filet d'ouverture : il marque le début
+   du formulaire. Il suit le piège anti-spam, invisible mais présent
+   dans le DOM — d'où le sélecteur d'adjacence plutôt que :first-child. */
+.hp-field + .form-field {
+    border-top: 1px solid var(--border);
 }
 
 .field-head {
@@ -219,7 +253,7 @@ fieldset.form-field {
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.05em;
-    color: var(--accent);
+    color: var(--accent-text);
 }
 
 .field-label {
@@ -283,10 +317,14 @@ fieldset.form-field {
 }
 
 /* ── Chips (besoin / budget) ── */
+/* Ce groupe n'a pas de champ à souligner : il porte lui-même la ligne
+   de fin, à la même graisse que le soulignement des autres champs. */
 .chips {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    padding-bottom: clamp(20px, 2.6vw, 30px);
+    border-bottom: 1px solid var(--border-strong);
 }
 
 .chip {
@@ -384,7 +422,7 @@ fieldset.form-field {
 }
 
 .form-status a {
-    color: var(--accent);
+    color: var(--accent-text);
     text-decoration: underline;
     text-underline-offset: 3px;
 }
@@ -464,7 +502,7 @@ fieldset.form-field {
 }
 
 .faq-item summary:hover {
-    color: var(--accent);
+    color: var(--accent-text);
 }
 
 .faq-icon {
@@ -472,7 +510,7 @@ fieldset.form-field {
     font-family: var(--font-display);
     font-size: clamp(1.3rem, 2vw, 1.7rem);
     font-weight: 500;
-    color: var(--accent);
+    color: var(--accent-text);
     line-height: 1;
     transition: transform 0.4s var(--ease);
 }
@@ -531,7 +569,7 @@ fieldset.form-field {
 
     .copy-btn.copied {
         border-color: var(--accent);
-        color: var(--accent);
+        color: var(--accent-text);
     }
 
     .chip:hover span {
@@ -548,4 +586,10 @@ fieldset.form-field {
     .faq-item summary:hover {
         color: var(--text);
     }
+}
+
+/* Sur petit écran chaque ligne du titre se replie en deux :
+   `balance` répartit les mots pour éviter un mot orphelin. */
+.contact-hero__line-inner {
+    text-wrap: balance;
 }

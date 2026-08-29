@@ -1,2 +1,4 @@
 .DS_Store
 mail-config.php
+.impeccable/hook.cache.json
+.impeccable/live/sessions/
