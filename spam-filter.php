@@ -17,6 +17,9 @@
 
 declare(strict_types=1);
 
+/** Domaine du site — seul émetteur légitime du formulaire. */
+const SPAM_SITE_HOST = 'wearebrothers.ch';
+
 /** Score à partir duquel le message est considéré comme du spam. */
 const SPAM_BLOCK_SCORE = 7;
 
@@ -193,7 +196,7 @@ function spam_find_urls(string $text): array
     foreach ($bruts as $url) {
         $hote = preg_replace('~^(?:https?://)?(?:www\.)?~i', '', strtolower($url));
         $hote = rtrim(explode('/', $hote)[0], '.,;:!?');
-        if ($hote !== '' && $hote !== 'wearebrothers.ch') {
+        if ($hote !== '' && $hote !== SPAM_SITE_HOST) {
             $hotes[$hote] = true;
         }
     }
@@ -259,7 +262,7 @@ function spam_score(array $champs, ?int $age): array
         $add(2, 'aucune provenance annoncée');
     } else {
         $hote = strtolower((string) parse_url($origine, PHP_URL_HOST));
-        if ($hote !== '' && $hote !== 'wearebrothers.ch' && $hote !== 'www.wearebrothers.ch') {
+        if ($hote !== '' && $hote !== SPAM_SITE_HOST && $hote !== 'www.' . SPAM_SITE_HOST) {
             $add(SPAM_BLOCK_SCORE, "envoyé depuis un autre site ({$hote})");
         }
     }
