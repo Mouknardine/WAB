@@ -48,6 +48,22 @@ suffisent jamais** à bloquer (6 points maximum) : il faut toujours un
 second signal, un lien ou un envoi automatisé. Un vrai prospect qui
 donne l'adresse de son site actuel obtient 3 points et passe.
 
+### Tests
+
+```bash
+php tests/antispam.php      # barème et concordance du jeton PHP / JavaScript
+tests/antispam-e2e.sh       # parcours complet, ordre des couches
+```
+
+Le second verrouille un défaut réel : tant que l'anti-doublon est
+vérifié **avant** la limite de fréquence, un visiteur qui reclique sur
+un envoi qui semble lent ne voit pas ses messages suivants écartés en
+silence. Inverser les deux fait échouer le test.
+
+À lancer après toute retouche du barème : un faux positif ne se voit
+nulle part ailleurs, puisque l'expéditeur reçoit la même réponse dans
+les deux cas.
+
 ### Vérifier les faux positifs
 
 Chaque décision est consignée dans `.wab-data/spam.log` sur le serveur

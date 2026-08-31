@@ -51,6 +51,7 @@ jobs:
             README.md
             ANTISPAM.md
             PROMPT-ANTISPAM-CLIENTS.md
+            tests/**
             indexnow.sh
 
       # Signale les pages à Bing / Yandex dès qu'elles sont en ligne.
