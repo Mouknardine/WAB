@@ -80,14 +80,18 @@ if (defined('TURNSTILE_SECRET') && TURNSTILE_SECRET !== ''
     respond(true);
 }
 
-$limite = spam_rate_limit($ip);
-if ($limite !== null) {
-    spam_log('bloqué', $champs, 99, ["limite de fréquence : {$limite}"], $ip);
+// L'anti-doublon passe avant la limite de fréquence : un visiteur qui
+// croit son envoi perdu et reclique ne doit pas voir ce renvoi amputer
+// son quota horaire, sans quoi son message suivant — celui-là bien réel —
+// serait écarté en silence.
+if (spam_is_duplicate($email, $message)) {
+    spam_log('bloqué', $champs, 99, ['message identique déjà reçu dans les 24 h'], $ip);
     respond(true);
 }
 
-if (spam_is_duplicate($email, $message)) {
-    spam_log('bloqué', $champs, 99, ['message identique déjà reçu dans les 24 h'], $ip);
+$limite = spam_rate_limit($ip);
+if ($limite !== null) {
+    spam_log('bloqué', $champs, 99, ["limite de fréquence : {$limite}"], $ip);
     respond(true);
 }
 
