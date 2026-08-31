@@ -127,11 +127,19 @@ doute, on laisse passer.
    il faut toujours un second signal. Un vrai prospect qui donne
    l'adresse de son site actuel obtient 3 points et passe.
 
-4. **Une limite de fréquence** par adresse IP : 3 envois par heure, 10
+4. **Un anti-doublon** : le même message renvoyé dans les 24 h est
+   ignoré (empreinte sur email + message normalisé).
+
+5. **Une limite de fréquence** par adresse IP : 3 envois par heure, 10
    par 24 h. Stockage dans un fichier JSON, avec verrou.
 
-5. **Un anti-doublon** : le même message renvoyé dans les 24 h est
-   ignoré (empreinte sur email + message normalisé).
+   **L'ordre entre ces deux couches est impératif : le doublon se
+   vérifie avant la fréquence, et un doublon ne consomme rien.** Sinon
+   un visiteur qui croit son envoi perdu et reclique voit chaque renvoi
+   identique décompté de son quota horaire, et son message suivant —
+   bien réel celui-là — part au silence. Prouve-le par un test de bout
+   en bout : trois envois identiques puis deux messages différents ; les
+   deux derniers doivent passer.
 
 Prévois aussi, **sans l'activer**, un branchement Cloudflare Turnstile :
 la vérification ne s'exécute que si une clé secrète est définie côté
