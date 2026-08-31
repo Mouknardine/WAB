@@ -46,11 +46,24 @@ envoi "$identique"
 envoi "Rebonjour, j'ajoute que notre delai serait plutot septembre."
 envoi "Une derniere question : travaillez-vous aussi le motion design ?"
 
-attendu="envoyé bloqué bloqué envoyé envoyé"
-obtenu=$(python3 -c "
+# Le quota horaire est maintenant atteint (3 messages distincts comptés).
+# Ce quatrième message, distinct lui aussi, doit être écarté — et pour la
+# bonne raison : un test de quota qui renverrait un message identique
+# vérifierait l'anti-doublon sans s'en apercevoir.
+envoi "Et un dernier point sur le calendrier de production."
+
+attendu="envoyé bloqué bloqué envoyé envoyé bloqué"
+
+journal() {
+    python3 -c "
 import json, io
-print(' '.join(json.loads(l)['verdict'] for l in io.open('$donnees/spam.log', encoding='utf-8')))
-" 2>/dev/null)
+lignes = [json.loads(l) for l in io.open('$donnees/spam.log', encoding='utf-8')]
+$1
+" 2>/dev/null
+}
+
+obtenu=$(journal "print(' '.join(d['verdict'] for d in lignes))")
+motif=$(journal "print(' ; '.join(lignes[-1]['raisons']) if lignes else '')")
 
 echo "attendu : $attendu"
 echo "obtenu  : $obtenu"
@@ -58,14 +71,22 @@ echo "obtenu  : $obtenu"
 if [ "$obtenu" != "$attendu" ]; then
     echo
     echo "ÉCHEC — l'anti-doublon doit être vérifié AVANT la limite de fréquence."
-    python3 -c "
-import json, io
-for l in io.open('$donnees/spam.log', encoding='utf-8'):
-    d = json.loads(l)
-    print(f\"  {d['verdict']:8} {' ; '.join(d['raisons']) or 'rien à signaler'}\")
-"
+    journal "
+for d in lignes:
+    print(f\"  {d['verdict']:8} {' ; '.join(d['raisons']) or 'rien à signaler'}\")"
     exit 1
 fi
 
+case "$motif" in
+    *"limite de fréquence"*) ;;
+    *)
+        echo
+        echo "ÉCHEC — le dernier message devait être écarté par le quota horaire,"
+        echo "        il l'a été pour : ${motif:-aucune raison}"
+        exit 1
+        ;;
+esac
+
 echo
 echo "Les deux vrais messages passent : l'ordre des couches est correct."
+echo "Le quatrième message distinct est bien écarté par le quota horaire."

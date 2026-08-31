@@ -60,6 +60,11 @@ vérifié **avant** la limite de fréquence, un visiteur qui reclique sur
 un envoi qui semble lent ne voit pas ses messages suivants écartés en
 silence. Inverser les deux fait échouer le test.
 
+Il vérifie aussi le **motif** du dernier refus, pas seulement le fait
+qu'il ait lieu : le quatrième message distinct doit être écarté par le
+quota horaire. Un test de quota qui renverrait un message identique
+serait vert en vérifiant l'anti-doublon sans s'en apercevoir.
+
 À lancer après toute retouche du barème : un faux positif ne se voit
 nulle part ailleurs, puisque l'expéditeur reçoit la même réponse dans
 les deux cas.
