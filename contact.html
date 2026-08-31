@@ -253,10 +253,19 @@
                 <!-- Formulaire (en premier dans le DOM : priorité mobile) -->
                 <form class="contact-form" id="contactForm" action="send-message.php" method="POST" novalidate>
 
-                    <!-- Piège anti-spam : invisible pour les humains -->
+                    <!-- Jeton posé par contact-form.js à l'ouverture de la page :
+                         atteste qu'un vrai navigateur a affiché le formulaire et
+                         mesure le temps de remplissage. Placé avant .hp-field pour
+                         ne pas rompre le sélecteur « .hp-field + .form-field ». -->
+                    <input type="hidden" name="_ts" id="formStamp" value="">
+
+                    <!-- Pièges anti-spam : invisibles pour les humains, irrésistibles
+                         pour les robots qui remplissent tous les champs d'un formulaire. -->
                     <div class="hp-field" aria-hidden="true">
                         <label for="hpInput">Ne pas remplir</label>
                         <input type="text" name="_honey" id="hpInput" tabindex="-1" autocomplete="off">
+                        <label for="hpSite">Votre site web</label>
+                        <input type="text" name="website" id="hpSite" tabindex="-1" autocomplete="off">
                     </div>
 
                     <div class="form-field reveal">

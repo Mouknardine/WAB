@@ -1,4 +1,5 @@
 .DS_Store
 mail-config.php
+.wab-data/
 .impeccable/hook.cache.json
 .impeccable/live/sessions/

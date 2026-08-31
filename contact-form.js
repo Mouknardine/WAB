@@ -95,6 +95,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         let sending = false;
 
+        /* ── Jeton de page ──
+           Horodatage signé par une petite somme de contrôle, recalculée
+           à l'identique par spam-filter.php. Un robot qui poste
+           directement sur send-message.php ne peut pas le fournir sans
+           exécuter ce script, et le serveur voit combien de temps le
+           formulaire a mis à être rempli. */
+        (function initStamp() {
+            const stamp = document.getElementById('formStamp');
+            if (!stamp) return;
+
+            const SALT = 'wab-contact-v1'; // identique à SPAM_STAMP_SALT côté PHP
+            const seconds = Math.floor(Date.now() / 1000);
+            const source = SALT + ':' + seconds;
+
+            let hash = 0;
+            for (let i = 0; i < source.length; i++) {
+                hash = (hash * 31 + source.charCodeAt(i)) >>> 0;
+            }
+
+            stamp.value = seconds + '.' + hash.toString(36);
+        })();
+
         function setError(field, hasError) {
             const wrapper = field.input.closest('.form-field');
             if (wrapper) wrapper.classList.toggle('has-error', hasError);
@@ -157,10 +179,13 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
             if (sending) return;
 
-            // Piège anti-spam : un robot a rempli le champ caché →
+            // Pièges anti-spam : un robot a rempli un champ caché →
             // on affiche la confirmation sans rien envoyer.
-            const honeypot = form.querySelector('input[name="_honey"]');
-            if (honeypot && honeypot.value) {
+            const trapped = ['_honey', 'website'].some((name) => {
+                const trap = form.querySelector('input[name="' + name + '"]');
+                return trap && trap.value !== '';
+            });
+            if (trapped) {
                 showSuccess();
                 return;
             }

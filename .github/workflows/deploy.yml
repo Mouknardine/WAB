@@ -41,6 +41,7 @@ jobs:
           exclude: |
             **/.git*
             **/.git*/**
+            **/.wab-data/**
             **/.github/**
             **/.DS_Store
             **/.claude/**
@@ -48,6 +49,7 @@ jobs:
             PRODUCT.md
             DESIGN.md
             README.md
+            ANTISPAM.md
             indexnow.sh
 
       # Signale les pages à Bing / Yandex dès qu'elles sont en ligne.

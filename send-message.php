@@ -12,6 +12,7 @@
 declare(strict_types=1);
 
 require __DIR__ . '/smtp-mailer.php';
+require __DIR__ . '/spam-filter.php';
 
 const RECIPIENT = 'contact@wearebrothers.ch';
 
@@ -39,9 +40,9 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     respond(false, 'Méthode non autorisée');
 }
 
-// Piège anti-spam : un robot a rempli le champ invisible →
-// on répond « succès » sans rien envoyer.
-if (!empty($_POST['_honey'])) {
+// Pièges anti-spam : un robot a rempli l'un des champs invisibles
+// → on répond « succès » sans rien envoyer.
+if (!empty($_POST['_honey']) || !empty($_POST['website'])) {
     respond(true);
 }
 
@@ -61,21 +62,59 @@ if ($nom === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)
 
 $message = mb_substr($message, 0, 5000);
 
+/* ── Filtrage anti-spam ────────────────────────────────────────
+   Un message écarté reçoit la même réponse qu'un message accepté :
+   le robot ne peut pas deviner ce qui l'a fait échouer, et il est
+   consigné dans .wab-data/spam.log pour vérification. */
+
+$champs = ['nom' => $nom, 'email' => $email, 'budget' => $budget, 'message' => $message];
+$ip     = spam_client_ip();
+
+// Turnstile n'est actif que si la clé est présente dans mail-config.php.
+if (is_file(__DIR__ . '/mail-config.php')) {
+    require_once __DIR__ . '/mail-config.php';
+}
+if (defined('TURNSTILE_SECRET') && TURNSTILE_SECRET !== ''
+    && !spam_turnstile_ok(TURNSTILE_SECRET, (string) ($_POST['cf-turnstile-response'] ?? ''), $ip)) {
+    spam_log('bloqué', $champs, 99, ['Turnstile refusé'], $ip);
+    respond(true);
+}
+
+$limite = spam_rate_limit($ip);
+if ($limite !== null) {
+    spam_log('bloqué', $champs, 99, ["limite de fréquence : {$limite}"], $ip);
+    respond(true);
+}
+
+if (spam_is_duplicate($email, $message)) {
+    spam_log('bloqué', $champs, 99, ['message identique déjà reçu dans les 24 h'], $ip);
+    respond(true);
+}
+
+$analyse = spam_score($champs, spam_stamp_age((string) ($_POST['_ts'] ?? '')));
+if ($analyse['score'] >= SPAM_BLOCK_SCORE) {
+    spam_log('bloqué', $champs, $analyse['score'], $analyse['raisons'], $ip);
+    respond(true);
+}
+spam_log('envoyé', $champs, $analyse['score'], $analyse['raisons'], $ip);
+
 $corps = "Nouveau message depuis wearebrothers.ch\n"
     . "----------------------------------------\n\n"
     . "Nom     : {$nom}\n"
     . "Email   : {$email}\n"
     . ($besoinsTexte !== '' ? "Besoin  : {$besoinsTexte}\n" : '')
     . ($budget !== '' ? "Budget  : {$budget}\n" : '')
-    . "\nMessage :\n{$message}\n";
+    . "\nMessage :\n{$message}\n"
+    . "\n----------------------------------------\n"
+    . "IP : {$ip} — score anti-spam : {$analyse['score']}/" . SPAM_BLOCK_SCORE
+    . ($analyse['raisons'] !== [] ? ' (' . implode(' ; ', $analyse['raisons']) . ')' : '') . "\n";
 
 // Identifiants SMTP : fichier généré au déploiement depuis les
 // secrets GitHub (SMTP_USER / SMTP_PASSWORD), absent du dépôt.
 $configFile = __DIR__ . '/mail-config.php';
-if (!is_file($configFile)) {
+if (!is_file($configFile) || !defined('SMTP_USER_B64')) {
     respond(false, 'Configuration email manquante sur le serveur');
 }
-require $configFile;
 
 $smtpUser = base64_decode(SMTP_USER_B64, true) ?: '';
 $smtpPass = base64_decode(SMTP_PASS_B64, true) ?: '';
