@@ -21,6 +21,7 @@
   - LAZIZZE DJ — portfolio immersif pour un DJ house de Lausanne (https://lazizze-git.github.io/DJ/#/)
   - Maison Alliani — site vitrine haute joaillerie pour un atelier suisse de grillz sur mesure (https://lazizze-git.github.io/grillz/)
   - Géotechnologie — site vitrine pour un bureau d'études géotechniques à Morzine, esthétique de document d'ingénierie (https://lazizze-git.github.io/G-otechnoligie/)
+  - Le P'tit Central — site vitrine d'un café-restaurant de quartier de la rue Centrale à Lausanne, esthétique azulejos (https://le-p-tit-central.vercel.app/)
 - [À propos](https://wearebrothers.ch/studio) : philosophie, valeurs (proximité, craft, performance, transparence) et équipe
 - [Contact](https://wearebrothers.ch/contact) : formulaire de contact, FAQ (délais, déroulement d'un projet, suivi après mise en ligne)
 
