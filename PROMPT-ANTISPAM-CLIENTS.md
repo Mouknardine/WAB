@@ -1,8 +1,8 @@
 # Prompt à donner à Claude Code sur un dépôt client
 
-Copiez tout ce qui suit la ligne, dans une session Claude Code ouverte
-sur le dépôt du site client. Remplacez `DOMAINE-DU-CLIENT.ch` par le
-domaine réel avant d'envoyer.
+Copiez tout ce qui suit la ligne, tel quel, dans une session Claude Code
+ouverte sur le dépôt du site client. Rien à modifier : l'agent retrouve
+le domaine du site tout seul dans le dépôt.
 
 L'implémentation de référence est dans le dépôt `Mouknardine/WAB` :
 `spam-filter.php`, `send-message.php`, `contact-form.js`, `ANTISPAM.md`.
@@ -11,9 +11,12 @@ demandez-lui de s'en inspirer plutôt que de repartir de zéro.
 
 ---
 
-Le formulaire de contact du site **DOMAINE-DU-CLIENT.ch** reçoit du spam
-automatisé, ou risque d'en recevoir. Voici un message réel reçu sur un
-autre site que nous gérons, qui servira d'échantillon de test :
+Le formulaire de contact de ce site reçoit du spam automatisé, ou risque
+d'en recevoir. Commence par retrouver le domaine du site dans le dépôt
+(fichier `CNAME`, workflow de déploiement, balises `canonical`,
+`sitemap.xml`) — tu en auras besoin plus bas — et dis-moi lequel tu as
+retenu. Voici un message réel reçu sur un autre site que nous gérons,
+qui servira d'échantillon de test :
 
     Nom     : Larrynes
     Email   : stefff.b@web.de
