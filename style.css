@@ -458,79 +458,19 @@ a.nav-info__value:hover::after {
     image-rendering: pixelated;
 }
 
-/* Verre dépoli BLANC : le fond reste blanc, le dégradé rose
-   et ses halos ne transparaissent qu'en lueur très discrète,
-   floutés à travers la plaque de verre */
+/* Plaque BLANCHE : le contenu est posé sur un blanc franc et
+   opaque. Le dégradé rose reste visible en haut de l'accueil,
+   au premier écran, mais ne transparaît plus derrière le texte. */
 .content-body {
     position: relative;
     z-index: 10;
-    background: color-mix(in srgb, var(--bg) 90%, transparent);
-    -webkit-backdrop-filter: blur(32px) saturate(115%);
-    backdrop-filter: blur(32px) saturate(115%);
+    background: var(--white);
     min-height: 100vh;
     isolation: isolate;
 }
 
-/* Variante pour les pages riches en texte (About, Work, Contact) :
-   voile encore un peu plus opaque pour une lecture confortable */
-.content-body--soft {
-    background: color-mix(in srgb, var(--bg) 92%, transparent);
-}
-
-/* ── Fond « verre dépoli » partagé (pages internes) ──
-   Reproduit l'ambiance de l'accueil : un dégradé fuchsia
-   fixe avec deux halos qui dérivent lentement, adouci à
-   travers la plaque de verre .content-body posée dessus. */
-.page-backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background: linear-gradient(150deg, #FFCCE5 0%, #FF2D9B 55%, #CC0055 100%);
-    overflow: hidden;
-}
-
-.page-backdrop::before,
-.page-backdrop::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    will-change: transform;
-}
-
-.page-backdrop::before {
-    width: 60vmax;
-    height: 60vmax;
-    top: -22vmax;
-    right: -16vmax;
-    background: radial-gradient(closest-side, rgba(255, 255, 255, 0.65), transparent 72%);
-    animation: backdropDrift 26s ease-in-out infinite alternate;
-}
-
-.page-backdrop::after {
-    width: 50vmax;
-    height: 50vmax;
-    bottom: -20vmax;
-    left: -14vmax;
-    background: radial-gradient(closest-side, rgba(110, 0, 55, 0.55), transparent 72%);
-    animation: backdropDrift 34s ease-in-out infinite alternate-reverse;
-}
-
-@keyframes backdropDrift {
-    from { transform: translate3d(0, 0, 0) scale(1); }
-    to   { transform: translate3d(-7vmax, 6vmax, 0) scale(1.18); }
-}
-
 /* Navigateurs sans backdrop-filter : fond plein classique */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-    .content-body {
-        background: var(--bg);
-    }
-
-    .page-backdrop {
-        display: none;
-    }
-
     .nav-overlay {
         background: var(--bg);
     }

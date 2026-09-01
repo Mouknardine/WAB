@@ -211,7 +211,7 @@
     font-weight: 500;
     padding: 6px 14px;
     border: 1px solid var(--border-strong);
-    border-radius: 100px;
+    border-radius: 4px;
     color: var(--text-muted);
     transition: border-color 0.3s ease, color 0.3s ease;
 }
