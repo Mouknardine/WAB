@@ -15,13 +15,12 @@
 
 - [Accueil](https://wearebrothers.ch/) : présentation du studio, prestations et services
 - [Réalisations](https://wearebrothers.ch/realisations) : portfolio détaillé
-  - La Slack — portfolio créatif en forme de bureau virtuel (https://la-slack.com/)
+  - Le P'tit Central — site vitrine d'un café-restaurant de quartier de la rue Centrale à Lausanne, esthétique azulejos (https://le-p-tit-central.vercel.app/)
   - Nadège Mouine — site personnel épuré pour une architecte en formation à l'EPFL (https://nadegemouine.ch)
-  - Commissione Entretien — site vitrine d'une entreprise familiale d'entretien à Bavois (VD) (https://commissione-entretien.ch/)
   - LAZIZZE DJ — portfolio immersif pour un DJ house de Lausanne (https://lazizze-git.github.io/DJ/#/)
   - Maison Alliani — site vitrine haute joaillerie pour un atelier suisse de grillz sur mesure (https://lazizze-git.github.io/grillz/)
-  - Géotechnologie — site vitrine pour un bureau d'études géotechniques à Morzine, esthétique de document d'ingénierie (https://lazizze-git.github.io/G-otechnoligie/)
-  - Le P'tit Central — site vitrine d'un café-restaurant de quartier de la rue Centrale à Lausanne, esthétique azulejos (https://le-p-tit-central.vercel.app/)
+  - La Slack — portfolio créatif en forme de bureau virtuel (https://la-slack.com/)
+  - Commissione Entretien — site vitrine d'une entreprise familiale d'entretien à Bavois (VD) (https://commissione-entretien.ch/)
 - [À propos](https://wearebrothers.ch/studio) : philosophie, valeurs (proximité, craft, performance, transparence) et équipe
 - [Contact](https://wearebrothers.ch/contact) : formulaire de contact, FAQ (délais, déroulement d'un projet, suivi après mise en ligne)
 

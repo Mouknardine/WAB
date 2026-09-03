@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://wearebrothers.ch/</loc>
-        <lastmod>2026-08-31</lastmod>
+        <lastmod>2026-09-03</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
         <image:image>
@@ -13,20 +13,16 @@
     </url>
     <url>
         <loc>https://wearebrothers.ch/realisations</loc>
-        <lastmod>2026-08-31</lastmod>
+        <lastmod>2026-09-03</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         <image:image>
-            <image:loc>https://wearebrothers.ch/assets/images/project-slack.png</image:loc>
-            <image:caption>La Slack — portfolio créatif conçu par WeAreBrothers Lausanne</image:caption>
+            <image:loc>https://wearebrothers.ch/assets/images/project-central.webp</image:loc>
+            <image:caption>Le P'tit Central — site d'un café-restaurant de quartier à Lausanne conçu par WeAreBrothers Lausanne</image:caption>
         </image:image>
         <image:image>
             <image:loc>https://wearebrothers.ch/assets/images/project-nadege.png</image:loc>
             <image:caption>Nadège Mouine — site personnel conçu par WeAreBrothers Lausanne</image:caption>
-        </image:image>
-        <image:image>
-            <image:loc>https://wearebrothers.ch/assets/images/project-commissione.png</image:loc>
-            <image:caption>Commissione Entretien — site professionnel conçu par WeAreBrothers Lausanne</image:caption>
         </image:image>
         <image:image>
             <image:loc>https://wearebrothers.ch/assets/images/project-dj.png</image:loc>
@@ -37,12 +33,12 @@
             <image:caption>Maison Alliani — site d'un atelier suisse de grillz sur mesure conçu par WeAreBrothers Lausanne</image:caption>
         </image:image>
         <image:image>
-            <image:loc>https://wearebrothers.ch/assets/images/project-geotechnologie.png</image:loc>
-            <image:caption>Géotechnologie — site d'un bureau d'études géotechniques conçu par WeAreBrothers Lausanne</image:caption>
+            <image:loc>https://wearebrothers.ch/assets/images/project-slack.png</image:loc>
+            <image:caption>La Slack — portfolio créatif conçu par WeAreBrothers Lausanne</image:caption>
         </image:image>
         <image:image>
-            <image:loc>https://wearebrothers.ch/assets/images/project-central.webp</image:loc>
-            <image:caption>Le P'tit Central — site d'un café-restaurant de quartier à Lausanne conçu par WeAreBrothers Lausanne</image:caption>
+            <image:loc>https://wearebrothers.ch/assets/images/project-commissione.png</image:loc>
+            <image:caption>Commissione Entretien — site professionnel conçu par WeAreBrothers Lausanne</image:caption>
         </image:image>
     </url>
     <url>
