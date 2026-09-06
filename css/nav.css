@@ -1,0 +1,274 @@
+/* ============================================
+   WAB. — Barre de navigation flottante
+   Une pilule blanche posée au-dessus de la page,
+   jamais collée aux bords. Les liens sont visibles
+   dès le bureau ; le tiroir n'apparaît qu'en petit écran.
+   ============================================ */
+
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 120;
+    padding: clamp(12px, 2vw, 20px) clamp(12px, 4vw, 32px);
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    transition: transform 0.45s var(--ease);
+}
+
+.topbar.is-tucked {
+    transform: translateY(calc(-100% - 8px));
+}
+
+.topbar__pill {
+    pointer-events: auto;
+    width: 100%;
+    max-width: 1160px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 10px 10px 22px;
+    border-radius: 26px;
+    background: color-mix(in srgb, var(--card) 96%, transparent);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    backdrop-filter: blur(20px) saturate(140%);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6), var(--shadow-md);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .topbar__pill {
+        background: var(--card);
+    }
+}
+
+.topbar__brand {
+    font-family: var(--font-mono);
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+}
+
+.topbar__badge {
+    padding: 5px 9px;
+    border-radius: 7px;
+    background: var(--ink);
+    color: var(--white);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* ── Liens du bureau ── */
+.topbar__nav {
+    display: none;
+    margin-inline: auto;
+    align-items: center;
+    gap: 4px;
+}
+
+.topbar__link {
+    position: relative;
+    padding: 9px 15px;
+    border-radius: var(--radius-pill);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink-muted);
+    transition: color 0.25s var(--ease-out), background-color 0.25s var(--ease-out);
+}
+
+.topbar__link:hover {
+    color: var(--ink);
+    background: rgba(11, 11, 12, 0.05);
+}
+
+.topbar__link[aria-current='page'] {
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.topbar__cta {
+    display: none;
+    min-height: 44px;
+    padding: 0 22px;
+    font-size: 0.9rem;
+}
+
+/* ── Bouton du tiroir ── */
+.topbar__burger {
+    margin-left: auto;
+    width: 44px;
+    height: 44px;
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border-radius: 15px;
+    background: var(--paper);
+    box-shadow: inset 0 0 0 1px var(--line);
+    transition: background-color 0.25s var(--ease-out);
+}
+
+.topbar__burger:hover {
+    background: #e9e9ec;
+}
+
+.topbar__burger span {
+    display: block;
+    width: 16px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--ink);
+    transition: transform 0.35s var(--ease), opacity 0.2s linear;
+}
+
+.topbar__burger[aria-expanded='true'] span:first-child {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.topbar__burger[aria-expanded='true'] span:nth-child(2) {
+    opacity: 0;
+}
+
+.topbar__burger[aria-expanded='true'] span:last-child {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Tiroir mobile ── */
+.drawer {
+    position: fixed;
+    z-index: 119;
+    top: clamp(74px, 12vw, 88px);
+    left: clamp(12px, 4vw, 32px);
+    right: clamp(12px, 4vw, 32px);
+    max-height: calc(100svh - clamp(90px, 15vw, 110px));
+    overflow-y: auto;
+    padding: 14px;
+    border-radius: 26px;
+    background: var(--card);
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transform: translateY(-12px) scale(0.98);
+    transform-origin: top center;
+    pointer-events: none;
+    /* visibility retire aussi les liens du parcours au clavier
+       tant que le tiroir est fermé — pointer-events seul ne suffit pas. */
+    visibility: hidden;
+    transition: opacity 0.3s var(--ease-out), transform 0.35s var(--ease),
+        visibility 0s linear 0.35s;
+}
+
+.drawer.is-open {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.drawer__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px;
+    border-radius: 16px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    transition: background-color 0.2s var(--ease-out);
+}
+
+.drawer__link:hover,
+.drawer__link:active {
+    background: var(--paper);
+}
+
+.drawer__link[aria-current='page'] {
+    background: var(--paper);
+}
+
+.drawer__link svg {
+    color: var(--ink-muted);
+}
+
+.drawer__cta {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.drawer__meta {
+    margin-top: 18px;
+    padding: 18px;
+    border-radius: 16px;
+    background: var(--paper);
+    display: grid;
+    gap: 14px;
+}
+
+.drawer__row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.drawer__key {
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    white-space: nowrap;
+}
+
+.drawer__value {
+    text-align: right;
+    font-weight: 500;
+    color: var(--ink);
+    word-break: break-word;
+}
+
+a.drawer__value:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* ── Voile derrière le tiroir ── */
+.drawer-scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 118;
+    background: rgba(11, 11, 12, 0.28);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s var(--ease-out);
+}
+
+.drawer-scrim.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ── Bureau ── */
+@media (min-width: 900px) {
+    .topbar__nav,
+    .topbar__cta {
+        display: flex;
+    }
+
+    .topbar__burger,
+    .drawer,
+    .drawer-scrim {
+        display: none;
+    }
+}
