@@ -224,16 +224,21 @@
     color: var(--ink);
 }
 
+/* Le trait occupe sa place dès le départ et se révèle par une
+   mise à l'échelle : le libellé ne se décale pas au survol et
+   l'animation reste hors du calcul de mise en page. */
 .work-card__more::after {
     content: '';
-    width: 0;
+    width: 18px;
     height: 1px;
     background: var(--ink);
-    transition: width 0.3s var(--ease-out);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.3s var(--ease-out);
 }
 
 .work-card:hover .work-card__more::after {
-    width: 18px;
+    transform: scaleX(1);
 }
 
 .band-footer {

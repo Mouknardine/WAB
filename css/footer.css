@@ -65,17 +65,21 @@
     word-break: break-word;
 }
 
+/* Soulignement révélé par mise à l'échelle plutôt que par
+   croissance de largeur : aucun recalcul de mise en page. */
 .footer__mail::after {
     content: '';
     display: block;
-    width: 0;
+    width: 100%;
     height: 2px;
     background: var(--ink);
-    transition: width 0.35s var(--ease-out);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.35s var(--ease-out);
 }
 
 .footer__mail:hover::after {
-    width: 100%;
+    transform: scaleX(1);
 }
 
 .footer__nav {
