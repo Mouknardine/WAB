@@ -31,10 +31,13 @@
     gap: 12px;
     padding: 10px 10px 10px 22px;
     border-radius: 26px;
-    background: color-mix(in srgb, var(--card) 96%, transparent);
-    -webkit-backdrop-filter: blur(20px) saturate(140%);
-    backdrop-filter: blur(20px) saturate(140%);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6), var(--shadow-md);
+    /* Assez transparente pour que le contenu qui passe dessous se
+       devine — une carte de projet, le bloc noir des applications —
+       sans jamais gêner la lecture des liens. */
+    background: var(--glass);
+    -webkit-backdrop-filter: var(--blur);
+    backdrop-filter: var(--blur);
+    box-shadow: var(--edge), var(--edge-sheen), var(--shadow-md);
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
@@ -111,13 +114,13 @@
     justify-content: center;
     gap: 5px;
     border-radius: 15px;
-    background: var(--paper);
-    box-shadow: inset 0 0 0 1px var(--line);
+    background: rgba(11, 11, 12, 0.04);
+    box-shadow: var(--edge);
     transition: background-color 0.25s var(--ease-out);
 }
 
 .topbar__burger:hover {
-    background: #e9e9ec;
+    background: rgba(11, 11, 12, 0.08);
 }
 
 .topbar__burger span {
@@ -152,8 +155,10 @@
     overflow-y: auto;
     padding: 14px;
     border-radius: 26px;
-    background: var(--card);
-    box-shadow: var(--shadow-lg);
+    background: var(--glass-strong);
+    -webkit-backdrop-filter: var(--blur);
+    backdrop-filter: var(--blur);
+    box-shadow: var(--edge), var(--edge-sheen), var(--shadow-lg);
     opacity: 0;
     transform: translateY(-12px) scale(0.98);
     transform-origin: top center;
