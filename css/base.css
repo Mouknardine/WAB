@@ -50,6 +50,13 @@
     --font-display: 'Schibsted Grotesk', 'Helvetica Neue', Helvetica, sans-serif;
     --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
+    /* Gouttière commune à la barre flottante et à la carte du hero,
+       pour qu'ils tombent exactement sur la même verticale. */
+    --gutter: clamp(12px, 4vw, 32px);
+    /* Hauteur occupée par la barre flottante : son décalage du haut
+       plus la hauteur de la pilule (10 + 44 + 10). */
+    --topbar-h: calc(clamp(12px, 2vw, 20px) + 64px);
+
     /* Formes */
     --radius-card: 24px;
     --radius-inner: 16px;
@@ -201,7 +208,11 @@ img {
     font-size: clamp(2.4rem, 6.4vw, 4.75rem);
     font-weight: 800;
     letter-spacing: -0.04em;
-    line-height: 1.02;
+    /* Le français empile cédilles descendantes et accents ascendants :
+       la cédille descend d'environ 0.10em et l'accent aigu monte à
+       0.95em, donc sous 1.15 le « ç » d'une ligne vient toucher le
+       « é » de la suivante. 1.18 laisse un écart net. */
+    line-height: 1.18;
     text-align: center;
     text-wrap: balance;
     color: var(--ink);
@@ -318,7 +329,12 @@ img {
     *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
+        /* Le délai compte autant que la durée : sans cette ligne, une
+           entrée décalée de 0.8s ferait attendre le visiteur pour rien
+           avant d'afficher un texte qui, lui, n'a rien d'animé. */
+        animation-delay: 0s !important;
         transition-duration: 0.01ms !important;
+        transition-delay: 0s !important;
         scroll-behavior: auto !important;
     }
 

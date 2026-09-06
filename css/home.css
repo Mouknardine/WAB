@@ -1,31 +1,29 @@
 /* ============================================
    WAB. — Accueil
-   Le hero (dégradé rose + oiseaux) est conservé tel quel :
-   c'est la seule couleur du site. Tout ce qui suit glisse
-   par-dessus sous la forme d'une plaque grise arrondie.
+   Le hero (dégradé rose + oiseaux) est posé sur le fond gris
+   comme une grande carte : c'est la seule couleur du site, et
+   les oiseaux volent à l'intérieur du cadre.
    ============================================ */
 
 /* ── Hero ── */
-.hero-wrapper {
-    position: relative;
-    z-index: 1;
-    height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
-    height: 100svh;
+/* La scène cale la carte sous la barre flottante, sur la même
+   gouttière qu'elle, et lui laisse la hauteur d'écran restante. */
+.hero-stage {
+    padding: calc(var(--topbar-h) + 10px) var(--gutter) var(--gutter);
 }
 
 .hero {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
-    height: 100svh;
+    position: relative;
     display: flex;
     align-items: flex-end;
+    overflow: hidden;
+    /* 100svh exclut la barre d'adresse mobile ; --vh sert de secours
+       aux navigateurs qui ne connaissent pas encore l'unité. */
+    min-height: calc(var(--vh, 1vh) * 100 - var(--topbar-h) - 10px - var(--gutter));
+    min-height: calc(100svh - var(--topbar-h) - 10px - var(--gutter));
+    border-radius: clamp(24px, 3.5vw, 40px);
     background: linear-gradient(150deg, #ffcce5 0%, var(--hero-pink) 55%, #cc0055 100%);
-    z-index: 1;
+    box-shadow: var(--shadow-lg);
 }
 
 #birdCanvas {
@@ -43,9 +41,7 @@
     position: relative;
     z-index: 3;
     width: 100%;
-    max-width: 1160px;
-    margin-inline: auto;
-    padding: 0 clamp(20px, 5vw, 40px) clamp(56px, 9vw, 104px);
+    padding: clamp(28px, 5vw, 64px);
 }
 
 .hero-title {
@@ -77,17 +73,24 @@
 }
 
 @keyframes hero-fade {
+    from {
+        opacity: 0;
+    }
+
     to {
         opacity: 1;
     }
 }
 
+/* « backwards » plutôt qu'un état masqué codé en dur : l'état de
+   départ ne vient que de l'animation elle-même. Si elle ne se joue
+   pas — navigateur, onglet en arrière-plan, moteur de rendu — le nom
+   du studio et sa ligne d'accroche restent lisibles au lieu de
+   disparaître définitivement. */
 .hero-word,
 .hero-dot {
     display: inline-block;
-    transform: translateY(120%);
-    opacity: 0;
-    animation: hero-rise 1.25s var(--ease) forwards;
+    animation: hero-rise 1.25s var(--ease) backwards;
 }
 
 .hero-line:first-child .hero-word:nth-child(1) {
@@ -107,29 +110,25 @@
 }
 
 .hero-subtitle {
-    animation: hero-fade 0.9s var(--ease-out) 0.8s forwards;
+    animation: hero-fade 0.9s var(--ease-out) 0.8s backwards;
     margin-top: 20px;
     font-family: var(--font-mono);
     font-size: clamp(0.7rem, 1.4vw, 0.85rem);
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.88);
-    opacity: 0;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .hero-subtitle__line {
     display: inline;
 }
 
-/* ── La plaque de contenu ── */
+/* ── Contenu ── */
+/* Le hero étant devenu une carte dans le flux, le contenu n'a plus
+   à passer par-dessus : il suit simplement, sur le même fond. */
 .plate {
     position: relative;
-    z-index: 10;
-    background: var(--paper);
-    border-radius: 32px 32px 0 0;
-    box-shadow: 0 -24px 60px rgba(11, 11, 12, 0.18);
-    isolation: isolate;
 }
 
 /* ── Manifeste ── */
@@ -167,14 +166,38 @@
     text-align: center;
 }
 
+/* Chaque projet est présenté comme une fenêtre de navigateur :
+   une barre claire à pastilles, puis la capture du site en dessous.
+   L'objet montré redevient ainsi ce qu'il est — un site en ligne. */
 .work-card__frame {
     position: relative;
     overflow: hidden;
-    aspect-ratio: 4 / 3;
     border-radius: var(--radius-card);
     background: var(--card);
     box-shadow: inset 0 0 0 1px var(--line), var(--shadow-sm);
     transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.work-card__chrome {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 13px 16px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+}
+
+.work-card__chrome span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--line-strong);
+}
+
+.work-card__view {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
 }
 
 .work-card__image {
@@ -333,7 +356,7 @@
     font-size: clamp(2.6rem, 8vw, 6rem);
     font-weight: 800;
     letter-spacing: -0.045em;
-    line-height: 0.98;
+    line-height: 1.04;
     text-wrap: balance;
     color: var(--ink);
 }
@@ -385,8 +408,10 @@
 }
 
 /* ── Bureau ── */
+/* ── Bureau ── */
 @media (min-width: 1000px) {
-    .plate {
-        border-radius: 40px 40px 0 0;
+    /* Le nom respire davantage dans une carte large */
+    .hero-inner {
+        padding-bottom: clamp(48px, 5vw, 72px);
     }
 }
