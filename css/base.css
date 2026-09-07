@@ -228,8 +228,13 @@ time {
     padding-inline: clamp(20px, 5vw, 40px);
 }
 
+/* Même géométrie exacte que la barre flottante : sa pilule fait
+   1160 px au plus, posée sur la gouttière commune. Cartes, grilles et
+   pied de page tombent donc sur la verticale de la navigation, à
+   toutes les largeurs d'écran. */
 .shell--wide {
-    max-width: 1320px;
+    max-width: calc(1160px + 2 * var(--gutter));
+    padding-inline: var(--gutter);
 }
 
 .band {
