@@ -133,7 +133,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/base.css?v=3">
     <link rel="stylesheet" href="css/nav.css?v=4">
-    <link rel="stylesheet" href="css/home.css?v=5">
+    <link rel="stylesheet" href="css/home.css?v=8">
     <link rel="stylesheet" href="css/footer.css?v=3">
 
     <!-- GSAP — utilisé uniquement par l'effet de texte qui se remplit -->
@@ -217,24 +217,44 @@
     <main class="main">
 
         <!-- HERO -->
-        <div class="hero-stage">
-            <section class="hero" id="hero" aria-label="WeAreBrothers Studio">
-                <div class="hero-inner">
-                    <h1 class="hero-title">
-                        <span class="hero-line">
-                            <span class="hero-word">We</span><span class="hero-word">Are</span>
-                        </span>
-                        <span class="hero-line">
-                            <span class="hero-word">Brothers</span><span class="hero-dot">.</span>
-                        </span>
-                    </h1>
-                    <p class="hero-subtitle">
-                        <span class="hero-subtitle__line">Studio digital à Lausanne —</span>
-                        <span class="hero-subtitle__line">Web, Design &amp; Branding</span>
-                    </p>
+        <section class="hero-stage" aria-labelledby="heroClaim">
+            <div class="shell hero-lede">
+                <p class="eyebrow hero-eyebrow">Studio digital à Lausanne</p>
+                <h1 class="hero-claim" id="heroClaim">Des sites web sur mesure, conçus à Lausanne</h1>
+                <p class="hero-sub">
+                    Vous parlez directement aux deux personnes qui dessinent et développent votre site.
+                    Réponse sous 24&nbsp;h ouvrées.
+                </p>
+                <div class="hero-actions">
+                    <a href="/contact" class="btn btn--solid btn--lg">
+                        <span>Démarrer un projet</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                    </a>
+                    <a href="/realisations" class="btn btn--ghost btn--lg">
+                        <span>Voir nos réalisations</span>
+                    </a>
                 </div>
-            </section>
-        </div>
+            </div>
+
+            <div class="shell shell--wide hero-frame">
+                <div class="hero" id="hero">
+                    <div class="hero-inner">
+                        <p class="hero-name">
+                            <span class="hero-line">
+                                <span class="hero-word">We</span><span class="hero-word">Are</span>
+                            </span>
+                            <span class="hero-line">
+                                <span class="hero-word">Brothers</span><span class="hero-dot">.</span>
+                            </span>
+                        </p>
+                        <p class="hero-subtitle">
+                            <span class="hero-subtitle__line">Web, Design &amp; Branding —</span>
+                            <span class="hero-subtitle__line">arc lémanique et Suisse romande</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- PLAQUE DE CONTENU -->
         <div class="plate" id="contenu">
@@ -478,7 +498,7 @@
                     <p class="eyebrow reveal">Contact</p>
                     <h2 class="closing__title reveal">Donnons vie à votre projet.</h2>
                     <p class="closing__lede reveal">
-                        Un café ou un appel, une proposition, puis on construit. Réponse sous 24 h ouvrées,
+                        Un café ou un appel, une proposition, puis on construit. Réponse sous 24&nbsp;h ouvrées,
                         sans engagement.
                     </p>
                     <div class="closing__actions reveal">
