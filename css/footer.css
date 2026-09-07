@@ -1,0 +1,162 @@
+/* ============================================
+   WAB. — Pied de page
+   Le nom du studio en filigrane ferme la page ;
+   les informations pratiques restent lisibles au-dessus.
+   ============================================ */
+
+.footer {
+    position: relative;
+    overflow: hidden;
+    padding-top: clamp(56px, 8vw, 96px);
+    border-top: 1px solid var(--line);
+}
+
+.footer__top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+.footer__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 16px;
+    border-radius: var(--radius-pill);
+    background: var(--card);
+    box-shadow: var(--edge), var(--edge-sheen), var(--shadow-sm);
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: var(--w-strong);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+}
+
+.footer__pulse {
+    width: 7px;
+    height: 7px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--ink);
+    animation: footer-pulse 2.6s var(--ease-out) infinite;
+}
+
+@keyframes footer-pulse {
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.35;
+        transform: scale(0.82);
+    }
+}
+
+.footer__mail {
+    display: inline-block;
+    margin-top: 22px;
+    font-size: clamp(1.3rem, 3.2vw, 2.1rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    word-break: break-word;
+}
+
+/* Soulignement révélé par mise à l'échelle plutôt que par
+   croissance de largeur : aucun recalcul de mise en page. */
+.footer__mail::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--ink);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.35s var(--ease-out);
+}
+
+.footer__mail:hover::after {
+    transform: scaleX(1);
+}
+
+.footer__nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+}
+
+.footer__group-title {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: var(--w-strong);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+}
+
+.footer__list {
+    margin-top: 14px;
+    display: grid;
+    gap: 10px;
+    list-style: none;
+}
+
+.footer__link {
+    font-size: 0.975rem;
+    font-weight: var(--w-regular);
+    color: var(--ink-soft);
+    transition: color 0.25s var(--ease-out);
+}
+
+.footer__link:hover {
+    color: var(--ink);
+}
+
+.footer__bottom {
+    margin-top: clamp(48px, 6vw, 72px);
+    padding-block: 24px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: var(--w-regular);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+}
+
+/* Filigrane — décoratif, jamais lu par les lecteurs d'écran,
+   et toujours derrière le contenu. */
+.footer__watermark {
+    display: block;
+    margin-top: clamp(24px, 4vw, 40px);
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 21vw, 19rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.06em;
+    line-height: 0.78;
+    text-align: center;
+    color: #e6e6e9;
+    user-select: none;
+    pointer-events: none;
+    padding-bottom: 0.08em;
+}
+
+@media (min-width: 700px) {
+    .footer__top {
+        grid-template-columns: 1.2fr 1fr;
+        align-items: start;
+        gap: 56px;
+    }
+
+    .footer__nav {
+        justify-items: end;
+    }
+}

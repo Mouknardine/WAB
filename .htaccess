@@ -53,6 +53,10 @@
     ExpiresByType image/webp "access plus 1 year"
     ExpiresByType image/svg+xml "access plus 1 year"
     ExpiresByType image/x-icon "access plus 1 year"
+    # La police du site ne change jamais sans changer de nom de fichier :
+    # elle peut rester un an dans le cache du visiteur.
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
     ExpiresByType text/html "access plus 0 seconds"
 </IfModule>
 
@@ -66,6 +70,10 @@
 <IfModule mod_mime.c>
     AddType application/manifest+json .webmanifest
     AddType image/x-icon .ico
+    # Sans le bon type, le preload de la police est ignore et le
+    # navigateur la retelecharge une seconde fois.
+    AddType font/woff2 .woff2
+    AddType font/woff .woff
 </IfModule>
 
 # UTF-8 par défaut

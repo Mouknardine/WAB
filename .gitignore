@@ -2,3 +2,9 @@
 mail-config.php
 .impeccable/hook.cache.json
 .impeccable/live/sessions/
+
+# Outillage local de Claude Code — ne concerne pas le site
+.claude/
+.impeccable/
+.github/hooks/
+.github/skills/

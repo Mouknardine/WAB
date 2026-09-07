@@ -1,0 +1,289 @@
+/* ============================================
+   WAB. — Barre de navigation flottante
+   Une pilule blanche posée au-dessus de la page, jamais collée
+   aux bords. Sur grand écran les liens y sont déjà visibles ;
+   en petit écran, la pilule elle-même se prolonge vers le bas
+   pour contenir le menu — un seul objet qui s'allonge, plutôt
+   qu'un panneau qui se détache. Elle reste visible en permanence,
+   quel que soit le sens du défilement.
+   ============================================ */
+
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 120;
+    padding: clamp(12px, 2vw, 20px) var(--gutter);
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.topbar__pill {
+    pointer-events: auto;
+    width: 100%;
+    max-width: var(--bar-width);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 21px;
+    /* Assez transparente pour que le contenu qui passe dessous se
+       devine — une carte de projet, le bloc noir des applications —
+       sans jamais gêner la lecture des liens. */
+    background: var(--glass);
+    -webkit-backdrop-filter: var(--blur);
+    backdrop-filter: var(--blur);
+    box-shadow: var(--edge), var(--edge-sheen), var(--shadow-md);
+    transition: box-shadow 0.4s var(--ease);
+}
+
+.topbar__pill.is-open {
+    box-shadow: var(--edge), var(--edge-sheen), var(--shadow-lg);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .topbar__pill {
+        background: var(--card);
+    }
+}
+
+/* ── La ligne du haut ── */
+.topbar__bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-left: 12px;
+}
+
+.topbar__brand {
+    font-size: 19px;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.03em;
+    color: var(--ink);
+}
+
+/* ── Liens du bureau ── */
+.topbar__nav {
+    display: none;
+    margin-inline: auto;
+    align-items: center;
+    gap: 4px;
+}
+
+.topbar__link {
+    position: relative;
+    padding: 9px 15px;
+    border-radius: var(--radius-pill);
+    font-size: 0.95rem;
+    font-weight: var(--w-regular);
+    color: var(--ink-muted);
+    transition: color 0.25s var(--ease-out), background-color 0.25s var(--ease-out);
+}
+
+.topbar__link:hover {
+    color: var(--ink);
+    background: rgba(11, 11, 12, 0.05);
+}
+
+.topbar__link[aria-current='page'] {
+    color: var(--ink);
+    font-weight: var(--w-strong);
+}
+
+.topbar__cta {
+    display: none;
+    min-height: 44px;
+    padding: 0 22px;
+    font-size: 0.9rem;
+}
+
+/* ── Bouton menu ──
+   Les trois traits sont positionnés à l'absolu plutôt qu'espacés en
+   flux : c'est la seule façon d'obtenir une croix dont les deux
+   branches se coupent exactement au centre. */
+.topbar__burger {
+    margin-left: auto;
+    width: 44px;
+    height: 44px;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.topbar__lines {
+    position: relative;
+    width: 20px;
+    height: 14px;
+}
+
+.topbar__lines span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--ink);
+    transition: transform 0.4s var(--ease), opacity 0.25s var(--ease-out);
+}
+
+.topbar__lines span:nth-child(1) {
+    top: 0;
+}
+
+.topbar__lines span:nth-child(2) {
+    top: 6px;
+    transform-origin: left center;
+}
+
+.topbar__lines span:nth-child(3) {
+    top: 12px;
+}
+
+/* Les trois traits font la même largeur. Le retour au survol passe
+   donc par un léger écartement du premier et du dernier, plutôt que
+   par une différence de longueur. */
+.topbar__burger:hover .topbar__lines span:nth-child(1) {
+    transform: translateY(-1px);
+}
+
+.topbar__burger:hover .topbar__lines span:nth-child(3) {
+    transform: translateY(1px);
+}
+
+.topbar__burger[aria-expanded='true'] .topbar__lines span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.topbar__burger[aria-expanded='true'] .topbar__lines span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.topbar__burger[aria-expanded='true'] .topbar__lines span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ── Le prolongement ──
+   La hauteur est animée par une piste de grille qui passe de 0fr à
+   1fr : la pilule s'allonge sans qu'on ait à mesurer le menu. */
+.topbar__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.45s var(--ease);
+}
+
+.topbar__pill.is-open .topbar__panel {
+    grid-template-rows: 1fr;
+}
+
+.topbar__panel-inner {
+    overflow: hidden;
+    /* visibility retire les liens du parcours au clavier tant que le
+       menu est replié — une hauteur nulle ne suffit pas. */
+    visibility: hidden;
+    transition: visibility 0s linear 0.45s;
+}
+
+.topbar__pill.is-open .topbar__panel-inner {
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.panel__nav {
+    padding-top: 10px;
+}
+
+.panel__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 12px;
+    border-radius: 11px;
+    font-size: 1.2rem;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    transition: background-color 0.2s var(--ease-out);
+}
+
+.panel__link:hover,
+.panel__link:active {
+    background: rgba(11, 11, 12, 0.05);
+}
+
+.panel__link svg {
+    color: var(--ink-muted);
+}
+
+.panel__cta {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.panel__meta {
+    margin-top: 14px;
+    padding: 16px 12px 6px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    gap: 12px;
+}
+
+.panel__row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.panel__key {
+    font-weight: var(--w-strong);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    white-space: nowrap;
+}
+
+.panel__value {
+    text-align: right;
+    color: var(--ink);
+    word-break: break-word;
+}
+
+a.panel__value:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* ── Voile derrière la barre ouverte ── */
+.topbar-scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 118;
+    background: rgba(11, 11, 12, 0.28);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s var(--ease-out);
+}
+
+.topbar-scrim.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ── Bureau ── */
+@media (min-width: 900px) {
+    .topbar__nav,
+    .topbar__cta {
+        display: flex;
+    }
+
+    .topbar__burger,
+    .topbar__panel,
+    .topbar-scrim {
+        display: none;
+    }
+}
