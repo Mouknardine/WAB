@@ -132,7 +132,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/base.css?v=4">
-    <link rel="stylesheet" href="css/nav.css?v=4">
+    <link rel="stylesheet" href="css/nav.css?v=5">
     <link rel="stylesheet" href="css/home.css?v=16">
     <link rel="stylesheet" href="css/footer.css?v=3">
 
@@ -144,7 +144,7 @@
     <script src="fill-text.js?v=4" defer></script>
     <script src="nav-clock.js?v=1" defer></script>
     <script src="js/reveal.js?v=1" defer></script>
-    <script src="js/nav.js?v=1" defer></script>
+    <script src="js/nav.js?v=2" defer></script>
     <script src="js/accordion.js?v=1" defer></script>
     <script src="js/birds.js?v=2" defer></script>
 </head>
@@ -156,63 +156,63 @@
     <!-- Les oiseaux traversent le fond de toute la page, pas seulement le hero -->
     <canvas id="birdCanvas" aria-hidden="true"></canvas>
 
-    <!-- BARRE FLOTTANTE -->
+    <!-- BARRE FLOTTANTE — la pilule se prolonge pour contenir le menu -->
     <header class="topbar" id="topbar">
-        <div class="topbar__pill">
-            <a href="/" class="topbar__brand" aria-current="page">WAB.</a>
+        <div class="topbar__pill" id="topbarPill">
+            <div class="topbar__bar">
+                <a href="/" class="topbar__brand" aria-current="page">WAB.</a>
 
-            <nav class="topbar__nav" aria-label="Navigation principale">
-                <a href="/realisations" class="topbar__link">Réalisations</a>
-                <a href="/applications" class="topbar__link">Applications</a>
-                <a href="/studio" class="topbar__link">Studio</a>
-            </nav>
+                <nav class="topbar__nav" aria-label="Navigation principale">
+                    <a href="/realisations" class="topbar__link">Réalisations</a>
+                    <a href="/applications" class="topbar__link">Applications</a>
+                    <a href="/studio" class="topbar__link">Studio</a>
+                </nav>
 
-            <a href="/contact" class="btn btn--solid topbar__cta">Démarrer un projet</a>
+                <a href="/contact" class="btn btn--solid topbar__cta">Démarrer un projet</a>
 
-            <button type="button" class="topbar__burger" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span class="sr-only">Menu</span>
-            </button>
+                <button type="button" class="topbar__burger" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
+                    <span class="topbar__lines" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </span>
+                    <span class="sr-only">Menu</span>
+                </button>
+            </div>
+
+            <div class="topbar__panel" id="topbarPanel">
+                <div class="topbar__panel-inner">
+                    <nav class="panel__nav" aria-label="Navigation">
+                        <a href="/realisations" class="panel__link">
+                            Réalisations
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                        </a>
+                        <a href="/applications" class="panel__link">
+                            Applications
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                        </a>
+                        <a href="/studio" class="panel__link">
+                            Studio
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                        </a>
+                    </nav>
+
+                    <a href="/contact" class="btn btn--solid btn--lg panel__cta">Démarrer un projet</a>
+
+                    <div class="panel__meta">
+                        <p class="panel__row">
+                            <span class="panel__key">Email</span>
+                            <a href="mailto:contact@wearebrothers.ch" class="panel__value">contact@wearebrothers.ch</a>
+                        </p>
+                        <p class="panel__row">
+                            <span class="panel__key">Studio</span>
+                            <span class="panel__value">Lausanne, Suisse — <time data-local-time>--:--</time></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
-    <div class="drawer-scrim" id="drawerScrim"></div>
-
-    <div class="drawer" id="mobileMenu">
-        <nav aria-label="Navigation">
-            <a href="/realisations" class="drawer__link">
-                Réalisations
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-            </a>
-            <a href="/applications" class="drawer__link">
-                Applications
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-            </a>
-            <a href="/studio" class="drawer__link">
-                Studio
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-            </a>
-        </nav>
-
-        <a href="/contact" class="btn btn--solid btn--lg drawer__cta">Démarrer un projet</a>
-
-        <div class="drawer__meta">
-            <p class="drawer__row">
-                <span class="drawer__key">Email</span>
-                <a href="mailto:contact@wearebrothers.ch" class="drawer__value">contact@wearebrothers.ch</a>
-            </p>
-            <p class="drawer__row">
-                <span class="drawer__key">Studio</span>
-                <span class="drawer__value">Lausanne, Suisse — <time data-local-time>--:--</time></span>
-            </p>
-            <p class="drawer__row">
-                <span class="drawer__key">Statut</span>
-                <span class="drawer__value">Disponible pour de nouveaux projets</span>
-            </p>
-        </div>
-    </div>
+    <div class="topbar-scrim" id="topbarScrim"></div>
 
     <main class="main">
 

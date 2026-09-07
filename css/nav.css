@@ -1,8 +1,10 @@
 /* ============================================
    WAB. — Barre de navigation flottante
-   Une pilule blanche posée au-dessus de la page,
-   jamais collée aux bords. Les liens sont visibles
-   dès le bureau ; le tiroir n'apparaît qu'en petit écran.
+   Une pilule blanche posée au-dessus de la page, jamais collée
+   aux bords. Sur grand écran les liens y sont déjà visibles ;
+   en petit écran, la pilule elle-même se prolonge vers le bas
+   pour contenir le menu — un seul objet qui s'allonge, plutôt
+   qu'un panneau qui se détache.
    ============================================ */
 
 .topbar {
@@ -11,7 +13,7 @@
     left: 0;
     right: 0;
     z-index: 120;
-    padding: clamp(12px, 2vw, 20px) clamp(12px, 4vw, 32px);
+    padding: clamp(12px, 2vw, 20px) var(--gutter);
     display: flex;
     justify-content: center;
     pointer-events: none;
@@ -27,9 +29,8 @@
     width: 100%;
     max-width: 1160px;
     display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 10px 10px 22px;
+    flex-direction: column;
+    padding: 10px;
     border-radius: 26px;
     /* Assez transparente pour que le contenu qui passe dessous se
        devine — une carte de projet, le bloc noir des applications —
@@ -38,6 +39,11 @@
     -webkit-backdrop-filter: var(--blur);
     backdrop-filter: var(--blur);
     box-shadow: var(--edge), var(--edge-sheen), var(--shadow-md);
+    transition: box-shadow 0.4s var(--ease);
+}
+
+.topbar__pill.is-open {
+    box-shadow: var(--edge), var(--edge-sheen), var(--shadow-lg);
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
@@ -46,8 +52,15 @@
     }
 }
 
+/* ── La ligne du haut ── */
+.topbar__bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-left: 12px;
+}
+
 .topbar__brand {
-    font-family: var(--font-display);
     font-size: 19px;
     font-weight: var(--w-strong);
     letter-spacing: -0.03em;
@@ -89,132 +102,144 @@
     font-size: 0.9rem;
 }
 
-/* ── Bouton du tiroir ── */
+/* ── Bouton menu ──
+   Les trois traits sont positionnés à l'absolu plutôt qu'espacés en
+   flux : c'est la seule façon d'obtenir une croix dont les deux
+   branches se coupent exactement au centre. */
 .topbar__burger {
     margin-left: auto;
     width: 44px;
     height: 44px;
     flex: none;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5px;
-    border-radius: 15px;
 }
 
-/* Pas de cadre : au survol, ce sont les trois traits qui s'epaississent. */
-.topbar__burger:hover span {
+.topbar__lines {
+    position: relative;
     width: 20px;
+    height: 14px;
 }
 
-.topbar__burger span {
-    display: block;
-    width: 18px;
+.topbar__lines span {
+    position: absolute;
+    left: 0;
+    width: 100%;
     height: 2px;
     border-radius: 2px;
     background: var(--ink);
-    transition: transform 0.35s var(--ease), opacity 0.2s linear,
-        width 0.25s var(--ease-out);
+    transition: transform 0.4s var(--ease), opacity 0.25s var(--ease-out);
 }
 
-.topbar__burger[aria-expanded='true'] span:first-child {
-    transform: translateY(7px) rotate(45deg);
+.topbar__lines span:nth-child(1) {
+    top: 0;
 }
 
-.topbar__burger[aria-expanded='true'] span:nth-child(2) {
+.topbar__lines span:nth-child(2) {
+    top: 6px;
+    /* Trait du milieu volontairement plus court : il s'allonge au
+       survol, ce qui rend le bouton vivant sans lui redonner de cadre. */
+    transform: scaleX(0.66);
+    transform-origin: left center;
+}
+
+.topbar__lines span:nth-child(3) {
+    top: 12px;
+}
+
+.topbar__burger:hover .topbar__lines span:nth-child(2) {
+    transform: scaleX(1);
+}
+
+.topbar__burger[aria-expanded='true'] .topbar__lines span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.topbar__burger[aria-expanded='true'] .topbar__lines span:nth-child(2) {
     opacity: 0;
+    transform: scaleX(0);
 }
 
-.topbar__burger[aria-expanded='true'] span:last-child {
-    transform: translateY(-7px) rotate(-45deg);
+.topbar__burger[aria-expanded='true'] .topbar__lines span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
 }
 
-/* ── Tiroir mobile ── */
-.drawer {
-    position: fixed;
-    z-index: 119;
-    top: clamp(74px, 12vw, 88px);
-    left: clamp(12px, 4vw, 32px);
-    right: clamp(12px, 4vw, 32px);
-    max-height: calc(100svh - clamp(90px, 15vw, 110px));
-    overflow-y: auto;
-    padding: 14px;
-    border-radius: 26px;
-    background: var(--glass-strong);
-    -webkit-backdrop-filter: var(--blur);
-    backdrop-filter: var(--blur);
-    box-shadow: var(--edge), var(--edge-sheen), var(--shadow-lg);
-    opacity: 0;
-    transform: translateY(-12px) scale(0.98);
-    transform-origin: top center;
-    pointer-events: none;
-    /* visibility retire aussi les liens du parcours au clavier
-       tant que le tiroir est fermé — pointer-events seul ne suffit pas. */
+/* ── Le prolongement ──
+   La hauteur est animée par une piste de grille qui passe de 0fr à
+   1fr : la pilule s'allonge sans qu'on ait à mesurer le menu. */
+.topbar__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.45s var(--ease);
+}
+
+.topbar__pill.is-open .topbar__panel {
+    grid-template-rows: 1fr;
+}
+
+.topbar__panel-inner {
+    overflow: hidden;
+    /* visibility retire les liens du parcours au clavier tant que le
+       menu est replié — une hauteur nulle ne suffit pas. */
     visibility: hidden;
-    transition: opacity 0.3s var(--ease-out), transform 0.35s var(--ease),
-        visibility 0s linear 0.35s;
+    transition: visibility 0s linear 0.45s;
 }
 
-.drawer.is-open {
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
+.topbar__pill.is-open .topbar__panel-inner {
     visibility: visible;
     transition-delay: 0s;
 }
 
-.drawer__link {
+.panel__nav {
+    padding-top: 10px;
+}
+
+.panel__link {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 18px;
+    padding: 15px 12px;
     border-radius: 16px;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: var(--w-strong);
     letter-spacing: -0.02em;
     color: var(--ink);
     transition: background-color 0.2s var(--ease-out);
 }
 
-.drawer__link:hover,
-.drawer__link:active {
-    background: var(--paper);
+.panel__link:hover,
+.panel__link:active {
+    background: rgba(11, 11, 12, 0.05);
 }
 
-.drawer__link[aria-current='page'] {
-    background: var(--paper);
-}
-
-.drawer__link svg {
+.panel__link svg {
     color: var(--ink-muted);
 }
 
-.drawer__cta {
+.panel__cta {
     width: 100%;
     margin-top: 8px;
 }
 
-.drawer__meta {
-    margin-top: 18px;
-    padding: 18px;
-    border-radius: 16px;
-    background: var(--paper);
+.panel__meta {
+    margin-top: 14px;
+    padding: 16px 12px 6px;
+    border-top: 1px solid var(--line);
     display: grid;
-    gap: 14px;
+    gap: 12px;
 }
 
-.drawer__row {
+.panel__row {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     gap: 16px;
-    font-family: var(--font-display);
     font-size: 12px;
     line-height: 1.5;
 }
 
-.drawer__key {
+.panel__key {
     font-weight: var(--w-strong);
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -222,30 +247,29 @@
     white-space: nowrap;
 }
 
-.drawer__value {
+.panel__value {
     text-align: right;
-    font-weight: var(--w-regular);
     color: var(--ink);
     word-break: break-word;
 }
 
-a.drawer__value:hover {
+a.panel__value:hover {
     text-decoration: underline;
     text-underline-offset: 3px;
 }
 
-/* ── Voile derrière le tiroir ── */
-.drawer-scrim {
+/* ── Voile derrière la barre ouverte ── */
+.topbar-scrim {
     position: fixed;
     inset: 0;
     z-index: 118;
     background: rgba(11, 11, 12, 0.28);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s var(--ease-out);
+    transition: opacity 0.35s var(--ease-out);
 }
 
-.drawer-scrim.is-open {
+.topbar-scrim.is-open {
     opacity: 1;
     pointer-events: auto;
 }
@@ -258,8 +282,8 @@ a.drawer__value:hover {
     }
 
     .topbar__burger,
-    .drawer,
-    .drawer-scrim {
+    .topbar__panel,
+    .topbar-scrim {
         display: none;
     }
 }

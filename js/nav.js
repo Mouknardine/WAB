@@ -1,54 +1,55 @@
 /**
- * WAB. — Barre flottante et tiroir de navigation
- * Le tiroir n'existe qu'en petit écran ; sur grand écran les liens
- * sont déjà visibles dans la pilule. La barre se rétracte quand on
- * descend et revient dès qu'on remonte.
+ * WAB. — Barre flottante
+ * En petit écran, la pilule se prolonge pour contenir le menu : le
+ * script se limite à basculer une classe et l'état annoncé aux
+ * lecteurs d'écran, l'ouverture elle-même est animée en CSS.
+ * La barre se rétracte quand on descend et revient dès qu'on remonte.
  */
 (function () {
     'use strict';
 
     function initTopbar() {
         const topbar = document.getElementById('topbar');
+        const pill = document.getElementById('topbarPill');
         const burger = document.getElementById('menuToggle');
-        const drawer = document.getElementById('mobileMenu');
-        const scrim = document.getElementById('drawerScrim');
+        const panel = document.getElementById('topbarPanel');
+        const scrim = document.getElementById('topbarScrim');
         if (!topbar) return;
 
-        /* ── Tiroir ── */
-        if (burger && drawer && scrim) {
-            let open = false;
+        let open = false;
 
-            function setDrawer(next) {
-                open = next;
-                burger.setAttribute('aria-expanded', String(open));
-                drawer.classList.toggle('is-open', open);
-                scrim.classList.toggle('is-open', open);
-                drawer.setAttribute('aria-hidden', String(!open));
-                document.body.style.overflow = open ? 'hidden' : '';
-            }
+        function setMenu(next) {
+            if (!pill || !burger || !scrim) return;
+            open = next;
+            pill.classList.toggle('is-open', open);
+            scrim.classList.toggle('is-open', open);
+            burger.setAttribute('aria-expanded', String(open));
+            document.body.style.overflow = open ? 'hidden' : '';
+        }
 
-            setDrawer(false);
+        if (pill && burger && panel && scrim) {
+            setMenu(false);
 
-            burger.addEventListener('click', () => setDrawer(!open));
-            scrim.addEventListener('click', () => setDrawer(false));
+            burger.addEventListener('click', () => setMenu(!open));
+            scrim.addEventListener('click', () => setMenu(false));
 
-            drawer.querySelectorAll('a').forEach((link) => {
-                link.addEventListener('click', () => setDrawer(false));
+            panel.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => setMenu(false));
             });
 
             document.addEventListener('keydown', (event) => {
                 if (event.key === 'Escape' && open) {
-                    setDrawer(false);
+                    setMenu(false);
                     burger.focus();
                 }
             });
 
-            // Le tiroir n'a plus de raison d'être une fois la barre
-            // passée en mode bureau : on le referme pour éviter que
-            // le scroll du corps reste verrouillé après un pivot.
+            // Le menu n'a plus de raison d'être une fois la barre passée
+            // en mode bureau : on le referme pour éviter que le scroll
+            // du corps reste verrouillé après un pivot de l'écran.
             const wide = window.matchMedia('(min-width: 900px)');
             const closeIfWide = (event) => {
-                if (event.matches && open) setDrawer(false);
+                if (event.matches && open) setMenu(false);
             };
             if (typeof wide.addEventListener === 'function') {
                 wide.addEventListener('change', closeIfWide);
@@ -63,9 +64,8 @@
         function update() {
             ticking = false;
             const y = window.scrollY || window.pageYOffset || 0;
-            const drawerOpen = drawer ? drawer.classList.contains('is-open') : false;
 
-            if (drawerOpen || y < 120) {
+            if (open || y < 120) {
                 if (tucked) {
                     topbar.classList.remove('is-tucked');
                     tucked = false;
