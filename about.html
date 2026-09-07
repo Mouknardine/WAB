@@ -140,235 +140,255 @@
     }
     </script>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inclusive+Sans&display=swap" rel="stylesheet">
+
+    <!-- Police — Epilogue seule, servie depuis le site -->
+    <link rel="preload" href="assets/fonts/Epilogue-Variable.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css?v=61">
-    <link rel="stylesheet" href="about.css?v=19">
-
-    <!-- GSAP -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
+    <link rel="stylesheet" href="css/base.css?v=6">
+    <link rel="stylesheet" href="css/nav.css?v=5">
+    <link rel="stylesheet" href="css/page.css?v=2">
+    <link rel="stylesheet" href="css/studio.css?v=3">
+    <link rel="stylesheet" href="css/footer.css?v=3">
 
     <!-- Scripts -->
-    <script src="fill-text.js?v=3" defer></script>
     <script src="nav-clock.js?v=1" defer></script>
-    <script src="about.js?v=9" defer></script>
+    <script src="js/reveal.js?v=1" defer></script>
+    <script src="js/nav.js?v=2" defer></script>
+    <script src="js/birds.js?v=2" defer></script>
 </head>
 
 <body>
 
-    <!-- Fond « verre dépoli » : dégradé fixe flouté à travers le contenu -->
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-    <!-- HEADER -->
-    <header class="header" id="header">
-        <a href="index.html" class="header-logo">WAB.</a>
-        <div class="header-actions">
-            <button class="header-menu-btn" id="menuToggle" aria-label="Toggle navigation">
-                <span class="menu-line"></span>
-                <span class="menu-line"></span>
-            </button>
+    <!-- Les oiseaux traversent le fond de toute la page -->
+    <canvas id="birdCanvas" aria-hidden="true"></canvas>
+
+    <!-- BARRE FLOTTANTE — la pilule se prolonge pour contenir le menu -->
+    <header class="topbar" id="topbar">
+        <div class="topbar__pill" id="topbarPill">
+            <div class="topbar__bar">
+                <a href="/" class="topbar__brand">WAB.</a>
+
+                <nav class="topbar__nav" aria-label="Navigation principale">
+                    <a href="/realisations" class="topbar__link">Réalisations</a>
+                    <a href="/applications" class="topbar__link">Applications</a>
+                    <a href="/studio" class="topbar__link" aria-current="page">Studio</a>
+                </nav>
+
+                <a href="/contact" class="btn btn--solid topbar__cta">Démarrer un projet</a>
+
+                <button type="button" class="topbar__burger" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
+                    <span class="topbar__lines" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </span>
+                    <span class="sr-only">Menu</span>
+                </button>
+            </div>
+
+            <div class="topbar__panel" id="topbarPanel">
+                <div class="topbar__panel-inner">
+                    <nav class="panel__nav" aria-label="Navigation">
+                        <a href="/realisations" class="panel__link">
+                            Réalisations
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                        </a>
+                        <a href="/applications" class="panel__link">
+                            Applications
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                        </a>
+                        <a href="/studio" class="panel__link" aria-current="page">
+                            Studio
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                        </a>
+                    </nav>
+
+                    <a href="/contact" class="btn btn--solid btn--lg panel__cta">Démarrer un projet</a>
+
+                    <div class="panel__meta">
+                        <p class="panel__row">
+                            <span class="panel__key">Email</span>
+                            <a href="mailto:contact@wearebrothers.ch" class="panel__value">contact@wearebrothers.ch</a>
+                        </p>
+                        <p class="panel__row">
+                            <span class="panel__key">Studio</span>
+                            <span class="panel__value">Lausanne, Suisse — <time data-local-time>--:--</time></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
-    <!-- NAV OVERLAY -->
-    <nav class="nav-overlay" id="navOverlay">
-        <div class="nav-content">
-            <div class="nav-links">
-                <a href="index.html#hero" class="nav-link"><span class="nav-link__inner"><span class="nav-link__num">( 01 )</span><span class="nav-link__label">HOME</span></span></a>
-                <a href="work.html" class="nav-link"><span class="nav-link__inner"><span class="nav-link__num">( 02 )</span><span class="nav-link__label">WORK</span></span></a>
-                <a href="applications.html" class="nav-link"><span class="nav-link__inner"><span class="nav-link__num">( 03 )</span><span class="nav-link__label">APPS</span></span></a>
-                <a href="about.html" class="nav-link" aria-current="page"><span class="nav-link__inner"><span class="nav-link__num">( 04 )</span><span class="nav-link__label">ABOUT</span></span></a>
-                <a href="contact.html" class="nav-link"><span class="nav-link__inner"><span class="nav-link__num">( 05 )</span><span class="nav-link__label">CONTACT</span></span></a>
-            </div>
-            <div class="nav-footer">
-                <div class="nav-info">
-                    <p class="nav-info__label">Email</p>
-                    <a href="mailto:contact@wearebrothers.ch" class="nav-info__value">contact@wearebrothers.ch</a>
-                </div>
-                <div class="nav-info">
-                    <p class="nav-info__label">Studio</p>
-                    <p class="nav-info__value">Lausanne, Suisse — <time data-local-time>--:--</time></p>
-                </div>
-                <div class="nav-info">
-                    <p class="nav-info__label">Disponibilité</p>
-                    <p class="nav-info__value">Disponible pour de nouveaux projets</p>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <div class="topbar-scrim" id="topbarScrim"></div>
 
-    <main class="main content-body">
+    <main class="main" id="contenu">
 
-        <!-- 1. HERO — déclaration typographique -->
-        <section class="about-hero" id="hero">
-            <div class="container">
-                <p class="about-hero__label">À propos</p>
-                <h1 class="about-hero__title">
-                    <span class="about-hero__line"><span class="about-hero__line-inner">Un studio digital</span></span>
-                    <span class="about-hero__line"><span class="about-hero__line-inner">fondé par <span class="accent">deux frères.</span></span></span>
-                </h1>
-                <p class="about-hero__intro">Nous réunissons le design et le développement sous un même toit, pour créer des sites clairs, modernes et taillés pour chaque projet.</p>
-                <p class="about-hero__meta">
-                    <span class="meta-dot"></span>
-                    Lausanne, Suisse — Design &amp; Développement
+        <!-- EN-TÊTE DE PAGE -->
+        <section class="page-head">
+            <div class="shell">
+                <h1 class="page-head__title">Un studio digital fondé par deux frères.</h1>
+                <p class="page-head__sub">Nous réunissons le design et le développement sous un même toit, pour créer des sites clairs, modernes et taillés pour chaque projet.</p>
+            </div>
+        </section>
+
+        <!-- MANIFESTE -->
+        <section class="band" id="manifeste">
+            <div class="shell">
+                <p class="manifesto-lead reveal">Nous ne produisons pas des sites à la chaîne.</p>
+                <p class="manifesto-body reveal">
+                    Nous travaillons chaque projet dans le détail, du premier croquis à la mise en ligne,
+                    pour livrer une expérience forte, fluide et cohérente. Le design et la technique avancent
+                    ensemble&nbsp;: c'est ce qui donne un site distinctif, durable et vraiment fidèle à
+                    l'identité de chaque client.
                 </p>
             </div>
         </section>
 
-        <!-- 2. MANIFESTE — texte qui se remplit au scroll -->
-        <section class="about-section about-manifesto" id="philosophie">
-            <div class="container">
-                <p class="section-label">Notre philosophie</p>
-                <p class="manifesto-text" data-fill-text>
-                    Nous ne produisons pas des sites à la chaîne. Nous travaillons chaque
-                    projet dans le détail, du premier croquis à la mise en ligne, pour
-                    livrer une expérience forte, fluide et cohérente. Le design et la
-                    technique avancent ensemble : c'est ce qui donne un site distinctif,
-                    durable et vraiment fidèle à l'identité de chaque client.
-                </p>
-            </div>
-        </section>
-
-        <!-- 3. VALEURS — liste éditoriale numérotée -->
-        <section class="about-section about-values" id="valeurs">
-            <div class="container">
-                <p class="section-label reveal">Nos valeurs</p>
-                <div class="values-list">
-                    <article class="value-row reveal">
-                        <p class="value-row__num">(01)</p>
-                        <h2 class="value-row__title">Proximité</h2>
-                        <p class="value-row__desc">Une relation simple et directe. Nous échangeons sans détour, idéalement autour d'un café.</p>
+        <!-- VALEURS -->
+        <section class="band" id="valeurs">
+            <div class="shell shell--wide">
+                <h2 class="band-title reveal">Quatre principes, tenus sur chaque projet</h2>
+                <div class="values" data-reveal-group>
+                    <article class="value reveal">
+                        <h2 class="value__title">Proximité</h2>
+                        <p class="value__desc">Une relation simple et directe. Nous échangeons sans détour, idéalement autour d'un café.</p>
                     </article>
-                    <article class="value-row reveal">
-                        <p class="value-row__num">(02)</p>
-                        <h2 class="value-row__title">Craft</h2>
-                        <p class="value-row__desc">Le soin de l'artisan : nous pesons chaque ligne de code et chaque pixel. Jamais d'« assez bien ».</p>
+                    <article class="value reveal">
+                        <h2 class="value__title">Craft</h2>
+                        <p class="value__desc">Le soin de l'artisan : nous pesons chaque ligne de code et chaque pixel. Jamais d'« assez bien ».</p>
                     </article>
-                    <article class="value-row reveal">
-                        <p class="value-row__num">(03)</p>
-                        <h2 class="value-row__title">Performance</h2>
-                        <p class="value-row__desc">Rapidité, fluidité et référencement : un site lent ne convainc personne, aussi beau soit-il.</p>
+                    <article class="value reveal">
+                        <h2 class="value__title">Performance</h2>
+                        <p class="value__desc">Rapidité, fluidité et référencement : un site lent ne convainc personne, aussi beau soit-il.</p>
                     </article>
-                    <article class="value-row reveal">
-                        <p class="value-row__num">(04)</p>
-                        <h2 class="value-row__title">Transparence</h2>
-                        <p class="value-row__desc">Des échanges clairs, des tarifs justes et aucune surprise en cours de route.</p>
+                    <article class="value reveal">
+                        <h2 class="value__title">Transparence</h2>
+                        <p class="value__desc">Des échanges clairs, des tarifs justes et aucune surprise en cours de route.</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- 4. ÉQUIPE -->
-        <section class="about-section about-team" id="equipe">
-            <div class="container">
-                <p class="section-label reveal">C'est nous</p>
-                <div class="team__grid">
-
+        <!-- ÉQUIPE -->
+        <section class="band" id="equipe">
+            <div class="shell shell--wide">
+                <h2 class="band-title reveal">Les personnes derrière le studio</h2>
+                <p class="band-lede reveal">
+                    Vous parlez à celles et ceux qui travaillent réellement sur votre projet, du premier
+                    échange à la mise en ligne.
+                </p>
+                <div class="team" data-reveal-group>
                     <article class="profile reveal">
-                        <div class="profile__media profile__media--eliott">
-                            <img src="assets/images/team-eliott.jpg" alt="Eliott Pina, designer et directeur artistique chez WeAreBrothers Studio à Lausanne" loading="lazy" decoding="async" draggable="false">
+                        <div class="profile__photo">
+                            <img src="assets/images/team-eliott.jpg" alt="Eliott Pina, designer et directeur artistique chez WeAreBrothers Studio à Lausanne" loading="lazy" decoding="async" width="800" height="1000">
                         </div>
                         <h2 class="profile__name">Eliott Pina</h2>
-                        <p class="profile__bio">
-                            Eliott signe la direction artistique des projets : identité visuelle, mise en page,
-                            animations et expérience utilisateur. Il veille à ce que chaque site tienne d'un seul
-                            trait et reflète fidèlement l'image de son client.
-                        </p>
+                        <p class="profile__role">Lead designer — direction artistique</p>
+                        <p class="profile__bio">Eliott signe la direction artistique des projets : identité visuelle, mise en page, animations et expérience utilisateur. Il veille à ce que chaque site tienne d'un seul trait et reflète fidèlement l'image de son client.</p>
                         <div class="profile__skills">
-                            <span class="skill-badge">Figma</span>
-                            <span class="skill-badge">Motion Design</span>
-                            <span class="skill-badge">Branding</span>
-                            <span class="skill-badge">GSAP</span>
-                            <span class="skill-badge">Three.js</span>
-                            <span class="skill-badge">After Effects</span>
+                            <span class="skill">Figma</span>
+                            <span class="skill">Motion Design</span>
+                            <span class="skill">Branding</span>
+                            <span class="skill">GSAP</span>
+                            <span class="skill">Three.js</span>
+                            <span class="skill">After Effects</span>
                         </div>
                     </article>
-
                     <article class="profile reveal">
-                        <div class="profile__media profile__media--matt">
-                            <img src="assets/images/team-matt.jpg?v=4" alt="Matt Pina, développeur web full-stack chez WeAreBrothers Studio à Lausanne" loading="lazy" decoding="async" draggable="false">
+                        <div class="profile__photo">
+                            <img src="assets/images/team-matt.jpg?v=4" alt="Matt Pina, développeur web full-stack chez WeAreBrothers Studio à Lausanne" loading="lazy" decoding="async" width="800" height="1000">
                         </div>
                         <h2 class="profile__name">Matt Pina</h2>
-                        <p class="profile__bio">
-                            Matt pilote toute la partie technique, du développement à la mise en ligne. Il construit
-                            des sites rapides, fiables et impeccables sur tous les écrans, pensés dès le départ pour
-                            évoluer sans tout reconstruire.
-                        </p>
+                        <p class="profile__role">Lead développeur full-stack</p>
+                        <p class="profile__bio">Matt pilote toute la partie technique, du développement à la mise en ligne. Il construit des sites rapides, fiables et impeccables sur tous les écrans, pensés dès le départ pour évoluer sans tout reconstruire.</p>
                         <div class="profile__skills">
-                            <span class="skill-badge">Next.js</span>
-                            <span class="skill-badge">TypeScript</span>
-                            <span class="skill-badge">Node.js</span>
-                            <span class="skill-badge">Supabase</span>
-                            <span class="skill-badge">PostgreSQL</span>
-                            <span class="skill-badge">GSAP</span>
+                            <span class="skill">Next.js</span>
+                            <span class="skill">TypeScript</span>
+                            <span class="skill">Node.js</span>
+                            <span class="skill">Supabase</span>
+                            <span class="skill">PostgreSQL</span>
+                            <span class="skill">GSAP</span>
                         </div>
                     </article>
-
                     <article class="profile reveal">
-                        <div class="profile__media profile__media--ivan">
-                            <img src="assets/images/team-ivan.jpg" alt="Ivan Jakovlevski, commercial et responsable relation client chez WeAreBrothers Studio à Lausanne" loading="lazy" decoding="async" draggable="false">
+                        <div class="profile__photo">
+                            <img src="assets/images/team-ivan.jpg" alt="Ivan Jakovlevski, commercial et responsable relation client chez WeAreBrothers Studio à Lausanne" loading="lazy" decoding="async" width="800" height="1000">
                         </div>
                         <h2 class="profile__name">Ivan Jakovlevski</h2>
-                        <p class="profile__bio">
-                            Ivan est le premier interlocuteur de nos clients. Il les accompagne du premier contact
-                            jusqu'au lancement du projet, avec une approche conviviale et beaucoup de proximité. En
-                            parallèle, il travaille en recherche et développement chez VEG Consulting, une fiduciaire
-                            lausannoise établie de longue date.
-                        </p>
+                        <p class="profile__role">Commercial et relation client</p>
+                        <p class="profile__bio">Ivan est le premier interlocuteur de nos clients. Il les accompagne du premier contact jusqu'au lancement du projet, avec une approche conviviale et beaucoup de proximité. En parallèle, il travaille en recherche et développement chez VEG Consulting, une fiduciaire lausannoise établie de longue date.</p>
                         <div class="profile__skills">
-                            <span class="skill-badge">Relation client</span>
-                            <span class="skill-badge">Développement commercial</span>
-                            <span class="skill-badge">Négociation</span>
-                            <span class="skill-badge">Conseil</span>
-                            <span class="skill-badge">R&amp;D</span>
+                            <span class="skill">Relation client</span>
+                            <span class="skill">Développement commercial</span>
+                            <span class="skill">Négociation</span>
+                            <span class="skill">Conseil</span>
+                            <span class="skill">R&amp;D</span>
                         </div>
                     </article>
-
                 </div>
             </div>
         </section>
 
-        <!-- 5. CTA -->
-        <section class="about-section about-cta" id="contact">
-            <div class="container">
-                <p class="section-label reveal">Travaillons ensemble</p>
-                <h2 class="about-cta__title reveal">Donnons vie à<br><span class="accent">votre projet.</span></h2>
-                <div class="about-cta__actions reveal">
-                    <a href="contact.html" class="email-btn">
+        <!-- CONTACT -->
+        <section class="band closing" id="contact">
+            <div class="shell">
+                <h2 class="closing__title">Parlons de votre projet.</h2>
+                <p class="closing__lede">Un café ou un appel, une proposition, puis on construit. Réponse sous 24&nbsp;h ouvrées, sans engagement.</p>
+                <div class="closing__actions">
+                    <a href="/contact" class="btn btn--solid btn--lg">
                         <span>Démarrer un projet</span>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M7 17L17 7M17 7H7M17 7V17" />
-                        </svg>
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                    </a>
+                    <a href="mailto:contact@wearebrothers.ch" class="btn btn--ghost btn--lg">
+                        <span>Écrire un email</span>
                     </a>
                 </div>
-                <p class="about-cta__meta reveal">
-                    <span class="meta-dot"></span>
-                    Lausanne, Suisse — <time data-local-time>--:--</time> heure locale
-                </p>
+                <p class="closing__note">Lausanne, Suisse — <time data-local-time>--:--</time></p>
             </div>
         </section>
 
-        <!-- FOOTER -->
+        <!-- PIED DE PAGE -->
         <footer class="footer" id="footer">
-            <div class="footer-watermark">WAB.</div>
-            <div class="container footer-content">
-                <div class="footer-top">
-                    <div class="footer-info">
-                        <p class="footer-status">DISPONIBLE POUR DE NOUVEAUX PROJETS</p>
-                        <p class="footer-copy">&copy; 2026 WAB.STUDIO</p>
+            <div class="shell shell--wide">
+                <div class="footer__top">
+                    <div>
+                        <p class="footer__status">
+                            <span class="footer__pulse" aria-hidden="true"></span>
+                            Disponible pour de nouveaux projets
+                        </p>
+                        <a href="mailto:contact@wearebrothers.ch" class="footer__mail">contact@wearebrothers.ch</a>
                     </div>
-                    <div class="footer-links">
-                        <a href="work.html" class="footer-link">Work</a>
-                        <a href="applications.html" class="footer-link">Apps</a>
-                        <a href="about.html" class="footer-link">About</a>
-                        <a href="contact.html" class="footer-link">Contact</a>
+
+                    <div class="footer__nav">
+                        <div>
+                            <h2 class="footer__group-title">Pages</h2>
+                            <ul class="footer__list">
+                                <li><a href="/realisations" class="footer__link">Réalisations</a></li>
+                                <li><a href="/applications" class="footer__link">Applications</a></li>
+                                <li><a href="/studio" class="footer__link">Studio</a></li>
+                                <li><a href="/contact" class="footer__link">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h2 class="footer__group-title">Studio</h2>
+                            <ul class="footer__list">
+                                <li><span class="footer__link">Lausanne, Suisse</span></li>
+                                <li><span class="footer__link">Heure locale <time data-local-time>--:--</time></span></li>
+                                <li><a href="mailto:contact@wearebrothers.ch" class="footer__link">contact@wearebrothers.ch</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+
+                <div class="footer__bottom">
+                    <span>&copy; 2026 WeAreBrothers Studio</span>
+                    <span>Design &amp; développement — Lausanne</span>
+                </div>
             </div>
+
+            <span class="footer__watermark" aria-hidden="true">WAB.</span>
         </footer>
 
     </main>

@@ -1,0 +1,154 @@
+/* ============================================
+   WAB. — Studio
+   Le manifeste en grand, les valeurs en cartes, l'équipe en
+   portraits.
+   ============================================ */
+
+/* ── Manifeste ── */
+.manifesto-lead {
+    margin-inline: auto;
+    max-width: 24ch;
+    font-size: clamp(1.7rem, 3.8vw, 2.9rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    text-align: center;
+    text-wrap: balance;
+    color: var(--ink);
+}
+
+.manifesto-body {
+    margin: 26px auto 0;
+    max-width: 58ch;
+    font-size: clamp(1rem, 1.4vw, 1.1rem);
+    line-height: 1.7;
+    text-align: center;
+    text-wrap: pretty;
+    color: var(--ink-muted);
+}
+
+/* ── Valeurs ── */
+.values {
+    margin-top: clamp(44px, 6vw, 68px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+}
+
+.value {
+    padding: clamp(26px, 3vw, 34px);
+    border-radius: var(--radius-card);
+    background: var(--card);
+    box-shadow: var(--edge), var(--edge-sheen), var(--shadow-sm);
+    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.value:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--edge), var(--edge-sheen), var(--shadow-md);
+}
+
+.value__title {
+    font-size: 1.3rem;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+}
+
+.value__desc {
+    margin-top: 10px;
+    font-size: 0.975rem;
+    line-height: 1.65;
+    text-wrap: pretty;
+    color: var(--ink-muted);
+}
+
+/* ── Équipe ── */
+.team {
+    margin-top: clamp(44px, 6vw, 68px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 3vw, 36px);
+}
+
+.profile__photo {
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-card);
+    background: var(--card);
+    box-shadow: var(--edge), var(--shadow-sm);
+}
+
+.profile__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Valeur reprise de l'ancienne page, où elle avait été calibrée
+       sur ces trois photos précises et le même cadre 4/5. Seule celle
+       d'Ivan est réellement recadrée en hauteur : les deux autres sont
+       déjà au bon ratio ou plus larges que le cadre. */
+    object-position: 50% 32%;
+    transition: transform 0.6s var(--ease);
+}
+
+.profile:hover .profile__photo img {
+    transform: scale(1.03);
+}
+
+.profile__name {
+    margin-top: 22px;
+    font-size: 1.35rem;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+}
+
+.profile__role {
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: var(--w-strong);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+}
+
+.profile__bio {
+    margin-top: 14px;
+    font-size: 0.975rem;
+    line-height: 1.65;
+    text-wrap: pretty;
+    color: var(--ink-muted);
+}
+
+.profile__skills {
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.skill {
+    padding: 6px 12px;
+    border-radius: 10px;
+    background: var(--card);
+    box-shadow: var(--edge), var(--edge-sheen);
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+}
+
+/* ── Tablette et bureau ── */
+@media (min-width: 700px) {
+    .values {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .team {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1000px) {
+    .values {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
