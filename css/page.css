@@ -5,6 +5,12 @@
    ont en commun, écrit une seule fois.
    ============================================ */
 
+/* Première bande d'une page sans en-tête : elle prend à sa charge
+   le dégagement sous la barre flottante. */
+.band--first {
+    padding-top: calc(var(--topbar-h) + clamp(48px, 7vw, 96px));
+}
+
 /* ── En-tête de page ── */
 .page-head {
     padding-top: calc(var(--topbar-h) + clamp(36px, 6vw, 80px));

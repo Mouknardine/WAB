@@ -147,7 +147,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/base.css?v=6">
     <link rel="stylesheet" href="css/nav.css?v=5">
-    <link rel="stylesheet" href="css/page.css?v=3">
+    <link rel="stylesheet" href="css/page.css?v=4">
     <link rel="stylesheet" href="css/studio.css?v=5">
     <link rel="stylesheet" href="css/footer.css?v=3">
 
@@ -225,15 +225,14 @@
 
     <main class="main" id="contenu">
 
-        <!-- EN-TÊTE DE PAGE -->
-        <section class="page-head">
-            <div class="shell">
-                <h1 class="page-head__title">Un studio digital fondé par deux frères.</h1>
-            </div>
-        </section>
+        <!-- Titre de page, lu par les moteurs et les lecteurs d'écran.
+             Il n'est pas affiché : la page s'ouvre directement sur les
+             valeurs, mais un document sans titre principal n'a plus de
+             tête ni pour Google ni pour la navigation vocale. -->
+        <h1 class="sr-only">Un studio digital fondé par deux frères à Lausanne</h1>
 
         <!-- VALEURS -->
-        <section class="band" id="valeurs">
+        <section class="band band--first" id="valeurs">
             <div class="shell shell--wide">
                 <h2 class="band-title reveal">Quatre principes, tenus sur chaque projet</h2>
                 <div class="values" data-reveal-group>
