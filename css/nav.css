@@ -27,7 +27,7 @@
 .topbar__pill {
     pointer-events: auto;
     width: 100%;
-    max-width: 1160px;
+    max-width: var(--bar-width);
     display: flex;
     flex-direction: column;
     padding: 10px;

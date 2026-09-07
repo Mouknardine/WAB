@@ -82,9 +82,13 @@
     --w-regular: 400;
     --w-strong: 600;
 
-    /* Gouttière commune à la barre flottante et à la carte du hero,
-       pour qu'ils tombent exactement sur la même verticale. */
+    /* Gouttière commune à la barre flottante et au contenu. */
     --gutter: clamp(12px, 4vw, 32px);
+    /* Deux largeurs distinctes : la barre flottante est volontairement
+       plus étroite que le contenu, elle n'a que quatre éléments à
+       porter. */
+    --bar-width: 940px;
+    --content-width: 1160px;
     /* Hauteur occupée par la barre flottante : son décalage du haut
        plus la hauteur de la pilule (10 + 44 + 10). */
     --topbar-h: calc(clamp(12px, 2vw, 20px) + 64px);
@@ -242,12 +246,11 @@ time {
     padding-inline: clamp(20px, 5vw, 40px);
 }
 
-/* Même géométrie exacte que la barre flottante : sa pilule fait
-   1160 px au plus, posée sur la gouttière commune. Cartes, grilles et
-   pied de page tombent donc sur la verticale de la navigation, à
-   toutes les largeurs d'écran. */
+/* Largeur du contenu : cartes, grilles et pied de page tombent tous
+   sur la même verticale, calculée depuis la variable plutôt qu'écrite
+   en dur à plusieurs endroits. */
 .shell--wide {
-    max-width: calc(1160px + 2 * var(--gutter));
+    max-width: calc(var(--content-width) + 2 * var(--gutter));
     padding-inline: var(--gutter);
 }
 
