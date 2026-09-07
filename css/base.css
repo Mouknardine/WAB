@@ -5,6 +5,32 @@
    les sections (étiquettes, boutons, apparitions).
    ============================================ */
 
+/* ── Police ──
+   Epilogue, en version variable : un seul fichier de 81 Ko couvre
+   toutes les graisses de 100 à 900, contre 133 Ko rien que pour les
+   trois fichiers statiques dont la page aurait eu besoin.
+
+   La feuille livrée avec la police déclare chaque graisse comme une
+   famille séparée (Epilogue-Regular, Epilogue-Medium…). On ne la
+   reprend pas : une seule famille avec une plage de graisses laisse
+   font-weight fonctionner normalement et empêche le navigateur de
+   fabriquer de faux gras.
+
+   Epilogue — Tyler Finck, Etcetera Type Co (Indian Type Foundry),
+   sous licence SIL Open Font License. */
+@font-face {
+    font-family: 'Epilogue';
+    /* format('woff2') tout court, pas 'woff2-variations' : cette
+       ancienne écriture était une rustine de transition que les
+       navigateurs récents ne reconnaissent plus toujours, alors qu'ils
+       détectent seuls les axes variables d'un woff2 ordinaire. */
+    src: url('../assets/fonts/Epilogue-Variable.woff2') format('woff2'),
+        url('../assets/fonts/Epilogue-Variable.woff') format('woff');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* ── Reset ── */
 *,
 *::before,
@@ -47,8 +73,15 @@
     --black: #000000;
 
     /* Type */
-    --font-display: 'Schibsted Grotesk', 'Helvetica Neue', Helvetica, sans-serif;
+    --font-display: 'Epilogue', 'Helvetica Neue', Helvetica, sans-serif;
     --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+    /* Graisses — la page ne joue qu'entre le Regular et le SemiBold.
+       Epilogue tient très bien la grande taille en 600 : monter à 800
+       la rendrait compacte et lourde là où elle doit rester nette. */
+    --w-regular: 400;
+    --w-medium: 500;
+    --w-strong: 600;
 
     /* Gouttière commune à la barre flottante et à la carte du hero,
        pour qu'ils tombent exactement sur la même verticale. */
@@ -101,7 +134,7 @@ html {
 body {
     font-family: var(--font-display);
     font-size: 16px;
-    font-weight: 400;
+    font-weight: var(--w-regular);
     line-height: 1.6;
     background: var(--paper);
     color: var(--ink);
@@ -222,13 +255,13 @@ img {
 .band-title {
     margin-top: 24px;
     font-size: clamp(2.4rem, 6.4vw, 4.75rem);
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    /* Le français empile cédilles descendantes et accents ascendants :
-       la cédille descend d'environ 0.10em et l'accent aigu monte à
-       0.95em, donc sous 1.15 le « ç » d'une ligne vient toucher le
-       « é » de la suivante. 1.18 laisse un écart net. */
-    line-height: 1.18;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.03em;
+    /* Le français empile cédilles descendantes et accents ascendants.
+       Epilogue a une cédille plus profonde que la plupart des
+       grotesques : à 1.18, le « ç » d'une ligne venait encore effleurer
+       le « é » de la suivante. Valeur à revérifier si la police change. */
+    line-height: 1.24;
     text-align: center;
     text-wrap: balance;
     color: var(--ink);
@@ -255,7 +288,7 @@ img {
     border-radius: var(--radius-pill);
     font-family: var(--font-display);
     font-size: 0.95rem;
-    font-weight: 700;
+    font-weight: var(--w-strong);
     letter-spacing: -0.01em;
     white-space: nowrap;
     transition: transform 0.25s var(--ease-out), background-color 0.25s var(--ease-out),
@@ -315,7 +348,7 @@ img {
     background: var(--card);
     box-shadow: var(--edge), var(--edge-sheen), var(--shadow-sm);
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: var(--w-regular);
     color: var(--ink-soft);
 }
 

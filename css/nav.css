@@ -80,7 +80,7 @@
     padding: 9px 15px;
     border-radius: var(--radius-pill);
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: var(--w-regular);
     color: var(--ink-muted);
     transition: color 0.25s var(--ease-out), background-color 0.25s var(--ease-out);
 }
@@ -92,7 +92,7 @@
 
 .topbar__link[aria-current='page'] {
     color: var(--ink);
-    font-weight: 700;
+    font-weight: var(--w-strong);
 }
 
 .topbar__cta {
@@ -185,7 +185,7 @@
     padding: 16px 18px;
     border-radius: 16px;
     font-size: 1.25rem;
-    font-weight: 700;
+    font-weight: var(--w-strong);
     letter-spacing: -0.02em;
     color: var(--ink);
     transition: background-color 0.2s var(--ease-out);

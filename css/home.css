@@ -301,8 +301,8 @@
 .work-card__name {
     margin-top: 24px;
     font-size: 1.3rem;
-    font-weight: 700;
-    letter-spacing: -0.025em;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.02em;
     color: var(--ink);
 }
 
@@ -344,8 +344,8 @@
 
 .service__name {
     font-size: 1.4rem;
-    font-weight: 700;
-    letter-spacing: -0.028em;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.02em;
     color: var(--ink);
 }
 
@@ -372,8 +372,8 @@
     max-width: 20ch;
     margin-inline: auto;
     font-size: clamp(1.6rem, 3.4vw, 2.4rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.025em;
     line-height: 1.12;
     text-wrap: balance;
 }
@@ -406,8 +406,8 @@
 
 .closing__title {
     font-size: clamp(2.6rem, 8vw, 6rem);
-    font-weight: 800;
-    letter-spacing: -0.045em;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.035em;
     line-height: 1.04;
     text-wrap: balance;
     color: var(--ink);

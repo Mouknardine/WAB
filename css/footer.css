@@ -59,8 +59,8 @@
     display: inline-block;
     margin-top: 22px;
     font-size: clamp(1.3rem, 3.2vw, 2.1rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.025em;
     color: var(--ink);
     word-break: break-word;
 }
@@ -106,7 +106,7 @@
 
 .footer__link {
     font-size: 0.975rem;
-    font-weight: 500;
+    font-weight: var(--w-regular);
     color: var(--ink-soft);
     transition: color 0.25s var(--ease-out);
 }
