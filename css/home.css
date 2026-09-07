@@ -322,39 +322,123 @@
 }
 
 /* ── Services ── */
-.service-grid {
+/* ── Services ── */
+/* Cartes dépliantes : seul le nom est visible au repos, le détail
+   se déroule au clic. La hauteur du panneau est animée par une
+   piste de grille qui passe de 0fr à 1fr — la seule façon de faire
+   glisser une hauteur inconnue sans la mesurer en JavaScript. */
+.service-list {
     margin-top: clamp(48px, 7vw, 72px);
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 12px;
 }
 
 .service {
-    padding: clamp(28px, 3.5vw, 40px);
+    overflow: hidden;
     border-radius: var(--radius-card);
     background: var(--card);
     box-shadow: var(--edge), var(--edge-sheen), var(--shadow-sm);
-    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    transition: box-shadow 0.35s var(--ease);
 }
 
-.service:hover {
-    transform: translateY(-4px);
+.service.is-open {
     box-shadow: var(--edge), var(--edge-sheen), var(--shadow-md);
 }
 
+.service__head {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.service__toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: clamp(22px, 2.6vw, 30px) clamp(22px, 3vw, 36px);
+    text-align: left;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.service__toggle:hover .service__icon {
+    background: rgba(11, 11, 12, 0.09);
+}
+
 .service__name {
-    font-size: 1.4rem;
+    font-size: clamp(1.15rem, 1.9vw, 1.4rem);
     font-weight: var(--w-strong);
     letter-spacing: -0.02em;
     color: var(--ink);
 }
 
+/* Un signe + qui devient un − : les deux traits se superposent. */
+.service__icon {
+    position: relative;
+    flex: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(11, 11, 12, 0.05);
+    transition: background-color 0.3s var(--ease-out);
+}
+
+.service__icon::before,
+.service__icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 11px;
+    right: 11px;
+    height: 2px;
+    margin-top: -1px;
+    border-radius: 2px;
+    background: var(--ink);
+    transition: transform 0.4s var(--ease);
+}
+
+.service__icon::after {
+    transform: rotate(90deg);
+}
+
+.service.is-open .service__icon::after {
+    transform: rotate(0deg);
+}
+
+.service__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.45s var(--ease);
+}
+
+.service.is-open .service__panel {
+    grid-template-rows: 1fr;
+}
+
+.service__panel-inner {
+    overflow: hidden;
+}
+
 .service__desc {
-    margin-top: 12px;
-    font-size: 0.975rem;
-    line-height: 1.65;
+    padding: 0 clamp(22px, 3vw, 36px) clamp(24px, 2.8vw, 32px);
+    max-width: 68ch;
+    font-size: 1rem;
+    line-height: 1.7;
     text-wrap: pretty;
     color: var(--ink-muted);
+}
+
+/* Navigateurs sans piste de grille animable : les panneaux restent
+   ouverts plutôt que de rendre le texte inaccessible. */
+@supports not (grid-template-rows: 0fr) {
+    .service__panel {
+        grid-template-rows: 1fr;
+    }
+
+    .service__icon {
+        display: none;
+    }
 }
 
 /* ── Passerelle vers les applications métier ── */
@@ -458,9 +542,6 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .service-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
 }
 
 /* ── Bureau ── */

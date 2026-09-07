@@ -136,7 +136,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/base.css?v=2">
     <link rel="stylesheet" href="css/nav.css?v=2">
-    <link rel="stylesheet" href="css/home.css?v=2">
+    <link rel="stylesheet" href="css/home.css?v=3">
     <link rel="stylesheet" href="css/footer.css?v=2">
 
     <!-- GSAP — utilisé uniquement par l'effet de texte qui se remplit -->
@@ -148,6 +148,7 @@
     <script src="nav-clock.js?v=1" defer></script>
     <script src="js/reveal.js?v=1" defer></script>
     <script src="js/nav.js?v=1" defer></script>
+    <script src="js/accordion.js?v=1" defer></script>
     <script src="js/birds.js?v=2" defer></script>
 </head>
 
@@ -411,20 +412,53 @@
                         <span class="chip" role="listitem">SEO</span>
                     </div>
 
-                    <div class="service-grid" data-reveal-group>
-                        <article class="service reveal">
-                            <h3 class="service__name">Développement</h3>
-                            <p class="service__desc">Un développement rapide, évolutif et pensé pour la performance comme pour le référencement. Nous codons chaque site de A à Z, sans WordPress ni Wix, pour un chargement quasi instantané sur mobile. L'hébergement suisse sécurisé (Infomaniak) est inclus, avec un guide pour le gérer en toute autonomie.</p>
+                    <div class="service-list" data-reveal-group>
+                        <article class="service reveal is-open">
+                            <h3 class="service__head">
+                                <button type="button" class="service__toggle" id="service-developpement-label"
+                                    aria-expanded="true" aria-controls="service-developpement">
+                                    <span class="service__name">Développement</span>
+                                    <span class="service__icon" aria-hidden="true"></span>
+                                </button>
+                            </h3>
+                            <div class="service__panel" id="service-developpement" role="region"
+                                aria-labelledby="service-developpement-label">
+                                <div class="service__panel-inner">
+                                    <p class="service__desc">Un développement rapide, évolutif et pensé pour la performance comme pour le référencement. Nous codons chaque site de A à Z, sans WordPress ni Wix, pour un chargement quasi instantané sur mobile. L'hébergement suisse sécurisé (Infomaniak) est inclus, avec un guide pour le gérer en toute autonomie.</p>
+                                </div>
+                            </div>
                         </article>
 
                         <article class="service reveal">
-                            <h3 class="service__name">Web Design</h3>
-                            <p class="service__desc">Des interfaces précises, lisibles et conçues pour une navigation fluide et naturelle. Un design épuré, des animations qui guident vos visiteurs vers l'action — appel, formulaire, devis — et une expérience pensée en priorité pour le mobile.</p>
+                            <h3 class="service__head">
+                                <button type="button" class="service__toggle" id="service-web-design-label"
+                                    aria-expanded="false" aria-controls="service-web-design">
+                                    <span class="service__name">Web Design</span>
+                                    <span class="service__icon" aria-hidden="true"></span>
+                                </button>
+                            </h3>
+                            <div class="service__panel" id="service-web-design" role="region"
+                                aria-labelledby="service-web-design-label">
+                                <div class="service__panel-inner">
+                                    <p class="service__desc">Des interfaces précises, lisibles et conçues pour une navigation fluide et naturelle. Un design épuré, des animations qui guident vos visiteurs vers l'action — appel, formulaire, devis — et une expérience pensée en priorité pour le mobile.</p>
+                                </div>
+                            </div>
                         </article>
 
                         <article class="service reveal">
-                            <h3 class="service__name">Sur-mesure</h3>
-                            <p class="service__desc">Du code et des solutions sur mesure pour les projets qui sortent du cadre standard. Structures multi-pages, suivi de conversion avancé, et un accompagnement continu après la mise en ligne pour faire évoluer votre site au rythme de votre entreprise.</p>
+                            <h3 class="service__head">
+                                <button type="button" class="service__toggle" id="service-sur-mesure-label"
+                                    aria-expanded="false" aria-controls="service-sur-mesure">
+                                    <span class="service__name">Sur-mesure</span>
+                                    <span class="service__icon" aria-hidden="true"></span>
+                                </button>
+                            </h3>
+                            <div class="service__panel" id="service-sur-mesure" role="region"
+                                aria-labelledby="service-sur-mesure-label">
+                                <div class="service__panel-inner">
+                                    <p class="service__desc">Du code et des solutions sur mesure pour les projets qui sortent du cadre standard. Structures multi-pages, suivi de conversion avancé, et un accompagnement continu après la mise en ligne pour faire évoluer votre site au rythme de votre entreprise.</p>
+                                </div>
+                            </div>
                         </article>
                     </div>
 
