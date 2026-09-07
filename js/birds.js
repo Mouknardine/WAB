@@ -16,7 +16,17 @@
         if (!ctx) return;
         ctx.imageSmoothingEnabled = false;
 
-        const SCALE = 7;
+        /* Taille proportionnee a l'ecran : a 7 pixels par point, un
+           oiseau fait 224px de large et couvre plus de la moitie d'un
+           telephone. Tolerable quand il ne volait que dans le hero,
+           beaucoup trop lourd maintenant qu'il traverse le texte. */
+        function scaleForWidth(width) {
+            if (width < 600) return 4;
+            if (width < 1000) return 5;
+            return 7;
+        }
+
+        let SCALE = scaleForWidth(window.innerWidth);
         const FRAME_MS = 180;
         const BIRD_COUNT = 4;
         const SPEED_MIN = 55;
@@ -102,10 +112,43 @@
         ];
 
         const FRAME_SEQUENCE = [0, 1];
-        const BIRD_W = COLS * SCALE;
+        let BIRD_W = COLS * SCALE;
+        let BIRD_H = ROWS * SCALE;
+
+        /* Chaque combinaison image x couleur est peinte une seule fois
+           dans un canevas hors ecran, puis recopiee d'un bloc. Sans ce
+           cache, les quatre oiseaux redessineraient environ 1500 petits
+           rectangles a chaque image : negligeable tant que l'animation
+           se limitait au hero, mais elle tourne desormais en continu
+           derriere toute la page. */
+        const sprites = new Map();
+
+        function spriteFor(frameIndex, bodyColor) {
+            const key = frameIndex + '|' + bodyColor;
+            const cached = sprites.get(key);
+            if (cached) return cached;
+
+            const sprite = document.createElement('canvas');
+            sprite.width = BIRD_W;
+            sprite.height = BIRD_H;
+
+            const sctx = sprite.getContext('2d');
+            const frameData = FRAMES[frameIndex];
+            for (let row = 0; row < ROWS; row++) {
+                const line = frameData[row];
+                for (let col = 0; col < COLS; col++) {
+                    const ch = line[col];
+                    if (ch === '.' || ch === undefined) continue;
+                    sctx.fillStyle = ch === 'B' ? bodyColor : COLORS[ch];
+                    sctx.fillRect(col * SCALE, row * SCALE, SCALE, SCALE);
+                }
+            }
+
+            sprites.set(key, sprite);
+            return sprite;
+        }
 
         function drawBird(frameIndex, birdX, birdY, bodyColor, flipped) {
-            const frameData = FRAMES[frameIndex];
             ctx.save();
             if (flipped) {
                 ctx.translate(Math.floor(birdX) + BIRD_W, Math.floor(birdY));
@@ -113,21 +156,21 @@
             } else {
                 ctx.translate(Math.floor(birdX), Math.floor(birdY));
             }
-            for (let row = 0; row < ROWS; row++) {
-                const line = frameData[row];
-                for (let col = 0; col < COLS; col++) {
-                    const ch = line[col];
-                    if (ch === '.' || ch === undefined) continue;
-                    ctx.fillStyle = ch === 'B' ? bodyColor : COLORS[ch];
-                    ctx.fillRect(col * SCALE, row * SCALE, SCALE, SCALE);
-                }
-            }
+            ctx.drawImage(spriteFor(frameIndex, bodyColor), 0, 0);
             ctx.restore();
         }
 
         function resizeCanvas() {
             canvas.width = canvas.offsetWidth;
             canvas.height = canvas.offsetHeight;
+
+            const next = scaleForWidth(canvas.width);
+            if (next !== SCALE) {
+                SCALE = next;
+                BIRD_W = COLS * SCALE;
+                BIRD_H = ROWS * SCALE;
+                sprites.clear();
+            }
         }
 
         resizeCanvas();
@@ -152,7 +195,6 @@
 
         let lastTime = performance.now();
         let needsResize = false;
-        let inView = true;
         let running = false;
         let rafId = null;
 
@@ -212,8 +254,8 @@
         }
 
         function syncPlayback() {
-            if (inView && !document.hidden) start();
-            else stop();
+            if (document.hidden) stop();
+            else start();
         }
 
         /* Mouvement réduit : les oiseaux sont dessinés une seule fois,
@@ -254,16 +296,6 @@
 
         if (typeof motionQuery.addEventListener === 'function') {
             motionQuery.addEventListener('change', applyMotionPreference);
-        }
-
-        // Pause quand le hero quitte l'écran : plus aucun calcul
-        // canvas pendant que le visiteur lit le contenu.
-        if ('IntersectionObserver' in window) {
-            const io = new IntersectionObserver((entries) => {
-                inView = entries[0].isIntersecting;
-                if (!motionQuery.matches) syncPlayback();
-            }, { threshold: 0 });
-            io.observe(canvas);
         }
 
         document.addEventListener('visibilitychange', () => {

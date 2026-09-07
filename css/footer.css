@@ -23,7 +23,7 @@
     gap: 10px;
     padding: 9px 16px;
     border-radius: var(--radius-pill);
-    background: var(--glass-strong);
+    background: var(--card);
     box-shadow: var(--edge), var(--edge-sheen), var(--shadow-sm);
     font-family: var(--font-mono);
     font-size: 11px;

@@ -284,13 +284,12 @@ img {
 }
 
 .btn--ghost {
-    background: var(--glass-strong);
+    background: var(--card);
     color: var(--ink);
     box-shadow: var(--edge), var(--edge-sheen), var(--shadow-sm);
 }
 
 .btn--ghost:hover {
-    background: var(--card);
     transform: translateY(-2px);
     box-shadow: var(--edge), var(--edge-sheen), var(--shadow-md);
 }
@@ -313,7 +312,7 @@ img {
 .chip {
     padding: 11px 20px;
     border-radius: 14px;
-    background: var(--glass-strong);
+    background: var(--card);
     box-shadow: var(--edge), var(--edge-sheen), var(--shadow-sm);
     font-size: 0.9rem;
     font-weight: 500;

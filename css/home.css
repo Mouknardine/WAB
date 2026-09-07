@@ -26,20 +26,23 @@
     box-shadow: var(--shadow-lg);
 }
 
+/* Les oiseaux traversent le fond de toute la page. Le canevas est
+   fixe et couvre l'écran : il passe au-dessus des aplats — le gris
+   de la page comme le rose de la carte — et sous tout ce qui se lit.
+   Aucun oiseau ne vient donc jamais devant un texte. */
 #birdCanvas {
-    position: absolute;
+    position: fixed;
     inset: 0;
     width: 100%;
     height: 100%;
-    z-index: 2;
+    z-index: 1;
     pointer-events: none;
     image-rendering: pixelated;
 }
 
-/* Au-dessus du canvas : aucun oiseau ne passe devant le nom du studio. */
 .hero-inner {
     position: relative;
-    z-index: 3;
+    z-index: 2;
     width: 100%;
     padding: clamp(28px, 5vw, 64px);
 }
@@ -142,10 +145,25 @@
 }
 
 /* ── Contenu ── */
-/* Le hero étant devenu une carte dans le flux, le contenu n'a plus
-   à passer par-dessus : il suit simplement, sur le même fond. */
+/* Au-dessus du vol des oiseaux : tout ce qui se lit reste net. */
 .plate {
     position: relative;
+    z-index: 2;
+}
+
+/* Un voile de la couleur exacte de la page, glissé entre les oiseaux
+   et le contenu. Sur le gris il ne se voit pas — il n'assourdit que
+   les oiseaux, qui redeviennent un arrière-plan derrière les textes
+   au lieu de leur disputer l'attention. Le hero n'est pas couvert :
+   là, ils gardent toute leur netteté sur le rose. */
+.plate::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--paper);
+    opacity: 0.55;
+    pointer-events: none;
 }
 
 /* ── Manifeste ── */
@@ -190,7 +208,7 @@
     position: relative;
     overflow: hidden;
     border-radius: var(--radius-card);
-    background: var(--glass-strong);
+    background: var(--card);
     box-shadow: var(--edge), var(--edge-sheen), var(--shadow-sm);
     transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
@@ -314,14 +332,12 @@
 .service {
     padding: clamp(28px, 3.5vw, 40px);
     border-radius: var(--radius-card);
-    background: var(--glass-strong);
+    background: var(--card);
     box-shadow: var(--edge), var(--edge-sheen), var(--shadow-sm);
-    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease),
-        background-color 0.35s var(--ease-out);
+    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
 
 .service:hover {
-    background: var(--card);
     transform: translateY(-4px);
     box-shadow: var(--edge), var(--edge-sheen), var(--shadow-md);
 }
