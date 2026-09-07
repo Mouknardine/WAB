@@ -94,7 +94,7 @@
     --topbar-h: calc(clamp(12px, 2vw, 20px) + 64px);
 
     /* Formes */
-    --radius-card: 24px;
+    --radius-card: 19px;
     --radius-pill: 999px;
 
     /* Verre — surfaces translucides. Le flou n'est posé que là où
@@ -350,7 +350,7 @@ time {
 
 .chip {
     padding: 11px 20px;
-    border-radius: 14px;
+    border-radius: 9px;
     background: var(--card);
     box-shadow: var(--edge), var(--edge-sheen), var(--shadow-sm);
     font-size: 0.9rem;

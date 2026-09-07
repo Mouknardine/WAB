@@ -48,7 +48,7 @@
     margin-top: 10px;
     padding: 14px 16px;
     border: 0;
-    border-radius: 14px;
+    border-radius: 9px;
     background: var(--paper);
     box-shadow: var(--edge);
     font-family: inherit;
@@ -126,7 +126,7 @@
     display: inline-flex;
     align-items: center;
     padding: 10px 16px;
-    border-radius: 12px;
+    border-radius: 7px;
     background: var(--paper);
     box-shadow: var(--edge);
     font-size: 0.9rem;
@@ -193,7 +193,7 @@
 .form-success {
     margin-top: 22px;
     padding: 22px;
-    border-radius: 16px;
+    border-radius: 11px;
     background: var(--paper);
     box-shadow: var(--edge);
 }
