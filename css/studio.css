@@ -4,19 +4,6 @@
    portraits.
    ============================================ */
 
-/* ── Manifeste ── */
-.manifesto-lead {
-    margin-inline: auto;
-    max-width: 24ch;
-    font-size: clamp(1.7rem, 3.8vw, 2.9rem);
-    font-weight: var(--w-strong);
-    letter-spacing: -0.03em;
-    line-height: 1.2;
-    text-align: center;
-    text-wrap: balance;
-    color: var(--ink);
-}
-
 /* ── Valeurs ── */
 .values {
     margin-top: clamp(44px, 6vw, 68px);
