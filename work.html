@@ -43,98 +43,271 @@
     <!-- Données structurées (JSON-LD) — studio, site, fondateurs + page -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": ["ProfessionalService", "Organization"],
-                "@id": "https://wearebrothers.ch/#organization",
-                "name": "WeAreBrothers Studio",
-                "alternateName": ["WAB.", "WeAreBrothers", "WAB Studio"],
-                "description": "Studio digital fondé par deux frères à Lausanne : création de sites web sur-mesure, web design, branding, motion design et e-commerce pour les PME et indépendants de l'arc lémanique.",
-                "slogan": "Des expériences qui restent dans la mémoire",
-                "url": "https://wearebrothers.ch/",
-                "email": "contact@wearebrothers.ch",
-                "image": "https://wearebrothers.ch/assets/og-image.png",
-                "logo": {
-                    "@type": "ImageObject",
-                    "url": "https://wearebrothers.ch/assets/icon-512.png",
-                    "width": 512,
-                    "height": 512
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": [
+                "ProfessionalService",
+                "Organization"
+            ],
+            "@id": "https://wearebrothers.ch/#organization",
+            "name": "WeAreBrothers Studio",
+            "alternateName": [
+                "WAB.",
+                "WeAreBrothers",
+                "WAB Studio"
+            ],
+            "description": "Studio digital fondé par deux frères à Lausanne : création de sites web sur-mesure, web design, branding, motion design et e-commerce pour les PME et indépendants de l'arc lémanique.",
+            "slogan": "Des expériences qui restent dans la mémoire",
+            "url": "https://wearebrothers.ch/",
+            "email": "contact@wearebrothers.ch",
+            "image": "https://wearebrothers.ch/assets/og-image.png",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://wearebrothers.ch/assets/icon-512.png",
+                "width": 512,
+                "height": 512
+            },
+            "numberOfEmployees": 3,
+            "foundingLocation": {
+                "@type": "Place",
+                "name": "Lausanne, Suisse"
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Lausanne",
+                "addressRegion": "VD",
+                "addressCountry": "CH"
+            },
+            "areaServed": [
+                "Lausanne",
+                "Genève",
+                "Vevey",
+                "Nyon",
+                "Morges",
+                "Renens",
+                "Vaud",
+                "Arc lémanique",
+                "Suisse romande"
+            ],
+            "serviceType": [
+                "Création de site web",
+                "Web design",
+                "Branding",
+                "Motion design",
+                "Développement e-commerce",
+                "Développement d'application métier sur mesure",
+                "SEO"
+            ],
+            "knowsLanguage": [
+                "fr",
+                "en"
+            ],
+            "knowsAbout": [
+                "Création de site web",
+                "Développement front-end",
+                "Développement full-stack",
+                "Next.js",
+                "TypeScript",
+                "Node.js",
+                "Design d'interface UI/UX",
+                "Branding",
+                "Identité visuelle",
+                "Motion design",
+                "Animation web",
+                "Référencement SEO",
+                "E-commerce"
+            ],
+            "founder": [
+                {
+                    "@id": "https://wearebrothers.ch/#eliott"
                 },
-                "numberOfEmployees": 3,
-                "foundingLocation": { "@type": "Place", "name": "Lausanne, Suisse" },
-                "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Lausanne",
-                    "addressRegion": "VD",
-                    "addressCountry": "CH"
-                },
-                "areaServed": ["Lausanne", "Genève", "Vevey", "Nyon", "Morges", "Renens", "Vaud", "Arc lémanique", "Suisse romande"],
-                "serviceType": ["Création de site web", "Web design", "Branding", "Motion design", "Développement e-commerce", "Développement d'application métier sur mesure", "SEO"],
-                "knowsLanguage": ["fr", "en"],
-                "knowsAbout": ["Création de site web", "Développement front-end", "Développement full-stack", "Next.js", "TypeScript", "Node.js", "Design d'interface UI/UX", "Branding", "Identité visuelle", "Motion design", "Animation web", "Référencement SEO", "E-commerce"],
-                "founder": [
-                    { "@id": "https://wearebrothers.ch/#eliott" },
-                    { "@id": "https://wearebrothers.ch/#matt" }
-                ],
-                "hasOfferCatalog": {
-                    "@type": "OfferCatalog",
-                    "name": "Services WeAreBrothers Studio",
-                    "itemListElement": [
-                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Développement", "description": "Un développement rapide, évolutif et pensé pour la performance comme pour le référencement." } },
-                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Design", "description": "Des interfaces précises, lisibles et conçues pour une navigation fluide et naturelle." } },
-                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sur-mesure", "description": "Du code et des solutions sur mesure pour les projets qui sortent du cadre standard." } }
-                    ]
+                {
+                    "@id": "https://wearebrothers.ch/#matt"
                 }
-            },
-            {
-                "@type": "WebSite",
-                "@id": "https://wearebrothers.ch/#website",
-                "url": "https://wearebrothers.ch/",
-                "name": "WeAreBrothers Studio",
-                "inLanguage": "fr-CH",
-                "publisher": { "@id": "https://wearebrothers.ch/#organization" }
-            },
-            {
-                "@type": "Person",
-                "@id": "https://wearebrothers.ch/#eliott",
-                "name": "Eliott Pina",
-                "jobTitle": "Lead designer",
-                "worksFor": { "@id": "https://wearebrothers.ch/#organization" },
-                "knowsAbout": ["Figma", "Motion Design", "Branding", "GSAP", "Three.js", "After Effects", "Direction artistique"]
-            },
-            {
-                "@type": "Person",
-                "@id": "https://wearebrothers.ch/#matt",
-                "name": "Matt Pina",
-                "jobTitle": "Lead développeur",
-                "worksFor": { "@id": "https://wearebrothers.ch/#organization" },
-                "knowsAbout": ["Next.js", "TypeScript", "Node.js", "Supabase", "PostgreSQL", "GSAP", "Développement full-stack"]
-            },
-            {
-                "@type": "CollectionPage",
-                "@id": "https://wearebrothers.ch/realisations#webpage",
-                "url": "https://wearebrothers.ch/realisations",
-                "name": "Réalisations — WeAreBrothers Studio",
-                "description": "Sélection de sites web, portfolios et sites vitrines réalisés par WeAreBrothers pour des clients de Lausanne et de Suisse romande.",
-                "isPartOf": { "@id": "https://wearebrothers.ch/#website" },
-                "about": { "@id": "https://wearebrothers.ch/#organization" },
-                "inLanguage": "fr-CH",
-                "mainEntity": {
-                    "@type": "ItemList",
-                    "itemListElement": [
-                        { "@type": "ListItem", "position": 1, "item": { "@type": "CreativeWork", "name": "La Slack", "url": "https://la-slack.com/", "image": "https://wearebrothers.ch/assets/images/project-slack.png", "creator": { "@id": "https://wearebrothers.ch/#organization" }, "description": "Un portfolio pensé comme un bureau virtuel : architecture, objets et design graphique rangés comme des dossiers, à ouvrir et à explorer." } },
-                        { "@type": "ListItem", "position": 2, "item": { "@type": "CreativeWork", "name": "Nadège Mouine", "url": "https://nadegemouine.ch", "image": "https://wearebrothers.ch/assets/images/project-nadege.png", "creator": { "@id": "https://wearebrothers.ch/#organization" }, "description": "Un écrin numérique épuré pour une architecte en formation à l'EPFL : ses projets d'abord, l'interface s'efface." } },
-                        { "@type": "ListItem", "position": 3, "item": { "@type": "CreativeWork", "name": "Commissione Entretien", "url": "https://commissione-entretien.ch/", "image": "https://wearebrothers.ch/assets/images/project-commissione.png", "creator": { "@id": "https://wearebrothers.ch/#organization" }, "description": "Le site d'une entreprise familiale d'entretien et de débouchage basée à Bavois : clair, direct, pensé pour transformer les visites en demandes de devis." } },
-                        { "@type": "ListItem", "position": 4, "item": { "@type": "CreativeWork", "name": "LAZIZZE DJ", "url": "https://lazizze-git.github.io/DJ/#/", "image": "https://wearebrothers.ch/assets/images/project-dj.png", "creator": { "@id": "https://wearebrothers.ch/#organization" }, "description": "Portfolio immersif pour un DJ house de Lausanne — esthétique neon underground, typographie brutale et énergie dancefloor." } },
-                        { "@type": "ListItem", "position": 5, "item": { "@type": "CreativeWork", "name": "Maison Alliani", "url": "https://lazizze-git.github.io/grillz/", "image": "https://wearebrothers.ch/assets/images/project-alliani.png", "creator": { "@id": "https://wearebrothers.ch/#organization" }, "description": "L'écrin digital d'un atelier suisse de grillz sur mesure : une esthétique sombre et luxueuse, où chaque pièce est présentée comme un bijou unique." } },
-                        { "@type": "ListItem", "position": 6, "item": { "@type": "CreativeWork", "name": "Géotechnologie", "url": "https://lazizze-git.github.io/G-otechnoligie/", "image": "https://wearebrothers.ch/assets/images/project-geotechnologie.png", "creator": { "@id": "https://wearebrothers.ch/#organization" }, "description": "Le site d'un bureau d'études géotechniques de Morzine : une esthétique de document d'ingénierie — grille millimétrée, coupe de sondage en guise de hero et typographie massive rehaussée de magenta." } },
-                        { "@type": "ListItem", "position": 7, "item": { "@type": "CreativeWork", "name": "Le P'tit Central", "url": "https://le-p-tit-central.vercel.app/", "image": "https://wearebrothers.ch/assets/images/project-central.webp", "creator": { "@id": "https://wearebrothers.ch/#organization" }, "description": "Le site d'un café-restaurant de quartier de la rue Centrale à Lausanne : azulejos bleu et blanc, cadres gravés et photographie maison, pour un lieu ouvert du matin à tard le soir." } }
-                    ]
-                }
+            ],
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Services WeAreBrothers Studio",
+                "itemListElement": [
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Développement",
+                            "description": "Un développement rapide, évolutif et pensé pour la performance comme pour le référencement."
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Web Design",
+                            "description": "Des interfaces précises, lisibles et conçues pour une navigation fluide et naturelle."
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Sur-mesure",
+                            "description": "Du code et des solutions sur mesure pour les projets qui sortent du cadre standard."
+                        }
+                    }
+                ]
             }
-        ]
-    }
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://wearebrothers.ch/#website",
+            "url": "https://wearebrothers.ch/",
+            "name": "WeAreBrothers Studio",
+            "inLanguage": "fr-CH",
+            "publisher": {
+                "@id": "https://wearebrothers.ch/#organization"
+            }
+        },
+        {
+            "@type": "Person",
+            "@id": "https://wearebrothers.ch/#eliott",
+            "name": "Eliott Pina",
+            "jobTitle": "Lead designer",
+            "worksFor": {
+                "@id": "https://wearebrothers.ch/#organization"
+            },
+            "knowsAbout": [
+                "Figma",
+                "Motion Design",
+                "Branding",
+                "GSAP",
+                "Three.js",
+                "After Effects",
+                "Direction artistique"
+            ]
+        },
+        {
+            "@type": "Person",
+            "@id": "https://wearebrothers.ch/#matt",
+            "name": "Matt Pina",
+            "jobTitle": "Lead développeur",
+            "worksFor": {
+                "@id": "https://wearebrothers.ch/#organization"
+            },
+            "knowsAbout": [
+                "Next.js",
+                "TypeScript",
+                "Node.js",
+                "Supabase",
+                "PostgreSQL",
+                "GSAP",
+                "Développement full-stack"
+            ]
+        },
+        {
+            "@type": "CollectionPage",
+            "@id": "https://wearebrothers.ch/realisations#webpage",
+            "url": "https://wearebrothers.ch/realisations",
+            "name": "Réalisations — WeAreBrothers Studio",
+            "description": "Sélection de sites web, portfolios et sites vitrines réalisés par WeAreBrothers pour des clients de Lausanne et de Suisse romande.",
+            "isPartOf": {
+                "@id": "https://wearebrothers.ch/#website"
+            },
+            "about": {
+                "@id": "https://wearebrothers.ch/#organization"
+            },
+            "inLanguage": "fr-CH",
+            "mainEntity": {
+                "@type": "ItemList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@type": "CreativeWork",
+                            "name": "Le P'tit Central",
+                            "url": "https://le-p-tit-central.vercel.app/",
+                            "image": "https://wearebrothers.ch/assets/images/project-central.webp",
+                            "creator": {
+                                "@id": "https://wearebrothers.ch/#organization"
+                            },
+                            "description": "Le site d'un café-restaurant de quartier de la rue Centrale à Lausanne : azulejos bleu et blanc, cadres gravés et photographie maison, pour un lieu ouvert du matin à tard le soir."
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@type": "CreativeWork",
+                            "name": "Nadège Mouine",
+                            "url": "https://nadegemouine.ch",
+                            "image": "https://wearebrothers.ch/assets/images/project-nadege.png",
+                            "creator": {
+                                "@id": "https://wearebrothers.ch/#organization"
+                            },
+                            "description": "Un écrin numérique épuré pour une architecte en formation à l'EPFL : ses projets d'abord, l'interface s'efface."
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "item": {
+                            "@type": "CreativeWork",
+                            "name": "LAZIZZE DJ",
+                            "url": "https://lazizze-git.github.io/DJ/#/",
+                            "image": "https://wearebrothers.ch/assets/images/project-dj.png",
+                            "creator": {
+                                "@id": "https://wearebrothers.ch/#organization"
+                            },
+                            "description": "Portfolio immersif pour un DJ house de Lausanne — esthétique neon underground, typographie brutale et énergie dancefloor."
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 4,
+                        "item": {
+                            "@type": "CreativeWork",
+                            "name": "Maison Alliani",
+                            "url": "https://lazizze-git.github.io/grillz/",
+                            "image": "https://wearebrothers.ch/assets/images/project-alliani.png",
+                            "creator": {
+                                "@id": "https://wearebrothers.ch/#organization"
+                            },
+                            "description": "L'écrin digital d'un atelier suisse de grillz sur mesure : une esthétique sombre et luxueuse, où chaque pièce est présentée comme un bijou unique."
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 5,
+                        "item": {
+                            "@type": "CreativeWork",
+                            "name": "La Slack",
+                            "url": "https://la-slack.com/",
+                            "image": "https://wearebrothers.ch/assets/images/project-slack.png",
+                            "creator": {
+                                "@id": "https://wearebrothers.ch/#organization"
+                            },
+                            "description": "Un portfolio pensé comme un bureau virtuel : architecture, objets et design graphique rangés comme des dossiers, à ouvrir et à explorer."
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 6,
+                        "item": {
+                            "@type": "CreativeWork",
+                            "name": "Commissione Entretien",
+                            "url": "https://commissione-entretien.ch/",
+                            "image": "https://wearebrothers.ch/assets/images/project-commissione.png",
+                            "creator": {
+                                "@id": "https://wearebrothers.ch/#organization"
+                            },
+                            "description": "Le site d'une entreprise familiale d'entretien et de débouchage basée à Bavois : clair, direct, pensé pour transformer les visites en demandes de devis."
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
     </script>
 
 
@@ -227,7 +400,7 @@
             <div class="shell">
                 <h1 class="page-head__title">Stratégie, design et code appliqués à des échelles différentes</h1>
                 <p class="page-head__sub">
-                    Sept projets en ligne, du portfolio créatif au site d'entreprise. Chacun dessiné,
+                    Six projets en ligne, du portfolio créatif au site d'entreprise. Chacun dessiné,
                     codé et mis en ligne à Lausanne, sans sous-traitance.
                 </p>
             </div>
@@ -237,40 +410,40 @@
         <section class="band" id="projets">
             <div class="shell shell--wide">
                 <div class="cases" data-reveal-group>
-                    <article class="case reveal" id="la-slack">
-                        <a href="https://la-slack.com/" target="_blank" rel="noopener noreferrer" class="window-link" aria-label="Voir le site de La Slack">
+                    <article class="case reveal" id="le-ptit-central">
+                        <a href="https://le-p-tit-central.vercel.app/" target="_blank" rel="noopener noreferrer" class="window-link" aria-label="Voir le site de Le P'tit Central">
                             <div class="window">
                                 <span class="window__chrome" aria-hidden="true">
                                     <span></span><span></span><span></span>
                                 </span>
                                 <span class="window__view">
-                                    <img class="window__img" src="assets/images/project-slack.png" alt="Capture du site La Slack, portfolio créatif conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async" width="1200" height="750">
+                                    <img class="window__img" src="assets/images/project-central.webp" alt="Capture du site du P'tit Central, café-restaurant de la rue Centrale à Lausanne, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async" width="1200" height="750">
                                     <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
                                 </span>
                             </div>
                         </a>
 
                         <div class="case__body">
-                            <p class="case__type">Portfolio créatif</p>
-                            <h2 class="case__title">La Slack</h2>
-                            <p class="case__desc">Un portfolio pensé comme un bureau virtuel : architecture, objets et design graphique rangés comme des dossiers, à ouvrir et à explorer.</p>
+                            <p class="case__type">Site vitrine — Café &amp; restaurant</p>
+                            <h2 class="case__title">Le P'tit Central</h2>
+                            <p class="case__desc">Le site d'un café-restaurant de quartier de la rue Centrale à Lausanne : azulejos bleu et blanc, cadres gravés et photographie maison, pour un lieu ouvert du matin à tard le soir.</p>
 
                             <h3 class="case__label">Ce que nous avons fait</h3>
                             <ul class="case__list">
-                                <li>Concept de navigation « bureau virtuel » et direction artistique</li>
-                                <li>Design d'interface ludique, pensé pour l'exploration</li>
-                                <li>Développement sur mesure, interactions et micro-animations</li>
-                                <li>Optimisation des performances et adaptation mobile</li>
+                                <li>Direction artistique tirée des azulejos du comptoir : bleu de faïence, cadres gravés et typographie de bistrot</li>
+                                <li>Carte complète découpée par moment de la journée — matinée, midi et soir</li>
+                                <li>Présentation du lieu et de son histoire, avec horaires et statut d'ouverture affiché en direct</li>
+                                <li>Parcours pensé pour la réservation : appel en un geste, itinéraire et contact accessibles depuis le mobile</li>
                             </ul>
 
                             <ul class="case__tags">
                                 <li class="case__tag">Direction artistique</li>
                                 <li class="case__tag">Web design</li>
                                 <li class="case__tag">Développement</li>
-                                <li class="case__tag">Motion</li>
+                                <li class="case__tag">SEO local</li>
                             </ul>
 
-                            <a href="https://la-slack.com/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost case__cta">
+                            <a href="https://le-p-tit-central.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost case__cta">
                                 <span>Voir le site</span>
                                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                             </a>
@@ -309,45 +482,6 @@
                             </ul>
 
                             <a href="https://nadegemouine.ch" target="_blank" rel="noopener noreferrer" class="btn btn--ghost case__cta">
-                                <span>Voir le site</span>
-                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                            </a>
-                        </div>
-                    </article>
-                    <article class="case reveal" id="commissione-entretien">
-                        <a href="https://commissione-entretien.ch/" target="_blank" rel="noopener noreferrer" class="window-link" aria-label="Voir le site de Commissione Entretien">
-                            <div class="window">
-                                <span class="window__chrome" aria-hidden="true">
-                                    <span></span><span></span><span></span>
-                                </span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/project-commissione.png" alt="Capture du site Commissione Entretien, site professionnel conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async" width="1200" height="750">
-                                    <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
-                                </span>
-                            </div>
-                        </a>
-
-                        <div class="case__body">
-                            <p class="case__type">Site vitrine — Services</p>
-                            <h2 class="case__title">Commissione Entretien</h2>
-                            <p class="case__desc">Le site d'une entreprise familiale d'entretien et de débouchage basée à Bavois : clair, direct, pensé pour transformer les visites en demandes de devis.</p>
-
-                            <h3 class="case__label">Ce que nous avons fait</h3>
-                            <ul class="case__list">
-                                <li>Architecture claire des cinq prestations, numérotées et détaillées</li>
-                                <li>Parcours de conversion : demande de devis et appel direct accessibles partout</li>
-                                <li>Mise en avant de la disponibilité 24h/24 et de la zone d'intervention</li>
-                                <li>Référencement local pour être trouvé dans le canton de Vaud</li>
-                            </ul>
-
-                            <ul class="case__tags">
-                                <li class="case__tag">Web design</li>
-                                <li class="case__tag">Développement</li>
-                                <li class="case__tag">SEO local</li>
-                                <li class="case__tag">Conversion</li>
-                            </ul>
-
-                            <a href="https://commissione-entretien.ch/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost case__cta">
                                 <span>Voir le site</span>
                                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                             </a>
@@ -431,30 +565,30 @@
                             </a>
                         </div>
                     </article>
-                    <article class="case reveal" id="geotechnologie">
-                        <a href="https://lazizze-git.github.io/G-otechnoligie/" target="_blank" rel="noopener noreferrer" class="window-link" aria-label="Voir le site de Géotechnologie">
+                    <article class="case reveal" id="la-slack">
+                        <a href="https://la-slack.com/" target="_blank" rel="noopener noreferrer" class="window-link" aria-label="Voir le site de La Slack">
                             <div class="window">
                                 <span class="window__chrome" aria-hidden="true">
                                     <span></span><span></span><span></span>
                                 </span>
                                 <span class="window__view">
-                                    <img class="window__img" src="assets/images/project-geotechnologie.png?v=2" alt="Capture du site Géotechnologie, bureau d'études géotechniques à Morzine, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async" width="1200" height="750">
+                                    <img class="window__img" src="assets/images/project-slack.png" alt="Capture du site La Slack, portfolio créatif conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async" width="1200" height="750">
                                     <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
                                 </span>
                             </div>
                         </a>
 
                         <div class="case__body">
-                            <p class="case__type">Site vitrine — Ingénierie</p>
-                            <h2 class="case__title">Géotechnologie</h2>
-                            <p class="case__desc">Le site d'un bureau d'études géotechniques de Morzine : une esthétique de document d'ingénierie — grille millimétrée, coupe de sondage en guise de hero et typographie massive rehaussée de magenta.</p>
+                            <p class="case__type">Portfolio créatif</p>
+                            <h2 class="case__title">La Slack</h2>
+                            <p class="case__desc">Un portfolio pensé comme un bureau virtuel : architecture, objets et design graphique rangés comme des dossiers, à ouvrir et à explorer.</p>
 
                             <h3 class="case__label">Ce que nous avons fait</h3>
                             <ul class="case__list">
-                                <li>Direction artistique inspirée des documents techniques : grille millimétrée, annotations et repères de mesure</li>
-                                <li>Coupe de sondage illustrée directement dans le hero, comme un relevé de terrain</li>
-                                <li>Présentation claire des missions géotechniques normalisées (G1 à G5) et du savoir-faire du bureau</li>
-                                <li>Parcours de contact pensé pour transformer architectes et particuliers en demandes d'étude</li>
+                                <li>Concept de navigation « bureau virtuel » et direction artistique</li>
+                                <li>Design d'interface ludique, pensé pour l'exploration</li>
+                                <li>Développement sur mesure, interactions et micro-animations</li>
+                                <li>Optimisation des performances et adaptation mobile</li>
                             </ul>
 
                             <ul class="case__tags">
@@ -464,46 +598,46 @@
                                 <li class="case__tag">Motion</li>
                             </ul>
 
-                            <a href="https://lazizze-git.github.io/G-otechnoligie/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost case__cta">
+                            <a href="https://la-slack.com/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost case__cta">
                                 <span>Voir le site</span>
                                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                             </a>
                         </div>
                     </article>
-                    <article class="case reveal" id="le-ptit-central">
-                        <a href="https://le-p-tit-central.vercel.app/" target="_blank" rel="noopener noreferrer" class="window-link" aria-label="Voir le site de Le P'tit Central">
+                    <article class="case reveal" id="commissione-entretien">
+                        <a href="https://commissione-entretien.ch/" target="_blank" rel="noopener noreferrer" class="window-link" aria-label="Voir le site de Commissione Entretien">
                             <div class="window">
                                 <span class="window__chrome" aria-hidden="true">
                                     <span></span><span></span><span></span>
                                 </span>
                                 <span class="window__view">
-                                    <img class="window__img" src="assets/images/project-central.webp" alt="Capture du site du P'tit Central, café-restaurant de la rue Centrale à Lausanne, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async" width="1200" height="750">
+                                    <img class="window__img" src="assets/images/project-commissione.png" alt="Capture du site Commissione Entretien, site professionnel conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async" width="1200" height="750">
                                     <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
                                 </span>
                             </div>
                         </a>
 
                         <div class="case__body">
-                            <p class="case__type">Site vitrine — Café &amp; restaurant</p>
-                            <h2 class="case__title">Le P'tit Central</h2>
-                            <p class="case__desc">Le site d'un café-restaurant de quartier de la rue Centrale à Lausanne : azulejos bleu et blanc, cadres gravés et photographie maison, pour un lieu ouvert du matin à tard le soir.</p>
+                            <p class="case__type">Site vitrine — Services</p>
+                            <h2 class="case__title">Commissione Entretien</h2>
+                            <p class="case__desc">Le site d'une entreprise familiale d'entretien et de débouchage basée à Bavois : clair, direct, pensé pour transformer les visites en demandes de devis.</p>
 
                             <h3 class="case__label">Ce que nous avons fait</h3>
                             <ul class="case__list">
-                                <li>Direction artistique tirée des azulejos du comptoir : bleu de faïence, cadres gravés et typographie de bistrot</li>
-                                <li>Carte complète découpée par moment de la journée — matinée, midi et soir</li>
-                                <li>Présentation du lieu et de son histoire, avec horaires et statut d'ouverture affiché en direct</li>
-                                <li>Parcours pensé pour la réservation : appel en un geste, itinéraire et contact accessibles depuis le mobile</li>
+                                <li>Architecture claire des cinq prestations, numérotées et détaillées</li>
+                                <li>Parcours de conversion : demande de devis et appel direct accessibles partout</li>
+                                <li>Mise en avant de la disponibilité 24h/24 et de la zone d'intervention</li>
+                                <li>Référencement local pour être trouvé dans le canton de Vaud</li>
                             </ul>
 
                             <ul class="case__tags">
-                                <li class="case__tag">Direction artistique</li>
                                 <li class="case__tag">Web design</li>
                                 <li class="case__tag">Développement</li>
                                 <li class="case__tag">SEO local</li>
+                                <li class="case__tag">Conversion</li>
                             </ul>
 
-                            <a href="https://le-p-tit-central.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost case__cta">
+                            <a href="https://commissione-entretien.ch/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost case__cta">
                                 <span>Voir le site</span>
                                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                             </a>
