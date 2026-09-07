@@ -49,7 +49,6 @@
     --paper: #f4f4f5;
     --card: #ffffff;
     --line: #e5e5e8;
-    --line-strong: #d4d4d9;
 
     /* Encre — trois niveaux seulement, tous conformes AA sur --paper */
     --ink: #0b0b0c;
@@ -70,7 +69,6 @@
     --hero-pink: #ff2d9b;
 
     --white: #ffffff;
-    --black: #000000;
 
     /* Type */
     --font-display: 'Epilogue', 'Helvetica Neue', Helvetica, sans-serif;
@@ -78,9 +76,9 @@
 
     /* Graisses — la page ne joue qu'entre le Regular et le SemiBold.
        Epilogue tient très bien la grande taille en 600 : monter à 800
-       la rendrait compacte et lourde là où elle doit rester nette. */
+       la rendrait compacte et lourde là où elle doit rester nette.
+       Deux valeurs suffisent, il n'y a pas de troisième niveau. */
     --w-regular: 400;
-    --w-medium: 500;
     --w-strong: 600;
 
     /* Gouttière commune à la barre flottante et à la carte du hero,
@@ -92,7 +90,6 @@
 
     /* Formes */
     --radius-card: 24px;
-    --radius-inner: 16px;
     --radius-pill: 999px;
 
     /* Verre — surfaces translucides. Le flou n'est posé que là où

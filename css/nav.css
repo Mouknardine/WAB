@@ -54,19 +54,6 @@
     color: var(--ink);
 }
 
-.topbar__badge {
-    padding: 5px 9px;
-    border-radius: 7px;
-    background: var(--ink);
-    color: var(--white);
-    font-family: var(--font-mono);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    white-space: nowrap;
-}
-
 /* ── Liens du bureau ── */
 .topbar__nav {
     display: none;
@@ -114,22 +101,21 @@
     justify-content: center;
     gap: 5px;
     border-radius: 15px;
-    background: rgba(11, 11, 12, 0.04);
-    box-shadow: var(--edge);
-    transition: background-color 0.25s var(--ease-out);
 }
 
-.topbar__burger:hover {
-    background: rgba(11, 11, 12, 0.08);
+/* Pas de cadre : au survol, ce sont les trois traits qui s'epaississent. */
+.topbar__burger:hover span {
+    width: 20px;
 }
 
 .topbar__burger span {
     display: block;
-    width: 16px;
+    width: 18px;
     height: 2px;
     border-radius: 2px;
     background: var(--ink);
-    transition: transform 0.35s var(--ease), opacity 0.2s linear;
+    transition: transform 0.35s var(--ease), opacity 0.2s linear,
+        width 0.25s var(--ease-out);
 }
 
 .topbar__burger[aria-expanded='true'] span:first-child {
