@@ -318,11 +318,26 @@
     box-shadow: inset 0 -1px 0 rgba(11, 11, 12, 0.06);
 }
 
+/* Les trois pastilles reprennent les couleurs d'une vraie fenetre :
+   c'est ce qui rend le cadre lisible d'un coup d'oeil. Le liseré
+   interne évite l'effet d'aplat plat sur le blanc de la carte. */
 .work-card__chrome span {
     width: 9px;
     height: 9px;
     border-radius: 50%;
-    background: rgba(11, 11, 12, 0.16);
+    box-shadow: inset 0 0 0 1px rgba(11, 11, 12, 0.08);
+}
+
+.work-card__chrome span:nth-child(1) {
+    background: #ff5f57;
+}
+
+.work-card__chrome span:nth-child(2) {
+    background: #febc2e;
+}
+
+.work-card__chrome span:nth-child(3) {
+    background: #28c840;
 }
 
 .work-card__view {
