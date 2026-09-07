@@ -254,6 +254,35 @@
     text-align: center;
 }
 
+/* Le texte s'assombrit au fil du défilement. Écrit avec une
+   timeline de vue plutôt qu'avec GSAP : l'accueil chargeait 110 Ko
+   de bibliothèque et deux requêtes externes pour ce seul effet.
+   Sans le support, le paragraphe reste simplement dans sa teinte
+   de lecture — rien ne manque. */
+@keyframes fill-ink {
+    from {
+        color: var(--ink-muted);
+    }
+
+    to {
+        color: var(--ink);
+    }
+}
+
+@supports (animation-timeline: view()) {
+    .manifesto__body {
+        animation: fill-ink linear both;
+        animation-timeline: view();
+        animation-range: entry 70% cover 45%;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .manifesto__body {
+            animation: none;
+        }
+    }
+}
+
 .manifesto__body {
     margin: 26px auto 0;
     max-width: 56ch;
