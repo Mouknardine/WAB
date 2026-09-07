@@ -134,9 +134,6 @@
 
 .topbar__lines span:nth-child(2) {
     top: 6px;
-    /* Trait du milieu volontairement plus court : il s'allonge au
-       survol, ce qui rend le bouton vivant sans lui redonner de cadre. */
-    transform: scaleX(0.66);
     transform-origin: left center;
 }
 
@@ -144,8 +141,15 @@
     top: 12px;
 }
 
-.topbar__burger:hover .topbar__lines span:nth-child(2) {
-    transform: scaleX(1);
+/* Les trois traits font la même largeur. Le retour au survol passe
+   donc par un léger écartement du premier et du dernier, plutôt que
+   par une différence de longueur. */
+.topbar__burger:hover .topbar__lines span:nth-child(1) {
+    transform: translateY(-1px);
+}
+
+.topbar__burger:hover .topbar__lines span:nth-child(3) {
+    transform: translateY(1px);
 }
 
 .topbar__burger[aria-expanded='true'] .topbar__lines span:nth-child(1) {
