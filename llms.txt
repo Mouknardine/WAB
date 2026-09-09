@@ -18,6 +18,7 @@
   - Zinéma — site vitrine du premier cinéma d'art et essai miniplex de Lausanne, rue du Maupas, accueil en mur d'affiches et agenda des séances (https://www.zinema.ch/)
   - Le P'tit Central — site vitrine d'un café-restaurant de quartier de la rue Centrale à Lausanne, esthétique azulejos (https://le-p-tit-central.vercel.app/)
   - Maison Alliani — site vitrine haute joaillerie pour un atelier suisse de grillz sur mesure (https://lazizze-git.github.io/grillz/)
+  - Amarte Studio — site vitrine d'un centre de yoga et de Pilates à Épalinges (Lausanne), disciplines, profs, horaires et réservation (https://amarte.ch/)
   - Nadège Mouine — site personnel épuré pour une architecte en formation à l'EPFL (https://nadegemouine.ch)
   - LAZIZZE DJ — portfolio immersif pour un DJ house de Lausanne (https://lazizze-git.github.io/DJ/#/)
   - La Slack — portfolio créatif en forme de bureau virtuel (https://la-slack.com/)
