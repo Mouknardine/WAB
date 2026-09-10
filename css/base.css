@@ -365,18 +365,20 @@ time {
     box-shadow: none;
 }
 
-/* ── Apparition au défilement ── */
+/* ── Apparition au défilement ──
+   Le masquage ne s'applique que si JavaScript est là pour révéler
+   (classe « js » posée sur <html> dès l'en-tête). Sans script — robot
+   d'indexation qui ne rend pas la page, lecteur, script bloqué — tout
+   le contenu reste visible : une page qui dépend d'un défilement pour
+   exister n'existe pas pour Bing. */
 .reveal {
-    opacity: 0;
-    transform: translateY(24px);
     transition: opacity 0.7s var(--ease-out), transform 0.75s var(--ease);
-    will-change: opacity, transform;
 }
 
-.reveal.is-visible {
-    opacity: 1;
-    transform: none;
-    will-change: auto;
+html.js .reveal:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(24px);
+    will-change: opacity, transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -394,7 +396,7 @@ time {
         scroll-behavior: auto !important;
     }
 
-    .reveal {
+    html.js .reveal:not(.is-visible) {
         opacity: 1;
         transform: none;
     }

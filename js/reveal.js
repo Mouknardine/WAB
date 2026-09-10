@@ -23,7 +23,12 @@
         if (!targets.length) return;
 
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (reduceMotion || !('IntersectionObserver' in window)) {
+        // Les robots d'indexation qui exécutent le script (Bingbot,
+        // Googlebot…) ne font pas défiler la page : sans cette ligne,
+        // tout ce qui est sous le premier écran resterait invisible
+        // dans leur rendu. Même contenu, sans l'animation d'entrée.
+        const crawler = /bot|crawl|spider|slurp|bingpreview|lighthouse|prerender/i.test(navigator.userAgent);
+        if (reduceMotion || crawler || !('IntersectionObserver' in window)) {
             showAll(targets);
             return;
         }
