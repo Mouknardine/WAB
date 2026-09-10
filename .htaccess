@@ -24,15 +24,18 @@
     RewriteRule ^ /contact [R=301,L]
     RewriteCond %{THE_REQUEST} \s/+applications\.html[\s?] [NC]
     RewriteRule ^ /applications [R=301,L]
+    RewriteCond %{THE_REQUEST} \s/+creation-site-internet-lausanne\.html[\s?] [NC]
+    RewriteRule ^ /creation-site-internet-lausanne [R=301,L]
 
     # 2. Enlever un slash final éventuel (garde les chemins d'assets relatifs corrects).
-    RewriteRule ^(realisations|studio|contact|applications)/$ /$1 [R=301,L]
+    RewriteRule ^(realisations|studio|contact|applications|creation-site-internet-lausanne)/$ /$1 [R=301,L]
 
     # 3. Servir les adresses propres avec les fichiers physiques (réécriture interne).
     RewriteRule ^realisations$ work.html [L]
     RewriteRule ^studio$ about.html [L]
     RewriteRule ^contact$ contact.html [L]
     RewriteRule ^applications$ applications.html [L]
+    RewriteRule ^creation-site-internet-lausanne$ creation-site-internet-lausanne.html [L]
 </IfModule>
 
 # ── Compression (gzip / deflate) ──
@@ -64,6 +67,9 @@
 <IfModule mod_headers.c>
     Header set X-Content-Type-Options "nosniff"
     Header set Referrer-Policy "strict-origin-when-cross-origin"
+    # HSTS : le navigateur ne repasse plus jamais par http, et Google y
+    # voit un signal de plus pour ne garder que la version https.
+    Header always set Strict-Transport-Security "max-age=31536000" env=HTTPS
 </IfModule>
 
 # Types MIME (le manifeste n'est pas connu de tous les serveurs)

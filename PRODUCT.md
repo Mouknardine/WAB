@@ -39,7 +39,7 @@ Priorité commerciale actuelle : les sites web restent le cœur de l'activité ;
 
 ## Capabilities and Constraints
 
-**Pages en ligne** : Accueil (`/`), Réalisations (`/realisations`), Applications sur mesure (`/applications`), À propos (`/studio`), Contact (`/contact`).
+**Pages en ligne** : Accueil (`/`), Création de site internet à Lausanne (`/creation-site-internet-lausanne`, page de service dédiée à la requête « création site internet Lausanne », bâtie uniquement avec les composants existants), Réalisations (`/realisations`), Applications sur mesure (`/applications`), À propos (`/studio`), Contact (`/contact`).
 
 **Stack du site** : HTML / CSS / JavaScript statiques, écrits à la main, sans framework ni étape de build. Une feuille de style et un script par page (`style.css` + `about.css`, `work.css`, `contact.css`, `applications.css`). Déploiement par GitHub Actions vers Infomaniak en FTPS à chaque push sur `main`.
 
@@ -55,7 +55,7 @@ Priorité commerciale actuelle : les sites web restent le cœur de l'activité ;
 
 **Typographie française** : jamais de `?` ou `!` isolé en début de ligne — espace insécable systématique, à vérifier jusqu'à 320 px de large.
 
-**Non décidé** : rien n'est arrêté sur une éventuelle page tarifs, un blog, ou une page dédiée par service.
+**Non décidé** : rien n'est arrêté sur une éventuelle page tarifs ou un blog. Une seule page de service existe (création de site internet) ; les autres prestations restent sur l'accueil.
 
 ## Brand Commitments
 

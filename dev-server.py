@@ -21,6 +21,7 @@ ROUTES = {
     '/studio': 'about.html',
     '/contact': 'contact.html',
     '/applications': 'applications.html',
+    '/creation-site-internet-lausanne': 'creation-site-internet-lausanne.html',
 }
 
 

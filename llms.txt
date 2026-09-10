@@ -16,6 +16,7 @@
 ## Pages
 
 - [Accueil](https://wearebrothers.ch/) : agence web à Lausanne, prestations, sélection de réalisations, questions fréquentes sur la création d'un site internet
+- [Création de site internet à Lausanne](https://wearebrothers.ch/creation-site-internet-lausanne) : ce que comprend un site (design sur mesure, code écrit à la main, hébergement suisse inclus, référencement local), déroulé en quatre étapes, exemples lausannois, refonte, questions fréquentes
 - [Réalisations](https://wearebrothers.ch/realisations) : portfolio détaillé
   - Zinéma — site vitrine du premier cinéma d'art et essai miniplex de Lausanne, rue du Maupas, accueil en mur d'affiches et agenda des séances (https://www.zinema.ch/)
   - Le P'tit Central — site vitrine d'un café-restaurant de quartier de la rue Centrale à Lausanne, esthétique azulejos (https://le-p-tit-central.vercel.app/)

@@ -26,7 +26,7 @@ on:
   workflow_dispatch:
     inputs:
       urls:
-        description: "Adresses à soumettre, séparées par des espaces (vide = les cinq pages du site)"
+        description: "Adresses à soumettre, séparées par des espaces (vide = les six pages du site)"
         required: false
         default: ""
 
@@ -45,7 +45,7 @@ jobs:
           if [ -n "$URLS_INPUT" ]; then
             SET="$URLS_INPUT"
           else
-            SET="https://$HOST/ https://$HOST/realisations https://$HOST/applications https://$HOST/studio https://$HOST/contact"
+            SET="https://$HOST/ https://$HOST/creation-site-internet-lausanne https://$HOST/realisations https://$HOST/applications https://$HOST/studio https://$HOST/contact"
           fi
           JSON=$(for u in $SET; do printf '"%s",' "$u"; done | sed 's/,$//')
           echo "json=$JSON" >> "$GITHUB_OUTPUT"

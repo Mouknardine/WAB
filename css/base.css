@@ -159,6 +159,21 @@ a {
     text-decoration: none;
 }
 
+/* Lien posé dans un paragraphe : un souligné fin, seule marque de
+   lien du site en dehors des boutons. */
+.text-link {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    text-decoration-color: rgba(11, 11, 12, 0.35);
+    transition: text-decoration-color 0.3s var(--ease-out);
+}
+
+.text-link:hover {
+    text-decoration-color: var(--hero-pink);
+}
+
 button {
     font-family: inherit;
     font-size: inherit;

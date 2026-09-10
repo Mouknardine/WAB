@@ -67,6 +67,7 @@ jobs:
                      \"keyLocation\": \"https://wearebrothers.ch/$KEY.txt\",
                      \"urlList\": [
                        \"https://wearebrothers.ch/\",
+                       \"https://wearebrothers.ch/creation-site-internet-lausanne\",
                        \"https://wearebrothers.ch/realisations\",
                        \"https://wearebrothers.ch/applications\",
                        \"https://wearebrothers.ch/studio\",
