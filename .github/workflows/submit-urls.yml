@@ -3,9 +3,9 @@ name: Soumettre les pages aux moteurs
 # Lancement à la demande :
 #   - bouton « Run workflow » dans l'onglet Actions (avec une liste
 #     d'adresses facultative) ;
-#   - ou création d'une branche datée « submit-urls/<date> » posée sur
+#   - ou création d'une branche datée « submit-urls-<date> » posée sur
 #     main, sans commit, depuis n'importe quel poste ou session :
-#         git push origin main:submit-urls/$(date +%Y%m%d-%H%M)
+#         git push origin main:submit-urls-$(date +%Y%m%d-%H%M)
 #     Le jeton des sessions Claude ne peut ni appeler l'API
 #     workflow_dispatch, ni pousser une étiquette, ni supprimer une
 #     branche : créer une branche est sa seule façon de lancer. Ces
@@ -22,7 +22,7 @@ name: Soumettre les pages aux moteurs
 
 on:
   push:
-    branches: ["submit-urls/**"]
+    branches: ["submit-urls-*"]
   workflow_dispatch:
     inputs:
       urls:
