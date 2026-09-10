@@ -1,0 +1,64 @@
+name: Soumettre les pages aux moteurs
+
+# Lancement à la demande, depuis l'onglet Actions ou par appel d'API.
+# 1. IndexNow : Bing, Yandex, Seznam, Naver — clé déjà publiée à la racine.
+# 2. API Bing Webmaster « Soumission d'URL » : équivalent du bouton manuel
+#    de Bing Webmaster Tools. Ne tourne que si le secret
+#    BING_WEBMASTER_API_KEY existe (Bing Webmaster Tools → Paramètres →
+#    Accès à l'API → Clé d'API).
+# Google n'offre aucune API pour « Demander une indexation » : la seule
+# voie légitime reste le sitemap, dont la date lastmod est mise à jour à
+# chaque modification de page.
+
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: "Adresses à soumettre, séparées par des espaces (vide = les cinq pages du site)"
+        required: false
+        default: ""
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    env:
+      HOST: wearebrothers.ch
+      INDEXNOW_KEY: 0515e9f961a495712d522e48173e1a6f
+      BING_KEY: ${{ secrets.BING_WEBMASTER_API_KEY }}
+      URLS_INPUT: ${{ github.event.inputs.urls }}
+    steps:
+      - name: Préparer la liste des adresses
+        id: list
+        run: |
+          if [ -n "$URLS_INPUT" ]; then
+            SET="$URLS_INPUT"
+          else
+            SET="https://$HOST/ https://$HOST/realisations https://$HOST/applications https://$HOST/studio https://$HOST/contact"
+          fi
+          JSON=$(for u in $SET; do printf '"%s",' "$u"; done | sed 's/,$//')
+          echo "json=$JSON" >> "$GITHUB_OUTPUT"
+          echo "Adresses soumises : $SET"
+
+      - name: IndexNow (Bing, Yandex, Seznam, Naver)
+        env:
+          JSON: ${{ steps.list.outputs.json }}
+        run: |
+          curl -sS -X POST "https://api.indexnow.org/indexnow" \
+               -H "Content-Type: application/json; charset=utf-8" \
+               -w '\nIndexNow a répondu : %{http_code} (200 ou 202 = accepté)\n' \
+               -d "{\"host\":\"$HOST\",\"key\":\"$INDEXNOW_KEY\",\"keyLocation\":\"https://$HOST/$INDEXNOW_KEY.txt\",\"urlList\":[$JSON]}"
+
+      - name: API Bing Webmaster (Soumission d'URL)
+        if: ${{ env.BING_KEY != '' }}
+        env:
+          JSON: ${{ steps.list.outputs.json }}
+        run: |
+          curl -sS -X POST "https://ssl.bing.com/webmaster/api.svc/json/SubmitUrlBatch?apikey=$BING_KEY" \
+               -H "Content-Type: application/json; charset=utf-8" \
+               -w '\nBing Webmaster a répondu : %{http_code} (200 = accepté)\n' \
+               -d "{\"siteUrl\":\"https://$HOST\",\"urlList\":[$JSON]}"
+
+      - name: Sans clé Bing Webmaster
+        if: ${{ env.BING_KEY == '' }}
+        run: |
+          echo "Secret BING_WEBMASTER_API_KEY absent : soumission Bing Webmaster ignorée. IndexNow suffit à Bing."
