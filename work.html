@@ -13,9 +13,9 @@
     <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
     <link rel="manifest" href="/site.webmanifest">
-    <title>Nos Réalisations — Sites Web Lausanne & Suisse | WeAreBrothers</title>
+    <title>Réalisations — Sites Internet Créés à Lausanne | WeAreBrothers</title>
     <meta name="description"
-        content="Portfolio de sites web, branding et expériences digitales réalisés pour des clients de Lausanne, Vaud et la région lémanique, avec le détail de chaque projet.">
+        content="Portfolio de sites internet, sites vitrines et portfolios créatifs conçus et développés par notre agence web à Lausanne pour des clients de Vaud et de l'arc lémanique.">
 
     <!-- SEO -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -25,8 +25,8 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Nos Réalisations — Sites Web Lausanne & Suisse | WeAreBrothers">
-    <meta property="og:description" content="Portfolio de sites web, branding et expériences digitales réalisés à Lausanne et dans l'arc lémanique.">
+    <meta property="og:title" content="Réalisations — Sites Internet Créés à Lausanne | WeAreBrothers">
+    <meta property="og:description" content="Sites internet, sites vitrines et portfolios créatifs conçus par notre agence web à Lausanne.">
     <meta property="og:url" content="https://wearebrothers.ch/realisations">
     <meta property="og:image" content="https://wearebrothers.ch/assets/og-image.png">
     <meta property="og:image:width" content="1200">
@@ -36,8 +36,8 @@
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Nos Réalisations — Sites Web Lausanne & Suisse | WeAreBrothers">
-    <meta name="twitter:description" content="Portfolio de sites web, branding et expériences digitales réalisés à Lausanne et dans l'arc lémanique.">
+    <meta name="twitter:title" content="Réalisations — Sites Internet Créés à Lausanne | WeAreBrothers">
+    <meta name="twitter:description" content="Sites internet, sites vitrines et portfolios créatifs conçus par notre agence web à Lausanne.">
     <meta name="twitter:image" content="https://wearebrothers.ch/assets/og-image.png">
 
     <!-- Données structurées (JSON-LD) — studio, site, fondateurs + page -->
@@ -45,6 +45,14 @@
     {
     "@context": "https://schema.org",
     "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://wearebrothers.ch/realisations#breadcrumb",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://wearebrothers.ch/" },
+                { "@type": "ListItem", "position": 2, "name": "Réalisations", "item": "https://wearebrothers.ch/realisations" }
+            ]
+        },
         {
             "@type": [
                 "ProfessionalService",
@@ -57,7 +65,7 @@
                 "WeAreBrothers",
                 "WAB Studio"
             ],
-            "description": "Studio digital fondé par deux frères à Lausanne : création de sites web sur-mesure, web design, branding, motion design et e-commerce pour les PME et indépendants de l'arc lémanique.",
+            "description": "Agence web fondée par deux frères à Lausanne : création de sites internet sur mesure, refonte de sites, web design, branding, motion design, e-commerce et applications de gestion pour les PME et indépendants de l'arc lémanique.",
             "slogan": "Des expériences qui restent dans la mémoire",
             "url": "https://wearebrothers.ch/",
             "email": "contact@wearebrothers.ch",
@@ -207,8 +215,9 @@
             "@type": "CollectionPage",
             "@id": "https://wearebrothers.ch/realisations#webpage",
             "url": "https://wearebrothers.ch/realisations",
-            "name": "Réalisations — WeAreBrothers Studio",
-            "description": "Sélection de sites web, portfolios et sites vitrines réalisés par WeAreBrothers pour des clients de Lausanne et de Suisse romande.",
+            "name": "Réalisations — Sites internet créés à Lausanne",
+            "description": "Sélection de sites internet, portfolios et sites vitrines conçus et développés par WeAreBrothers, agence web à Lausanne, pour des clients de Vaud et de Suisse romande.",
+            "breadcrumb": { "@id": "https://wearebrothers.ch/realisations#breadcrumb" },
             "isPartOf": {
                 "@id": "https://wearebrothers.ch/#website"
             },
@@ -254,7 +263,7 @@
                             "@type": "CreativeWork",
                             "name": "Maison Alliani",
                             "url": "https://lazizze-git.github.io/grillz/",
-                            "image": "https://wearebrothers.ch/assets/images/project-alliani.png",
+                            "image": "https://wearebrothers.ch/assets/images/project-alliani.webp",
                             "creator": {
                                 "@id": "https://wearebrothers.ch/#organization"
                             },
@@ -282,7 +291,7 @@
                             "@type": "CreativeWork",
                             "name": "Nadège Mouine",
                             "url": "https://nadegemouine.ch",
-                            "image": "https://wearebrothers.ch/assets/images/project-nadege.png",
+                            "image": "https://wearebrothers.ch/assets/images/project-nadege.webp",
                             "creator": {
                                 "@id": "https://wearebrothers.ch/#organization"
                             },
@@ -296,7 +305,7 @@
                             "@type": "CreativeWork",
                             "name": "LAZIZZE DJ",
                             "url": "https://lazizze-git.github.io/DJ/#/",
-                            "image": "https://wearebrothers.ch/assets/images/project-dj.png",
+                            "image": "https://wearebrothers.ch/assets/images/project-dj.webp",
                             "creator": {
                                 "@id": "https://wearebrothers.ch/#organization"
                             },
@@ -324,7 +333,7 @@
                             "@type": "CreativeWork",
                             "name": "Commissione Entretien",
                             "url": "https://commissione-entretien.ch/",
-                            "image": "https://wearebrothers.ch/assets/images/project-commissione.png",
+                            "image": "https://wearebrothers.ch/assets/images/project-commissione.webp",
                             "creator": {
                                 "@id": "https://wearebrothers.ch/#organization"
                             },
@@ -367,15 +376,15 @@
     <header class="topbar" id="topbar">
         <div class="topbar__pill" id="topbarPill">
             <div class="topbar__bar">
-                <a href="index.html" class="topbar__brand">WAB.</a>
+                <a href="/" class="topbar__brand">WAB.</a>
 
                 <nav class="topbar__nav" aria-label="Navigation principale">
-                    <a href="work.html" class="topbar__link" aria-current="page">Réalisations</a>
-                    <a href="applications.html" class="topbar__link">Applications</a>
-                    <a href="about.html" class="topbar__link">Studio</a>
+                    <a href="/realisations" class="topbar__link" aria-current="page">Réalisations</a>
+                    <a href="/applications" class="topbar__link">Applications</a>
+                    <a href="/studio" class="topbar__link">Studio</a>
                 </nav>
 
-                <a href="contact.html" class="btn btn--solid topbar__cta">Démarrer un projet</a>
+                <a href="/contact" class="btn btn--solid topbar__cta">Démarrer un projet</a>
 
                 <button type="button" class="topbar__burger" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
                     <span class="topbar__lines" aria-hidden="true">
@@ -388,21 +397,21 @@
             <div class="topbar__panel" id="topbarPanel">
                 <div class="topbar__panel-inner">
                     <nav class="panel__nav" aria-label="Navigation">
-                        <a href="work.html" class="panel__link" aria-current="page">
+                        <a href="/realisations" class="panel__link" aria-current="page">
                             Réalisations
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
-                        <a href="applications.html" class="panel__link">
+                        <a href="/applications" class="panel__link">
                             Applications
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
-                        <a href="about.html" class="panel__link">
+                        <a href="/studio" class="panel__link">
                             Studio
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
                     </nav>
 
-                    <a href="contact.html" class="btn btn--solid btn--lg panel__cta">Démarrer un projet</a>
+                    <a href="/contact" class="btn btn--solid btn--lg panel__cta">Démarrer un projet</a>
 
                     <div class="panel__meta">
                         <p class="panel__row">
@@ -428,8 +437,8 @@
             <div class="shell">
                 <h1 class="page-head__title">Stratégie, design et code appliqués à des échelles différentes</h1>
                 <p class="page-head__sub">
-                    Huit projets en ligne, du portfolio créatif au site d'entreprise. Chacun dessiné,
-                    codé et mis en ligne à Lausanne, sans sous-traitance.
+                    Huit sites internet en ligne, du portfolio créatif au site d'entreprise. Chacun dessiné,
+                    codé et mis en ligne à Lausanne par les deux frères, sans sous-traitance.
                 </p>
             </div>
         </section>
@@ -523,7 +532,7 @@
                                     <span></span><span></span><span></span>
                                 </span>
                                 <span class="window__view">
-                                    <img class="window__img" src="assets/images/project-alliani.png" alt="Capture de la galerie du site Maison Alliani, atelier de grillz sur mesure, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async" width="1200" height="750">
+                                    <img class="window__img" src="assets/images/project-alliani.webp" alt="Capture de la galerie du site Maison Alliani, atelier de grillz sur mesure, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async" width="1200" height="750">
                                     <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
                                 </span>
                             </div>
@@ -601,7 +610,7 @@
                                     <span></span><span></span><span></span>
                                 </span>
                                 <span class="window__view">
-                                    <img class="window__img" src="assets/images/project-nadege.png" alt="Capture du site de Nadège Mouine, site personnel conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async" width="1200" height="750">
+                                    <img class="window__img" src="assets/images/project-nadege.webp" alt="Capture du site de Nadège Mouine, site personnel conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async" width="1200" height="750">
                                     <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
                                 </span>
                             </div>
@@ -639,7 +648,7 @@
                                     <span></span><span></span><span></span>
                                 </span>
                                 <span class="window__view">
-                                    <img class="window__img" src="assets/images/project-dj.png" alt="Capture du site LAZIZZE DJ, portfolio immersif conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async" width="1200" height="750">
+                                    <img class="window__img" src="assets/images/project-dj.webp" alt="Capture du site LAZIZZE DJ, portfolio immersif conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async" width="1200" height="750">
                                     <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
                                 </span>
                             </div>
@@ -717,7 +726,7 @@
                                     <span></span><span></span><span></span>
                                 </span>
                                 <span class="window__view">
-                                    <img class="window__img" src="assets/images/project-commissione.png" alt="Capture du site Commissione Entretien, site professionnel conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async" width="1200" height="750">
+                                    <img class="window__img" src="assets/images/project-commissione.webp" alt="Capture du site Commissione Entretien, site professionnel conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async" width="1200" height="750">
                                     <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
                                 </span>
                             </div>
@@ -762,7 +771,7 @@
                     sans engagement.
                 </p>
                 <div class="closing__actions">
-                    <a href="contact.html" class="btn btn--solid btn--lg">
+                    <a href="/contact" class="btn btn--solid btn--lg">
                         <span>Démarrer un projet</span>
                         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                     </a>
@@ -790,10 +799,10 @@
                         <div>
                             <h2 class="footer__group-title">Pages</h2>
                             <ul class="footer__list">
-                                <li><a href="work.html" class="footer__link">Réalisations</a></li>
-                                <li><a href="applications.html" class="footer__link">Applications</a></li>
-                                <li><a href="about.html" class="footer__link">Studio</a></li>
-                                <li><a href="contact.html" class="footer__link">Contact</a></li>
+                                <li><a href="/realisations" class="footer__link">Réalisations</a></li>
+                                <li><a href="/applications" class="footer__link">Applications</a></li>
+                                <li><a href="/studio" class="footer__link">Studio</a></li>
+                                <li><a href="/contact" class="footer__link">Contact</a></li>
                             </ul>
                         </div>
                         <div>
@@ -809,7 +818,7 @@
 
                 <div class="footer__bottom">
                     <span>&copy; 2026 WeAreBrothers Studio</span>
-                    <span>Design &amp; développement — Lausanne</span>
+                    <span>Agence web — design &amp; développement à Lausanne</span>
                 </div>
             </div>
 

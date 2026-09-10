@@ -5,7 +5,7 @@
  * Reçoit le POST du formulaire (AJAX ou classique), valide les
  * champs, neutralise les tentatives d'injection, puis envoie
  * l'email via le SMTP authentifié d'Infomaniak (smtp-mailer.php).
- * Répond en JSON pour l'AJAX, ou redirige vers contact.html
+ * Répond en JSON pour l'AJAX, ou redirige vers /contact
  * pour un envoi sans JavaScript.
  */
 
@@ -23,7 +23,7 @@ function respond(bool $ok, string $error = ''): void
         http_response_code($ok ? 200 : 400);
         echo json_encode(['success' => $ok, 'error' => $error], JSON_UNESCAPED_UNICODE);
     } else {
-        header('Location: contact.html?sent=' . ($ok ? '1' : '0'));
+        header('Location: /contact?sent=' . ($ok ? '1' : '0'));
     }
     exit;
 }

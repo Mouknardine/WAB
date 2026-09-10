@@ -49,6 +49,7 @@ jobs:
             DESIGN.md
             README.md
             indexnow.sh
+            dev-server.py
 
       # Signale les pages à Bing / Yandex dès qu'elles sont en ligne.
       # La clé de vérification part avec le site à l'étape précédente.
@@ -67,6 +68,7 @@ jobs:
                      \"urlList\": [
                        \"https://wearebrothers.ch/\",
                        \"https://wearebrothers.ch/realisations\",
+                       \"https://wearebrothers.ch/applications\",
                        \"https://wearebrothers.ch/studio\",
                        \"https://wearebrothers.ch/contact\"
                      ]

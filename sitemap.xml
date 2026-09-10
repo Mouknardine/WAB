@@ -3,33 +3,41 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://wearebrothers.ch/</loc>
-        <lastmod>2026-09-03</lastmod>
+        <lastmod>2026-09-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
         <image:image>
             <image:loc>https://wearebrothers.ch/assets/og-image.png</image:loc>
-            <image:caption>WeAreBrothers Studio — studio de création de sites web et d'applications à Lausanne</image:caption>
+            <image:caption>WeAreBrothers Studio — agence web à Lausanne, création de sites internet et d'applications sur mesure</image:caption>
         </image:image>
     </url>
     <url>
         <loc>https://wearebrothers.ch/realisations</loc>
-        <lastmod>2026-09-03</lastmod>
+        <lastmod>2026-09-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://wearebrothers.ch/assets/images/project-zinema.webp</image:loc>
+            <image:caption>Zinéma — site internet du cinéma d'art et essai de la rue du Maupas à Lausanne, conçu par WeAreBrothers, agence web à Lausanne</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://wearebrothers.ch/assets/images/project-amarte.webp</image:loc>
+            <image:caption>Amarte Studio — site internet d'un centre de yoga et de Pilates à Épalinges (Lausanne), conçu par WeAreBrothers</image:caption>
+        </image:image>
         <image:image>
             <image:loc>https://wearebrothers.ch/assets/images/project-central.webp</image:loc>
             <image:caption>Le P'tit Central — site d'un café-restaurant de quartier à Lausanne conçu par WeAreBrothers Lausanne</image:caption>
         </image:image>
         <image:image>
-            <image:loc>https://wearebrothers.ch/assets/images/project-nadege.png</image:loc>
+            <image:loc>https://wearebrothers.ch/assets/images/project-nadege.webp</image:loc>
             <image:caption>Nadège Mouine — site personnel conçu par WeAreBrothers Lausanne</image:caption>
         </image:image>
         <image:image>
-            <image:loc>https://wearebrothers.ch/assets/images/project-dj.png</image:loc>
+            <image:loc>https://wearebrothers.ch/assets/images/project-dj.webp</image:loc>
             <image:caption>LAZIZZE DJ — portfolio immersif conçu par WeAreBrothers Lausanne</image:caption>
         </image:image>
         <image:image>
-            <image:loc>https://wearebrothers.ch/assets/images/project-alliani.png</image:loc>
+            <image:loc>https://wearebrothers.ch/assets/images/project-alliani.webp</image:loc>
             <image:caption>Maison Alliani — site d'un atelier suisse de grillz sur mesure conçu par WeAreBrothers Lausanne</image:caption>
         </image:image>
         <image:image>
@@ -37,13 +45,13 @@
             <image:caption>La Slack — portfolio créatif conçu par WeAreBrothers Lausanne</image:caption>
         </image:image>
         <image:image>
-            <image:loc>https://wearebrothers.ch/assets/images/project-commissione.png</image:loc>
+            <image:loc>https://wearebrothers.ch/assets/images/project-commissione.webp</image:loc>
             <image:caption>Commissione Entretien — site professionnel conçu par WeAreBrothers Lausanne</image:caption>
         </image:image>
     </url>
     <url>
         <loc>https://wearebrothers.ch/applications</loc>
-        <lastmod>2026-08-27</lastmod>
+        <lastmod>2026-09-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         <image:image>
@@ -61,25 +69,25 @@
     </url>
     <url>
         <loc>https://wearebrothers.ch/studio</loc>
-        <lastmod>2026-08-27</lastmod>
+        <lastmod>2026-09-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
             <image:loc>https://wearebrothers.ch/assets/images/team-eliott.jpg</image:loc>
-            <image:caption>Eliott Pina, développeur web full-stack chez WeAreBrothers Studio à Lausanne</image:caption>
+            <image:caption>Eliott Pina, lead designer et directeur artistique chez WeAreBrothers Studio, agence web à Lausanne</image:caption>
         </image:image>
         <image:image>
             <image:loc>https://wearebrothers.ch/assets/images/team-matt.jpg</image:loc>
-            <image:caption>Matt Pina, designer et directeur artistique chez WeAreBrothers Studio à Lausanne</image:caption>
+            <image:caption>Matt Pina, lead développeur full-stack chez WeAreBrothers Studio, agence web à Lausanne</image:caption>
         </image:image>
         <image:image>
             <image:loc>https://wearebrothers.ch/assets/images/team-ivan.jpg</image:loc>
-            <image:caption>Ivan Jakovlevski, commercial et responsable relation client chez WeAreBrothers Studio à Lausanne</image:caption>
+            <image:caption>Ivan Jakovlevski, commercial et responsable relation client chez WeAreBrothers Studio, agence web à Lausanne</image:caption>
         </image:image>
     </url>
     <url>
         <loc>https://wearebrothers.ch/contact</loc>
-        <lastmod>2026-08-27</lastmod>
+        <lastmod>2026-09-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>

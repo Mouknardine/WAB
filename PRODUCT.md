@@ -43,11 +43,11 @@ Priorité commerciale actuelle : les sites web restent le cœur de l'activité ;
 
 **Stack du site** : HTML / CSS / JavaScript statiques, écrits à la main, sans framework ni étape de build. Une feuille de style et un script par page (`style.css` + `about.css`, `work.css`, `contact.css`, `applications.css`). Déploiement par GitHub Actions vers Infomaniak en FTPS à chaque push sur `main`.
 
-**Contrainte durable — 100 % statique.** Tout travail futur doit tenir en fichiers plats servis par FTP. Pas de framework, pas de bundler, pas d'étape de build.
+**Contrainte durable — 100 % statique.** Tout travail futur doit tenir en fichiers plats servis par FTP. Pas de framework, pas de bundler, pas d'étape de build. Les liens internes visent les adresses propres (`/realisations`, `/studio`, `/contact`, `/applications`), identiques aux canoniques : en local, `python3 dev-server.py` reproduit les réécritures du `.htaccess` (le script n'est pas déployé).
 
 **Contrainte durable — le site est la démonstration.** Le site est lui-même la première preuve commerciale du niveau de craft vendu aux clients. Un défaut visible sur le site coûte plus qu'ailleurs.
 
-**Contrainte durable — SEO local prioritaire.** Le référencement Lausanne / arc lémanique passe avant les autres arbitrages : JSON-LD complet sur chaque page (Organization, Person, WebPage, FAQPage, BreadcrumbList), `sitemap.xml` avec images légendées, `llms.txt`, `robots.txt`, ping IndexNow (`indexnow.sh`). À maintenir à jour à chaque ajout de page ou d'image.
+**Contrainte durable — SEO local prioritaire.** Le référencement Lausanne / arc lémanique passe avant les autres arbitrages : JSON-LD complet sur chaque page (Organization, Person, WebPage, FAQPage, BreadcrumbList), `sitemap.xml` avec images légendées, `llms.txt`, `robots.txt`, ping IndexNow (`indexnow.sh`). À maintenir à jour à chaque ajout de page ou d'image. Requêtes cibles : « agence web Lausanne » et « site internet Lausanne » — les deux expressions doivent rester présentes dans le titre, la description, le H1 et la FAQ de l'accueil ; les réponses de la FAQ affichée et celles du bloc FAQPage sont identiques mot pour mot.
 
 **Langue** : français (`fr-CH`) uniquement aujourd'hui. Une version anglaise est envisagée : les nouvelles pages doivent être structurées pour l'accueillir sans refonte (pas de texte codé en dur dans des chemins, structure de contenu séparable).
 

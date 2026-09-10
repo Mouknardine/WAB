@@ -15,7 +15,7 @@
     <link rel="manifest" href="/site.webmanifest">
     <title>Notre Studio — Agence Web à Lausanne | WeAreBrothers</title>
     <meta name="description"
-        content="Deux frères, un studio digital à Lausanne. Design, développement web et branding sur-mesure pour l'arc lémanique. Rencontrons-nous autour d'un café.">
+        content="Deux frères, une agence web à Lausanne. Design, développement de sites internet et branding sur mesure pour l'arc lémanique. Rencontrons-nous autour d'un café.">
 
     <!-- SEO -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -26,7 +26,7 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Notre Studio — Agence Web à Lausanne | WeAreBrothers">
-    <meta property="og:description" content="Deux frères, un studio digital à Lausanne. Design, développement web et branding sur-mesure.">
+    <meta property="og:description" content="Deux frères, une agence web à Lausanne. Design, développement de sites internet et branding sur mesure.">
     <meta property="og:url" content="https://wearebrothers.ch/studio">
     <meta property="og:image" content="https://wearebrothers.ch/assets/og-image.png">
     <meta property="og:image:width" content="1200">
@@ -37,7 +37,7 @@
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Notre Studio — Agence Web à Lausanne | WeAreBrothers">
-    <meta name="twitter:description" content="Deux frères, un studio digital à Lausanne. Design, développement web et branding sur-mesure.">
+    <meta name="twitter:description" content="Deux frères, une agence web à Lausanne. Design, développement de sites internet et branding sur mesure.">
     <meta name="twitter:image" content="https://wearebrothers.ch/assets/og-image.png">
 
     <!-- Données structurées (JSON-LD) — studio, site, fondateurs + page -->
@@ -45,12 +45,20 @@
     {
         "@context": "https://schema.org",
         "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://wearebrothers.ch/studio#breadcrumb",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://wearebrothers.ch/" },
+                { "@type": "ListItem", "position": 2, "name": "Studio", "item": "https://wearebrothers.ch/studio" }
+            ]
+        },
             {
                 "@type": ["ProfessionalService", "Organization"],
                 "@id": "https://wearebrothers.ch/#organization",
                 "name": "WeAreBrothers Studio",
                 "alternateName": ["WAB.", "WeAreBrothers", "WAB Studio"],
-                "description": "Studio digital fondé par deux frères à Lausanne : création de sites web sur-mesure, web design, branding, motion design et e-commerce pour les PME et indépendants de l'arc lémanique.",
+                "description": "Agence web fondée par deux frères à Lausanne : création de sites internet sur mesure, refonte de sites, web design, branding, motion design, e-commerce et applications de gestion pour les PME et indépendants de l'arc lémanique.",
                 "slogan": "Des expériences qui restent dans la mémoire",
                 "url": "https://wearebrothers.ch/",
                 "email": "contact@wearebrothers.ch",
@@ -128,6 +136,7 @@
             {
                 "@type": "AboutPage",
                 "@id": "https://wearebrothers.ch/studio#webpage",
+                "breadcrumb": { "@id": "https://wearebrothers.ch/studio#breadcrumb" },
                 "url": "https://wearebrothers.ch/studio",
                 "name": "À propos — WeAreBrothers Studio, agence web à Lausanne",
                 "description": "L'histoire, les valeurs et l'équipe du studio digital WeAreBrothers, fondé par les frères Eliott et Matt Pina à Lausanne.",
@@ -169,15 +178,15 @@
     <header class="topbar" id="topbar">
         <div class="topbar__pill" id="topbarPill">
             <div class="topbar__bar">
-                <a href="index.html" class="topbar__brand">WAB.</a>
+                <a href="/" class="topbar__brand">WAB.</a>
 
                 <nav class="topbar__nav" aria-label="Navigation principale">
-                    <a href="work.html" class="topbar__link">Réalisations</a>
-                    <a href="applications.html" class="topbar__link">Applications</a>
-                    <a href="about.html" class="topbar__link" aria-current="page">Studio</a>
+                    <a href="/realisations" class="topbar__link">Réalisations</a>
+                    <a href="/applications" class="topbar__link">Applications</a>
+                    <a href="/studio" class="topbar__link" aria-current="page">Studio</a>
                 </nav>
 
-                <a href="contact.html" class="btn btn--solid topbar__cta">Démarrer un projet</a>
+                <a href="/contact" class="btn btn--solid topbar__cta">Démarrer un projet</a>
 
                 <button type="button" class="topbar__burger" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
                     <span class="topbar__lines" aria-hidden="true">
@@ -190,21 +199,21 @@
             <div class="topbar__panel" id="topbarPanel">
                 <div class="topbar__panel-inner">
                     <nav class="panel__nav" aria-label="Navigation">
-                        <a href="work.html" class="panel__link">
+                        <a href="/realisations" class="panel__link">
                             Réalisations
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
-                        <a href="applications.html" class="panel__link">
+                        <a href="/applications" class="panel__link">
                             Applications
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
-                        <a href="about.html" class="panel__link" aria-current="page">
+                        <a href="/studio" class="panel__link" aria-current="page">
                             Studio
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
                     </nav>
 
-                    <a href="contact.html" class="btn btn--solid btn--lg panel__cta">Démarrer un projet</a>
+                    <a href="/contact" class="btn btn--solid btn--lg panel__cta">Démarrer un projet</a>
 
                     <div class="panel__meta">
                         <p class="panel__row">
@@ -322,7 +331,7 @@
                 <h2 class="closing__title">Parlons de votre projet.</h2>
                 <p class="closing__lede">Un café ou un appel, une proposition, puis on construit. Réponse sous 24&nbsp;h ouvrées, sans engagement.</p>
                 <div class="closing__actions">
-                    <a href="contact.html" class="btn btn--solid btn--lg">
+                    <a href="/contact" class="btn btn--solid btn--lg">
                         <span>Démarrer un projet</span>
                         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                     </a>
@@ -350,10 +359,10 @@
                         <div>
                             <h2 class="footer__group-title">Pages</h2>
                             <ul class="footer__list">
-                                <li><a href="work.html" class="footer__link">Réalisations</a></li>
-                                <li><a href="applications.html" class="footer__link">Applications</a></li>
-                                <li><a href="about.html" class="footer__link">Studio</a></li>
-                                <li><a href="contact.html" class="footer__link">Contact</a></li>
+                                <li><a href="/realisations" class="footer__link">Réalisations</a></li>
+                                <li><a href="/applications" class="footer__link">Applications</a></li>
+                                <li><a href="/studio" class="footer__link">Studio</a></li>
+                                <li><a href="/contact" class="footer__link">Contact</a></li>
                             </ul>
                         </div>
                         <div>
@@ -369,7 +378,7 @@
 
                 <div class="footer__bottom">
                     <span>&copy; 2026 WeAreBrothers Studio</span>
-                    <span>Design &amp; développement — Lausanne</span>
+                    <span>Agence web — design &amp; développement à Lausanne</span>
                 </div>
             </div>
 

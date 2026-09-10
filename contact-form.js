@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!form || !submitBtn || !label || !status || !success) return;
 
         // Retour d'un envoi sans JavaScript : le serveur redirige
-        // vers contact.html?sent=1 → on affiche la confirmation.
+        // vers /contact?sent=1 → on affiche la confirmation.
         if (new URLSearchParams(window.location.search).get('sent') === '1') {
             form.classList.add('is-sent');
             success.hidden = false;
