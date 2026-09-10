@@ -3,11 +3,12 @@ name: Soumettre les pages aux moteurs
 # Lancement à la demande :
 #   - bouton « Run workflow » dans l'onglet Actions (avec une liste
 #     d'adresses facultative) ;
-#   - ou création de la branche déclencheur « submit-urls », sans
+#   - ou push d'une étiquette « submit-<date> » posée sur main, sans
 #     commit, depuis n'importe quel poste ou session :
-#         git push origin --delete submit-urls ; git push origin main:submit-urls
-#     Le jeton des sessions Claude n'a pas le droit d'appeler l'API
-#     workflow_dispatch, ce push de branche est sa façon de lancer.
+#         git tag submit-$(date +%Y%m%d-%H%M) main && git push origin --tags
+#     Le jeton des sessions Claude ne peut ni appeler l'API
+#     workflow_dispatch ni supprimer une branche ; pousser une étiquette
+#     est sa façon de lancer. Les étiquettes gardent la trace des demandes.
 # 1. IndexNow : Bing, Yandex, Seznam, Naver — clé déjà publiée à la racine.
 # 2. API Bing Webmaster « Soumission d'URL » : équivalent du bouton manuel
 #    de Bing Webmaster Tools. Ne tourne que si le secret
@@ -19,7 +20,7 @@ name: Soumettre les pages aux moteurs
 
 on:
   push:
-    branches: [submit-urls]
+    tags: ["submit-*"]
   workflow_dispatch:
     inputs:
       urls:
