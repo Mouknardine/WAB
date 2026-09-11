@@ -12,7 +12,7 @@ import { createSpriteBank } from './sprites.js';
 import { createFlock } from './flock.js';
 import { createShyness } from './shyness.js';
 
-const BIRD_COUNT = 4;
+const BIRD_COUNT = 3; // dont deux au plus en vol à la fois
 
 /* Taille proportionnée à l'écran : à 7 pixels par point, un oiseau
    fait 224px de large et couvre plus de la moitié d'un téléphone. */
@@ -42,7 +42,7 @@ function initBirds() {
 
     resizeCanvas();
 
-    const flock = createFlock(BIRD_COUNT, canvas.width, canvas.height);
+    const flock = createFlock(BIRD_COUNT);
 
     let lastTime = performance.now();
     let needsResize = false;
@@ -111,7 +111,6 @@ function initBirds() {
             ? [{ fx: 0.5, fy: 0.12, color: BODY_COLORS[0], flipped: false }]
             : [
                 { fx: 0.05, fy: 0.13, color: BODY_COLORS[0], flipped: false },
-                { fx: 0.60, fy: 0.05, color: BODY_COLORS[3], flipped: true },
                 { fx: 1.00, fy: 0.28, color: BODY_COLORS[1], flipped: false },
             ];
 
