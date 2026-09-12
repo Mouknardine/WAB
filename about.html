@@ -7,7 +7,7 @@
          Sans lui, les sections à apparition restent visibles d'emblée. -->
     <script>document.documentElement.classList.replace('no-js', 'js');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#F7609B">
+    <meta name="theme-color" content="#FFE4F0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
@@ -46,110 +46,234 @@
     <!-- Données structurées (JSON-LD) — studio, site, fondateurs + page -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@graph": [
+    "@context": "https://schema.org",
+    "@graph": [
         {
             "@type": "BreadcrumbList",
             "@id": "https://wearebrothers.ch/studio#breadcrumb",
             "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://wearebrothers.ch/" },
-                { "@type": "ListItem", "position": 2, "name": "Studio", "item": "https://wearebrothers.ch/studio" }
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Accueil",
+                    "item": "https://wearebrothers.ch/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Studio",
+                    "item": "https://wearebrothers.ch/studio"
+                }
             ]
         },
-            {
-                "@type": ["ProfessionalService", "Organization"],
-                "@id": "https://wearebrothers.ch/#organization",
-                "name": "WeAreBrothers Studio",
-                "alternateName": ["WAB.", "WeAreBrothers", "WAB Studio"],
-                "description": "Agence web fondée par deux frères à Lausanne : création de sites internet sur mesure, refonte de sites, web design, branding, motion design, e-commerce et applications de gestion pour les PME et indépendants de l'arc lémanique.",
-                "slogan": "Des expériences qui restent dans la mémoire",
-                "url": "https://wearebrothers.ch/",
-                "email": "contact@wearebrothers.ch",
-                "image": "https://wearebrothers.ch/assets/og-image.jpg",
-                "logo": {
-                    "@type": "ImageObject",
-                    "url": "https://wearebrothers.ch/assets/icon-512.png",
-                    "width": 512,
-                    "height": 512
+        {
+            "@type": [
+                "ProfessionalService",
+                "Organization"
+            ],
+            "@id": "https://wearebrothers.ch/#organization",
+            "name": "WeAreBrothers Studio",
+            "alternateName": [
+                "WAB.",
+                "WeAreBrothers",
+                "WAB Studio"
+            ],
+            "description": "Agence web fondée par deux frères à Lausanne : création de sites internet sur mesure, refonte de sites, web design, branding, motion design, e-commerce et applications de gestion pour les PME et indépendants de l'arc lémanique.",
+            "slogan": "Des expériences qui restent dans la mémoire",
+            "url": "https://wearebrothers.ch/",
+            "email": "contact@wearebrothers.ch",
+            "image": "https://wearebrothers.ch/assets/og-image.jpg",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://wearebrothers.ch/assets/icon-512.png",
+                "width": 512,
+                "height": 512
+            },
+            "numberOfEmployees": 3,
+            "foundingLocation": {
+                "@type": "Place",
+                "name": "Lausanne, Suisse"
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Lausanne",
+                "addressRegion": "VD",
+                "addressCountry": "CH"
+            },
+            "areaServed": [
+                "Lausanne",
+                "Genève",
+                "Vevey",
+                "Nyon",
+                "Morges",
+                "Renens",
+                "Vaud",
+                "Arc lémanique",
+                "Suisse romande"
+            ],
+            "serviceType": [
+                "Création de site web",
+                "Web design",
+                "Branding",
+                "Motion design",
+                "Développement e-commerce",
+                "Développement d'application métier sur mesure",
+                "SEO"
+            ],
+            "knowsLanguage": [
+                "fr",
+                "en"
+            ],
+            "knowsAbout": [
+                "Création de site web",
+                "Développement front-end",
+                "Développement full-stack",
+                "Next.js",
+                "TypeScript",
+                "Node.js",
+                "Design d'interface UI/UX",
+                "Branding",
+                "Identité visuelle",
+                "Motion design",
+                "Animation web",
+                "Référencement SEO",
+                "E-commerce"
+            ],
+            "founder": [
+                {
+                    "@id": "https://wearebrothers.ch/#eliott"
                 },
-                "numberOfEmployees": 3,
-                "foundingLocation": { "@type": "Place", "name": "Lausanne, Suisse" },
-                "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Lausanne",
-                    "addressRegion": "VD",
-                    "addressCountry": "CH"
-                },
-                "areaServed": ["Lausanne", "Genève", "Vevey", "Nyon", "Morges", "Renens", "Vaud", "Arc lémanique", "Suisse romande"],
-                "serviceType": ["Création de site web", "Web design", "Branding", "Motion design", "Développement e-commerce", "Développement d'application métier sur mesure", "SEO"],
-                "knowsLanguage": ["fr", "en"],
-                "knowsAbout": ["Création de site web", "Développement front-end", "Développement full-stack", "Next.js", "TypeScript", "Node.js", "Design d'interface UI/UX", "Branding", "Identité visuelle", "Motion design", "Animation web", "Référencement SEO", "E-commerce"],
-                "founder": [
-                    { "@id": "https://wearebrothers.ch/#eliott" },
-                    { "@id": "https://wearebrothers.ch/#matt" }
-                ],
-                "employee": [
-                    { "@id": "https://wearebrothers.ch/#ivan" }
-                ],
-                "hasOfferCatalog": {
-                    "@type": "OfferCatalog",
-                    "name": "Services WeAreBrothers Studio",
-                    "itemListElement": [
-                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Développement", "description": "Un développement rapide, évolutif et pensé pour la performance comme pour le référencement." } },
-                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Design", "description": "Des interfaces précises, lisibles et conçues pour une navigation fluide et naturelle." } },
-                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sur-mesure", "description": "Du code et des solutions sur mesure pour les projets qui sortent du cadre standard." } }
-                    ]
+                {
+                    "@id": "https://wearebrothers.ch/#matt"
                 }
-            },
-            {
-                "@type": "WebSite",
-                "@id": "https://wearebrothers.ch/#website",
-                "url": "https://wearebrothers.ch/",
-                "name": "WeAreBrothers Studio",
-                "inLanguage": "fr-CH",
-                "publisher": { "@id": "https://wearebrothers.ch/#organization" }
-            },
-            {
-                "@type": "Person",
-                "@id": "https://wearebrothers.ch/#eliott",
-                "name": "Eliott Pina",
-                "jobTitle": "Lead designer",
-                "worksFor": { "@id": "https://wearebrothers.ch/#organization" },
-                "knowsAbout": ["Figma", "Motion Design", "Branding", "GSAP", "Three.js", "After Effects", "Direction artistique"]
-            },
-            {
-                "@type": "Person",
-                "@id": "https://wearebrothers.ch/#matt",
-                "name": "Matt Pina",
-                "jobTitle": "Lead développeur",
-                "worksFor": { "@id": "https://wearebrothers.ch/#organization" },
-                "knowsAbout": ["Next.js", "TypeScript", "Node.js", "Supabase", "PostgreSQL", "GSAP", "Développement full-stack"]
-            },
-            {
-                "@type": "Person",
-                "@id": "https://wearebrothers.ch/#ivan",
-                "name": "Ivan Jakovlevski",
-                "jobTitle": "Commercial & relation client",
-                "worksFor": [
-                    { "@id": "https://wearebrothers.ch/#organization" },
-                    { "@type": "Organization", "name": "VEG Consulting", "description": "Fiduciaire à Lausanne" }
-                ],
-                "knowsAbout": ["Relation client", "Développement commercial", "Négociation", "Conseil", "Recherche et développement"]
-            },
-            {
-                "@type": "AboutPage",
-                "@id": "https://wearebrothers.ch/studio#webpage",
-                "breadcrumb": { "@id": "https://wearebrothers.ch/studio#breadcrumb" },
-                "url": "https://wearebrothers.ch/studio",
-                "name": "À propos — WeAreBrothers Studio, agence web à Lausanne",
-                "description": "L'histoire, les valeurs et l'équipe du studio digital WeAreBrothers, fondé par les frères Eliott et Matt Pina à Lausanne.",
-                "isPartOf": { "@id": "https://wearebrothers.ch/#website" },
-                "about": { "@id": "https://wearebrothers.ch/#organization" },
-                "mainEntity": { "@id": "https://wearebrothers.ch/#organization" },
-                "inLanguage": "fr-CH"
+            ],
+            "employee": [
+                {
+                    "@id": "https://wearebrothers.ch/#ivan"
+                }
+            ],
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Services WeAreBrothers Studio",
+                "itemListElement": [
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Développement",
+                            "description": "Un développement rapide, évolutif et pensé pour la performance comme pour le référencement."
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Web Design",
+                            "description": "Des interfaces précises, lisibles et conçues pour une navigation fluide et naturelle."
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Sur-mesure",
+                            "description": "Du code et des solutions sur mesure pour les projets qui sortent du cadre standard."
+                        }
+                    }
+                ]
             }
-        ]
-    }
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://wearebrothers.ch/#website",
+            "url": "https://wearebrothers.ch/",
+            "name": "WeAreBrothers Studio",
+            "inLanguage": "fr-CH",
+            "publisher": {
+                "@id": "https://wearebrothers.ch/#organization"
+            }
+        },
+        {
+            "@type": "Person",
+            "@id": "https://wearebrothers.ch/#eliott",
+            "name": "Eliott Pina",
+            "jobTitle": "Lead designer",
+            "worksFor": {
+                "@id": "https://wearebrothers.ch/#organization"
+            },
+            "knowsAbout": [
+                "Figma",
+                "Motion Design",
+                "Branding",
+                "GSAP",
+                "Three.js",
+                "After Effects",
+                "Direction artistique"
+            ]
+        },
+        {
+            "@type": "Person",
+            "@id": "https://wearebrothers.ch/#matt",
+            "name": "Matt Pina",
+            "jobTitle": "Lead développeur",
+            "worksFor": {
+                "@id": "https://wearebrothers.ch/#organization"
+            },
+            "knowsAbout": [
+                "Next.js",
+                "TypeScript",
+                "Node.js",
+                "Supabase",
+                "PostgreSQL",
+                "GSAP",
+                "Développement full-stack"
+            ]
+        },
+        {
+            "@type": "Person",
+            "@id": "https://wearebrothers.ch/#ivan",
+            "name": "Ivan Jakovlevski",
+            "jobTitle": "Commercial & relation client",
+            "worksFor": [
+                {
+                    "@id": "https://wearebrothers.ch/#organization"
+                },
+                {
+                    "@type": "Organization",
+                    "name": "VEG Consulting",
+                    "description": "Fiduciaire à Lausanne"
+                }
+            ],
+            "knowsAbout": [
+                "Relation client",
+                "Développement commercial",
+                "Négociation",
+                "Conseil",
+                "Recherche et développement"
+            ]
+        },
+        {
+            "@type": "AboutPage",
+            "@id": "https://wearebrothers.ch/studio#webpage",
+            "breadcrumb": {
+                "@id": "https://wearebrothers.ch/studio#breadcrumb"
+            },
+            "url": "https://wearebrothers.ch/studio",
+            "name": "À propos — WeAreBrothers Studio, agence web à Lausanne",
+            "description": "L'histoire, les valeurs et l'équipe du studio digital WeAreBrothers, fondé par les frères Eliott et Matt Pina à Lausanne.",
+            "isPartOf": {
+                "@id": "https://wearebrothers.ch/#website"
+            },
+            "about": {
+                "@id": "https://wearebrothers.ch/#organization"
+            },
+            "mainEntity": {
+                "@id": "https://wearebrothers.ch/#organization"
+            },
+            "inLanguage": "fr-CH"
+        }
+    ]
+}
     </script>
 
 
@@ -157,17 +281,17 @@
     <link rel="preload" href="assets/fonts/Epilogue-Variable.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/base.css?v=11">
-    <link rel="stylesheet" href="css/nav.css?v=9">
-    <link rel="stylesheet" href="css/page.css?v=4">
-    <link rel="stylesheet" href="css/studio.css?v=5">
-    <link rel="stylesheet" href="css/footer.css?v=3">
+    <link rel="stylesheet" href="css/base.css?v=18">
+    <link rel="stylesheet" href="css/nav.css?v=14">
+    <link rel="stylesheet" href="css/page.css?v=5">
+    <link rel="stylesheet" href="css/studio.css?v=9">
+    <link rel="stylesheet" href="css/footer.css?v=5">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=1" defer></script>
-    <script src="js/reveal.js?v=2" defer></script>
-    <script src="js/nav.js?v=3" defer></script>
-    <script type="module" src="js/birds/index.js?v=1"></script>
+    <script src="js/reveal.js?v=3" defer></script>
+    <script src="js/nav.js?v=5" defer></script>
+    <script type="module" src="js/birds/index.js?v=4"></script>
 </head>
 
 <body>
@@ -179,21 +303,19 @@
 
     <!-- BARRE FLOTTANTE — la pilule se prolonge pour contenir le menu -->
     <header class="topbar" id="topbar">
-        <div class="topbar__pill" id="topbarPill">
+        <div class="topbar__inner" id="topbarBar">
             <div class="topbar__bar">
                 <a href="/" class="topbar__brand">WAB.</a>
 
                 <nav class="topbar__nav" aria-label="Navigation principale">
                     <a href="/realisations" class="topbar__link">Réalisations</a>
-                    <a href="/applications" class="topbar__link">Applications</a>
-                    <a href="/studio" class="topbar__link" aria-current="page">Studio</a>
+                    <a href="/studio" class="topbar__link" aria-current="page">About</a>
+                    <a href="/contact" class="topbar__link">Contact</a>
                 </nav>
 
-                <a href="/contact" class="btn btn--solid topbar__cta">Démarrer un projet</a>
-
-                <button type="button" class="topbar__burger" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
-                    <span class="topbar__lines" aria-hidden="true">
-                        <span></span><span></span><span></span>
+                <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
+                    <span class="topbar__dots" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span>
                     </span>
                     <span class="sr-only">Menu</span>
                 </button>
@@ -206,17 +328,15 @@
                             Réalisations
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
-                        <a href="/applications" class="panel__link">
-                            Applications
+                        <a href="/studio" class="panel__link" aria-current="page">
+                            About
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
-                        <a href="/studio" class="panel__link" aria-current="page">
-                            Studio
+                        <a href="/contact" class="panel__link">
+                            Contact
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
                     </nav>
-
-                    <a href="/contact" class="btn btn--solid btn--lg panel__cta">Démarrer un projet</a>
 
                     <div class="panel__meta">
                         <p class="panel__row">
@@ -235,47 +355,19 @@
 
     <div class="topbar-scrim" id="topbarScrim"></div>
 
-    <main class="main" id="contenu">
+    <main id="contenu">
 
-        <!-- Titre de page, lu par les moteurs et les lecteurs d'écran.
-             Il n'est pas affiché : la page s'ouvre directement sur les
-             valeurs, mais un document sans titre principal n'a plus de
-             tête ni pour Google ni pour la navigation vocale. -->
-        <h1 class="sr-only">Un studio digital fondé par deux frères à Lausanne</h1>
-
-        <!-- VALEURS -->
-        <section class="band band--first" id="valeurs">
-            <div class="shell shell--wide">
-                <h2 class="band-title reveal">Quatre principes, tenus sur chaque projet</h2>
-                <div class="values" data-reveal-group>
-                    <article class="value reveal">
-                        <h2 class="value__title">Proximité</h2>
-                        <p class="value__desc">Une relation simple et directe. Nous échangeons sans détour, idéalement autour d'un café.</p>
-                    </article>
-                    <article class="value reveal">
-                        <h2 class="value__title">Craft</h2>
-                        <p class="value__desc">Le soin de l'artisan : nous pesons chaque ligne de code et chaque pixel. Jamais d'« assez bien ».</p>
-                    </article>
-                    <article class="value reveal">
-                        <h2 class="value__title">Performance</h2>
-                        <p class="value__desc">Rapidité, fluidité et référencement : un site lent ne convainc personne, aussi beau soit-il.</p>
-                    </article>
-                    <article class="value reveal">
-                        <h2 class="value__title">Transparence</h2>
-                        <p class="value__desc">Des échanges clairs, des tarifs justes et aucune surprise en cours de route.</p>
-                    </article>
-                </div>
+        <section class="band band--first" id="studio">
+            <div class="shell">
+                <span class="page-head__label">About</span>
+                <!-- Le titre n'est pas affiché : la page s'ouvre sur les
+                     portraits. Il reste dans le document — une page sans
+                     titre principal n'a plus de tête ni pour Google ni
+                     pour la navigation vocale. -->
+                <h1 class="sr-only">Un studio digital fondé par deux frères à Lausanne</h1>
             </div>
-        </section>
 
-        <!-- ÉQUIPE -->
-        <section class="band" id="equipe">
-            <div class="shell shell--wide">
-                <h2 class="band-title reveal">Les personnes derrière le studio</h2>
-                <p class="band-lede reveal">
-                    Vous parlez à celles et ceux qui travaillent réellement sur votre projet, du premier
-                    échange à la mise en ligne.
-                </p>
+            <div class="team-wrap">
                 <div class="team" data-reveal-group>
                     <article class="profile reveal">
                         <div class="profile__photo">
@@ -328,27 +420,8 @@
             </div>
         </section>
 
-        <!-- CONTACT -->
-        <section class="band closing" id="contact">
-            <div class="shell">
-                <h2 class="closing__title">Parlons de votre projet.</h2>
-                <p class="closing__lede">Un café ou un appel, une proposition, puis on construit. Réponse sous 24&nbsp;h ouvrées, sans engagement.</p>
-                <div class="closing__actions">
-                    <a href="/contact" class="btn btn--solid btn--lg">
-                        <span>Démarrer un projet</span>
-                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                    </a>
-                    <a href="mailto:contact@wearebrothers.ch" class="btn btn--ghost btn--lg">
-                        <span>Écrire un email</span>
-                    </a>
-                </div>
-                <p class="closing__note">Lausanne, Suisse — <time data-local-time>--:--</time></p>
-            </div>
-        </section>
-
-        <!-- PIED DE PAGE -->
         <footer class="footer" id="footer">
-            <div class="shell shell--wide">
+            <div class="shell">
                 <div class="footer__top">
                     <div>
                         <p class="footer__status">
@@ -365,7 +438,7 @@
                                 <li><a href="/realisations" class="footer__link">Réalisations</a></li>
                                 <li><a href="/creation-site-internet-lausanne" class="footer__link">Création de site internet</a></li>
                                 <li><a href="/applications" class="footer__link">Applications</a></li>
-                                <li><a href="/studio" class="footer__link">Studio</a></li>
+                                <li><a href="/studio" class="footer__link">About</a></li>
                                 <li><a href="/contact" class="footer__link">Contact</a></li>
                             </ul>
                         </div>
@@ -374,7 +447,6 @@
                             <ul class="footer__list">
                                 <li><span class="footer__link">Lausanne, Suisse</span></li>
                                 <li><span class="footer__link">Heure locale <time data-local-time>--:--</time></span></li>
-                                <li><a href="mailto:contact@wearebrothers.ch" class="footer__link">contact@wearebrothers.ch</a></li>
                             </ul>
                         </div>
                     </div>

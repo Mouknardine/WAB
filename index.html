@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr-CH" class="no-js">
+<html lang="fr-CH" class="no-js is-landing">
 
 <head>
     <meta charset="UTF-8">
-    <!-- Avant tout rendu : signale au CSS que JavaScript est disponible.
-         Sans lui, les sections à apparition restent visibles d'emblée. -->
+    <!-- Avant tout rendu : signale au CSS que JavaScript est disponible. -->
     <script>document.documentElement.classList.replace('no-js', 'js');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#F4F4F5">
+    <meta name="theme-color" content="#FFE4F0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
@@ -18,7 +17,7 @@
     <link rel="manifest" href="/site.webmanifest">
     <title>Agence Web Lausanne — Création de Site Internet | WeAreBrothers</title>
     <meta name="description"
-        content="Agence web à Lausanne : création de site internet sur mesure, refonte, branding et e-commerce pour les PME de l'arc lémanique. Deux frères, réponse sous 24 h.">
+        content="Agence web à Lausanne : création de site internet sur mesure et applications de gestion pour les entreprises de l'arc lémanique. Deux frères, réponse sous 24 h.">
 
     <!-- SEO -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -29,7 +28,7 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Agence Web Lausanne — Création de Site Internet | WeAreBrothers">
-    <meta property="og:description" content="Agence web à Lausanne : sites internet sur mesure, refonte, branding et e-commerce pour les PME de l'arc lémanique.">
+    <meta property="og:description" content="Agence web à Lausanne : sites internet sur mesure et applications de gestion pour les entreprises de l'arc lémanique.">
     <meta property="og:url" content="https://wearebrothers.ch/">
     <meta property="og:image" content="https://wearebrothers.ch/assets/og-image.jpg">
     <meta property="og:image:width" content="1200">
@@ -40,19 +39,28 @@
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Agence Web Lausanne — Création de Site Internet | WeAreBrothers">
-    <meta name="twitter:description" content="Agence web à Lausanne : sites internet sur mesure, refonte, branding et e-commerce pour les PME de l'arc lémanique.">
+    <meta name="twitter:description" content="Agence web à Lausanne : sites internet sur mesure et applications de gestion pour les entreprises de l'arc lémanique.">
     <meta name="twitter:image" content="https://wearebrothers.ch/assets/og-image.jpg">
 
-    <!-- Données structurées (JSON-LD) — studio, site, fondateurs + page -->
+    <!-- Données structurées (JSON-LD) — studio, site, fondateurs + page.
+         Les questions fréquentes vivent désormais sur /studio, où elles
+         sont affichées : le bloc FAQPage les y accompagne. -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@graph": [
             {
-                "@type": ["ProfessionalService", "Organization"],
+                "@type": [
+                    "ProfessionalService",
+                    "Organization"
+                ],
                 "@id": "https://wearebrothers.ch/#organization",
                 "name": "WeAreBrothers Studio",
-                "alternateName": ["WAB.", "WeAreBrothers", "WAB Studio"],
+                "alternateName": [
+                    "WAB.",
+                    "WeAreBrothers",
+                    "WAB Studio"
+                ],
                 "description": "Agence web fondée par deux frères à Lausanne : création de sites internet sur mesure, refonte de sites, web design, branding, motion design, e-commerce et applications de gestion pour les PME et indépendants de l'arc lémanique.",
                 "slogan": "Des expériences qui restent dans la mémoire",
                 "url": "https://wearebrothers.ch/",
@@ -65,7 +73,10 @@
                     "height": 512
                 },
                 "numberOfEmployees": 3,
-                "foundingLocation": { "@type": "Place", "name": "Lausanne, Suisse" },
+                "foundingLocation": {
+                    "@type": "Place",
+                    "name": "Lausanne, Suisse"
+                },
                 "address": {
                     "@type": "PostalAddress",
                     "addressLocality": "Lausanne",
@@ -73,50 +84,182 @@
                     "addressCountry": "CH"
                 },
                 "areaServed": [
-                    { "@type": "City", "name": "Lausanne" },
-                    { "@type": "City", "name": "Pully" },
-                    { "@type": "City", "name": "Renens" },
-                    { "@type": "City", "name": "Épalinges" },
-                    { "@type": "City", "name": "Morges" },
-                    { "@type": "City", "name": "Vevey" },
-                    { "@type": "City", "name": "Montreux" },
-                    { "@type": "City", "name": "Nyon" },
-                    { "@type": "City", "name": "Yverdon-les-Bains" },
-                    { "@type": "City", "name": "Genève" },
-                    { "@type": "AdministrativeArea", "name": "Canton de Vaud" },
-                    { "@type": "Place", "name": "Arc lémanique" },
-                    { "@type": "Place", "name": "Suisse romande" },
+                    {
+                        "@type": "City",
+                        "name": "Lausanne"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Pully"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Renens"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Épalinges"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Morges"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Vevey"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Montreux"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Nyon"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Yverdon-les-Bains"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Genève"
+                    },
+                    {
+                        "@type": "AdministrativeArea",
+                        "name": "Canton de Vaud"
+                    },
+                    {
+                        "@type": "Place",
+                        "name": "Arc lémanique"
+                    },
+                    {
+                        "@type": "Place",
+                        "name": "Suisse romande"
+                    },
                     {
                         "@type": "GeoCircle",
-                        "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 46.5197, "longitude": 6.6323 },
+                        "geoMidpoint": {
+                            "@type": "GeoCoordinates",
+                            "latitude": 46.5197,
+                            "longitude": 6.6323
+                        },
                         "geoRadius": "60000"
                     }
                 ],
-                "serviceType": ["Création de site internet", "Refonte de site internet", "Web design", "Branding", "Motion design", "Développement e-commerce", "Développement d'application métier sur mesure", "Référencement local (SEO)"],
+                "serviceType": [
+                    "Création de site internet",
+                    "Refonte de site internet",
+                    "Web design",
+                    "Branding",
+                    "Motion design",
+                    "Développement e-commerce",
+                    "Développement d'application métier sur mesure",
+                    "Référencement local (SEO)"
+                ],
                 "contactPoint": {
                     "@type": "ContactPoint",
                     "contactType": "sales",
                     "email": "contact@wearebrothers.ch",
                     "url": "https://wearebrothers.ch/contact",
-                    "availableLanguage": ["fr", "en"],
+                    "availableLanguage": [
+                        "fr",
+                        "en"
+                    ],
                     "areaServed": "CH"
                 },
-                "knowsLanguage": ["fr", "en"],
-                "knowsAbout": ["Création de site internet", "Refonte de site", "Développement front-end", "Développement full-stack", "Next.js", "TypeScript", "Node.js", "Design d'interface UI/UX", "Branding", "Identité visuelle", "Motion design", "Animation web", "Référencement SEO", "E-commerce"],
+                "knowsLanguage": [
+                    "fr",
+                    "en"
+                ],
+                "knowsAbout": [
+                    "Création de site internet",
+                    "Refonte de site",
+                    "Développement front-end",
+                    "Développement full-stack",
+                    "Next.js",
+                    "TypeScript",
+                    "Node.js",
+                    "Design d'interface UI/UX",
+                    "Branding",
+                    "Identité visuelle",
+                    "Motion design",
+                    "Animation web",
+                    "Référencement SEO",
+                    "E-commerce"
+                ],
                 "founder": [
-                    { "@id": "https://wearebrothers.ch/#eliott" },
-                    { "@id": "https://wearebrothers.ch/#matt" }
+                    {
+                        "@id": "https://wearebrothers.ch/#eliott"
+                    },
+                    {
+                        "@id": "https://wearebrothers.ch/#matt"
+                    }
                 ],
                 "hasOfferCatalog": {
                     "@type": "OfferCatalog",
                     "name": "Services WeAreBrothers Studio",
                     "itemListElement": [
-                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Création de site internet", "serviceType": "Création de site internet", "areaServed": "Lausanne et arc lémanique", "description": "Site vitrine ou site d'entreprise codé sur mesure, sans WordPress ni Wix, rapide sur mobile et pensé pour le référencement local." } },
-                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Refonte de site internet", "serviceType": "Refonte de site", "areaServed": "Lausanne et arc lémanique", "description": "Nouveau design et nouveau code pour un site existant, en conservant les contenus et le référencement acquis." } },
-                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web design et identité visuelle", "serviceType": "Web design", "areaServed": "Lausanne et arc lémanique", "description": "Interfaces précises et lisibles, direction artistique, branding et motion design." } },
-                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "E-commerce", "serviceType": "Développement e-commerce", "areaServed": "Suisse romande", "description": "Boutique en ligne sur mesure pour vendre en Suisse romande." } },
-                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Référencement local", "serviceType": "SEO", "areaServed": "Lausanne et canton de Vaud", "description": "Bases techniques et contenus travaillés pour être trouvé sur Google à Lausanne et dans le canton de Vaud." } },
-                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Application de gestion sur mesure", "serviceType": "Développement d'application métier", "areaServed": "Suisse romande", "url": "https://wearebrothers.ch/applications", "description": "Outil de gestion dessiné à partir du métier réel de l'entreprise, livré module par module." } }
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Création de site internet",
+                                "serviceType": "Création de site internet",
+                                "areaServed": "Lausanne et arc lémanique",
+                                "description": "Site vitrine ou site d'entreprise codé sur mesure, sans WordPress ni Wix, rapide sur mobile et pensé pour le référencement local."
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Refonte de site internet",
+                                "serviceType": "Refonte de site",
+                                "areaServed": "Lausanne et arc lémanique",
+                                "description": "Nouveau design et nouveau code pour un site existant, en conservant les contenus et le référencement acquis."
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Web design et identité visuelle",
+                                "serviceType": "Web design",
+                                "areaServed": "Lausanne et arc lémanique",
+                                "description": "Interfaces précises et lisibles, direction artistique, branding et motion design."
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "E-commerce",
+                                "serviceType": "Développement e-commerce",
+                                "areaServed": "Suisse romande",
+                                "description": "Boutique en ligne sur mesure pour vendre en Suisse romande."
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Référencement local",
+                                "serviceType": "SEO",
+                                "areaServed": "Lausanne et canton de Vaud",
+                                "description": "Bases techniques et contenus travaillés pour être trouvé sur Google à Lausanne et dans le canton de Vaud."
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Application de gestion sur mesure",
+                                "serviceType": "Développement d'application métier",
+                                "areaServed": "Suisse romande",
+                                "url": "https://wearebrothers.ch/applications",
+                                "description": "Outil de gestion dessiné à partir du métier réel de l'entreprise, livré module par module."
+                            }
+                        }
                     ]
                 }
             },
@@ -126,23 +269,45 @@
                 "url": "https://wearebrothers.ch/",
                 "name": "WeAreBrothers Studio",
                 "inLanguage": "fr-CH",
-                "publisher": { "@id": "https://wearebrothers.ch/#organization" }
+                "publisher": {
+                    "@id": "https://wearebrothers.ch/#organization"
+                }
             },
             {
                 "@type": "Person",
                 "@id": "https://wearebrothers.ch/#eliott",
                 "name": "Eliott Pina",
                 "jobTitle": "Lead designer",
-                "worksFor": { "@id": "https://wearebrothers.ch/#organization" },
-                "knowsAbout": ["Figma", "Motion Design", "Branding", "GSAP", "Three.js", "After Effects", "Direction artistique"]
+                "worksFor": {
+                    "@id": "https://wearebrothers.ch/#organization"
+                },
+                "knowsAbout": [
+                    "Figma",
+                    "Motion Design",
+                    "Branding",
+                    "GSAP",
+                    "Three.js",
+                    "After Effects",
+                    "Direction artistique"
+                ]
             },
             {
                 "@type": "Person",
                 "@id": "https://wearebrothers.ch/#matt",
                 "name": "Matt Pina",
                 "jobTitle": "Lead développeur",
-                "worksFor": { "@id": "https://wearebrothers.ch/#organization" },
-                "knowsAbout": ["Next.js", "TypeScript", "Node.js", "Supabase", "PostgreSQL", "GSAP", "Développement full-stack"]
+                "worksFor": {
+                    "@id": "https://wearebrothers.ch/#organization"
+                },
+                "knowsAbout": [
+                    "Next.js",
+                    "TypeScript",
+                    "Node.js",
+                    "Supabase",
+                    "PostgreSQL",
+                    "GSAP",
+                    "Développement full-stack"
+                ]
             },
             {
                 "@type": "WebPage",
@@ -150,9 +315,15 @@
                 "url": "https://wearebrothers.ch/",
                 "name": "Agence web à Lausanne — Création de site internet sur mesure",
                 "description": "Agence web à Lausanne : création de site internet sur mesure, refonte, branding et e-commerce pour les PME de l'arc lémanique.",
-                "breadcrumb": { "@id": "https://wearebrothers.ch/#breadcrumb" },
-                "isPartOf": { "@id": "https://wearebrothers.ch/#website" },
-                "about": { "@id": "https://wearebrothers.ch/#organization" },
+                "breadcrumb": {
+                    "@id": "https://wearebrothers.ch/#breadcrumb"
+                },
+                "isPartOf": {
+                    "@id": "https://wearebrothers.ch/#website"
+                },
+                "about": {
+                    "@id": "https://wearebrothers.ch/#organization"
+                },
                 "primaryImageOfPage": "https://wearebrothers.ch/assets/og-image.jpg",
                 "inLanguage": "fr-CH"
             },
@@ -160,70 +331,54 @@
                 "@type": "BreadcrumbList",
                 "@id": "https://wearebrothers.ch/#breadcrumb",
                 "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://wearebrothers.ch/" }
-                ]
-            },
-            {
-                "@type": "FAQPage",
-                "@id": "https://wearebrothers.ch/#faq",
-                "isPartOf": { "@id": "https://wearebrothers.ch/#webpage" },
-                "inLanguage": "fr-CH",
-                "mainEntity": [
-                    { "@type": "Question", "name": "Pourquoi passer par une agence web à Lausanne plutôt que par un constructeur de site en ligne ?", "acceptedAnswer": { "@type": "Answer", "text": "Un constructeur en ligne produit un site standard sur lequel vous êtes seul. Avec nous, vous rencontrez à Lausanne les deux personnes qui dessinent et codent votre site internet, vous en êtes propriétaire de bout en bout, et il est construit pour votre marché : vos clients, votre quartier, votre canton. Le code sur mesure charge plus vite qu'un gabarit et donne une base saine pour le référencement." } },
-                    { "@type": "Question", "name": "Combien coûte la création d'un site internet ?", "acceptedAnswer": { "@type": "Answer", "text": "Le prix suit le périmètre : nombre de pages, design, fonctionnalités, contenus à produire. Nous le définissons ensemble après un premier échange, sans surprise ensuite, et le paiement peut être échelonné en plusieurs mensualités. Vous recevez une proposition sous 24 h ouvrées." } },
-                    { "@type": "Question", "name": "Combien de temps prend la création d'un site internet ?", "acceptedAnswer": { "@type": "Answer", "text": "Comptez généralement 3 à 6 semaines pour un site vitrine, davantage pour un projet sur mesure ou une boutique en ligne. Le calendrier est fixé ensemble au départ, avec des points réguliers jusqu'à la mise en ligne." } },
-                    { "@type": "Question", "name": "Faites-vous aussi la refonte d'un site existant ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Nous gardons ce qui fonctionne — contenus, adresses des pages, référencement acquis — et nous redessinons et recodons le reste. Les anciennes adresses sont conservées ou redirigées, et le nouveau site remplace l'ancien sans interruption." } },
-                    { "@type": "Question", "name": "Mon site internet sera-t-il bien référencé sur Google ?", "acceptedAnswer": { "@type": "Answer", "text": "Chaque site est codé pour être rapide, lisible par Google et structuré pour le référencement local : balises, données structurées, plan du site, textes travaillés avec vous autour de votre activité et de votre région. Le référencement se construit ensuite dans la durée, et nous restons disponibles pour le faire progresser." } },
-                    { "@type": "Question", "name": "Travaillez-vous uniquement à Lausanne ?", "acceptedAnswer": { "@type": "Answer", "text": "Le studio est à Lausanne et c'est là que nous rencontrons la plupart de nos clients, autour d'un café. Nous travaillons dans tout l'arc lémanique — Pully, Renens, Épalinges, Morges, Nyon, Vevey, Montreux, Yverdon-les-Bains, Genève — et à distance pour le reste de la Suisse romande." } }
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Accueil",
+                        "item": "https://wearebrothers.ch/"
+                    }
                 ]
             }
         ]
     }
     </script>
 
-
-    <!-- Police — Epilogue seule, servie depuis le site : plus aucune requête vers Google Fonts -->
+    <!-- Police — Epilogue seule, servie depuis le site -->
     <link rel="preload" href="assets/fonts/Epilogue-Variable.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/base.css?v=11">
-    <link rel="stylesheet" href="css/nav.css?v=9">
-    <link rel="stylesheet" href="css/page.css?v=3">
-    <link rel="stylesheet" href="css/home.css?v=21">
-    <link rel="stylesheet" href="css/footer.css?v=3">
+    <link rel="stylesheet" href="css/base.css?v=18">
+    <link rel="stylesheet" href="css/nav.css?v=14">
+    <link rel="stylesheet" href="css/landing.css?v=6">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=1" defer></script>
-    <script src="js/reveal.js?v=2" defer></script>
-    <script src="js/nav.js?v=3" defer></script>
-    <script src="js/accordion.js?v=1" defer></script>
-    <script type="module" src="js/birds/index.js?v=1"></script>
+    <script src="js/nav.js?v=5" defer></script>
+    <script type="module" src="js/birds/index.js?v=4"></script>
 </head>
 
-<body>
+<body class="landing" data-birds="dense">
 
-    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <a class="skip-link" href="#studio-intro">Aller au contenu</a>
 
-    <!-- Les oiseaux traversent le fond de toute la page, pas seulement le hero -->
+    <!-- Le ciel occupe tout l'écran, sous les trois plaques de verre. -->
     <canvas id="birdCanvas" aria-hidden="true"></canvas>
 
     <!-- BARRE FLOTTANTE — la pilule se prolonge pour contenir le menu -->
     <header class="topbar" id="topbar">
-        <div class="topbar__pill" id="topbarPill">
+        <div class="topbar__inner" id="topbarBar">
             <div class="topbar__bar">
                 <a href="/" class="topbar__brand" aria-current="page">WAB.</a>
 
                 <nav class="topbar__nav" aria-label="Navigation principale">
                     <a href="/realisations" class="topbar__link">Réalisations</a>
-                    <a href="/applications" class="topbar__link">Applications</a>
-                    <a href="/studio" class="topbar__link">Studio</a>
+                    <a href="/studio" class="topbar__link">About</a>
+                    <a href="/contact" class="topbar__link">Contact</a>
                 </nav>
 
-                <a href="/contact" class="btn btn--solid topbar__cta">Démarrer un projet</a>
-
-                <button type="button" class="topbar__burger" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
-                    <span class="topbar__lines" aria-hidden="true">
-                        <span></span><span></span><span></span>
+                <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
+                    <span class="topbar__dots" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span>
                     </span>
                     <span class="sr-only">Menu</span>
                 </button>
@@ -236,17 +391,15 @@
                             Réalisations
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
-                        <a href="/applications" class="panel__link">
-                            Applications
+                        <a href="/studio" class="panel__link">
+                            About
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
-                        <a href="/studio" class="panel__link">
-                            Studio
+                        <a href="/contact" class="panel__link">
+                            Contact
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
                     </nav>
-
-                    <a href="/contact" class="btn btn--solid btn--lg panel__cta">Démarrer un projet</a>
 
                     <div class="panel__meta">
                         <p class="panel__row">
@@ -265,402 +418,28 @@
 
     <div class="topbar-scrim" id="topbarScrim"></div>
 
-    <main class="main">
+    <main>
 
-        <!-- HERO -->
-        <section class="hero-stage" aria-labelledby="heroClaim">
-            <div class="shell hero-lede">
-                <h1 class="hero-claim" id="heroClaim">Agence web à Lausanne&nbsp;: des sites internet sur mesure</h1>
-                <p class="hero-sub">
-                    Vous parlez directement aux deux frères qui dessinent et développent votre site internet.
+        <!-- LA PLAQUE — le studio en deux phrases, rien de plus.
+             Le porte-plaque la cale sur la même verticale que la barre
+             du haut et la ligne du bas. -->
+        <div class="landing__anchor">
+            <section class="landing__plate" id="studio-intro" tabindex="-1" aria-labelledby="landingHello">
+                <h1 class="landing__hello" id="landingHello">Agence web à Lausanne.</h1>
+                <p class="landing__intro">
+                    WeAreBrothers, c'est deux frères — un designer et un développeur. Nous dessinons et
+                    développons des sites internet sur mesure et des applications de gestion pour les
+                    entreprises de l'arc lémanique. Vous parlez directement à ceux qui construisent.
                 </p>
-                <div class="hero-actions">
-                    <a href="/contact" class="btn btn--solid btn--lg">
-                        <span>Démarrer un projet</span>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                    </a>
-                    <a href="/realisations" class="btn btn--ghost btn--lg">
-                        <span>Voir nos réalisations</span>
-                    </a>
-                </div>
+            </section>
+        </div>
+
+        <!-- LA LIGNE DU BAS — où écrire, et où nous trouver -->
+        <div class="landing__foot">
+            <div class="landing__foot-inner">
+                <a href="mailto:contact@wearebrothers.ch" class="landing__mail">contact@wearebrothers.ch</a>
+                <span class="landing__place">Lausanne, Suisse — <time data-local-time>--:--</time></span>
             </div>
-
-            <div class="shell shell--wide hero-frame">
-                <div class="hero" id="hero">
-                    <div class="hero-inner">
-                        <p class="hero-name">
-                            <span class="hero-line">
-                                <span class="hero-word">We</span><span class="hero-word">Are</span>
-                            </span>
-                            <span class="hero-line">
-                                <span class="hero-word">Brothers</span><span class="hero-dot">.</span>
-                            </span>
-                        </p>
-                        <p class="hero-subtitle">Web, Design &amp; Branding</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PLAQUE DE CONTENU -->
-        <div class="plate" id="contenu">
-
-            <!-- MANIFESTE -->
-            <section class="band manifesto" id="studio">
-                <div class="shell">
-                    <h2 class="band-title reveal">Des expériences qui restent dans la mémoire</h2>
-
-                    <p class="manifesto__body reveal">
-                        Un visiteur se fait une opinion de votre entreprise en quelques secondes, bien avant
-                        d'avoir lu la première ligne. Un site lent ou daté installe le doute&nbsp;; un site clair,
-                        rapide et soigné inspire confiance immédiatement. Une première impression ne se joue
-                        qu'une fois — notre métier est de vous éviter de rater la vôtre.
-                    </p>
-
-                    <p class="manifesto__body reveal">
-                        Nous sommes deux frères basés à Lausanne, passionnés de technologie et de design. Nous
-                        créons des <a href="/creation-site-internet-lausanne" class="text-link">sites internet sur mesure</a> — création comme refonte — qui portent cette
-                        confiance dès le premier écran et transforment vos visiteurs en clients. Proches,
-                        flexibles et accessibles, nous construisons chaque projet avec vous — idéalement
-                        autour d'un café.
-                    </p>
-
-                    <div class="manifesto__actions reveal">
-                        <a href="/studio" class="btn btn--ghost">
-                            <span>Découvrir le studio</span>
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- RÉALISATIONS -->
-            <section class="band" id="realisations">
-                <div class="shell shell--wide">
-                    <h2 class="band-title reveal">Des sites internet conçus et développés à Lausanne</h2>
-                    <p class="band-lede reveal">
-                        Du portfolio créatif au site d'entreprise&nbsp;: chaque site est dessiné, codé et mis en
-                        ligne à Lausanne par les deux frères, sans sous-traitance.
-                    </p>
-
-                    <div class="work-grid" data-reveal-group>
-                        <a href="https://www.zinema.ch/" target="_blank" rel="noopener noreferrer" class="work-card window-link reveal">
-                            <div class="window">
-                                <span class="window__chrome" aria-hidden="true">
-                                    <span></span><span></span><span></span>
-                                </span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/project-zinema.webp" alt="Site du Zinéma, cinéma d'art et essai de la rue du Maupas à Lausanne, mur d'affiches en page d'accueil." loading="lazy" width="1200" height="900">
-                                    <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
-                                </span>
-                            </div>
-                            <h3 class="work-card__name">Zinéma</h3>
-                            <p class="work-card__desc">Premier cinéma d'art et essai miniplex de Lausanne — une page d'accueil pensée comme un mur d'affiches, avec l'agenda des séances et la carte de membre.</p>
-                        </a>
-
-                        <a href="https://le-p-tit-central.vercel.app/" target="_blank" rel="noopener noreferrer" class="work-card window-link reveal">
-                            <div class="window">
-                                <span class="window__chrome" aria-hidden="true">
-                                    <span></span><span></span><span></span>
-                                </span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/project-central.webp" alt="Site du café-restaurant Le P'tit Central à Lausanne, azulejos bleu et blanc." loading="lazy" width="1200" height="900">
-                                    <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
-                                </span>
-                            </div>
-                            <h3 class="work-card__name">Le P'tit Central</h3>
-                            <p class="work-card__desc">Café-restaurant de quartier à Lausanne — azulejos bleu et blanc, cadres gravés et photographie maison, pour un lieu ouvert du matin à tard le soir.</p>
-                        </a>
-
-                        <a href="https://lazizze-git.github.io/grillz/" target="_blank" rel="noopener noreferrer" class="work-card window-link reveal">
-                            <div class="window">
-                                <span class="window__chrome" aria-hidden="true">
-                                    <span></span><span></span><span></span>
-                                </span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/project-alliani.webp" alt="Vitrine de Maison Alliani, atelier suisse de grillz sur mesure." loading="lazy" width="1200" height="900">
-                                    <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
-                                </span>
-                            </div>
-                            <h3 class="work-card__name">Maison Alliani</h3>
-                            <p class="work-card__desc">Atelier suisse de grillz sur mesure — un site à l'esthétique haute joaillerie, sombre et précieuse, avec galerie filtrable des créations.</p>
-                        </a>
-
-                        <a href="https://amarte.ch/" target="_blank" rel="noopener noreferrer" class="work-card window-link reveal">
-                            <div class="window">
-                                <span class="window__chrome" aria-hidden="true">
-                                    <span></span><span></span><span></span>
-                                </span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/project-amarte.webp" alt="Site d'Amarte Studio, centre de yoga et de Pilates à Épalinges." loading="lazy" width="1200" height="900">
-                                    <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
-                                </span>
-                            </div>
-                            <h3 class="work-card__name">Amarte Studio</h3>
-                            <p class="work-card__desc">Studio de yoga et de Pilates à Épalinges — disciplines, profs et horaires réunis dans un parcours qui mène à la réservation.</p>
-                        </a>
-
-</div>
-
-                    <div class="band-footer reveal">
-                        <a href="/realisations" class="btn btn--ghost">
-                            <span>Voir toutes nos réalisations</span>
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SERVICES -->
-            <section class="band" id="services">
-                <div class="shell shell--wide">
-                    <h2 class="band-title reveal">Design et développement sous le même toit</h2>
-                    <p class="band-lede reveal">
-                        Deux frères en relation directe avec vous&nbsp;: pas d'intermédiaire, pas de chef de projet,
-                        pas de production à la chaîne.
-                    </p>
-
-                    <div class="chips reveal" role="list">
-                        <span class="chip" role="listitem">Web design</span>
-                        <span class="chip" role="listitem">Développement</span>
-                        <span class="chip" role="listitem">Branding</span>
-                        <span class="chip" role="listitem">Motion design</span>
-                        <span class="chip" role="listitem">E-commerce</span>
-                        <span class="chip" role="listitem">SEO</span>
-                    </div>
-
-                    <div class="service-list" data-reveal-group>
-                        <article class="service reveal is-open">
-                            <h3 class="service__head">
-                                <button type="button" class="service__toggle" id="service-developpement-label"
-                                    aria-expanded="true" aria-controls="service-developpement">
-                                    <span class="service__name">Développement</span>
-                                    <span class="service__icon" aria-hidden="true"></span>
-                                </button>
-                            </h3>
-                            <div class="service__panel" id="service-developpement" role="region"
-                                aria-labelledby="service-developpement-label">
-                                <div class="service__panel-inner">
-                                    <p class="service__desc">Un développement rapide, évolutif et pensé pour la performance comme pour le référencement. Nous codons chaque site internet de A à Z, sans WordPress ni Wix, pour un chargement quasi instantané sur mobile et une base saine pour le référencement local. L'hébergement suisse sécurisé (Infomaniak) est inclus, avec un guide pour le gérer en toute autonomie.</p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="service reveal">
-                            <h3 class="service__head">
-                                <button type="button" class="service__toggle" id="service-web-design-label"
-                                    aria-expanded="false" aria-controls="service-web-design">
-                                    <span class="service__name">Web Design</span>
-                                    <span class="service__icon" aria-hidden="true"></span>
-                                </button>
-                            </h3>
-                            <div class="service__panel" id="service-web-design" role="region"
-                                aria-labelledby="service-web-design-label">
-                                <div class="service__panel-inner">
-                                    <p class="service__desc">Des interfaces précises, lisibles et conçues pour une navigation fluide et naturelle. Création d'un nouveau site ou refonte d'un site existant&nbsp;: un design épuré, des animations qui guident vos visiteurs vers l'action — appel, formulaire, devis — et une expérience pensée en priorité pour le mobile.</p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="service reveal">
-                            <h3 class="service__head">
-                                <button type="button" class="service__toggle" id="service-sur-mesure-label"
-                                    aria-expanded="false" aria-controls="service-sur-mesure">
-                                    <span class="service__name">Sur-mesure</span>
-                                    <span class="service__icon" aria-hidden="true"></span>
-                                </button>
-                            </h3>
-                            <div class="service__panel" id="service-sur-mesure" role="region"
-                                aria-labelledby="service-sur-mesure-label">
-                                <div class="service__panel-inner">
-                                    <p class="service__desc">Du code et des solutions sur mesure pour les projets qui sortent du cadre standard. Structures multi-pages, boutique e-commerce, suivi de conversion avancé, et un accompagnement continu après la mise en ligne pour faire évoluer votre site au rythme de votre entreprise.</p>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="bridge reveal">
-                        <h3 class="bridge__title">Nous développons aussi des applications métier</h3>
-                        <p class="bridge__text">
-                            Projets, tâches, temps passé, clients, documents, facturation&nbsp;: des outils de gestion
-                            dessinés à partir de votre métier réel, livrés module par module.
-                        </p>
-                        <a href="/applications" class="btn btn--solid btn--lg bridge__cta">
-                            <span>Voir les applications</span>
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- QUESTIONS — même composant dépliant que Contact et Applications.
-                 Les réponses reprennent mot pour mot le bloc FAQPage du JSON-LD. -->
-            <section class="band" id="questions" aria-labelledby="questionsTitle">
-                <div class="shell shell--wide">
-                    <h2 class="band-title reveal" id="questionsTitle">Créer un site internet à Lausanne&nbsp;: vos questions</h2>
-                    <p class="band-lede reveal">
-                        Ce que les entreprises de Lausanne et de l'arc lémanique nous demandent avant de
-                        démarrer, et nos réponses sans détour.
-                    </p>
-
-                    <div class="service-list" data-reveal-group>
-                        <article class="service reveal is-open">
-                            <h3 class="service__head">
-                                <button type="button" class="service__toggle" id="faq-agence-label"
-                                    aria-expanded="true" aria-controls="faq-agence">
-                                    <span class="service__name">Pourquoi passer par une agence web à Lausanne plutôt que par un constructeur de site en ligne&nbsp;?</span>
-                                    <span class="service__icon" aria-hidden="true"></span>
-                                </button>
-                            </h3>
-                            <div class="service__panel" id="faq-agence" role="region" aria-labelledby="faq-agence-label">
-                                <div class="service__panel-inner">
-                                    <p class="service__desc">Un constructeur en ligne produit un site standard sur lequel vous êtes seul. Avec nous, vous rencontrez à Lausanne les deux personnes qui dessinent et codent votre site internet, vous en êtes propriétaire de bout en bout, et il est construit pour votre marché&nbsp;: vos clients, votre quartier, votre canton. Le code sur mesure charge plus vite qu'un gabarit et donne une base saine pour le référencement.</p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="service reveal">
-                            <h3 class="service__head">
-                                <button type="button" class="service__toggle" id="faq-prix-label"
-                                    aria-expanded="false" aria-controls="faq-prix">
-                                    <span class="service__name">Combien coûte la création d'un site internet&nbsp;?</span>
-                                    <span class="service__icon" aria-hidden="true"></span>
-                                </button>
-                            </h3>
-                            <div class="service__panel" id="faq-prix" role="region" aria-labelledby="faq-prix-label">
-                                <div class="service__panel-inner">
-                                    <p class="service__desc">Le prix suit le périmètre&nbsp;: nombre de pages, design, fonctionnalités, contenus à produire. Nous le définissons ensemble après un premier échange, sans surprise ensuite, et le paiement peut être échelonné en plusieurs mensualités. Vous recevez une proposition sous 24&nbsp;h ouvrées.</p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="service reveal">
-                            <h3 class="service__head">
-                                <button type="button" class="service__toggle" id="faq-delai-label"
-                                    aria-expanded="false" aria-controls="faq-delai">
-                                    <span class="service__name">Combien de temps prend la création d'un site internet&nbsp;?</span>
-                                    <span class="service__icon" aria-hidden="true"></span>
-                                </button>
-                            </h3>
-                            <div class="service__panel" id="faq-delai" role="region" aria-labelledby="faq-delai-label">
-                                <div class="service__panel-inner">
-                                    <p class="service__desc">Comptez généralement 3 à 6 semaines pour un site vitrine, davantage pour un projet sur mesure ou une boutique en ligne. Le calendrier est fixé ensemble au départ, avec des points réguliers jusqu'à la mise en ligne.</p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="service reveal">
-                            <h3 class="service__head">
-                                <button type="button" class="service__toggle" id="faq-refonte-label"
-                                    aria-expanded="false" aria-controls="faq-refonte">
-                                    <span class="service__name">Faites-vous aussi la refonte d'un site existant&nbsp;?</span>
-                                    <span class="service__icon" aria-hidden="true"></span>
-                                </button>
-                            </h3>
-                            <div class="service__panel" id="faq-refonte" role="region" aria-labelledby="faq-refonte-label">
-                                <div class="service__panel-inner">
-                                    <p class="service__desc">Oui. Nous gardons ce qui fonctionne — contenus, adresses des pages, référencement acquis — et nous redessinons et recodons le reste. Les anciennes adresses sont conservées ou redirigées, et le nouveau site remplace l'ancien sans interruption.</p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="service reveal">
-                            <h3 class="service__head">
-                                <button type="button" class="service__toggle" id="faq-seo-label"
-                                    aria-expanded="false" aria-controls="faq-seo">
-                                    <span class="service__name">Mon site internet sera-t-il bien référencé sur Google&nbsp;?</span>
-                                    <span class="service__icon" aria-hidden="true"></span>
-                                </button>
-                            </h3>
-                            <div class="service__panel" id="faq-seo" role="region" aria-labelledby="faq-seo-label">
-                                <div class="service__panel-inner">
-                                    <p class="service__desc">Chaque site est codé pour être rapide, lisible par Google et structuré pour le référencement local&nbsp;: balises, données structurées, plan du site, textes travaillés avec vous autour de votre activité et de votre région. Le référencement se construit ensuite dans la durée, et nous restons disponibles pour le faire progresser.</p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="service reveal">
-                            <h3 class="service__head">
-                                <button type="button" class="service__toggle" id="faq-zone-label"
-                                    aria-expanded="false" aria-controls="faq-zone">
-                                    <span class="service__name">Travaillez-vous uniquement à Lausanne&nbsp;?</span>
-                                    <span class="service__icon" aria-hidden="true"></span>
-                                </button>
-                            </h3>
-                            <div class="service__panel" id="faq-zone" role="region" aria-labelledby="faq-zone-label">
-                                <div class="service__panel-inner">
-                                    <p class="service__desc">Le studio est à Lausanne et c'est là que nous rencontrons la plupart de nos clients, autour d'un café. Nous travaillons dans tout l'arc lémanique — Pully, Renens, Épalinges, Morges, Nyon, Vevey, Montreux, Yverdon-les-Bains, Genève — et à distance pour le reste de la Suisse romande.</p>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CONTACT -->
-            <section class="band closing" id="contact">
-                <div class="shell">
-                    <h2 class="closing__title reveal">Donnons vie à votre projet.</h2>
-                    <p class="closing__lede reveal">
-                        Un café ou un appel, une proposition, puis on construit. Réponse sous 24&nbsp;h ouvrées,
-                        sans engagement.
-                    </p>
-                    <div class="closing__actions reveal">
-                        <a href="/contact" class="btn btn--solid btn--lg">
-                            <span>Démarrer un projet</span>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
-                        <a href="mailto:contact@wearebrothers.ch" class="btn btn--ghost btn--lg">
-                            <span>Écrire un email</span>
-                        </a>
-                    </div>
-                    <p class="closing__note reveal">Lausanne, Suisse — <time data-local-time>--:--</time></p>
-                </div>
-            </section>
-
-            <!-- PIED DE PAGE -->
-            <footer class="footer" id="footer">
-                <div class="shell shell--wide">
-                    <div class="footer__top">
-                        <div>
-                            <p class="footer__status">
-                                <span class="footer__pulse" aria-hidden="true"></span>
-                                Disponible pour de nouveaux projets
-                            </p>
-                            <a href="mailto:contact@wearebrothers.ch" class="footer__mail">contact@wearebrothers.ch</a>
-                        </div>
-
-                        <div class="footer__nav">
-                            <div>
-                                <h2 class="footer__group-title">Pages</h2>
-                                <ul class="footer__list">
-                                    <li><a href="/realisations" class="footer__link">Réalisations</a></li>
-                                    <li><a href="/creation-site-internet-lausanne" class="footer__link">Création de site internet</a></li>
-                                    <li><a href="/applications" class="footer__link">Applications</a></li>
-                                    <li><a href="/studio" class="footer__link">Studio</a></li>
-                                    <li><a href="/contact" class="footer__link">Contact</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h2 class="footer__group-title">Studio</h2>
-                                <ul class="footer__list">
-                                    <li><span class="footer__link">Lausanne, Suisse</span></li>
-                                    <li><span class="footer__link">Heure locale <time data-local-time>--:--</time></span></li>
-                                    <li><a href="mailto:contact@wearebrothers.ch" class="footer__link">contact@wearebrothers.ch</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="footer__bottom">
-                        <span>&copy; 2026 WeAreBrothers Studio</span>
-                        <span>Agence web — design &amp; développement à Lausanne</span>
-                    </div>
-                </div>
-
-                <span class="footer__watermark" aria-hidden="true">WAB.</span>
-            </footer>
-
         </div>
 
     </main>

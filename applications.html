@@ -7,7 +7,7 @@
          Sans lui, les sections à apparition restent visibles d'emblée. -->
     <script>document.documentElement.classList.replace('no-js', 'js');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#F7609B">
+    <meta name="theme-color" content="#FFE4F0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
@@ -95,18 +95,18 @@
     <link rel="preload" href="assets/fonts/Epilogue-Variable.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/base.css?v=11">
-    <link rel="stylesheet" href="css/nav.css?v=9">
-    <link rel="stylesheet" href="css/page.css?v=3">
-    <link rel="stylesheet" href="css/apps.css?v=2">
-    <link rel="stylesheet" href="css/footer.css?v=3">
+    <link rel="stylesheet" href="css/base.css?v=18">
+    <link rel="stylesheet" href="css/nav.css?v=14">
+    <link rel="stylesheet" href="css/page.css?v=5">
+    <link rel="stylesheet" href="css/apps.css?v=3">
+    <link rel="stylesheet" href="css/footer.css?v=5">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=1" defer></script>
-    <script src="js/reveal.js?v=2" defer></script>
-    <script src="js/nav.js?v=3" defer></script>
+    <script src="js/reveal.js?v=3" defer></script>
+    <script src="js/nav.js?v=5" defer></script>
     <script src="js/accordion.js?v=1" defer></script>
-    <script type="module" src="js/birds/index.js?v=1"></script>
+    <script type="module" src="js/birds/index.js?v=4"></script>
 </head>
 
 <body>
@@ -118,21 +118,19 @@
 
     <!-- BARRE FLOTTANTE — la pilule se prolonge pour contenir le menu -->
     <header class="topbar" id="topbar">
-        <div class="topbar__pill" id="topbarPill">
+        <div class="topbar__inner" id="topbarBar">
             <div class="topbar__bar">
                 <a href="/" class="topbar__brand">WAB.</a>
 
                 <nav class="topbar__nav" aria-label="Navigation principale">
                     <a href="/realisations" class="topbar__link">Réalisations</a>
-                    <a href="/applications" class="topbar__link" aria-current="page">Applications</a>
-                    <a href="/studio" class="topbar__link">Studio</a>
+                    <a href="/studio" class="topbar__link">About</a>
+                    <a href="/contact" class="topbar__link">Contact</a>
                 </nav>
 
-                <a href="/contact" class="btn btn--solid topbar__cta">Démarrer un projet</a>
-
-                <button type="button" class="topbar__burger" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
-                    <span class="topbar__lines" aria-hidden="true">
-                        <span></span><span></span><span></span>
+                <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
+                    <span class="topbar__dots" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span>
                     </span>
                     <span class="sr-only">Menu</span>
                 </button>
@@ -145,17 +143,15 @@
                             Réalisations
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
-                        <a href="/applications" class="panel__link" aria-current="page">
-                            Applications
+                        <a href="/studio" class="panel__link">
+                            About
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
-                        <a href="/studio" class="panel__link">
-                            Studio
+                        <a href="/contact" class="panel__link">
+                            Contact
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
                     </nav>
-
-                    <a href="/contact" class="btn btn--solid btn--lg panel__cta">Démarrer un projet</a>
 
                     <div class="panel__meta">
                         <p class="panel__row">
@@ -174,11 +170,12 @@
 
     <div class="topbar-scrim" id="topbarScrim"></div>
 
-    <main class="main" id="contenu">
+    <main id="contenu">
 
         <!-- EN-TÊTE DE PAGE -->
         <section class="page-head">
             <div class="shell">
+                <span class="page-head__label">Applications</span>
                 <h1 class="page-head__title">Un logiciel sur mesure, construit sur votre façon de travailler</h1>
                 <p class="page-head__sub">Nous développons des applications web de gestion pour les PME et les indépendants de l'arc lémanique — Lausanne, Morges, Nyon, Vevey, Genève. Chaque outil est dessiné à partir du métier de l'entreprise qui l'utilise.</p>
             </div>
@@ -186,7 +183,7 @@
 
         <!-- ÉCRANS -->
         <section class="band" id="exemple">
-            <div class="shell shell--wide">
+            <div class="shell">
                 <h2 class="band-title reveal">Un exemple&nbsp;: une application de gestion complète</h2>
                 <div class="screens" data-reveal-group>
                     <article class="screen reveal">
@@ -249,7 +246,7 @@
 
         <!-- APPROCHE -->
         <section class="band" id="approche">
-            <div class="shell shell--wide">
+            <div class="shell">
                 <h2 class="band-title reveal">Notre approche du développement sur mesure</h2>
                 <div class="approach" data-reveal-group>
                     <article class="approach__item reveal">
@@ -278,7 +275,7 @@
 
         <!-- QUESTIONS -->
         <section class="band" id="questions">
-            <div class="shell shell--wide">
+            <div class="shell">
                 <h2 class="band-title reveal">Ce qu'on nous demande le plus souvent</h2>
                 <div class="service-list" data-reveal-group>
 
@@ -366,7 +363,7 @@
 
         <!-- PIED DE PAGE -->
         <footer class="footer" id="footer">
-            <div class="shell shell--wide">
+            <div class="shell">
                 <div class="footer__top">
                     <div>
                         <p class="footer__status">
@@ -383,7 +380,7 @@
                                 <li><a href="/realisations" class="footer__link">Réalisations</a></li>
                                 <li><a href="/creation-site-internet-lausanne" class="footer__link">Création de site internet</a></li>
                                 <li><a href="/applications" class="footer__link">Applications</a></li>
-                                <li><a href="/studio" class="footer__link">Studio</a></li>
+                                <li><a href="/studio" class="footer__link">About</a></li>
                                 <li><a href="/contact" class="footer__link">Contact</a></li>
                             </ul>
                         </div>
@@ -392,7 +389,6 @@
                             <ul class="footer__list">
                                 <li><span class="footer__link">Lausanne, Suisse</span></li>
                                 <li><span class="footer__link">Heure locale <time data-local-time>--:--</time></span></li>
-                                <li><a href="mailto:contact@wearebrothers.ch" class="footer__link">contact@wearebrothers.ch</a></li>
                             </ul>
                         </div>
                     </div>

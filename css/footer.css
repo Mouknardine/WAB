@@ -1,36 +1,37 @@
 /* ============================================
    WAB. — Pied de page
-   Le nom du studio en filigrane ferme la page ;
-   les informations pratiques restent lisibles au-dessus.
+   Le minimum : où nous écrire, où aller ensuite, et le nom du
+   studio en filigrane pour fermer la page. Comme le reste du site,
+   tout part de la marge gauche et rien ne flotte sur une carte.
    ============================================ */
 
+/* Les valeurs de départ sont celles du téléphone, où le pied de
+   page ne doit pas se transformer en troisième écran : il se
+   desserre ensuite sur les grandes largeurs. */
 .footer {
     position: relative;
     overflow: hidden;
-    padding-top: clamp(56px, 8vw, 96px);
+    padding-top: clamp(34px, 6vw, 84px);
     border-top: 1px solid var(--line);
 }
 
 .footer__top {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 26px;
 }
 
+/* Le point qui bat dit la disponibilité mieux qu'une phrase de plus :
+   il ne demande ni cadre ni fond pour se faire remarquer. */
 .footer__status {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 9px 16px;
-    border-radius: var(--radius-pill);
-    background: var(--card);
-    box-shadow: var(--edge), var(--edge-sheen), var(--shadow-sm);
-    font-family: var(--font-display);
+    gap: 9px;
     font-size: 11px;
     font-weight: var(--w-strong);
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--ink);
+    color: var(--ink-muted);
 }
 
 .footer__pulse {
@@ -38,7 +39,7 @@
     height: 7px;
     flex: none;
     border-radius: 50%;
-    background: var(--ink);
+    background: var(--pink);
     animation: footer-pulse 2.6s var(--ease-out) infinite;
 }
 
@@ -57,10 +58,10 @@
 
 .footer__mail {
     display: inline-block;
-    margin-top: 22px;
-    font-size: clamp(1.3rem, 3.2vw, 2.1rem);
+    margin-top: 14px;
+    font-size: clamp(1.15rem, 5vw, 2.1rem);
     font-weight: var(--w-strong);
-    letter-spacing: -0.025em;
+    letter-spacing: -0.03em;
     color: var(--ink);
     word-break: break-word;
 }
@@ -72,7 +73,7 @@
     display: block;
     width: 100%;
     height: 2px;
-    background: var(--ink);
+    background: var(--pink);
     transform: scaleX(0);
     transform-origin: left center;
     transition: transform 0.35s var(--ease-out);
@@ -85,78 +86,80 @@
 .footer__nav {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px;
+    gap: 22px;
 }
 
 .footer__group-title {
-    font-family: var(--font-display);
     font-size: 11px;
     font-weight: var(--w-strong);
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--ink-muted);
+    color: var(--pink);
 }
 
 .footer__list {
-    margin-top: 14px;
+    margin-top: 12px;
     display: grid;
-    gap: 10px;
+    gap: 8px;
     list-style: none;
 }
 
 .footer__link {
     font-size: 0.975rem;
-    font-weight: var(--w-regular);
+    /* Deux colonnes étroites sur téléphone : un mot long doit pouvoir
+       se couper plutôt que déborder. */
+    overflow-wrap: anywhere;
     color: var(--ink-soft);
     transition: color 0.25s var(--ease-out);
 }
 
-.footer__link:hover {
-    color: var(--ink);
+a.footer__link:hover {
+    color: var(--pink);
 }
 
 .footer__bottom {
-    margin-top: clamp(48px, 6vw, 72px);
-    padding-block: 24px;
+    margin-top: clamp(26px, 4vw, 64px);
+    padding-block: 16px;
     border-top: 1px solid var(--line);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    font-family: var(--font-display);
     font-size: 11px;
-    font-weight: var(--w-regular);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--ink-muted);
 }
 
-/* Filigrane — décoratif, jamais lu par les lecteurs d'écran,
-   et toujours derrière le contenu. */
+/* Filigrane — décoratif, jamais lu par les lecteurs d'écran, et
+   toujours derrière le contenu. Blanc translucide plutôt que gris :
+   c'est la seule teinte qui se pose sur le rose sans le salir. */
 .footer__watermark {
     display: block;
-    margin-top: clamp(24px, 4vw, 40px);
-    font-family: var(--font-display);
-    font-size: clamp(5rem, 21vw, 19rem);
+    margin-top: clamp(12px, 2.5vw, 36px);
+    font-size: clamp(3.2rem, 17vw, 20rem);
     font-weight: var(--w-strong);
     letter-spacing: -0.06em;
     line-height: 0.78;
-    text-align: center;
-    color: #e6e6e9;
+    color: rgba(255, 255, 255, 0.6);
     user-select: none;
     pointer-events: none;
     padding-bottom: 0.08em;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 760px) {
+    .footer {
+        padding-top: clamp(48px, 7vw, 84px);
+    }
+
     .footer__top {
-        grid-template-columns: 1.2fr 1fr;
+        grid-template-columns: 1.1fr 1fr;
         align-items: start;
         gap: 56px;
     }
 
     .footer__nav {
-        justify-items: end;
+        gap: 28px;
     }
 }

@@ -6,6 +6,7 @@
 
 /* ── Écrans documentés ── */
 .screens {
+    margin-top: clamp(32px, 4.5vw, 56px);
     display: grid;
     gap: clamp(48px, 7vw, 88px);
 }
@@ -56,49 +57,36 @@
     height: auto;
 }
 
-/* ── Approche ── */
+/* ── Approche ──
+   Cinq lignes séparées par un filet, comme les principes de la page
+   About : une seule façon de présenter une liste sur tout le site. */
 .approach {
-    margin-top: clamp(44px, 6vw, 68px);
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
+    margin-top: clamp(32px, 4.5vw, 48px);
+    border-top: 1px solid var(--line);
 }
 
 .approach__item {
-    padding: clamp(26px, 3vw, 34px);
-    border-radius: var(--radius-card);
-    background: var(--card);
-    box-shadow: var(--edge), var(--edge-sheen), var(--shadow-sm);
-    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
-}
-
-.approach__item:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--edge), var(--edge-sheen), var(--shadow-md);
+    padding-block: clamp(20px, 2.4vw, 26px);
+    border-bottom: 1px solid var(--line);
 }
 
 .approach__title {
-    font-size: 1.2rem;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
     font-weight: var(--w-strong);
     letter-spacing: -0.02em;
     color: var(--ink);
 }
 
 .approach__desc {
-    margin-top: 10px;
-    font-size: 0.975rem;
+    margin-top: 8px;
+    max-width: 56ch;
+    font-size: 1rem;
     line-height: 1.65;
     text-wrap: pretty;
     color: var(--ink-muted);
 }
 
 /* ── Bureau ── */
-@media (min-width: 700px) {
-    .approach {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 @media (min-width: 900px) {
     .screen {
         grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
@@ -109,11 +97,5 @@
        pas dans une gouttière unique sur toute la longueur. */
     .screen:nth-child(even) .window-link {
         order: 2;
-    }
-}
-
-@media (min-width: 1100px) {
-    .approach {
-        grid-template-columns: repeat(3, 1fr);
     }
 }

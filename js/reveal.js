@@ -1,5 +1,5 @@
 /**
- * WAB. — Apparitions au défilement et hauteur d'écran mobile
+ * WAB. — Apparitions au défilement
  * Chaque élément marqué .reveal monte en place la première fois
  * qu'il entre dans l'écran. Les éléments d'un même groupe
  * ([data-reveal-group]) se succèdent légèrement en décalé.
@@ -7,18 +7,11 @@
 (function () {
     'use strict';
 
-    function setViewportUnit() {
-        document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
-    }
-
     function showAll(targets) {
         targets.forEach((el) => el.classList.add('is-visible'));
     }
 
     function initReveal() {
-        setViewportUnit();
-        window.addEventListener('resize', setViewportUnit, { passive: true });
-
         const targets = Array.from(document.querySelectorAll('.reveal'));
         if (!targets.length) return;
 

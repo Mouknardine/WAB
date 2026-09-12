@@ -15,19 +15,20 @@
 
 ## Pages
 
-- [Accueil](https://wearebrothers.ch/) : agence web à Lausanne, prestations, sélection de réalisations, questions fréquentes sur la création d'un site internet
-- [Création de site internet à Lausanne](https://wearebrothers.ch/creation-site-internet-lausanne) : ce que comprend un site (design sur mesure, code écrit à la main, hébergement suisse inclus, référencement local), déroulé en quatre étapes, exemples lausannois, refonte, questions fréquentes
-- [Réalisations](https://wearebrothers.ch/realisations) : portfolio détaillé
+- [Accueil](https://wearebrothers.ch/) : écran unique de présentation du studio — agence web à Lausanne, sites internet sur mesure et applications de gestion. Les prestations et les questions fréquentes se trouvent sur la page About.
+- [Création de site internet à Lausanne](https://wearebrothers.ch/creation-site-internet-lausanne) : ce que comprend un site (design sur mesure, code écrit à la main, hébergement suisse inclus, référencement local), déroulé en quatre étapes, exemples lausannois, refonte, et les dix questions fréquentes du studio — prix, délais, refonte, référencement, zone d'intervention
+- [Réalisations](https://wearebrothers.ch/realisations) : sites internet et applications réunis dans une même grille, filtrable par type
   - Zinéma — site vitrine du premier cinéma d'art et essai miniplex de Lausanne, rue du Maupas, accueil en mur d'affiches et agenda des séances (https://www.zinema.ch/)
   - Le P'tit Central — site vitrine d'un café-restaurant de quartier de la rue Centrale à Lausanne, esthétique azulejos (https://le-p-tit-central.vercel.app/)
-  - Maison Alliani — site vitrine haute joaillerie pour un atelier suisse de grillz sur mesure (https://lazizze-git.github.io/grillz/)
+  - Maison Alliani — site vitrine haute joaillerie pour un atelier suisse de grillz sur mesure (https://maison-alliani.com/)
   - Amarte Studio — site vitrine d'un centre de yoga et de Pilates à Épalinges (Lausanne), disciplines, profs, horaires et réservation (https://amarte.ch/)
   - Nadège Mouine — site personnel épuré pour une architecte en formation à l'EPFL (https://nadegemouine.ch)
-  - LAZIZZE DJ — portfolio immersif pour un DJ house de Lausanne (https://lazizze-git.github.io/DJ/#/)
+  - LAZIZZE DJ — portfolio immersif pour un DJ house de Lausanne (https://lazizze.com/#/)
   - La Slack — portfolio créatif en forme de bureau virtuel (https://la-slack.com/)
   - Commissione Entretien — site vitrine d'une entreprise familiale d'entretien à Bavois (VD) (https://commissione-entretien.ch/)
+  - Application de gestion — logiciel développé pour une agence : projets, tâches, temps passé, clients, documents et facturation (https://wearebrothers.ch/applications)
 - [Applications sur mesure](https://wearebrothers.ch/applications) : logiciels de gestion développés pour les PME (projets, tâches, temps, clients, documents, facturation), livrés module par module
-- [Studio](https://wearebrothers.ch/studio) : valeurs (proximité, craft, performance, transparence) et équipe
+- [About](https://wearebrothers.ch/studio) : les trois personnes du studio — Eliott Pina, Matt Pina, Ivan Jakovlevski — avec leur rôle et leurs savoir-faire
 - [Contact](https://wearebrothers.ch/contact) : formulaire de contact, FAQ (prix, délais, déroulement d'un projet, suivi après mise en ligne)
 
 ## À retenir

@@ -7,7 +7,7 @@
          Sans lui, les sections à apparition restent visibles d'emblée. -->
     <script>document.documentElement.classList.replace('no-js', 'js');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#F4F4F5">
+    <meta name="theme-color" content="#FFE4F0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
@@ -47,65 +47,197 @@
          Le studio (#organization) et le site (#website) sont décrits sur l'accueil. -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "WebPage",
-                "@id": "https://wearebrothers.ch/creation-site-internet-lausanne#webpage",
-                "url": "https://wearebrothers.ch/creation-site-internet-lausanne",
-                "name": "Création de site internet à Lausanne — WeAreBrothers Studio",
-                "description": "Création de site internet à Lausanne : site vitrine ou site d'entreprise dessiné et codé sur mesure, hébergement suisse et référencement local inclus.",
-                "inLanguage": "fr-CH",
-                "isPartOf": { "@id": "https://wearebrothers.ch/#website" },
-                "about": { "@id": "https://wearebrothers.ch/#organization" },
-                "breadcrumb": { "@id": "https://wearebrothers.ch/creation-site-internet-lausanne#breadcrumb" },
-                "primaryImageOfPage": "https://wearebrothers.ch/assets/og-image.jpg"
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": "https://wearebrothers.ch/creation-site-internet-lausanne#webpage",
+            "url": "https://wearebrothers.ch/creation-site-internet-lausanne",
+            "name": "Création de site internet à Lausanne — WeAreBrothers Studio",
+            "description": "Création de site internet à Lausanne : site vitrine ou site d'entreprise dessiné et codé sur mesure, hébergement suisse et référencement local inclus.",
+            "inLanguage": "fr-CH",
+            "isPartOf": {
+                "@id": "https://wearebrothers.ch/#website"
             },
-            {
-                "@type": "Service",
-                "@id": "https://wearebrothers.ch/creation-site-internet-lausanne#service",
-                "name": "Création de site internet à Lausanne",
-                "serviceType": "Création de site internet",
-                "description": "Site vitrine ou site d'entreprise dessiné et codé sur mesure, sans WordPress ni Wix, hébergé en Suisse chez Infomaniak, avec le référencement local intégré dès la conception. Livré en 3 à 6 semaines pour un site vitrine.",
-                "provider": { "@id": "https://wearebrothers.ch/#organization" },
-                "areaServed": [
-                    { "@type": "City", "name": "Lausanne" },
-                    { "@type": "City", "name": "Pully" },
-                    { "@type": "City", "name": "Renens" },
-                    { "@type": "City", "name": "Épalinges" },
-                    { "@type": "City", "name": "Morges" },
-                    { "@type": "City", "name": "Vevey" },
-                    { "@type": "City", "name": "Montreux" },
-                    { "@type": "City", "name": "Nyon" },
-                    { "@type": "City", "name": "Yverdon-les-Bains" },
-                    { "@type": "AdministrativeArea", "name": "Canton de Vaud" },
-                    { "@type": "Place", "name": "Arc lémanique" }
-                ],
-                "availableLanguage": ["fr", "en"],
-                "url": "https://wearebrothers.ch/creation-site-internet-lausanne"
+            "about": {
+                "@id": "https://wearebrothers.ch/#organization"
             },
-            {
-                "@type": "FAQPage",
-                "@id": "https://wearebrothers.ch/creation-site-internet-lausanne#faq",
-                "isPartOf": { "@id": "https://wearebrothers.ch/creation-site-internet-lausanne#webpage" },
-                "inLanguage": "fr-CH",
-                "mainEntity": [
-                    { "@type": "Question", "name": "Site sur mesure ou WordPress, quelle différence ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site WordPress assemble un thème et des extensions qu'il faut maintenir et mettre à jour. Nous écrivons le code de votre site de A à Z : rien d'inutile n'est chargé, la page s'affiche presque instantanément sur téléphone, et le site vous appartient de bout en bout." } },
-                    { "@type": "Question", "name": "Mon site sera-t-il adapté au téléphone ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Chaque site est dessiné pour le petit écran d'abord, puis adapté aux tablettes et aux ordinateurs. La plupart de vos visiteurs arrivent depuis un téléphone, c'est là que le site doit être impeccable." } },
-                    { "@type": "Question", "name": "Qui héberge le site, et à qui appartient-il ?", "acceptedAnswer": { "@type": "Answer", "text": "Le site est hébergé en Suisse chez Infomaniak, hébergement inclus, avec un guide pour le gérer vous-même. Le nom de domaine, le code et les contenus vous appartiennent." } },
-                    { "@type": "Question", "name": "Travaillez-vous avec les commerces et restaurants de Lausanne ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Le Zinéma, rue du Maupas, Le P'tit Central, rue Centrale, ou Amarte Studio à Épalinges sont des sites que nous avons dessinés et codés pour des lieux de Lausanne et de ses hauts. Artisans, créatifs et indépendants du canton de Vaud nous confient aussi leur site." } }
-                ]
+            "breadcrumb": {
+                "@id": "https://wearebrothers.ch/creation-site-internet-lausanne#breadcrumb"
             },
-            {
-                "@type": "BreadcrumbList",
-                "@id": "https://wearebrothers.ch/creation-site-internet-lausanne#breadcrumb",
-                "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://wearebrothers.ch/" },
-                    { "@type": "ListItem", "position": 2, "name": "Création de site internet à Lausanne", "item": "https://wearebrothers.ch/creation-site-internet-lausanne" }
-                ]
-            }
-        ]
-    }
+            "primaryImageOfPage": "https://wearebrothers.ch/assets/og-image.jpg"
+        },
+        {
+            "@type": "Service",
+            "@id": "https://wearebrothers.ch/creation-site-internet-lausanne#service",
+            "name": "Création de site internet à Lausanne",
+            "serviceType": "Création de site internet",
+            "description": "Site vitrine ou site d'entreprise dessiné et codé sur mesure, sans WordPress ni Wix, hébergé en Suisse chez Infomaniak, avec le référencement local intégré dès la conception. Livré en 3 à 6 semaines pour un site vitrine.",
+            "provider": {
+                "@id": "https://wearebrothers.ch/#organization"
+            },
+            "areaServed": [
+                {
+                    "@type": "City",
+                    "name": "Lausanne"
+                },
+                {
+                    "@type": "City",
+                    "name": "Pully"
+                },
+                {
+                    "@type": "City",
+                    "name": "Renens"
+                },
+                {
+                    "@type": "City",
+                    "name": "Épalinges"
+                },
+                {
+                    "@type": "City",
+                    "name": "Morges"
+                },
+                {
+                    "@type": "City",
+                    "name": "Vevey"
+                },
+                {
+                    "@type": "City",
+                    "name": "Montreux"
+                },
+                {
+                    "@type": "City",
+                    "name": "Nyon"
+                },
+                {
+                    "@type": "City",
+                    "name": "Yverdon-les-Bains"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "Canton de Vaud"
+                },
+                {
+                    "@type": "Place",
+                    "name": "Arc lémanique"
+                }
+            ],
+            "availableLanguage": [
+                "fr",
+                "en"
+            ],
+            "url": "https://wearebrothers.ch/creation-site-internet-lausanne"
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://wearebrothers.ch/creation-site-internet-lausanne#faq",
+            "isPartOf": {
+                "@id": "https://wearebrothers.ch/creation-site-internet-lausanne#webpage"
+            },
+            "inLanguage": "fr-CH",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Site sur mesure ou WordPress, quelle différence ?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Un site WordPress assemble un thème et des extensions qu'il faut maintenir et mettre à jour. Nous écrivons le code de votre site de A à Z : rien d'inutile n'est chargé, la page s'affiche presque instantanément sur téléphone, et le site vous appartient de bout en bout."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Mon site sera-t-il adapté au téléphone ?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Oui. Chaque site est dessiné pour le petit écran d'abord, puis adapté aux tablettes et aux ordinateurs. La plupart de vos visiteurs arrivent depuis un téléphone, c'est là que le site doit être impeccable."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Qui héberge le site, et à qui appartient-il ?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Le site est hébergé en Suisse chez Infomaniak, hébergement inclus, avec un guide pour le gérer vous-même. Le nom de domaine, le code et les contenus vous appartiennent."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Travaillez-vous avec les commerces et restaurants de Lausanne ?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Oui. Le Zinéma, rue du Maupas, Le P'tit Central, rue Centrale, ou Amarte Studio à Épalinges sont des sites que nous avons dessinés et codés pour des lieux de Lausanne et de ses hauts. Artisans, créatifs et indépendants du canton de Vaud nous confient aussi leur site."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Pourquoi passer par une agence web à Lausanne plutôt que par un constructeur de site en ligne ?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Un constructeur en ligne produit un site standard sur lequel vous êtes seul. Avec nous, vous rencontrez à Lausanne les deux personnes qui dessinent et codent votre site internet, vous en êtes propriétaire de bout en bout, et il est construit pour votre marché : vos clients, votre quartier, votre canton. Le code sur mesure charge plus vite qu'un gabarit et donne une base saine pour le référencement."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Combien coûte la création d'un site internet ?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Le prix suit le périmètre : nombre de pages, design, fonctionnalités, contenus à produire. Nous le définissons ensemble après un premier échange, sans surprise ensuite, et le paiement peut être échelonné en plusieurs mensualités. Vous recevez une proposition sous 24 h ouvrées."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Combien de temps prend la création d'un site internet ?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Comptez généralement 3 à 6 semaines pour un site vitrine, davantage pour un projet sur mesure ou une boutique en ligne. Le calendrier est fixé ensemble au départ, avec des points réguliers jusqu'à la mise en ligne."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Faites-vous aussi la refonte d'un site existant ?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Oui. Nous gardons ce qui fonctionne — contenus, adresses des pages, référencement acquis — et nous redessinons et recodons le reste. Les anciennes adresses sont conservées ou redirigées, et le nouveau site remplace l'ancien sans interruption."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Mon site internet sera-t-il bien référencé sur Google ?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Chaque site est codé pour être rapide, lisible par Google et structuré pour le référencement local : balises, données structurées, plan du site, textes travaillés avec vous autour de votre activité et de votre région. Le référencement se construit ensuite dans la durée, et nous restons disponibles pour le faire progresser."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Travaillez-vous uniquement à Lausanne ?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Le studio est à Lausanne et c'est là que nous rencontrons la plupart de nos clients, autour d'un café. Nous travaillons dans tout l'arc lémanique — Pully, Renens, Épalinges, Morges, Nyon, Vevey, Montreux, Yverdon-les-Bains, Genève — et à distance pour le reste de la Suisse romande."
+                    }
+                }
+            ]
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://wearebrothers.ch/creation-site-internet-lausanne#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Accueil",
+                    "item": "https://wearebrothers.ch/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Création de site internet à Lausanne",
+                    "item": "https://wearebrothers.ch/creation-site-internet-lausanne"
+                }
+            ]
+        }
+    ]
+}
     </script>
 
     <!-- Police — Epilogue seule, servie depuis le site -->
@@ -114,19 +246,19 @@
     <!-- Styles — uniquement des feuilles déjà en place : grille de
          cartes et passerelle de l'accueil, grille d'approche de la
          page Applications, cartes dépliantes de page.css. -->
-    <link rel="stylesheet" href="css/base.css?v=11">
-    <link rel="stylesheet" href="css/nav.css?v=9">
-    <link rel="stylesheet" href="css/page.css?v=3">
-    <link rel="stylesheet" href="css/home.css?v=21">
-    <link rel="stylesheet" href="css/apps.css?v=2">
-    <link rel="stylesheet" href="css/footer.css?v=3">
+    <link rel="stylesheet" href="css/base.css?v=18">
+    <link rel="stylesheet" href="css/nav.css?v=14">
+    <link rel="stylesheet" href="css/page.css?v=5">
+    <link rel="stylesheet" href="css/sections.css?v=3">
+    <link rel="stylesheet" href="css/apps.css?v=3">
+    <link rel="stylesheet" href="css/footer.css?v=5">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=1" defer></script>
-    <script src="js/reveal.js?v=2" defer></script>
-    <script src="js/nav.js?v=3" defer></script>
+    <script src="js/reveal.js?v=3" defer></script>
+    <script src="js/nav.js?v=5" defer></script>
     <script src="js/accordion.js?v=1" defer></script>
-    <script type="module" src="js/birds/index.js?v=1"></script>
+    <script type="module" src="js/birds/index.js?v=4"></script>
 </head>
 
 <body>
@@ -138,21 +270,19 @@
 
     <!-- BARRE FLOTTANTE — la pilule se prolonge pour contenir le menu -->
     <header class="topbar" id="topbar">
-        <div class="topbar__pill" id="topbarPill">
+        <div class="topbar__inner" id="topbarBar">
             <div class="topbar__bar">
                 <a href="/" class="topbar__brand">WAB.</a>
 
                 <nav class="topbar__nav" aria-label="Navigation principale">
                     <a href="/realisations" class="topbar__link">Réalisations</a>
-                    <a href="/applications" class="topbar__link">Applications</a>
-                    <a href="/studio" class="topbar__link">Studio</a>
+                    <a href="/studio" class="topbar__link">About</a>
+                    <a href="/contact" class="topbar__link">Contact</a>
                 </nav>
 
-                <a href="/contact" class="btn btn--solid topbar__cta">Démarrer un projet</a>
-
-                <button type="button" class="topbar__burger" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
-                    <span class="topbar__lines" aria-hidden="true">
-                        <span></span><span></span><span></span>
+                <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
+                    <span class="topbar__dots" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span>
                     </span>
                     <span class="sr-only">Menu</span>
                 </button>
@@ -165,17 +295,15 @@
                             Réalisations
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
-                        <a href="/applications" class="panel__link">
-                            Applications
+                        <a href="/studio" class="panel__link">
+                            About
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
-                        <a href="/studio" class="panel__link">
-                            Studio
+                        <a href="/contact" class="panel__link">
+                            Contact
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
                     </nav>
-
-                    <a href="/contact" class="btn btn--solid btn--lg panel__cta">Démarrer un projet</a>
 
                     <div class="panel__meta">
                         <p class="panel__row">
@@ -194,11 +322,12 @@
 
     <div class="topbar-scrim" id="topbarScrim"></div>
 
-    <main class="main" id="contenu">
+    <main id="contenu">
 
         <!-- EN-TÊTE DE PAGE -->
         <section class="page-head">
             <div class="shell">
+                <span class="page-head__label">Création de site</span>
                 <h1 class="page-head__title">Création de site internet à Lausanne</h1>
                 <p class="page-head__sub">
                     Un site vitrine ou un site d'entreprise dessiné et codé sur mesure, à Lausanne, par les deux
@@ -210,7 +339,7 @@
 
         <!-- CE QUE COMPREND LE SITE -->
         <section class="band" id="inclus">
-            <div class="shell shell--wide">
+            <div class="shell">
                 <h2 class="band-title reveal">Ce que comprend votre site internet</h2>
                 <p class="band-lede reveal">
                     Chaque site est construit de A à Z pour votre entreprise. Rien n'est pris sur étagère.
@@ -246,7 +375,7 @@
 
         <!-- DÉROULÉ -->
         <section class="band" id="deroule">
-            <div class="shell shell--wide">
+            <div class="shell">
                 <h2 class="band-title reveal">Comment se déroule la création de votre site</h2>
                 <p class="band-lede reveal">
                     Quatre étapes et un seul interlocuteur, du premier café à la mise en ligne. Comptez
@@ -275,7 +404,7 @@
 
         <!-- EXEMPLES -->
         <section class="band" id="exemples">
-            <div class="shell shell--wide">
+            <div class="shell">
                 <h2 class="band-title reveal">Des sites internet créés pour des entreprises de Lausanne et du canton de Vaud</h2>
                 <p class="band-lede reveal">
                     Quatre exemples en ligne, du cinéma de quartier à l'entreprise familiale.
@@ -363,7 +492,7 @@
 
         <!-- QUESTIONS — les réponses reprennent mot pour mot le bloc FAQPage du JSON-LD. -->
         <section class="band" id="questions" aria-labelledby="questionsTitle">
-            <div class="shell shell--wide">
+            <div class="shell">
                 <h2 class="band-title reveal" id="questionsTitle">Créer son site internet&nbsp;: vos questions</h2>
                 <div class="service-list" data-reveal-group>
                     <article class="service reveal is-open">
@@ -422,6 +551,90 @@
                             </div>
                         </div>
                     </article>
+                        <article class="service reveal">
+                            <h3 class="service__head">
+                                <button type="button" class="service__toggle" id="faq-agence-label"
+                                    aria-expanded="false" aria-controls="faq-agence">
+                                    <span class="service__name">Pourquoi passer par une agence web à Lausanne plutôt que par un constructeur de site en ligne&nbsp;?</span>
+                                    <span class="service__icon" aria-hidden="true"></span>
+                                </button>
+                            </h3>
+                            <div class="service__panel" id="faq-agence" role="region" aria-labelledby="faq-agence-label">
+                                <div class="service__panel-inner">
+                                    <p class="service__desc">Un constructeur en ligne produit un site standard sur lequel vous êtes seul. Avec nous, vous rencontrez à Lausanne les deux personnes qui dessinent et codent votre site internet, vous en êtes propriétaire de bout en bout, et il est construit pour votre marché&nbsp;: vos clients, votre quartier, votre canton. Le code sur mesure charge plus vite qu'un gabarit et donne une base saine pour le référencement.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="service reveal">
+                            <h3 class="service__head">
+                                <button type="button" class="service__toggle" id="faq-prix-label"
+                                    aria-expanded="false" aria-controls="faq-prix">
+                                    <span class="service__name">Combien coûte la création d'un site internet&nbsp;?</span>
+                                    <span class="service__icon" aria-hidden="true"></span>
+                                </button>
+                            </h3>
+                            <div class="service__panel" id="faq-prix" role="region" aria-labelledby="faq-prix-label">
+                                <div class="service__panel-inner">
+                                    <p class="service__desc">Le prix suit le périmètre&nbsp;: nombre de pages, design, fonctionnalités, contenus à produire. Nous le définissons ensemble après un premier échange, sans surprise ensuite, et le paiement peut être échelonné en plusieurs mensualités. Vous recevez une proposition sous 24&nbsp;h ouvrées.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="service reveal">
+                            <h3 class="service__head">
+                                <button type="button" class="service__toggle" id="faq-delai-label"
+                                    aria-expanded="false" aria-controls="faq-delai">
+                                    <span class="service__name">Combien de temps prend la création d'un site internet&nbsp;?</span>
+                                    <span class="service__icon" aria-hidden="true"></span>
+                                </button>
+                            </h3>
+                            <div class="service__panel" id="faq-delai" role="region" aria-labelledby="faq-delai-label">
+                                <div class="service__panel-inner">
+                                    <p class="service__desc">Comptez généralement 3 à 6 semaines pour un site vitrine, davantage pour un projet sur mesure ou une boutique en ligne. Le calendrier est fixé ensemble au départ, avec des points réguliers jusqu'à la mise en ligne.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="service reveal">
+                            <h3 class="service__head">
+                                <button type="button" class="service__toggle" id="faq-refonte-label"
+                                    aria-expanded="false" aria-controls="faq-refonte">
+                                    <span class="service__name">Faites-vous aussi la refonte d'un site existant&nbsp;?</span>
+                                    <span class="service__icon" aria-hidden="true"></span>
+                                </button>
+                            </h3>
+                            <div class="service__panel" id="faq-refonte" role="region" aria-labelledby="faq-refonte-label">
+                                <div class="service__panel-inner">
+                                    <p class="service__desc">Oui. Nous gardons ce qui fonctionne — contenus, adresses des pages, référencement acquis — et nous redessinons et recodons le reste. Les anciennes adresses sont conservées ou redirigées, et le nouveau site remplace l'ancien sans interruption.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="service reveal">
+                            <h3 class="service__head">
+                                <button type="button" class="service__toggle" id="faq-seo-label"
+                                    aria-expanded="false" aria-controls="faq-seo">
+                                    <span class="service__name">Mon site internet sera-t-il bien référencé sur Google&nbsp;?</span>
+                                    <span class="service__icon" aria-hidden="true"></span>
+                                </button>
+                            </h3>
+                            <div class="service__panel" id="faq-seo" role="region" aria-labelledby="faq-seo-label">
+                                <div class="service__panel-inner">
+                                    <p class="service__desc">Chaque site est codé pour être rapide, lisible par Google et structuré pour le référencement local&nbsp;: balises, données structurées, plan du site, textes travaillés avec vous autour de votre activité et de votre région. Le référencement se construit ensuite dans la durée, et nous restons disponibles pour le faire progresser.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="service reveal">
+                            <h3 class="service__head">
+                                <button type="button" class="service__toggle" id="faq-zone-label"
+                                    aria-expanded="false" aria-controls="faq-zone">
+                                    <span class="service__name">Travaillez-vous uniquement à Lausanne&nbsp;?</span>
+                                    <span class="service__icon" aria-hidden="true"></span>
+                                </button>
+                            </h3>
+                            <div class="service__panel" id="faq-zone" role="region" aria-labelledby="faq-zone-label">
+                                <div class="service__panel-inner">
+                                    <p class="service__desc">Le studio est à Lausanne et c'est là que nous rencontrons la plupart de nos clients, autour d'un café. Nous travaillons dans tout l'arc lémanique — Pully, Renens, Épalinges, Morges, Nyon, Vevey, Montreux, Yverdon-les-Bains, Genève — et à distance pour le reste de la Suisse romande.</p>
+                                </div>
+                            </div>
+                        </article>
                 </div>
             </div>
         </section>
@@ -449,7 +662,7 @@
 
         <!-- PIED DE PAGE -->
         <footer class="footer" id="footer">
-            <div class="shell shell--wide">
+            <div class="shell">
                 <div class="footer__top">
                     <div>
                         <p class="footer__status">
@@ -466,7 +679,7 @@
                                 <li><a href="/realisations" class="footer__link">Réalisations</a></li>
                                 <li><a href="/creation-site-internet-lausanne" class="footer__link">Création de site internet</a></li>
                                 <li><a href="/applications" class="footer__link">Applications</a></li>
-                                <li><a href="/studio" class="footer__link">Studio</a></li>
+                                <li><a href="/studio" class="footer__link">About</a></li>
                                 <li><a href="/contact" class="footer__link">Contact</a></li>
                             </ul>
                         </div>
@@ -475,7 +688,6 @@
                             <ul class="footer__list">
                                 <li><span class="footer__link">Lausanne, Suisse</span></li>
                                 <li><span class="footer__link">Heure locale <time data-local-time>--:--</time></span></li>
-                                <li><a href="mailto:contact@wearebrothers.ch" class="footer__link">contact@wearebrothers.ch</a></li>
                             </ul>
                         </div>
                     </div>

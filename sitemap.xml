@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://wearebrothers.ch/</loc>
-        <lastmod>2026-09-10</lastmod>
+        <lastmod>2026-09-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
         <image:image>
@@ -13,7 +13,7 @@
     </url>
     <url>
         <loc>https://wearebrothers.ch/creation-site-internet-lausanne</loc>
-        <lastmod>2026-09-10</lastmod>
+        <lastmod>2026-09-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
         <image:image>
@@ -31,9 +31,9 @@
     </url>
     <url>
         <loc>https://wearebrothers.ch/realisations</loc>
-        <lastmod>2026-09-10</lastmod>
+        <lastmod>2026-09-12</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.9</priority>
         <image:image>
             <image:loc>https://wearebrothers.ch/assets/images/project-zinema.webp</image:loc>
             <image:caption>Zinéma — site internet du cinéma d'art et essai de la rue du Maupas à Lausanne, conçu par WeAreBrothers, agence web à Lausanne</image:caption>
@@ -66,10 +66,14 @@
             <image:loc>https://wearebrothers.ch/assets/images/project-commissione.webp</image:loc>
             <image:caption>Commissione Entretien — site professionnel conçu par WeAreBrothers Lausanne</image:caption>
         </image:image>
+        <image:image>
+            <image:loc>https://wearebrothers.ch/assets/images/app-agenda-aujourdhui-2560.webp</image:loc>
+            <image:caption>Application de gestion sur mesure développée par WeAreBrothers Lausanne — vue « Aujourd'hui », données de démonstration</image:caption>
+        </image:image>
     </url>
     <url>
         <loc>https://wearebrothers.ch/applications</loc>
-        <lastmod>2026-09-10</lastmod>
+        <lastmod>2026-09-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         <image:image>
@@ -87,7 +91,7 @@
     </url>
     <url>
         <loc>https://wearebrothers.ch/studio</loc>
-        <lastmod>2026-09-10</lastmod>
+        <lastmod>2026-09-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -105,7 +109,7 @@
     </url>
     <url>
         <loc>https://wearebrothers.ch/contact</loc>
-        <lastmod>2026-09-10</lastmod>
+        <lastmod>2026-09-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>

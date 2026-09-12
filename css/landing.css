@@ -1,0 +1,202 @@
+/* ============================================
+   WAB. — Accueil
+   Un seul écran, qui ne défile jamais. Trois objets de verre —
+   la barre du haut, la plaque du milieu, la ligne du bas — posés
+   sur un ciel traversé d'oiseaux. Le verre laisse passer le vol
+   en le floutant : les oiseaux restent visibles derrière le texte
+   sans jamais gêner sa lecture.
+   ============================================ */
+
+/* Le défilement est coupé sur les deux axes. 100dvh plutôt que
+   100vh : sur téléphone, la barre d'adresse ne doit pas pousser la
+   page hors de l'écran. */
+html.is-landing,
+body.landing {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    overscroll-behavior: none;
+}
+
+/* Tout le contenu de l'accueil est en position fixe : le <main> ne
+   sert plus qu'à porter la structure du document, et ne reçoit donc
+   aucune mise en forme.
+
+   ── La plaque ──
+   Posée en bas à gauche, calée sur la même verticale que la barre
+   du haut et la ligne du bas : les trois objets partagent un seul
+   axe, quelle que soit la largeur de l'écran. Le porte-plaque fixe
+   cette colonne, la plaque s'y range à gauche.
+
+   Fixe, et c'est volontaire : le relevé des zones ignore les
+   éléments flottants, si bien que les oiseaux passent derrière la
+   plaque au lieu de s'effacer à son approche. C'est le flou du
+   verre qui fait la lisibilité, pas leur disparition. */
+
+/* Hauteur réservée à la ligne du bas, au-dessus de laquelle la
+   plaque vient se poser. */
+:root {
+    --landing-foot-h: 48px;
+    --landing-gap: clamp(18px, 3vw, 30px);
+}
+
+.landing__anchor {
+    position: fixed;
+    z-index: 10;
+    left: var(--gutter);
+    right: var(--gutter);
+    bottom: calc(var(--landing-foot-h) + var(--landing-gap));
+    display: flex;
+}
+
+.landing__plate {
+    width: min(540px, 100%);
+    /* Garde-fou pour les écrans très bas — téléphone couché,
+       fenêtre réduite : la plaque défile plutôt que de couper le
+       texte, et elle seule. */
+    max-height: calc(100dvh - var(--topbar-h) - var(--landing-foot-h)
+        - var(--landing-gap) - 24px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: clamp(24px, 3.6vw, 38px);
+    border-radius: clamp(12px, 2vw, 18px);
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(26px) saturate(1.4);
+    backdrop-filter: blur(26px) saturate(1.4);
+    box-shadow: var(--edge), var(--edge-sheen), var(--shadow-lg);
+    text-align: left;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .landing__plate {
+        background: var(--card);
+    }
+}
+
+.landing__hello {
+    font-size: clamp(1.5rem, 4.6vw, 2.5rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.035em;
+    /* La cédille d'Epilogue descend bas : en dessous de 1.14 elle
+       vient toucher l'accent de la ligne suivante. */
+    line-height: 1.14;
+    text-wrap: balance;
+    color: var(--pink);
+}
+
+.landing__intro {
+    margin-top: clamp(14px, 2vw, 20px);
+    max-width: 48ch;
+    font-size: clamp(0.98rem, 1.35vw, 1.1rem);
+    line-height: 1.62;
+    text-wrap: pretty;
+    color: var(--ink);
+}
+
+/* ── La ligne du bas ──
+   Le pendant de la barre du haut : même verre, même filet, même
+   pleine largeur, et un contenu calé sur la même colonne. Elle
+   porte les deux seules informations qui manquent au menu — où
+   écrire, et où se trouve le studio. */
+.landing__foot {
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--glass);
+    -webkit-backdrop-filter: var(--blur);
+    backdrop-filter: var(--blur);
+    box-shadow: inset 0 1px 0 var(--line);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .landing__foot {
+        background: var(--card);
+    }
+}
+
+/* Pleine largeur, comme la barre du haut : l'adresse va chercher le
+   bord gauche, le lieu le bord droit. Bornée à la colonne, la
+   seconde moitié se serait arrêtée en plein milieu de l'écran. */
+.landing__foot-inner {
+    padding-inline: var(--gutter);
+    min-height: var(--landing-foot-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    font-size: clamp(10px, 2.6vw, 12px);
+    line-height: 1.4;
+    color: var(--ink-muted);
+}
+
+.landing__mail {
+    color: var(--ink);
+    font-weight: var(--w-strong);
+    white-space: nowrap;
+    transition: color 0.25s var(--ease-out);
+}
+
+.landing__mail:hover {
+    color: var(--pink);
+}
+
+.landing__place {
+    white-space: nowrap;
+}
+
+/* ── Entrée ──
+   Le texte existe d'abord ; l'animation ne fait que retarder son
+   apparition. « backwards » plutôt qu'un état masqué codé en dur :
+   si l'animation ne se joue pas, tout reste lisible. */
+@keyframes landing-rise {
+    from {
+        transform: translateY(14px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes landing-foot-rise {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.landing__plate {
+    animation: landing-rise 0.9s var(--ease) 0.08s backwards;
+}
+
+.landing__foot {
+    animation: landing-foot-rise 0.8s var(--ease) 0.34s backwards;
+}
+
+/* ── Écrans bas ──
+   Téléphone couché, petite fenêtre : le texte se resserre pour
+   tenir sans rien couper. */
+@media (max-height: 560px) {
+    .landing__plate {
+        padding: 18px 20px;
+    }
+
+    .landing__hello {
+        font-size: clamp(1.25rem, 5vh, 1.7rem);
+    }
+
+    .landing__intro {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+}

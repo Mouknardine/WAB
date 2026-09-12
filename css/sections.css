@@ -1,0 +1,97 @@
+/* ============================================
+   WAB. — Bandes de contenu
+   La grille d'aperçus et la passerelle vers les applications
+   métier, toutes deux sur la page de service. Tout est aligné sur
+   la marge gauche, sans carte ni ombre — seul le bloc noir de la
+   passerelle tranche, et c'est volontaire : c'est le seul appel à
+   l'action de cette page.
+   ============================================ */
+
+/* ── Aperçus de réalisations ──
+   Utilisée par la page de service, où quatre captures illustrent le
+   propos sans reprendre toute la liste des réalisations. */
+.work-grid {
+    margin-top: clamp(36px, 5vw, 56px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(26px, 3.5vw, 40px);
+}
+
+.work-card {
+    display: block;
+}
+
+.work-card__name {
+    margin-top: 18px;
+    font-size: 1.2rem;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    transition: color 0.25s var(--ease-out);
+}
+
+.work-card:hover .work-card__name {
+    color: var(--pink);
+}
+
+.work-card__desc {
+    margin-top: 8px;
+    max-width: 44ch;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-wrap: pretty;
+    color: var(--ink-muted);
+}
+
+.band-footer {
+    margin-top: clamp(40px, 5vw, 60px);
+    display: flex;
+}
+
+/* ── Passerelle vers les applications métier ──
+   Le seul aplat sombre du site. Sur le rose, il attire l'œil sans
+   qu'on ait besoin de l'agrandir. */
+.bridge {
+    margin-top: clamp(44px, 6vw, 72px);
+    padding: clamp(30px, 4vw, 52px);
+    border-radius: var(--radius-card);
+    background: var(--ink);
+    color: var(--white);
+}
+
+.bridge__title {
+    max-width: 20ch;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.025em;
+    line-height: 1.14;
+    text-wrap: balance;
+}
+
+.bridge__text {
+    margin-top: 16px;
+    max-width: 50ch;
+    font-size: 1rem;
+    line-height: 1.65;
+    text-wrap: pretty;
+    color: rgba(255, 255, 255, 0.68);
+}
+
+.bridge__cta {
+    margin-top: 28px;
+    background: var(--white);
+    color: var(--ink);
+}
+
+.bridge__cta:hover {
+    background: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+/* ── Tablette ── */
+@media (min-width: 700px) {
+    .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
