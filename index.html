@@ -373,7 +373,7 @@
                 <a href="/" class="topbar__brand" aria-current="page">WAB.</a>
 
                 <nav class="topbar__nav" aria-label="Navigation principale">
-                    <a href="/realisations" class="topbar__link">Réalisations</a>
+                    <a href="/realisations" class="topbar__link">Work</a>
                     <a href="/studio" class="topbar__link">About</a>
                     <a href="mailto:contact@wearebrothers.ch" data-contact class="topbar__link">Contact</a>
                 </nav>
@@ -390,7 +390,7 @@
                 <div class="topbar__panel-inner">
                     <nav class="panel__nav" aria-label="Navigation">
                         <a href="/realisations" class="panel__link">
-                            Réalisations
+                            Work
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
                         <a href="/studio" class="panel__link">
@@ -427,11 +427,16 @@
              du haut et la ligne du bas. -->
         <div class="landing__anchor">
             <section class="landing__plate" id="studio-intro" tabindex="-1" aria-labelledby="landingHello">
-                <h1 class="landing__hello" id="landingHello">Agence web à Lausanne.</h1>
+                <!-- Seul « Welcome » s'affiche. La suite du titre reste lue
+                     par Google et la navigation vocale : « agence web à
+                     Lausanne » doit rester dans le H1 de l'accueil. -->
+                <h1 class="landing__hello" id="landingHello">
+                    <span lang="en">Welcome</span><span class="sr-only"> — WeAreBrothers, agence web à Lausanne</span>
+                </h1>
                 <p class="landing__intro">
-                    WeAreBrothers, c'est deux frères — un designer et un développeur. Nous dessinons et
-                    développons des sites internet sur mesure et des applications de gestion pour les
-                    entreprises de l'arc lémanique. Vous parlez directement à ceux qui construisent.
+                    Nous sommes deux frères qui voulons mettre à profit notre débrouille et notre goût
+                    pour les choses simples et efficaces, afin de développer des outils et une présence
+                    numérique au goût du jour.
                 </p>
             </section>
         </div>

@@ -1,7 +1,7 @@
 /* ============================================
    WAB. — About
    Un grand titre de marque, puis les trois portraits en grand,
-   chacun suivi de son rôle, de sa description et de ses savoir-faire.
+   chacun suivi de son rôle et de sa description.
    Rien d'autre. Aucune carte — c'est le rose qui tient l'ensemble.
    ============================================ */
 
@@ -14,15 +14,16 @@
 }
 
 .studio-head__title {
-    max-width: 16ch;
-    /* 2.25rem au plus bas : à 320 px, « cool et efficace » tient
-       encore sur une ligne au lieu de laisser « cool » tout seul. */
-    font-size: clamp(2.25rem, 8.4vw, 7.2rem);
+    /* Une phrase entière : bornée à une vingtaine de signes par ligne,
+       elle se lit en trois lignes sur ordinateur au lieu de courir sur
+       toute la largeur de l'écran. */
+    max-width: 19ch;
+    font-size: clamp(2rem, 6.2vw, 5.6rem);
     font-weight: var(--w-strong);
-    letter-spacing: -0.045em;
-    /* Serré, mais pas au point que les jambages du « q » et du « p »
-       touchent la ligne suivante. */
-    line-height: 1.02;
+    letter-spacing: -0.04em;
+    /* Serré, mais pas au point que le jambage du « p » de « prendre »
+       touche les accents de « sérieux » à la ligne suivante. */
+    line-height: 1.08;
     text-wrap: balance;
     color: var(--ink);
 }
@@ -89,24 +90,6 @@
     line-height: 1.65;
     text-wrap: pretty;
     color: var(--ink-muted);
-}
-
-.profile__skills {
-    margin-top: 16px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 14px;
-    font-size: 11px;
-    font-weight: var(--w-strong);
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-}
-
-/* Les savoir-faire ne sont plus des pastilles mais une simple ligne
-   de capitales, comme les disciplines des réalisations. */
-.skill {
-    display: inline-block;
 }
 
 /* ── Tablette et bureau ── */
