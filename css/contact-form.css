@@ -109,13 +109,6 @@
     color: #b3122e;
 }
 
-.contact-form__alt {
-    margin-top: 16px;
-    font-size: 0.875rem;
-    text-align: center;
-    color: var(--ink-muted);
-}
-
 /* Le piège anti-spam ne doit être vu ni atteint par personne, mais
    rester rempli par les robots : il est sorti du champ, pas masqué. */
 .hp-field {

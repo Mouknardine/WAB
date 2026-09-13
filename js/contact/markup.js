@@ -60,9 +60,6 @@ const TEMPLATE = `
                 ${ARROW}
             </button>
             <p class="contact-form__status" role="status" aria-live="polite"></p>
-            <p class="contact-form__alt">
-                Ou écrivez-nous à <a class="text-link" href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>
-            </p>
         </form>
     </div>
 
