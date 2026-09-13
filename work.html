@@ -494,17 +494,16 @@
     <link rel="preload" href="assets/fonts/Epilogue-Variable.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/base.css?v=18">
+    <link rel="stylesheet" href="css/base.css?v=23">
     <link rel="stylesheet" href="css/nav.css?v=14">
-    <link rel="stylesheet" href="css/page.css?v=5">
-    <link rel="stylesheet" href="css/work.css?v=11">
-    <link rel="stylesheet" href="css/footer.css?v=5">
+    <link rel="stylesheet" href="css/page.css?v=6">
+    <link rel="stylesheet" href="css/work.css?v=14">
+    <link rel="stylesheet" href="css/footer.css?v=6">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=1" defer></script>
     <script src="js/reveal.js?v=3" defer></script>
     <script src="js/nav.js?v=5" defer></script>
-    <script src="js/filter.js?v=3" defer></script>
     <script type="module" src="js/birds/index.js?v=4"></script>
 </head>
 
@@ -578,18 +577,9 @@
         <h1 class="sr-only">Sites internet et applications créés à Lausanne</h1>
 
         <section class="band band--projets">
-            <div class="shell">
-                <div class="switch" data-filter-bar role="group" aria-label="Filtrer les réalisations">
-                    <button type="button" class="switch__btn" data-filter="all" aria-pressed="true">Tout</button>
-                    <button type="button" class="switch__btn" data-filter="site" aria-pressed="false">Sites internet</button>
-                    <button type="button" class="switch__btn" data-filter="app" aria-pressed="false">Applications</button>
-                </div>
-                <p class="sr-only" data-filter-status role="status" aria-live="polite"></p>
-            </div>
-
             <div class="pieces-wrap">
-                <div class="pieces" data-filter-grid>
-                    <article class="piece" data-kind="site">
+                <div class="pieces">
+                    <article class="piece">
                         <a class="piece__link" href="https://www.zinema.ch/" target="_blank" rel="noopener noreferrer">
                             <span class="piece__media">
                                 <img class="piece__img" src="assets/images/project-zinema.webp?v=2"
@@ -613,7 +603,7 @@
                         </a>
                     </article>
 
-                    <article class="piece" data-kind="site">
+                    <article class="piece">
                         <a class="piece__link" href="https://le-p-tit-central.vercel.app/" target="_blank" rel="noopener noreferrer">
                             <span class="piece__media">
                                 <img class="piece__img" src="assets/images/project-central.webp"
@@ -637,7 +627,7 @@
                         </a>
                     </article>
 
-                    <article class="piece" data-kind="site">
+                    <article class="piece">
                         <a class="piece__link" href="https://maison-alliani.com/" target="_blank" rel="noopener noreferrer">
                             <span class="piece__media">
                                 <img class="piece__img" src="assets/images/project-alliani.webp"
@@ -661,7 +651,7 @@
                         </a>
                     </article>
 
-                    <article class="piece" data-kind="site">
+                    <article class="piece">
                         <a class="piece__link" href="https://amarte.ch/" target="_blank" rel="noopener noreferrer">
                             <span class="piece__media">
                                 <img class="piece__img" src="assets/images/project-amarte.webp"
@@ -685,7 +675,7 @@
                         </a>
                     </article>
 
-                    <article class="piece piece--wide" data-kind="app">
+                    <article class="piece piece--wide">
                         <a class="piece__link" href="/applications">
                             <span class="piece__media">
                                 <img class="piece__img" src="assets/images/app-agenda-aujourdhui-1280.webp"
@@ -710,7 +700,7 @@
                         </a>
                     </article>
 
-                    <article class="piece" data-kind="site">
+                    <article class="piece">
                         <a class="piece__link" href="https://nadegemouine.ch" target="_blank" rel="noopener noreferrer">
                             <span class="piece__media">
                                 <img class="piece__img" src="assets/images/project-nadege.webp"
@@ -733,7 +723,7 @@
                         </a>
                     </article>
 
-                    <article class="piece" data-kind="site">
+                    <article class="piece">
                         <a class="piece__link" href="https://lazizze.com/#/" target="_blank" rel="noopener noreferrer">
                             <span class="piece__media">
                                 <img class="piece__img" src="assets/images/project-dj.webp"
@@ -757,7 +747,7 @@
                         </a>
                     </article>
 
-                    <article class="piece" data-kind="site">
+                    <article class="piece">
                         <a class="piece__link" href="https://la-slack.com/" target="_blank" rel="noopener noreferrer">
                             <span class="piece__media">
                                 <img class="piece__img" src="assets/images/project-slack.png"
@@ -781,7 +771,7 @@
                         </a>
                     </article>
 
-                    <article class="piece" data-kind="site">
+                    <article class="piece">
                         <a class="piece__link" href="https://commissione-entretien.ch/" target="_blank" rel="noopener noreferrer">
                             <span class="piece__media">
                                 <img class="piece__img" src="assets/images/project-commissione.webp"
@@ -828,48 +818,27 @@
             </div>
         </section>
 
-        <footer class="footer" id="footer">
-            <div class="shell">
-                <div class="footer__top">
-                    <div>
-                        <p class="footer__status">
-                            <span class="footer__pulse" aria-hidden="true"></span>
-                            Disponible pour de nouveaux projets
-                        </p>
-                        <a href="mailto:contact@wearebrothers.ch" class="footer__mail">contact@wearebrothers.ch</a>
-                    </div>
-
-                    <div class="footer__nav">
-                        <div>
-                            <h2 class="footer__group-title">Pages</h2>
-                            <ul class="footer__list">
-                                <li><a href="/realisations" class="footer__link">Réalisations</a></li>
-                                <li><a href="/creation-site-internet-lausanne" class="footer__link">Création de site internet</a></li>
-                                <li><a href="/applications" class="footer__link">Applications</a></li>
-                                <li><a href="/studio" class="footer__link">About</a></li>
-                                <li><a href="/contact" class="footer__link">Contact</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h2 class="footer__group-title">Studio</h2>
-                            <ul class="footer__list">
-                                <li><span class="footer__link">Lausanne, Suisse</span></li>
-                                <li><span class="footer__link">Heure locale <time data-local-time>--:--</time></span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer__bottom">
-                    <span>&copy; 2026 WeAreBrothers Studio</span>
-                    <span>Agence web — design &amp; développement à Lausanne</span>
-                </div>
-            </div>
-
-            <span class="footer__watermark" aria-hidden="true">WAB.</span>
-        </footer>
-
     </main>
+
+    <footer class="footer">
+        <div class="footer__line">
+            <a href="mailto:contact@wearebrothers.ch" class="footer__mail">contact@wearebrothers.ch</a>
+
+            <div class="footer__aside">
+                <!-- Les deux pages que le menu ne porte pas : sans ces
+                     liens, elles ne seraient atteignables depuis aucune
+                     page de texte. -->
+                <nav class="footer__links" aria-label="Autres pages">
+                    <a href="/creation-site-internet-lausanne">Création de site internet</a>
+                    <a href="/applications">Applications</a>
+                </nav>
+                <span class="footer__place">Lausanne, Suisse — <time data-local-time>--:--</time></span>
+                <span class="footer__sign">&copy; 2026 WeAreBrothers Studio</span>
+            </div>
+        </div>
+    </footer>
+
+
 
 </body>
 

@@ -7,68 +7,11 @@
    départ, puisqu'il n'y a aucun geste pour la faire venir.
    ============================================ */
 
-/* La page n'a pas d'en-tête : elle s'ouvre sur la bascule, puis
-   immédiatement sur les captures. C'est donc cette bande qui prend
-   à sa charge le dégagement sous la barre flottante. */
+/* La page n'a ni en-tête ni réglage : elle s'ouvre directement sur
+   les captures. C'est donc cette bande qui prend à sa charge le
+   dégagement sous la barre de navigation. */
 .band--projets {
-    padding-top: calc(var(--topbar-h) + clamp(22px, 4vw, 44px));
-}
-
-/* ── La bascule ──
-   Trois mots, pas trois boîtes. Encadré, le filtre formait le seul
-   groupe de cadres d'une page qui n'en a aucun autre, et pesait
-   plus lourd que les captures qu'il commande. Ici c'est un trait
-   rose sous le mot actif qui dit lequel est en cours : un repère
-   de forme, pas seulement de couleur, lisible sans distinguer les
-   teintes. */
-.switch {
-    display: flex;
-    flex-wrap: wrap;
-    gap: clamp(16px, 5vw, 28px);
-}
-
-/* Sans JavaScript, la grille reste entière : une bascule sans effet
-   vaut moins que pas de bascule du tout. */
-html.no-js .switch {
-    display: none;
-}
-
-.switch__btn {
-    position: relative;
-    padding-bottom: 8px;
-    font-size: 0.95rem;
-    color: var(--ink-muted);
-    white-space: nowrap;
-    transition: color 0.25s var(--ease-out);
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* Le trait est révélé par mise à l'échelle plutôt que par
-   croissance de largeur : aucun recalcul de mise en page, et
-   aucun déplacement des mots voisins au changement de filtre. */
-.switch__btn::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 2px;
-    background: var(--pink);
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform 0.35s var(--ease-out);
-}
-
-.switch__btn:hover {
-    color: var(--ink);
-}
-
-.switch__btn[aria-pressed='true'] {
-    color: var(--ink);
-}
-
-.switch__btn[aria-pressed='true']::after {
-    transform: scaleX(1);
+    padding-top: calc(var(--topbar-h) + clamp(24px, 4vw, 48px));
 }
 
 /* ── La grille ──
@@ -79,7 +22,6 @@ html.no-js .switch {
    défilement et ferait déborder la page d'une poignée de pixels.
    Un simple conteneur en dehors de .shell suffit. */
 .pieces-wrap {
-    margin-top: clamp(30px, 4vw, 44px);
     padding-inline: var(--gutter);
 }
 
@@ -127,9 +69,15 @@ html.no-js .switch {
     transform: scale(1.03);
 }
 
-/* ── La plaque rose ──
-   Le seul aplat saturé du site. Texte noir dessus : sur ce rose,
-   le blanc perdrait le contraste que le noir garde largement.
+/* ── La plaque ──
+   Le seul aplat saturé du site. Chaque projet a la sienne, prise
+   dans la gamme que parcourt le fond : du rose au bleu, en neuf
+   pas. La clarté a été ajustée teinte par teinte pour que la
+   luminance reste constante — le noir posé dessus garde le même
+   contraste sur les neuf, y compris sur les violets qui
+   s'assombrissent naturellement. Texte noir et non blanc : sur ces
+   teintes, le blanc perdrait le contraste que le noir garde
+   largement.
 
    Au départ elle se range sous la capture, dans le flux. Sur un
    petit écran, une plaque posée par-dessus mangerait la moitié de
@@ -148,6 +96,42 @@ html.no-js .switch {
     padding: clamp(11px, 1.6vw, 20px) clamp(16px, 2.2vw, 26px);
     background: var(--pink);
     color: var(--ink);
+}
+
+.piece:nth-child(1) .piece__label {
+    background: #f44ea1;
+}
+
+.piece:nth-child(2) .piece__label {
+    background: #f344c7;
+}
+
+.piece:nth-child(3) .piece__label {
+    background: #f22cf2;
+}
+
+.piece:nth-child(4) .piece__label {
+    background: #ce5cf5;
+}
+
+.piece:nth-child(5) .piece__label {
+    background: #b26ff6;
+}
+
+.piece:nth-child(6) .piece__label {
+    background: #9879f6;
+}
+
+.piece:nth-child(7) .piece__label {
+    background: #8282f7;
+}
+
+.piece:nth-child(8) .piece__label {
+    background: #6689f5;
+}
+
+.piece:nth-child(9) .piece__label {
+    background: #3191f2;
 }
 
 .piece__name {
@@ -273,7 +257,7 @@ html.no-js .switch {
 @media (min-width: 760px) {
     .pieces {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: clamp(10px, 1.4vw, 18px);
+        gap: clamp(20px, 2.4vw, 34px);
     }
 
     .piece--wide {

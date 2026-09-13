@@ -7,7 +7,6 @@
 
 /* ── Équipe ── */
 .team-wrap {
-    margin-top: clamp(26px, 3.5vw, 44px);
     padding-inline: var(--gutter);
 }
 

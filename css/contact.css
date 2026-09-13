@@ -1,9 +1,10 @@
 /* ============================================
    WAB. — Contact
-   Le formulaire posé à même le fond, les coordonnées à côté en
-   lignes séparées par un filet. Plus aucune carte : seuls les
-   champs de saisie gardent un fond, parce qu'un champ doit se
-   voir comme un champ.
+   Le formulaire écrit dans la même grammaire que le reste du
+   site : une clé en petites capitales roses, puis une ligne à
+   remplir fermée par un filet d'un pixel. Aucune boîte, aucun
+   fond — la saisie se pose sur le rose comme le reste du contenu,
+   et c'est le trait sous le champ qui dit où écrire.
 
    Les identifiants et les noms de champs sont conservés à
    l'identique : ils sont lus par contact-form.js et par
@@ -13,77 +14,85 @@
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: clamp(24px, 3vw, 36px);
+    gap: clamp(40px, 5vw, 56px);
     align-items: start;
 }
 
-/* ── Formulaire ── */
-.form-card {
-    padding: 0;
-}
-
+/* ── Un champ ──
+   La clé reprend exactement le style des clés de la colonne de
+   droite : les deux colonnes se lisent alors comme un seul
+   système, pas comme un formulaire posé à côté d'un encadré. */
 .form-field + .form-field,
 .form-field + .form-pick,
 .form-pick + .form-field {
-    margin-top: 26px;
+    margin-top: clamp(26px, 3vw, 34px);
 }
 
-.form-label {
+.form-label,
+.form-pick legend {
     display: block;
-    font-size: 0.95rem;
+    padding: 0;
+    font-size: 11px;
     font-weight: var(--w-strong);
-    color: var(--ink);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pink);
 }
 
 .form-hint {
     display: block;
-    margin-top: 3px;
+    margin-top: 4px;
     font-size: 0.85rem;
     font-weight: var(--w-regular);
+    letter-spacing: 0;
+    text-transform: none;
     color: var(--ink-muted);
 }
 
-/* Un voile blanc plutôt que le rose du fond : sur un dégradé, un
-   champ transparent ne se lit plus comme un champ. */
 .form-input,
 .form-textarea {
     width: 100%;
     margin-top: 10px;
-    padding: 14px 16px;
+    padding: 10px 0;
     border: 0;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.55);
-    box-shadow: inset 0 0 0 1px var(--line);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: inset 0 -1px 0 var(--line);
     font-family: inherit;
-    font-size: 1rem;
+    font-size: clamp(1rem, 1.4vw, 1.1rem);
     color: var(--ink);
-    transition: box-shadow 0.25s var(--ease-out), background-color 0.25s var(--ease-out);
+    transition: box-shadow 0.25s var(--ease-out);
 }
 
 .form-textarea {
     resize: vertical;
-    min-height: 130px;
+    min-height: 120px;
     line-height: 1.6;
 }
 
 .form-input::placeholder,
 .form-textarea::placeholder {
     color: var(--ink-muted);
-    opacity: 0.75;
+    opacity: 0.7;
 }
 
+/* Le trait s'épaissit et passe à l'encre : le champ actif se
+   repère sans que rien ne bouge autour. */
 .form-input:focus,
 .form-textarea:focus {
     outline: none;
-    background: var(--white);
-    box-shadow: inset 0 0 0 2px var(--ink);
+    box-shadow: inset 0 -2px 0 var(--ink);
 }
 
-/* Le champ fautif est signalé par un liseré ET par un message : la
-   couleur seule ne dit rien à qui ne la distingue pas. */
-.form-input.error,
-.form-textarea.error {
-    box-shadow: inset 0 0 0 2px #d11a3a;
+/* Le champ fautif est signalé par un trait ET par un message : la
+   couleur seule ne dit rien à qui ne la distingue pas.
+   La classe est posée sur le champ entier par contact-form.js —
+   l'ancienne feuille visait une classe sur la saisie elle-même,
+   que le script n'a jamais écrite, et les messages d'erreur ne
+   s'affichaient donc jamais. */
+.form-field.has-error .form-input,
+.form-field.has-error .form-textarea {
+    box-shadow: inset 0 -2px 0 #b3122e;
 }
 
 .form-error {
@@ -93,32 +102,21 @@
     color: #b3122e;
 }
 
-.form-input.error ~ .form-error,
-.form-textarea.error ~ .form-error {
+.form-field.has-error .form-error {
     display: block;
 }
 
 /* ── Cases à cocher ──
-   Nommées « pick » et non « chip » : les puces de savoir-faire des
-   autres pages portent déjà ce nom et ne sont pas cliquables. */
-/* Le fieldset garde une bordure et un fond natifs que la
-   réinitialisation ne touche pas : sans cela, un rectangle apparaît
-   autour des choix et la légende vient s'y encastrer. */
+   Nommées « pick » et non « chip » : les disciplines des autres
+   pages portent déjà ce nom et ne sont pas cliquables. */
 .form-pick {
     border: 0;
     padding: 0;
     min-width: 0;
 }
 
-.form-pick legend {
-    padding: 0;
-    font-size: 0.95rem;
-    font-weight: var(--w-strong);
-    color: var(--ink);
-}
-
 .pick-list {
-    margin-top: 12px;
+    margin-top: 14px;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
@@ -128,7 +126,7 @@
     position: relative;
     display: inline-flex;
     align-items: center;
-    padding: 10px 16px;
+    padding: 9px 16px;
     border-radius: var(--radius-pill);
     box-shadow: inset 0 0 0 1px var(--line);
     font-size: 0.9rem;
@@ -177,7 +175,7 @@
 
 /* ── Envoi ── */
 .form-submit {
-    margin-top: 30px;
+    margin-top: clamp(30px, 3.5vw, 40px);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -193,25 +191,27 @@
     color: #b3122e;
 }
 
+/* Le seul aplat rose du site en dehors des réalisations : le
+   message n'arrive qu'une fois, il a le droit de se voir. */
 .form-success {
-    margin-top: 22px;
-    padding: 22px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.6);
-    box-shadow: inset 0 0 0 1px var(--line);
+    margin-top: 26px;
+    padding: clamp(20px, 2.4vw, 28px);
+    border-radius: clamp(12px, 1.6vw, 18px);
+    background: var(--pink);
+    color: var(--ink);
 }
 
 .form-success__title {
-    font-size: 1.2rem;
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
     font-weight: var(--w-strong);
-    color: var(--ink);
+    letter-spacing: -0.02em;
 }
 
 .form-success__text {
     margin-top: 8px;
+    max-width: 44ch;
     font-size: 0.975rem;
     line-height: 1.6;
-    color: var(--ink-muted);
 }
 
 /* Le piège anti-spam ne doit être vu ni atteint par personne, mais
@@ -256,8 +256,7 @@
 }
 
 a.contact-card__value:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
+    color: var(--pink);
 }
 
 .contact-card__note {
@@ -295,7 +294,7 @@ a.contact-card__value:hover {
 /* ── Bureau ── */
 @media (min-width: 900px) {
     .contact-grid {
-        grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
-        gap: clamp(28px, 3vw, 40px);
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr);
+        gap: clamp(40px, 5vw, 72px);
     }
 }

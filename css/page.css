@@ -23,14 +23,6 @@
     padding-bottom: clamp(8px, 1.5vw, 20px);
 }
 
-.page-head__label {
-    display: block;
-    font-size: 11px;
-    font-weight: var(--w-strong);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--pink);
-}
 
 .page-head__title {
     margin-top: 18px;
@@ -66,13 +58,11 @@
     }
 }
 
-.page-head__label,
 .page-head__title,
 .page-head__sub {
     animation: page-rise 0.8s var(--ease) backwards;
 }
 
-.page-head__label { animation-delay: 0.04s; }
 .page-head__title { animation-delay: 0.1s; }
 .page-head__sub { animation-delay: 0.2s; }
 

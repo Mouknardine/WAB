@@ -183,11 +183,11 @@
     <link rel="preload" href="assets/fonts/Epilogue-Variable.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/base.css?v=18">
+    <link rel="stylesheet" href="css/base.css?v=23">
     <link rel="stylesheet" href="css/nav.css?v=14">
     <link rel="stylesheet" href="css/page.css?v=2">
-    <link rel="stylesheet" href="css/contact.css?v=4">
-    <link rel="stylesheet" href="css/footer.css?v=5">
+    <link rel="stylesheet" href="css/contact.css?v=7">
+    <link rel="stylesheet" href="css/footer.css?v=6">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=1" defer></script>
@@ -264,7 +264,6 @@
         <!-- EN-TÊTE DE PAGE -->
         <section class="page-head">
             <div class="shell">
-                <span class="page-head__label">Contact</span>
                 <h1 class="page-head__title">Un projet, une idée, une simple question&nbsp;? Parlons-en.</h1>
                 <p class="page-head__sub">
                     Réponse sous 24&nbsp;h ouvrées — sans engagement, sans jargon. Vous écrivez directement
@@ -275,10 +274,10 @@
 
         <!-- FORMULAIRE -->
         <section class="band" id="formulaire">
-            <div class="shell">
+            <div class="spread">
                 <div class="contact-grid">
 
-                    <div class="form-card reveal">
+                    <div class="reveal">
                         <form id="contactForm" action="send-message.php" method="POST" novalidate>
 
                             <!-- Piège anti-spam : hors du champ visuel, jamais atteint au clavier -->
@@ -377,9 +376,12 @@
 
         <!-- QUESTIONS -->
         <section class="band" id="questions">
-            <div class="shell">
-                <h2 class="band-title reveal">Les questions qu'on nous pose avant de commencer</h2>
-                <div class="service-list" data-reveal-group>
+            <div class="spread">
+                <!-- Le titre n'est pas affiché : les questions suivent
+                     directement le formulaire. Il reste dans le document
+                     pour que la section garde un intitulé. -->
+                <h2 class="sr-only">Les questions qu'on nous pose avant de commencer</h2>
+                <div class="service-list service-list--pair" data-reveal-group>
 
                     <article class="service reveal is-open">
                         <h3 class="service__head">
@@ -446,48 +448,28 @@
         </section>
 
         <!-- PIED DE PAGE -->
-        <footer class="footer" id="footer">
-            <div class="shell">
-                <div class="footer__top">
-                    <div>
-                        <p class="footer__status">
-                            <span class="footer__pulse" aria-hidden="true"></span>
-                            Disponible pour de nouveaux projets
-                        </p>
-                        <a href="mailto:contact@wearebrothers.ch" class="footer__mail">contact@wearebrothers.ch</a>
-                    </div>
-
-                    <div class="footer__nav">
-                        <div>
-                            <h2 class="footer__group-title">Pages</h2>
-                            <ul class="footer__list">
-                                <li><a href="/realisations" class="footer__link">Réalisations</a></li>
-                                <li><a href="/creation-site-internet-lausanne" class="footer__link">Création de site internet</a></li>
-                                <li><a href="/applications" class="footer__link">Applications</a></li>
-                                <li><a href="/studio" class="footer__link">About</a></li>
-                                <li><a href="/contact" class="footer__link">Contact</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h2 class="footer__group-title">Studio</h2>
-                            <ul class="footer__list">
-                                <li><span class="footer__link">Lausanne, Suisse</span></li>
-                                <li><span class="footer__link">Heure locale <time data-local-time>--:--</time></span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer__bottom">
-                    <span>&copy; 2026 WeAreBrothers Studio</span>
-                    <span>Agence web — design &amp; développement à Lausanne</span>
-                </div>
-            </div>
-
-            <span class="footer__watermark" aria-hidden="true">WAB.</span>
-        </footer>
 
     </main>
+
+    <footer class="footer">
+        <div class="footer__line">
+            <a href="mailto:contact@wearebrothers.ch" class="footer__mail">contact@wearebrothers.ch</a>
+
+            <div class="footer__aside">
+                <!-- Les deux pages que le menu ne porte pas : sans ces
+                     liens, elles ne seraient atteignables depuis aucune
+                     page de texte. -->
+                <nav class="footer__links" aria-label="Autres pages">
+                    <a href="/creation-site-internet-lausanne">Création de site internet</a>
+                    <a href="/applications">Applications</a>
+                </nav>
+                <span class="footer__place">Lausanne, Suisse — <time data-local-time>--:--</time></span>
+                <span class="footer__sign">&copy; 2026 WeAreBrothers Studio</span>
+            </div>
+        </div>
+    </footer>
+
+
 
 </body>
 
