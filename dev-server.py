@@ -19,13 +19,28 @@ ROUTES = {
     '/': 'index.html',
     '/realisations': 'work.html',
     '/studio': 'about.html',
-    '/contact': 'contact.html',
     '/applications': 'applications.html',
     '/creation-site-internet-lausanne': 'creation-site-internet-lausanne.html',
 }
 
+# Même table que le .htaccess : ancienne adresse → nouvelle destination.
+REDIRECTS = {
+    '/contact': '/#ecrire',
+    '/contact.html': '/#ecrire',
+}
+
 
 class Handler(SimpleHTTPRequestHandler):
+    def do_GET(self):
+        clean = self.path.partition('?')[0].rstrip('/') or '/'
+        target = REDIRECTS.get(clean)
+        if target:
+            self.send_response(301)
+            self.send_header('Location', target)
+            self.end_headers()
+            return
+        super().do_GET()
+
     def translate_path(self, path):
         clean, sep, query = path.partition('?')
         if clean != '/' and clean.endswith('/'):

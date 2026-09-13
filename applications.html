@@ -97,6 +97,8 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/base.css?v=23">
     <link rel="stylesheet" href="css/nav.css?v=14">
+    <link rel="stylesheet" href="css/contact-modal.css?v=1">
+    <link rel="stylesheet" href="css/contact-form.css?v=1">
     <link rel="stylesheet" href="css/page.css?v=6">
     <link rel="stylesheet" href="css/apps.css?v=3">
     <link rel="stylesheet" href="css/footer.css?v=6">
@@ -107,6 +109,7 @@
     <script src="js/nav.js?v=5" defer></script>
     <script src="js/accordion.js?v=1" defer></script>
     <script type="module" src="js/birds/index.js?v=4"></script>
+    <script type="module" src="js/contact/index.js?v=1"></script>
 </head>
 
 <body>
@@ -125,7 +128,7 @@
                 <nav class="topbar__nav" aria-label="Navigation principale">
                     <a href="/realisations" class="topbar__link">Réalisations</a>
                     <a href="/studio" class="topbar__link">About</a>
-                    <a href="/contact" class="topbar__link">Contact</a>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="topbar__link">Contact</a>
                 </nav>
 
                 <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
@@ -147,7 +150,7 @@
                             About
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
-                        <a href="/contact" class="panel__link">
+                        <a href="mailto:contact@wearebrothers.ch" data-contact class="panel__link">
                             Contact
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
@@ -358,7 +361,7 @@
                 <h2 class="closing__title">Un outil qui colle à votre métier&nbsp;?</h2>
                 <p class="closing__lede">Décrivez-nous votre fonctionnement actuel. Nous vous dirons franchement si un développement sur mesure se justifie, ou si un outil existant suffit.</p>
                 <div class="closing__actions">
-                    <a href="/contact" class="btn btn--solid btn--lg">
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="btn btn--solid btn--lg">
                         <span>Démarrer un projet</span>
                         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                     </a>

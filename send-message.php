@@ -5,8 +5,8 @@
  * Reçoit le POST du formulaire (AJAX ou classique), valide les
  * champs, neutralise les tentatives d'injection, puis envoie
  * l'email via le SMTP authentifié d'Infomaniak (smtp-mailer.php).
- * Répond en JSON pour l'AJAX, ou redirige vers /contact
- * pour un envoi sans JavaScript.
+ * Répond en JSON pour la fenêtre de contact (js/contact/), ou
+ * redirige vers l'accueil pour un envoi sans JavaScript.
  */
 
 declare(strict_types=1);
@@ -23,7 +23,9 @@ function respond(bool $ok, string $error = ''): void
         http_response_code($ok ? 200 : 400);
         echo json_encode(['success' => $ok, 'error' => $error], JSON_UNESCAPED_UNICODE);
     } else {
-        header('Location: /contact?sent=' . ($ok ? '1' : '0'));
+        // Envoi sans JavaScript : il n'y a plus de page Contact où
+        // afficher le résultat, on revient à l'accueil.
+        header('Location: /');
     }
     exit;
 }
@@ -45,15 +47,10 @@ if (!empty($_POST['_honey'])) {
     respond(true);
 }
 
-$nom     = clean((string) ($_POST['Nom'] ?? ''), 120);
-$email   = clean((string) ($_POST['Email'] ?? ''), 200);
-$budget  = clean((string) ($_POST['Budget'] ?? ''), 200);
-$message = trim((string) ($_POST['Message'] ?? ''));
-
-$besoins = $_POST['Besoin'] ?? [];
-$besoinsTexte = is_array($besoins)
-    ? implode(', ', array_map(static fn ($b) => clean((string) $b, 40), array_slice($besoins, 0, 6)))
-    : clean((string) $besoins, 200);
+$nom        = clean((string) ($_POST['Nom'] ?? ''), 120);
+$email      = clean((string) ($_POST['Email'] ?? ''), 200);
+$entreprise = clean((string) ($_POST['Entreprise'] ?? ''), 160);
+$message    = trim((string) ($_POST['Message'] ?? ''));
 
 if ($nom === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     respond(false, 'Champs manquants ou email invalide');
@@ -63,10 +60,9 @@ $message = mb_substr($message, 0, 5000);
 
 $corps = "Nouveau message depuis wearebrothers.ch\n"
     . "----------------------------------------\n\n"
-    . "Nom     : {$nom}\n"
-    . "Email   : {$email}\n"
-    . ($besoinsTexte !== '' ? "Besoin  : {$besoinsTexte}\n" : '')
-    . ($budget !== '' ? "Budget  : {$budget}\n" : '')
+    . "Nom        : {$nom}\n"
+    . "Email      : {$email}\n"
+    . ($entreprise !== '' ? "Entreprise : {$entreprise}\n" : '')
     . "\nMessage :\n{$message}\n";
 
 // Identifiants SMTP : fichier généré au déploiement depuis les

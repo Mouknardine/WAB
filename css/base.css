@@ -376,8 +376,8 @@ time {
    même horizontale, et ils y restent quand une réponse se déplie —
    les deux cellules grandissent ensemble.
 
-   Modificateur explicite plutôt que règle liée à .split : la page
-   Contact s'en sert sans colonne de titre à gauche. */
+   Modificateur explicite plutôt que règle liée à .split : une liste
+   peut s'en servir sans colonne de titre à gauche. */
 @media (min-width: 1000px) {
     .service-list--pair,
     .approach--pair {

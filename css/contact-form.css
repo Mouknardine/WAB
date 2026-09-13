@@ -1,0 +1,127 @@
+/* ============================================
+   WAB. — Formulaire de la fenêtre de contact
+   La même grammaire que partout : une clé en petites capitales, puis
+   une ligne à remplir fermée par un filet. Sur le blanc de la carte,
+   les clés passent à l'encre : le rose y serait trop pâle pour un
+   texte de onze pixels.
+   ============================================ */
+
+.contact-form {
+    margin-top: clamp(26px, 4vw, 36px);
+}
+
+.contact-field + .contact-field {
+    margin-top: clamp(20px, 3vw, 26px);
+}
+
+.contact-field__label {
+    display: block;
+    font-size: 11px;
+    font-weight: var(--w-strong);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+}
+
+.contact-field__hint {
+    margin-left: 6px;
+    font-size: 0.8rem;
+    font-weight: var(--w-regular);
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink-muted);
+}
+
+/* 16 px minimum : en dessous, Safari iOS zoome sur le champ. */
+.contact-field__input {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    padding: 10px 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: inset 0 -1px 0 var(--line);
+    font-family: inherit;
+    font-size: clamp(1rem, 1.4vw, 1.075rem);
+    color: var(--ink);
+    transition: box-shadow 0.25s var(--ease-out);
+}
+
+.contact-field__input--area {
+    min-height: 104px;
+    resize: vertical;
+    line-height: 1.55;
+}
+
+.contact-field__input::placeholder {
+    color: var(--ink-muted);
+    opacity: 0.6;
+}
+
+/* Le trait s'épaissit et passe à l'encre : le champ actif se repère
+   sans que rien ne bouge autour. */
+.contact-field__input:focus {
+    outline: none;
+    box-shadow: inset 0 -2px 0 var(--ink);
+}
+
+.contact-field.has-error .contact-field__input {
+    box-shadow: inset 0 -2px 0 #b3122e;
+}
+
+.contact-field__error {
+    display: none;
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #b3122e;
+}
+
+.contact-field.has-error .contact-field__error {
+    display: block;
+}
+
+/* ── Envoi ── */
+.contact-form__submit {
+    width: 100%;
+    margin-top: clamp(26px, 4vw, 34px);
+}
+
+.contact-form__submit:disabled {
+    opacity: 0.6;
+    cursor: progress;
+    transform: none;
+    box-shadow: none;
+}
+
+.contact-form__status {
+    margin-top: 14px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--ink-muted);
+}
+
+.contact-form__status:empty {
+    display: none;
+}
+
+.contact-form__status.is-error {
+    color: #b3122e;
+}
+
+.contact-form__alt {
+    margin-top: 16px;
+    font-size: 0.875rem;
+    text-align: center;
+    color: var(--ink-muted);
+}
+
+/* Le piège anti-spam ne doit être vu ni atteint par personne, mais
+   rester rempli par les robots : il est sorti du champ, pas masqué. */
+.hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}

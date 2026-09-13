@@ -107,10 +107,4 @@
             <image:caption>Ivan Jakovlevski, commercial et responsable relation client chez WeAreBrothers Studio, agence web à Lausanne</image:caption>
         </image:image>
     </url>
-    <url>
-        <loc>https://wearebrothers.ch/contact</loc>
-        <lastmod>2026-09-12</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
 </urlset>

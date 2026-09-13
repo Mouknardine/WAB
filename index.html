@@ -160,7 +160,6 @@
                     "@type": "ContactPoint",
                     "contactType": "sales",
                     "email": "contact@wearebrothers.ch",
-                    "url": "https://wearebrothers.ch/contact",
                     "availableLanguage": [
                         "fr",
                         "en"
@@ -349,12 +348,15 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/base.css?v=23">
     <link rel="stylesheet" href="css/nav.css?v=14">
+    <link rel="stylesheet" href="css/contact-modal.css?v=1">
+    <link rel="stylesheet" href="css/contact-form.css?v=1">
     <link rel="stylesheet" href="css/landing.css?v=6">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=1" defer></script>
     <script src="js/nav.js?v=5" defer></script>
     <script type="module" src="js/birds/index.js?v=4"></script>
+    <script type="module" src="js/contact/index.js?v=1"></script>
 </head>
 
 <body class="landing" data-birds="dense">
@@ -373,7 +375,7 @@
                 <nav class="topbar__nav" aria-label="Navigation principale">
                     <a href="/realisations" class="topbar__link">Réalisations</a>
                     <a href="/studio" class="topbar__link">About</a>
-                    <a href="/contact" class="topbar__link">Contact</a>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="topbar__link">Contact</a>
                 </nav>
 
                 <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
@@ -395,7 +397,7 @@
                             About
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
-                        <a href="/contact" class="panel__link">
+                        <a href="mailto:contact@wearebrothers.ch" data-contact class="panel__link">
                             Contact
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>

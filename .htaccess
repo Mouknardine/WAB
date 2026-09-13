@@ -20,20 +20,24 @@
     RewriteRule ^ /realisations [R=301,L]
     RewriteCond %{THE_REQUEST} \s/+about\.html[\s?] [NC]
     RewriteRule ^ /studio [R=301,L]
+    # Il n'y a plus de page Contact : le formulaire s'ouvre en fenêtre
+    # sur n'importe quelle page. Les anciennes adresses mènent à
+    # l'accueil, où #ecrire ouvre la fenêtre dès l'arrivée
+    # (NE : le « # » ne doit pas être encodé en %23).
     RewriteCond %{THE_REQUEST} \s/+contact\.html[\s?] [NC]
-    RewriteRule ^ /contact [R=301,L]
+    RewriteRule ^ /#ecrire [R=301,L,NE]
+    RewriteRule ^contact/?$ /#ecrire [R=301,L,NE]
     RewriteCond %{THE_REQUEST} \s/+applications\.html[\s?] [NC]
     RewriteRule ^ /applications [R=301,L]
     RewriteCond %{THE_REQUEST} \s/+creation-site-internet-lausanne\.html[\s?] [NC]
     RewriteRule ^ /creation-site-internet-lausanne [R=301,L]
 
     # 2. Enlever un slash final éventuel (garde les chemins d'assets relatifs corrects).
-    RewriteRule ^(realisations|studio|contact|applications|creation-site-internet-lausanne)/$ /$1 [R=301,L]
+    RewriteRule ^(realisations|studio|applications|creation-site-internet-lausanne)/$ /$1 [R=301,L]
 
     # 3. Servir les adresses propres avec les fichiers physiques (réécriture interne).
     RewriteRule ^realisations$ work.html [L]
     RewriteRule ^studio$ about.html [L]
-    RewriteRule ^contact$ contact.html [L]
     RewriteRule ^applications$ applications.html [L]
     RewriteRule ^creation-site-internet-lausanne$ creation-site-internet-lausanne.html [L]
 </IfModule>
