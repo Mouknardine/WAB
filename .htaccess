@@ -23,10 +23,12 @@
     # Il n'y a plus de page Contact : le formulaire s'ouvre en fenêtre
     # sur n'importe quelle page. Les anciennes adresses mènent à
     # l'accueil, où #ecrire ouvre la fenêtre dès l'arrivée
-    # (NE : le « # » ne doit pas être encodé en %23).
+    # (NE : le « # » ne doit pas être encodé en %23 ; QSD : un paramètre
+    # d'origine, ?utm_source=… par exemple, serait sinon recollé après
+    # #ecrire et la fenêtre ne s'ouvrirait pas).
     RewriteCond %{THE_REQUEST} \s/+contact\.html[\s?] [NC]
-    RewriteRule ^ /#ecrire [R=301,L,NE]
-    RewriteRule ^contact/?$ /#ecrire [R=301,L,NE]
+    RewriteRule ^ /#ecrire [R=301,L,NE,QSD]
+    RewriteRule ^contact/?$ /#ecrire [R=301,L,NE,QSD]
     RewriteCond %{THE_REQUEST} \s/+applications\.html[\s?] [NC]
     RewriteRule ^ /applications [R=301,L]
     RewriteCond %{THE_REQUEST} \s/+creation-site-internet-lausanne\.html[\s?] [NC]
