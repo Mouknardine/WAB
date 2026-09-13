@@ -56,7 +56,6 @@
 <IfModule mod_expires.c>
     ExpiresActive On
     ExpiresByType text/css "access plus 1 month"
-    ExpiresByType application/javascript "access plus 1 month"
     ExpiresByType image/png "access plus 1 year"
     ExpiresByType image/jpeg "access plus 1 year"
     ExpiresByType image/webp "access plus 1 year"
@@ -76,6 +75,15 @@
     # HSTS : le navigateur ne repasse plus jamais par http, et Google y
     # voit un signal de plus pour ne garder que la version https.
     Header always set Strict-Transport-Security "max-age=31536000" env=HTTPS
+
+    # Scripts : revalidés à chaque visite (304 de quelques octets si
+    # rien n'a changé). Les oiseaux et la fenêtre de contact sont des
+    # modules qui s'importent entre eux sans numéro de version : mis
+    # en cache un mois, un visiteur recevait le nouveau index.js avec
+    # l'ancien flock.js, l'import échouait et le ciel restait vide.
+    <FilesMatch "\.m?js$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
 </IfModule>
 
 # Types MIME (le manifeste n'est pas connu de tous les serveurs)

@@ -11,7 +11,7 @@
  * est peint à 2 points par carré, un oiseau proche à 6.
  */
 
-import { COLS, ROWS, FRAMES, FIXED_COLORS } from './frames.js';
+import { COLS, ROWS, FRAMES, FIXED_COLORS } from './frames.js?v=5';
 
 export function createSpriteBank() {
     const cache = new Map();

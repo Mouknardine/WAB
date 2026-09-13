@@ -13,10 +13,15 @@
  * animations.
  */
 
-import { BODY_COLORS } from './frames.js';
-import { createSpriteBank } from './sprites.js';
-import { createFlock, TEXT_DIM } from './flock.js';
-import { createShyness } from './shyness.js';
+/* ?v=5 sur chaque import, et le même partout où un fichier est
+   importé : des visiteurs gardent en cache, pour un mois, d'anciennes
+   versions de ces fichiers. Une adresse neuve les en libère. Le
+   serveur revalide désormais les scripts à chaque visite (.htaccess) :
+   ce numéro n'aura plus à bouger. */
+import { BODY_COLORS } from './frames.js?v=5';
+import { createSpriteBank } from './sprites.js?v=5';
+import { createFlock, TEXT_DIM } from './flock.js?v=5';
+import { createShyness } from './shyness.js?v=5';
 
 /* Échelles de dessin disponibles, de l'oiseau le plus lointain au
    plus proche. Un point de plus, c'est 32 px de largeur en plus. */

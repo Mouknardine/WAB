@@ -18,7 +18,7 @@
  * ligne reste lisible et le ciel ne se vide jamais.
  */
 
-import { BODY_COLORS, BODY_BOX } from './frames.js';
+import { BODY_COLORS, BODY_BOX } from './frames.js?v=5';
 
 /* Deux marges, et la sortie est la plus large des deux. L'oiseau
    naît juste derrière le bord, puis n'est mis au repos qu'une fois

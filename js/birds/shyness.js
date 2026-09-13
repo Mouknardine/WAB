@@ -15,7 +15,7 @@
  *    entièrement à découvert.
  */
 
-import { collectZones } from './zones.js';
+import { collectZones } from './zones.js?v=5';
 
 /** Dégagement exigé autour d'une ligne de texte, en px. */
 const KEEP_AWAY_X = 30;

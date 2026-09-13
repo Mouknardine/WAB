@@ -12,9 +12,10 @@
  * lien d'origine à la fermeture.
  */
 
-import { CONTACT_EMAIL, createContactDialog } from './markup.js';
-import { bindContactForm, resetContactForm } from './form.js';
-import { requireElement } from './dom.js';
+// Même numéro partout où un fichier est importé : voir js/birds/index.js.
+import { CONTACT_EMAIL, createContactDialog } from './markup.js?v=2';
+import { bindContactForm, resetContactForm } from './form.js?v=2';
+import { requireElement } from './dom.js?v=2';
 
 const OPEN_HASH = '#ecrire';
 const LOCK_CLASS = 'has-modal';
