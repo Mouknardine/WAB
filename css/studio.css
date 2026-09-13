@@ -1,9 +1,31 @@
 /* ============================================
    WAB. — About
-   Une étiquette, puis les trois portraits en grand, chacun suivi de
-   son rôle, de sa description et de ses savoir-faire. Rien d'autre.
-   Aucune carte — c'est le rose qui tient l'ensemble.
+   Un grand titre de marque, puis les trois portraits en grand,
+   chacun suivi de son rôle, de sa description et de ses savoir-faire.
+   Rien d'autre. Aucune carte — c'est le rose qui tient l'ensemble.
    ============================================ */
+
+/* ── Titre de marque ──
+   Le plus grand texte du site : il se lit comme une signature, pas
+   comme un intitulé de section. Même marge que les portraits. */
+.studio-head {
+    padding-inline: var(--gutter);
+    margin-bottom: clamp(32px, 5vw, 64px);
+}
+
+.studio-head__title {
+    max-width: 16ch;
+    /* 2.25rem au plus bas : à 320 px, « cool et efficace » tient
+       encore sur une ligne au lieu de laisser « cool » tout seul. */
+    font-size: clamp(2.25rem, 8.4vw, 7.2rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.045em;
+    /* Serré, mais pas au point que les jambages du « q » et du « p »
+       touchent la ligne suivante. */
+    line-height: 1.02;
+    text-wrap: balance;
+    color: var(--ink);
+}
 
 /* ── Équipe ── */
 .team-wrap {
