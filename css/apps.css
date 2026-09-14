@@ -60,11 +60,16 @@
 /* La liste « Approche » est partagée avec d'autres pages : elle vit
    dans approach.css. */
 
-/* ── Bureau ── */
+/* ── Bureau ──
+   Les écrans quittent la colonne de lecture et prennent toute la
+   largeur, comme les captures de la page Réalisations : bornés à
+   940 px, ils laissaient le tiers droit de l'écran vide et la page
+   semblait collée à gauche. La capture prend la plus grande part,
+   le texte reste borné à sa longueur de ligne. */
 @media (min-width: 900px) {
     .screen {
-        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-        gap: clamp(36px, 4vw, 56px);
+        grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+        gap: clamp(40px, 5vw, 88px);
     }
 
     /* Un écran sur deux inverse l'ordre : la lecture ne s'installe

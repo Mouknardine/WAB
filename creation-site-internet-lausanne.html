@@ -43,8 +43,10 @@
     <meta name="twitter:description" content="Site vitrine ou site d'entreprise dessiné et codé sur mesure à Lausanne, hébergement suisse et référencement local inclus.">
     <meta name="twitter:image" content="https://wearebrothers.ch/assets/og-image.jpg">
 
-    <!-- Données structurées (JSON-LD) — page, service, questions, fil d'Ariane.
-         Le studio (#organization) et le site (#website) sont décrits sur l'accueil. -->
+    <!-- Données structurées (JSON-LD) — page, service et ses quatre formats,
+         questions, fil d'Ariane. Le studio (#organization) et le site
+         (#website) sont décrits sur l'accueil. Les réponses de la FAQ
+         reprennent mot pour mot celles affichées plus bas. -->
     <script type="application/ld+json">
     {
     "@context": "https://schema.org",
@@ -72,7 +74,7 @@
             "@id": "https://wearebrothers.ch/creation-site-internet-lausanne#service",
             "name": "Création de site internet à Lausanne",
             "serviceType": "Création de site internet",
-            "description": "Site vitrine ou site d'entreprise dessiné et codé sur mesure, sans WordPress ni Wix, hébergé en Suisse chez Infomaniak, avec le référencement local intégré dès la conception. Livré en 3 à 6 semaines pour un site vitrine.",
+            "description": "Site vitrine, site d'entreprise, portfolio ou boutique en ligne dessiné et codé sur mesure, sans WordPress ni Wix, hébergé en Suisse chez Infomaniak, avec le référencement local intégré dès la conception. Livré en 3 à 6 semaines pour un site vitrine.",
             "provider": {
                 "@id": "https://wearebrothers.ch/#organization"
             },
@@ -114,6 +116,10 @@
                     "name": "Yverdon-les-Bains"
                 },
                 {
+                    "@type": "City",
+                    "name": "Genève"
+                },
+                {
                     "@type": "AdministrativeArea",
                     "name": "Canton de Vaud"
                 },
@@ -126,6 +132,52 @@
                 "fr",
                 "en"
             ],
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Formats de sites internet",
+                "itemListElement": [
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Site vitrine",
+                            "description": "Pour un commerce, un restaurant, un cabinet ou un atelier : présenter l'activité et rendre l'appel, la réservation ou l'itinéraire évidents."
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Site d'entreprise",
+                            "description": "Pour une PME : prestations, équipe, références et demande de devis, en français et dans d'autres langues si besoin."
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Portfolio créatif",
+                            "description": "Pour un artiste, un architecte ou un artisan : un objet visuel fort qui montre le travail plutôt que de le décrire."
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Boutique en ligne",
+                            "description": "Catalogue, paiement sécurisé, suivi des commandes et livraison, dessinés sur mesure."
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Refonte de site internet",
+                            "description": "Garder ce qui fonctionne — contenus, adresses, référencement acquis — et redessiner et recoder le reste, sans interruption."
+                        }
+                    }
+                ]
+            },
             "url": "https://wearebrothers.ch/creation-site-internet-lausanne"
         },
         {
@@ -146,38 +198,6 @@
                 },
                 {
                     "@type": "Question",
-                    "name": "Mon site sera-t-il adapté au téléphone ?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Oui. Chaque site est dessiné pour le petit écran d'abord, puis adapté aux tablettes et aux ordinateurs. La plupart de vos visiteurs arrivent depuis un téléphone, c'est là que le site doit être impeccable."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    "name": "Qui héberge le site, et à qui appartient-il ?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Le site est hébergé en Suisse chez Infomaniak, hébergement inclus, avec un guide pour le gérer vous-même. Le nom de domaine, le code et les contenus vous appartiennent."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    "name": "Travaillez-vous avec les commerces et restaurants de Lausanne ?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Oui. Le Zinéma, rue du Maupas, Le P'tit Central, rue Centrale, ou Amarte Studio à Épalinges sont des sites que nous avons dessinés et codés pour des lieux de Lausanne et de ses hauts. Artisans, créatifs et indépendants du canton de Vaud nous confient aussi leur site."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    "name": "Pourquoi passer par une agence web à Lausanne plutôt que par un constructeur de site en ligne ?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Un constructeur en ligne produit un site standard sur lequel vous êtes seul. Avec nous, vous rencontrez à Lausanne les deux personnes qui dessinent et codent votre site internet, vous en êtes propriétaire de bout en bout, et il est construit pour votre marché : vos clients, votre quartier, votre canton. Le code sur mesure charge plus vite qu'un gabarit et donne une base saine pour le référencement."
-                    }
-                },
-                {
-                    "@type": "Question",
                     "name": "Combien coûte la création d'un site internet ?",
                     "acceptedAnswer": {
                         "@type": "Answer",
@@ -194,10 +214,18 @@
                 },
                 {
                     "@type": "Question",
-                    "name": "Faites-vous aussi la refonte d'un site existant ?",
+                    "name": "Que dois-je préparer avant le premier rendez-vous ?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Oui. Nous gardons ce qui fonctionne — contenus, adresses des pages, référencement acquis — et nous redessinons et recodons le reste. Les anciennes adresses sont conservées ou redirigées, et le nouveau site remplace l'ancien sans interruption."
+                        "text": "Rien d'obligatoire. Venez avec votre activité, ce que vous attendez du site et, si vous en avez, des sites que vous aimez. Logo, textes et photos existants sont bienvenus ; s'ils manquent, nous voyons ensemble comment les produire, et cela entre dans la proposition."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Mon site sera-t-il adapté au téléphone ?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Oui. Chaque site est dessiné pour le petit écran d'abord, puis adapté aux tablettes et aux ordinateurs. La plupart de vos visiteurs arrivent depuis un téléphone, c'est là que le site doit être impeccable."
                     }
                 },
                 {
@@ -206,6 +234,46 @@
                     "acceptedAnswer": {
                         "@type": "Answer",
                         "text": "Chaque site est codé pour être rapide, lisible par Google et structuré pour le référencement local : balises, données structurées, plan du site, textes travaillés avec vous autour de votre activité et de votre région. Le référencement se construit ensuite dans la durée, et nous restons disponibles pour le faire progresser."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Qui héberge le site, et à qui appartient-il ?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Le site est hébergé en Suisse chez Infomaniak, hébergement inclus, avec un guide pour le gérer vous-même. Le nom de domaine, le code et les contenus vous appartiennent."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Mon site peut-il être en plusieurs langues ?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Oui. Un site peut exister en français et en anglais, ou en allemand pour le reste de la Suisse. Chaque langue a ses propres adresses, signalées à Google, pour que chaque visiteur tombe sur la bonne version."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Faites-vous aussi la refonte d'un site existant ?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Oui. Nous gardons ce qui fonctionne — contenus, adresses des pages, référencement acquis — et nous redessinons et recodons le reste. Les anciennes adresses sont conservées ou redirigées, et le nouveau site remplace l'ancien sans interruption."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Travaillez-vous avec les commerces et restaurants de Lausanne ?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Oui. Le Zinéma, rue du Maupas, Le P'tit Central, rue Centrale, ou Amarte Studio à Épalinges sont des sites que nous avons dessinés et codés pour des lieux de Lausanne et de ses hauts. Artisans, créatifs et indépendants du canton de Vaud nous confient aussi leur site."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Pourquoi passer par une agence web à Lausanne plutôt que par un constructeur de site en ligne ?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Un constructeur en ligne produit un site standard sur lequel vous êtes seul. Avec nous, vous rencontrez à Lausanne les deux personnes qui dessinent et codent votre site internet, vous en êtes propriétaire de bout en bout, et il est construit pour votre marché : vos clients, votre quartier, votre canton. Le code sur mesure charge plus vite qu'un gabarit et donne une base saine pour le référencement."
                     }
                 },
                 {
@@ -243,16 +311,18 @@
     <!-- Police — Epilogue seule, servie depuis le site -->
     <link rel="preload" href="assets/fonts/Epilogue-Variable.woff2" as="font" type="font/woff2" crossorigin>
 
-    <!-- Styles — uniquement des feuilles déjà en place : grille de
-         cartes et passerelle de l'accueil, grille d'approche de la
-         page Applications, cartes dépliantes de page.css. -->
+    <!-- Styles — le socle commun, les blocs de page (en-tête, fenêtre,
+         questions, conclusion), la liste d'approche partagée avec la
+         page Applications, et sections.css pour ce qui n'existe qu'ici :
+         l'en-tête avec ses faits, la grande grille d'exemples, les
+         formats, les étapes et la passerelle. -->
     <link rel="stylesheet" href="css/base.css?v=23">
     <link rel="stylesheet" href="css/nav.css?v=14">
     <link rel="stylesheet" href="css/contact-modal.css?v=3">
     <link rel="stylesheet" href="css/contact-form.css?v=3">
     <link rel="stylesheet" href="css/page.css?v=6">
-    <link rel="stylesheet" href="css/sections.css?v=3">
     <link rel="stylesheet" href="css/apps.css?v=4">
+    <link rel="stylesheet" href="css/sections.css?v=4">
     <link rel="stylesheet" href="css/approach.css?v=1">
     <link rel="stylesheet" href="css/footer.css?v=6">
 
@@ -328,15 +398,112 @@
 
     <main id="contenu">
 
-        <!-- EN-TÊTE DE PAGE -->
-        <section class="page-head">
+        <!-- EN-TÊTE DE PAGE — le titre porte la requête visée, en plus
+             grand que sur les autres pages : c'est l'entrée depuis
+             Google, elle doit répondre d'un coup d'œil. Deux boutons,
+             puis trois faits en une ligne. -->
+        <section class="page-head page-head--service">
             <div class="shell">
                 <h1 class="page-head__title">Création de site internet à Lausanne</h1>
                 <p class="page-head__sub">
                     Un site vitrine ou un site d'entreprise dessiné et codé sur mesure, à Lausanne, par les deux
-                    frères qui le mettront en ligne. Pour les PME, les commerces et les indépendants de
-                    l'arc lémanique.
+                    frères qui le mettront en ligne. Pour les PME, les commerces, les cabinets et les
+                    indépendants de l'arc lémanique.
                 </p>
+                <div class="page-head__actions">
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="btn btn--solid btn--lg">
+                        <span>Démarrer un projet</span>
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                    </a>
+                    <a href="#exemples" class="btn btn--ghost btn--lg">
+                        <span>Voir des exemples</span>
+                    </a>
+                </div>
+                <ul class="facts" aria-label="En bref">
+                    <li>Site vitrine en 3 à 6 semaines</li>
+                    <li>Hébergement suisse inclus</li>
+                    <li>Réponse sous 24&nbsp;h ouvrées</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- EXEMPLES — la preuve avant l'explication. Les captures
+             sortent de la colonne de lecture et prennent toute la
+             largeur, comme sur la page Réalisations. -->
+        <section class="band" id="exemples">
+            <div class="shell">
+                <h2 class="band-title reveal">Des sites internet créés à Lausanne et dans le canton de Vaud</h2>
+                <p class="band-lede reveal">
+                    Quatre sites en ligne, du cinéma de quartier à l'entreprise familiale. Chacun a été dessiné
+                    pour son quartier et ses clients, puis codé à la main.
+                </p>
+            </div>
+
+            <div class="spread">
+                <div class="work-grid work-grid--wide" data-reveal-group>
+                    <a href="https://www.zinema.ch/" target="_blank" rel="noopener noreferrer" class="work-card window-link reveal">
+                        <div class="window">
+                            <span class="window__chrome" aria-hidden="true">
+                                <span></span><span></span><span></span>
+                            </span>
+                            <span class="window__view">
+                                <img class="window__img" src="assets/images/project-zinema.webp" srcset="assets/images/project-zinema-720.webp 720w, assets/images/project-zinema.webp 1200w" sizes="(min-width: 700px) 50vw, 100vw" alt="Site internet du Zinéma, cinéma d'art et essai de la rue du Maupas à Lausanne, créé par WeAreBrothers" loading="lazy" decoding="async" width="1200" height="900">
+                                <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
+                            </span>
+                        </div>
+                        <h3 class="work-card__name">Zinéma</h3>
+                        <p class="work-card__desc">Site vitrine d'un cinéma d'art et essai, rue du Maupas à Lausanne — un accueil en mur d'affiches, l'agenda des séances et la carte de membre.</p>
+                    </a>
+
+                    <a href="https://le-p-tit-central.vercel.app/" target="_blank" rel="noopener noreferrer" class="work-card window-link reveal">
+                        <div class="window">
+                            <span class="window__chrome" aria-hidden="true">
+                                <span></span><span></span><span></span>
+                            </span>
+                            <span class="window__view">
+                                <img class="window__img" src="assets/images/project-central.webp" srcset="assets/images/project-central-720.webp 720w, assets/images/project-central.webp 1200w" sizes="(min-width: 700px) 50vw, 100vw" alt="Site internet du café-restaurant Le P'tit Central, rue Centrale à Lausanne, créé par WeAreBrothers" loading="lazy" decoding="async" width="1200" height="900">
+                                <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
+                            </span>
+                        </div>
+                        <h3 class="work-card__name">Le P'tit Central</h3>
+                        <p class="work-card__desc">Site vitrine d'un café-restaurant de quartier, rue Centrale à Lausanne — carte par moment de la journée, horaires et réservation en un geste.</p>
+                    </a>
+
+                    <a href="https://amarte.ch/" target="_blank" rel="noopener noreferrer" class="work-card window-link reveal">
+                        <div class="window">
+                            <span class="window__chrome" aria-hidden="true">
+                                <span></span><span></span><span></span>
+                            </span>
+                            <span class="window__view">
+                                <img class="window__img" src="assets/images/project-amarte.webp" srcset="assets/images/project-amarte-720.webp 720w, assets/images/project-amarte.webp 1200w" sizes="(min-width: 700px) 50vw, 100vw" alt="Site internet d'Amarte Studio, centre de yoga et de Pilates à Épalinges, créé par WeAreBrothers" loading="lazy" decoding="async" width="1200" height="900">
+                                <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
+                            </span>
+                        </div>
+                        <h3 class="work-card__name">Amarte Studio</h3>
+                        <p class="work-card__desc">Site d'un centre de yoga et de Pilates à Épalinges, sur les hauts de Lausanne — disciplines, profs et horaires réunis dans un parcours qui mène à la réservation.</p>
+                    </a>
+
+                    <a href="https://commissione-entretien.ch/" target="_blank" rel="noopener noreferrer" class="work-card window-link reveal">
+                        <div class="window">
+                            <span class="window__chrome" aria-hidden="true">
+                                <span></span><span></span><span></span>
+                            </span>
+                            <span class="window__view">
+                                <img class="window__img" src="assets/images/project-commissione.webp" srcset="assets/images/project-commissione-720.webp 720w, assets/images/project-commissione.webp 1200w" sizes="(min-width: 700px) 50vw, 100vw" alt="Site internet de Commissione Entretien, entreprise familiale d'entretien à Bavois, créé par WeAreBrothers" loading="lazy" decoding="async" width="1200" height="900">
+                                <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
+                            </span>
+                        </div>
+                        <h3 class="work-card__name">Commissione Entretien</h3>
+                        <p class="work-card__desc">Site d'entreprise d'une société familiale d'entretien à Bavois, dans le canton de Vaud — cinq prestations, demande de devis et appel direct partout.</p>
+                    </a>
+                </div>
+
+                <div class="band-footer reveal">
+                    <a href="/realisations" class="btn btn--ghost">
+                        <span>Voir toutes nos réalisations</span>
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -346,154 +513,158 @@
                 <div class="split__head">
                     <h2 class="band-title reveal">Ce que comprend votre site internet</h2>
                     <p class="band-lede reveal">
-                        Chaque site est construit de A à Z pour votre entreprise. Rien n'est pris sur étagère.
+                        Chaque site est construit de A à Z pour votre entreprise. Rien n'est pris sur étagère,
+                        et rien d'essentiel n'est en option.
                     </p>
                 </div>
 
                 <div class="split__body">
                     <div class="approach approach--pair" data-reveal-group>
                         <article class="approach__item reveal">
-                            <h3 class="approach__title">Un design dessiné pour vous</h3>
-                            <p class="approach__desc">Une direction artistique tirée de votre métier et de votre image, pas un gabarit réutilisé. Des interfaces précises, lisibles, pensées en priorité pour le mobile.</p>
+                            <h3 class="approach__title">Un design dessiné pour votre activité</h3>
+                            <p class="approach__desc">Une direction artistique tirée de votre métier, de votre quartier et de vos clients, pas un gabarit réutilisé. Des pages précises, lisibles, pensées d'abord pour le téléphone.</p>
                         </article>
                         <article class="approach__item reveal">
                             <h3 class="approach__title">Un code écrit à la main</h3>
-                            <p class="approach__desc">Sans WordPress ni Wix&nbsp;: pas d'extension à maintenir, rien d'inutile n'est chargé, et la page s'affiche presque instantanément sur téléphone.</p>
+                            <p class="approach__desc">Sans WordPress ni Wix&nbsp;: aucune extension à maintenir, rien d'inutile n'est chargé, et le site s'affiche presque instantanément, même sur une connexion mobile moyenne.</p>
                         </article>
                         <article class="approach__item reveal">
                             <h3 class="approach__title">L'hébergement suisse inclus</h3>
-                            <p class="approach__desc">Votre site est hébergé chez Infomaniak, en Suisse, avec un guide pour gérer votre hébergement en toute autonomie.</p>
+                            <p class="approach__desc">Votre site est hébergé chez Infomaniak, en Suisse, avec un nom de domaine à votre nom et un guide pour gérer l'hébergement en toute autonomie.</p>
                         </article>
                         <article class="approach__item reveal">
                             <h3 class="approach__title">Le référencement local dès la conception</h3>
-                            <p class="approach__desc">Balises, données structurées, plan du site et textes travaillés avec vous autour de votre activité et de votre région, pour être trouvé à Lausanne et dans le canton de Vaud.</p>
+                            <p class="approach__desc">Balises, données structurées, plan du site, adresses de pages propres et textes travaillés avec vous autour de votre activité et de votre région, pour être trouvé à Lausanne et dans le canton de Vaud.</p>
                         </article>
                         <article class="approach__item reveal">
                             <h3 class="approach__title">Un parcours qui mène à l'action</h3>
-                            <p class="approach__desc">Une structure et des animations qui guident vos visiteurs vers l'appel, le formulaire ou la demande de devis.</p>
+                            <p class="approach__desc">Chaque page guide le visiteur vers ce que vous attendez de lui&nbsp;: un appel, une réservation, une demande de devis, un passage en boutique.</p>
                         </article>
                         <article class="approach__item reveal">
                             <h3 class="approach__title">Un suivi après la mise en ligne</h3>
-                            <p class="approach__desc">Maintenance, évolutions, petites retouches&nbsp;: nous restons joignables une fois le site en ligne.</p>
+                            <p class="approach__desc">Maintenance, évolutions, retouches de contenu&nbsp;: nous restons joignables une fois le site en ligne, et nous suivons son référencement avec vous.</p>
                         </article>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- DÉROULÉ -->
+        <!-- FORMATS — les quatre formes que prend un site, deux par
+             deux sous le titre. La refonte a sa passerelle plus bas. -->
+        <section class="band" id="formats">
+            <div class="shell">
+                <h2 class="band-title reveal">Site vitrine, site d'entreprise, portfolio ou boutique en ligne</h2>
+                <p class="band-lede reveal">
+                    Le même soin, quel que soit le format. Ce qui change, c'est ce que le site doit obtenir
+                    pour vous.
+                </p>
+            </div>
+
+            <div class="spread">
+                <div class="formats" data-reveal-group>
+                    <article class="format reveal">
+                        <h3 class="format__title">Site vitrine</h3>
+                        <p class="format__desc">Pour un commerce, un restaurant, un cabinet ou un atelier&nbsp;: présenter l'activité, donner envie, et rendre l'appel, la réservation ou l'itinéraire évidents. Le format le plus courant à Lausanne, livré en 3 à 6 semaines.</p>
+                    </article>
+                    <article class="format reveal">
+                        <h3 class="format__title">Site d'entreprise</h3>
+                        <p class="format__desc">Pour une PME, un bureau ou une fiduciaire&nbsp;: vos prestations, votre équipe, vos références et une demande de devis claire. En français, et en anglais ou en allemand si vos clients le demandent.</p>
+                    </article>
+                    <article class="format reveal">
+                        <h3 class="format__title">Portfolio créatif</h3>
+                        <p class="format__desc">Pour un DJ, un architecte, un joaillier&nbsp;: un objet visuel fort, qui montre le travail plutôt que de le décrire. Animations, typographie, mise en scène — sans jamais ralentir la page.</p>
+                    </article>
+                    <article class="format reveal">
+                        <h3 class="format__title">Boutique en ligne</h3>
+                        <p class="format__desc">Pour vendre en Suisse romande et au-delà&nbsp;: catalogue, paiement sécurisé, suivi des commandes, livraison. Dessinée sur mesure, comme le reste, et pensée pour être trouvée sur Google.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- DÉROULÉ — quatre étapes en une ligne sur grand écran : la
+             seule numérotation du site, parce qu'ici l'ordre est le
+             sujet. -->
         <section class="band" id="deroule">
+            <div class="shell">
+                <h2 class="band-title reveal">Comment se déroule la création de votre site internet</h2>
+                <p class="band-lede reveal">
+                    Quatre étapes et un seul interlocuteur, du premier café à la mise en ligne. Comptez
+                    3 à 6 semaines pour un site vitrine.
+                </p>
+            </div>
+
+            <div class="spread">
+                <ol class="steps" data-reveal-group>
+                    <li class="step reveal">
+                        <span class="step__num" aria-hidden="true">1</span>
+                        <h3 class="step__title">Un café ou un appel</h3>
+                        <p class="step__desc">Nous écoutons votre activité, vos clients et ce que le site doit obtenir. Sans engagement.</p>
+                    </li>
+                    <li class="step reveal">
+                        <span class="step__num" aria-hidden="true">2</span>
+                        <h3 class="step__title">Une proposition sous 24&nbsp;h ouvrées</h3>
+                        <p class="step__desc">Périmètre, calendrier et prix, définis ensemble. Le paiement peut être échelonné en plusieurs mensualités.</p>
+                    </li>
+                    <li class="step reveal">
+                        <span class="step__num" aria-hidden="true">3</span>
+                        <h3 class="step__title">Design, puis développement</h3>
+                        <p class="step__desc">Eliott dessine, Matt code. Des points réguliers, et vous validez chaque étape avant la suivante.</p>
+                    </li>
+                    <li class="step reveal">
+                        <span class="step__num" aria-hidden="true">4</span>
+                        <h3 class="step__title">Mise en ligne, puis la suite</h3>
+                        <p class="step__desc">Le site part sur son hébergement suisse, plan du site et balises en place. Nous restons disponibles pour la maintenance et les évolutions.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- LE STUDIO — qui fait le site, et où. C'est ici que la page
+             dit Lausanne pour de vrai : les personnes, le café, les
+             communes. -->
+        <section class="band" id="studio">
             <div class="spread split">
                 <div class="split__head">
-                    <h2 class="band-title reveal">Comment se déroule la création de votre site</h2>
-                    <p class="band-lede reveal">
-                        Quatre étapes et un seul interlocuteur, du premier café à la mise en ligne. Comptez
-                        3 à 6 semaines pour un site vitrine.
-                    </p>
+                    <h2 class="band-title reveal">Une agence web à Lausanne, à taille humaine</h2>
                 </div>
 
-                <div class="split__body">
-                    <div class="approach approach--pair" data-reveal-group>
-                        <article class="approach__item reveal">
-                            <h3 class="approach__title">1. Un café ou un appel</h3>
-                            <p class="approach__desc">Nous écoutons votre activité, vos clients et ce que le site doit obtenir. Sans engagement, réponse sous 24&nbsp;h ouvrées.</p>
-                        </article>
-                        <article class="approach__item reveal">
-                            <h3 class="approach__title">2. Une proposition</h3>
-                            <p class="approach__desc">Périmètre, calendrier et prix, définis ensemble après ce premier échange. Le paiement peut être échelonné en plusieurs mensualités.</p>
-                        </article>
-                        <article class="approach__item reveal">
-                            <h3 class="approach__title">3. Design, puis développement</h3>
-                            <p class="approach__desc">Eliott dessine, Matt code. Des points réguliers, et vous validez à chaque étape.</p>
-                        </article>
-                        <article class="approach__item reveal">
-                            <h3 class="approach__title">4. Mise en ligne, puis la suite</h3>
-                            <p class="approach__desc">Le site part sur son hébergement suisse. Nous restons disponibles pour la maintenance et les évolutions.</p>
-                        </article>
-                    </div>
+                <div class="split__body prose" data-reveal-group>
+                    <p class="reveal">
+                        WeAreBrothers est un studio fondé à Lausanne par deux frères&nbsp;: Eliott dessine, Matt
+                        code. Vous parlez directement à ceux qui font votre site, sans chef de projet ni
+                        intermédiaire, et la plupart de nos clients, nous les rencontrons à Lausanne autour
+                        d'un café.
+                    </p>
+                    <p class="reveal">
+                        Nous créons des sites internet pour des entreprises de Lausanne, de Pully, de Renens et
+                        d'Épalinges, et dans tout l'arc lémanique — Morges, Nyon, Vevey, Montreux,
+                        Yverdon-les-Bains, Genève. Pour le reste de la Suisse romande, tout se fait très bien à
+                        distance.
+                    </p>
+                    <p class="reveal">
+                        Le site est hébergé en Suisse, chez Infomaniak, et il vous appartient de bout en
+                        bout&nbsp;: nom de domaine, code, contenus. Et quand une entreprise a besoin de plus
+                        qu'un site, nous développons aussi des
+                        <a href="/applications" class="text-link">applications de gestion sur mesure</a>.
+                    </p>
+                    <p class="prose__links reveal">
+                        <a href="/studio" class="text-link">Faire connaissance avec le studio</a>
+                        <a href="/realisations" class="text-link">Parcourir nos réalisations</a>
+                    </p>
                 </div>
             </div>
         </section>
 
-        <!-- EXEMPLES -->
-        <section class="band" id="exemples">
+        <!-- REFONTE — le seul aplat sombre de la page -->
+        <section class="band band--bridge" id="refonte">
             <div class="shell">
-                <h2 class="band-title reveal">Des sites internet créés pour des entreprises de Lausanne et du canton de Vaud</h2>
-                <p class="band-lede reveal">
-                    Quatre exemples en ligne, du cinéma de quartier à l'entreprise familiale.
-                </p>
-
-                <div class="work-grid" data-reveal-group>
-                        <a href="https://www.zinema.ch/" target="_blank" rel="noopener noreferrer" class="work-card window-link reveal">
-                            <div class="window">
-                                <span class="window__chrome" aria-hidden="true">
-                                    <span></span><span></span><span></span>
-                                </span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/project-zinema.webp" alt="Site internet du Zinéma, cinéma d'art et essai de la rue du Maupas à Lausanne, créé par WeAreBrothers" loading="lazy" decoding="async" width="1200" height="900">
-                                    <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
-                                </span>
-                            </div>
-                            <h3 class="work-card__name">Zinéma</h3>
-                            <p class="work-card__desc">Cinéma d'art et essai, rue du Maupas à Lausanne — un accueil en mur d'affiches, l'agenda des séances et la carte de membre.</p>
-                        </a>
-
-                        <a href="https://le-p-tit-central.vercel.app/" target="_blank" rel="noopener noreferrer" class="work-card window-link reveal">
-                            <div class="window">
-                                <span class="window__chrome" aria-hidden="true">
-                                    <span></span><span></span><span></span>
-                                </span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/project-central.webp" alt="Site internet du café-restaurant Le P'tit Central, rue Centrale à Lausanne, créé par WeAreBrothers" loading="lazy" decoding="async" width="1200" height="900">
-                                    <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
-                                </span>
-                            </div>
-                            <h3 class="work-card__name">Le P'tit Central</h3>
-                            <p class="work-card__desc">Café-restaurant de quartier, rue Centrale à Lausanne — carte par moment de la journée, horaires et réservation en un geste.</p>
-                        </a>
-
-                        <a href="https://amarte.ch/" target="_blank" rel="noopener noreferrer" class="work-card window-link reveal">
-                            <div class="window">
-                                <span class="window__chrome" aria-hidden="true">
-                                    <span></span><span></span><span></span>
-                                </span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/project-amarte.webp" alt="Site internet d'Amarte Studio, centre de yoga et de Pilates à Épalinges, créé par WeAreBrothers" loading="lazy" decoding="async" width="1200" height="900">
-                                    <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
-                                </span>
-                            </div>
-                            <h3 class="work-card__name">Amarte Studio</h3>
-                            <p class="work-card__desc">Yoga et Pilates à Épalinges, sur les hauts de Lausanne — disciplines, profs et horaires réunis dans un parcours qui mène à la réservation.</p>
-                        </a>
-
-                        <a href="https://commissione-entretien.ch/" target="_blank" rel="noopener noreferrer" class="work-card window-link reveal">
-                            <div class="window">
-                                <span class="window__chrome" aria-hidden="true">
-                                    <span></span><span></span><span></span>
-                                </span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/project-commissione.webp" alt="Site internet de Commissione Entretien, entreprise familiale d'entretien à Bavois, créé par WeAreBrothers" loading="lazy" decoding="async" width="1200" height="900">
-                                    <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
-                                </span>
-                            </div>
-                            <h3 class="work-card__name">Commissione Entretien</h3>
-                            <p class="work-card__desc">Entreprise familiale d'entretien à Bavois, dans le canton de Vaud — cinq prestations, demande de devis et appel direct partout.</p>
-                        </a>
-                </div>
-
-                <div class="band-footer reveal">
-                    <a href="/realisations" class="btn btn--ghost">
-                        <span>Voir toutes nos réalisations</span>
-                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                    </a>
-                </div>
-
                 <div class="bridge reveal">
-                    <h3 class="bridge__title">Vous avez déjà un site&nbsp;? Nous faisons aussi la refonte.</h3>
+                    <h2 class="bridge__title">Vous avez déjà un site&nbsp;? Nous faisons aussi la refonte.</h2>
                     <p class="bridge__text">
                         Nous gardons ce qui fonctionne — contenus, adresses des pages, référencement acquis —
                         et nous redessinons et recodons le reste. Le nouveau site remplace l'ancien sans
-                        interruption.
+                        interruption, et sans perdre votre place sur Google.
                     </p>
                     <a href="mailto:contact@wearebrothers.ch" data-contact class="btn btn--solid btn--lg bridge__cta">
                         <span>Parler de votre refonte</span>
@@ -508,6 +679,9 @@
             <div class="spread split">
                 <div class="split__head">
                     <h2 class="band-title reveal" id="questionsTitle">Créer son site internet&nbsp;: vos questions</h2>
+                    <p class="band-lede reveal">
+                        Prix, délais, hébergement, référencement&nbsp;: ce qu'on nous demande avant de commencer.
+                    </p>
                 </div>
 
                 <div class="split__body">
@@ -528,6 +702,48 @@
                         </article>
                         <article class="service reveal">
                             <h3 class="service__head">
+                                <button type="button" class="service__toggle" id="faq-prix-label"
+                                    aria-expanded="false" aria-controls="faq-prix">
+                                    <span class="service__name">Combien coûte la création d'un site internet&nbsp;?</span>
+                                    <span class="service__icon" aria-hidden="true"></span>
+                                </button>
+                            </h3>
+                            <div class="service__panel" id="faq-prix" role="region" aria-labelledby="faq-prix-label">
+                                <div class="service__panel-inner">
+                                    <p class="service__desc">Le prix suit le périmètre&nbsp;: nombre de pages, design, fonctionnalités, contenus à produire. Nous le définissons ensemble après un premier échange, sans surprise ensuite, et le paiement peut être échelonné en plusieurs mensualités. Vous recevez une proposition sous 24&nbsp;h ouvrées.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="service reveal">
+                            <h3 class="service__head">
+                                <button type="button" class="service__toggle" id="faq-delai-label"
+                                    aria-expanded="false" aria-controls="faq-delai">
+                                    <span class="service__name">Combien de temps prend la création d'un site internet&nbsp;?</span>
+                                    <span class="service__icon" aria-hidden="true"></span>
+                                </button>
+                            </h3>
+                            <div class="service__panel" id="faq-delai" role="region" aria-labelledby="faq-delai-label">
+                                <div class="service__panel-inner">
+                                    <p class="service__desc">Comptez généralement 3 à 6 semaines pour un site vitrine, davantage pour un projet sur mesure ou une boutique en ligne. Le calendrier est fixé ensemble au départ, avec des points réguliers jusqu'à la mise en ligne.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="service reveal">
+                            <h3 class="service__head">
+                                <button type="button" class="service__toggle" id="faq-preparer-label"
+                                    aria-expanded="false" aria-controls="faq-preparer">
+                                    <span class="service__name">Que dois-je préparer avant le premier rendez-vous&nbsp;?</span>
+                                    <span class="service__icon" aria-hidden="true"></span>
+                                </button>
+                            </h3>
+                            <div class="service__panel" id="faq-preparer" role="region" aria-labelledby="faq-preparer-label">
+                                <div class="service__panel-inner">
+                                    <p class="service__desc">Rien d'obligatoire. Venez avec votre activité, ce que vous attendez du site et, si vous en avez, des sites que vous aimez. Logo, textes et photos existants sont bienvenus&nbsp;; s'ils manquent, nous voyons ensemble comment les produire, et cela entre dans la proposition.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="service reveal">
+                            <h3 class="service__head">
                                 <button type="button" class="service__toggle" id="faq-mobile-label"
                                     aria-expanded="false" aria-controls="faq-mobile">
                                     <span class="service__name">Mon site sera-t-il adapté au téléphone&nbsp;?</span>
@@ -537,6 +753,20 @@
                             <div class="service__panel" id="faq-mobile" role="region" aria-labelledby="faq-mobile-label">
                                 <div class="service__panel-inner">
                                     <p class="service__desc">Oui. Chaque site est dessiné pour le petit écran d'abord, puis adapté aux tablettes et aux ordinateurs. La plupart de vos visiteurs arrivent depuis un téléphone, c'est là que le site doit être impeccable.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="service reveal">
+                            <h3 class="service__head">
+                                <button type="button" class="service__toggle" id="faq-seo-label"
+                                    aria-expanded="false" aria-controls="faq-seo">
+                                    <span class="service__name">Mon site internet sera-t-il bien référencé sur Google&nbsp;?</span>
+                                    <span class="service__icon" aria-hidden="true"></span>
+                                </button>
+                            </h3>
+                            <div class="service__panel" id="faq-seo" role="region" aria-labelledby="faq-seo-label">
+                                <div class="service__panel-inner">
+                                    <p class="service__desc">Chaque site est codé pour être rapide, lisible par Google et structuré pour le référencement local&nbsp;: balises, données structurées, plan du site, textes travaillés avec vous autour de votre activité et de votre région. Le référencement se construit ensuite dans la durée, et nous restons disponibles pour le faire progresser.</p>
                                 </div>
                             </div>
                         </article>
@@ -556,6 +786,34 @@
                         </article>
                         <article class="service reveal">
                             <h3 class="service__head">
+                                <button type="button" class="service__toggle" id="faq-langues-label"
+                                    aria-expanded="false" aria-controls="faq-langues">
+                                    <span class="service__name">Mon site peut-il être en plusieurs langues&nbsp;?</span>
+                                    <span class="service__icon" aria-hidden="true"></span>
+                                </button>
+                            </h3>
+                            <div class="service__panel" id="faq-langues" role="region" aria-labelledby="faq-langues-label">
+                                <div class="service__panel-inner">
+                                    <p class="service__desc">Oui. Un site peut exister en français et en anglais, ou en allemand pour le reste de la Suisse. Chaque langue a ses propres adresses, signalées à Google, pour que chaque visiteur tombe sur la bonne version.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="service reveal">
+                            <h3 class="service__head">
+                                <button type="button" class="service__toggle" id="faq-refonte-label"
+                                    aria-expanded="false" aria-controls="faq-refonte">
+                                    <span class="service__name">Faites-vous aussi la refonte d'un site existant&nbsp;?</span>
+                                    <span class="service__icon" aria-hidden="true"></span>
+                                </button>
+                            </h3>
+                            <div class="service__panel" id="faq-refonte" role="region" aria-labelledby="faq-refonte-label">
+                                <div class="service__panel-inner">
+                                    <p class="service__desc">Oui. Nous gardons ce qui fonctionne — contenus, adresses des pages, référencement acquis — et nous redessinons et recodons le reste. Les anciennes adresses sont conservées ou redirigées, et le nouveau site remplace l'ancien sans interruption.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="service reveal">
+                            <h3 class="service__head">
                                 <button type="button" class="service__toggle" id="faq-commerces-label"
                                     aria-expanded="false" aria-controls="faq-commerces">
                                     <span class="service__name">Travaillez-vous avec les commerces et restaurants de Lausanne&nbsp;?</span>
@@ -568,90 +826,34 @@
                                 </div>
                             </div>
                         </article>
-                            <article class="service reveal">
-                                <h3 class="service__head">
-                                    <button type="button" class="service__toggle" id="faq-agence-label"
-                                        aria-expanded="false" aria-controls="faq-agence">
-                                        <span class="service__name">Pourquoi passer par une agence web à Lausanne plutôt que par un constructeur de site en ligne&nbsp;?</span>
-                                        <span class="service__icon" aria-hidden="true"></span>
-                                    </button>
-                                </h3>
-                                <div class="service__panel" id="faq-agence" role="region" aria-labelledby="faq-agence-label">
-                                    <div class="service__panel-inner">
-                                        <p class="service__desc">Un constructeur en ligne produit un site standard sur lequel vous êtes seul. Avec nous, vous rencontrez à Lausanne les deux personnes qui dessinent et codent votre site internet, vous en êtes propriétaire de bout en bout, et il est construit pour votre marché&nbsp;: vos clients, votre quartier, votre canton. Le code sur mesure charge plus vite qu'un gabarit et donne une base saine pour le référencement.</p>
-                                    </div>
+                        <article class="service reveal">
+                            <h3 class="service__head">
+                                <button type="button" class="service__toggle" id="faq-agence-label"
+                                    aria-expanded="false" aria-controls="faq-agence">
+                                    <span class="service__name">Pourquoi passer par une agence web à Lausanne plutôt que par un constructeur de site en ligne&nbsp;?</span>
+                                    <span class="service__icon" aria-hidden="true"></span>
+                                </button>
+                            </h3>
+                            <div class="service__panel" id="faq-agence" role="region" aria-labelledby="faq-agence-label">
+                                <div class="service__panel-inner">
+                                    <p class="service__desc">Un constructeur en ligne produit un site standard sur lequel vous êtes seul. Avec nous, vous rencontrez à Lausanne les deux personnes qui dessinent et codent votre site internet, vous en êtes propriétaire de bout en bout, et il est construit pour votre marché&nbsp;: vos clients, votre quartier, votre canton. Le code sur mesure charge plus vite qu'un gabarit et donne une base saine pour le référencement.</p>
                                 </div>
-                            </article>
-                            <article class="service reveal">
-                                <h3 class="service__head">
-                                    <button type="button" class="service__toggle" id="faq-prix-label"
-                                        aria-expanded="false" aria-controls="faq-prix">
-                                        <span class="service__name">Combien coûte la création d'un site internet&nbsp;?</span>
-                                        <span class="service__icon" aria-hidden="true"></span>
-                                    </button>
-                                </h3>
-                                <div class="service__panel" id="faq-prix" role="region" aria-labelledby="faq-prix-label">
-                                    <div class="service__panel-inner">
-                                        <p class="service__desc">Le prix suit le périmètre&nbsp;: nombre de pages, design, fonctionnalités, contenus à produire. Nous le définissons ensemble après un premier échange, sans surprise ensuite, et le paiement peut être échelonné en plusieurs mensualités. Vous recevez une proposition sous 24&nbsp;h ouvrées.</p>
-                                    </div>
+                            </div>
+                        </article>
+                        <article class="service reveal">
+                            <h3 class="service__head">
+                                <button type="button" class="service__toggle" id="faq-zone-label"
+                                    aria-expanded="false" aria-controls="faq-zone">
+                                    <span class="service__name">Travaillez-vous uniquement à Lausanne&nbsp;?</span>
+                                    <span class="service__icon" aria-hidden="true"></span>
+                                </button>
+                            </h3>
+                            <div class="service__panel" id="faq-zone" role="region" aria-labelledby="faq-zone-label">
+                                <div class="service__panel-inner">
+                                    <p class="service__desc">Le studio est à Lausanne et c'est là que nous rencontrons la plupart de nos clients, autour d'un café. Nous travaillons dans tout l'arc lémanique — Pully, Renens, Épalinges, Morges, Nyon, Vevey, Montreux, Yverdon-les-Bains, Genève — et à distance pour le reste de la Suisse romande.</p>
                                 </div>
-                            </article>
-                            <article class="service reveal">
-                                <h3 class="service__head">
-                                    <button type="button" class="service__toggle" id="faq-delai-label"
-                                        aria-expanded="false" aria-controls="faq-delai">
-                                        <span class="service__name">Combien de temps prend la création d'un site internet&nbsp;?</span>
-                                        <span class="service__icon" aria-hidden="true"></span>
-                                    </button>
-                                </h3>
-                                <div class="service__panel" id="faq-delai" role="region" aria-labelledby="faq-delai-label">
-                                    <div class="service__panel-inner">
-                                        <p class="service__desc">Comptez généralement 3 à 6 semaines pour un site vitrine, davantage pour un projet sur mesure ou une boutique en ligne. Le calendrier est fixé ensemble au départ, avec des points réguliers jusqu'à la mise en ligne.</p>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="service reveal">
-                                <h3 class="service__head">
-                                    <button type="button" class="service__toggle" id="faq-refonte-label"
-                                        aria-expanded="false" aria-controls="faq-refonte">
-                                        <span class="service__name">Faites-vous aussi la refonte d'un site existant&nbsp;?</span>
-                                        <span class="service__icon" aria-hidden="true"></span>
-                                    </button>
-                                </h3>
-                                <div class="service__panel" id="faq-refonte" role="region" aria-labelledby="faq-refonte-label">
-                                    <div class="service__panel-inner">
-                                        <p class="service__desc">Oui. Nous gardons ce qui fonctionne — contenus, adresses des pages, référencement acquis — et nous redessinons et recodons le reste. Les anciennes adresses sont conservées ou redirigées, et le nouveau site remplace l'ancien sans interruption.</p>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="service reveal">
-                                <h3 class="service__head">
-                                    <button type="button" class="service__toggle" id="faq-seo-label"
-                                        aria-expanded="false" aria-controls="faq-seo">
-                                        <span class="service__name">Mon site internet sera-t-il bien référencé sur Google&nbsp;?</span>
-                                        <span class="service__icon" aria-hidden="true"></span>
-                                    </button>
-                                </h3>
-                                <div class="service__panel" id="faq-seo" role="region" aria-labelledby="faq-seo-label">
-                                    <div class="service__panel-inner">
-                                        <p class="service__desc">Chaque site est codé pour être rapide, lisible par Google et structuré pour le référencement local&nbsp;: balises, données structurées, plan du site, textes travaillés avec vous autour de votre activité et de votre région. Le référencement se construit ensuite dans la durée, et nous restons disponibles pour le faire progresser.</p>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="service reveal">
-                                <h3 class="service__head">
-                                    <button type="button" class="service__toggle" id="faq-zone-label"
-                                        aria-expanded="false" aria-controls="faq-zone">
-                                        <span class="service__name">Travaillez-vous uniquement à Lausanne&nbsp;?</span>
-                                        <span class="service__icon" aria-hidden="true"></span>
-                                    </button>
-                                </h3>
-                                <div class="service__panel" id="faq-zone" role="region" aria-labelledby="faq-zone-label">
-                                    <div class="service__panel-inner">
-                                        <p class="service__desc">Le studio est à Lausanne et c'est là que nous rencontrons la plupart de nos clients, autour d'un café. Nous travaillons dans tout l'arc lémanique — Pully, Renens, Épalinges, Morges, Nyon, Vevey, Montreux, Yverdon-les-Bains, Genève — et à distance pour le reste de la Suisse romande.</p>
-                                    </div>
-                                </div>
-                            </article>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </div>
@@ -677,8 +879,6 @@
                 <p class="closing__note reveal">Lausanne, Suisse — <time data-local-time>--:--</time></p>
             </div>
         </section>
-
-        <!-- PIED DE PAGE -->
 
     </main>
 
