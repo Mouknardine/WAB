@@ -50,7 +50,7 @@ body.landing {
 }
 
 .landing__plate {
-    width: min(540px, 100%);
+    width: min(600px, 100%);
     /* Garde-fou pour les écrans très bas — téléphone couché,
        fenêtre réduite : la plaque défile plutôt que de couper le
        texte, et elle seule. */
@@ -73,25 +73,8 @@ body.landing {
     }
 }
 
-.landing__hello {
-    font-size: clamp(1.5rem, 4.6vw, 2.5rem);
-    font-weight: var(--w-strong);
-    letter-spacing: -0.035em;
-    /* La cédille d'Epilogue descend bas : en dessous de 1.14 elle
-       vient toucher l'accent de la ligne suivante. */
-    line-height: 1.14;
-    text-wrap: balance;
-    color: var(--pink);
-}
-
-.landing__intro {
-    margin-top: clamp(14px, 2vw, 20px);
-    max-width: 48ch;
-    font-size: clamp(0.98rem, 1.35vw, 1.1rem);
-    line-height: 1.62;
-    text-wrap: pretty;
-    color: var(--ink);
-}
+/* Le contenu de la plaque — promesse, preuve, action — vit dans
+   landing-plate.css. */
 
 /* ── La ligne du bas ──
    Le pendant de la barre du haut : même verre, même filet, même
@@ -188,15 +171,5 @@ body.landing {
 @media (max-height: 560px) {
     .landing__plate {
         padding: 18px 20px;
-    }
-
-    .landing__hello {
-        font-size: clamp(1.25rem, 5vh, 1.7rem);
-    }
-
-    .landing__intro {
-        margin-top: 10px;
-        font-size: 0.9rem;
-        line-height: 1.5;
     }
 }

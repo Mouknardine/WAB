@@ -1,0 +1,198 @@
+/* ============================================
+   WAB. — Accueil : le contenu de la plaque
+   Quatre temps, dans l'ordre où un visiteur se pose les questions :
+   ce que fait le studio, qui s'en occupe, ce qu'il a déjà fait, et
+   comment démarrer. La plaque elle-même (verre, position, entrée)
+   reste décrite dans landing.css.
+   ============================================ */
+
+/* La promesse : une phrase complète, rose, plus longue que l'ancien
+   « Welcome ». La taille baisse d'autant pour tenir en trois lignes
+   sur ordinateur. */
+.landing__hello {
+    font-size: clamp(1.4rem, 3.1vw, 2.05rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.03em;
+    /* La cédille d'Epilogue descend bas : en dessous de 1.14 elle
+       vient toucher l'accent de la ligne suivante. */
+    line-height: 1.14;
+    text-wrap: balance;
+    color: var(--pink);
+}
+
+.landing__intro {
+    margin-top: clamp(12px, 1.8vw, 18px);
+    max-width: 50ch;
+    font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+    line-height: 1.6;
+    text-wrap: pretty;
+    color: var(--ink);
+}
+
+/* ── La preuve ──
+   Un seul lien vers /realisations : quatre vignettes et leurs noms.
+   Les images sont décoratives (alt vide), c'est la ligne de noms
+   qui porte le sens du lien pour les lecteurs d'écran. */
+.landing__proof {
+    display: block;
+    margin-top: clamp(18px, 2.6vw, 26px);
+    padding-top: clamp(16px, 2.4vw, 22px);
+    box-shadow: inset 0 1px 0 var(--line);
+    color: var(--ink);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.landing__thumbs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.landing__thumb {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    /* height: auto, sinon l'attribut height de la balise l'emporte
+       sur le ratio et la vignette s'étire en hauteur. */
+    height: auto;
+    aspect-ratio: 8 / 5;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 6px;
+    background: var(--paper);
+    box-shadow: var(--edge);
+    transition: transform 0.35s var(--ease-out);
+}
+
+/* Les vignettes montent l'une après l'autre au survol du lien : un
+   geste court, qui dit « cliquable » sans rien déplacer autour. */
+@media (hover: hover) {
+    .landing__proof:hover .landing__thumb {
+        transform: translateY(-3px);
+    }
+
+    .landing__proof:hover .landing__thumb:nth-child(2) { transition-delay: 0.03s; }
+    .landing__proof:hover .landing__thumb:nth-child(3) { transition-delay: 0.06s; }
+    .landing__proof:hover .landing__thumb:nth-child(4) { transition-delay: 0.09s; }
+}
+
+.landing__proof-label {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 4px 14px;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--ink-muted);
+}
+
+.landing__proof-go {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: var(--w-strong);
+    color: var(--ink);
+    white-space: nowrap;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.25s var(--ease-out);
+}
+
+.landing__proof:hover .landing__proof-go,
+.landing__proof:focus-visible .landing__proof-go {
+    text-decoration-color: var(--pink);
+}
+
+.landing__proof:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* ── L'action ── */
+.landing__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 18px;
+    margin-top: clamp(18px, 2.6vw, 24px);
+}
+
+/* Sur téléphone, le bouton prend toute la largeur : c'est la cible
+   que le pouce doit trouver sans viser. Les noms des projets
+   s'effacent de l'écran : les vignettes les montrent déjà, et sur
+   deux lignes ils brouillaient le bas de la plaque. Ils restent lus
+   par les lecteurs d'écran, qui n'ont pas les images. */
+@media (max-width: 480px) {
+    .landing__actions .btn {
+        width: 100%;
+    }
+
+    .landing__proof-names {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+}
+
+/* ── Écrans bas ──
+   Téléphone couché, petite fenêtre : les marges se resserrent d'abord,
+   puis la preuve s'efface, puis le paragraphe. La promesse et le
+   bouton restent toujours. */
+@media (max-height: 760px) {
+    .landing__proof {
+        margin-top: 14px;
+        padding-top: 12px;
+    }
+
+    .landing__actions {
+        margin-top: 14px;
+    }
+}
+
+@media (max-height: 600px) {
+    .landing__intro {
+        display: none;
+    }
+}
+
+@media (max-height: 640px) {
+    .landing__thumbs {
+        display: none;
+    }
+
+    .landing__proof-label {
+        margin-top: 0;
+    }
+}
+
+@media (max-height: 560px) {
+    .landing__hello {
+        font-size: clamp(1.15rem, 4.6vh, 1.5rem);
+    }
+
+    .landing__intro {
+        margin-top: 8px;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+}
+
+/* Téléphone couché : il ne reste que la promesse et le bouton. Le
+   lien vers le travail reste dans le menu. */
+@media (max-height: 460px) {
+    .landing__intro,
+    .landing__proof {
+        display: none;
+    }
+
+    .landing__actions {
+        margin-top: 12px;
+    }
+}

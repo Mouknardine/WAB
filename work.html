@@ -362,7 +362,7 @@
             "@type": "ItemList",
             "@id": "https://wearebrothers.ch/realisations#projets",
             "name": "Réalisations WeAreBrothers Studio",
-            "numberOfItems": 9,
+            "numberOfItems": 8,
             "itemListElement": [
                 {
                     "@type": "ListItem",
@@ -420,21 +420,6 @@
                     "@type": "ListItem",
                     "position": 5,
                     "item": {
-                        "@type": "SoftwareApplication",
-                        "name": "Application de gestion",
-                        "url": "https://wearebrothers.ch/applications",
-                        "image": "https://wearebrothers.ch/assets/images/app-agenda-aujourdhui-1280.webp",
-                        "applicationCategory": "BusinessApplication",
-                        "operatingSystem": "Web",
-                        "creator": {
-                            "@id": "https://wearebrothers.ch/#organization"
-                        }
-                    }
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 6,
-                    "item": {
                         "@type": "WebSite",
                         "name": "Nadège Mouine",
                         "url": "https://nadegemouine.ch",
@@ -446,7 +431,7 @@
                 },
                 {
                     "@type": "ListItem",
-                    "position": 7,
+                    "position": 6,
                     "item": {
                         "@type": "WebSite",
                         "name": "LAZIZZE DJ",
@@ -459,7 +444,7 @@
                 },
                 {
                     "@type": "ListItem",
-                    "position": 8,
+                    "position": 7,
                     "item": {
                         "@type": "WebSite",
                         "name": "La Slack",
@@ -472,7 +457,7 @@
                 },
                 {
                     "@type": "ListItem",
-                    "position": 9,
+                    "position": 8,
                     "item": {
                         "@type": "WebSite",
                         "name": "Commissione Entretien",
@@ -496,10 +481,12 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/base.css?v=23">
     <link rel="stylesheet" href="css/nav.css?v=14">
-    <link rel="stylesheet" href="css/contact-modal.css?v=1">
-    <link rel="stylesheet" href="css/contact-form.css?v=1">
+    <link rel="stylesheet" href="css/contact-modal.css?v=3">
+    <link rel="stylesheet" href="css/contact-form.css?v=3">
     <link rel="stylesheet" href="css/page.css?v=6">
-    <link rel="stylesheet" href="css/work.css?v=14">
+    <link rel="stylesheet" href="css/work.css?v=17">
+    <link rel="stylesheet" href="css/work-piece.css?v=2">
+    <link rel="stylesheet" href="css/process.css?v=5">
     <link rel="stylesheet" href="css/footer.css?v=6">
 
     <!-- Scripts -->
@@ -507,7 +494,7 @@
     <script src="js/reveal.js?v=3" defer></script>
     <script src="js/nav.js?v=5" defer></script>
     <script type="module" src="js/birds/index.js?v=5"></script>
-    <script type="module" src="js/contact/index.js?v=2"></script>
+    <script type="module" src="js/contact/index.js?v=4"></script>
 </head>
 
 <body>
@@ -573,226 +560,219 @@
 
     <main id="contenu">
 
-        <!-- Le titre n'est pas affiché : la page s'ouvre directement sur
-             les captures, comme demandé. Il reste dans le document —
-             une page sans titre principal n'a plus de tête ni pour
-             Google ni pour la navigation vocale. -->
-        <h1 class="sr-only">Sites internet et applications créés à Lausanne</h1>
-
         <section class="band band--projets">
+            <!-- EN-TÊTE — un titre géant et le nombre de projets. La fin du
+                 titre reste lue par Google et la navigation vocale. -->
+            <header class="work-head">
+                <h1 class="work-head__title">
+                    <span lang="en">Work</span><span class="sr-only"> — sites internet et applications créés à Lausanne</span>
+                </h1>
+                <p class="work-head__lede">
+                    Sites, identités et outils sur mesure, dessinés et développés à Lausanne pour des
+                    entreprises de l'arc lémanique.
+                </p>
+            </header>
+
+            <!-- LA GRILLE — deux colonnes régulières, toutes les tuiles à la
+                 même taille : le travail est montré posément, sans qu'un
+                 projet écrase les autres. -->
             <div class="pieces-wrap">
-                <div class="pieces">
-                    <article class="piece">
+                <div class="pieces" data-reveal-group>
+                    <article class="piece reveal">
                         <a class="piece__link" href="https://www.zinema.ch/" target="_blank" rel="noopener noreferrer">
-                            <span class="piece__media">
+                            <div class="piece__media">
                                 <img class="piece__img" src="assets/images/project-zinema.webp?v=2"
                                     alt="Capture du site du Zinéma, cinéma d&#x27;art et essai de la rue du Maupas à Lausanne, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
                                     width="1800" height="1002">
-                            </span>
-
-                            <div class="piece__label">
-                                <h2 class="piece__name">Zinéma</h2>
-                                <ul class="piece__tags">
-                                    <li>Direction artistique</li>
-                                    <li>Web design</li>
-                                    <li>Développement</li>
-                                    <li>SEO local</li>
-                                </ul>
-
+                            </div>
+                            <div class="piece__caption">
+                                <div class="piece__text">
+                                    <h2 class="piece__name">Zinéma</h2>
+                                    <p class="piece__context">Cinéma d'art et essai, rue du Maupas à Lausanne</p>
+                                    <ul class="piece__tags">
+                                        <li>Direction artistique</li>
+                                        <li>Web design</li>
+                                        <li>Développement</li>
+                                        <li>SEO local</li>
+                                    </ul>
+                                </div>
                                 <span class="piece__go" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                                 </span>
                             </div>
                         </a>
                     </article>
 
-                    <article class="piece">
+                    <article class="piece reveal">
                         <a class="piece__link" href="https://le-p-tit-central.vercel.app/" target="_blank" rel="noopener noreferrer">
-                            <span class="piece__media">
+                            <div class="piece__media">
                                 <img class="piece__img" src="assets/images/project-central.webp"
                                     alt="Capture du site du P&#x27;tit Central, café-restaurant de la rue Centrale à Lausanne, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
                                     width="1200" height="750">
-                            </span>
-
-                            <div class="piece__label">
-                                <h2 class="piece__name">Le P&#x27;tit Central</h2>
-                                <ul class="piece__tags">
-                                    <li>Direction artistique</li>
-                                    <li>Web design</li>
-                                    <li>Développement</li>
-                                    <li>SEO local</li>
-                                </ul>
-
+                            </div>
+                            <div class="piece__caption">
+                                <div class="piece__text">
+                                    <h2 class="piece__name">Le P&#x27;tit Central</h2>
+                                    <p class="piece__context">Café-restaurant de quartier, rue Centrale à Lausanne</p>
+                                    <ul class="piece__tags">
+                                        <li>Direction artistique</li>
+                                        <li>Web design</li>
+                                        <li>Développement</li>
+                                        <li>SEO local</li>
+                                    </ul>
+                                </div>
                                 <span class="piece__go" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                                 </span>
                             </div>
                         </a>
                     </article>
 
-                    <article class="piece">
+                    <article class="piece reveal">
                         <a class="piece__link" href="https://maison-alliani.com/" target="_blank" rel="noopener noreferrer">
-                            <span class="piece__media">
+                            <div class="piece__media">
                                 <img class="piece__img" src="assets/images/project-alliani.webp"
                                     alt="Capture de la galerie du site Maison Alliani, atelier de grillz sur mesure, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
                                     width="1200" height="750">
-                            </span>
-
-                            <div class="piece__label">
-                                <h2 class="piece__name">Maison Alliani</h2>
-                                <ul class="piece__tags">
-                                    <li>Direction artistique</li>
-                                    <li>Web design</li>
-                                    <li>Développement</li>
-                                    <li>Motion</li>
-                                </ul>
-
+                            </div>
+                            <div class="piece__caption">
+                                <div class="piece__text">
+                                    <h2 class="piece__name">Maison Alliani</h2>
+                                    <p class="piece__context">Haute joaillerie, grillz sur mesure</p>
+                                    <ul class="piece__tags">
+                                        <li>Direction artistique</li>
+                                        <li>Web design</li>
+                                        <li>Développement</li>
+                                        <li>Motion</li>
+                                    </ul>
+                                </div>
                                 <span class="piece__go" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                                 </span>
                             </div>
                         </a>
                     </article>
 
-                    <article class="piece">
+
+                    <article class="piece reveal">
                         <a class="piece__link" href="https://amarte.ch/" target="_blank" rel="noopener noreferrer">
-                            <span class="piece__media">
+                            <div class="piece__media">
                                 <img class="piece__img" src="assets/images/project-amarte.webp"
                                     alt="Capture du site d&#x27;Amarte Studio, centre de yoga et de Pilates à Épalinges, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
                                     width="1200" height="750">
-                            </span>
-
-                            <div class="piece__label">
-                                <h2 class="piece__name">Amarte Studio</h2>
-                                <ul class="piece__tags">
-                                    <li>Direction artistique</li>
-                                    <li>Web design</li>
-                                    <li>Développement</li>
-                                    <li>SEO local</li>
-                                </ul>
-
+                            </div>
+                            <div class="piece__caption">
+                                <div class="piece__text">
+                                    <h2 class="piece__name">Amarte Studio</h2>
+                                    <p class="piece__context">Centre de yoga et de Pilates à Épalinges</p>
+                                    <ul class="piece__tags">
+                                        <li>Direction artistique</li>
+                                        <li>Web design</li>
+                                        <li>Développement</li>
+                                        <li>SEO local</li>
+                                    </ul>
+                                </div>
                                 <span class="piece__go" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                                 </span>
                             </div>
                         </a>
                     </article>
 
-                    <article class="piece piece--wide">
-                        <a class="piece__link" href="/applications">
-                            <span class="piece__media">
-                                <img class="piece__img" src="assets/images/app-agenda-aujourdhui-1280.webp"
-                                    srcset="assets/images/app-agenda-aujourdhui-1280.webp 1280w, assets/images/app-agenda-aujourdhui-2560.webp 2560w" sizes="(min-width: 760px) 50vw, 100vw"
-                                    alt="Écran d&#x27;accueil d&#x27;une application de gestion développée par WeAreBrothers Lausanne, avec les projets en cours, la trésorerie du mois et les tâches du jour" loading="lazy" decoding="async"
-                                    width="1280" height="520">
-                            </span>
-
-                            <div class="piece__label">
-                                <h2 class="piece__name">Application de gestion</h2>
-                                <ul class="piece__tags">
-                                    <li>Product design</li>
-                                    <li>Interface</li>
-                                    <li>Développement full-stack</li>
-                                </ul>
-                                <p class="piece__note">Données de démonstration</p>
-
-                                <span class="piece__go" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                                </span>
-                            </div>
-                        </a>
-                    </article>
-
-                    <article class="piece">
+                    <article class="piece reveal">
                         <a class="piece__link" href="https://nadegemouine.ch" target="_blank" rel="noopener noreferrer">
-                            <span class="piece__media">
+                            <div class="piece__media">
                                 <img class="piece__img" src="assets/images/project-nadege.webp"
                                     alt="Capture du site de Nadège Mouine, site personnel conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
                                     width="1200" height="750">
-                            </span>
-
-                            <div class="piece__label">
-                                <h2 class="piece__name">Nadège Mouine</h2>
-                                <ul class="piece__tags">
-                                    <li>Web design</li>
-                                    <li>Développement</li>
-                                    <li>Identité</li>
-                                </ul>
-
+                            </div>
+                            <div class="piece__caption">
+                                <div class="piece__text">
+                                    <h2 class="piece__name">Nadège Mouine</h2>
+                                    <p class="piece__context">Site personnel d'une architecte en formation à l'EPFL</p>
+                                    <ul class="piece__tags">
+                                        <li>Web design</li>
+                                        <li>Développement</li>
+                                        <li>Identité</li>
+                                    </ul>
+                                </div>
                                 <span class="piece__go" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                                 </span>
                             </div>
                         </a>
                     </article>
 
-                    <article class="piece">
+                    <article class="piece reveal">
                         <a class="piece__link" href="https://lazizze.com/#/" target="_blank" rel="noopener noreferrer">
-                            <span class="piece__media">
+                            <div class="piece__media">
                                 <img class="piece__img" src="assets/images/project-dj.webp"
                                     alt="Capture du site LAZIZZE DJ, portfolio immersif conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
                                     width="1200" height="750">
-                            </span>
-
-                            <div class="piece__label">
-                                <h2 class="piece__name">LAZIZZE DJ</h2>
-                                <ul class="piece__tags">
-                                    <li>Direction artistique</li>
-                                    <li>Web design</li>
-                                    <li>Développement</li>
-                                    <li>Motion</li>
-                                </ul>
-
+                            </div>
+                            <div class="piece__caption">
+                                <div class="piece__text">
+                                    <h2 class="piece__name">LAZIZZE DJ</h2>
+                                    <p class="piece__context">Portfolio immersif d'un DJ house lausannois</p>
+                                    <ul class="piece__tags">
+                                        <li>Direction artistique</li>
+                                        <li>Web design</li>
+                                        <li>Développement</li>
+                                        <li>Motion</li>
+                                    </ul>
+                                </div>
                                 <span class="piece__go" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                                 </span>
                             </div>
                         </a>
                     </article>
 
-                    <article class="piece">
+                    <article class="piece reveal">
                         <a class="piece__link" href="https://la-slack.com/" target="_blank" rel="noopener noreferrer">
-                            <span class="piece__media">
+                            <div class="piece__media">
                                 <img class="piece__img" src="assets/images/project-slack.png"
                                     alt="Capture du site La Slack, portfolio créatif conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
                                     width="1200" height="750">
-                            </span>
-
-                            <div class="piece__label">
-                                <h2 class="piece__name">La Slack</h2>
-                                <ul class="piece__tags">
-                                    <li>Direction artistique</li>
-                                    <li>Web design</li>
-                                    <li>Développement</li>
-                                    <li>Motion</li>
-                                </ul>
-
+                            </div>
+                            <div class="piece__caption">
+                                <div class="piece__text">
+                                    <h2 class="piece__name">La Slack</h2>
+                                    <p class="piece__context">Portfolio créatif en forme de bureau virtuel</p>
+                                    <ul class="piece__tags">
+                                        <li>Direction artistique</li>
+                                        <li>Web design</li>
+                                        <li>Développement</li>
+                                        <li>Motion</li>
+                                    </ul>
+                                </div>
                                 <span class="piece__go" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                                 </span>
                             </div>
                         </a>
                     </article>
 
-                    <article class="piece">
+                    <article class="piece reveal">
                         <a class="piece__link" href="https://commissione-entretien.ch/" target="_blank" rel="noopener noreferrer">
-                            <span class="piece__media">
+                            <div class="piece__media">
                                 <img class="piece__img" src="assets/images/project-commissione.webp"
                                     alt="Capture du site Commissione Entretien, site professionnel conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
                                     width="1200" height="750">
-                            </span>
-
-                            <div class="piece__label">
-                                <h2 class="piece__name">Commissione Entretien</h2>
-                                <ul class="piece__tags">
-                                    <li>Web design</li>
-                                    <li>Développement</li>
-                                    <li>SEO local</li>
-                                    <li>Conversion</li>
-                                </ul>
-
+                            </div>
+                            <div class="piece__caption">
+                                <div class="piece__text">
+                                    <h2 class="piece__name">Commissione Entretien</h2>
+                                    <p class="piece__context">Entreprise familiale d'entretien à Bavois (VD)</p>
+                                    <ul class="piece__tags">
+                                        <li>Web design</li>
+                                        <li>Développement</li>
+                                        <li>SEO local</li>
+                                        <li>Conversion</li>
+                                    </ul>
+                                </div>
                                 <span class="piece__go" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                                 </span>
                             </div>
                         </a>
@@ -801,11 +781,44 @@
             </div>
         </section>
 
+        <!-- DÉROULÉ — quatre cartes blanches, à la manière d'Apple : une
+             icône, un titre court, une phrase. Sur téléphone, elles
+             défilent horizontalement au doigt au lieu de s'empiler. -->
+        <section class="band process" id="deroule" aria-labelledby="processTitle">
+            <div class="process__head">
+                <h2 class="process__title" id="processTitle">Un projet, simplement.</h2>
+                <p class="process__lede">De 3 à 6 semaines pour un site vitrine.</p>
+            </div>
+
+            <ol class="process__cards" aria-label="Les étapes d'un projet">
+                    <li class="process__card">
+                        <svg class="process__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3v3M12 3v3"/></svg>
+                        <h3 class="process__name">On se rencontre.</h3>
+                        <p class="process__desc">Un café à Lausanne ou un appel, pour comprendre votre activité et vos objectifs.</p>
+                    </li>
+                    <li class="process__card">
+                        <svg class="process__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7V3Z"/><path d="M14 3v5h5"/><path d="M10 13h6M10 17h4"/></svg>
+                        <h3 class="process__name">Un devis clair.</h3>
+                        <p class="process__desc">Périmètre, planning et prix posés noir sur blanc, avant de commencer.</p>
+                    </li>
+                    <li class="process__card">
+                        <svg class="process__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="m13.5 6-3 12"/></svg>
+                        <h3 class="process__name">On dessine, on code.</h3>
+                        <p class="process__desc">Un point chaque semaine. Vous validez chaque étape.</p>
+                    </li>
+                    <li class="process__card">
+                        <svg class="process__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18Z"/></svg>
+                        <h3 class="process__name">En ligne, et suivi.</h3>
+                        <p class="process__desc">Maintenance et évolutions, toujours avec les mêmes interlocuteurs.</p>
+                    </li>
+            </ol>
+        </section>
+
         <section class="band closing" id="contact">
             <div class="shell">
                 <h2 class="closing__title">Et si le prochain projet c'était le vôtre&nbsp;?</h2>
                 <p class="closing__lede">
-                    Un café ou un appel, une proposition, puis on construit. Réponse sous 24&nbsp;h ouvrées,
+                    Quelques lignes suffisent pour commencer. Ivan vous répond sous 24&nbsp;h ouvrées,
                     sans engagement.
                 </p>
                 <div class="closing__actions">

@@ -1,266 +1,95 @@
 /* ============================================
-   WAB. — Réalisations
-   Une grille de grandes captures, posées presque bord à bord.
-   Au survol, une plaque rose monte dans l'angle : le nom du
-   projet et les disciplines, rien d'autre. Là où le survol
-   n'existe pas — téléphone, tablette — la plaque est là dès le
-   départ, puisqu'il n'y a aucun geste pour la faire venir.
+   WAB. — Réalisations : l'en-tête et la grille
+   Un titre franc, une phrase, puis les projets sur deux colonnes
+   régulières. Sobre et posé : c'est le travail qui parle, pas la
+   mise en scène. La légende de chaque projet est dans
+   work-piece.css.
    ============================================ */
 
-/* La page n'a ni en-tête ni réglage : elle s'ouvre directement sur
-   les captures. C'est donc cette bande qui prend à sa charge le
-   dégagement sous la barre de navigation. */
 .band--projets {
-    padding-top: calc(var(--topbar-h) + clamp(24px, 4vw, 48px));
+    padding-top: calc(var(--topbar-h) + clamp(32px, 5vw, 72px));
+}
+
+/* ── En-tête ──
+   Le titre va chercher le bord gauche, comme le sigle de la barre.
+   Sur grand écran, la phrase se range à droite, posée sur la ligne
+   de base du titre. */
+.work-head {
+    display: grid;
+    gap: clamp(14px, 2.4vw, 24px);
+    margin-bottom: clamp(36px, 5vw, 64px);
+    padding-inline: var(--gutter);
+}
+
+.work-head__title {
+    font-size: clamp(2.8rem, 7vw, 5.8rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.045em;
+    line-height: 0.95;
+    color: var(--ink);
+}
+
+.work-head__lede {
+    max-width: 38ch;
+    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+    line-height: 1.5;
+    text-wrap: pretty;
+    color: var(--ink-soft);
+}
+
+@media (min-width: 900px) {
+    .work-head {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 28rem);
+        align-items: end;
+    }
+
+    .work-head__lede {
+        padding-bottom: 0.2em;
+    }
 }
 
 /* ── La grille ──
-   Elle sort de la colonne de 940 px et court d'un bord à l'autre.
-   Elle prend la même marge que la barre de navigation, si bien que
-   le bord gauche des captures tombe exactement sous le sigle. Pas
-   de 100vw ici — une largeur de fenêtre inclut la barre de
-   défilement et ferait déborder la page d'une poignée de pixels.
-   Un simple conteneur en dehors de .shell suffit. */
+   Elle sort de la colonne de 940 px et prend la même marge que la
+   barre de navigation : le bord des captures tombe sous le sigle.
+   Une colonne sur téléphone, deux dès la tablette, toutes les
+   tuiles au même format. */
 .pieces-wrap {
     padding-inline: var(--gutter);
 }
 
-/* Une colonne : les projets se suivent, il leur faut de l'air pour
-   se distinguer. Deux colonnes : les captures se tiennent les unes
-   les autres, l'écart peut se resserrer. */
 .pieces {
     display: grid;
-    gap: clamp(26px, 7vw, 34px);
+    gap: clamp(40px, 8vw, 56px);
 }
 
-.piece__link {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    border-radius: 6px;
-    background: var(--card);
+@media (min-width: 760px) {
+    .pieces {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: clamp(20px, 2.4vw, 32px);
+        row-gap: clamp(48px, 6vw, 80px);
+    }
 }
 
 .piece__media {
     display: block;
     overflow: hidden;
     aspect-ratio: 16 / 10;
+    border-radius: clamp(10px, 1.2vw, 16px);
+    background: var(--card);
 }
 
-/* L'application n'a pas le format d'un site : sa capture est large
-   et basse, et sa tuile occupe toute la largeur de la grille. */
-.piece--wide .piece__media {
-    aspect-ratio: 64 / 26;
-}
-
-/* Coin haut gauche plutôt que centre : une capture plus large que
-   la tuile est rognée sur les côtés, et c'est toujours le nom du
-   site, en haut à gauche, qu'il faut garder. Les captures déjà au
-   bon format ne sont pas rognées du tout. */
+/* Coin haut gauche plutôt que centre : c'est là que chaque site
+   porte son nom, c'est ce qu'il faut garder quand l'image est rognée. */
 .piece__img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: left top;
-    transition: transform 0.7s var(--ease);
+    transition: transform 0.9s var(--ease);
 }
 
-.piece__link:hover .piece__img {
-    transform: scale(1.03);
-}
-
-/* ── La plaque ──
-   Le seul aplat saturé du site. Chaque projet a la sienne, prise
-   dans la gamme que parcourt le fond : du rose au bleu, en neuf
-   pas. La clarté a été ajustée teinte par teinte pour que la
-   luminance reste constante — le noir posé dessus garde le même
-   contraste sur les neuf, y compris sur les violets qui
-   s'assombrissent naturellement. Texte noir et non blanc : sur ces
-   teintes, le blanc perdrait le contraste que le noir garde
-   largement.
-
-   Au départ elle se range sous la capture, dans le flux. Sur un
-   petit écran, une plaque posée par-dessus mangerait la moitié de
-   l'image sans qu'aucun geste ne puisse l'écarter : elle devient
-   alors un bandeau plein, avec le nom d'un côté et la flèche de
-   l'autre.
-
-   Grille plutôt que flex : le texte s'empile dans la première
-   colonne, la flèche occupe la seconde sur toute la hauteur, quel
-   que soit le nombre de lignes à sa gauche. */
-.piece__label {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    column-gap: 16px;
-    padding: clamp(11px, 1.6vw, 20px) clamp(16px, 2.2vw, 26px);
-    background: var(--pink);
-    color: var(--ink);
-}
-
-.piece:nth-child(1) .piece__label {
-    background: #f44ea1;
-}
-
-.piece:nth-child(2) .piece__label {
-    background: #f344c7;
-}
-
-.piece:nth-child(3) .piece__label {
-    background: #f22cf2;
-}
-
-.piece:nth-child(4) .piece__label {
-    background: #ce5cf5;
-}
-
-.piece:nth-child(5) .piece__label {
-    background: #b26ff6;
-}
-
-.piece:nth-child(6) .piece__label {
-    background: #9879f6;
-}
-
-.piece:nth-child(7) .piece__label {
-    background: #8282f7;
-}
-
-.piece:nth-child(8) .piece__label {
-    background: #6689f5;
-}
-
-.piece:nth-child(9) .piece__label {
-    background: #3191f2;
-}
-
-.piece__name {
-    grid-column: 1;
-    font-size: clamp(1.05rem, 4vw, 1.3rem);
-    font-weight: var(--w-strong);
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-}
-
-/* ── La flèche ──
-   Un galet à sept lobes, découpé au masque plutôt que dessiné dans
-   la page : le tracé tient dans la feuille de style, ne coûte
-   aucune requête et se redimensionne tout seul. Les navigateurs
-   sans masque gardent un cercle, ce qui reste juste.
-
-   Le masque porte sur tout l'élément, flèche comprise : celle-ci
-   est centrée, elle reste donc à l'intérieur du galet. */
-.piece__go {
-    grid-column: 2;
-    grid-row: 1 / -1;
-    width: clamp(38px, 10.5vw, 50px);
-    aspect-ratio: 1;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    background: var(--ink);
-    color: var(--white);
-    transition: transform 0.4s var(--ease);
-}
-
-@supports ((mask-image: none) or (-webkit-mask-image: none)) {
-    .piece__go {
-        border-radius: 0;
-        -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Cpath%20d%3D%22M80.6%2064.8%20Q83.7%2092.2%2057.6%2083.1%20Q38.0%20102.6%2028.8%2076.6%20Q1.3%2073.4%2016.0%2050.0%20Q1.3%2026.6%2028.8%2023.4%20Q38.0%20-2.6%2057.6%2016.9%20Q83.7%207.8%2080.6%2035.2%20Q104.0%2050.0%2080.6%2064.8%20Z%22%20fill%3D%22%23000%22%2F%3E%3C%2Fsvg%3E");
-        mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Cpath%20d%3D%22M80.6%2064.8%20Q83.7%2092.2%2057.6%2083.1%20Q38.0%20102.6%2028.8%2076.6%20Q1.3%2073.4%2016.0%2050.0%20Q1.3%2026.6%2028.8%2023.4%20Q38.0%20-2.6%2057.6%2016.9%20Q83.7%207.8%2080.6%2035.2%20Q104.0%2050.0%2080.6%2064.8%20Z%22%20fill%3D%22%23000%22%2F%3E%3C%2Fsvg%3E");
-        -webkit-mask-size: contain;
-        mask-size: contain;
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-    }
-}
-
-.piece__link:active .piece__go {
-    transform: scale(0.94);
-}
-
-/* Les disciplines n'apparaissent pas dans le bandeau du petit
-   écran : le nom et la flèche y suffisent, et six pastilles y
-   prendraient plus de place que la capture elle-même. */
-.piece__tags {
-    display: none;
-    grid-column: 1;
-    margin-top: 12px;
-    flex-wrap: wrap;
-    flex-wrap: wrap;
-    gap: 7px;
-    list-style: none;
-}
-
-.piece__tags li {
-    padding: 6px 12px;
-    border-radius: var(--radius-pill);
-    box-shadow: inset 0 0 0 1px rgba(11, 11, 12, 0.52);
-    font-size: 10px;
-    font-weight: var(--w-strong);
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-}
-
-/* Mention obligatoire sur les captures de l'application : les
-   données affichées sont des données de démonstration. */
-.piece__note {
-    grid-column: 1;
-    margin-top: 8px;
-    font-size: 10px;
-    font-weight: var(--w-strong);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(11, 11, 12, 0.62);
-}
-
-/* ── Là où le survol existe, et où la place le permet ──
-   La plaque quitte le flux, se cale dans l'angle de la capture et
-   n'apparaît qu'au survol ou au passage au clavier. La largeur
-   compte autant que le survol : dans une fenêtre étroite, une
-   plaque posée par-dessus couvrirait la moitié de l'image. */
-@media (hover: hover) and (pointer: fine) and (min-width: 760px) {
-    .piece__label {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        max-width: min(100%, 540px);
-        grid-template-columns: minmax(0, 1fr);
-        /* Seul l'angle haut gauche est libre : les trois autres se
-           posent sur un bord de la capture, où la tuile arrondit
-           déjà ce qui dépasse. */
-        border-radius: clamp(14px, 1.6vw, 20px) 0 0 0;
-        opacity: 0;
-        transform: translateY(14px);
-        transition: opacity 0.3s var(--ease-out), transform 0.45s var(--ease);
-    }
-
-    /* La plaque ne vient que si l'on s'attarde sur la capture : la
-       flèche n'a plus rien à annoncer, les disciplines reprennent
-       sa place. */
-    .piece__go {
-        display: none;
-    }
-
-    .piece__tags {
-        display: flex;
-    }
-
-    .piece__link:hover .piece__label,
-    .piece__link:focus-visible .piece__label {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ── Deux colonnes ── */
-@media (min-width: 760px) {
-    .pieces {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: clamp(20px, 2.4vw, 34px);
-    }
-
-    .piece--wide {
-        grid-column: 1 / -1;
+@media (hover: hover) {
+    .piece__link:hover .piece__img {
+        transform: scale(1.02);
     }
 }

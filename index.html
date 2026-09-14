@@ -348,15 +348,16 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/base.css?v=23">
     <link rel="stylesheet" href="css/nav.css?v=14">
-    <link rel="stylesheet" href="css/contact-modal.css?v=1">
-    <link rel="stylesheet" href="css/contact-form.css?v=1">
-    <link rel="stylesheet" href="css/landing.css?v=6">
+    <link rel="stylesheet" href="css/contact-modal.css?v=3">
+    <link rel="stylesheet" href="css/contact-form.css?v=3">
+    <link rel="stylesheet" href="css/landing.css?v=7">
+    <link rel="stylesheet" href="css/landing-plate.css?v=2">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=1" defer></script>
     <script src="js/nav.js?v=5" defer></script>
     <script type="module" src="js/birds/index.js?v=5"></script>
-    <script type="module" src="js/contact/index.js?v=2"></script>
+    <script type="module" src="js/contact/index.js?v=4"></script>
 </head>
 
 <body class="landing" data-birds="dense">
@@ -422,22 +423,45 @@
 
     <main>
 
-        <!-- LA PLAQUE — le studio en deux phrases, rien de plus.
-             Le porte-plaque la cale sur la même verticale que la barre
-             du haut et la ligne du bas. -->
+        <!-- LA PLAQUE — ce que fait le studio, qui s'en occupe, ce qu'il
+             a déjà fait, et comment démarrer. Le porte-plaque la cale sur
+             la même verticale que la barre du haut et la ligne du bas. -->
         <div class="landing__anchor">
             <section class="landing__plate" id="studio-intro" tabindex="-1" aria-labelledby="landingHello">
-                <!-- Seul « Welcome » s'affiche. La suite du titre reste lue
-                     par Google et la navigation vocale : « agence web à
-                     Lausanne » doit rester dans le H1 de l'accueil. -->
+                <!-- La fin du titre reste lue par Google et la navigation
+                     vocale : « agence web » et « site internet » à Lausanne
+                     doivent rester dans le H1 de l'accueil. -->
                 <h1 class="landing__hello" id="landingHello">
-                    <span lang="en">Welcome</span><span class="sr-only"> — WeAreBrothers, agence web à Lausanne</span>
+                    Des sites et des outils sur mesure, pour les entreprises qui veulent être prises au sérieux.<span class="sr-only"> WeAreBrothers, agence web et création de site internet à Lausanne.</span>
                 </h1>
                 <p class="landing__intro">
-                    Nous sommes deux frères qui voulons mettre à profit notre débrouille et notre goût
-                    pour les choses simples et efficaces, afin de développer des outils et une présence
-                    numérique qui reste à la page.
+                    Deux frères à Lausanne, design et développement sous le même toit. Un seul
+                    interlocuteur du premier café à la mise en ligne, réponse sous 24&nbsp;h ouvrées,
+                    sans engagement.
                 </p>
+
+                <a class="landing__proof" href="/realisations">
+                    <span class="landing__thumbs" aria-hidden="true">
+                        <img class="landing__thumb" src="assets/images/thumb-zinema.webp" alt="" width="360" height="225" decoding="async">
+                        <img class="landing__thumb" src="assets/images/thumb-alliani.webp" alt="" width="360" height="225" decoding="async">
+                        <img class="landing__thumb" src="assets/images/thumb-amarte.webp" alt="" width="360" height="225" decoding="async">
+                        <img class="landing__thumb" src="assets/images/thumb-central.webp" alt="" width="360" height="225" decoding="async">
+                    </span>
+                    <span class="landing__proof-label">
+                        <span class="landing__proof-names">Zinéma, Maison Alliani, Amarte Studio, Le P'tit Central</span>
+                        <span class="landing__proof-go">
+                            Voir le travail
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                        </span>
+                    </span>
+                </a>
+
+                <div class="landing__actions">
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="btn btn--solid">
+                        <span>Démarrer un projet</span>
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                    </a>
+                </div>
             </section>
         </div>
 

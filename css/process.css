@@ -1,0 +1,123 @@
+/* ============================================
+   WAB. — Réalisations : le déroulé d'un projet
+   À la manière d'Apple : un titre court, puis quatre cartes blanches
+   aux coins arrondis — une icône, un titre en deux temps, une
+   phrase. Sur téléphone, les cartes défilent au doigt sur une seule
+   rangée : le bloc garde la hauteur d'une carte au lieu d'empiler
+   quatre paragraphes.
+   ============================================ */
+
+.process__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 6px 32px;
+    margin-bottom: clamp(24px, 3.4vw, 44px);
+    padding-inline: var(--gutter);
+}
+
+.process__title {
+    font-size: clamp(1.9rem, 4vw, 3.2rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    color: var(--ink);
+}
+
+.process__lede {
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    color: var(--ink-muted);
+}
+
+/* ── Rangée de cartes ──
+   Téléphone : défilement horizontal aimanté, la carte suivante
+   dépasse du bord pour montrer qu'il y a une suite. Le padding
+   latéral garde la première carte sur la gouttière du site. */
+.process__cards {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: min(78%, 300px);
+    gap: 12px;
+    margin: 0;
+    padding: 0 var(--gutter) 4px;
+    list-style: none;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.process__cards::-webkit-scrollbar {
+    display: none;
+}
+
+/* L'icône et le titre sur la même ligne, l'icône en premier ; la
+   phrase occupe toute la largeur en dessous. */
+.process__card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-content: start;
+    align-items: start;
+    column-gap: 12px;
+    min-height: 100%;
+    padding: clamp(22px, 2.4vw, 32px);
+    border-radius: clamp(18px, 1.8vw, 24px);
+    /* Verre dépoli fin : un blanc très léger, le fond et les oiseaux
+       floutés derrière, un liseré d'un pixel et un reflet clair sur
+       l'arête haute. Pas d'ombre portée : la carte reste posée. */
+    background: rgba(255, 255, 255, 0.42);
+    -webkit-backdrop-filter: blur(22px) saturate(1.5);
+    backdrop-filter: blur(22px) saturate(1.5);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        0 1px 2px rgba(11, 11, 12, 0.03);
+    scroll-snap-align: start;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .process__card {
+        background: rgba(255, 255, 255, 0.78);
+    }
+}
+
+/* Calée sur la première ligne du titre (hauteur de ligne 1.2) : si
+   un titre revient à la ligne, l'icône reste en face du début. */
+.process__icon {
+    width: 24px;
+    height: 24px;
+    margin-top: calc((1.2 * clamp(1.15rem, 1.5vw, 1.35rem) - 24px) / 2);
+    color: var(--ink);
+}
+
+.process__name {
+    font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    text-wrap: balance;
+    color: var(--ink);
+}
+
+.process__desc {
+    grid-column: 1 / -1;
+    margin-top: 12px;
+    font-size: clamp(0.95rem, 1.1vw, 1.02rem);
+    line-height: 1.5;
+    text-wrap: pretty;
+    color: var(--ink-muted);
+}
+
+/* ── Grand écran : les quatre cartes côte à côte ── */
+@media (min-width: 900px) {
+    .process__cards {
+        grid-auto-flow: row;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-auto-columns: auto;
+        gap: clamp(12px, 1.4vw, 20px);
+        padding-bottom: 0;
+        overflow: visible;
+        scroll-snap-type: none;
+    }
+}

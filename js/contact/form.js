@@ -8,8 +8,8 @@
  * n'est pas parti.
  */
 
-import { CONTACT_EMAIL } from './markup.js?v=2';
-import { requireElement } from './dom.js?v=2';
+import { CONTACT_EMAIL } from './markup.js?v=4';
+import { requireElement } from './dom.js?v=4';
 
 const ENDPOINT = '/send-message.php';
 const TIMEOUT_MS = 15000;
@@ -101,14 +101,32 @@ async function postForm(form) {
 }
 
 /**
+ * Les choix cochés, une ligne par groupe : ils suivent le message
+ * jusque dans l'email de secours.
+ * @param {HTMLFormElement} form
+ * @returns {string}
+ */
+function choicesSummary(form) {
+    const data = new FormData(form);
+    /** @type {Array<[string, string]>} */
+    const groups = [['Projet', 'Projet[]'], ['Budget', 'Budget'], ['Délai', 'Delai']];
+    return groups
+        .map(([label, name]) => ({ label, values: data.getAll(name).map(String) }))
+        .filter(({ values }) => values.length > 0)
+        .map(({ label, values }) => `${label} : ${values.join(', ')}`)
+        .join('\n');
+}
+
+/**
  * @param {HTMLFormElement} form
  * @returns {string}
  */
 function mailtoDraft(form) {
     const name = fieldNamed(form, 'Nom').value.trim();
     const message = fieldNamed(form, 'Message').value.trim();
+    const summary = choicesSummary(form);
     const subject = encodeURIComponent(`Projet — ${name}`);
-    const body = encodeURIComponent(`${message}\n\n— ${name}`);
+    const body = encodeURIComponent(`${message}${summary ? `\n\n${summary}` : ''}\n\n— ${name}`);
     return `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
 }
 

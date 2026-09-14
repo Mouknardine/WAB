@@ -15,6 +15,25 @@ require __DIR__ . '/smtp-mailer.php';
 
 const RECIPIENT = 'contact@wearebrothers.ch';
 
+// Les choix proposés par la fenêtre de contact (js/contact/markup.js).
+// Toute valeur absente de ces listes est ignorée : le visiteur ne peut
+// rien glisser d'autre dans l'email par ces champs.
+const PROJETS = ['Site internet', 'Refonte', 'Branding', 'E-commerce', 'Application métier'];
+const BUDGETS = ['Moins de 10k', '10k à 25k', '25k à 50k', 'Plus de 50k', 'À définir'];
+const DELAIS  = ['Dès que possible', "D'ici 3 mois", 'Plus tard'];
+
+/**
+ * Ne garde que les valeurs prévues, dans l'ordre des listes.
+ * @param mixed $raw Valeur reçue : texte seul ou tableau de textes.
+ * @param string[] $allowed
+ * @return string[]
+ */
+function choices($raw, array $allowed): array
+{
+    $values = array_map('strval', array_filter(is_array($raw) ? $raw : [$raw], 'is_scalar'));
+    return array_values(array_intersect($allowed, $values));
+}
+
 function respond(bool $ok, string $error = ''): void
 {
     $wantsJson = strpos($_SERVER['HTTP_ACCEPT'] ?? '', 'application/json') !== false;
@@ -57,13 +76,22 @@ if ($nom === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)
 }
 
 $message = mb_substr($message, 0, 5000);
+$projets = choices($_POST['Projet'] ?? [], PROJETS);
+$budget  = choices($_POST['Budget'] ?? '', BUDGETS)[0] ?? '';
+$delai   = choices($_POST['Delai'] ?? '', DELAIS)[0] ?? '';
 
 $corps = "Nouveau message depuis wearebrothers.ch\n"
     . "----------------------------------------\n\n"
     . "Nom        : {$nom}\n"
     . "Email      : {$email}\n"
     . ($entreprise !== '' ? "Entreprise : {$entreprise}\n" : '')
+    . ($projets !== [] ? 'Projet     : ' . implode(', ', $projets) . "\n" : '')
+    . ($budget !== '' ? "Budget     : {$budget} CHF\n" : '')
+    . ($delai !== '' ? "Délai      : {$delai}\n" : '')
     . "\nMessage :\n{$message}\n";
+
+// Le budget dans l'objet : la demande se trie dès la boîte de réception.
+$objet = "Nouveau message de {$nom}" . ($budget !== '' ? " — budget {$budget}" : '') . ' — wearebrothers.ch';
 
 // Identifiants SMTP : fichier généré au déploiement depuis les
 // secrets GitHub (SMTP_USER / SMTP_PASSWORD), absent du dépôt.
@@ -84,7 +112,7 @@ $erreur = smtp_send(
     $smtpPass,
     $smtpUser, // l'expéditeur doit être l'adresse authentifiée
     RECIPIENT,
-    "Nouveau message de {$nom} — wearebrothers.ch",
+    $objet,
     $corps,
     $email
 );

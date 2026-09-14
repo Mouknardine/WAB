@@ -19,7 +19,7 @@ html.has-modal {
 }
 
 .contact-modal {
-    width: min(560px, 100% - 2 * var(--gutter));
+    width: min(620px, 100% - 2 * var(--gutter));
     max-width: none;
     max-height: none;
     margin: auto;

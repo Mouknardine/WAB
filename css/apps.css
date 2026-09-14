@@ -57,34 +57,8 @@
     height: auto;
 }
 
-/* ── Approche ──
-   Cinq lignes séparées par un filet, comme les principes de la page
-   About : une seule façon de présenter une liste sur tout le site. */
-.approach {
-    margin-top: clamp(32px, 4.5vw, 48px);
-    border-top: 1px solid var(--line);
-}
-
-.approach__item {
-    padding-block: clamp(20px, 2.4vw, 26px);
-    border-bottom: 1px solid var(--line);
-}
-
-.approach__title {
-    font-size: clamp(1.1rem, 2vw, 1.35rem);
-    font-weight: var(--w-strong);
-    letter-spacing: -0.02em;
-    color: var(--ink);
-}
-
-.approach__desc {
-    margin-top: 8px;
-    max-width: 56ch;
-    font-size: 1rem;
-    line-height: 1.65;
-    text-wrap: pretty;
-    color: var(--ink-muted);
-}
+/* La liste « Approche » est partagée avec d'autres pages : elle vit
+   dans approach.css. */
 
 /* ── Bureau ── */
 @media (min-width: 900px) {
