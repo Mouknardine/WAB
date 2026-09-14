@@ -96,8 +96,8 @@ body.landing {
 /* ── La ligne du bas ──
    Le pendant de la barre du haut : même verre, même filet, même
    pleine largeur, et un contenu calé sur la même colonne. Elle
-   porte ce qui manque au menu — où écrire, les deux pages que le
-   menu ne porte pas, et où se trouve le studio. */
+   porte les deux seules informations qui manquent au menu — où
+   écrire, et où se trouve le studio. */
 .landing__foot {
     position: fixed;
     z-index: 10;
@@ -125,21 +125,10 @@ body.landing {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* Même pas entre les liens et le lieu qu'entre les deux liens :
-       le groupe de droite garde un seul rythme. */
-    gap: 14px clamp(16px, 2.4vw, 28px);
+    gap: 14px;
     font-size: clamp(10px, 2.6vw, 12px);
     line-height: 1.4;
     color: var(--ink-muted);
-}
-
-/* Les liens de la ligne font 14 px de haut : une marge de toucher
-   invisible (le retrait annule le rembourrage) les porte à 24 px,
-   le minimum pour un doigt, sans déplacer un pixel. */
-.landing__mail,
-.landing__links a {
-    padding-block: 5px;
-    margin-block: -5px;
 }
 
 .landing__mail {
@@ -155,50 +144,6 @@ body.landing {
 
 .landing__place {
     white-space: nowrap;
-}
-
-/* Les deux pages que le menu ne porte pas — les mêmes liens qu'au
-   pied des autres pages. Ils se rangent à droite, contre le lieu :
-   la marge automatique absorbe tout l'espace libre de la ligne. */
-.landing__links {
-    display: flex;
-    gap: clamp(16px, 2.4vw, 28px);
-    margin-left: auto;
-}
-
-.landing__links a {
-    white-space: nowrap;
-    transition: color 0.25s var(--ease-out);
-}
-
-.landing__links a:hover {
-    color: var(--pink);
-}
-
-/* En dessous de 720 px, la ligne n'a plus la place pour tout : elle
-   se range sur deux rangs de deux, comme une petite grille. En haut,
-   l'adresse à gauche et le lieu à droite ; en bas, les deux liens
-   écartés jusqu'aux mêmes bords. La ligne prend huit pixels de plus
-   pour que les deux rangs respirent — la plaque suit, par la même
-   variable. Dix pixels entre les rangs : les marges de toucher se
-   touchent sans se chevaucher. */
-@media (max-width: 719px) {
-    :root {
-        --landing-foot-h: 56px;
-    }
-
-    .landing__foot-inner {
-        flex-wrap: wrap;
-        align-content: center;
-        row-gap: 10px;
-    }
-
-    .landing__links {
-        order: 3;
-        flex-basis: 100%;
-        justify-content: space-between;
-        margin-left: 0;
-    }
 }
 
 /* ── Entrée ──
