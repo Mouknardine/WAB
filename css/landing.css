@@ -175,13 +175,18 @@ body.landing {
     color: var(--pink);
 }
 
-/* En dessous de 720 px, la ligne n'a plus la place pour tout : les
-   liens passent seuls sur un second rang, sous l'adresse, et le lieu
-   reste en face de l'adresse sur le premier. Deux rangs tiennent dans
-   les 48 px réservés : la plaque ne bouge pas. Dix pixels entre les
-   rangs : les marges de toucher des deux rangs se touchent sans se
-   chevaucher. */
+/* En dessous de 720 px, la ligne n'a plus la place pour tout : elle
+   se range sur deux rangs de deux, comme une petite grille. En haut,
+   l'adresse à gauche et le lieu à droite ; en bas, les deux liens
+   écartés jusqu'aux mêmes bords. La ligne prend huit pixels de plus
+   pour que les deux rangs respirent — la plaque suit, par la même
+   variable. Dix pixels entre les rangs : les marges de toucher se
+   touchent sans se chevaucher. */
 @media (max-width: 719px) {
+    :root {
+        --landing-foot-h: 56px;
+    }
+
     .landing__foot-inner {
         flex-wrap: wrap;
         align-content: center;
@@ -191,6 +196,7 @@ body.landing {
     .landing__links {
         order: 3;
         flex-basis: 100%;
+        justify-content: space-between;
         margin-left: 0;
     }
 }
