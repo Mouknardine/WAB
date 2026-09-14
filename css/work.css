@@ -203,7 +203,9 @@
 }
 
 /* Mention obligatoire sur les captures de l'application : les
-   données affichées sont des données de démonstration. */
+   données affichées sont des données de démonstration.
+   L'encre à 80 % : en dessous, ce texte de 10 px passe sous le
+   contraste AA (4,5) sur les neuf plaques. */
 .piece__note {
     grid-column: 1;
     margin-top: 8px;
@@ -211,7 +213,7 @@
     font-weight: var(--w-strong);
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(11, 11, 12, 0.62);
+    color: rgba(11, 11, 12, 0.8);
 }
 
 /* ── Là où le survol existe, et où la place le permet ──

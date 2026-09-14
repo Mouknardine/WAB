@@ -350,7 +350,7 @@
     <link rel="stylesheet" href="css/nav.css?v=14">
     <link rel="stylesheet" href="css/contact-modal.css?v=1">
     <link rel="stylesheet" href="css/contact-form.css?v=1">
-    <link rel="stylesheet" href="css/landing.css?v=6">
+    <link rel="stylesheet" href="css/landing.css?v=7">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=1" defer></script>
@@ -441,10 +441,18 @@
             </section>
         </div>
 
-        <!-- LA LIGNE DU BAS — où écrire, et où nous trouver -->
+        <!-- LA LIGNE DU BAS — où écrire, les deux pages que le menu ne
+             porte pas, et où nous trouver -->
         <div class="landing__foot">
             <div class="landing__foot-inner">
                 <a href="mailto:contact@wearebrothers.ch" class="landing__mail">contact@wearebrothers.ch</a>
+                <!-- Les mêmes liens qu'au pied des autres pages : sans eux,
+                     l'accueil — la page la plus forte du site pour Google —
+                     ne mènerait pas aux deux pages de service. -->
+                <nav class="landing__links" aria-label="Autres pages">
+                    <a href="/creation-site-internet-lausanne">Création de site internet</a>
+                    <a href="/applications">Applications</a>
+                </nav>
                 <span class="landing__place">Lausanne, Suisse — <time data-local-time>--:--</time></span>
             </div>
         </div>
