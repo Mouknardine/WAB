@@ -42,9 +42,50 @@
 }
 
 .piece__media {
+    position: relative;
     display: block;
     overflow: hidden;
     aspect-ratio: 16 / 10;
+}
+
+/* ── Une tuile qui mène à une page du site ──
+   L'application n'a pas de site à ouvrir : sa tuile conduit à la
+   page Applications. Une pastille posée sur la capture le dit dès
+   le départ, sans attendre le survol — la même pastille que sur les
+   captures de la page de service. Sa flèche pointe vers la droite,
+   là où celles des sites partent en diagonale : rester sur le site
+   et le quitter ne se dessinent pas pareil. */
+.piece__badge {
+    position: absolute;
+    left: clamp(12px, 1.6vw, 20px);
+    bottom: clamp(12px, 1.6vw, 20px);
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 15px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: inset 0 0 0 1px rgba(11, 11, 12, 0.1);
+    font-size: 10px;
+    font-weight: var(--w-strong);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    transition: background-color 0.3s var(--ease-out), transform 0.3s var(--ease);
+}
+
+.piece__badge svg {
+    transition: transform 0.3s var(--ease-out);
+}
+
+.piece__link:hover .piece__badge {
+    background: var(--white);
+    transform: translateY(-2px);
+}
+
+.piece__link:hover .piece__badge svg {
+    transform: translateX(2px);
 }
 
 /* L'application n'a pas le format d'un site : sa capture est large
