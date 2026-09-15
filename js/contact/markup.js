@@ -17,8 +17,8 @@
 export const CONTACT_EMAIL = 'contact@wearebrothers.ch';
 
 const PROJECT_TYPES = ['Site internet', 'Refonte', 'Branding', 'E-commerce', 'Application métier'];
-const BUDGETS = ['Moins de 10k', '10k à 25k', '25k à 50k', 'Plus de 50k', 'À définir'];
-const TIMINGS = ['Dès que possible', "D'ici 3 mois", 'Plus tard'];
+const BUDGETS = ['Moins de 2k', '2k à 4k', '4k à 6k', '6k à 8k', '8k à 10k', 'À définir'];
+const TIMINGS = ['Maintenant', "D'ici 3 mois", 'Plus tard'];
 
 const ARROW = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>';
 
