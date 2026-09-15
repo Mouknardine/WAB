@@ -1,0 +1,134 @@
+/* ============================================
+   WAB. — Services : grille de cartes
+   Inspiré de Mercury et Wise (recherche Mobbin du 15.09.2026) :
+   chaque carte de verre porte en haut un aperçu de ce qu'on livre,
+   puis le titre et une phrase. Technologie en « bento » — deux grandes
+   cartes, quatre petites. Les aperçus sont dans service-visuals.css ;
+   le panneau Conseil est sur la page About (advice.css).
+   ============================================ */
+
+.svc-grid {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0 var(--gutter);
+    list-style: none;
+}
+
+/* Même verre que les cartes du reste du site. */
+.svc-card {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    border-radius: clamp(20px, 2vw, 26px);
+    background: rgba(255, 255, 255, 0.42);
+    -webkit-backdrop-filter: blur(22px) saturate(1.5);
+    backdrop-filter: blur(22px) saturate(1.5);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        0 1px 2px rgba(11, 11, 12, 0.03);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .svc-card {
+        background: rgba(255, 255, 255, 0.78);
+    }
+}
+
+/* L'aperçu : une vitrine arrondie, à hauteur fixe pour que les titres
+   d'un même rang tombent sur la même ligne. Son fond est une nappe de
+   couleur vive fondue dans une autre, dans l'esprit de l'illustration
+   Intégrations. Chaque carte a son propre duo et sa propre
+   disposition (service-mesh.css), pour qu'aucun fond ne se répète. */
+.svc-visual {
+    --mesh-1: #24cc71;
+    --mesh-2: #01b7fd;
+    --mesh-a: 10% 12%;
+    --mesh-b: 92% 88%;
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: clamp(190px, 17vw, 240px);
+    overflow: hidden;
+    border-radius: clamp(14px, 1.5vw, 18px);
+    background:
+        radial-gradient(58% 62% at var(--mesh-a), var(--mesh-1) 0%, transparent 72%),
+        radial-gradient(62% 58% at var(--mesh-b), var(--mesh-1) 0%, transparent 72%),
+        var(--mesh-2);
+}
+
+/* Une illustration plein cadre à la place d'un aperçu dessiné : elle
+   remplit la vitrine, recadrée sur son centre. */
+.svc-visual__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 45%;
+}
+
+/* Capture de projet : on garde le haut, où se trouve le logo. */
+.svc-visual__img--top {
+    object-position: left top;
+}
+
+.svc-body {
+    padding: clamp(14px, 1.6vw, 20px) clamp(12px, 1.4vw, 18px) clamp(14px, 1.6vw, 18px);
+}
+
+.svc-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--ink);
+}
+
+.svc-icon {
+    flex: none;
+}
+
+.svc-desc {
+    margin-top: 8px;
+    max-width: 44ch;
+    font-size: clamp(0.95rem, 1.1vw, 1.02rem);
+    line-height: 1.5;
+    text-wrap: pretty;
+    color: var(--ink-muted);
+}
+
+.svc-desc .text-link {
+    white-space: nowrap;
+}
+
+/* Tablette : deux colonnes, les grandes cartes sur toute la ligne.
+   Image de marque passe directement à trois. */
+@media (min-width: 700px) {
+    .svc-grid--tech {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .svc-grid--tech .svc-card--wide {
+        grid-column: span 2;
+    }
+
+    .svc-grid--brand {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* Ordinateur : quatre colonnes — Sites (2) + deux petites, puis deux
+   petites + Applications (2). Huit cases, aucun trou. */
+@media (min-width: 1000px) {
+    .svc-grid--tech {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: clamp(12px, 1.2vw, 18px);
+    }
+
+    .svc-grid--brand {
+        gap: clamp(12px, 1.2vw, 18px);
+    }
+}

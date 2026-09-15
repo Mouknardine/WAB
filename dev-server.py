@@ -18,6 +18,7 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 ROUTES = {
     '/': 'index.html',
     '/realisations': 'work.html',
+    '/services': 'services.html',
     '/studio': 'about.html',
     '/applications': 'applications.html',
     '/creation-site-internet-lausanne': 'creation-site-internet-lausanne.html',

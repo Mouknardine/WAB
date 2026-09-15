@@ -1,0 +1,128 @@
+/* ============================================
+   WAB. — Services : les aperçus des cartes Technologie
+   De petites interfaces dessinées en HTML et CSS — fenêtres de
+   navigateur, devis, e-mail, conversation. Décoratives :
+   masquées aux lecteurs d'écran, aucun chiffre ni client inventé.
+   Les aperçus Image de marque sont dans brand-visuals.css.
+   ============================================ */
+
+/* ── Fenêtre de navigateur (sites, application) ── */
+.mock-window {
+    position: absolute;
+    overflow: hidden;
+    border-radius: 10px;
+    background: var(--white);
+    box-shadow: 0 0 0 1px rgba(11, 11, 12, 0.06), 0 14px 34px rgba(60, 20, 45, 0.14);
+}
+
+.mock-bar {
+    display: flex;
+    gap: 4px;
+    padding: 6px 8px;
+}
+
+.mock-bar i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(11, 11, 12, 0.14);
+}
+
+.mock-window img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.mock-window--back { left: 7%; top: 14%; width: 56%; }
+.mock-window--front { right: 7%; top: 30%; width: 60%; }
+.mock-window--app { left: 6%; right: 6%; top: 16%; }
+
+/* ── Petites briques communes ── */
+.mock-line {
+    display: block;
+    height: 7px;
+    margin-top: 8px;
+    border-radius: 4px;
+    background: rgba(11, 11, 12, 0.08);
+}
+
+.mock-line--mid { width: 78%; }
+.mock-line--short { width: 52%; }
+
+.mock-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: var(--radius-pill);
+    background: rgba(31, 138, 76, 0.12);
+    font-size: 0.72rem;
+    font-weight: var(--w-strong);
+    color: #1b6e3f;
+}
+
+.mock-badge--end {
+    margin-top: 12px;
+}
+
+/* ── Automatisation et newsletters : un document ── */
+.mock-doc {
+    width: 76%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: var(--white);
+    box-shadow: 0 0 0 1px rgba(11, 11, 12, 0.05), 0 12px 30px rgba(60, 20, 45, 0.1);
+    font-size: 0.85rem;
+    color: var(--ink);
+}
+
+.mock-doc__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.mock-doc__foot {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(11, 11, 12, 0.07);
+}
+
+.mock-mail__from {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--ink-muted);
+}
+
+.mock-mail__subject {
+    display: block;
+    margin-top: 2px;
+}
+
+/* ── IA : une question, une réponse ── */
+.mock-chat {
+    display: grid;
+    gap: 8px;
+    width: 80%;
+}
+
+.mock-chat__ask {
+    justify-self: end;
+    max-width: 88%;
+    padding: 8px 12px;
+    border-radius: 14px 14px 4px 14px;
+    background: var(--ink);
+    font-size: 0.8rem;
+    line-height: 1.35;
+    color: var(--white);
+}
+
+.mock-chat__reply {
+    padding: 10px 12px 12px;
+    border-radius: 14px 14px 14px 4px;
+    background: var(--white);
+    box-shadow: 0 0 0 1px rgba(11, 11, 12, 0.05), 0 8px 22px rgba(60, 20, 45, 0.08);
+    color: var(--pink);
+}

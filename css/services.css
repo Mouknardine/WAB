@@ -1,0 +1,37 @@
+/* ============================================
+   WAB. — Services
+   L'en-tête et le rythme des bandes. Les cartes et le panneau Conseil
+   sont dans service-cards.css, leurs aperçus dans service-visuals.css.
+   Les titres de bande reprennent css/process.css.
+   ============================================ */
+
+/* ── En-tête ── */
+.services-intro {
+    padding-inline: var(--gutter);
+}
+
+.services-intro__title {
+    max-width: 22ch;
+    font-size: clamp(2.2rem, 4.8vw, 4rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.04em;
+    line-height: 1.08;
+    text-wrap: balance;
+    color: var(--ink);
+}
+
+.services-intro__text {
+    margin-top: clamp(16px, 2.4vw, 28px);
+    max-width: 52ch;
+    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+    line-height: 1.55;
+    text-wrap: pretty;
+    color: var(--ink-soft);
+}
+
+/* ── Bandes resserrées ──
+   Les trois familles se suivent : l'écart entre elles reste celui
+   d'une bande, pas de deux. */
+.band--tight {
+    padding-top: clamp(16px, 3vw, 40px);
+}

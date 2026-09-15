@@ -1,0 +1,76 @@
+/* ============================================
+   WAB. — Services : les aperçus des cartes Image de marque
+   Deux cartes de visite et une étiquette tissée (la carte Branding
+   montre une vraie capture, LAZIZZE).
+   Décoratifs, masqués aux lecteurs d'écran. Les briques communes
+   (.mock-line) viennent de service-visuals.css.
+   ============================================ */
+
+/* ── Print : deux cartes de visite ── */
+.mock-bcard {
+    position: absolute;
+    width: 54%;
+    aspect-ratio: 1.75;
+    padding: 12px 14px;
+    border-radius: 8px;
+    box-shadow: 0 12px 28px rgba(60, 20, 45, 0.16);
+}
+
+.mock-bcard--back {
+    left: 12%;
+    top: 18%;
+    background: var(--white);
+    transform: rotate(-8deg);
+}
+
+.mock-bcard--front {
+    right: 12%;
+    bottom: 16%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--ink);
+    color: var(--white);
+    transform: rotate(5deg);
+}
+
+.mock-bcard--front b {
+    font-size: 1.3rem;
+    letter-spacing: -0.04em;
+}
+
+.mock-bcard--front span {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+/* ── Vêtements : une étiquette tissée ── */
+.mock-label {
+    display: grid;
+    justify-items: center;
+    gap: 2px;
+    padding: 16px 26px;
+    border-radius: 4px;
+    background: var(--ink);
+    outline: 1px dashed rgba(255, 255, 255, 0.35);
+    outline-offset: -6px;
+    color: var(--white);
+    text-align: center;
+    box-shadow: 0 12px 28px rgba(60, 20, 45, 0.18);
+    transform: rotate(-3deg);
+}
+
+.mock-label b {
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+}
+
+.mock-label span,
+.mock-label small {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.75;
+}
