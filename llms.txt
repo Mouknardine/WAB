@@ -4,7 +4,7 @@
 
 ## Le studio
 
-- **Qui** : Eliott Pina (lead designer / directeur artistique) et Matt Pina (lead développeur full-stack), deux frères.
+- **Qui** : Eliott Pina (lead designer / directeur artistique) et Matt Pina (lead développeur full-stack), deux frères, accompagnés d'Ivan Jakovlevski (commercial et relation client).
 - **Où** : Lausanne, canton de Vaud, Suisse. Zone d'intervention : Lausanne, Pully, Renens, Épalinges, Morges, Nyon, Vevey, Montreux, Yverdon-les-Bains, Genève, et à distance pour le reste de la Suisse romande.
 - **Quoi** : création de site internet sur mesure (site vitrine, site d'entreprise, portfolio), refonte de site existant, web design, branding et identité visuelle, motion design, e-commerce, référencement local (SEO), applications web de gestion sur mesure.
 - **Comment** : relation directe avec les deux fondateurs, sans intermédiaire ni chef de projet. Réponse sous 24 h ouvrées, sans engagement. Chaque site est codé de A à Z, sans WordPress ni Wix ; hébergement suisse (Infomaniak) inclus.
@@ -29,7 +29,7 @@
   - Application de gestion — logiciel développé pour une agence : projets, tâches, temps passé, clients, documents et facturation (https://wearebrothers.ch/applications)
 - [Services](https://wearebrothers.ch/services) : les services du studio en trois familles — Technologie (sites codés de A à Z, intégrations de système de caisse, CMS et boutique en ligne, automatisation des devis, factures et du suivi client, newsletters automatiques, applications web sur mesure, intégration de l'intelligence artificielle en entreprise), Image de marque (branding, logo, cartes de visite et supports imprimés, vêtements en collaboration avec Memories Store à Lausanne) et Conseil (Eliott Pina : bachelor en droit, master en cours en systèmes d'information et innovation digitale, lauréat du programme UCreate avec 10'000 CHF pour le développement d'une application)
 - [Applications sur mesure](https://wearebrothers.ch/applications) : logiciels de gestion développés pour les PME (projets, tâches, temps, clients, documents, facturation), livrés module par module
-- [About](https://wearebrothers.ch/studio) : les deux frères du studio — Eliott Pina et Matt Pina — avec leur rôle, le conseil et les savoir-faire
+- [About](https://wearebrothers.ch/studio) : les trois personnes du studio — Eliott Pina, Matt Pina, Ivan Jakovlevski — avec leur rôle, le conseil et les savoir-faire
 
 ## À retenir
 
