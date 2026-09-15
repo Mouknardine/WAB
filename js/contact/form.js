@@ -8,8 +8,8 @@
  * n'est pas parti.
  */
 
-import { CONTACT_EMAIL } from './markup.js?v=6';
-import { requireElement } from './dom.js?v=6';
+import { CONTACT_EMAIL } from './markup.js?v=7';
+import { requireElement } from './dom.js?v=7';
 
 const ENDPOINT = '/send-message.php';
 const TIMEOUT_MS = 15000;

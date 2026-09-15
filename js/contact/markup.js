@@ -53,7 +53,7 @@ const TEMPLATE = `
     </div>
 
     <div data-view="form">
-        <h2 class="contact-modal__title" id="contactModalTitle">Travaillons ensemble&nbsp;?</h2>
+        <h2 class="contact-modal__title" id="contactModalTitle">On travaille ensemble&nbsp;?</h2>
         <p class="contact-modal__lede">Nous vous répondons sous 24&nbsp;h ouvrées, sans engagement.</p>
 
         <form class="contact-form" action="/send-message.php" method="POST" novalidate>
