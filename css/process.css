@@ -1,10 +1,11 @@
 /* ============================================
-   WAB. — Réalisations : le déroulé d'un projet
-   À la manière d'Apple : un titre court, puis quatre cartes blanches
-   aux coins arrondis — une icône, un titre en deux temps, une
-   phrase. Sur téléphone, les cartes défilent au doigt sur une seule
-   rangée : le bloc garde la hauteur d'une carte au lieu d'empiler
-   quatre paragraphes.
+   WAB. — Cartes de verre (Réalisations et About)
+   À la manière d'Apple : un titre court, puis des cartes en verre
+   dépoli aux coins arrondis — une icône et un titre sur une ligne,
+   une phrase ou une courte liste dessous. Quatre cartes pour le
+   déroulé d'un projet (Réalisations), trois pour les savoir-faire
+   (About). Sur téléphone, les cartes défilent au doigt sur une seule
+   rangée au lieu de s'empiler.
    ============================================ */
 
 .process__head {
@@ -37,7 +38,9 @@
 .process__cards {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: min(78%, 300px);
+    /* 86 % : sur un écran de 320 px, un titre d'un seul long mot
+       (« Accompagnement ») doit tenir dans sa carte sans être coupé. */
+    grid-auto-columns: min(86%, 300px);
     gap: 12px;
     margin: 0;
     padding: 0 var(--gutter) 4px;
@@ -109,6 +112,31 @@
     color: var(--ink-muted);
 }
 
+/* ── Très petits téléphones (320 px) ──
+   Quelques pixels repris sur la marge intérieure et l'écart de
+   l'icône : le titre d'un seul long mot (« Accompagnement ») tient
+   sur sa ligne sans être coupé. */
+@media (max-width: 360px) {
+    .process__card {
+        padding: 20px 18px;
+        column-gap: 10px;
+    }
+}
+
+/* ── Variante liste (page About) ──
+   Une carte porte une courte liste au lieu d'une phrase. */
+.process__list {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: 6px;
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: clamp(0.95rem, 1.1vw, 1.02rem);
+    line-height: 1.45;
+    color: var(--ink-muted);
+}
+
 /* ── Grand écran : les quatre cartes côte à côte ── */
 @media (min-width: 900px) {
     .process__cards {
@@ -119,5 +147,14 @@
         padding-bottom: 0;
         overflow: visible;
         scroll-snap-type: none;
+    }
+}
+
+/* ── Trois cartes (page About) ──
+   Après la règle des quatre colonnes : à spécificité égale, c'est
+   l'ordre qui décide. */
+@media (min-width: 900px) {
+    .process__cards--three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }

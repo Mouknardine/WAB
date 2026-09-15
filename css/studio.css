@@ -1,150 +1,162 @@
 /* ============================================
    WAB. — About
-   Un grand titre de marque, puis les trois portraits en grand,
-   chacun suivi de son rôle et de sa description, puis les
-   savoir-faire en trois colonnes. Aucune carte — c'est le rose qui
-   tient l'ensemble.
+   Sobre et posé : le titre et un court paragraphe sur la manière de
+   travailler du studio, puis l'équipe en photos à la suite. Les
+   savoir-faire reprennent les cartes de verre de css/process.css.
    ============================================ */
 
-/* ── Titre de marque ──
-   Le plus grand texte du site : il se lit comme une signature, pas
-   comme un intitulé de section. Même marge que les portraits. */
-.studio-head {
+/* ── En-tête ──
+   Le titre, et dessous un paragraphe à l'encre adoucie, borné à une
+   longueur de ligne confortable. Même marge que le reste de la page. */
+.studio-intro {
     padding-inline: var(--gutter);
-    margin-bottom: clamp(32px, 5vw, 64px);
 }
 
-.studio-head__title {
-    /* Une phrase entière : bornée à une vingtaine de signes par ligne,
-       elle se lit en trois lignes sur ordinateur au lieu de courir sur
-       toute la largeur de l'écran. */
-    max-width: 19ch;
-    font-size: clamp(2rem, 6.2vw, 5.6rem);
+.studio-intro__title {
+    max-width: 18ch;
+    font-size: clamp(2.2rem, 4.8vw, 4rem);
     font-weight: var(--w-strong);
     letter-spacing: -0.04em;
-    /* Serré, mais pas au point que le jambage du « p » de « prendre »
-       touche les accents de « sérieux » à la ligne suivante. */
     line-height: 1.08;
     text-wrap: balance;
     color: var(--ink);
 }
 
-/* ── Équipe ── */
-.team-wrap {
-    padding-inline: var(--gutter);
+.studio-intro__text {
+    margin-top: clamp(16px, 2.4vw, 28px);
+    max-width: 52ch;
+    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+    line-height: 1.55;
+    text-wrap: pretty;
+    color: var(--ink-soft);
 }
 
-/* Les portraits sortent de la colonne de lecture : ils prennent
-   toute la largeur disponible, comme les captures de la page
-   Réalisations. */
+/* ── Équipe ──
+   Les photos à la suite, au même format 4/5, le nom et le rôle dans
+   une petite carte de verre sous chaque portrait. Sur téléphone, les
+   portraits défilent au doigt sur une seule rangée aimantée, le
+   suivant dépassant du bord. */
+.team-band {
+    padding-top: clamp(8px, 2vw, 24px);
+}
+
+.team-band__title {
+    margin-bottom: clamp(20px, 3vw, 36px);
+    padding-inline: var(--gutter);
+    font-size: clamp(1.9rem, 4vw, 3.2rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    color: var(--ink);
+}
 
 .team {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: clamp(34px, 4vw, 48px);
+    grid-auto-flow: column;
+    grid-auto-columns: min(78%, 320px);
+    gap: 12px;
+    margin: 0;
+    padding: 0 var(--gutter) 4px;
+    list-style: none;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
 }
 
+.team::-webkit-scrollbar {
+    display: none;
+}
+
+.profile {
+    scroll-snap-align: start;
+}
+
+/* Le format 4/5 est porté par l'image elle-même : la légende peut
+   ainsi se ranger dessous en petit écran. object-fit garde les trois
+   portraits identiques, même la photo très haute d'Ivan. */
 .profile__photo {
-    overflow: hidden;
-    aspect-ratio: 4 / 5;
-    border-radius: 14px;
-    background: var(--card);
-    box-shadow: inset 0 0 0 1px var(--line);
+    position: relative;
+    margin: 0;
 }
 
 .profile__photo img {
+    display: block;
     width: 100%;
-    height: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
-    /* Valeur calibrée sur ces trois photos précises et le même cadre
-       4/5. Seule celle d'Ivan est réellement recadrée en hauteur :
-       les deux autres sont déjà au bon ratio ou plus larges. */
-    object-position: 50% 32%;
-    transition: transform 0.6s var(--ease);
+    object-position: 50% 30%;
+    border-radius: clamp(18px, 1.8vw, 24px);
+    background: var(--card);
 }
 
-.profile:hover .profile__photo img {
-    transform: scale(1.03);
+/* Calage propre à chaque photo : ce ne sont pas les mêmes cadrages. */
+.profile__photo--ivan img { object-position: 45% 38%; }
+
+
+/* La légende : une petite carte de verre sous la photo, de la même
+   largeur, séparée par un court espace. Même matière que les cartes
+   du reste du site ; jamais posée sur le portrait, où elle masquait
+   le visage. */
+.profile__plate {
+    margin-top: 8px;
+    padding: 12px 16px;
+    border-radius: clamp(14px, 1.4vw, 18px);
+    background: rgba(255, 255, 255, 0.42);
+    -webkit-backdrop-filter: blur(22px) saturate(1.5);
+    backdrop-filter: blur(22px) saturate(1.5);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        0 1px 2px rgba(11, 11, 12, 0.03);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .profile__plate {
+        background: rgba(255, 255, 255, 0.78);
+    }
 }
 
 .profile__name {
-    margin-top: 22px;
-    font-size: clamp(1.25rem, 2vw, 1.55rem);
+    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
     font-weight: var(--w-strong);
     letter-spacing: -0.02em;
+    line-height: 1.2;
     color: var(--ink);
 }
 
 .profile__role {
-    margin-top: 6px;
-    font-size: 11px;
-    font-weight: var(--w-strong);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--pink);
+    margin-top: 2px;
+    font-size: 0.92rem;
+    line-height: 1.35;
+    color: var(--ink-muted);
 }
 
 .profile__bio {
-    margin-top: 14px;
-    max-width: 46ch;
+    display: none;
+    margin-top: clamp(14px, 1.6vw, 18px);
+    max-width: 40ch;
     font-size: 1rem;
-    line-height: 1.65;
+    line-height: 1.55;
     text-wrap: pretty;
     color: var(--ink-muted);
 }
 
-/* ── Tablette et bureau ── */
+/* Grand écran : les trois portraits côte à côte, sans défilement,
+   avec leur phrase de présentation dessous. */
 @media (min-width: 760px) {
     .team {
-        grid-template-columns: repeat(3, 1fr);
-        gap: clamp(18px, 2.4vw, 30px);
-    }
-}
-
-/* ── Savoir-faire ──
-   Trois familles, une liste typographique chacune : pas d'icônes,
-   pas de cartes. Le filet sous chaque intitulé reprend celui des
-   listes du reste du site. */
-.band--skills {
-    padding-top: clamp(24px, 4vw, 48px);
-}
-
-.skills__cta {
-    margin-top: clamp(22px, 3vw, 30px);
-}
-
-.skills {
-    display: grid;
-    gap: clamp(28px, 4vw, 40px);
-}
-
-.skills__title {
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--line);
-    font-size: clamp(1.1rem, 2vw, 1.35rem);
-    font-weight: var(--w-strong);
-    letter-spacing: -0.02em;
-    color: var(--ink);
-}
-
-.skills__list {
-    display: grid;
-    gap: 10px;
-    margin-top: 16px;
-    padding: 0;
-    list-style: none;
-}
-
-.skills__list li {
-    font-size: 1rem;
-    line-height: 1.45;
-    text-wrap: pretty;
-    color: var(--ink-muted);
-}
-
-@media (min-width: 700px) {
-    .skills {
+        grid-auto-flow: row;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: clamp(24px, 3vw, 44px);
+        grid-auto-columns: auto;
+        gap: clamp(16px, 2vw, 28px);
+        padding-bottom: 0;
+        overflow: visible;
+        scroll-snap-type: none;
+    }
+
+    .profile__bio {
+        display: block;
     }
 }

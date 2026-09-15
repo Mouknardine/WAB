@@ -283,10 +283,11 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/base.css?v=23">
     <link rel="stylesheet" href="css/nav.css?v=14">
-    <link rel="stylesheet" href="css/contact-modal.css?v=3">
+    <link rel="stylesheet" href="css/contact-modal.css?v=5">
     <link rel="stylesheet" href="css/contact-form.css?v=3">
     <link rel="stylesheet" href="css/page.css?v=6">
-    <link rel="stylesheet" href="css/studio.css?v=14">
+    <link rel="stylesheet" href="css/studio.css?v=28">
+    <link rel="stylesheet" href="css/process.css?v=9">
     <link rel="stylesheet" href="css/footer.css?v=6">
 
     <!-- Scripts -->
@@ -360,94 +361,123 @@
 
     <main id="contenu">
 
-        <section class="band band--first" id="studio">
-            <!-- Le titre de marque ouvre la page, au-dessus des portraits.
-                 La suite de la phrase reste lue par Google et par la
-                 navigation vocale : elle porte le référencement local. -->
-            <div class="studio-head">
-                <h1 class="studio-head__title">
-                    On fait les choses sérieusement sans se prendre au sérieux<span class="sr-only"> — studio digital fondé par deux frères à Lausanne</span>
-                </h1>
-            </div>
-
-            <div class="team-wrap">
-                <div class="team" data-reveal-group>
-                    <article class="profile reveal">
-                        <div class="profile__photo">
-                            <img src="assets/images/team-eliott.webp" alt="Eliott Pina, designer et directeur artistique chez WeAreBrothers Studio à Lausanne" loading="lazy" decoding="async" width="800" height="1000">
-                        </div>
-                        <h2 class="profile__name">Eliott Pina</h2>
-                        <p class="profile__role">Lead designer — direction artistique</p>
-                        <p class="profile__bio">Eliott signe la direction artistique des projets : identité visuelle, mise en page, animations et expérience utilisateur. Il veille à ce que chaque site tienne d'un seul trait et reflète fidèlement l'image de son client.</p>
-                    </article>
-                    <article class="profile reveal">
-                        <div class="profile__photo">
-                            <img src="assets/images/team-matt.webp" alt="Matt Pina, développeur web full-stack chez WeAreBrothers Studio à Lausanne" loading="lazy" decoding="async" width="800" height="1000">
-                        </div>
-                        <h2 class="profile__name">Matt Pina</h2>
-                        <p class="profile__role">Lead développeur full-stack</p>
-                        <p class="profile__bio">Matt pilote toute la partie technique, du développement à la mise en ligne. Il construit des sites rapides, fiables et impeccables sur tous les écrans, pensés dès le départ pour évoluer sans tout reconstruire.</p>
-                    </article>
-                    <article class="profile reveal">
-                        <div class="profile__photo">
-                            <img src="assets/images/team-ivan.webp" alt="Ivan Jakovlevski, commercial et responsable relation client chez WeAreBrothers Studio à Lausanne" loading="lazy" decoding="async" width="800" height="1000">
-                        </div>
-                        <h2 class="profile__name">Ivan Jakovlevski</h2>
-                        <p class="profile__role">Commercial et relation client</p>
-                        <p class="profile__bio">Ivan est le premier interlocuteur de nos clients. Il les accompagne du premier contact jusqu'au lancement du projet, avec une approche conviviale et beaucoup de proximité. En parallèle, il travaille en recherche et développement chez VEG Consulting, une fiduciaire lausannoise établie de longue date.</p>
-                    </article>
-                </div>
-            </div>
+        <!-- EN-TÊTE — le titre, puis un court paragraphe sur la manière
+             de travailler du studio. Pas de cartes ni de chiffres ici :
+             l'équipe suit directement. La fin du titre reste lue par
+             Google et la navigation vocale. -->
+        <section class="band band--first studio-intro" id="studio">
+            <h1 class="studio-intro__title">
+                Deux frères, un seul interlocuteur.<span class="sr-only"> WeAreBrothers, studio digital fondé à Lausanne</span>
+            </h1>
+            <p class="studio-intro__text">
+                Nous aimons les designs simples, efficaces et dans l'air du temps. Pas d'effet pour
+                l'effet&nbsp;: nous faisons ce qui fonctionne pour nos clients, taillé pour leurs
+                besoins réels. Eliott dessine, Matt développe, et du premier café à la mise en ligne,
+                vous parlez toujours aux mêmes personnes.
+            </p>
         </section>
 
-        <!-- SAVOIR-FAIRE — ce que couvre le studio, en trois familles.
-             Uniquement ce que le studio fait réellement (voir le JSON-LD
-             et PRODUCT.md) : rien à ajouter pour faire nombre. -->
-        <section class="band band--skills" id="savoir-faire" aria-labelledby="skillsTitle">
-            <div class="spread split">
-                <div class="split__head">
-                    <h2 class="band-title reveal" id="skillsTitle">Tout se fait sous le même toit</h2>
-                    <p class="band-lede reveal">
-                        Design, développement et suivi&nbsp;: les mêmes personnes du premier café à la mise
-                        en ligne, sans intermédiaire.
-                    </p>
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="btn btn--solid skills__cta reveal">
+        <!-- ÉQUIPE — les photos à la suite, le nom et le rôle posés sur
+             une plaque de verre en bas de chaque portrait (inspiré
+             d'incident.io et Surfshark). Sur téléphone, les portraits
+             défilent au doigt ; la phrase de présentation n'apparaît
+             que sur grand écran. -->
+        <section class="band team-band" aria-labelledby="teamTitle">
+            <h2 class="team-band__title" id="teamTitle">L'équipe</h2>
+            <ul class="team">
+                    <li class="profile">
+                        <figure class="profile__photo profile__photo--eliott">
+                            <img src="assets/images/team-eliott.webp?v=6" alt="Eliott Pina, designer et directeur artistique chez WeAreBrothers Studio à Lausanne" loading="lazy" decoding="async">
+                            <figcaption class="profile__plate">
+                                <h3 class="profile__name">Eliott Pina</h3>
+                                <p class="profile__role">Lead designer, direction artistique</p>
+                            </figcaption>
+                        </figure>
+                        <p class="profile__bio">Identité visuelle, interfaces et animations. Chaque projet passe par ses mains.</p>
+                    </li>
+                    <li class="profile">
+                        <figure class="profile__photo profile__photo--matt">
+                            <img src="assets/images/team-matt.webp" alt="Matt Pina, développeur web full-stack chez WeAreBrothers Studio à Lausanne" loading="lazy" decoding="async">
+                            <figcaption class="profile__plate">
+                                <h3 class="profile__name">Matt Pina</h3>
+                                <p class="profile__role">Lead développeur full-stack</p>
+                            </figcaption>
+                        </figure>
+                        <p class="profile__bio">Développement et mise en ligne. Des sites rapides, fiables et simples à faire évoluer.</p>
+                    </li>
+                    <li class="profile">
+                        <figure class="profile__photo profile__photo--ivan">
+                            <img src="assets/images/team-ivan.webp" alt="Ivan Jakovlevski, commercial et responsable relation client chez WeAreBrothers Studio à Lausanne" loading="lazy" decoding="async">
+                            <figcaption class="profile__plate">
+                                <h3 class="profile__name">Ivan Jakovlevski</h3>
+                                <p class="profile__role">Commercial et relation client</p>
+                            </figcaption>
+                        </figure>
+                        <p class="profile__bio">Votre premier interlocuteur, du premier contact au lancement. Également en R&amp;D chez VEG Consulting, fiduciaire lausannoise.</p>
+                    </li>
+            </ul>
+        </section>
+
+        <!-- SAVOIR-FAIRE — les mêmes cartes de verre que le déroulé de la
+             page Réalisations (css/process.css). Uniquement ce que le
+             studio vend réellement. -->
+        <section class="band process" id="savoir-faire" aria-labelledby="skillsTitle">
+            <div class="process__head">
+                <h2 class="process__title" id="skillsTitle">Tout sous le même toit.</h2>
+                <p class="process__lede">Les mêmes personnes, du premier café à la mise en ligne.</p>
+            </div>
+
+            <ul class="process__cards process__cards--three">
+                    <li class="process__card">
+                        <svg class="process__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19 7-7 3 3-7 7-3-3Z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5Z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+                        <h3 class="process__name">Design</h3>
+                        <ul class="process__list">
+                            <li>Direction artistique</li>
+                            <li>Web design et interfaces</li>
+                            <li>Identité visuelle</li>
+                            <li>Motion design</li>
+                        </ul>
+                    </li>
+                    <li class="process__card">
+                        <svg class="process__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="m13.5 6-3 12"/></svg>
+                        <h3 class="process__name">Développement</h3>
+                        <ul class="process__list">
+                            <li>Sites codés sur mesure</li>
+                            <li>E-commerce</li>
+                            <li>Applications de gestion</li>
+                            <li>Référencement local</li>
+                        </ul>
+                    </li>
+                    <li class="process__card">
+                        <svg class="process__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="m5.6 5.6 3.6 3.6M14.8 14.8l3.6 3.6M14.8 9.2l3.6-3.6M5.6 18.4l3.6-3.6"/></svg>
+                        <h3 class="process__name">Accompagnement</h3>
+                        <ul class="process__list">
+                            <li>Hébergement suisse</li>
+                            <li>Maintenance et évolutions</li>
+                            <li>Refonte sans perdre le référencement</li>
+                            <li>Paiement en plusieurs fois</li>
+                        </ul>
+                    </li>
+            </ul>
+        </section>
+
+        <section class="band closing" id="contact">
+            <div class="shell">
+                <h2 class="closing__title">Et si le prochain projet c'était le vôtre&nbsp;?</h2>
+                <p class="closing__lede">
+                    Quelques lignes suffisent pour commencer. Ivan vous répond sous 24&nbsp;h ouvrées,
+                    sans engagement.
+                </p>
+                <div class="closing__actions">
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="btn btn--solid btn--lg">
                         <span>Démarrer un projet</span>
-                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                    </a>
+                    <a href="mailto:contact@wearebrothers.ch" class="btn btn--ghost btn--lg">
+                        <span>Écrire un email</span>
                     </a>
                 </div>
-
-                <div class="split__body">
-                    <div class="skills" data-reveal-group>
-                        <div class="skills__group reveal">
-                            <h3 class="skills__title">Design</h3>
-                            <ul class="skills__list">
-                                <li>Direction artistique</li>
-                                <li>Web design et interfaces</li>
-                                <li>Identité visuelle et branding</li>
-                                <li>Motion design</li>
-                            </ul>
-                        </div>
-                        <div class="skills__group reveal">
-                            <h3 class="skills__title">Développement</h3>
-                            <ul class="skills__list">
-                                <li>Sites codés sur mesure, sans WordPress ni Wix</li>
-                                <li>E-commerce</li>
-                                <li>Applications de gestion sur mesure</li>
-                                <li>Référencement local</li>
-                            </ul>
-                        </div>
-                        <div class="skills__group reveal">
-                            <h3 class="skills__title">Accompagnement</h3>
-                            <ul class="skills__list">
-                                <li>Hébergement suisse</li>
-                                <li>Maintenance et évolutions</li>
-                                <li>Refonte en gardant contenus et référencement</li>
-                                <li>Paiement en plusieurs mensualités</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <p class="closing__note">Lausanne, Suisse — <time data-local-time>--:--</time></p>
             </div>
         </section>
 

@@ -1,10 +1,9 @@
 /* ============================================
    WAB. — Fenêtre de contact
-   Le site n'a pas de page Contact : le lien ouvre une carte blanche
-   au-dessus de la page en cours, qui se floute derrière. C'est la
-   seule carte du site, et la seule exception assumée à la règle
-   « aucune ombre dans le contenu » : elle ne fait pas partie de la
-   page, elle flotte réellement au-dessus.
+   Le site n'a pas de page Contact : le lien ouvre une carte en verre
+   dépoli au-dessus de la page en cours, floutée derrière un voile
+   clair. Même matière que les cartes du site ; c'est la seule à
+   porter une ombre, car elle flotte réellement au-dessus de la page.
 
    Cette feuille dessine la fenêtre ; les champs sont dans
    contact-form.css. Le gabarit est écrit par js/contact/markup.js.
@@ -33,9 +32,9 @@ html.has-modal {
 /* ::backdrop n'hérite des variables de :root que dans les navigateurs
    récents : les valeurs y sont écrites en clair. */
 .contact-modal::backdrop {
-    background: rgba(11, 11, 12, 0.3);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 236, 246, 0.42);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    backdrop-filter: blur(14px) saturate(1.2);
     animation: contact-fade-in 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
@@ -46,9 +45,23 @@ html.has-modal {
     overscroll-behavior: contain;
     padding: clamp(14px, 2.5vw, 20px) clamp(24px, 5vw, 44px) clamp(28px, 5vw, 44px);
     border-radius: var(--radius-card);
-    background: var(--card);
-    box-shadow: var(--shadow-lg);
+    /* Verre dépoli, même matière que les cartes du site mais plus
+       dense : le formulaire doit rester parfaitement lisible sur la
+       page floutée, même devant les captures sombres de Réalisations.
+       Liseré blanc d'un pixel, reflet sur l'arête haute, ombre très
+       douce pour la décoller de la page. */
+    background: rgba(255, 255, 255, 0.7);
+    -webkit-backdrop-filter: blur(30px) saturate(1.6);
+    backdrop-filter: blur(30px) saturate(1.6);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        0 1px 2px rgba(11, 11, 12, 0.04), 0 24px 60px rgba(60, 20, 45, 0.12);
     animation: contact-rise 0.5s var(--ease);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .contact-modal__card {
+        background: rgba(255, 255, 255, 0.94);
+    }
 }
 
 .contact-modal__card:focus {
