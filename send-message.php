@@ -20,7 +20,7 @@ const RECIPIENT = 'contact@wearebrothers.ch';
 // rien glisser d'autre dans l'email par ces champs.
 const PROJETS = ['Site internet', 'Refonte', 'Branding', 'E-commerce', 'Application métier'];
 const BUDGETS = ['Moins de 2k', '2k à 4k', '4k à 6k', '6k à 8k', '8k à 10k', 'À définir'];
-const DELAIS  = ['Maintenant', 'Dès que possible', "D'ici 3 mois", 'Plus tard'];
+const DELAIS  = ['Maintenant', "D'ici 3 mois", 'Plus tard'];
 
 /**
  * Ne garde que les valeurs prévues, dans l'ordre des listes.
