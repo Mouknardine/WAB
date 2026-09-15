@@ -54,7 +54,7 @@ const TEMPLATE = `
 
     <div data-view="form">
         <h2 class="contact-modal__title" id="contactModalTitle">Travaillons ensemble&nbsp;?</h2>
-        <p class="contact-modal__lede">Ivan vous répond sous 24&nbsp;h ouvrées, sans engagement.</p>
+        <p class="contact-modal__lede">Nous vous répondons sous 24&nbsp;h ouvrées, sans engagement.</p>
 
         <form class="contact-form" action="/send-message.php" method="POST" novalidate>
             <!-- Piège anti-spam : hors du champ visuel, jamais atteint au clavier -->
@@ -102,7 +102,7 @@ const TEMPLATE = `
     <div data-view="sent" hidden>
         <h2 class="contact-modal__title" tabindex="-1">Message envoyé.</h2>
         <p class="contact-modal__lede">
-            Merci&nbsp;! Ivan vous répond sous 24&nbsp;h ouvrées, idéalement pour convenir
+            Merci&nbsp;! Nous vous répondons sous 24&nbsp;h ouvrées, idéalement pour convenir
             d'un café ou d'un appel.
         </p>
         <button type="button" class="btn btn--ghost btn--lg contact-modal__done" data-contact-close>Fermer</button>

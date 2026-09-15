@@ -108,9 +108,5 @@
             <image:loc>https://wearebrothers.ch/assets/images/team-matt.webp</image:loc>
             <image:caption>Matt Pina, lead développeur full-stack chez WeAreBrothers Studio, agence web à Lausanne</image:caption>
         </image:image>
-        <image:image>
-            <image:loc>https://wearebrothers.ch/assets/images/team-ivan.webp</image:loc>
-            <image:caption>Ivan Jakovlevski, commercial et responsable relation client chez WeAreBrothers Studio, agence web à Lausanne</image:caption>
-        </image:image>
     </url>
 </urlset>

@@ -13,9 +13,9 @@
  */
 
 // Même numéro partout où un fichier est importé : voir js/birds/index.js.
-import { CONTACT_EMAIL, createContactDialog } from './markup.js?v=5';
-import { bindContactForm, resetContactForm } from './form.js?v=5';
-import { requireElement } from './dom.js?v=5';
+import { CONTACT_EMAIL, createContactDialog } from './markup.js?v=6';
+import { bindContactForm, resetContactForm } from './form.js?v=6';
+import { requireElement } from './dom.js?v=6';
 
 const OPEN_HASH = '#ecrire';
 const LOCK_CLASS = 'has-modal';
