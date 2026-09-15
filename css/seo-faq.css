@@ -1,0 +1,117 @@
+/* ============================================
+   WAB. — Création de site internet : questions fréquentes
+   Inspiré de Butter et Fiasco (recherche Mobbin du 15.09.2026) : le
+   titre et un bouton restent à gauche pendant qu'on parcourt les
+   questions à droite. Chaque question est une ligne de verre. Tout
+   est limité à .faq : la page Applications garde ses questions à
+   filets (page.css).
+   ============================================ */
+
+.faq {
+    display: grid;
+    gap: clamp(24px, 3.5vw, 40px);
+    padding-inline: var(--gutter);
+}
+
+.faq__title {
+    max-width: 14ch;
+    font-size: clamp(1.9rem, 4vw, 3.2rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    text-wrap: balance;
+    color: var(--ink);
+}
+
+.faq__lede {
+    margin-top: 16px;
+    max-width: 36ch;
+    font-size: clamp(1rem, 1.3vw, 1.1rem);
+    line-height: 1.6;
+    text-wrap: pretty;
+    color: var(--ink-soft);
+}
+
+.faq__cta {
+    margin-top: 24px;
+}
+
+.faq .service-list {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    border: 0;
+}
+
+.faq .service {
+    border: 0;
+    border-radius: clamp(16px, 1.6vw, 20px);
+    background: rgba(255, 255, 255, 0.45);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    backdrop-filter: blur(20px) saturate(1.4);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    transition: background-color 0.3s var(--ease-out);
+}
+
+.faq .service.is-open {
+    background: rgba(255, 255, 255, 0.72);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .faq .service {
+        background: rgba(255, 255, 255, 0.85);
+    }
+}
+
+.faq .service__toggle {
+    padding: clamp(16px, 2vw, 22px) clamp(18px, 2.2vw, 26px);
+}
+
+.faq .service__name {
+    font-size: clamp(1.02rem, 1.4vw, 1.15rem);
+}
+
+.faq .service__toggle:hover .service__name {
+    color: var(--ink);
+}
+
+/* Le + dans un rond : une cible nette, qui dit « s'ouvre ». */
+.faq .service__icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(11, 11, 12, 0.07);
+    transition: background-color 0.3s var(--ease-out);
+}
+
+.faq .service__icon::before,
+.faq .service__icon::after {
+    left: 10px;
+    right: 10px;
+}
+
+.faq .service.is-open .service__icon {
+    background: var(--ink);
+}
+
+.faq .service.is-open .service__icon::before,
+.faq .service.is-open .service__icon::after {
+    background: var(--white);
+}
+
+.faq .service__desc {
+    padding: 0 clamp(18px, 2.2vw, 26px) clamp(18px, 2.2vw, 24px);
+}
+
+@media (min-width: 1000px) {
+    .faq {
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+        align-items: start;
+        gap: clamp(40px, 5vw, 80px);
+    }
+
+    .faq__head {
+        position: sticky;
+        top: calc(var(--topbar-h) + clamp(24px, 3vw, 44px));
+    }
+}

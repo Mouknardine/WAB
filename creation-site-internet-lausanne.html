@@ -67,7 +67,8 @@
             "breadcrumb": {
                 "@id": "https://wearebrothers.ch/creation-site-internet-lausanne#breadcrumb"
             },
-            "primaryImageOfPage": "https://wearebrothers.ch/assets/og-image.jpg"
+            "primaryImageOfPage": "https://wearebrothers.ch/assets/og-image.jpg",
+            "dateModified": "2026-09-15"
         },
         {
             "@type": "Service",
@@ -311,24 +312,26 @@
     <!-- Police — Epilogue seule, servie depuis le site -->
     <link rel="preload" href="assets/fonts/Epilogue-Variable.woff2" as="font" type="font/woff2" crossorigin>
 
-    <!-- Styles — le socle commun, les blocs de page (en-tête, fenêtre,
-         questions, conclusion), la liste d'approche partagée avec la
-         page Applications, et sections.css pour ce qui n'existe qu'ici :
-         l'en-tête avec ses faits, la grande grille d'exemples, les
-         formats, les étapes et la passerelle. -->
+    <!-- Styles — le socle commun, les blocs de page (questions,
+         conclusion), les cartes de verre partagées avec Services et
+         Réalisations, puis ce qui n'existe qu'ici. L'image la plus
+         visible au chargement est préchargée. -->
+    <link rel="preload" as="image" href="assets/images/project-zinema-720.webp" fetchpriority="high">
     <link rel="stylesheet" href="css/base.css?v=23">
     <link rel="stylesheet" href="css/nav.css?v=14">
     <link rel="stylesheet" href="css/contact-modal.css?v=5">
     <link rel="stylesheet" href="css/contact-form.css?v=3">
     <link rel="stylesheet" href="css/page.css?v=6">
-    <link rel="stylesheet" href="css/apps.css?v=4">
-    <link rel="stylesheet" href="css/sections.css?v=4">
-    <link rel="stylesheet" href="css/approach.css?v=1">
+    <link rel="stylesheet" href="css/process.css?v=9">
+    <link rel="stylesheet" href="css/service-cards.css?v=6">
+    <link rel="stylesheet" href="css/services.css?v=2">
+    <link rel="stylesheet" href="css/seo-page.css?v=1">
+    <link rel="stylesheet" href="css/seo-sections.css?v=1">
+    <link rel="stylesheet" href="css/seo-faq.css?v=1">
     <link rel="stylesheet" href="css/footer.css?v=6">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=1" defer></script>
-    <script src="js/reveal.js?v=3" defer></script>
     <script src="js/nav.js?v=5" defer></script>
     <script src="js/accordion.js?v=1" defer></script>
     <script type="module" src="js/birds/index.js?v=5"></script>
@@ -403,295 +406,307 @@
 
     <main id="contenu">
 
-        <!-- EN-TÊTE DE PAGE — le titre porte la requête visée, en plus
-             grand que sur les autres pages : c'est l'entrée depuis
-             Google, elle doit répondre d'un coup d'œil. Deux boutons,
-             puis trois faits en une ligne. -->
-        <section class="page-head page-head--service">
-            <div class="shell">
-                <h1 class="page-head__title">Création de site internet à Lausanne</h1>
-                <p class="page-head__sub">
-                    Un site vitrine ou un site d'entreprise dessiné et codé sur mesure, à Lausanne, par les deux
-                    frères qui le mettront en ligne. Pour les PME, les commerces, les cabinets et les
-                    indépendants de l'arc lémanique.
-                </p>
-                <div class="page-head__actions">
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="btn btn--solid btn--lg">
-                        <span>Démarrer un projet</span>
-                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                    </a>
-                    <a href="#exemples" class="btn btn--ghost btn--lg">
-                        <span>Voir des exemples</span>
-                    </a>
-                </div>
-                <ul class="facts" aria-label="En bref">
-                    <li>Site vitrine en 3 à 6 semaines</li>
-                    <li>Hébergement suisse inclus</li>
-                    <li>Réponse sous 24&nbsp;h ouvrées</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- EXEMPLES — la preuve avant l'explication. Les captures
-             sortent de la colonne de lecture et prennent toute la
-             largeur, comme sur la page Réalisations. -->
-        <section class="band" id="exemples">
-            <div class="shell">
-                <h2 class="band-title reveal">Des sites internet créés à Lausanne et dans le canton de Vaud</h2>
-                <p class="band-lede reveal">
-                    Quatre sites en ligne, du cinéma de quartier à l'entreprise familiale. Chacun a été dessiné
-                    pour son quartier et ses clients, puis codé à la main.
-                </p>
-            </div>
-
-            <div class="spread">
-                <div class="work-grid work-grid--wide" data-reveal-group>
-                    <a href="https://www.zinema.ch/" target="_blank" rel="noopener noreferrer" class="work-card window-link reveal">
-                        <div class="window">
-                            <span class="window__chrome" aria-hidden="true">
-                                <span></span><span></span><span></span>
-                            </span>
-                            <span class="window__view">
-                                <img class="window__img" src="assets/images/project-zinema.webp" srcset="assets/images/project-zinema-720.webp 720w, assets/images/project-zinema.webp 1200w" sizes="(min-width: 700px) 50vw, 100vw" alt="Site internet du Zinéma, cinéma d'art et essai de la rue du Maupas à Lausanne, créé par WeAreBrothers" loading="lazy" decoding="async" width="1200" height="900">
-                                <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
-                            </span>
-                        </div>
-                        <h3 class="work-card__name">Zinéma</h3>
-                        <p class="work-card__desc">Site vitrine d'un cinéma d'art et essai, rue du Maupas à Lausanne — un accueil en mur d'affiches, l'agenda des séances et la carte de membre.</p>
-                    </a>
-
-                    <a href="https://le-p-tit-central.vercel.app/" target="_blank" rel="noopener noreferrer" class="work-card window-link reveal">
-                        <div class="window">
-                            <span class="window__chrome" aria-hidden="true">
-                                <span></span><span></span><span></span>
-                            </span>
-                            <span class="window__view">
-                                <img class="window__img" src="assets/images/project-central.webp" srcset="assets/images/project-central-720.webp 720w, assets/images/project-central.webp 1200w" sizes="(min-width: 700px) 50vw, 100vw" alt="Site internet du café-restaurant Le P'tit Central, rue Centrale à Lausanne, créé par WeAreBrothers" loading="lazy" decoding="async" width="1200" height="900">
-                                <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
-                            </span>
-                        </div>
-                        <h3 class="work-card__name">Le P'tit Central</h3>
-                        <p class="work-card__desc">Site vitrine d'un café-restaurant de quartier, rue Centrale à Lausanne — carte par moment de la journée, horaires et réservation en un geste.</p>
-                    </a>
-
-                    <a href="https://amarte.ch/" target="_blank" rel="noopener noreferrer" class="work-card window-link reveal">
-                        <div class="window">
-                            <span class="window__chrome" aria-hidden="true">
-                                <span></span><span></span><span></span>
-                            </span>
-                            <span class="window__view">
-                                <img class="window__img" src="assets/images/project-amarte.webp" srcset="assets/images/project-amarte-720.webp 720w, assets/images/project-amarte.webp 1200w" sizes="(min-width: 700px) 50vw, 100vw" alt="Site internet d'Amarte Studio, centre de yoga et de Pilates à Épalinges, créé par WeAreBrothers" loading="lazy" decoding="async" width="1200" height="900">
-                                <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
-                            </span>
-                        </div>
-                        <h3 class="work-card__name">Amarte Studio</h3>
-                        <p class="work-card__desc">Site d'un centre de yoga et de Pilates à Épalinges, sur les hauts de Lausanne — disciplines, profs et horaires réunis dans un parcours qui mène à la réservation.</p>
-                    </a>
-
-                    <a href="https://commissione-entretien.ch/" target="_blank" rel="noopener noreferrer" class="work-card window-link reveal">
-                        <div class="window">
-                            <span class="window__chrome" aria-hidden="true">
-                                <span></span><span></span><span></span>
-                            </span>
-                            <span class="window__view">
-                                <img class="window__img" src="assets/images/project-commissione.webp" srcset="assets/images/project-commissione-720.webp 720w, assets/images/project-commissione.webp 1200w" sizes="(min-width: 700px) 50vw, 100vw" alt="Site internet de Commissione Entretien, entreprise familiale d'entretien à Bavois, créé par WeAreBrothers" loading="lazy" decoding="async" width="1200" height="900">
-                                <span class="window__badge">Voir le site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></span>
-                            </span>
-                        </div>
-                        <h3 class="work-card__name">Commissione Entretien</h3>
-                        <p class="work-card__desc">Site d'entreprise d'une société familiale d'entretien à Bavois, dans le canton de Vaud — cinq prestations, demande de devis et appel direct partout.</p>
-                    </a>
-                </div>
-
-                <div class="band-footer reveal">
-                    <a href="/realisations" class="btn btn--ghost">
-                        <span>Voir toutes nos réalisations</span>
-                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- CE QUE COMPREND LE SITE -->
-        <section class="band" id="inclus">
-            <div class="spread split">
-                <div class="split__head">
-                    <h2 class="band-title reveal">Ce que comprend votre site internet</h2>
-                    <p class="band-lede reveal">
-                        Chaque site est construit de A à Z pour votre entreprise. Rien n'est pris sur étagère,
-                        et rien d'essentiel n'est en option.
+        <!-- EN-TÊTE — le titre porte la requête visée. Texte à gauche,
+             deux vraies captures à droite sur un fond coloré : la preuve
+             dès le premier écran. La capture de devant est l'image la
+             plus visible au chargement : chargée en priorité. -->
+        <section class="band band--first seo-hero">
+            <div class="seo-hero__grid">
+                <div class="seo-hero__text">
+                    <h1 class="seo-hero__title">Création de site internet à Lausanne</h1>
+                    <p class="seo-hero__sub">
+                        Un site vitrine ou un site d'entreprise dessiné et codé sur mesure, à Lausanne, par les deux
+                        frères qui le mettront en ligne. Pour les PME, les commerces, les cabinets et les
+                        indépendants de l'arc lémanique.
                     </p>
+                    <div class="seo-hero__actions">
+                        <a href="mailto:contact@wearebrothers.ch" data-contact class="btn btn--solid btn--lg">
+                            <span>Démarrer un projet</span>
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                        </a>
+                        <a href="#exemples" class="btn btn--ghost btn--lg">
+                            <span>Voir des exemples</span>
+                        </a>
+                    </div>
+                    <ul class="seo-facts" aria-label="En bref">
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Site vitrine en 3 à 6 semaines</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Hébergement suisse inclus</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Réponse sous 24&nbsp;h ouvrées</li>
+                    </ul>
                 </div>
 
-                <div class="split__body">
-                    <div class="approach approach--pair" data-reveal-group>
-                        <article class="approach__item reveal">
-                            <h3 class="approach__title">Un design dessiné pour votre activité</h3>
-                            <p class="approach__desc">Une direction artistique tirée de votre métier, de votre quartier et de vos clients, pas un gabarit réutilisé. Des pages précises, lisibles, pensées d'abord pour le téléphone.</p>
-                        </article>
-                        <article class="approach__item reveal">
-                            <h3 class="approach__title">Un code écrit à la main</h3>
-                            <p class="approach__desc">Sans WordPress ni Wix&nbsp;: aucune extension à maintenir, rien d'inutile n'est chargé, et le site s'affiche presque instantanément, même sur une connexion mobile moyenne.</p>
-                        </article>
-                        <article class="approach__item reveal">
-                            <h3 class="approach__title">L'hébergement suisse inclus</h3>
-                            <p class="approach__desc">Votre site est hébergé chez Infomaniak, en Suisse, avec un nom de domaine à votre nom et un guide pour gérer l'hébergement en toute autonomie.</p>
-                        </article>
-                        <article class="approach__item reveal">
-                            <h3 class="approach__title">Le référencement local dès la conception</h3>
-                            <p class="approach__desc">Balises, données structurées, plan du site, adresses de pages propres et textes travaillés avec vous autour de votre activité et de votre région, pour être trouvé à Lausanne et dans le canton de Vaud.</p>
-                        </article>
-                        <article class="approach__item reveal">
-                            <h3 class="approach__title">Un parcours qui mène à l'action</h3>
-                            <p class="approach__desc">Chaque page guide le visiteur vers ce que vous attendez de lui&nbsp;: un appel, une réservation, une demande de devis, un passage en boutique.</p>
-                        </article>
-                        <article class="approach__item reveal">
-                            <h3 class="approach__title">Un suivi après la mise en ligne</h3>
-                            <p class="approach__desc">Maintenance, évolutions, retouches de contenu&nbsp;: nous restons joignables une fois le site en ligne, et nous suivons son référencement avec vous.</p>
-                        </article>
+                <div class="seo-hero__visual seo-mesh seo-mesh--grape" aria-hidden="true">
+                    <div class="seo-window seo-window--back"><span class="seo-window__bar"><i></i><i></i><i></i></span><img src="assets/images/project-amarte-720.webp" alt="" width="720" height="450" decoding="async"></div>
+                    <div class="seo-window seo-window--front"><span class="seo-window__bar"><i></i><i></i><i></i></span><img src="assets/images/project-zinema-720.webp" alt="" width="720" height="401" fetchpriority="high" decoding="async"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXEMPLES — quatre vrais sites, chacun sur son fond. -->
+        <section class="band band--tight process seo-band" id="exemples" aria-labelledby="examplesTitle">
+            <div class="process__head">
+                <h2 class="process__title" id="examplesTitle">Des sites internet créés à Lausanne et dans le canton de Vaud</h2>
+                <p class="process__lede">Du cinéma de quartier à l'entreprise familiale, chacun dessiné pour ses clients, puis codé à la main.</p>
+            </div>
+
+            <ul class="svc-grid seo-examples">
+                <li class="svc-card">
+                    <a class="seo-example" href="https://www.zinema.ch/" target="_blank" rel="noopener noreferrer">
+                        <div class="svc-visual svc-visual--tall seo-mesh--sunset">
+                            <div class="seo-window seo-window--center"><span class="seo-window__bar"><i></i><i></i><i></i></span><img src="assets/images/project-zinema-720.webp" alt="Site internet du Zinéma, cinéma d'art et essai de la rue du Maupas à Lausanne, créé par WeAreBrothers" width="720" height="401" loading="lazy" decoding="async"></div>
+                        </div>
+                        <div class="svc-body">
+                            <h3 class="svc-title">Zinéma</h3>
+                            <p class="svc-desc">Site vitrine d'un cinéma d'art et essai, rue du Maupas à Lausanne — un accueil en mur d'affiches, l'agenda des séances et la carte de membre.</p>
+                        </div>
+                    </a>
+                </li>
+                <li class="svc-card">
+                    <a class="seo-example" href="https://le-p-tit-central.vercel.app/" target="_blank" rel="noopener noreferrer">
+                        <div class="svc-visual svc-visual--tall seo-mesh--lagoon">
+                            <div class="seo-window seo-window--center"><span class="seo-window__bar"><i></i><i></i><i></i></span><img src="assets/images/project-central-720.webp" alt="Site internet du café-restaurant Le P'tit Central, rue Centrale à Lausanne, créé par WeAreBrothers" width="720" height="450" loading="lazy" decoding="async"></div>
+                        </div>
+                        <div class="svc-body">
+                            <h3 class="svc-title">Le P'tit Central</h3>
+                            <p class="svc-desc">Site vitrine d'un café-restaurant de quartier, rue Centrale à Lausanne — carte par moment de la journée, horaires et réservation en un geste.</p>
+                        </div>
+                    </a>
+                </li>
+                <li class="svc-card">
+                    <a class="seo-example" href="https://amarte.ch/" target="_blank" rel="noopener noreferrer">
+                        <div class="svc-visual svc-visual--tall seo-mesh--grape">
+                            <div class="seo-window seo-window--center"><span class="seo-window__bar"><i></i><i></i><i></i></span><img src="assets/images/project-amarte-720.webp" alt="Site internet d'Amarte Studio, centre de yoga et de Pilates à Épalinges, créé par WeAreBrothers" width="720" height="450" loading="lazy" decoding="async"></div>
+                        </div>
+                        <div class="svc-body">
+                            <h3 class="svc-title">Amarte Studio</h3>
+                            <p class="svc-desc">Site d'un centre de yoga et de Pilates à Épalinges, sur les hauts de Lausanne — disciplines, profs et horaires réunis dans un parcours qui mène à la réservation.</p>
+                        </div>
+                    </a>
+                </li>
+                <li class="svc-card">
+                    <a class="seo-example" href="https://commissione-entretien.ch/" target="_blank" rel="noopener noreferrer">
+                        <div class="svc-visual svc-visual--tall seo-mesh--lemon">
+                            <div class="seo-window seo-window--center"><span class="seo-window__bar"><i></i><i></i><i></i></span><img src="assets/images/project-commissione-720.webp" alt="Site internet de Commissione Entretien, entreprise familiale d'entretien à Bavois, créé par WeAreBrothers" width="720" height="450" loading="lazy" decoding="async"></div>
+                        </div>
+                        <div class="svc-body">
+                            <h3 class="svc-title">Commissione Entretien</h3>
+                            <p class="svc-desc">Site d'entreprise d'une société familiale d'entretien à Bavois, dans le canton de Vaud — cinq prestations, demande de devis et appel direct partout.</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="band-actions">
+                <a href="/realisations" class="btn btn--ghost">
+                    <span>Voir toutes nos réalisations</span>
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                </a>
+                <a href="/services" class="btn btn--ghost">
+                    <span>Découvrir tous nos services</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- CE QUE COMPREND LE SITE — six cartes de verre. -->
+        <section class="band band--tight process seo-band" id="inclus" aria-labelledby="includedTitle">
+            <div class="process__head">
+                <h2 class="process__title" id="includedTitle">Ce que comprend votre site internet</h2>
+                <p class="process__lede">Construit de A à Z pour votre entreprise. Rien d'essentiel n'est en option.</p>
+            </div>
+
+            <ul class="process__cards process__cards--three">
+                <li class="process__card">
+                    <svg class="process__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19 7-7 3 3-7 7-3-3Z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5Z"/><circle cx="11" cy="11" r="2"/></svg>
+                    <h3 class="process__name">Un design dessiné pour votre activité</h3>
+                    <p class="process__desc">Une direction artistique tirée de votre métier, de votre quartier et de vos clients, pas un gabarit réutilisé. Des pages précises, lisibles, pensées d'abord pour le téléphone.</p>
+                </li>
+                <li class="process__card">
+                    <svg class="process__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="m13.5 6-3 12"/></svg>
+                    <h3 class="process__name">Un code écrit à la main</h3>
+                    <p class="process__desc">Sans WordPress ni Wix&nbsp;: aucune extension à maintenir, rien d'inutile n'est chargé, et le site s'affiche presque instantanément, même sur une connexion mobile moyenne.</p>
+                </li>
+                <li class="process__card">
+                    <svg class="process__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>
+                    <h3 class="process__name">L'hébergement suisse inclus</h3>
+                    <p class="process__desc">Votre site est hébergé chez Infomaniak, en Suisse, avec un nom de domaine à votre nom et un guide pour gérer l'hébergement en toute autonomie.</p>
+                </li>
+                <li class="process__card">
+                    <svg class="process__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                    <h3 class="process__name">Le référencement local dès la conception</h3>
+                    <p class="process__desc">Balises, données structurées, plan du site, adresses de pages propres et textes travaillés avec vous autour de votre activité et de votre région, pour être trouvé à Lausanne et dans le canton de Vaud.</p>
+                </li>
+                <li class="process__card">
+                    <svg class="process__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    <h3 class="process__name">Un parcours qui mène à l'action</h3>
+                    <p class="process__desc">Chaque page guide le visiteur vers ce que vous attendez de lui&nbsp;: un appel, une réservation, une demande de devis, un passage en boutique.</p>
+                </li>
+                <li class="process__card">
+                    <svg class="process__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v4h-4"/></svg>
+                    <h3 class="process__name">Un suivi après la mise en ligne</h3>
+                    <p class="process__desc">Maintenance, évolutions, retouches de contenu&nbsp;: nous restons joignables une fois le site en ligne, et nous suivons son référencement avec vous.</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- FORMATS — quatre cartes, une icône sur son fond. -->
+        <section class="band band--tight process seo-band" id="formats" aria-labelledby="formatsTitle">
+            <div class="process__head">
+                <h2 class="process__title" id="formatsTitle">Site vitrine, site d'entreprise, portfolio ou boutique en ligne</h2>
+                <p class="process__lede">Le même soin, quel que soit le format.</p>
+            </div>
+
+            <ul class="svc-grid seo-formats">
+                <li class="svc-card">
+                    <div class="svc-visual svc-visual--short seo-mesh--peach" aria-hidden="true">
+                        <span class="seo-format-icon"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9 5 4h14l2 5"/><path d="M4 9v11h16V9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M10 20v-5h4v5"/></svg></span>
+                    </div>
+                    <div class="svc-body">
+                        <h3 class="svc-title">Site vitrine</h3>
+                        <p class="svc-desc">Pour un commerce, un restaurant, un cabinet ou un atelier&nbsp;: présenter l'activité, donner envie, et rendre l'appel, la réservation ou l'itinéraire évidents. Le format le plus courant à Lausanne, livré en 3 à 6 semaines.</p>
+                    </div>
+                </li>
+                <li class="svc-card">
+                    <div class="svc-visual svc-visual--short seo-mesh--night" aria-hidden="true">
+                        <span class="seo-format-icon"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1"/></svg></span>
+                    </div>
+                    <div class="svc-body">
+                        <h3 class="svc-title">Site d'entreprise</h3>
+                        <p class="svc-desc">Pour une PME, un bureau ou une fiduciaire&nbsp;: vos prestations, votre équipe, vos références et une demande de devis claire. En français, et en anglais ou en allemand si vos clients le demandent.</p>
+                    </div>
+                </li>
+                <li class="svc-card">
+                    <div class="svc-visual svc-visual--short seo-mesh--grape" aria-hidden="true">
+                        <span class="seo-format-icon"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg></span>
+                    </div>
+                    <div class="svc-body">
+                        <h3 class="svc-title">Portfolio créatif</h3>
+                        <p class="svc-desc">Pour un DJ, un architecte, un joaillier&nbsp;: un objet visuel fort, qui montre le travail plutôt que de le décrire. Animations, typographie, mise en scène — sans jamais ralentir la page.</p>
+                    </div>
+                </li>
+                <li class="svc-card">
+                    <div class="svc-visual svc-visual--short seo-mesh--lagoon" aria-hidden="true">
+                        <span class="seo-format-icon"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+                    </div>
+                    <div class="svc-body">
+                        <h3 class="svc-title">Boutique en ligne</h3>
+                        <p class="svc-desc">Pour vendre en Suisse romande et au-delà&nbsp;: catalogue, paiement sécurisé, suivi des commandes, livraison. Dessinée sur mesure, comme le reste, et pensée pour être trouvée sur Google.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- DÉROULÉ — quatre étapes numérotées : ici, l'ordre est le sujet. -->
+        <section class="band band--tight process seo-band" id="deroule" aria-labelledby="stepsTitle">
+            <div class="process__head">
+                <h2 class="process__title" id="stepsTitle">Comment se déroule la création de votre site internet</h2>
+                <p class="process__lede">Un seul interlocuteur du premier café à la mise en ligne. 3 à 6 semaines pour un site vitrine.</p>
+            </div>
+
+            <ol class="process__cards">
+                <li class="process__card">
+                    <span class="seo-step-num" aria-hidden="true">1</span>
+                    <h3 class="process__name">Un café ou un appel</h3>
+                    <p class="process__desc">Nous écoutons votre activité, vos clients et ce que le site doit obtenir. Sans engagement.</p>
+                </li>
+                <li class="process__card">
+                    <span class="seo-step-num" aria-hidden="true">2</span>
+                    <h3 class="process__name">Une proposition sous 24&nbsp;h ouvrées</h3>
+                    <p class="process__desc">Périmètre, calendrier et prix, définis ensemble. Le paiement peut être échelonné en plusieurs mensualités.</p>
+                </li>
+                <li class="process__card">
+                    <span class="seo-step-num" aria-hidden="true">3</span>
+                    <h3 class="process__name">Design, puis développement</h3>
+                    <p class="process__desc">Eliott dessine, Matt code. Des points réguliers, et vous validez chaque étape avant la suivante.</p>
+                </li>
+                <li class="process__card">
+                    <span class="seo-step-num" aria-hidden="true">4</span>
+                    <h3 class="process__name">Mise en ligne, puis la suite</h3>
+                    <p class="process__desc">Le site part sur son hébergement suisse, plan du site et balises en place. Nous restons disponibles pour la maintenance et les évolutions.</p>
+                </li>
+            </ol>
+        </section>
+
+        <!-- LE STUDIO — qui fait le site, et où : les communes servies
+             sont écrites en toutes lettres, c'est le texte local que
+             Google lit. -->
+        <section class="band band--tight" id="studio" aria-labelledby="studioTitle">
+            <div class="seo-studio">
+                <div>
+                    <h2 class="seo-studio__title" id="studioTitle">Une agence web à Lausanne, à taille humaine</h2>
+                    <div class="seo-studio__prose">
+                        <p>
+                            WeAreBrothers est un studio fondé à Lausanne par deux frères&nbsp;: Eliott dessine, Matt
+                            code. Vous parlez directement à ceux qui font votre site, sans chef de projet ni
+                            intermédiaire, et la plupart de nos clients, nous les rencontrons à Lausanne autour
+                            d'un café.
+                        </p>
+                        <p>
+                            Le site est hébergé en Suisse, chez Infomaniak, et il vous appartient de bout en
+                            bout&nbsp;: nom de domaine, code, contenus. Et quand une entreprise a besoin de plus
+                            qu'un site, nous développons aussi des
+                            <a href="/applications" class="text-link">applications de gestion sur mesure</a>.
+                        </p>
+                        <p class="seo-studio__links">
+                            <a href="/studio" class="text-link">Faire connaissance avec le studio</a>
+                            <a href="/services" class="text-link">Voir tous nos services</a>
+                        </p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- FORMATS — les quatre formes que prend un site, deux par
-             deux sous le titre. La refonte a sa passerelle plus bas. -->
-        <section class="band" id="formats">
-            <div class="shell">
-                <h2 class="band-title reveal">Site vitrine, site d'entreprise, portfolio ou boutique en ligne</h2>
-                <p class="band-lede reveal">
-                    Le même soin, quel que soit le format. Ce qui change, c'est ce que le site doit obtenir
-                    pour vous.
-                </p>
-            </div>
-
-            <div class="spread">
-                <div class="formats" data-reveal-group>
-                    <article class="format reveal">
-                        <h3 class="format__title">Site vitrine</h3>
-                        <p class="format__desc">Pour un commerce, un restaurant, un cabinet ou un atelier&nbsp;: présenter l'activité, donner envie, et rendre l'appel, la réservation ou l'itinéraire évidents. Le format le plus courant à Lausanne, livré en 3 à 6 semaines.</p>
-                    </article>
-                    <article class="format reveal">
-                        <h3 class="format__title">Site d'entreprise</h3>
-                        <p class="format__desc">Pour une PME, un bureau ou une fiduciaire&nbsp;: vos prestations, votre équipe, vos références et une demande de devis claire. En français, et en anglais ou en allemand si vos clients le demandent.</p>
-                    </article>
-                    <article class="format reveal">
-                        <h3 class="format__title">Portfolio créatif</h3>
-                        <p class="format__desc">Pour un DJ, un architecte, un joaillier&nbsp;: un objet visuel fort, qui montre le travail plutôt que de le décrire. Animations, typographie, mise en scène — sans jamais ralentir la page.</p>
-                    </article>
-                    <article class="format reveal">
-                        <h3 class="format__title">Boutique en ligne</h3>
-                        <p class="format__desc">Pour vendre en Suisse romande et au-delà&nbsp;: catalogue, paiement sécurisé, suivi des commandes, livraison. Dessinée sur mesure, comme le reste, et pensée pour être trouvée sur Google.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- DÉROULÉ — quatre étapes en une ligne sur grand écran : la
-             seule numérotation du site, parce qu'ici l'ordre est le
-             sujet. -->
-        <section class="band" id="deroule">
-            <div class="shell">
-                <h2 class="band-title reveal">Comment se déroule la création de votre site internet</h2>
-                <p class="band-lede reveal">
-                    Quatre étapes et un seul interlocuteur, du premier café à la mise en ligne. Comptez
-                    3 à 6 semaines pour un site vitrine.
-                </p>
-            </div>
-
-            <div class="spread">
-                <ol class="steps" data-reveal-group>
-                    <li class="step reveal">
-                        <span class="step__num" aria-hidden="true">1</span>
-                        <h3 class="step__title">Un café ou un appel</h3>
-                        <p class="step__desc">Nous écoutons votre activité, vos clients et ce que le site doit obtenir. Sans engagement.</p>
-                    </li>
-                    <li class="step reveal">
-                        <span class="step__num" aria-hidden="true">2</span>
-                        <h3 class="step__title">Une proposition sous 24&nbsp;h ouvrées</h3>
-                        <p class="step__desc">Périmètre, calendrier et prix, définis ensemble. Le paiement peut être échelonné en plusieurs mensualités.</p>
-                    </li>
-                    <li class="step reveal">
-                        <span class="step__num" aria-hidden="true">3</span>
-                        <h3 class="step__title">Design, puis développement</h3>
-                        <p class="step__desc">Eliott dessine, Matt code. Des points réguliers, et vous validez chaque étape avant la suivante.</p>
-                    </li>
-                    <li class="step reveal">
-                        <span class="step__num" aria-hidden="true">4</span>
-                        <h3 class="step__title">Mise en ligne, puis la suite</h3>
-                        <p class="step__desc">Le site part sur son hébergement suisse, plan du site et balises en place. Nous restons disponibles pour la maintenance et les évolutions.</p>
-                    </li>
-                </ol>
-            </div>
-        </section>
-
-        <!-- LE STUDIO — qui fait le site, et où. C'est ici que la page
-             dit Lausanne pour de vrai : les personnes, le café, les
-             communes. -->
-        <section class="band" id="studio">
-            <div class="spread split">
-                <div class="split__head">
-                    <h2 class="band-title reveal">Une agence web à Lausanne, à taille humaine</h2>
-                </div>
-
-                <div class="split__body prose" data-reveal-group>
-                    <p class="reveal">
-                        WeAreBrothers est un studio fondé à Lausanne par deux frères&nbsp;: Eliott dessine, Matt
-                        code. Vous parlez directement à ceux qui font votre site, sans chef de projet ni
-                        intermédiaire, et la plupart de nos clients, nous les rencontrons à Lausanne autour
-                        d'un café.
-                    </p>
-                    <p class="reveal">
-                        Nous créons des sites internet pour des entreprises de Lausanne, de Pully, de Renens et
-                        d'Épalinges, et dans tout l'arc lémanique — Morges, Nyon, Vevey, Montreux,
-                        Yverdon-les-Bains, Genève. Pour le reste de la Suisse romande, tout se fait très bien à
-                        distance.
-                    </p>
-                    <p class="reveal">
-                        Le site est hébergé en Suisse, chez Infomaniak, et il vous appartient de bout en
-                        bout&nbsp;: nom de domaine, code, contenus. Et quand une entreprise a besoin de plus
-                        qu'un site, nous développons aussi des
-                        <a href="/applications" class="text-link">applications de gestion sur mesure</a>.
-                    </p>
-                    <p class="prose__links reveal">
-                        <a href="/studio" class="text-link">Faire connaissance avec le studio</a>
-                        <a href="/realisations" class="text-link">Parcourir nos réalisations</a>
+                <div>
+                    <h3 class="seo-cities__title">Où nous créons des sites internet</h3>
+                    <ul class="seo-cities">
+                        <li>Lausanne</li>
+                        <li>Pully</li>
+                        <li>Renens</li>
+                        <li>Épalinges</li>
+                        <li>Morges</li>
+                        <li>Nyon</li>
+                        <li>Vevey</li>
+                        <li>Montreux</li>
+                        <li>Yverdon-les-Bains</li>
+                        <li>Genève</li>
+                    </ul>
+                    <p class="seo-cities__note">
+                        Dans tout l'arc lémanique et le canton de Vaud. Pour le reste de la Suisse romande, tout
+                        se fait très bien à distance.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- REFONTE — le seul aplat sombre de la page -->
-        <section class="band band--bridge" id="refonte">
-            <div class="shell">
-                <div class="bridge reveal">
-                    <h2 class="bridge__title">Vous avez déjà un site&nbsp;? Nous faisons aussi la refonte.</h2>
-                    <p class="bridge__text">
+        <!-- REFONTE — un grand panneau coloré. -->
+        <section class="band band--bridge" id="refonte" aria-labelledby="bridgeTitle">
+            <div class="seo-bridge seo-mesh seo-mesh--sunset">
+                <div>
+                    <h2 class="seo-bridge__title" id="bridgeTitle">Vous avez déjà un site&nbsp;? Nous faisons aussi la refonte.</h2>
+                    <p class="seo-bridge__text">
                         Nous gardons ce qui fonctionne — contenus, adresses des pages, référencement acquis —
                         et nous redessinons et recodons le reste. Le nouveau site remplace l'ancien sans
                         interruption, et sans perdre votre place sur Google.
                     </p>
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="btn btn--solid btn--lg bridge__cta">
-                        <span>Parler de votre refonte</span>
-                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                    </a>
                 </div>
+                <a href="mailto:contact@wearebrothers.ch" data-contact class="btn btn--solid btn--lg">
+                    <span>Parler de votre refonte</span>
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                </a>
             </div>
         </section>
 
-        <!-- QUESTIONS — les réponses reprennent mot pour mot le bloc FAQPage du JSON-LD. -->
+        <!-- QUESTIONS — les réponses reprennent mot pour mot le bloc
+             FAQPage du JSON-LD. Titre et bouton restent à gauche. -->
         <section class="band" id="questions" aria-labelledby="questionsTitle">
-            <div class="spread split">
-                <div class="split__head">
-                    <h2 class="band-title reveal" id="questionsTitle">Créer son site internet&nbsp;: vos questions</h2>
-                    <p class="band-lede reveal">
-                        Prix, délais, hébergement, référencement&nbsp;: ce qu'on nous demande avant de commencer.
-                    </p>
+            <div class="faq">
+                <div class="faq__head">
+                    <h2 class="faq__title" id="questionsTitle">Créer son site internet&nbsp;: vos questions</h2>
+                    <p class="faq__lede">Prix, délais, hébergement, référencement&nbsp;: ce qu'on nous demande avant de commencer.</p>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="btn btn--solid faq__cta">
+                        <span>Poser une autre question</span>
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                    </a>
                 </div>
 
-                <div class="split__body">
-                    <div class="service-list service-list--pair" data-reveal-group>
-                        <article class="service reveal is-open">
+                <div class="service-list">
+                        <article class="service is-open">
                             <h3 class="service__head">
                                 <button type="button" class="service__toggle" id="faq-wordpress-label"
                                     aria-expanded="true" aria-controls="faq-wordpress">
@@ -705,7 +720,7 @@
                                 </div>
                             </div>
                         </article>
-                        <article class="service reveal">
+                        <article class="service">
                             <h3 class="service__head">
                                 <button type="button" class="service__toggle" id="faq-prix-label"
                                     aria-expanded="false" aria-controls="faq-prix">
@@ -719,7 +734,7 @@
                                 </div>
                             </div>
                         </article>
-                        <article class="service reveal">
+                        <article class="service">
                             <h3 class="service__head">
                                 <button type="button" class="service__toggle" id="faq-delai-label"
                                     aria-expanded="false" aria-controls="faq-delai">
@@ -733,7 +748,7 @@
                                 </div>
                             </div>
                         </article>
-                        <article class="service reveal">
+                        <article class="service">
                             <h3 class="service__head">
                                 <button type="button" class="service__toggle" id="faq-preparer-label"
                                     aria-expanded="false" aria-controls="faq-preparer">
@@ -747,7 +762,7 @@
                                 </div>
                             </div>
                         </article>
-                        <article class="service reveal">
+                        <article class="service">
                             <h3 class="service__head">
                                 <button type="button" class="service__toggle" id="faq-mobile-label"
                                     aria-expanded="false" aria-controls="faq-mobile">
@@ -761,7 +776,7 @@
                                 </div>
                             </div>
                         </article>
-                        <article class="service reveal">
+                        <article class="service">
                             <h3 class="service__head">
                                 <button type="button" class="service__toggle" id="faq-seo-label"
                                     aria-expanded="false" aria-controls="faq-seo">
@@ -775,7 +790,7 @@
                                 </div>
                             </div>
                         </article>
-                        <article class="service reveal">
+                        <article class="service">
                             <h3 class="service__head">
                                 <button type="button" class="service__toggle" id="faq-hebergement-label"
                                     aria-expanded="false" aria-controls="faq-hebergement">
@@ -789,7 +804,7 @@
                                 </div>
                             </div>
                         </article>
-                        <article class="service reveal">
+                        <article class="service">
                             <h3 class="service__head">
                                 <button type="button" class="service__toggle" id="faq-langues-label"
                                     aria-expanded="false" aria-controls="faq-langues">
@@ -803,7 +818,7 @@
                                 </div>
                             </div>
                         </article>
-                        <article class="service reveal">
+                        <article class="service">
                             <h3 class="service__head">
                                 <button type="button" class="service__toggle" id="faq-refonte-label"
                                     aria-expanded="false" aria-controls="faq-refonte">
@@ -817,7 +832,7 @@
                                 </div>
                             </div>
                         </article>
-                        <article class="service reveal">
+                        <article class="service">
                             <h3 class="service__head">
                                 <button type="button" class="service__toggle" id="faq-commerces-label"
                                     aria-expanded="false" aria-controls="faq-commerces">
@@ -831,7 +846,7 @@
                                 </div>
                             </div>
                         </article>
-                        <article class="service reveal">
+                        <article class="service">
                             <h3 class="service__head">
                                 <button type="button" class="service__toggle" id="faq-agence-label"
                                     aria-expanded="false" aria-controls="faq-agence">
@@ -845,7 +860,7 @@
                                 </div>
                             </div>
                         </article>
-                        <article class="service reveal">
+                        <article class="service">
                             <h3 class="service__head">
                                 <button type="button" class="service__toggle" id="faq-zone-label"
                                     aria-expanded="false" aria-controls="faq-zone">
@@ -859,7 +874,6 @@
                                 </div>
                             </div>
                         </article>
-                    </div>
                 </div>
             </div>
         </section>
@@ -867,12 +881,12 @@
         <!-- CONTACT -->
         <section class="band closing" id="contact">
             <div class="shell">
-                <h2 class="closing__title reveal">Parlons de votre site internet.</h2>
-                <p class="closing__lede reveal">
+                <h2 class="closing__title">Parlons de votre site internet.</h2>
+                <p class="closing__lede">
                     Un café ou un appel, une proposition, puis on construit. Réponse sous 24&nbsp;h ouvrées,
                     sans engagement.
                 </p>
-                <div class="closing__actions reveal">
+                <div class="closing__actions">
                     <a href="mailto:contact@wearebrothers.ch" data-contact class="btn btn--solid btn--lg">
                         <span>Démarrer un projet</span>
                         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
@@ -881,7 +895,7 @@
                         <span>Écrire un email</span>
                     </a>
                 </div>
-                <p class="closing__note reveal">Lausanne, Suisse — <time data-local-time>--:--</time></p>
+                <p class="closing__note">Lausanne, Suisse — <time data-local-time>--:--</time></p>
             </div>
         </section>
 

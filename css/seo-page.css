@@ -1,0 +1,200 @@
+/* ============================================
+   WAB. — Création de site internet : en-tête et cartes
+   Inspiré de Framer (texte à gauche, vraies captures à droite) et des
+   grilles de Superpower et Railway (recherche Mobbin du 15.09.2026).
+   Même langage que Services : verre dépoli, fonds en nappes de
+   couleurs vives. Les cartes reprennent service-cards.css et
+   process.css ; le studio, la refonte et les questions sont dans
+   seo-sections.css et seo-faq.css.
+   ============================================ */
+
+/* ── Couleurs des fonds : un duo par vitrine (dégradé : .seo-mesh) ── */
+.seo-mesh--sunset { --mesh-1: #ff5fa2; --mesh-2: #ff9a3c; }
+.seo-mesh--lagoon { --mesh-1: #24cc71; --mesh-2: #01b7fd; }
+.seo-mesh--lemon { --mesh-1: #ffd23f; --mesh-2: #24cc71; }
+.seo-mesh--grape { --mesh-1: #ff5fa2; --mesh-2: #8b5cf6; }
+.seo-mesh--night { --mesh-1: #8b5cf6; --mesh-2: #01b7fd; }
+.seo-mesh--peach { --mesh-1: #ffd23f; --mesh-2: #ff8a3d; }
+
+.seo-mesh {
+    --mesh-a: 10% 12%;
+    --mesh-b: 92% 88%;
+    background:
+        radial-gradient(58% 62% at var(--mesh-a), var(--mesh-1) 0%, transparent 72%),
+        radial-gradient(62% 58% at var(--mesh-b), var(--mesh-1) 0%, transparent 72%),
+        var(--mesh-2);
+}
+
+/* ── En-tête ── */
+.seo-hero {
+    padding-inline: var(--gutter);
+    padding-bottom: clamp(40px, 6vw, 72px);
+}
+
+.seo-hero__grid {
+    display: grid;
+    gap: clamp(28px, 4vw, 56px);
+    align-items: center;
+}
+
+.seo-hero__title {
+    max-width: 12ch;
+    font-size: clamp(2.6rem, 5.4vw, 4.6rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.04em;
+    /* La cédille de « Création » descend bas : pas en dessous de 1.06. */
+    line-height: 1.06;
+    text-wrap: balance;
+    color: var(--ink);
+}
+
+.seo-hero__sub {
+    margin-top: clamp(18px, 2.4vw, 26px);
+    max-width: 50ch;
+    font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+    line-height: 1.6;
+    text-wrap: pretty;
+    color: var(--ink-soft);
+}
+
+.seo-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: clamp(24px, 3vw, 32px);
+}
+
+/* Les trois faits : de petites pastilles de verre, lisibles, avec leur
+   icône — plus de ligne de capitales minuscules. */
+.seo-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: clamp(24px, 3vw, 32px) 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.seo-facts li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    font-size: 0.92rem;
+    color: var(--ink);
+}
+
+/* La vitrine : deux vraies captures posées sur un fond coloré. */
+.seo-hero__visual {
+    position: relative;
+    overflow: hidden;
+    height: clamp(300px, 72vw, 420px);
+    border-radius: clamp(20px, 2.2vw, 28px);
+}
+
+.seo-window {
+    position: absolute;
+    overflow: hidden;
+    border-radius: 10px;
+    background: var(--white);
+    box-shadow: 0 0 0 1px rgba(11, 11, 12, 0.06), 0 18px 44px rgba(60, 20, 45, 0.18);
+}
+
+.seo-window__bar {
+    display: flex;
+    gap: 4px;
+    padding: 7px 9px;
+}
+
+.seo-window__bar i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(11, 11, 12, 0.14);
+}
+
+.seo-window img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.seo-window--back { left: 6%; top: 9%; width: 60%; }
+.seo-window--front { right: 6%; bottom: 9%; width: 64%; }
+.seo-window--center { left: 8%; right: 8%; top: 12%; }
+
+@media (min-width: 1000px) {
+    .seo-hero__grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    }
+
+    .seo-hero__visual {
+        height: auto;
+        aspect-ratio: 5 / 4;
+    }
+}
+
+/* ── Titres de bande ──
+   process.css pose le titre à gauche et la phrase à droite ; ici les
+   titres portent la requête et sont plus longs : on les borne. */
+.seo-band .process__title {
+    max-width: 18ch;
+    text-wrap: balance;
+}
+
+.seo-band .process__lede {
+    max-width: 40ch;
+}
+
+/* ── Exemples ── */
+.svc-visual--tall {
+    height: clamp(240px, 26vw, 360px);
+}
+
+.seo-example {
+    display: block;
+    color: var(--ink);
+}
+
+.seo-example:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+    border-radius: 22px;
+}
+
+@media (min-width: 700px) {
+    .seo-examples {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* ── Formats ── */
+.svc-visual--short {
+    height: clamp(150px, 13vw, 190px);
+}
+
+.seo-format-icon {
+    display: grid;
+    place-items: center;
+    width: 84px;
+    height: 84px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 14px 34px rgba(60, 20, 45, 0.16);
+    color: var(--ink);
+}
+
+@media (min-width: 700px) {
+    .seo-formats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1100px) {
+    .seo-formats {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
