@@ -122,6 +122,17 @@
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
+/* ── La marge sur grand écran ──
+   Toute la page part de --gutter : la barre, les titres, les images,
+   les cartes. En l'élargissant ici, le contenu respire sur un écran
+   d'ordinateur sans qu'aucun bloc perde son alignement — tout reste
+   sur la même verticale, simplement plus loin du bord. */
+@media (min-width: 1100px) {
+    :root {
+        --gutter: clamp(40px, 4.5vw, 88px);
+    }
+}
+
 html {
     accent-color: var(--ink);
     -webkit-font-smoothing: antialiased;
