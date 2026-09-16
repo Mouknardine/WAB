@@ -139,13 +139,26 @@
     color: rgba(11, 11, 12, 0.76);
 }
 
+/* La carte des deux emplois ferme la série : un verre plus dense, pour
+   qu'on la distingue des diplômes d'Eliott juste au-dessus. */
+.advice-card--jobs {
+    background: rgba(255, 255, 255, 0.62);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .advice-card--jobs {
+        background: rgba(255, 255, 255, 0.9);
+    }
+}
+
 /* ── Tablette : les deux diplômes côte à côte ── */
 @media (min-width: 700px) {
     .advice__facts {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .advice-card--prize {
+    .advice-card--prize,
+    .advice-card--jobs {
         grid-column: 1 / -1;
     }
 }
