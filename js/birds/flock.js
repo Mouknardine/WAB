@@ -74,6 +74,16 @@ const REST_MAX = 2800;
 
 const TRIES = 5;           // hauteurs essayées au moment du départ
 
+/* L'approche du curseur. Un oiseau qui passe à moins de FLEE_RADIUS
+   pixels de la souris (ou d'un doigt posé sur l'écran) reçoit un élan
+   qui l'écarte, d'autant plus fort qu'il est proche, puis l'élan
+   s'amortit et l'oiseau reprend sa route. Pendant qu'il s'écarte, il
+   bat des ailes à toute vitesse. */
+const FLEE_RADIUS = 150;
+const FLEE_PUSH = 1400;    // px/s², au contact même du curseur
+const FLEE_DAMPING = 2.6;  // par seconde : l'élan retombe en ~1 s
+const FLEE_FLAP = 60;      // px/s d'élan à partir desquels il panique
+
 function randomBetween(min, max) {
     return min + Math.random() * (max - min);
 }
@@ -119,6 +129,8 @@ export function createFlock(count, scales) {
             bobAmp: 0,
             bobPeriod: BOB_PERIOD_MAX,
             bobPhase: Math.random() * Math.PI * 2,
+            fleeX: 0,      // élan donné par le curseur, en px/s
+            fleeY: 0,
             elapsed: 0,
             color: BODY_COLORS[index % BODY_COLORS.length],
             opacity: 0,
@@ -189,6 +201,8 @@ export function createFlock(count, scales) {
         bird.color = pickColor();
         bird.opacity = 0;
         bird.elapsed = 0;
+        bird.fleeX = 0;
+        bird.fleeY = 0;
         bird.bobPhase = Math.random() * Math.PI * 2;
         bird.bobAmp = randomBetween(BOB_MIN, BOB_MAX) * (0.4 + 0.6 * depth);
         bird.bobPeriod = randomBetween(BOB_PERIOD_MIN, BOB_PERIOD_MAX);
@@ -230,6 +244,30 @@ export function createFlock(count, scales) {
             : Math.max(target, bird.opacity - step);
     }
 
+    /**
+     * Écarte l'oiseau du curseur s'il en est proche, puis laisse
+     * l'élan retomber. `pointer` vaut null quand aucun curseur n'est
+     * sur la page.
+     */
+    function flee(bird, seconds, pointer) {
+        if (pointer) {
+            const zone = box(bird);
+            const dx = zone.x + zone.w / 2 - pointer.x;
+            const dy = zone.y + zone.h / 2 - pointer.y;
+            const distance = Math.hypot(dx, dy) || 1;
+            if (distance < FLEE_RADIUS) {
+                const strength = (1 - distance / FLEE_RADIUS) * FLEE_PUSH * seconds;
+                bird.fleeX += (dx / distance) * strength;
+                bird.fleeY += (dy / distance) * strength;
+            }
+        }
+
+        const damping = Math.exp(-FLEE_DAMPING * seconds);
+        bird.fleeX *= damping;
+        bird.fleeY *= damping;
+        return Math.hypot(bird.fleeX, bird.fleeY) > FLEE_FLAP;
+    }
+
     function isGone(bird, sky) {
         return bird.x > sky.width + EXIT_MARGIN
             || bird.x < -bird.width - EXIT_MARGIN
@@ -239,8 +277,9 @@ export function createFlock(count, scales) {
 
     /**
      * Avance la volée de `delta` millisecondes. `sky` donne les
-     * dimensions du calque et la taille d'un oiseau à une échelle
-     * donnée ; `shyness` dit si un emplacement est lisible.
+     * dimensions du calque, la taille d'un oiseau à une échelle
+     * donnée et la position du curseur (`pointer`, ou null) ;
+     * `shyness` dit si un emplacement est lisible.
      */
     function advance(delta, sky, shyness) {
         const seconds = delta / 1000;
@@ -253,8 +292,9 @@ export function createFlock(count, scales) {
             }
 
             bird.elapsed += delta;
-            bird.x += bird.vx * seconds;
-            bird.routeY += bird.vy * seconds;
+            const startled = flee(bird, seconds, sky.pointer);
+            bird.x += (bird.vx + bird.fleeX) * seconds;
+            bird.routeY += (bird.vy + bird.fleeY) * seconds;
             bird.y = bird.routeY
                 + Math.sin(bird.bobPhase + bird.elapsed / bird.bobPeriod * Math.PI * 2) * bird.bobAmp;
 
@@ -264,8 +304,9 @@ export function createFlock(count, scales) {
             }
 
             bird.frameTimer += delta;
-            if (bird.frameTimer >= bird.beatMs) {
-                bird.frameTimer -= bird.beatMs;
+            const beat = startled ? BEAT_FAST * 0.6 : bird.beatMs;
+            if (bird.frameTimer >= beat) {
+                bird.frameTimer %= beat;
                 bird.frameIndex = (bird.frameIndex + 1) % 2;
             }
 

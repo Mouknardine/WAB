@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr-CH" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Avant tout rendu : signale au CSS que JavaScript est disponible.
+         Sans lui, les sections à apparition restent visibles d'emblée. -->
+    <script>document.documentElement.classList.replace('no-js', 'js');</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#FFE4F0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!-- Favicon & icônes d'application -->
+    <link rel="icon" href="/favicon.ico?v=2" sizes="32x32">
+    <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>Page introuvable | WeAreBrothers Lausanne</title>
+    <meta name="description" content="Cette page n'existe pas ou plus. Retour à l'accueil de WeAreBrothers, agence web à Lausanne.">
+    <!-- Page d'erreur : jamais indexée. Servie à n'importe quelle
+         adresse inconnue, d'où les chemins absolus partout. -->
+    <meta name="robots" content="noindex, follow">
+
+    <!-- Police — Sligoil seule, servie depuis le site -->
+    <link rel="preload" href="/assets/fonts/Sligoil-Micro.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/base.css?v=27">
+    <link rel="stylesheet" href="/css/nav.css?v=14">
+    <link rel="stylesheet" href="/css/contact-modal.css?v=7">
+    <link rel="stylesheet" href="/css/contact-form.css?v=3">
+    <link rel="stylesheet" href="/css/lost.css?v=1">
+    <link rel="stylesheet" href="/css/footer.css?v=6">
+
+    <!-- Scripts -->
+    <script src="/nav-clock.js?v=2" defer></script>
+    <script src="/js/nav.js?v=5" defer></script>
+    <script type="module" src="/js/birds/index.js?v=6"></script>
+    <script type="module" src="/js/birds/perch.js?v=3"></script>
+    <script type="module" src="/js/contact/index.js?v=9"></script>
+</head>
+
+<body>
+
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <!-- Les oiseaux traversent le fond de toute la page -->
+    <canvas id="birdCanvas" aria-hidden="true"></canvas>
+
+    <!-- BARRE FLOTTANTE — la pilule se prolonge pour contenir le menu -->
+    <header class="topbar" id="topbar">
+        <div class="topbar__inner" id="topbarBar">
+            <div class="topbar__bar">
+                <a href="/" class="topbar__brand">WAB.</a>
+
+                <nav class="topbar__nav" aria-label="Navigation principale">
+                    <a href="/realisations" class="topbar__link">Work</a>
+                    <a href="/services" class="topbar__link">Services</a>
+                    <a href="/studio" class="topbar__link">About</a>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="topbar__link">Contact</a>
+                </nav>
+
+                <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
+                    <span class="topbar__dots" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span>
+                    </span>
+                    <span class="sr-only">Menu</span>
+                </button>
+            </div>
+
+            <div class="topbar__panel" id="topbarPanel">
+                <div class="topbar__panel-inner">
+                    <nav class="panel__nav" aria-label="Navigation">
+                        <a href="/realisations" class="panel__link">
+                            Work
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                        </a>
+                        <a href="/services" class="panel__link">
+                            Services
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                        </a>
+                        <a href="/studio" class="panel__link">
+                            About
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                        </a>
+                        <a href="mailto:contact@wearebrothers.ch" data-contact class="panel__link">
+                            Contact
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                        </a>
+                    </nav>
+
+                    <div class="panel__meta">
+                        <p class="panel__row">
+                            <span class="panel__key">Email</span>
+                            <a href="mailto:contact@wearebrothers.ch" class="panel__value">contact@wearebrothers.ch</a>
+                        </p>
+                        <p class="panel__row">
+                            <span class="panel__key">Studio</span>
+                            <span class="panel__value">Lausanne, Suisse — <time data-local-time>--:--</time></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="topbar-scrim" id="topbarScrim"></div>
+
+
+    <main id="contenu" class="lost">
+        <!-- L'OISEAU PERDU — on le touche, il s'envole et revient se
+             poser. Le seul jeu de la page ; le chemin du retour reste
+             le bouton principal. -->
+        <button type="button" class="lost__bird" aria-label="Faire s'envoler l'oiseau">
+            <canvas class="perch" data-perch="fly" data-scale="4" data-color="0" aria-hidden="true"></canvas>
+        </button>
+        <p class="lost__code">Erreur 404</p>
+        <h1 class="lost__title">Cet oiseau s'est trompé de&nbsp;branche.</h1>
+        <p class="lost__lede">
+            La page que vous cherchez n'existe pas, ou plus. Le reste du site, lui, est bien là.
+        </p>
+        <div class="lost__actions">
+            <a href="/" class="btn btn--solid btn--lg">Retour à l'accueil</a>
+            <a href="/realisations" class="btn btn--ghost btn--lg">Voir nos réalisations</a>
+        </div>
+    </main>
+
+
+    <footer class="footer">
+        <div class="footer__line">
+            <a href="mailto:contact@wearebrothers.ch" class="footer__mail">contact@wearebrothers.ch</a>
+
+            <div class="footer__aside">
+                <!-- Les deux pages que le menu ne porte pas : sans ces
+                     liens, elles ne seraient atteignables depuis aucune
+                     page de texte. -->
+                <nav class="footer__links" aria-label="Autres pages">
+                    <a href="/creation-site-internet-lausanne">Création de site internet</a>
+                    <a href="/applications">Applications</a>
+                </nav>
+                <span class="footer__place">Lausanne, Suisse — <time data-local-time>--:--</time></span>
+                <span class="studio-status" data-local-status hidden></span>
+                <span class="footer__sign">&copy; 2026 WeAreBrothers Studio</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

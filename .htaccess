@@ -1,6 +1,10 @@
 # ── WeAreBrothers Studio — configuration serveur (Infomaniak / Apache) ──
 # N'affecte pas le rendu : redirections canoniques, compression et cache.
 
+# Adresse inconnue : la page de l'oiseau perdu, avec le vrai code 404
+# (Google ne l'indexe pas, et elle porte en plus un noindex).
+ErrorDocument 404 /404.html
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
 

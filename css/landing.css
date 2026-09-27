@@ -129,6 +129,22 @@ body.landing {
     white-space: nowrap;
 }
 
+/* Le lieu, l'heure et le statut du studio forment un seul groupe à
+   droite. Sur téléphone, la ligne n'a de place que pour l'adresse et
+   l'heure : le statut s'efface plutôt que de pousser une deuxième
+   ligne de petit texte. */
+.landing__where {
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, 2vw, 24px);
+}
+
+@media (max-width: 599px) {
+    .landing__where .studio-status {
+        display: none;
+    }
+}
+
 /* ── Entrée ──
    Le texte existe d'abord ; l'animation ne fait que retarder son
    apparition. « backwards » plutôt qu'un état masqué codé en dur :

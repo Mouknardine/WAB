@@ -285,6 +285,47 @@ time {
     image-rendering: pixelated;
 }
 
+/* ── Statut du studio ──
+   Posé à côté de l'heure de Lausanne, en bas des pages : un point et
+   quelques mots (« Au studio », « Lausanne dort »…). Le point ne
+   devient rose et ne bat que pendant les heures de travail. Rempli
+   par nav-clock.js ; sans script, il reste masqué. */
+.studio-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.studio-status[hidden] {
+    display: none;
+}
+
+.studio-status::before {
+    content: '';
+    flex: none;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.45;
+}
+
+.studio-status.is-live::before {
+    background: var(--pink);
+    opacity: 1;
+    animation: studio-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes studio-pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 45, 155, 0.45);
+    }
+    60% {
+        box-shadow: 0 0 0 6px rgba(255, 45, 155, 0);
+    }
+}
+
 /* ── Réservé aux lecteurs d'écran ── */
 .sr-only {
     position: absolute;

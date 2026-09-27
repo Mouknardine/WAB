@@ -20,7 +20,7 @@
    ce numéro n'aura plus à bouger. */
 import { BODY_COLORS } from './frames.js?v=5';
 import { createSpriteBank } from './sprites.js?v=5';
-import { createFlock, TEXT_DIM } from './flock.js?v=5';
+import { createFlock, TEXT_DIM } from './flock.js?v=6';
 import { createShyness } from './shyness.js?v=5';
 
 /* Échelles de dessin disponibles, de l'oiseau le plus lointain au
@@ -68,7 +68,27 @@ function initBirds() {
         height: 0,
         widthAt: sprites.widthAt,
         heightAt: sprites.heightAt,
+        pointer: null,
     };
+
+    /* Le curseur, pour que les oiseaux s'en écartent. Le calque est
+       fixé à l'écran : les coordonnées du curseur sont directement
+       celles du dessin. Au doigt, seul le moment du toucher compte —
+       il n'y a pas de curseur qui survole. */
+    const TOUCH_MS = 500;
+    let touchTimer = 0;
+    window.addEventListener('pointermove', (event) => {
+        if (event.pointerType === 'touch') return;
+        sky.pointer = { x: event.clientX, y: event.clientY };
+    }, { passive: true });
+    window.addEventListener('pointerdown', (event) => {
+        if (event.pointerType !== 'touch') return;
+        sky.pointer = { x: event.clientX, y: event.clientY };
+        window.clearTimeout(touchTimer);
+        touchTimer = window.setTimeout(() => { sky.pointer = null; }, TOUCH_MS);
+    }, { passive: true });
+    document.documentElement.addEventListener('pointerleave', () => { sky.pointer = null; });
+    window.addEventListener('blur', () => { sky.pointer = null; });
 
     const flock = createFlock(1, ladderFor(window.innerWidth));
 

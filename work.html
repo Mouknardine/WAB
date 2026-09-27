@@ -506,22 +506,23 @@
     <link rel="preload" href="assets/fonts/Sligoil-Micro.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/base.css?v=26">
+    <link rel="stylesheet" href="css/base.css?v=27">
     <link rel="stylesheet" href="css/nav.css?v=14">
-    <link rel="stylesheet" href="css/contact-modal.css?v=6">
+    <link rel="stylesheet" href="css/contact-modal.css?v=7">
     <link rel="stylesheet" href="css/contact-form.css?v=3">
     <link rel="stylesheet" href="css/page.css?v=7">
-    <link rel="stylesheet" href="css/work.css?v=19">
+    <link rel="stylesheet" href="css/work.css?v=20">
     <link rel="stylesheet" href="css/work-piece.css?v=2">
     <link rel="stylesheet" href="css/process.css?v=11">
     <link rel="stylesheet" href="css/footer.css?v=6">
 
     <!-- Scripts -->
-    <script src="nav-clock.js?v=1" defer></script>
+    <script src="nav-clock.js?v=2" defer></script>
     <script src="js/reveal.js?v=3" defer></script>
     <script src="js/nav.js?v=5" defer></script>
-    <script type="module" src="js/birds/index.js?v=5"></script>
-    <script type="module" src="js/contact/index.js?v=7"></script>
+    <script type="module" src="js/birds/perch.js?v=3"></script>
+    <script type="module" src="js/birds/index.js?v=6"></script>
+    <script type="module" src="js/contact/index.js?v=9"></script>
 </head>
 
 <body>
@@ -834,6 +835,27 @@
                             </div>
                         </a>
                     </article>
+
+                    <!-- LA CASE LIBRE — la dixième place de la grille, pour
+                         le prochain projet. Elle complète la dernière rangée
+                         et ouvre la fenêtre de contact. -->
+                    <article class="piece piece--open reveal">
+                        <a class="piece__link" href="mailto:contact@wearebrothers.ch" data-contact>
+                            <div class="piece__media piece__media--open">
+                                <canvas class="perch" data-perch="flap" data-scale="4" data-color="4" aria-hidden="true"></canvas>
+                                <span class="piece__slot">Case n°&nbsp;10 — libre</span>
+                            </div>
+                            <div class="piece__caption">
+                                <div class="piece__text">
+                                    <h2 class="piece__name">Votre projet</h2>
+                                    <p class="piece__context">Cette place vous attend. On en parle autour d'un café&nbsp;?</p>
+                                </div>
+                                <span class="piece__go" aria-hidden="true">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                                </span>
+                            </div>
+                        </a>
+                    </article>
                 </div>
             </div>
         </section>
@@ -850,12 +872,12 @@
             <ol class="process__cards" aria-label="Les étapes d'un projet">
                     <li class="process__card">
                         <svg class="process__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3v3M12 3v3"/></svg>
-                        <h3 class="process__name">On se rencontre.</h3>
-                        <p class="process__desc">Un café à Lausanne ou un appel, pour comprendre votre activité et vos objectifs.</p>
+                        <h3 class="process__name">On écoute.</h3>
+                        <p class="process__desc">Un café à Lausanne ou un appel. Vous parlez de votre métier, on prend des notes.</p>
                     </li>
                     <li class="process__card">
                         <svg class="process__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7V3Z"/><path d="M14 3v5h5"/><path d="M10 13h6M10 17h4"/></svg>
-                        <h3 class="process__name">Un devis clair.</h3>
+                        <h3 class="process__name">On chiffre.</h3>
                         <p class="process__desc">Périmètre, planning et prix posés noir sur blanc, avant de commencer.</p>
                     </li>
                     <li class="process__card">
@@ -865,8 +887,8 @@
                     </li>
                     <li class="process__card">
                         <svg class="process__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18Z"/></svg>
-                        <h3 class="process__name">En ligne, et suivi.</h3>
-                        <p class="process__desc">Maintenance et évolutions, toujours avec les mêmes interlocuteurs.</p>
+                        <h3 class="process__name">On reste là.</h3>
+                        <p class="process__desc">Après la mise en ligne, on ne disparaît pas&nbsp;: maintenance et évolutions, avec les mêmes personnes.</p>
                     </li>
             </ol>
         </section>
@@ -905,6 +927,7 @@
                     <a href="/applications">Applications</a>
                 </nav>
                 <span class="footer__place">Lausanne, Suisse — <time data-local-time>--:--</time></span>
+                <span class="studio-status" data-local-status hidden></span>
                 <span class="footer__sign">&copy; 2026 WeAreBrothers Studio</span>
             </div>
         </div>

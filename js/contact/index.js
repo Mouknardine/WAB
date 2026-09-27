@@ -13,9 +13,10 @@
  */
 
 // Même numéro partout où un fichier est importé : voir js/birds/index.js.
-import { CONTACT_EMAIL, createContactDialog } from './markup.js?v=7';
-import { bindContactForm, resetContactForm } from './form.js?v=7';
-import { requireElement } from './dom.js?v=7';
+import { CONTACT_EMAIL, createContactDialog } from './markup.js?v=8';
+import { bindContactForm, resetContactForm } from './form.js?v=8';
+import { requireElement } from './dom.js?v=8';
+import { playFlight } from './flight.js?v=9';
 
 const OPEN_HASH = '#ecrire';
 const LOCK_CLASS = 'has-modal';
@@ -36,6 +37,8 @@ const CLOSE_FALLBACK_MS = 320;
 let modal = null;
 /** @type {(() => void) | null} */
 let cancelPendingClose = null;
+/** @type {() => void} */
+let stopFlight = () => {};
 
 /** @returns {ContactModal} */
 function buildModal() {
@@ -58,6 +61,7 @@ function showSent(parts) {
     parts.formView.hidden = true;
     parts.sentView.hidden = false;
     requireElement(parts.sentView, '.contact-modal__title', HTMLElement).focus();
+    stopFlight = playFlight(requireElement(parts.sentView, '.contact-flight', HTMLCanvasElement));
 }
 
 /**
@@ -128,6 +132,7 @@ function wireClosing(parts) {
         cancelPendingClose?.();
         dialog.classList.remove('is-closing');
         document.documentElement.classList.remove(LOCK_CLASS);
+        stopFlight();
         restoreForm(parts);
     });
 }

@@ -22,6 +22,20 @@ const TIMINGS = ['Maintenant', "D'ici 3 mois", 'Plus tard'];
 
 const ARROW = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>';
 
+/* Les trois visages de l'équipe, en haut de la fenêtre : on écrit à
+   des personnes, pas à un formulaire. Portraits de 144 px, affichés
+   à 36 : nets sur écran haute densité, 4 Ko chacun. */
+const TEAM = [
+    { name: 'Eliott', file: 'avatar-eliott.webp' },
+    { name: 'Matt', file: 'avatar-matt.webp' },
+    { name: 'Ivan', file: 'avatar-ivan.webp' },
+];
+
+const TEAM_FACES = `
+        <ul class="contact-faces" aria-label="L'équipe qui vous répond">${TEAM.map(({ name, file }) => `
+            <li><img class="contact-faces__img" src="/assets/images/${file}" alt="${name}" title="${name}" width="36" height="36" decoding="async"></li>`).join('')}
+        </ul>`;
+
 // Signe visuel seulement : l'attribut required du champ dit déjà
 // « obligatoire » aux lecteurs d'écran.
 const REQUIRED = '<span class="contact-field__req" aria-hidden="true">*</span>';
@@ -49,12 +63,13 @@ function choiceGroup({ legend, name, type, options }) {
 const TEMPLATE = `
 <div class="contact-modal__card" tabindex="-1">
     <div class="contact-modal__bar">
+        ${TEAM_FACES}
         <button type="button" class="contact-modal__close" data-contact-close>Fermer</button>
     </div>
 
     <div data-view="form">
         <h2 class="contact-modal__title" id="contactModalTitle">On travaille ensemble&nbsp;?</h2>
-        <p class="contact-modal__lede">Nous vous répondons sous 24&nbsp;h ouvrées, sans engagement.</p>
+        <p class="contact-modal__lede">Vous écrivez directement à Eliott, Matt et Ivan. Nous vous répondons sous 24&nbsp;h ouvrées, sans engagement.</p>
 
         <form class="contact-form" action="/send-message.php" method="POST" novalidate>
             <!-- Piège anti-spam : hors du champ visuel, jamais atteint au clavier -->
@@ -100,10 +115,11 @@ const TEMPLATE = `
     </div>
 
     <div data-view="sent" hidden>
-        <h2 class="contact-modal__title" tabindex="-1">Message envoyé.</h2>
+        <canvas class="contact-flight" width="320" height="120" aria-hidden="true"></canvas>
+        <h2 class="contact-modal__title" tabindex="-1">Bien reçu.</h2>
         <p class="contact-modal__lede">
-            Merci&nbsp;! Nous vous répondons sous 24&nbsp;h ouvrées, idéalement pour convenir
-            d'un café ou d'un appel.
+            Pas de robot ni de file d'attente&nbsp;: l'un de nous vous répond sous 24&nbsp;h
+            ouvrées, idéalement pour convenir d'un café ou d'un appel.
         </p>
         <button type="button" class="btn btn--ghost btn--lg contact-modal__done" data-contact-close>Fermer</button>
     </div>

@@ -1,0 +1,62 @@
+/* ============================================
+   WAB. — Page introuvable (404)
+   Un oiseau perdu posé au-dessus du titre, qu'on peut faire
+   s'envoler d'un clic, et le chemin du retour juste en dessous.
+   Tout est centré dans la hauteur de l'écran, sans défilement.
+   ============================================ */
+
+.lost {
+    min-height: calc(100svh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: calc(var(--topbar-h) + 32px) var(--gutter) 56px;
+}
+
+.lost__bird {
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.lost__bird:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 6px;
+}
+
+.lost__code {
+    font-size: 0.8rem;
+    font-weight: var(--w-strong);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--pink);
+}
+
+.lost__title {
+    margin-top: 12px;
+    max-width: 16ch;
+    font-size: clamp(2.2rem, 6vw, 4.4rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    text-wrap: balance;
+}
+
+.lost__lede {
+    margin-top: 18px;
+    max-width: 42ch;
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    letter-spacing: -0.02em;
+    line-height: 1.5;
+    color: var(--ink-soft);
+}
+
+.lost__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+}

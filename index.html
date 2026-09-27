@@ -346,18 +346,18 @@
     <link rel="preload" href="assets/fonts/Sligoil-Micro.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/base.css?v=26">
+    <link rel="stylesheet" href="css/base.css?v=27">
     <link rel="stylesheet" href="css/nav.css?v=14">
-    <link rel="stylesheet" href="css/contact-modal.css?v=6">
+    <link rel="stylesheet" href="css/contact-modal.css?v=7">
     <link rel="stylesheet" href="css/contact-form.css?v=3">
-    <link rel="stylesheet" href="css/landing.css?v=9">
+    <link rel="stylesheet" href="css/landing.css?v=10">
     <link rel="stylesheet" href="css/landing-plate.css?v=2">
 
     <!-- Scripts -->
-    <script src="nav-clock.js?v=1" defer></script>
+    <script src="nav-clock.js?v=2" defer></script>
     <script src="js/nav.js?v=5" defer></script>
-    <script type="module" src="js/birds/index.js?v=5"></script>
-    <script type="module" src="js/contact/index.js?v=7"></script>
+    <script type="module" src="js/birds/index.js?v=6"></script>
+    <script type="module" src="js/contact/index.js?v=9"></script>
 </head>
 
 <body class="landing" data-birds="dense">
@@ -478,7 +478,10 @@
         <div class="landing__foot">
             <div class="landing__foot-inner">
                 <a href="mailto:contact@wearebrothers.ch" class="landing__mail">contact@wearebrothers.ch</a>
-                <span class="landing__place">Lausanne, Suisse — <time data-local-time>--:--</time></span>
+                <span class="landing__where">
+                    <span class="landing__place">Lausanne, Suisse — <time data-local-time>--:--</time></span>
+                    <span class="studio-status" data-local-status hidden></span>
+                </span>
             </div>
         </div>
 
