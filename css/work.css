@@ -32,14 +32,21 @@
 .work-head__lede {
     max-width: 38ch;
     font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-    line-height: 1.5;
+    /* Sligoil est à chasse fixe : son approche d'origine paraît lâche
+       en taille d'introduction, on la resserre d'un cran. */
+    letter-spacing: -0.02em;
+    line-height: 1.45;
     text-wrap: pretty;
     color: var(--ink-soft);
 }
 
 @media (min-width: 900px) {
+    /* Mêmes colonnes et même écart que la grille des projets : la
+       phrase d'introduction commence pile au-dessus de la deuxième
+       colonne de captures. */
     .work-head {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 28rem);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: clamp(20px, 2.4vw, 32px);
         align-items: end;
     }
 
