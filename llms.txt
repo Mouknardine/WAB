@@ -19,6 +19,7 @@
 - [Création de site internet à Lausanne](https://wearebrothers.ch/creation-site-internet-lausanne) : quatre exemples lausannois et vaudois, ce que comprend un site (design sur mesure, code écrit à la main, hébergement suisse inclus, référencement local, parcours vers l'action, suivi), les quatre formats (site vitrine, site d'entreprise, portfolio créatif, boutique en ligne), le déroulé en quatre étapes, le studio et sa zone d'intervention, la refonte, et les douze questions fréquentes — prix, délais, préparation du premier rendez-vous, mobile, référencement, hébergement, langues, refonte, zone d'intervention
 - [Réalisations](https://wearebrothers.ch/realisations) : sites internet et applications réunis dans une même grille de captures, chacune reliée au site en ligne
   - Zinéma — site vitrine du premier cinéma d'art et essai miniplex de Lausanne, rue du Maupas, accueil en mur d'affiches et agenda des séances (https://www.zinema.ch/)
+  - LE MEMO — site d'un collectif lausannois (événements, soutien aux artistes, boutique de vêtements) dont l'accueil est un séquenceur musical jouable (https://lememo-eight.vercel.app/)
   - Le P'tit Central — site vitrine d'un café-restaurant de quartier de la rue Centrale à Lausanne, esthétique azulejos (https://le-p-tit-central.vercel.app/)
   - Maison Alliani — site vitrine haute joaillerie pour un atelier suisse de grillz sur mesure (https://maison-alliani.com/)
   - Amarte Studio — site vitrine d'un centre de yoga et de Pilates à Épalinges (Lausanne), disciplines, profs, horaires et réservation (https://amarte.ch/)
