@@ -30,8 +30,8 @@
     font-size: clamp(2.2rem, 5vw, 3.6rem);
     font-weight: var(--w-strong);
     letter-spacing: -0.035em;
-    /* Même raison que les titres de section : la cédille d'Epilogue
-       descend bas et vient toucher l'accent de la ligne suivante. */
+    /* Même raison que les titres de section : la cédille vient
+       toucher l'accent de la ligne suivante. */
     line-height: 1.14;
     text-wrap: balance;
     color: var(--ink);

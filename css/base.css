@@ -6,27 +6,39 @@
    ============================================ */
 
 /* ── Police ──
-   Epilogue, en version variable : un seul fichier de 81 Ko couvre
-   toutes les graisses de 100 à 900, contre 133 Ko rien que pour les
-   trois fichiers statiques dont la page aurait eu besoin.
+   Sligoil, en trois fichiers statiques (Micro, Medium, Bold) réunis
+   sous une seule famille : font-weight choisit le bon fichier et le
+   navigateur ne fabrique jamais de faux gras.
 
-   La feuille livrée avec la police déclare chaque graisse comme une
-   famille séparée (Epilogue-Regular, Epilogue-Medium…). On ne la
-   reprend pas : une seule famille avec une plage de graisses laisse
-   font-weight fonctionner normalement et empêche le navigateur de
-   fabriquer de faux gras.
+   La version variable n'est pas utilisée : son axe de graisse va de
+   90 à 120 au lieu de l'échelle habituelle 100–900, et les valeurs
+   font-weight du site ne tomberaient pas dessus.
 
-   Epilogue — Tyler Finck, Etcetera Type Co (Indian Type Foundry),
-   sous licence SIL Open Font License. */
+   Sligoil — Ariel Martín Pérez, Velvetyne Type Foundry, sous licence
+   SIL Open Font License (voir assets/fonts/Sligoil-OFL.txt). */
 @font-face {
-    font-family: 'Epilogue';
-    /* format('woff2') tout court, pas 'woff2-variations' : cette
-       ancienne écriture était une rustine de transition que les
-       navigateurs récents ne reconnaissent plus toujours, alors qu'ils
-       détectent seuls les axes variables d'un woff2 ordinaire. */
-    src: url('../assets/fonts/Epilogue-Variable.woff2') format('woff2'),
-        url('../assets/fonts/Epilogue-Variable.woff') format('woff');
-    font-weight: 100 900;
+    font-family: 'Sligoil';
+    src: url('../assets/fonts/Sligoil-Micro.woff2') format('woff2'),
+        url('../assets/fonts/Sligoil-Micro.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sligoil';
+    src: url('../assets/fonts/Sligoil-MicroMedium.woff2') format('woff2'),
+        url('../assets/fonts/Sligoil-MicroMedium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sligoil';
+    src: url('../assets/fonts/Sligoil-MicroBold.woff2') format('woff2'),
+        url('../assets/fonts/Sligoil-MicroBold.woff') format('woff');
+    font-weight: 700;
     font-style: normal;
     font-display: swap;
 }
@@ -72,14 +84,12 @@
     /* Type — une seule famille sur tout le site. Les étiquettes
        gardent leur caractère par les capitales et l'approche large,
        plus par un changement de police. */
-    --font-display: 'Epilogue', 'Helvetica Neue', Helvetica, sans-serif;
+    --font-display: 'Sligoil', ui-monospace, 'SF Mono', Menlo, monospace;
 
-    /* Graisses — la page ne joue qu'entre le Regular et le SemiBold.
-       Epilogue tient très bien la grande taille en 600 : monter à 800
-       la rendrait compacte et lourde là où elle doit rester nette.
-       Deux valeurs suffisent, il n'y a pas de troisième niveau. */
+    /* Graisses — la page ne joue qu'entre le Micro et le Bold de
+       Sligoil. Deux valeurs suffisent, il n'y a pas de troisième niveau. */
     --w-regular: 400;
-    --w-strong: 600;
+    --w-strong: 700;
 
     /* Gouttière commune à la barre flottante et au contenu. */
     --gutter: clamp(18px, 4vw, 32px);
@@ -413,9 +423,8 @@ time {
     font-weight: var(--w-strong);
     letter-spacing: -0.03em;
     /* Le français empile cédilles descendantes et accents ascendants.
-       Epilogue a une cédille plus profonde que la plupart des
-       grotesques : à 1.18, le « ç » d'une ligne venait encore effleurer
-       le « é » de la suivante. Valeur à revérifier si la police change. */
+       En dessous de 1.2, le « ç » d'une ligne vient effleurer le « é »
+       de la suivante. Valeur à revérifier si la police change. */
     line-height: 1.2;
     text-wrap: balance;
     color: var(--ink);
@@ -447,6 +456,18 @@ time {
     transition: transform 0.25s var(--ease-out), background-color 0.25s var(--ease-out),
         border-color 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), color 0.25s var(--ease-out);
     -webkit-tap-highlight-color: transparent;
+}
+
+/* Sligoil est une police à chasse fixe, plus large qu'une grotesque :
+   sur les plus petits téléphones, un long libellé passe sur deux
+   lignes plutôt que de sortir de l'écran. */
+@media (max-width: 380px) {
+    .btn {
+        max-width: 100%;
+        padding: 10px 20px;
+        white-space: normal;
+        text-align: center;
+    }
 }
 
 .btn svg {

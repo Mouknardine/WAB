@@ -13,8 +13,8 @@
     font-size: clamp(1.4rem, 3.1vw, 2.05rem);
     font-weight: var(--w-strong);
     letter-spacing: -0.03em;
-    /* La cédille d'Epilogue descend bas : en dessous de 1.14 elle
-       vient toucher l'accent de la ligne suivante. */
+    /* En dessous de 1.14, la cédille vient toucher l'accent de la
+       ligne suivante. */
     line-height: 1.14;
     text-wrap: balance;
     color: var(--pink);
