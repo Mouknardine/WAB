@@ -12,8 +12,8 @@
 
 /* ── En-tête ──
    Le titre va chercher le bord gauche, comme le sigle de la barre.
-   Sur grand écran, la phrase se range à droite, posée sur la ligne
-   de base du titre. */
+   La phrase d'introduction suit juste en dessous, sur toutes les
+   tailles d'écran. */
 .work-head {
     display: grid;
     gap: clamp(14px, 2.4vw, 24px);
@@ -38,21 +38,6 @@
     line-height: 1.45;
     text-wrap: pretty;
     color: var(--ink-soft);
-}
-
-@media (min-width: 900px) {
-    /* Mêmes colonnes et même écart que la grille des projets : la
-       phrase d'introduction commence pile au-dessus de la deuxième
-       colonne de captures. */
-    .work-head {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        column-gap: clamp(20px, 2.4vw, 32px);
-        align-items: end;
-    }
-
-    .work-head__lede {
-        padding-bottom: 0.2em;
-    }
 }
 
 /* ── La grille ──

@@ -8,12 +8,12 @@
    rangée au lieu de s'empiler.
    ============================================ */
 
+/* Le titre, puis la phrase juste en dessous, sur toutes les tailles
+   d'écran : les deux se lisent d'un seul regard, calés à gauche. */
 .process__head {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 6px 32px;
+    display: grid;
+    justify-items: start;
+    gap: 10px;
     margin-bottom: clamp(24px, 3.4vw, 44px);
     padding-inline: var(--gutter);
 }
@@ -32,19 +32,6 @@
     letter-spacing: -0.02em;
     line-height: 1.45;
     color: var(--ink-muted);
-}
-
-/* Sur ordinateur, le titre et la phrase prennent deux colonnes égales
-   séparées du même écart que les cartes : la phrase commence au milieu
-   de la rangée, sur une ligne de la grille, au lieu de flotter contre
-   le bord droit. */
-@media (min-width: 900px) {
-    .process__head {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        column-gap: clamp(12px, 1.4vw, 20px);
-        align-items: end;
-    }
 }
 
 /* ── Rangée de cartes ──
