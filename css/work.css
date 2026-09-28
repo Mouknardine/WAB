@@ -1,7 +1,7 @@
 /* ============================================
    WAB. — Réalisations : l'en-tête et la grille
-   Un titre franc, une phrase, puis les projets sur deux colonnes
-   régulières. Sobre et posé : c'est le travail qui parle, pas la
+   Un titre franc, une phrase, puis les projets en grille
+   régulière. Sobre et posé : c'est le travail qui parle, pas la
    mise en scène. La légende de chaque projet est dans
    work-piece.css.
    ============================================ */
@@ -43,8 +43,9 @@
 /* ── La grille ──
    Elle sort de la colonne de 940 px et prend la même marge que la
    barre de navigation : le bord des captures tombe sous le sigle.
-   Une colonne sur téléphone, deux dès la tablette, toutes les
-   tuiles au même format. */
+   Une colonne sur téléphone, deux sur tablette, trois sur
+   ordinateur : les photos verticales restent à taille mesurée.
+   Toutes les tuiles au même format. */
 .pieces-wrap {
     padding-inline: var(--gutter);
 }
@@ -62,21 +63,26 @@
     }
 }
 
+@media (min-width: 1100px) {
+    .pieces {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
 .piece__media {
     display: block;
     overflow: hidden;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 4 / 5;
     border-radius: clamp(10px, 1.2vw, 16px);
     background: var(--card);
 }
 
-/* Coin haut gauche plutôt que centre : c'est là que chaque site
-   porte son nom, c'est ce qu'il faut garder quand l'image est rognée. */
+/* Les photos sont cadrées au format de la tuile : l'appareil
+   entier, centré, rien n'est rogné. */
 .piece__img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: left top;
     transition: transform 0.9s var(--ease);
 }
 
@@ -112,6 +118,19 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--ink-muted);
+}
+
+/* Sur trois colonnes, la dixième case resterait seule sur sa
+   rangée : elle devient une bande basse sur toute la largeur. */
+@media (min-width: 1100px) {
+    .piece--open {
+        grid-column: 1 / -1;
+    }
+
+    .piece__media--open {
+        aspect-ratio: auto;
+        height: clamp(200px, 16vw, 240px);
+    }
 }
 
 @media (hover: hover) {
