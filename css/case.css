@@ -89,10 +89,15 @@
 }
 
 .case__frame {
+    position: relative;
     overflow: hidden;
     aspect-ratio: 4 / 5;
     border-radius: 12px;
     background: var(--paper);
+}
+
+.case__photo-slot {
+    height: 100%;
 }
 
 .case__photo {
@@ -104,12 +109,8 @@
 
 .case__foot {
     display: grid;
-    gap: 18px;
-    padding: 18px 8px 0;
-}
-
-.case__visit {
-    width: 100%;
+    gap: 4px;
+    padding: 16px 8px 0;
 }
 
 /* ── Ordinateur : deux cartes ── */
@@ -156,15 +157,7 @@
     }
 
     .case__foot {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        gap: 20px;
         padding: 16px 4px 2px;
-    }
-
-    .case__visit {
-        width: auto;
     }
 
     .case__bar {

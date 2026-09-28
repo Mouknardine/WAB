@@ -5,9 +5,10 @@
  * clic et remplie à chaque ouverture (voir fill.js). Aucun texte de
  * projet ici : tout vient de la tuile, dans work.html.
  *
- * Sur ordinateur, deux cartes côte à côte : la photo à gauche avec
- * le bouton vers le site, le récit à droite. Sur téléphone, une
- * seule feuille qui défile : la barre, la photo, puis le récit.
+ * Sur ordinateur, deux cartes côte à côte : la photo à gauche, le
+ * bouton vers le site posé dessus en verre, le récit à droite. Sur
+ * téléphone, une seule feuille qui défile : la barre, la photo, puis
+ * le récit.
  */
 
 const CLOSE_ICON = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>';
@@ -40,15 +41,15 @@ const TEMPLATE = `
         </div>
     </div>
     <figure class="case__media">
-        <div class="case__frame" data-case-photo></div>
-        <figcaption class="case__foot">
-            <span class="case__foot-text">
-                <span class="case__foot-name" data-case-foot-name></span>
-                <span class="case__foot-context" data-case-foot-context></span>
-            </span>
-            <a class="btn btn--solid case__visit" href="/" target="_blank" rel="noopener noreferrer" data-case-visit>
+        <div class="case__frame">
+            <div class="case__photo-slot" data-case-photo></div>
+            <a class="btn case__visit" href="/" target="_blank" rel="noopener noreferrer" data-case-visit>
                 <span>Voir le site</span>${VISIT_ICON}
             </a>
+        </div>
+        <figcaption class="case__foot">
+            <span class="case__foot-name" data-case-foot-name></span>
+            <span class="case__foot-context" data-case-foot-context></span>
         </figcaption>
     </figure>
 </div>`;

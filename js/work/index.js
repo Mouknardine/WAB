@@ -12,7 +12,7 @@
  */
 
 import { requireElement } from '../contact/dom.js?v=8';
-import { createCaseDialog } from './markup.js?v=1';
+import { createCaseDialog } from './markup.js?v=2';
 import { fillCase } from './fill.js?v=1';
 
 const LOCK_CLASS = 'has-modal';

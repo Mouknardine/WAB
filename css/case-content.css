@@ -1,6 +1,6 @@
 /* ============================================
    WAB. — Fiche projet : le texte
-   Le numéro et le bouton Fermer, le nom du projet, la description,
+   Le numéro, le nom du projet, la description,
    puis « Notre démarche » en quatre cartes : la problématique,
    l'enjeu, notre réponse, les difficultés et leurs solutions.
    ============================================ */
@@ -8,34 +8,6 @@
 .case__num {
     font-size: 1rem;
     color: var(--ink-muted);
-}
-
-/* Fermer : un rond d'encre, la croix au centre. */
-.case__close {
-    display: grid;
-    place-items: center;
-    width: 40px;
-    height: 40px;
-    border: 0;
-    border-radius: 50%;
-    background: var(--ink);
-    color: var(--white);
-    cursor: pointer;
-    transition: background-color 0.2s var(--ease-out), transform 0.2s var(--ease-out);
-}
-
-.case__close:hover {
-    background: #26262c;
-}
-
-.case__close:active {
-    transform: scale(0.94);
-}
-
-.case__close:focus-visible,
-.case__visit:focus-visible {
-    outline: 2px solid var(--ink);
-    outline-offset: 3px;
 }
 
 /* ── Nom du projet ──
@@ -88,11 +60,6 @@
 .case__tags li:not(:last-child)::after {
     content: "·";
     margin-inline: 0.5em;
-}
-
-.case__foot-text {
-    display: grid;
-    gap: 4px;
 }
 
 .case__foot-name {
