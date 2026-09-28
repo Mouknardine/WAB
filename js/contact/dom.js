@@ -1,6 +1,6 @@
 // @ts-check
 /**
- * WAB. — Fenêtre de contact : accès au DOM
+ * WAB. — Accès au DOM (fenêtre de contact, fiches projet)
  * La fenêtre est construite par nos soins : un élément absent est
  * une erreur de code, pas un cas à contourner. On le dit tout de
  * suite plutôt que de laisser un bouton muet.
@@ -16,5 +16,5 @@
 export function requireElement(root, selector, type) {
     const element = root.querySelector(selector);
     if (element instanceof type) return element;
-    throw new Error(`Fenêtre de contact : élément « ${selector} » introuvable.`);
+    throw new Error(`Élément « ${selector} » introuvable.`);
 }

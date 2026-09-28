@@ -1,0 +1,200 @@
+/* ============================================
+   WAB. — Fiche projet : le texte
+   Le numéro et le bouton Fermer, le nom du projet, la description,
+   puis « Notre démarche » en quatre cartes : la problématique,
+   l'enjeu, notre réponse, les difficultés et leurs solutions.
+   ============================================ */
+
+.case__num {
+    font-size: 1rem;
+    color: var(--ink-muted);
+}
+
+/* Fermer : un rond d'encre, la croix au centre. */
+.case__close {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--white);
+    cursor: pointer;
+    transition: background-color 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+}
+
+.case__close:hover {
+    background: #26262c;
+}
+
+.case__close:active {
+    transform: scale(0.94);
+}
+
+.case__close:focus-visible,
+.case__visit:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+}
+
+/* ── Nom du projet ──
+   Sur téléphone, le nom est déjà sous la photo : le bloc reste lu
+   par les lecteurs d'écran mais disparaît de l'affichage. */
+.case__meta {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.case__title {
+    font-size: clamp(1.4rem, 2vw, 1.8rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+}
+
+.case__title:focus {
+    outline: none;
+}
+
+.case__context,
+.case__foot-context {
+    font-size: 1rem;
+    line-height: 1.45;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+}
+
+.case__context {
+    margin-top: 6px;
+}
+
+.case__tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 14px;
+    list-style: none;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--ink-muted);
+}
+
+/* Le point suit chaque discipline sauf la dernière : quand la ligne
+   se replie, il reste en fin de ligne au lieu d'ouvrir la suivante. */
+.case__tags li:not(:last-child)::after {
+    content: "·";
+    margin-inline: 0.5em;
+}
+
+.case__foot-text {
+    display: grid;
+    gap: 4px;
+}
+
+.case__foot-name {
+    font-size: clamp(1.3rem, 1.8vw, 1.5rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+}
+
+/* ── Description ── */
+.case__summary p {
+    max-width: 62ch;
+    font-size: clamp(1.02rem, 1.3vw, 1.1rem);
+    letter-spacing: -0.01em;
+    line-height: 1.6;
+    text-wrap: pretty;
+    color: var(--ink-soft);
+}
+
+.case__summary p + p {
+    margin-top: 1em;
+}
+
+/* ── Notre démarche ── */
+.case__approach {
+    margin-top: clamp(32px, 4vw, 44px);
+    padding-top: clamp(24px, 3vw, 32px);
+    border-top: 1px solid var(--line);
+}
+
+.case__approach-title {
+    font-size: clamp(1.2rem, 1.6vw, 1.35rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.03em;
+}
+
+.case__steps {
+    display: grid;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.case__steps > div {
+    padding: 18px 20px 20px;
+    border-radius: 14px;
+    background: rgba(255, 45, 155, 0.06);
+}
+
+.case__steps dt {
+    font-size: 0.98rem;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.01em;
+}
+
+.case__steps dd {
+    margin-top: 8px;
+    font-size: 0.98rem;
+    line-height: 1.55;
+    text-wrap: pretty;
+    color: var(--ink-soft);
+}
+
+.case__shot {
+    margin-top: clamp(28px, 4vw, 40px);
+}
+
+/* Deux cartes par rangée là où le récit a la place : sur tablette,
+   et sur grand écran. Entre les deux, le panneau de droite est
+   trop étroit et les cartes restent empilées. */
+@media (min-width: 700px) and (max-width: 999px), (min-width: 1280px) {
+    .case__steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Sur ordinateur, le nom revient en tête du récit, à gauche de la
+   description, comme sur une fiche de catalogue. */
+@media (min-width: 1000px) {
+    .case__meta {
+        position: static;
+        width: auto;
+        height: auto;
+        overflow: visible;
+        clip-path: none;
+        white-space: normal;
+    }
+
+    .case__intro {
+        display: grid;
+        gap: 24px;
+    }
+
+    /* Le contexte est déjà en tête du récit : sous la photo, le nom
+       suffit à côté du bouton. */
+    .case__foot-context {
+        display: none;
+    }
+}
+
+@media (min-width: 1280px) {
+    .case__intro {
+        grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+        gap: 40px;
+    }
+}

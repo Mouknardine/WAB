@@ -1,0 +1,177 @@
+/* ============================================
+   WAB. — Fiche projet : la mise en page
+   La fenêtre qui s'ouvre au clic sur un projet de Work. Sur
+   ordinateur, deux cartes blanches côte à côte : la photo du projet
+   à gauche avec le bouton vers le site, le récit à droite, qui
+   défile seul. Sur téléphone, une seule feuille qui défile : la
+   barre (numéro, Fermer), la photo, puis le récit.
+
+   Le texte de la fiche est mis en forme dans case-content.css, les
+   animations sont dans case-motion.css. Le gabarit est écrit par
+   js/work/markup.js.
+   ============================================ */
+
+.case {
+    --case-gap: 8px;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: var(--case-gap);
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    overflow: hidden;
+}
+
+/* ::backdrop n'hérite des variables de :root que dans les navigateurs
+   récents : les valeurs y sont écrites en clair. Même voile que la
+   fenêtre de contact. */
+.case::backdrop {
+    background: rgba(255, 236, 246, 0.5);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    backdrop-filter: blur(14px) saturate(1.2);
+    animation: case-fade 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Les cartes : blanc plein, pas de verre. Le récit est long, il se
+   lit mieux sur un fond qui ne bouge pas. */
+.case__layout,
+.case__panel,
+.case__media {
+    background: var(--card);
+    border-radius: 18px;
+}
+
+.case__layout {
+    height: 100%;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 2px rgba(11, 11, 12, 0.04), 0 24px 60px rgba(60, 20, 45, 0.14);
+    animation: case-rise 0.5s var(--ease);
+}
+
+/* Sur téléphone, le panneau s'efface : sa barre et son récit se
+   rangent autour de la photo, dans la même feuille. */
+.case__panel {
+    display: contents;
+}
+
+.case__bar {
+    order: 0;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 12px 12px 20px;
+    background: rgba(255, 255, 255, 0.92);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    box-shadow: inset 0 -1px 0 var(--line);
+}
+
+.case__media {
+    order: 1;
+    margin: 0;
+    padding: 12px 12px 0;
+}
+
+.case__body {
+    order: 2;
+    padding: 28px 20px 32px;
+}
+
+.case__frame {
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    border-radius: 12px;
+    background: var(--paper);
+}
+
+.case__photo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.case__foot {
+    display: grid;
+    gap: 18px;
+    padding: 18px 8px 0;
+}
+
+.case__visit {
+    width: 100%;
+}
+
+/* ── Ordinateur : deux cartes ── */
+@media (min-width: 1000px) {
+    .case {
+        --case-gap: 12px;
+    }
+
+    .case__layout {
+        display: grid;
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+        gap: var(--case-gap);
+        overflow: visible;
+        background: transparent;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .case__panel,
+    .case__media {
+        grid-row: 1;
+        min-height: 0;
+        box-shadow: 0 1px 2px rgba(11, 11, 12, 0.04), 0 24px 60px rgba(60, 20, 45, 0.12);
+    }
+
+    .case__panel {
+        grid-column: 2;
+        display: block;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+    }
+
+    .case__media {
+        grid-column: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    .case__frame {
+        flex: 1;
+        min-height: 0;
+        aspect-ratio: auto;
+    }
+
+    .case__foot {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 16px 4px 2px;
+    }
+
+    .case__visit {
+        width: auto;
+    }
+
+    .case__bar {
+        padding: 16px 16px 14px 32px;
+    }
+
+    .case__body {
+        padding: 32px 32px 40px;
+    }
+}

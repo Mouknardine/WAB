@@ -44,8 +44,7 @@
    Elle sort de la colonne de 940 px et prend la même marge que la
    barre de navigation : le bord des captures tombe sous le sigle.
    Une colonne sur téléphone, deux sur tablette, trois sur
-   ordinateur : les photos verticales restent à taille mesurée.
-   Toutes les tuiles au même format. */
+   ordinateur. Toutes les tuiles au même format. */
 .pieces-wrap {
     padding-inline: var(--gutter);
 }
@@ -69,34 +68,33 @@
     }
 }
 
-.piece__media {
-    display: block;
-    overflow: hidden;
-    aspect-ratio: 4 / 5;
-    border-radius: clamp(10px, 1.2vw, 16px);
-    background: var(--card);
+/* ── Les tuiles ──
+   Chaque projet dans une fausse fenêtre de navigateur (voir
+   .window dans page.css) : trois pastilles, la page d'accueil en
+   dessous. Au survol, la capture avance à peine. */
+.piece__window {
+    border-radius: clamp(10px, 1.2vw, 14px);
 }
 
-/* Les photos sont cadrées au format de la tuile : l'appareil
-   entier, centré, rien n'est rogné. */
-.piece__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.piece__window .window__img {
     transition: transform 0.9s var(--ease);
 }
 
 @media (hover: hover) {
-    .piece__link:hover .piece__img {
+    .piece__link:hover .window__img {
         transform: scale(1.02);
     }
 }
 
 /* ── La case libre ──
-   Même format que les captures, mais vide : un cadre en pointillé,
+   Même hauteur que les fenêtres, mais vide : un cadre en pointillé,
    un oiseau posé au milieu, qui bat des ailes au survol, et le
    numéro de la case. */
 .piece__media--open {
+    /* La barre à pastilles plus une capture en 16:10. */
+    aspect-ratio: 16 / 11;
+    overflow: hidden;
+    border-radius: clamp(10px, 1.2vw, 14px);
     display: flex;
     flex-direction: column;
     align-items: center;

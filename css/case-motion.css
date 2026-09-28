@@ -1,0 +1,46 @@
+/* ============================================
+   WAB. — Fiche projet : entrée et sortie
+   La fiche monte doucement en place et redescend en s'effaçant.
+   Le script attend la fin de la sortie pour fermer vraiment la
+   fenêtre (voir js/work/index.js).
+   ============================================ */
+
+@keyframes case-rise {
+    from {
+        transform: translateY(28px);
+        opacity: 0;
+    }
+}
+
+@keyframes case-sink {
+    to {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+}
+
+@keyframes case-fade {
+    from {
+        opacity: 0;
+    }
+}
+
+.case.is-closing .case__layout {
+    animation: case-sink 0.24s var(--ease-out) forwards;
+}
+
+.case.is-closing::backdrop {
+    opacity: 0;
+    transition: opacity 0.24s ease-out;
+}
+
+/* Sans mouvement : un simple fondu, dans les deux sens. */
+@media (prefers-reduced-motion: reduce) {
+    .case__layout {
+        animation-name: case-fade;
+    }
+
+    .case.is-closing .case__layout {
+        animation: case-fade 0.2s ease-out reverse forwards;
+    }
+}
