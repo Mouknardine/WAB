@@ -30,9 +30,10 @@
 }
 
 /* ── La preuve ──
-   Un seul lien vers /realisations : quatre vignettes et leurs noms.
-   Les images sont décoratives (alt vide), c'est la ligne de noms
-   qui porte le sens du lien pour les lecteurs d'écran. */
+   Quatre vignettes reliées à /realisations, sans légende : le
+   bouton noir juste dessous dit déjà où elles mènent. Les images
+   sont décoratives (alt vide), c'est la ligne de noms masquée qui
+   porte le sens du lien pour les lecteurs d'écran. */
 .landing__proof {
     display: block;
     margin-top: clamp(18px, 2.6vw, 26px);
@@ -76,36 +77,6 @@
     .landing__proof:hover .landing__thumb:nth-child(4) { transition-delay: 0.09s; }
 }
 
-.landing__proof-label {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 4px 14px;
-    margin-top: 10px;
-    font-size: 0.85rem;
-    line-height: 1.4;
-    color: var(--ink-muted);
-}
-
-.landing__proof-go {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: var(--w-strong);
-    color: var(--ink);
-    white-space: nowrap;
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    text-underline-offset: 3px;
-    transition: text-decoration-color 0.25s var(--ease-out);
-}
-
-.landing__proof:hover .landing__proof-go,
-.landing__proof:focus-visible .landing__proof-go {
-    text-decoration-color: var(--pink);
-}
-
 .landing__proof:focus-visible {
     outline: 2px solid var(--ink);
     outline-offset: 4px;
@@ -122,22 +93,10 @@
 }
 
 /* Sur téléphone, le bouton prend toute la largeur : c'est la cible
-   que le pouce doit trouver sans viser. Les noms des projets
-   s'effacent de l'écran : les vignettes les montrent déjà, et sur
-   deux lignes ils brouillaient le bas de la plaque. Ils restent lus
-   par les lecteurs d'écran, qui n'ont pas les images. */
+   que le pouce doit trouver sans viser. */
 @media (max-width: 480px) {
     .landing__actions .btn {
         width: 100%;
-    }
-
-    .landing__proof-names {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-        clip-path: inset(50%);
-        white-space: nowrap;
     }
 }
 
@@ -163,12 +122,8 @@
 }
 
 @media (max-height: 640px) {
-    .landing__thumbs {
+    .landing__proof {
         display: none;
-    }
-
-    .landing__proof-label {
-        margin-top: 0;
     }
 }
 
@@ -184,14 +139,9 @@
     }
 }
 
-/* Téléphone couché : il ne reste que la promesse et le bouton. Le
-   lien vers le travail reste dans le menu. */
+/* Téléphone couché : il ne reste que la promesse et le bouton, qui
+   mène au travail. */
 @media (max-height: 460px) {
-    .landing__intro,
-    .landing__proof {
-        display: none;
-    }
-
     .landing__actions {
         margin-top: 12px;
     }
