@@ -89,7 +89,7 @@ Priorité commerciale actuelle : les sites web restent le cœur de l'activité ;
 **Réalisations réelles, en ligne, présentées avec captures** (`assets/images/project-*.png`) :
 
 - Zinéma — cinéma d'art et essai, rue du Maupas à Lausanne — https://www.zinema.ch/
-- Le P'tit Central — café-restaurant de quartier, rue Centrale à Lausanne — https://le-p-tit-central.vercel.app/
+- Le P'tit Central — café-restaurant de quartier, rue Centrale à Lausanne — https://www.lepetitcentral.ch/
 - Amarte Studio — centre de yoga et de Pilates à Épalinges (Lausanne) — https://amarte.ch/
 - La Slack — portfolio créatif en bureau virtuel — https://la-slack.com/
 - Nadège Mouine — site personnel, architecte en formation à l'EPFL — https://nadegemouine.ch
