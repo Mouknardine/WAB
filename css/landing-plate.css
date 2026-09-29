@@ -141,6 +141,15 @@
     }
 }
 
+/* Très petits téléphones (320 px) : la promesse, plus longue depuis
+   le 29.09.2026, descend d'un cran pour que le bouton reste entier
+   à l'écran — l'accueil ne défile pas. */
+@media (max-width: 360px) {
+    .landing__hello {
+        font-size: 1.25rem;
+    }
+}
+
 /* ── Écrans bas ──
    Téléphone couché, petite fenêtre : les marges se resserrent d'abord,
    puis la preuve s'efface, puis le paragraphe. La promesse et le
