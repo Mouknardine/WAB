@@ -47,6 +47,14 @@
 
                 el.style.transitionDelay = delay + 'ms';
                 el.classList.add('is-visible');
+                // Une fois entré, l'élément ne garde pas son décalage :
+                // sinon un survol (carte qui se soulève) attendrait
+                // lui aussi avant de répondre.
+                if (delay) {
+                    el.addEventListener('transitionend', () => {
+                        el.style.transitionDelay = '';
+                    }, { once: true });
+                }
                 observer.unobserve(el);
             });
         }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
