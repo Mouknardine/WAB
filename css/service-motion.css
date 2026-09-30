@@ -1,8 +1,8 @@
 /* ============================================
    WAB. — Services : le mouvement des cartes
-   D'après le « Bento Grid » de kokonutd (21st.dev, 30.09.2026) :
-   au survol, la carte monte de quelques pixels et prend une ombre
-   douce. On y ajoute un geste propre à chaque aperçu — les fenêtres
+   Au survol, la carte s'incline vers la souris (js/service-tilt.js,
+   d'après la « Tilt Card » de tom_ui sur 21st.dev), un reflet de
+   lumière suit le curseur et une ombre douce apparaît. On y ajoute un geste propre à chaque aperçu — les fenêtres
    s'écartent, les cartes de visite s'ouvrent en éventail,
    l'étiquette se redresse — pour que la carte réponde à ce qu'elle
    montre. Les cartes entrent l'une après l'autre au défilement
@@ -16,7 +16,37 @@
 
 .svc-card.reveal {
     transition: opacity 0.7s var(--ease-out), transform 0.75s var(--ease),
-        translate 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+        box-shadow 0.4s var(--ease-out);
+}
+
+/* Pendant le survol, la carte suit la souris sans traîner ; en la
+   quittant, elle reprend la transition lente ci-dessus et revient
+   à plat en douceur. */
+.svc-card.reveal.is-tilting {
+    transition: opacity 0.7s var(--ease-out), transform 0.12s linear,
+        box-shadow 0.4s var(--ease-out);
+    will-change: transform;
+}
+
+/* Le reflet : une tache de lumière blanche centrée sur le curseur. */
+.svc-card {
+    position: relative;
+}
+
+.svc-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(420px circle at var(--shine-x, 50%) var(--shine-y, 50%),
+            rgba(255, 255, 255, 0.38), transparent 45%);
+    opacity: 0;
+    transition: opacity 0.4s var(--ease-out);
+    pointer-events: none;
+}
+
+.svc-card.is-tilting::after {
+    opacity: 1;
 }
 
 .svc-visual > * {
@@ -27,9 +57,8 @@
    « collé » après un appui et laisserait une carte soulevée. */
 @media (hover: hover) and (pointer: fine) {
     .svc-card:hover {
-        translate: 0 -3px;
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.95),
-            0 18px 40px -12px rgba(60, 20, 45, 0.16);
+            0 28px 50px -18px rgba(60, 20, 45, 0.28);
     }
 
     /* Illustrations et captures plein cadre : léger rapprochement. */
