@@ -42,9 +42,21 @@
     color: var(--ink-muted);
 }
 
+/* Sur téléphone, le nom seul : la ligne de contexte s'empilait sous
+   chaque capture et alourdissait la liste. Elle reste dans la page
+   (la fiche du projet la lit) et réapparaît dès la tablette. */
+@media (max-width: 759px) {
+    .piece__caption {
+        align-items: center;
+    }
+
+    .piece__context {
+        display: none;
+    }
+}
+
 /* Les disciplines en une ligne de texte, séparées par un point
-   médian. Seulement là où il y a la place : sur un téléphone, le nom
-   et le contexte suffisent. */
+   médian. Seulement là où il y a la place. */
 .piece__tags {
     display: none;
     flex-wrap: wrap;
