@@ -12,6 +12,27 @@
     padding-top: calc(var(--topbar-h) + clamp(48px, 7vw, 96px));
 }
 
+/* ── Repères au-dessus du titre ──
+   Un titre de page n'est jamais posé seul : une ligne de repères en
+   petit (la rubrique à gauche, le lieu et parfois un compte à
+   droite), puis
+   un filet sur toute la largeur, comme chez Vucko ou Instrument
+   (références Mobbin). Le compte est tenu à jour par
+   js/page-mark.js ; le chiffre écrit dans la page sert de secours. */
+.page-mark {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: clamp(24px, 3.4vw, 44px);
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(11, 11, 12, 0.22);
+    font-size: clamp(0.85rem, 1.1vw, 1.05rem);
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+    color: var(--ink);
+}
+
 /* ── En-tête de page ──
    Une étiquette rose, un titre, une phrase. Le titre porte la
    requête visée par la page : il est long par nature, son corps

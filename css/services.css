@@ -13,6 +13,12 @@
     padding-top: calc(var(--topbar-h) + clamp(32px, 5vw, 72px));
 }
 
+/* La section n'a pas de marge intérieure : les repères prennent
+   celle du titre. */
+.services-top > .page-mark {
+    margin-inline: var(--gutter);
+}
+
 .services-top__title {
     margin-bottom: clamp(36px, 5vw, 64px);
     padding-inline: var(--gutter);
