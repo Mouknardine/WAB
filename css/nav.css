@@ -1,33 +1,41 @@
 /* ============================================
    WAB. — Barre de navigation
-   Une barre pleine largeur collée en haut de l'écran, posée sur un
-   verre translucide et fermée par un filet d'un pixel. Le sigle va
-   chercher le bord gauche de l'écran, les liens le bord droit : la
-   barre encadre la page au lieu d'en occuper une colonne. Ramenée
-   dans la colonne du texte, elle laissait un grand vide entre le
-   sigle et les liens et flottait sans appui au milieu de l'écran.
+   Une pilule de verre dépoli qui flotte en haut de l'écran, détachée
+   des bords : le fond animé reste visible tout autour, comme chez
+   Craft ou Analogue (références Mobbin). Un liseré clair et une ombre
+   douce lui donnent son épaisseur ; aucun trait ne la coupe de la
+   page. Le sigle tombe exactement sur la gouttière du contenu : la
+   pilule déborde de chaque côté de sa propre marge intérieure.
 
-   Le menu du petit écran se déroule juste en dessous, sur toute la
-   largeur, sans jamais détacher la barre du haut de la page.
+   Le menu du petit écran se déroule dans la pilule elle-même, qui
+   s'allonge en carte aux coins arrondis.
    ============================================ */
 
 .topbar {
+    /* Écart entre la pilule et le haut de l'écran, et marge intérieure
+       de la pilule. --topbar-h (base.css) réserve la place des deux. */
+    --pill-top: clamp(10px, 1.2vw, 14px);
+    --pill-pad: clamp(14px, 1.6vw, 22px);
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: var(--pill-top);
+    left: max(8px, calc(var(--gutter) - var(--pill-pad)));
+    right: max(8px, calc(var(--gutter) - var(--pill-pad)));
     z-index: 120;
 }
 
 .topbar__inner {
-    background: var(--glass-strong);
+    border-radius: calc((var(--topbar-h) - 2 * var(--pill-top)) / 2);
+    background: rgba(255, 255, 255, 0.58);
     -webkit-backdrop-filter: var(--blur);
     backdrop-filter: var(--blur);
-    /* Un filet en dessous plutôt qu'une ombre : la barre appartient
-       à la page, elle ne plane pas au-dessus. Plus marqué que les
-       filets du contenu — c'est lui qui pose la limite entre le
-       cadre et la page. */
-    box-shadow: inset 0 -1px 0 rgba(17, 6, 12, 0.2);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7), var(--edge-sheen), var(--shadow-md);
+    overflow: hidden;
+}
+
+/* Menu ouvert : le verre s'épaissit, les liens se lisent sans
+   effort par-dessus le fond animé. */
+.topbar__inner.is-open {
+    background: var(--glass-strong);
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
@@ -38,8 +46,8 @@
 
 /* ── La ligne du haut ── */
 .topbar__bar {
-    padding-inline: var(--gutter);
-    height: var(--topbar-h);
+    padding-inline: var(--pill-pad);
+    height: calc(var(--topbar-h) - 2 * var(--pill-top));
     display: flex;
     align-items: center;
     gap: 12px;
@@ -62,15 +70,16 @@
     gap: 6px;
 }
 
-/* Le dernier lien va chercher le bord : sa marge intérieure droite
-   décalerait sinon la navigation de quinze pixels vers l'intérieur. */
+/* Le dernier lien se rapproche du bord de la pilule : sa marge
+   intérieure laisserait sinon un vide plus large à droite qu'à
+   gauche du sigle. */
 .topbar__nav .topbar__link:last-child {
-    margin-right: -15px;
+    margin-right: -8px;
 }
 
 .topbar__link {
     padding: 8px 15px;
-    border-radius: 8px;
+    border-radius: var(--radius-pill);
     font-size: clamp(1.1rem, 1.6vw, 1.45rem);
     letter-spacing: -0.02em;
     color: var(--ink-muted);
@@ -145,6 +154,7 @@
    ait à redessiner quoi que ce soit. */
 .topbar__menu {
     margin-left: auto;
+    margin-right: -10px;
     width: 44px;
     height: 44px;
     flex: none;
@@ -205,7 +215,7 @@
 /* Le panneau suit la même marge que la barre. */
 .panel__nav,
 .panel__meta {
-    padding-inline: var(--gutter);
+    padding-inline: var(--pill-pad);
 }
 
 .panel__nav {

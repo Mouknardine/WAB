@@ -97,9 +97,10 @@
        elle, est toujours la gouttière : tout le site part du même
        bord, seule la longueur des lignes est bornée. */
     --content-width: 940px;
-    /* Hauteur de la barre de navigation, collée en haut de l'écran.
-       Les pages s'en servent pour réserver leur dégagement. */
-    --topbar-h: clamp(60px, 8vw, 82px);
+    /* Place réservée à la barre de navigation : la pilule flottante
+       et l'écart qui l'entoure. Les pages s'en servent pour leur
+       dégagement. */
+    --topbar-h: clamp(72px, 8vw, 92px);
 
     /* Formes */
     --radius-card: 19px;
