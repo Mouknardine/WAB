@@ -285,6 +285,31 @@ time {
     image-rendering: pixelated;
 }
 
+/* Le fond animé (js/mesh) prend la place du ciel CSS dès que WebGL
+   répond : le dégradé et sa rotation de teinte s'effacent alors, pour
+   ne pas calculer deux fonds l'un sous l'autre. Sans WebGL, rien ne
+   change. */
+#meshCanvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+}
+
+html.has-mesh body::before {
+    display: none;
+}
+
+/* Sur le rose vif du fond animé, les gris d'origine tombaient sous
+   le seuil de lisibilité (3,4:1 et 2,4:1). Assombris, ils passent
+   au-dessus de 4,5:1 sur le rose le plus soutenu. */
+html.has-mesh {
+    --ink-soft: #18181c;
+    --ink-muted: #202026;
+}
+
 /* ── Statut du studio ──
    Posé à côté de l'heure de Lausanne, en bas des pages : un point et
    quelques mots (« Au studio », « Lausanne dort »…). Le point ne
