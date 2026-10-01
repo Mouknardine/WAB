@@ -1,0 +1,64 @@
+/* ============================================
+   WAB. — Accueil : l'appel final
+   La seule plaque encre de la page (.surface-ink, base.css) : elle
+   redéfinit la gamme, et le bouton, les filets et les icônes
+   suivent sans rien savoir de leur fond.
+   ============================================ */
+
+/* ── On commence par un café ? ──
+   La seule plaque encre de la page. Trois faits vérifiables, sous
+   filets : à droite sur ordinateur, sous le bouton sur téléphone —
+   ce sont les arguments d'un dirigeant pressé, ils ne se cachent pas.
+   Corps de texte et encre pleine : une liste, pas des petites lignes
+   grises. */
+.closing-row {
+    display: grid;
+    gap: var(--space-6);
+}
+
+.closing-row__title {
+    font-size: var(--text-2xl);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.04em;
+    line-height: 1.12;
+    text-wrap: balance;
+}
+
+.closing-row__text {
+    margin-top: var(--space-4);
+    max-width: 46ch;
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    text-wrap: pretty;
+    color: var(--ink-soft);
+}
+
+.closing-row .btn {
+    margin-top: var(--space-6);
+}
+
+.facts {
+    list-style: none;
+    box-shadow: inset 0 1px 0 var(--line);
+}
+
+.facts li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding-block: var(--space-4);
+    box-shadow: inset 0 -1px 0 var(--line);
+    font-size: var(--text-md);
+}
+
+.facts .icon {
+    color: var(--accent);
+}
+
+@media (min-width: 1000px) {
+    .closing-row {
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+        align-items: center;
+        gap: var(--space-7);
+    }
+}

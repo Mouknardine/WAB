@@ -54,8 +54,12 @@
     gap: 12px;
 }
 
+/* 44 px de haut : une cible que le pouce trouve sans viser. */
 .topbar__brand {
-    font-size: clamp(1.25rem, 2vw, 1.7rem);
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: clamp(1.2rem, 1.6vw, 1.45rem);
     font-weight: var(--w-strong);
     letter-spacing: -0.035em;
     color: var(--ink);
@@ -79,9 +83,9 @@
 }
 
 .topbar__link {
-    padding: 8px 15px;
-    border-radius: 8px;
-    font-size: clamp(1.1rem, 1.6vw, 1.45rem);
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    font-size: clamp(0.95rem, 1.05vw, 1.05rem);
     letter-spacing: -0.02em;
     color: var(--ink-muted);
     transition: color 0.25s var(--ease-out), background-color 0.25s var(--ease-out);
@@ -95,6 +99,25 @@
 .topbar__link[aria-current='page'] {
     color: var(--ink);
     font-weight: var(--w-strong);
+}
+
+/* ── Contact, la seule action pleine de la barre ──
+   Le lien qui ouvre la fenêtre de contact (data-contact) devient un
+   petit bouton d'encre : la navigation dit où aller, lui dit quoi
+   faire. Posé par le CSS seul, il vaut pour toutes les pages sans
+   toucher à leur balisage. Rayon de 8 px, emboîté dans les 12 px de
+   la plaque. */
+.topbar__nav .topbar__link[data-contact] {
+    margin-left: 6px;
+    padding-inline: 16px;
+    background: var(--ink);
+    color: var(--on-ink);
+    font-weight: var(--w-strong);
+}
+
+.topbar__nav .topbar__link[data-contact]:hover {
+    background: var(--ink-hover);
+    color: var(--on-ink);
 }
 
 /* ── Lettres qui basculent ──

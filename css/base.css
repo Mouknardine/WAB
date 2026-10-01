@@ -64,6 +64,7 @@
     /* Les traits ne sont plus un gris : sur le rose, une encre très
        diluée reste neutre là où un gris tournerait au vert. */
     --line: rgba(17, 6, 12, 0.14);
+    --line-strong: rgba(17, 6, 12, 0.3);
 
     /* Encre — trois niveaux, tous conformes AA jusqu'au rose le plus
        soutenu du dégradé (#ffc4de), pas seulement sur le plus clair. */
@@ -75,11 +76,52 @@
        cycle, pas seulement sur le rose de départ. */
     --ink-muted: #4e4e56;
 
-    /* La seule couleur du site. Elle porte la phrase d'accueil et
-       souligne les liens au survol — nulle part ailleurs. */
+    /* La seule couleur du site, en trois nuances (DESIGN-SYSTEM.md).
+       --pink : les pastilles et les signaux (point « au studio »,
+       survol d'un lien) — jamais du petit texte sur le clair.
+       --pink-deep : le rose qui peut porter du texte sur le verre
+       clair (4,9:1 au pire : verre posé sur le rose le plus soutenu
+       du fond animé). --pink-soft : le rose lisible sur une surface
+       encre (8,8:1 sur la plaque encre). */
     --pink: #ff2d9b;
+    --pink-deep: #a00f5a;
+    --pink-soft: #ff8cc6;
 
     --white: #ffffff;
+
+    /* ── Gamme locale ──
+       Ce que les composants demandent, plutôt qu'une couleur précise.
+       Une surface qui s'inverse (.surface-ink) redéfinit ces jetons
+       pour elle et ses enfants : un bouton, un lien ou une icône y
+       prennent la bonne couleur sans connaître leur fond.
+       --on-ink : le texte posé sur un aplat d'encre (bouton plein). */
+    --accent: var(--pink-deep);
+    --on-ink: var(--white);
+    --ink-hover: #26262c;
+
+    /* ── Échelle typographique ──
+       Six marches, pas une de plus. Sligoil est une chasse fixe,
+       large : à corps égal elle occupe 15 % de plus qu'une grotesque,
+       d'où des titres plus mesurés qu'à l'habitude. */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-md: 1rem;
+    --text-lg: clamp(1.05rem, 1.2vw, 1.2rem);
+    --text-xl: clamp(1.45rem, 2.6vw, 2.2rem);
+    --text-2xl: clamp(1.9rem, 4.4vw, 3.6rem);
+
+    /* ── Espacements ── base 4 px, sept marches. */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: clamp(32px, 4vw, 48px);
+    --space-7: clamp(48px, 7vw, 96px);
+
+    /* Écart entre deux plaques de verre : le ciel qui respire. */
+    --plate-gap: clamp(20px, 3vw, 40px);
+    --plate-pad: clamp(20px, 3.4vw, 48px);
 
     /* Type — une seule famille sur tout le site. Les étiquettes
        gardent leur caractère par les capitales et l'approche large,
@@ -102,9 +144,18 @@
        dégagement. */
     --topbar-h: clamp(72px, 8vw, 92px);
 
-    /* Formes */
+    /* Formes — trois rayons. 8 : vignettes et contrôles intérieurs ;
+       12 : barre, fenêtres, pied de page ; 18 : grandes plaques.
+       --radius-card reste pour les cartes des pages intérieures. */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
     --radius-card: 19px;
     --radius-pill: 999px;
+
+    /* La plaque : le verre de tous les grands blocs de l'accueil. */
+    --plate-bg: rgba(255, 255, 255, 0.66);
+    --plate-blur: blur(22px) saturate(1.4);
 
     /* Verre — surfaces translucides. Le flou n'est posé que là où
        quelque chose passe réellement derrière : ailleurs il coûterait
@@ -128,9 +179,30 @@
     --shadow-lg: 0 1px 2px rgba(11, 11, 12, 0.04), 0 8px 22px rgba(11, 11, 12, 0.06),
         0 28px 64px rgba(11, 11, 12, 0.08);
 
-    /* Mouvement */
+    /* Mouvement — deux courbes, trois durées. */
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --dur-1: 0.2s;
+    --dur-2: 0.35s;
+    --dur-3: 0.7s;
+}
+
+/* ── Surface encre ──
+   Un bloc sombre au milieu du ciel rose. Il ne déclare pas sa propre
+   couleur de texte : il redéfinit la gamme, et tout ce qu'il contient
+   suit. Paires vérifiées (DESIGN-SYSTEM.md) : bouton plein, lien,
+   icône, filet, accent. */
+.surface-ink {
+    --ink: #ffffff;
+    --ink-soft: rgba(255, 255, 255, 0.86);
+    --ink-muted: rgba(255, 255, 255, 0.74);
+    --line: rgba(255, 255, 255, 0.16);
+    --line-strong: rgba(255, 255, 255, 0.4);
+    --accent: var(--pink-soft);
+    --on-ink: #0b0b0c;
+    --ink-hover: #ffe4f0;
+    --plate-bg: rgba(11, 11, 12, 0.94);
+    color: var(--ink);
 }
 
 /* ── La marge sur grand écran ──
@@ -538,18 +610,21 @@ html.has-mesh {
     font-weight: var(--w-strong);
     letter-spacing: -0.01em;
     white-space: nowrap;
-    transition: transform 0.25s var(--ease-out), background-color 0.25s var(--ease-out),
+    transition: transform 0.25s var(--ease-out), scale 0.15s var(--ease-out), background-color 0.25s var(--ease-out),
         border-color 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), color 0.25s var(--ease-out);
     -webkit-tap-highlight-color: transparent;
 }
 
 /* Sligoil est une police à chasse fixe, plus large qu'une grotesque :
-   sur les plus petits téléphones, un long libellé passe sur deux
+   sur les plus petits téléphones, le libellé descend d'un cran et la
+   marge intérieure se resserre, pour que « Voir nos réalisations »
+   tienne sur une ligne. Un libellé plus long passe encore sur deux
    lignes plutôt que de sortir de l'écran. */
 @media (max-width: 380px) {
     .btn {
         max-width: 100%;
-        padding: 10px 20px;
+        padding: 10px 16px;
+        font-size: var(--text-sm);
         white-space: normal;
         text-align: center;
     }
@@ -566,24 +641,31 @@ html.has-mesh {
 
 .btn--solid {
     background: var(--ink);
-    color: var(--white);
+    color: var(--on-ink);
 }
 
 .btn--solid:hover {
-    background: #26262c;
+    background: var(--ink-hover);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
+}
+
+/* L'appui : le bouton s'enfonce d'un rien. « scale » plutôt que
+   transform, pour composer avec la montée du survol au lieu de
+   l'écraser. */
+.btn:active {
+    scale: 0.97;
 }
 
 .btn--ghost {
     background: transparent;
     color: var(--ink);
-    box-shadow: inset 0 0 0 1px rgba(11, 11, 12, 0.28);
+    box-shadow: inset 0 0 0 1px var(--line-strong);
 }
 
 .btn--ghost:hover {
     background: rgba(255, 255, 255, 0.55);
-    box-shadow: inset 0 0 0 1px rgba(11, 11, 12, 0.5);
+    box-shadow: inset 0 0 0 1px var(--ink);
 }
 
 .btn--lg {
