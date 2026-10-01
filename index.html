@@ -351,29 +351,25 @@
     <link rel="stylesheet" href="css/nav.css?v=18">
     <link rel="stylesheet" href="css/contact-modal.css?v=7">
     <link rel="stylesheet" href="css/contact-form.css?v=3">
-    <link rel="stylesheet" href="css/page.css?v=12">
-    <link rel="stylesheet" href="css/plate.css?v=1">
-    <link rel="stylesheet" href="css/home-hero.css?v=1">
-    <link rel="stylesheet" href="css/home-work.css?v=1">
-    <link rel="stylesheet" href="css/home-sections.css?v=1">
-    <link rel="stylesheet" href="css/home-closing.css?v=1">
+    <link rel="stylesheet" href="css/plate.css?v=2">
+    <link rel="stylesheet" href="css/home-opening.css?v=1">
+    <link rel="stylesheet" href="css/home-gallery.css?v=1">
+    <link rel="stylesheet" href="css/home-end.css?v=1">
     <link rel="stylesheet" href="css/footer.css?v=7">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=2" defer></script>
-    <script src="js/reveal.js?v=4" defer></script>
     <script src="js/nav.js?v=5" defer></script>
     <script src="js/letter-swap.js?v=1" defer></script>
-    <script type="module" src="js/birds/perch.js?v=3"></script>
     <script type="module" src="js/mesh/index.js?v=2"></script>
     <script type="module" src="js/birds/index.js?v=6"></script>
     <script type="module" src="js/contact/index.js?v=9"></script>
-    <script type="module" src="js/home/reel.js?v=1"></script>
+    <script type="module" src="js/home/index.js?v=1"></script>
 </head>
 
 <body class="home" data-birds="dense">
 
-    <a class="skip-link" href="#ouverture">Aller au contenu</a>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
 
     <!-- Le ciel occupe tout l’écran, sous les plaques de verre. -->
     <canvas id="birdCanvas" aria-hidden="true"></canvas>
@@ -437,294 +433,147 @@
 
     <div class="topbar-scrim" id="topbarScrim"></div>
 
-    <main>
+    <main id="contenu" tabindex="-1">
 
-        <!-- L’OUVERTURE — la plaque dit ce qu’est le studio ; la fenêtre
-             à côté montre ce qu’il a fait. Le titre ne vient jamais
-             seul : la preuve est posée à côté de la promesse. -->
-        <section class="hero" id="ouverture" tabindex="-1" aria-labelledby="heroTitle">
-            <div class="plate hero__plate">
-                <!-- La fin du titre reste lue par Google et la navigation
-                     vocale : « agence web » et « site internet » à Lausanne
-                     doivent rester dans le H1 de l’accueil. -->
-                <h1 class="hero__title" id="heroTitle">
-                    Le design et le code, sous le même toit.<span class="sr-only"> WeAreBrothers, agence web et création de site internet à Lausanne.</span>
-                </h1>
-                <p class="hero__lede">
-                    WeAreBrothers est un studio fondé à Lausanne par deux frères. Sites internet,
-                    applications de gestion et identités pour les entreprises de l’arc lémanique.
-                </p>
-                <div class="hero__actions">
+        <!-- L’OUVERTURE — le sigle, et son point qui s’ouvre sur le
+             travail au défilement (js/home/opening.js). Six mots, une
+             action. -->
+        <section class="opening" data-opening aria-labelledby="openingTitle">
+            <div class="opening__stage">
+                <p class="mark" data-opening-mark aria-hidden="true"><span class="mark__line">WA</span><span class="mark__line">B<span class="mark__cell"><span class="mark__dot" data-opening-dot></span></span></span></p>
+
+                <div class="opening__foot" data-opening-foot>
+                    <!-- La fin du titre reste lue par Google et la navigation
+                         vocale : « agence web » et « site internet » à Lausanne
+                         doivent rester dans le H1 de l’accueil. -->
+                    <h1 class="opening__title" id="openingTitle">
+                        Design et code, sous le même toit.<span class="sr-only"> WeAreBrothers, agence web et création de site internet à Lausanne.</span>
+                    </h1>
                     <a href="/realisations" class="btn btn--solid">
                         <span>Voir nos réalisations</span>
                         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
                     </a>
-                    <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="btn btn--ghost">Démarrer un projet</a>
                 </div>
-            </div>
 
-            <!-- Quatre sites qui ne sont pas dans les travaux choisis
-                 plus bas : ensemble, l’accueil en montre huit. Commissione
-                 ouvre la série (une PME, nette sur le rose) ; LAZIZZE,
-                 rose sur rose, la ferme. -->
-            <div class="hero__work">
-                <canvas class="perch hero__bird" data-perch data-scale="2" data-color="0" aria-hidden="true"></canvas>
-                <div class="window reel" data-reel>
-                    <div class="window__chrome">
-                        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
-                        <p class="reel__address" data-reel-address aria-hidden="true">commissione-entretien.ch</p>
-                        <button type="button" class="reel__pause" data-reel-pause aria-pressed="false" aria-label="Mettre le défilement en pause">
-                            <svg class="icon reel__icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="14" y="3" width="5" height="18" rx="1" /><rect x="5" y="3" width="5" height="18" rx="1" /></svg>
-                            <svg class="icon reel__icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" /></svg>
-                        </button>
-                    </div>
-                    <div class="window__view">
-                        <img class="window__img reel__slide is-current" data-reel-slide data-domain="commissione-entretien.ch" data-href="/realisations#commissione" data-name="Commissione Entretien"
-                            src="assets/images/shot-commissione-800.webp"
-                            srcset="assets/images/shot-commissione-800.webp 800w, assets/images/shot-commissione-1600.webp 1600w"
-                            sizes="(min-width: 1000px) 52vw, 92vw" alt="" width="1600" height="1000" fetchpriority="high" decoding="async">
-                        <img class="window__img reel__slide" data-reel-slide data-domain="nadegemouine.ch" data-href="/realisations#nadege" data-name="Nadège Mouine"
-                            src="assets/images/shot-nadege-800.webp"
-                            srcset="assets/images/shot-nadege-800.webp 800w, assets/images/shot-nadege-1600.webp 1600w"
-                            sizes="(min-width: 1000px) 52vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async">
-                        <img class="window__img reel__slide" data-reel-slide data-domain="la-slack.com" data-href="/realisations#slack" data-name="La Slack"
-                            src="assets/images/shot-slack-800.webp"
-                            srcset="assets/images/shot-slack-800.webp 800w, assets/images/shot-slack-1600.webp 1600w"
-                            sizes="(min-width: 1000px) 52vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async">
-                        <img class="window__img reel__slide" data-reel-slide data-domain="lazizze.com" data-href="/realisations#dj" data-name="LAZIZZE DJ"
-                            src="assets/images/shot-dj-800.webp?v=2"
-                            srcset="assets/images/shot-dj-800.webp?v=2 800w, assets/images/shot-dj-1600.webp?v=2 1600w"
-                            sizes="(min-width: 1000px) 52vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async">
-                        <a class="reel__link" href="/realisations#commissione" data-reel-link><span class="sr-only" data-reel-label>Voir le projet Commissione Entretien</span></a>
-                    </div>
-                </div>
+                <a class="opening__frame" data-opening-frame href="/realisations#zinema">
+                    <picture>
+                        <source media="(min-width: 900px)"
+                            srcset="assets/images/shot-zinema-800.webp 800w, assets/images/shot-zinema-1600.webp 1600w" sizes="92vw"
+                            width="1600" height="1000">
+                        <img src="assets/images/work-zinema-720.webp"
+                            srcset="assets/images/work-zinema-720.webp 720w, assets/images/work-zinema-1440.webp 1440w" sizes="92vw"
+                            alt="" width="720" height="900" decoding="async">
+                    </picture>
+                    <span class="opening__caption" data-opening-caption>Zinéma — zinema.ch</span>
+                </a>
             </div>
         </section>
 
-        <div class="plates home-plates">
-
-            <!-- TRAVAUX CHOISIS — quatre sites, au même format. -->
-            <section class="plate reveal" aria-labelledby="workTitle">
-                <div class="section-head">
-                    <h2 class="section-head__title" id="workTitle">Travaux choisis</h2>
+        <!-- LA PLANCHE — huit sites en situation, le nom seul. -->
+        <section class="gallery" data-gallery aria-labelledby="galleryTitle">
+            <div class="gallery__stage" data-gallery-stage>
+                <div class="gallery__head">
+                    <h2 class="gallery__title" id="galleryTitle">Travaux choisis</h2>
                     <a href="/realisations" class="link-arrow">
                         Tous les projets
                         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
                     </a>
-                    <p class="section-head__lede">
-                        Un cinéma, un café de quartier, un centre de yoga, une maison de joaillerie.
-                        Chaque site part de ce que fait le client, jamais d’un modèle.
-                    </p>
                 </div>
-
-                <ul class="work-grid">
+                <ul class="gallery__track" data-gallery-track>
                     <li>
-                        <a class="work-tile" href="/realisations#zinema">
-                            <span class="window">
-                                <span class="window__chrome" aria-hidden="true"><span></span><span></span><span></span></span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/shot-zinema-800.webp"
-                                        srcset="assets/images/shot-zinema-800.webp 800w, assets/images/shot-zinema-1600.webp 1600w"
-                                        sizes="(min-width: 760px) 44vw, 80vw" alt=""
-                                        width="1600" height="1000" loading="lazy" decoding="async">
-                                </span>
-                            </span>
-                            <span class="work-tile__caption">
-                                <span class="work-tile__name">Zinéma</span>
-                                <span class="round-arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></span>
-                            </span>
+                        <a class="gallery__item" href="/realisations#alliani">
+                            <img src="assets/images/work-alliani-720.webp"
+                                srcset="assets/images/work-alliani-720.webp 720w, assets/images/work-alliani-1440.webp 1440w"
+                                sizes="(min-width: 900px) 50vh, 72vw" alt="" width="720" height="900" loading="lazy" decoding="async">
+                            <span class="gallery__name">Maison Alliani<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></span>
                         </a>
                     </li>
                     <li>
-                        <a class="work-tile" href="/realisations#central">
-                            <span class="window">
-                                <span class="window__chrome" aria-hidden="true"><span></span><span></span><span></span></span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/shot-central-800.webp"
-                                        srcset="assets/images/shot-central-800.webp 800w, assets/images/shot-central-1600.webp 1600w"
-                                        sizes="(min-width: 760px) 44vw, 80vw" alt=""
-                                        width="1600" height="1000" loading="lazy" decoding="async">
-                                </span>
-                            </span>
-                            <span class="work-tile__caption">
-                                <span class="work-tile__name">Le P’tit Central</span>
-                                <span class="round-arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></span>
-                            </span>
+                        <a class="gallery__item" href="/realisations#amarte">
+                            <img src="assets/images/work-amarte-720.webp"
+                                srcset="assets/images/work-amarte-720.webp 720w, assets/images/work-amarte-1440.webp 1440w"
+                                sizes="(min-width: 900px) 50vh, 72vw" alt="" width="720" height="900" loading="lazy" decoding="async">
+                            <span class="gallery__name">Amarte Studio<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></span>
                         </a>
                     </li>
                     <li>
-                        <a class="work-tile" href="/realisations#amarte">
-                            <span class="window">
-                                <span class="window__chrome" aria-hidden="true"><span></span><span></span><span></span></span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/shot-amarte-800.webp"
-                                        srcset="assets/images/shot-amarte-800.webp 800w, assets/images/shot-amarte-1600.webp 1600w"
-                                        sizes="(min-width: 760px) 44vw, 80vw" alt=""
-                                        width="1600" height="1000" loading="lazy" decoding="async">
-                                </span>
-                            </span>
-                            <span class="work-tile__caption">
-                                <span class="work-tile__name">Amarte Studio</span>
-                                <span class="round-arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></span>
-                            </span>
+                        <a class="gallery__item" href="/realisations#central">
+                            <img src="assets/images/work-central-720.webp"
+                                srcset="assets/images/work-central-720.webp 720w, assets/images/work-central-1440.webp 1440w"
+                                sizes="(min-width: 900px) 50vh, 72vw" alt="" width="720" height="900" loading="lazy" decoding="async">
+                            <span class="gallery__name">Le P’tit Central<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></span>
                         </a>
                     </li>
                     <li>
-                        <a class="work-tile" href="/realisations#alliani">
-                            <span class="window">
-                                <span class="window__chrome" aria-hidden="true"><span></span><span></span><span></span></span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/shot-alliani-800.webp"
-                                        srcset="assets/images/shot-alliani-800.webp 800w, assets/images/shot-alliani-1600.webp 1600w"
-                                        sizes="(min-width: 760px) 44vw, 80vw" alt=""
-                                        width="1600" height="1000" loading="lazy" decoding="async">
-                                </span>
-                            </span>
-                            <span class="work-tile__caption">
-                                <span class="work-tile__name">Maison Alliani</span>
-                                <span class="round-arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></span>
-                            </span>
+                        <a class="gallery__item" href="/realisations#dj">
+                            <img src="assets/images/work-dj-720.webp"
+                                srcset="assets/images/work-dj-720.webp 720w, assets/images/work-dj-1440.webp 1440w"
+                                sizes="(min-width: 900px) 50vh, 72vw" alt="" width="720" height="900" loading="lazy" decoding="async">
+                            <span class="gallery__name">LAZIZZE DJ<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="gallery__item" href="/realisations#memo">
+                            <img src="assets/images/work-memo-720.webp"
+                                srcset="assets/images/work-memo-720.webp 720w, assets/images/work-memo-1440.webp 1440w"
+                                sizes="(min-width: 900px) 50vh, 72vw" alt="" width="720" height="900" loading="lazy" decoding="async">
+                            <span class="gallery__name">LE MEMO<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="gallery__item" href="/realisations#commissione">
+                            <img src="assets/images/work-commissione-720.webp"
+                                srcset="assets/images/work-commissione-720.webp 720w, assets/images/work-commissione-1440.webp 1440w"
+                                sizes="(min-width: 900px) 50vh, 72vw" alt="" width="720" height="900" loading="lazy" decoding="async">
+                            <span class="gallery__name">Commissione Entretien<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="gallery__item" href="/realisations#nadege">
+                            <img src="assets/images/work-nadege-720.webp"
+                                srcset="assets/images/work-nadege-720.webp 720w, assets/images/work-nadege-1440.webp 1440w"
+                                sizes="(min-width: 900px) 50vh, 72vw" alt="" width="720" height="900" loading="lazy" decoding="async">
+                            <span class="gallery__name">Nadège Mouine<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="gallery__item" href="/realisations#slack">
+                            <img src="assets/images/work-slack-720.webp"
+                                srcset="assets/images/work-slack-720.webp 720w, assets/images/work-slack-1440.webp 1440w"
+                                sizes="(min-width: 900px) 50vh, 72vw" alt="" width="720" height="900" loading="lazy" decoding="async">
+                            <span class="gallery__name">La Slack<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></span>
                         </a>
                     </li>
                 </ul>
-            </section>
+            </div>
+        </section>
 
-            <!-- CE QUE NOUS FAISONS — trois métiers, des livrables nommés. -->
-            <section class="plate reveal" aria-labelledby="servicesTitle">
-                <div class="section-head">
-                    <h2 class="section-head__title" id="servicesTitle">Ce que nous faisons</h2>
-                    <a href="/services" class="link-arrow">
-                        Tous les services
-                        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
-                    </a>
-                    <p class="section-head__lede">
-                        Du site qui présente votre entreprise à l’outil qui la fait tourner. Tout est
-                        dessiné et codé ici, sans WordPress ni modèle acheté.
-                    </p>
-                </div>
+        <!-- LES MÉTIERS — une ligne. Le détail vit sur /services. -->
+        <section class="offer" aria-labelledby="offerTitle">
+            <h2 class="sr-only" id="offerTitle">Ce que nous faisons</h2>
+            <ul class="offer__list">
+                <li><a class="offer__link" href="/services">Sites internet<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></a></li>
+                <li><a class="offer__link" href="/services">Applications de gestion<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></a></li>
+                <li><a class="offer__link" href="/services">Image de marque<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></a></li>
+            </ul>
+        </section>
 
-                <ul class="service-cols">
-                    <li class="service-col">
-                        <h3 class="service-col__title">
-                            <svg class="icon icon--lg" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="M10 4v4" /><path d="M2 8h20" /><path d="M6 4v4" /></svg>
-                            Sites internet
-                        </h3>
-                        <p class="service-col__text">
-                            Sites vitrines et sites d’entreprise, rapides sur téléphone et construits pour
-                            être trouvés à Lausanne comme dans tout le canton.
-                        </p>
-                        <ul class="service-col__list">
-                            <li>Création et refonte</li>
-                            <li>Web design</li>
-                            <li>Boutique en ligne</li>
-                            <li>Référencement local</li>
-                        </ul>
-                    </li>
-                    <li class="service-col">
-                        <h3 class="service-col__title">
-                            <svg class="icon icon--lg" viewBox="0 0 24 24" aria-hidden="true"><rect width="7" height="9" x="3" y="3" rx="1" /><rect width="7" height="5" x="14" y="3" rx="1" /><rect width="7" height="9" x="14" y="12" rx="1" /><rect width="7" height="5" x="3" y="16" rx="1" /></svg>
-                            Applications de gestion
-                        </h3>
-                        <p class="service-col__text">
-                            Des outils internes dessinés d’après votre métier réel, livrés module par
-                            module, chacun utilisable dès qu’il est terminé.
-                        </p>
-                        <ul class="service-col__list">
-                            <li>Observation du métier</li>
-                            <li>Projets, tâches, facturation</li>
-                            <li>Reprise de vos données</li>
-                            <li>Automatisations</li>
-                        </ul>
-                    </li>
-                    <li class="service-col">
-                        <h3 class="service-col__title">
-                            <svg class="icon icon--lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z" /><path d="m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18" /><path d="m2.3 2.3 7.286 7.286" /><circle cx="11" cy="11" r="2" /></svg>
-                            Image de marque
-                        </h3>
-                        <p class="service-col__text">
-                            Une identité qui tient du site à la carte de visite, et le mouvement qui la
-                            fait vivre à l’écran.
-                        </p>
-                        <ul class="service-col__list">
-                            <li>Identité visuelle</li>
-                            <li>Direction artistique</li>
-                            <li>Motion design</li>
-                            <li>Supports imprimés</li>
-                        </ul>
-                    </li>
+        <!-- L’APPEL — la seule plaque encre : une question, trois
+             visages, un bouton. -->
+        <section class="plate surface-ink closing-plate" aria-labelledby="closingTitle">
+            <h2 class="closing-plate__title" id="closingTitle">On commence par un&nbsp;café&nbsp;?</h2>
+            <div class="closing-plate__act">
+                <ul class="faces">
+                    <li><img src="assets/images/avatar-eliott.webp" alt="Eliott Pina" width="144" height="144" loading="lazy" decoding="async"></li>
+                    <li><img src="assets/images/avatar-matt.webp" alt="Matt Pina" width="144" height="144" loading="lazy" decoding="async"></li>
+                    <li><img src="assets/images/avatar-ivan.webp" alt="Ivan Jakovlevski" width="144" height="144" loading="lazy" decoding="async"></li>
                 </ul>
-            </section>
-
-            <!-- LE STUDIO — l’argument que seule une petite maison peut tenir. -->
-            <section class="plate reveal" aria-labelledby="studioTitle">
-                <div class="studio-row">
-                    <div>
-                        <h2 class="section-head__title" id="studioTitle">Ceux qui dessinent votre projet sont ceux qui vous répondent.</h2>
-                        <p class="studio-row__text">
-                            Eliott dessine, Matt développe, Ivan suit la relation avec chaque client. Pas
-                            de chef de projet entre vous et le travail, pas de production à la chaîne&nbsp;:
-                            les mêmes personnes, du premier café à la mise en ligne, et après.
-                        </p>
-                        <a href="/studio" class="link-arrow">
-                            Rencontrer l’équipe
-                            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
-                        </a>
-                    </div>
-
-                    <ul class="team-strip">
-                        <li>
-                            <img src="assets/images/team-eliott-400.webp" alt="Portrait d’Eliott Pina" width="400" height="500" loading="lazy" decoding="async">
-                            <p class="team-strip__name">Eliott Pina</p>
-                            <p class="team-strip__role">Design</p>
-                        </li>
-                        <li>
-                            <img src="assets/images/team-matt-400.webp" alt="Portrait de Matt Pina" width="400" height="500" loading="lazy" decoding="async">
-                            <p class="team-strip__name">Matt Pina</p>
-                            <p class="team-strip__role">Développement</p>
-                        </li>
-                        <li>
-                            <img src="assets/images/team-ivan-400.webp" alt="Portrait d’Ivan Jakovlevski" width="400" height="500" loading="lazy" decoding="async">
-                            <p class="team-strip__name">Ivan Jakovlevski</p>
-                            <p class="team-strip__role">Relation client</p>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- ON COMMENCE PAR UN CAFÉ ? — la seule plaque encre. -->
-            <section class="plate surface-ink reveal" aria-labelledby="closingTitle">
-                <div class="closing-row">
-                    <div>
-                        <h2 class="closing-row__title" id="closingTitle">On commence par un&nbsp;café&nbsp;?</h2>
-                        <p class="closing-row__text">
-                            Quelques lignes sur votre projet suffisent. Nous répondons sous 24&nbsp;h
-                            ouvrées, sans engagement, avec des questions précises plutôt qu’un devis
-                            générique.
-                        </p>
-                        <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="btn btn--solid">
-                            <span>Démarrer un projet</span>
-                            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
-                        </a>
-                    </div>
-
-                    <ul class="facts">
-                        <li>
-                            <svg class="icon icon--lg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
-                            Réponse sous 24&nbsp;h ouvrées
-                        </li>
-                        <li>
-                            <svg class="icon icon--lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v3" /><path d="M16 2v3" /><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18" /></svg>
-                            Site vitrine en 3&nbsp;à&nbsp;6&nbsp;semaines
-                        </li>
-                        <li>
-                            <svg class="icon icon--lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" /><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" /></svg>
-                            Paiement en plusieurs fois
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-        </div>
+                <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="btn btn--solid">
+                    <span>Démarrer un projet</span>
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                </a>
+            </div>
+        </section>
 
     </main>
 
@@ -745,6 +594,7 @@
                 </p>
             </div>
         </div>
+        <p class="mark mark--end" aria-hidden="true"><span class="mark__line">WA</span><span class="mark__line">B<span class="mark__cell"><span class="mark__dot"></span></span></span></p>
     </footer>
 
 </body>

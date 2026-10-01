@@ -1,0 +1,117 @@
+/* ============================================
+   WAB. — Accueil : la planche
+   Huit photos de projets en situation, au même format 4/5, sur une
+   seule rangée. Le nom seul sous chaque photo. Au doigt, la rangée
+   défile et s'aimante ; sur ordinateur, elle glisse au rythme du
+   défilement vertical (js/home/gallery.js, classe .is-pinned).
+   ============================================ */
+
+.gallery__stage {
+    padding-block: var(--space-7);
+}
+
+.gallery__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-5);
+    padding-inline: var(--gutter);
+}
+
+.gallery__title {
+    font-size: var(--text-xl);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.035em;
+    line-height: 1.18;
+}
+
+.gallery__track {
+    display: flex;
+    gap: var(--space-4);
+    margin-top: var(--space-5);
+    padding-inline: var(--gutter);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+    list-style: none;
+}
+
+.gallery__track::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery__track > li {
+    flex: none;
+    scroll-snap-align: start;
+}
+
+.gallery__item {
+    display: block;
+    width: min(72vw, 340px);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.gallery__item img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    background: var(--ink);
+}
+
+.gallery__name {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+    font-size: var(--text-md);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.02em;
+}
+
+.gallery__name .icon {
+    width: 18px;
+    height: 18px;
+    transition: translate var(--dur-2) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .gallery__item:hover .gallery__name .icon {
+        translate: 2px -2px;
+    }
+}
+
+/* ── Planche pilotée (ordinateur) ──
+   La scène se fige sous la barre ; la rangée, plus large que
+   l'écran, glisse vers la gauche. Les photos prennent la hauteur
+   disponible, toujours au format 4/5. */
+.gallery.is-pinned .gallery__stage {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: var(--topbar-h) var(--space-5);
+    overflow: clip;
+}
+
+.gallery.is-pinned .gallery__track {
+    width: max-content;
+    overflow: visible;
+    scroll-snap-type: none;
+    will-change: transform;
+}
+
+.gallery.is-pinned .gallery__item {
+    width: auto;
+}
+
+.gallery.is-pinned .gallery__item img {
+    width: auto;
+    height: min(62svh, 680px);
+}

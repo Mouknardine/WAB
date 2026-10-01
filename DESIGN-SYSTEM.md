@@ -1,6 +1,8 @@
 # WAB. — Design système
 
-Version 1 — 1er octobre 2026. Branche `refonte-studio`, appliquée à l'accueil et au socle commun (barre, boutons, jetons). Les autres pages suivront une fois l'accueil validé.
+Version 2 — 1er octobre 2026. Branche `refonte-studio`, appliquée à l'accueil et au socle commun (barre, boutons, jetons). Les autres pages suivront une fois l'accueil validé.
+
+La version 1 de l'accueil (plaques remplies de texte, commit `9ec3f4f`) a été jugée par Eliott « trop de texte, il faut quelque chose de plus original et impactant ». La version 2 garde les jetons, la barre, les boutons et les icônes, et change la mise en scène : le travail montré porte l'impact, le texte tient en quelques mots.
 
 ---
 
@@ -17,9 +19,31 @@ Ce qui est écarté, et pourquoi :
 - les repères et filets au-dessus des titres, l'en-tête titre/phrase en deux colonnes (rejetés) ;
 - les chiffres en exposant, les projets en très grand à tailles alternées, les ornements (rejetés).
 
+### La signature de l'accueil : le point de WAB.
+
+Le sigle WAB. occupe l'écran d'un bord à l'autre (sur deux lignes, « WA / B. », au téléphone). Son point n'est pas un point : c'est une fenêtre carrée qui laisse déjà voir un vrai projet. Au défilement, ce carré grandit depuis sa place exacte jusqu'au plein cadre, pendant que les lettres, agrandies autour du même centre, passent de part et d'autre comme si l'on traversait le point. La page se referme sur le même sigle géant, dont le point final est cette fois rose — le seul aplat de l'accent sur la page.
+
+Ce qui en fait une signature et pas un effet : elle naît du nom du studio, elle montre le travail au lieu de le décrire, et elle n'existe nulle part ailleurs.
+
 ---
 
 ## 2. Références retenues
+
+**Version 2 — accueils dont l'impact vient du visuel**
+
+| Référence | Ce qui la rend mémorable, en une phrase |
+|---|---|
+| [Grapa Studio](https://studiograpa.com) (SiteInspire) | L'accueil n'est qu'une photo de projet plein cadre, presque sans texte. |
+| [Locomotive](https://locomotive.ca/en) · [Mobbin](https://mobbin.com/sites/sections/6a2f519f-af72-4525-a6ca-2ef3457bdf63) | Une couleur d'identité saturée et une image plein écran ; le nom posé dans un coin. |
+| [Freshman — Mobbin](https://mobbin.com/sites/sections/efd2c199-fe77-4b3a-971a-0ec6bdeb686b) | Le mot-logo géant coupé par le bas de l'écran, qui invite à descendre. |
+| [Studio Freight — Mobbin](https://mobbin.com/sites/sections/37214c10-d891-48bc-a46e-6050033671b4) | Quatre mots en chasse fixe géante, une image glissée dans le texte. |
+| [MOUTHWASH — pied de page](https://mobbin.com/sites/sections/082f5fac-4648-4314-aa7d-a06fe0235b77) | Le sigle sur 90 % de la largeur ferme la page. |
+| [OFF+BRAND — Mobbin](https://mobbin.com/sites/sections/0b70740a-eb7a-415b-b48d-09d66ce3ec38) | Une rangée de projets qui sort de l'écran, sur un dégradé rose. |
+| [Lusion](https://lusion.co), [Unseen](https://unseen.co) | Le défilement pilote une seule scène ; écartés pour leur 3D, trop lourde pour un petit studio. |
+| [Scroll Horizontal Gallery — 21st.dev](https://21st.dev/@motiondotdev/components/motion-scroll-horizontal) | Le défilement vertical fait glisser une rangée : adapté en JS sans bibliothèque pour la planche. |
+| [Hero scroll animation — 21st.dev](https://21st.dev/@uilayout.contact/components/hero-scroll-animation) | Une scène figée pendant que le défilement la transforme : le principe de l'ouverture. |
+
+**Version 1**
 
 **SiteInspire** (catégories [Agencies & consultancies](https://www.siteinspire.com/websites/category/agencies-and-consultancies) et [Design & art direction](https://www.siteinspire.com/websites/category/design-and-art-direction))
 
@@ -129,29 +153,37 @@ Courbes : `--ease` (entrée, ressort doux), `--ease-out` (réponse au geste). Du
 
 **Barre de navigation** — plaque de verre flottante, coins 12 px. Sigle à gauche, trois liens et un bouton d'encre « Contact » à droite. Les lettres basculent au survol. Sur téléphone, quatre carrés qui pivotent ouvrent le panneau dans la plaque.
 
-**Plaque** (`.plate`) — le bloc de contenu. Jamais une plaque dans une plaque. Variante `.surface-ink` : une seule par page, pour l'appel final.
+**Plaque** (`.plate`) — un bloc de verre, réservé à ce qui doit se lire posé sur le ciel : l'appel final (variante `.surface-ink`, une seule par page) et le pied de page. Jamais une plaque dans une plaque, jamais une plaque remplie de paragraphes.
 
-**En-tête de section** (`.section-head`) — la réponse au « titre tout nu » : le titre porte son action sur la même ligne (« Tous les projets → »), comme les rayons de l'App Store ; la phrase d'introduction suit. Sur téléphone, l'action passe sous la phrase. Pas d'étiquette, pas de filet au-dessus.
+**En-tête de section** — le titre porte son action sur la même ligne (« Travaux choisis » / « Tous les projets → »), comme les rayons de l'App Store. Pas d'étiquette, pas de filet au-dessus, pas de phrase d'introduction sur l'accueil.
 
-**Introduction de page** — le titre ne vient jamais seul : il est dans une plaque avec sa phrase et son action, et la preuve est posée à côté (sur l'accueil, la fenêtre qui fait passer de vrais sites). C'est le modèle des futures pages : titre en plaque + objet de preuve (capture, portrait, application).
+**Introduction de page** — le titre ne vient jamais seul : il est accompagné de son action et d'une preuve visuelle. Sur l'accueil, la preuve est le sigle lui-même, dont le point ouvre sur le travail.
+
+**Sigle géant** (`.mark`) — WAB. en Sligoil Bold, la taille calculée pour que l'encre remplisse la colonne (2,16 em de large, 1,18 em sur deux lignes au téléphone). Le point est un carré aux mesures exactes du glyphe (case de 0,6 em, carré de 0,18 em à 0,21 em du bord) : on peut le mesurer et l'animer. Deux emplois seulement : l'ouverture et la fermeture de l'accueil.
+
+**L'ouverture** — `js/home/opening.js` : une section de 260 % d'écran, une scène collée en haut. Le masque du cadre (`clip-path`) et l'échelle des lettres suivent la même progression exponentielle : l'ouverture est toujours le point agrandi.
+
+**La planche** — huit photos de mise en situation, format 4/5, le nom seul dessous. Ordinateur : la scène se fige et la rangée glisse au défilement. Téléphone et « réduire les animations » : rangée native, aimantée photo par photo. Au clavier, une photo qui reçoit le focus fait défiler la page jusqu'à elle.
 
 **Boutons** — pilule pleine d'encre (une seule action principale par plaque) ; pilule fantôme à contour pour une action secondaire. Montée de 2 px au survol, enfoncement à 97 % à l'appui. Sur les écrans de moins de 380 px, le libellé descend d'un cran pour tenir sur une ligne.
 
 **Lien fléché** (`.link-arrow`) — l'action secondaire : un mot souligné et une flèche qui avance de 3 px au survol.
 
-**Fenêtre** (`.window`) — le cadre de navigateur de Work : trois pastilles, capture 16/10. Sous une fenêtre : le nom seul et le petit rond fléché, qui passe à l'encre au survol. Jamais de ligne de contexte ni de disciplines.
+**Photo de projet** — la photo de mise en situation au format 4/5, coins de 12 px, le nom seul dessous suivi d'une flèche diagonale. Jamais de ligne de contexte ni de disciplines. Les captures brutes (`shot-*`, 16/10) servent au plein cadre de l'ouverture sur ordinateur.
 
-**Équipe** — portraits 4/5, nom dessous ; le rôle n'apparaît qu'à partir de 700 px.
+**Visages** — les trois avatars ronds de 48 px, chevauchés d'un quart, posés à côté du bouton de contact : on sait à qui l'on écrit.
 
 **Pied de page** (`.site-footer`) — la dernière plaque : l'email en grand, puis les pages et le lieu avec l'heure de Lausanne sur une ligne. Sur téléphone, une seule ligne secondaire.
 
-**Oiseau posé** — un seul par page au maximum, sur l'arête d'un objet (la fenêtre de l'accueil). C'est l'élément inattendu ; on ne l'accumule pas.
+**Les oiseaux** — ils volent derrière tout le contenu et se voilent devant le texte (`js/birds/`). Plus d'oiseau posé sur l'accueil : l'élément inattendu est désormais le point du sigle, et l'on n'accumule pas les surprises.
 
 ---
 
 ## 6. Écriture
 
-Ton : français, direct, concret, vouvoiement. Deux longueurs de phrase : des titres de 2 à 10 mots, puis un paragraphe de 15 à 30 mots.
+Ton : français, direct, concret, vouvoiement.
+
+**Sur l'accueil : au plus une ligne par bloc.** Une promesse de six mots et une action à l'ouverture ; le nom seul sous chaque projet ; les métiers en trois mots-liens ; une question et un bouton pour finir. Aucun paragraphe descriptif, aucune liste de livrables : le détail vit sur Work, Services et About, où l'on garde deux longueurs de phrase — des titres de 2 à 10 mots, puis un paragraphe de 15 à 30 mots.
 
 1. **Commencer par une définition vérifiable.** « WeAreBrothers est un studio fondé à Lausanne par deux frères. »
 2. **La preuve plutôt que le superlatif.** Un délai, un lieu, un nom de projet réel. Jamais « innovant », « unique », « passionné ».

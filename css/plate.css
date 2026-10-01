@@ -6,9 +6,8 @@
    oiseaux passent. Une plaque n'en contient jamais une autre : à
    l'intérieur, ce sont des filets et des colonnes qui rangent.
 
-   Aussi ici : l'en-tête de section (titre + action sur la même
-   ligne), le lien fléché et l'icône — les trois pièces que toutes
-   les plaques partagent.
+   Aussi ici : le lien fléché et l'icône, que toutes les plaques
+   partagent.
    ============================================ */
 
 .plate {
@@ -37,67 +36,6 @@
 .plate.surface-ink {
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.14),
         var(--shadow-lg);
-}
-
-/* ── La pile de plaques ──
-   Les plaques se suivent sur la même gouttière que la barre du haut,
-   séparées par un écart constant. */
-.plates {
-    display: grid;
-    /* minmax(0, 1fr) : sans cela, une rangée qui défile au doigt
-       élargirait la colonne au lieu de défiler. */
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--plate-gap);
-    padding-inline: var(--gutter);
-}
-
-/* ── En-tête de section ──
-   La réponse au « titre tout nu » : le titre ne vient jamais seul,
-   il porte son action sur la même ligne — comme les rayons de
-   l'App Store et leur « Tout voir ». La phrase d'introduction suit,
-   en une ou deux lignes. Pas de repère, pas de filet au-dessus. */
-.section-head {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: 'title' 'lede' 'link';
-    justify-items: start;
-    gap: var(--space-3);
-}
-
-/* Dès que la ligne a la place, l'action rejoint le titre. Sur
-   téléphone, elle passe sous la phrase : collée au titre, elle
-   l'écrasait sur deux colonnes étroites. */
-@media (min-width: 700px) {
-    .section-head {
-        grid-template-columns: minmax(0, 1fr) auto;
-        grid-template-areas: 'title link' 'lede lede';
-        align-items: baseline;
-        column-gap: var(--space-5);
-    }
-}
-
-.section-head > .link-arrow {
-    grid-area: link;
-}
-
-.section-head__title {
-    grid-area: title;
-    max-width: 24ch;
-    font-size: var(--text-xl);
-    font-weight: var(--w-strong);
-    letter-spacing: -0.035em;
-    /* Cédilles et accents : en dessous de 1.18, ils se touchent. */
-    line-height: 1.18;
-    text-wrap: balance;
-}
-
-.section-head__lede {
-    grid-area: lede;
-    max-width: 56ch;
-    font-size: var(--text-lg);
-    line-height: 1.6;
-    text-wrap: pretty;
-    color: var(--ink-muted);
 }
 
 /* ── Lien fléché ──

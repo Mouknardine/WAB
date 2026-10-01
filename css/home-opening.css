@@ -1,0 +1,177 @@
+/* ============================================
+   WAB. — Accueil : l'ouverture
+   Le sigle WAB. d'un bord à l'autre de l'écran. Son point est une
+   fenêtre : un carré qui laisse voir un vrai projet, et qui s'ouvre
+   au défilement jusqu'au plein cadre (js/home/opening.js).
+   Sous le sigle, une promesse de six mots et une seule action.
+
+   Le point n'est pas le glyphe de la police : c'est un carré posé
+   aux mesures exactes du point de Sligoil Bold (relevées le
+   01.10.2026) — case de 0,6 em, carré de 0,18 em à 0,21 em du bord,
+   posé sur la ligne de base. Le script peut ainsi le mesurer et
+   l'agrandir depuis sa place exacte.
+   ============================================ */
+
+/* ── Le sigle ──
+   L'encre des quatre signes mesure 2,16 em : la taille se calcule
+   pour qu'elle remplisse la colonne, bornée en hauteur pour qu'un
+   écran bas garde la place de la promesse. Valeurs à reprendre si
+   la police change. */
+.mark {
+    --mark-size: min(calc((100vw - 2 * var(--gutter)) / 2.16), calc(50svh / 0.7));
+    margin-left: -0.03em;
+    font-size: var(--mark-size);
+    font-weight: var(--w-strong);
+    letter-spacing: 0;
+    line-height: 0.74;
+    white-space: nowrap;
+    color: var(--ink);
+    user-select: none;
+}
+
+/* La case s'arrête au bord droit de l'encre du point (0,39 em) et
+   non à sa chasse (0,6 em) : la boîte du sigle mesure alors
+   exactement son encre, et ne déborde pas de la colonne. */
+/* Sur téléphone, le sigle passe sur deux lignes — « WA », puis
+   « B. » — et presque triple de taille : sur une seule ligne, il ne
+   faisait qu'un septième de la hauteur de l'écran. L'encre de « WA »
+   mesure 1,18 em ; la hauteur est bornée pour laisser la place de
+   la promesse sur un petit écran. */
+@media (max-width: 699px) {
+    .mark {
+        --mark-size: min(calc((100vw - 2 * var(--gutter)) / 1.2), calc((100svh - 330px) / 1.7));
+        line-height: 0.84;
+    }
+
+    .mark__line {
+        display: block;
+    }
+}
+
+.mark__cell {
+    position: relative;
+    display: inline-block;
+    width: 0.39em;
+    height: 0;
+}
+
+.mark__dot {
+    position: absolute;
+    left: 0.21em;
+    bottom: 0;
+    width: 0.18em;
+    height: 0.18em;
+    background: var(--ink);
+}
+
+/* ── La scène ── */
+.opening__stage {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+    padding: calc(var(--topbar-h) + var(--space-5)) var(--gutter) var(--plate-gap);
+}
+
+.opening .mark {
+    align-self: center;
+}
+
+.opening__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-5);
+}
+
+.opening__title {
+    max-width: 22ch;
+    font-size: var(--text-xl);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.035em;
+    line-height: 1.18;
+    text-wrap: balance;
+}
+
+@media (max-width: 480px) {
+    .opening__foot .btn {
+        width: 100%;
+    }
+}
+
+/* ── Le cadre ──
+   Caché tant que le script ne pilote pas la scène : sans lui, ou
+   sous « réduire les animations », le point reste un point. Sur
+   ordinateur, le cadre épouse l'écran sous la barre ; sur téléphone,
+   il prend le format 4/5 des photos et se centre. */
+.opening__frame {
+    position: absolute;
+    z-index: 2;
+    inset: var(--topbar-h) var(--gutter) var(--plate-gap);
+    display: none;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: var(--ink);
+}
+
+.opening__frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 899px) {
+    .opening__frame {
+        inset: 50% var(--gutter) auto;
+        translate: 0 -50%;
+        aspect-ratio: 4 / 5;
+    }
+}
+
+/* Une seule ligne sur le cadre ouvert : le nom et l'adresse. */
+.opening__caption {
+    position: absolute;
+    left: var(--space-4);
+    bottom: var(--space-4);
+    padding: 10px 16px;
+    border-radius: var(--radius-pill);
+    background: var(--glass-strong);
+    -webkit-backdrop-filter: var(--blur);
+    backdrop-filter: var(--blur);
+    font-size: var(--text-sm);
+    font-weight: var(--w-strong);
+    color: var(--ink);
+    opacity: 0;
+}
+
+/* ── La scène pilotée ──
+   La section s'allonge de 160 % d'écran : c'est la course du zoom.
+   La scène, elle, reste collée en haut pendant tout ce temps. */
+.opening.is-scrubbed {
+    height: 260vh;
+}
+
+.opening.is-scrubbed .opening__stage {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100svh;
+    overflow: clip;
+}
+
+.opening.is-scrubbed .opening__frame {
+    display: block;
+}
+
+.opening.is-scrubbed .mark {
+    will-change: transform, opacity;
+}
+
+/* Le cadre recouvre exactement le point : le carré d'encre s'efface
+   pour qu'aucun liseré ne dépasse au premier pixel. */
+.opening.is-scrubbed .mark__dot {
+    background: transparent;
+}
