@@ -1,5 +1,5 @@
 /* ============================================
-   WAB. — Fiche projet : les boutons
+   WAB. — Fiche projet : les boutons et les liens
    ============================================ */
 
 /* ── Fermer et Voir le site : du verre dépoli ──
@@ -35,13 +35,20 @@
     padding: 0 20px;
 }
 
+/* Voir le site n'est que le repère : le lien, c'est la photo entière.
+   Survoler ou presser n'importe où sur l'image allume le bouton comme
+   si on le touchait lui-même. */
 .case__close:hover,
-.case__visit:hover {
+.case__frame:hover .case__visit {
     background: rgba(255, 255, 255, 0.85);
 }
 
+.case__frame:hover .case__visit svg {
+    transform: translate(2px, -2px);
+}
+
 .case__close:active,
-.case__visit:active {
+.case__frame:active .case__visit {
     transform: scale(0.96);
 }
 
@@ -53,7 +60,27 @@
 }
 
 .case__close:focus-visible,
-.case__visit:focus-visible {
+.case__frame:focus-visible,
+.case__shot:focus-visible {
     outline: 2px solid var(--ink);
     outline-offset: 3px;
+}
+
+/* ── La photo et la capture : des liens vers le site ──
+   Au survol, l'image avance à peine, comme les tuiles de la grille. */
+.case__frame,
+.case__shot {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.case__photo,
+.case__shot .window__img {
+    transition: transform 0.9s var(--ease);
+}
+
+@media (hover: hover) {
+    .case__frame:hover .case__photo,
+    .case__shot:hover .window__img {
+        transform: scale(1.02);
+    }
 }

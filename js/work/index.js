@@ -2,9 +2,9 @@
 /**
  * WAB. — Fiche projet
  * Un clic sur une tuile de Work ouvre la fiche du projet par-dessus
- * la page, au lieu d'envoyer directement sur le site du client. Le
- * bouton « Voir le site » de la fiche y mène. Sans JavaScript, la
- * tuile reste un simple lien vers le site.
+ * la page, au lieu d'envoyer directement sur le site du client. Dans
+ * la fiche, la photo (avec son bouton « Voir le site ») et la capture
+ * y mènent. Sans JavaScript, la tuile reste un simple lien vers le site.
  *
  * L'adresse suit la fiche (#zinema…) : on peut partager un projet,
  * et le bouton Retour du téléphone ferme la fiche au lieu de quitter
@@ -12,8 +12,8 @@
  */
 
 import { requireElement } from '../contact/dom.js?v=8';
-import { createCaseDialog } from './markup.js?v=2';
-import { fillCase } from './fill.js?v=1';
+import { createCaseDialog } from './markup.js?v=3';
+import { fillCase } from './fill.js?v=2';
 
 const LOCK_CLASS = 'has-modal';
 // Un peu plus que l'animation de sortie : filet de sécurité si

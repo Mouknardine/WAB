@@ -69,7 +69,9 @@ export function fillCase(dialog, piece, rank) {
     copyImage(requireElement(dialog, '[data-case-photo]', HTMLElement), requireElement(story, 'img[data-case-photo]', HTMLImageElement), 'case__photo', '(min-width: 1000px) 40vw, 100vw');
     copyImage(requireElement(dialog, '[data-case-shot]', HTMLElement), requireElement(piece, '.window__img', HTMLImageElement), 'window__img', '(min-width: 1000px) 55vw, 100vw');
 
-    const visit = requireElement(dialog, '[data-case-visit]', HTMLAnchorElement);
-    visit.href = link.href;
-    visit.setAttribute('aria-label', `Voir le site ${name} (nouvel onglet)`);
+    // La photo et la capture mènent toutes deux au site.
+    dialog.querySelectorAll('[data-case-visit]').forEach((visit) => {
+        visit.setAttribute('href', link.href);
+        visit.setAttribute('aria-label', `Voir le site ${name} (nouvel onglet)`);
+    });
 }
