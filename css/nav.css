@@ -1,19 +1,19 @@
 /* ============================================
    WAB. — Barre de navigation
-   Une pilule de verre dépoli qui flotte en haut de l'écran, détachée
+   Une plaque de verre dépoli qui flotte en haut de l'écran, détachée
    des bords : le fond animé reste visible tout autour, comme chez
    Craft ou Analogue (références Mobbin). Un liseré clair et une ombre
    douce lui donnent son épaisseur ; aucun trait ne la coupe de la
    page. Le sigle tombe exactement sur la gouttière du contenu : la
-   pilule déborde de chaque côté de sa propre marge intérieure.
+   plaque déborde de chaque côté de sa propre marge intérieure.
 
-   Le menu du petit écran se déroule dans la pilule elle-même, qui
-   s'allonge en carte aux coins arrondis.
+   Le menu du petit écran se déroule dans la plaque elle-même, qui
+   s'allonge vers le bas.
    ============================================ */
 
 .topbar {
-    /* Écart entre la pilule et le haut de l'écran, et marge intérieure
-       de la pilule. --topbar-h (base.css) réserve la place des deux. */
+    /* Écart entre la plaque et le haut de l'écran, et marge intérieure
+       de la plaque. --topbar-h (base.css) réserve la place des deux. */
     --pill-top: clamp(10px, 1.2vw, 14px);
     --pill-pad: clamp(14px, 1.6vw, 22px);
     position: fixed;
@@ -24,7 +24,8 @@
 }
 
 .topbar__inner {
-    border-radius: calc((var(--topbar-h) - 2 * var(--pill-top)) / 2);
+    /* Juste un peu arrondie : un rectangle de verre, pas une pilule. */
+    border-radius: 12px;
     background: rgba(255, 255, 255, 0.58);
     -webkit-backdrop-filter: var(--blur);
     backdrop-filter: var(--blur);
@@ -70,7 +71,7 @@
     gap: 6px;
 }
 
-/* Le dernier lien se rapproche du bord de la pilule : sa marge
+/* Le dernier lien se rapproche du bord de la plaque : sa marge
    intérieure laisserait sinon un vide plus large à droite qu'à
    gauche du sigle. */
 .topbar__nav .topbar__link:last-child {
@@ -79,7 +80,7 @@
 
 .topbar__link {
     padding: 8px 15px;
-    border-radius: var(--radius-pill);
+    border-radius: 8px;
     font-size: clamp(1.1rem, 1.6vw, 1.45rem);
     letter-spacing: -0.02em;
     color: var(--ink-muted);
