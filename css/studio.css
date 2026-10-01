@@ -13,16 +13,6 @@
     padding-top: clamp(8px, 2vw, 24px);
 }
 
-.team-band__title {
-    margin-bottom: clamp(20px, 3vw, 36px);
-    padding-inline: var(--gutter);
-    font-size: clamp(1.9rem, 4vw, 3.2rem);
-    font-weight: var(--w-strong);
-    letter-spacing: -0.035em;
-    line-height: 1.1;
-    color: var(--ink);
-}
-
 .team {
     display: grid;
     grid-auto-flow: column;
