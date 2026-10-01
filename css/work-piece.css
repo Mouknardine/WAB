@@ -55,30 +55,11 @@
     }
 }
 
-/* Les disciplines en une ligne de texte, séparées par un point
-   médian. Seulement là où il y a la place. */
+/* Les disciplines ne s'affichent pas sous la capture : la liste
+   restait chargée. Elles restent dans la page, où la fiche du projet
+   les lit (js/work/fill.js). */
 .piece__tags {
     display: none;
-    flex-wrap: wrap;
-    margin-top: 10px;
-    padding: 0;
-    list-style: none;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    color: var(--ink-muted);
-}
-
-/* Le point suit chaque discipline sauf la dernière : quand la ligne
-   se replie, il reste en fin de ligne au lieu d'ouvrir la suivante. */
-.piece__tags li:not(:last-child)::after {
-    content: "·";
-    margin-inline: 0.5em;
-}
-
-@media (min-width: 1000px) {
-    .piece__tags {
-        display: flex;
-    }
 }
 
 /* ── Le bouton ──

@@ -14,8 +14,7 @@
 
 /* ── En-tête des pages intérieures ──
    Deux colonnes dès le téléphone : le titre à gauche, une courte
-   phrase à droite, dans la même encre. Sur téléphone, les deux ont
-   la même taille ; sur ordinateur, le titre grandit. Pas de filet :
+   phrase à droite, dans la même encre. Pas de filet :
    c'est l'air autour qui donne la présence, puis le contenu arrive.
    Partagé par Work, Services et About. */
 .page-intro {
@@ -33,11 +32,13 @@
     color: var(--ink);
 }
 
-/* Sur téléphone, le titre prend la graisse et la taille de la
-   phrase voisine. */
+/* Le titre, en gras et plus grand que la phrase : à la même taille,
+   il se perdait à côté d'elle, sur téléphone comme sur ordinateur. */
 .page-intro__title {
-    font: inherit;
-    letter-spacing: inherit;
+    font-size: clamp(1.5rem, 4.6vw, 4.2rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.04em;
+    line-height: 1;
 }
 
 .page-intro__text {
@@ -49,16 +50,6 @@
     .page-intro {
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         align-items: start;
-    }
-
-    /* Sur ordinateur, à la taille de la phrase, le titre de page
-       paraissait plus petit que les titres de section qui suivent
-       (« Technologie. ») : il reprend la tête de la hiérarchie. */
-    .page-intro__title {
-        font-size: clamp(2.6rem, 4.6vw, 4.2rem);
-        font-weight: var(--w-strong);
-        letter-spacing: -0.04em;
-        line-height: 1;
     }
 }
 
