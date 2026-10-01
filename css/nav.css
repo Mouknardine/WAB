@@ -87,6 +87,58 @@
     font-weight: var(--w-strong);
 }
 
+/* ── Lettres qui basculent ──
+   js/letter-swap.js découpe chaque lien en lettres. Chaque lettre
+   porte sa copie juste en dessous ; au survol, elle remonte d'une
+   hauteur et la copie prend sa place. Le mot masque ce qui déborde,
+   et chaque lettre part avec son propre retard, tiré au hasard. */
+.swap {
+    display: inline-flex;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.swap__char {
+    position: relative;
+    display: inline-block;
+    line-height: 1.2;
+    transition: transform 0.6s var(--swap-ease, var(--ease));
+    transition-delay: var(--swap-delay, 0s);
+}
+
+.swap__char::after {
+    content: attr(data-char);
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+/* Un ressort léger : la lettre dépasse à peine sa place avant de
+   s'y poser. */
+@supports (transition-timing-function: linear(0, 1)) {
+    .swap__char {
+        --swap-ease: linear(0, 0.023, 0.081, 0.162, 0.257, 0.358, 0.458, 0.554, 0.642, 0.722, 0.791, 0.85, 0.9,
+            0.939, 0.971, 0.995, 1.013, 1.025, 1.033, 1.037, 1.038, 1.038, 1.036, 1.033, 1.029, 1.025, 1.021,
+            1.018, 1.014, 1.011, 1.008, 1.006, 1.004, 1.003, 1.001, 1);
+    }
+}
+
+@media (hover: hover) {
+    .topbar__link:hover .swap__char {
+        transform: translateY(-100%);
+    }
+}
+
+.topbar__link:focus-visible .swap__char {
+    transform: translateY(-100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .swap__char {
+        transition: none;
+    }
+}
+
 /* ── Bouton menu ──
    Quatre carrés disposés en carré. À l'ouverture, le groupe pivote
    d'un quart de tour : la même figure devient une croix, sans qu'on
