@@ -20,15 +20,6 @@
     color: var(--ink);
 }
 
-.services-intro__text {
-    margin-top: clamp(16px, 2.4vw, 28px);
-    max-width: 52ch;
-    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-    line-height: 1.55;
-    text-wrap: pretty;
-    color: var(--ink-soft);
-}
-
 /* ── Bandes resserrées ──
    Les trois familles se suivent : l'écart entre elles reste celui
    d'une bande, pas de deux. */

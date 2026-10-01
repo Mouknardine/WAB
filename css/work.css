@@ -1,6 +1,6 @@
 /* ============================================
    WAB. — Réalisations : l'en-tête et la grille
-   Un titre franc, une phrase, puis les projets en grille
+   Un titre franc, puis les projets en grille
    régulière. Sobre et posé : c'est le travail qui parle, pas la
    mise en scène. La légende de chaque projet est dans
    work-piece.css.
@@ -11,9 +11,7 @@
 }
 
 /* ── En-tête ──
-   Le titre va chercher le bord gauche, comme le sigle de la barre.
-   La phrase d'introduction suit juste en dessous, sur toutes les
-   tailles d'écran. */
+   Le titre va chercher le bord gauche, comme le sigle de la barre. */
 .work-head {
     display: grid;
     gap: clamp(14px, 2.4vw, 24px);
@@ -27,17 +25,6 @@
     letter-spacing: -0.045em;
     line-height: 0.95;
     color: var(--ink);
-}
-
-.work-head__lede {
-    max-width: 38ch;
-    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-    /* Sligoil est à chasse fixe : son approche d'origine paraît lâche
-       en taille d'introduction, on la resserre d'un cran. */
-    letter-spacing: -0.02em;
-    line-height: 1.45;
-    text-wrap: pretty;
-    color: var(--ink-soft);
 }
 
 /* ── La grille ──

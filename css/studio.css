@@ -1,13 +1,11 @@
 /* ============================================
    WAB. — About
-   Sobre et posé : le titre et un court paragraphe sur la manière de
-   travailler du studio, puis l'équipe en photos à la suite. Les
+   Sobre et posé : le titre, puis l'équipe en photos à la suite. Les
    savoir-faire reprennent les cartes de verre de css/process.css.
    ============================================ */
 
 /* ── En-tête ──
-   Le titre, et dessous un paragraphe à l'encre adoucie, borné à une
-   longueur de ligne confortable. Même marge que le reste de la page. */
+   Le titre seul, avec la même marge que le reste de la page. */
 .studio-intro {
     padding-inline: var(--gutter);
 }
@@ -20,15 +18,6 @@
     line-height: 1.08;
     text-wrap: balance;
     color: var(--ink);
-}
-
-.studio-intro__text {
-    margin-top: clamp(16px, 2.4vw, 28px);
-    max-width: 52ch;
-    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-    line-height: 1.55;
-    text-wrap: pretty;
-    color: var(--ink-soft);
 }
 
 /* ── Équipe ──
