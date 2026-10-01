@@ -3,7 +3,8 @@
  * WAB. — Fond animé « Mesh drift »
  * Quatre taches de couleur dérivent lentement derrière tout le site :
  * deux roses vifs, un pêche et une crème, avec un léger grain. Le
- * calque est fixe, sous les oiseaux et sous le contenu.
+ * calque est fixe, sous les oiseaux et sous le contenu ; le grain,
+ * lui, passe au-dessus des oiseaux (grain.js).
  *
  * L'animation s'arrête quand l'onglet est caché, se fige sur une
  * seule image si le visiteur a demandé moins d'animations, et cède
@@ -13,6 +14,7 @@
 import { SHADER_LIB } from './shader-lib.js?v=1';
 import { SHADER_MAIN } from './shader-main.js?v=1';
 import { createProgram } from './gl.js?v=1';
+import { canOverlayGrain, mountGrain } from './grain.js?v=1';
 
 /* Du plus sombre au plus clair. Les deux bleus de la recette
    d'origine (#3DAFDB, #6ED3DE) deviennent des roses de même éclat,
@@ -21,13 +23,21 @@ const COLORS = ['#e8418f', '#f27bb4', '#f8d8c9', '#fbf0d0'];
 
 /* Les réglages du Shader Builder, déjà convertis. */
 const SHAPE = [1.16, 0.34, 0.5, 0.0];
-const SURFACE = [2.4, 1.16, 0.0, 1.0];
-const FINISH = [0.0, 0.0, 0.0, 0.09];
-const TRANSFORM = [1453.0, 0.0, 0.0, 0.0];
+const GRAIN = 0.09;
+const SEED = 1453.0;
+const TRANSFORM = [SEED, 0.0, 0.0, 0.0];
 const SPACE = [0.0, 0.0, 0.0, 0.0];
 const CURSOR_OFF = [0.0, 2.0, 0.65, 0.46];
 const TIME_SCALE = 0.73;
 const MAX_PIXEL_RATIO = 2;
+
+/* Quand le grain passe sur son propre calque, le shader n'en dessine
+   plus et s'assombrit d'une demi-amplitude : le calque ajoute entre
+   0 et GRAIN, la moyenne retombe donc là où elle était. Sinon (vieux
+   navigateur), le shader garde son grain, comme dans la recette. */
+const GRAIN_OVERLAY = canOverlayGrain();
+const SURFACE = [2.4, 1.16, GRAIN_OVERLAY ? -GRAIN / 2 : 0.0, 1.0];
+const FINISH = [0.0, 0.0, 0.0, GRAIN_OVERLAY ? 0.0 : GRAIN];
 
 /**
  * @param {string} hex
@@ -149,6 +159,7 @@ function initMesh() {
     });
 
     document.documentElement.classList.add('has-mesh');
+    if (GRAIN_OVERLAY) mountGrain({ amount: GRAIN, seed: SEED, maxRatio: MAX_PIXEL_RATIO });
     sync();
 }
 

@@ -302,6 +302,24 @@ html.has-mesh body::before {
     display: none;
 }
 
+/* Le grain du fond, posé au-dessus des oiseaux pour qu'ils le
+   partagent (js/mesh/grain.js). « plus-lighter » additionne le
+   calque à ce qui est dessous, comme le faisait le shader. Il suit
+   le fond animé : sans lui, le grain n'a plus rien à texturer. */
+#grainCanvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    mix-blend-mode: plus-lighter;
+}
+
+html:not(.has-mesh) #grainCanvas {
+    display: none;
+}
+
 /* Sur le rose vif du fond animé, les gris d'origine tombaient sous
    le seuil de lisibilité (3,4:1 et 2,4:1). Assombris, ils passent
    au-dessus de 4,5:1 sur le rose le plus soutenu. */
