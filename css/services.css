@@ -5,18 +5,21 @@
    Les titres de bande reprennent css/process.css.
    ============================================ */
 
-/* ── En-tête ── */
-.services-intro {
-    padding-inline: var(--gutter);
+/* ── En-tête ──
+   La page s'ouvre sur sa première famille, « Technologie », en titre
+   de page : même taille, même calage et même respiration que « Work »
+   (css/work.css), pour que les deux pages se répondent. */
+.services-top {
+    padding-top: calc(var(--topbar-h) + clamp(32px, 5vw, 72px));
 }
 
-.services-intro__title {
-    max-width: 22ch;
-    font-size: clamp(2.2rem, 4.8vw, 4rem);
+.services-top__title {
+    margin-bottom: clamp(36px, 5vw, 64px);
+    padding-inline: var(--gutter);
+    font-size: clamp(2.8rem, 7vw, 5.8rem);
     font-weight: var(--w-strong);
-    letter-spacing: -0.04em;
-    line-height: 1.08;
-    text-wrap: balance;
+    letter-spacing: -0.045em;
+    line-height: 0.95;
     color: var(--ink);
 }
 
