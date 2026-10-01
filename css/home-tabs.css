@@ -2,49 +2,31 @@
    WAB. — Accueil : ce que nous faisons
    D'après Tabbed Feature Categories (olewandowski1, 21st.dev) : trois
    onglets — Technologie, Image de marque, Conseil — et, sous chacun,
-   une grille de cartes égales : une case d'icône, un titre, une
-   ligne. Sans script, les trois panneaux restent visibles à la suite
+   une grille serrée de cartes égales : pastille d'icône, titre, une
+   ligne. Sans script, les trois panneaux se lisent à la suite
    (js/home/tabs.js ne masque que s'il prend la main).
    ============================================ */
 
-/* La barre d'onglets : une pilule de verre, l'onglet actif en
-   blanc plein. */
+/* Le sélecteur : une surface pleine, l'onglet actif à l'encre. */
 .tabs__list {
     display: inline-flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    margin-bottom: var(--space-5);
-    padding: 4px;
-    border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.4);
-    box-shadow: var(--edge);
+    gap: 2px;
+    margin-bottom: var(--gap);
+    padding: 3px;
+    border-radius: 11px;
+    background: var(--surface);
+    box-shadow: inset 0 0 0 1px var(--surface-line);
 }
 
 .tabs__tab {
-    min-height: 40px;
-    padding: 6px var(--space-4);
-    line-height: 1.2;
-    border-radius: var(--radius-sm);
-    font-size: var(--text-sm);
+    min-height: 36px;
+    padding: 4px 14px;
+    border-radius: var(--r-inner);
+    font-size: 0.8125rem;
     font-weight: var(--w-strong);
-    color: var(--ink-muted);
-    transition: background-color var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out),
-        box-shadow var(--dur-1) var(--ease-out);
-}
-
-/* Sur téléphone, les trois onglets se partagent la largeur au lieu
-   de passer sur deux rangées. */
-@media (max-width: 639px) {
-    .tabs__list {
-        display: flex;
-        flex-wrap: nowrap;
-    }
-
-    .tabs__tab {
-        flex: 1 1 auto;
-        padding-inline: var(--space-2);
-        font-size: 0.8rem;
-    }
+    line-height: 1.2;
+    color: var(--surface-muted);
+    transition: background-color var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out);
 }
 
 .tabs__tab:hover {
@@ -52,21 +34,30 @@
 }
 
 .tabs__tab[aria-selected='true'] {
-    background: var(--white);
-    color: var(--ink);
-    box-shadow: var(--edge), 0 1px 2px rgba(11, 11, 12, 0.06);
+    background: var(--ink);
+    color: var(--on-ink);
+}
+
+@media (max-width: 639px) {
+    .tabs__list {
+        display: flex;
+    }
+
+    .tabs__tab {
+        flex: 1 1 auto;
+        padding-inline: var(--space-2);
+    }
 }
 
 .tabs__panel + .tabs__panel {
-    margin-top: var(--space-4);
+    margin-top: var(--gap);
 }
 
 .tabs.is-ready .tabs__panel + .tabs__panel {
     margin-top: 0;
 }
 
-/* Le panneau qui arrive se pose en fondu, sans glisser : on change
-   de rayon, pas de page. */
+/* Le panneau qui arrive se pose en fondu, sans glisser. */
 .tabs.is-ready .tabs__panel:not([hidden]) {
     animation: tab-in var(--dur-2) var(--ease-out);
 }
@@ -80,14 +71,13 @@
 /* ── Les cartes ── */
 .skill-grid {
     display: grid;
-    gap: var(--space-3);
+    gap: var(--gap);
     list-style: none;
 }
 
 @media (min-width: 640px) {
     .skill-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: var(--space-4);
     }
 }
 
@@ -97,19 +87,18 @@
     }
 }
 
-/* Sur téléphone, une rangée basse : l'icône et le titre, sans la
-   phrase — six cartes de deux lignes faisaient un mur de texte. Dès
-   640 px, l'icône au-dessus et la phrase dessous, comme chez Apple. */
+/* Au téléphone, une rangée basse : la pastille et le titre. Dès
+   640 px, la pastille au-dessus, le titre et une ligne dessous. */
 .skill {
     display: flex;
     align-items: center;
-    gap: var(--space-4);
+    gap: var(--space-3);
     height: 100%;
-    padding: var(--space-4);
+    padding: 14px var(--space-4);
 }
 
 .skill__title {
-    font-size: var(--text-md);
+    font-size: 0.9375rem;
     font-weight: var(--w-strong);
     letter-spacing: -0.02em;
     line-height: 1.35;
@@ -117,9 +106,9 @@
 
 .skill__text {
     display: none;
-    margin-top: var(--space-1);
-    font-size: var(--text-sm);
-    line-height: 1.55;
+    margin-top: 2px;
+    font-size: 0.8125rem;
+    line-height: 1.5;
     text-wrap: pretty;
     color: var(--ink-muted);
 }
@@ -128,6 +117,7 @@
     .skill {
         flex-direction: column;
         align-items: flex-start;
+        gap: var(--space-4);
         padding: var(--space-5);
     }
 
@@ -137,7 +127,7 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .skill:hover .icon-box {
+    .skill:hover .icon-chip {
         background: var(--ink);
         color: var(--on-ink);
     }

@@ -1,54 +1,129 @@
 /* ============================================
-   WAB. — Accueil : l'ouverture et le projet à la une
-   D'après Vucko : une phrase d'intention courte, beaucoup d'air, une
-   seule action ; puis un projet mis en avant dans une grande carte,
-   avec son nom, son client et « Voir le projet ».
+   WAB. — Accueil : l'ouverture
+   Deux cartes côte à côte dès le premier écran, à la même hauteur :
+   la promesse et son action à gauche, le projet à la une à droite
+   (Vucko). Pas de grande zone vide au-dessus d'une phrase.
    ============================================ */
 
-.hero {
+.opening {
     display: grid;
-    align-content: end;
-    gap: var(--space-6);
-    padding: calc(var(--topbar-h) + var(--space-7)) var(--gutter) var(--space-6);
+    gap: var(--gap);
+    padding: calc(var(--topbar-h) + var(--space-5)) var(--gutter) 0;
 }
 
-/* Sur ordinateur, de l'air au-dessus de la promesse, comme chez Vucko.
-   Sur téléphone, la carte à la une doit déjà poindre au premier
-   écran : pas de hauteur imposée. */
-@media (min-width: 700px) {
-    .hero {
-        min-height: min(78svh, 760px);
+@media (min-width: 1000px) {
+    .opening {
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
     }
 }
 
-.hero__title {
-    max-width: 20ch;
-    font-size: var(--text-2xl);
+/* ── La promesse ── */
+.intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-6);
+    padding: clamp(20px, 2.4vw, 32px);
+}
+
+.intro__title {
+    max-width: 14ch;
+    font-size: clamp(1.9rem, 3.4vw, 3rem);
     font-weight: var(--w-strong);
     letter-spacing: -0.045em;
-    line-height: 1.08;
+    line-height: 1.06;
     text-wrap: balance;
 }
 
+/* Les métiers : trois pastilles fines, au rayon intérieur. Masquées
+   au téléphone, où la carte n'a pas de vide à combler et où les
+   onglets plus bas disent la même chose. */
+.intro__tags {
+    display: none;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: var(--space-5);
+    list-style: none;
+}
+
+.intro__tags a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 0 10px;
+    border-radius: var(--r-inner);
+    background: var(--surface-sunk);
+    box-shadow: inset 0 0 0 1px var(--surface-line);
+    font-size: 0.75rem;
+    font-weight: var(--w-strong);
+    transition: background-color var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out);
+}
+
+.intro__tags a:hover {
+    background: var(--ink);
+    color: var(--on-ink);
+}
+
+@media (min-width: 1000px) {
+    .intro__tags {
+        display: flex;
+    }
+}
+
+.intro__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+/* Le titre tient le haut de la carte, les actions et le lieu le bas :
+   la carte a la hauteur de la capture voisine, sans vide au milieu. */
+.intro__bottom {
+    display: grid;
+    gap: var(--space-4);
+}
+
+/* Le pied de la carte : le lieu et l'heure, en une ligne fine,
+   séparée par un filet. */
+.intro__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1) var(--space-4);
+    padding-top: var(--space-3);
+    box-shadow: inset 0 1px 0 var(--surface-line);
+    font-size: var(--text-xs);
+    color: var(--ink-muted);
+}
+
 @media (max-width: 480px) {
-    .hero .btn {
-        width: 100%;
+    .intro__actions .btn {
+        flex: 1 1 100%;
+    }
+}
+
+@media (max-width: 599px) {
+    .intro__meta .studio-status {
+        display: none;
     }
 }
 
 /* ── À la une ──
-   L'image à gauche (deux tiers), le nom et l'action à droite, calés
-   en bas. Sur téléphone, l'image au-dessus, le texte dessous. */
+   L'image posée dans la carte à 8 px du bord, au rayon intérieur ;
+   le nom, le client et l'action sur une ligne dessous. */
 .feature {
-    display: grid;
-    overflow: hidden;
-    margin-inline: var(--gutter);
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
 }
 
 .feature__media {
-    aspect-ratio: 16 / 10;
+    flex: 1;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
-    background: var(--ink);
+    border-radius: var(--r-inner);
+    background: var(--surface-sunk);
 }
 
 .feature__media img {
@@ -59,40 +134,29 @@
     transition: scale var(--dur-3) var(--ease);
 }
 
-.feature__body {
+.feature__bar {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-    gap: var(--space-4);
-    padding: var(--space-5);
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-3) var(--space-2);
 }
 
 .feature__name {
-    font-size: var(--text-xl);
+    font-size: 1.0625rem;
     font-weight: var(--w-strong);
-    letter-spacing: -0.035em;
-    line-height: 1.15;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
 }
 
 .feature__client {
-    margin-top: var(--space-1);
-    font-size: var(--text-md);
+    font-size: var(--text-sm);
     color: var(--ink-muted);
 }
 
 @media (hover: hover) and (pointer: fine) {
     .feature:hover .feature__media img {
         scale: 1.02;
-    }
-}
-
-@media (min-width: 900px) {
-    .feature {
-        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-    }
-
-    .feature__body {
-        padding: var(--space-6);
     }
 }

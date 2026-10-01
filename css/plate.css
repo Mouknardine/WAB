@@ -1,113 +1,114 @@
 /* ============================================
-   WAB. — Cartes de verre
-   Le composant de base de l'accueil (DESIGN-SYSTEM.md, version 3) :
-   une carte de verre clair posée sur le ciel, coins de 18 px. Toutes
-   les cartes partagent la même matière ; seules leur taille et leur
-   contenu changent. Une carte n'en contient jamais une autre.
+   WAB. — Cartes (accueil, version 4)
+   Le composant de base de l'accueil : une surface nette, presque
+   opaque, posée sur le ciel rose. Le rose est le cadre, la carte est
+   la page. Liseré d'un pixel, rayon de 16 px dehors et de 8 px pour
+   ce qui est posé dedans (images, pastilles). Les cartes se suivent
+   à 12 px : une grille serrée, pas des îlots.
 
-   Aussi ici : l'en-tête de section, la case d'icône, le lien fléché
-   et l'icône — les pièces que toutes les cartes partagent.
+   Aussi ici : la grille, l'en-tête de section, la pastille d'icône,
+   le lien fléché et l'icône — les pièces que toutes les cartes
+   partagent.
    ============================================ */
 
 .card {
     position: relative;
-    border-radius: var(--radius-lg);
-    background: var(--plate-bg);
-    -webkit-backdrop-filter: var(--plate-blur);
-    backdrop-filter: var(--plate-blur);
-    box-shadow: var(--edge), var(--edge-sheen), var(--shadow-md);
+    border-radius: var(--r-card);
+    background: var(--surface);
+    box-shadow: inset 0 0 0 1px var(--surface-line), var(--surface-shadow);
     color: var(--ink);
 }
 
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-    .card {
-        background: var(--card);
-    }
+/* Une carte-lien se soulève à peine au survol : l'ombre seule, rien
+   ne bouge. */
+a.card {
+    transition: box-shadow var(--dur-2) var(--ease-out);
+}
 
-    .card.surface-ink {
-        background: #0b0b0c;
+@media (hover: hover) and (pointer: fine) {
+    a.card:hover {
+        box-shadow: inset 0 0 0 1px var(--surface-line), var(--surface-lift);
     }
 }
 
-/* Sur une surface encre, le reflet de l'arête devient un liseré à
-   peine visible : le verre reste du verre. */
-.card.surface-ink {
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.14),
-        var(--shadow-md);
+/* Sur la surface claire, un vrai gris pour le texte secondaire : le
+   gris presque noir réglé pour le fond animé écrasait la hiérarchie.
+   #5e5b63 sur blanc : 6,4:1. */
+.card:not(.surface-ink) {
+    --ink-soft: var(--surface-soft);
+    --ink-muted: var(--surface-muted);
+}
+
+/* ── La grille ──
+   Une seule gouttière, partout : 12 px entre les cartes. */
+.grid {
+    display: grid;
+    gap: var(--gap);
 }
 
 /* ── Section ──
-   Toutes les sections de l'accueil partent de la gouttière et sont
-   séparées par le même écart. */
+   Les sections se suivent de près : 56 px sur ordinateur, 40 au
+   téléphone. Le titre et son action tiennent sur une ligne. */
 .section {
-    padding: var(--space-7) var(--gutter) 0;
+    padding: clamp(40px, 4.5vw, 56px) var(--gutter) 0;
 }
 
-/* ── En-tête de section ──
-   Le titre ne vient jamais seul : il porte son action sur la même
-   ligne, comme les rayons de l'App Store. Pas de phrase dessous. */
 .section-head {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
     justify-content: space-between;
-    gap: var(--space-2) var(--space-5);
-    margin-bottom: var(--space-5);
+    gap: var(--space-1) var(--space-4);
+    margin-bottom: var(--space-3);
 }
 
 .section-head__title {
-    font-size: var(--text-xl);
+    font-size: clamp(1.25rem, 1.6vw, 1.5rem);
     font-weight: var(--w-strong);
-    letter-spacing: -0.035em;
-    line-height: 1.18;
-    text-wrap: balance;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
 }
 
-/* ── Case d'icône ──
-   D'après Tabbed Feature Categories (21st.dev) : un carré de 44 px
-   aux coins de 8 px. Au survol de la carte, il passe à l'encre. */
-.icon-box {
+/* ── Pastille d'icône ──
+   32 px, coins de 8 px, liseré fin : dessinée, pas remplie. Au
+   survol de sa carte, elle passe à l'encre. */
+.icon-chip {
     display: grid;
     place-items: center;
-    width: 44px;
-    height: 44px;
+    width: 32px;
+    height: 32px;
     flex: none;
     border-radius: var(--radius-sm);
-    background: rgba(255, 255, 255, 0.7);
-    box-shadow: var(--edge);
+    background: var(--surface-sunk);
+    box-shadow: inset 0 0 0 1px var(--surface-line);
     color: var(--ink);
     transition: background-color var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out);
 }
 
-/* ── Lien fléché ──
-   L'action secondaire : un mot souligné et une flèche qui avance. */
+.icon-chip .icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* ── Lien fléché ── */
 .link-arrow {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: 6px;
     min-height: 44px;
     font-size: var(--text-sm);
     font-weight: var(--w-strong);
     letter-spacing: -0.01em;
     white-space: nowrap;
     color: var(--ink);
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.35em;
-    text-decoration-color: var(--line-strong);
-    transition: text-decoration-color var(--dur-2) var(--ease-out);
 }
 
 .link-arrow .icon {
+    width: 16px;
+    height: 16px;
     transition: translate var(--dur-2) var(--ease-out);
 }
 
-.link-arrow:hover {
-    text-decoration-color: var(--accent);
-}
-
-/* Au doigt, un survol reste collé après le toucher : la flèche ne
-   bouge qu'avec une vraie souris. */
 @media (hover: hover) and (pointer: fine) {
     .link-arrow:hover .icon {
         translate: 3px 0;
@@ -115,10 +116,9 @@
 }
 
 /* ── Icône ──
-   Un seul jeu (Lucide), une seule épaisseur de trait, quelle que soit
-   la taille. Les tracés vivent une fois dans le sprite de la page. */
-/* Hors du flux mais pas en display: none : certains moteurs
-   refusent alors de servir les symboles aux balises <use>. */
+   Un seul jeu (Lucide), une seule épaisseur de trait. Les tracés
+   vivent une fois dans le sprite de la page ; hors du flux mais pas
+   en display: none, que certains moteurs refusent de servir à <use>. */
 .sprite {
     position: absolute;
     width: 0;

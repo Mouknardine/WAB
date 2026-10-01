@@ -1,8 +1,8 @@
 # WAB. — Design système
 
-Version 3 — 1er octobre 2026. Branche `refonte-studio`, appliquée à l'accueil et au socle commun (barre, boutons, jetons, icônes). Les autres pages suivront une fois l'accueil validé.
+Version 4 — 2 octobre 2026. Branche `refonte-studio`, appliquée à l'accueil et au socle commun (barre, boutons, jetons, icônes). Les autres pages suivront une fois l'accueil validé.
 
-Historique de l'accueil : version 1 (plaques remplies de texte, commit `9ec3f4f`) jugée « trop de texte » ; version 2 (sigle géant dont le point s'ouvre sur le travail, commit `db37cd1`) écartée au profit d'une direction donnée par Eliott — [Vucko](https://vucko.co/) et [Apple Developer Design](https://developer.apple.com/design/) : « pas mal de cartes, hyper clean et clair », avec ses composants favoris de 21st.dev.
+Historique de l'accueil : version 1 (plaques remplies de texte, `9ec3f4f`) « trop de texte » ; version 2 (sigle géant, `db37cd1`) écartée ; version 3 (cartes de verre rose translucide, `436aa19`) — la bonne structure, d'après [Vucko](https://vucko.co/) et [Apple Developer Design](https://developer.apple.com/design/), mais jugée « cheap » : « plus serré et qualitatif ». La version 4 garde la structure et refait l'exécution.
 
 ---
 
@@ -19,13 +19,30 @@ Ce qui est écarté, et pourquoi :
 - les repères et filets au-dessus des titres, l'en-tête titre/phrase en deux colonnes (rejetés) ;
 - les chiffres en exposant, les projets en très grand à tailles alternées, les ornements (rejetés).
 
-### L'accueil, version 3 : des cartes de verre, claires et égales
+### L'accueil, version 4 : des cartes nettes, serrées, sur un ciel rose
 
-Tout le contenu de l'accueil vit dans des cartes de verre clair posées sur le ciel rose animé, aux coins de 18 px, de même matière, rangées sur des grilles régulières. Une carte porte une image ou une icône, un titre en gras et une ligne au plus. Le travail est montré en photos de mise en situation ; le texte détaillé vit sur Work, Services et About. Le décor (ciel, grain, oiseaux, Sligoil) reste l'identité ; la grille de cartes apporte la clarté « à la Apple ».
+Ce qui faisait « bon marché » en version 3, et la correction :
+
+| Défaut | Correction |
+|---|---|
+| Cartes en verre rose translucide sur un fond rose : rien ne se détache. | Surface presque opaque (`--surface`, blanc à 95 %), liseré d'un pixel (`--surface-line`), ombre à peine posée au repos, levée seulement au survol (Vercel, Linear). Le rose devient le cadre. |
+| Trop d'air : grandes marges, cartes à moitié vides, premier écran vide. | Gouttière unique de 12 px (`--gap`), sections à 40–56 px, cartes taillées à leur contenu ; l'ouverture tient en deux cartes côte à côte dès le premier écran ; la carte du studio est remplie par les trois portraits. |
+| Hiérarchie lâche. | Titres de section à 20–24 px, titres de carte à 15 px, texte à 13 px dans un vrai gris de surface (`--surface-muted`, 6,4:1) ; petites capitales de 11 px réservées aux intitulés du pied de page. |
+| Pastilles d'icône lourdes, rayons disparates. | Pastilles de 32 px, liseré fin, icône de 16 px ; deux rayons seulement — 16 px dehors (`--r-card`), 8 px dedans (`--r-inner`), images posées à 8 px du bord. |
+| Oiseaux denses derrière les cartes. | Densité « calme » sur l'accueil : ils restent visibles dans les marges et entre les sections. |
 
 ---
 
 ## 2. Références retenues
+
+**Version 4 — mesures des grilles serrées (Mobbin)**
+
+| Référence | Mesure retenue |
+|---|---|
+| [Linear — cartes « Plan »](https://mobbin.com/sites/sections/d3332e07-9e99-40d1-a60d-0921233bd100) | Gouttière serrée (8 px), liseré d'un pixel sans ombre, titre de carte à 15 px précédé d'une icône, texte gris à 13–14 px. |
+| [Vercel — cartes à liseré](https://mobbin.com/sites/sections/78c2180a-54ba-4e20-91af-a5f5a8d55eab) | Détachement par le seul liseré (`rgba(0,0,0,.08)`), rayon de 12 px, visuel intérieur à 8 px. |
+| [Apple Newsroom — cartes](https://mobbin.com/sites/sections/d168a419-654a-48f5-8472-922efdcc2931) | Surface blanche franche, image collée au haut de la carte, petites capitales grises de 11–12 px. |
+| [Pentagram — projets](https://mobbin.com/sites/sections/933958ee-3d23-4692-bcb7-650e850a84ee) | Grille de projets à 10–12 px, nom en 15 px, contexte en gris dessous. |
 
 **Version 3 — direction donnée par Eliott**
 
@@ -166,29 +183,29 @@ Courbes : `--ease` (entrée, ressort doux), `--ease-out` (réponse au geste). Du
 
 **Barre de navigation** — plaque de verre flottante, coins 12 px. Au repos, tout en haut de la page, presque transparente et sans ombre ; dès 10 px de défilement, le verre s'épaissit et se floute (`.is-scrolled`, `js/nav.js`, d'après Header 3). Sigle à gauche, trois liens et un bouton d'encre « Contact » à droite. Sur téléphone, quatre carrés qui pivotent ouvrent le panneau, dont le contenu arrive de 97 % à 100 % en fondu (`css/nav-panel.css`).
 
-**Carte** (`.card`, `css/plate.css`) — le bloc de contenu : verre clair à 66 %, flou de 22 px, coins 18 px, liseré et ombre douce. Variante `.surface-ink` : une seule par page, pour l'appel au contact. Jamais une carte dans une carte. Une ligne de texte au plus.
+**Carte** (`.card`, `css/plate.css`) — surface presque opaque (`--surface`), liseré d'un pixel, ombre levée seulement au survol d'une carte-lien, rayon de 16 px ; ce qui est posé dedans (images, pastilles) est à 8 px du bord, au rayon de 8 px. Gouttière unique de 12 px. Variante `.surface-ink` : une seule par page. Une ligne de texte au plus.
 
 **En-tête de section** (`.section-head`) — le titre porte son action sur la même ligne (« Travaux choisis » / « Tous les projets → »), comme les rayons de l'App Store. Pas d'étiquette, pas de filet au-dessus, pas de phrase dessous.
 
-**Introduction de page** — une phrase d'intention courte en grand, une seule action, de l'air au-dessus (Vucko). Sur l'accueil, le projet à la une suit immédiatement : la preuve est posée sous la promesse.
+**Ouverture** — deux cartes côte à côte, à la même hauteur : la promesse (titre, trois métiers en pastilles, deux boutons, le lieu et l'heure) et le projet à la une (capture 16/9, nom, client, « Voir le projet »). Au téléphone, l'une sous l'autre, sans les pastilles.
 
-**Projet à la une** — une grande carte : la capture du site sur deux tiers, le nom, le client en une ligne et « Voir le projet » sur le tiers restant ; l'image au-dessus sur téléphone.
+**Pastille d'icône** (`.icon-chip`) — 32 px, rayon 8 px, fond `--surface-sunk`, liseré fin, icône de 16 px ; elle passe à l'encre au survol de sa carte.
 
 **Onglets** (`css/home-tabs.css`, `js/home/tabs.js`) — motif ARIA complet (flèches, Début, Fin ; un seul onglet dans l'ordre de tabulation). Sans script, les panneaux se lisent à la suite. Sur téléphone, les onglets se partagent la largeur et les cartes deviennent des rangées basses icône + titre.
 
-**Bento** (`css/home-bento.css`) — six colonnes : une grande carte pour les personnes (visages, une phrase), cinq petites pour des faits vérifiés. Deux colonnes sur tablette, une sur téléphone.
+**Bento** (`css/home-bento.css`) — quatre colonnes : une carte de deux sur deux remplie par les trois portraits de l'équipe, quatre cartes d'une case pour des faits vérifiés. Deux colonnes sur tablette, une au téléphone (rangées basses pastille + titre).
 
 **Boutons** — pilule pleine d'encre (une seule action principale par plaque) ; pilule fantôme à contour pour une action secondaire. Montée de 2 px au survol, enfoncement à 97 % à l'appui. Sur les écrans de moins de 380 px, le libellé descend d'un cran pour tenir sur une ligne.
 
 **Lien fléché** (`.link-arrow`) — l'action secondaire : un mot souligné et une flèche qui avance de 3 px au survol.
 
-**Carte projet** (`css/home-work.css`) — la photo de mise en situation au format 4/5, puis le nom en gras et le client en une ligne, et une flèche diagonale. Trois colonnes, deux sur tablette ; au téléphone, une rangée qui défile au doigt.
+**Carte projet** (`css/home-work.css`) — huit cartes sur quatre colonnes : photo de mise en situation 4/5 posée à 8 px du bord, nom en 15 px et client en 13 px, chacun sur une ligne. Deux colonnes sur tablette ; au téléphone, une rangée qui défile au doigt.
 
-**Visages** — les trois avatars ronds de 56 px, chevauchés d'un quart, dans la grande carte du studio.
+**Portraits** — `team-*-400.webp` (400 × 500, 18 à 27 Ko), cadrés sur le visage (`object-position: 50% 20%`).
 
-**Pied de page** (`.site-footer`, `css/footer.css`) — deux cartes : la marque sur le seul aplat de rose foncé de la page (`--pink-deep`, texte blanc à 7,7:1), le slogan et la signature ; les liens en verre clair (pages, email). Sur l'accueil d'abord.
+**Pied de page** (`.site-footer`, `css/footer.css`) — deux cartes taillées à leur contenu : la marque sur `--pink-deep` (seul aplat de rose de la page), les liens en surface claire avec intitulés en petites capitales de 11 px.
 
-**Les oiseaux** — ils volent derrière toutes les cartes et se voilent devant le texte (`js/birds/`). Pas d'oiseau posé, pas d'autre surprise : la clarté prime.
+**Les oiseaux** — densité « calme » sur l'accueil depuis la version 4 : ils volent dans les marges et entre les sections, sans encombrer les cartes.
 
 ---
 

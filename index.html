@@ -347,18 +347,18 @@
     <link rel="preload" href="assets/fonts/Sligoil-MicroBold.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/base.css?v=31">
+    <link rel="stylesheet" href="css/base.css?v=32">
     <link rel="stylesheet" href="css/nav.css?v=19">
     <link rel="stylesheet" href="css/nav-panel.css?v=1">
     <link rel="stylesheet" href="css/contact-modal.css?v=7">
     <link rel="stylesheet" href="css/contact-form.css?v=3">
-    <link rel="stylesheet" href="css/plate.css?v=3">
-    <link rel="stylesheet" href="css/home-hero.css?v=2">
-    <link rel="stylesheet" href="css/home-work.css?v=2">
-    <link rel="stylesheet" href="css/home-tabs.css?v=1">
-    <link rel="stylesheet" href="css/home-bento.css?v=1">
-    <link rel="stylesheet" href="css/home-contact.css?v=1">
-    <link rel="stylesheet" href="css/footer.css?v=8">
+    <link rel="stylesheet" href="css/plate.css?v=4">
+    <link rel="stylesheet" href="css/home-hero.css?v=3">
+    <link rel="stylesheet" href="css/home-work.css?v=3">
+    <link rel="stylesheet" href="css/home-tabs.css?v=2">
+    <link rel="stylesheet" href="css/home-bento.css?v=2">
+    <link rel="stylesheet" href="css/home-contact.css?v=2">
+    <link rel="stylesheet" href="css/footer.css?v=9">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=2" defer></script>
@@ -371,7 +371,7 @@
     <script type="module" src="js/home/index.js?v=2"></script>
 </head>
 
-<body class="home" data-birds="dense">
+<body class="home" data-birds="calm">
 
     <!-- Icônes — Lucide (licence ISC), trait réglé en CSS (.icon). -->
     <svg class="sprite" aria-hidden="true" focusable="false">
@@ -465,330 +465,373 @@
 
     <main id="contenu" tabindex="-1">
 
-        <!-- L’OUVERTURE — une phrase, une action, de l’air (Vucko). -->
-        <section class="hero" aria-labelledby="heroTitle">
-            <!-- La fin du titre reste lue par Google et la navigation
-                 vocale : « agence web » et « site internet » à Lausanne
-                 doivent rester dans le H1 de l’accueil. -->
-            <h1 class="hero__title" id="heroTitle">
-                Design et code, sous le même toit.<span class="sr-only"> WeAreBrothers, agence web et création de site internet à Lausanne.</span>
-            </h1>
-            <div>
-                <a href="/realisations" class="btn btn--solid"><span>Voir nos réalisations</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+        <!-- L’OUVERTURE — la promesse et le projet à la une, côte à côte,
+             à la même hauteur, dès le premier écran. -->
+        <section class="opening" aria-labelledby="heroTitle">
+            <div class="card intro">
+                <div>
+                    <!-- La fin du titre reste lue par Google et la navigation
+                         vocale : « agence web » et « site internet » à Lausanne
+                         doivent rester dans le H1 de l’accueil. -->
+                    <h1 class="intro__title" id="heroTitle">
+                        Design et code, sous le même toit.<span class="sr-only"> WeAreBrothers, agence web et création de site internet à Lausanne.</span>
+                    </h1>
+                    <ul class="intro__tags" aria-label="Nos métiers">
+                        <li><a href="/services">Sites internet</a></li>
+                        <li><a href="/services">Applications de gestion</a></li>
+                        <li><a href="/services">Image de marque</a></li>
+                    </ul>
+                </div>
+                <div class="intro__bottom">
+                    <div class="intro__actions">
+                        <a href="/realisations" class="btn btn--solid btn--sm"><span>Voir nos réalisations</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+                        <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="btn btn--ghost btn--sm">Démarrer un projet</a>
+                    </div>
+                    <p class="intro__meta">
+                        <span>Lausanne, Suisse — <time data-local-time>--:--</time></span>
+                        <span class="studio-status" data-local-status hidden></span>
+                    </p>
+                </div>
             </div>
+
+            <article class="card feature" aria-labelledby="featureName">
+                <div class="feature__media">
+                    <img src="assets/images/shot-zinema-800.webp"
+                        srcset="assets/images/shot-zinema-800.webp 800w, assets/images/shot-zinema-1600.webp 1600w"
+                        sizes="(min-width: 1000px) 55vw, 92vw" alt="Page d’accueil du site de Zinéma"
+                        width="1600" height="1000" fetchpriority="high" decoding="async">
+                </div>
+                <div class="feature__bar">
+                    <div>
+                        <h2 class="feature__name" id="featureName">Zinéma</h2>
+                        <p class="feature__client">Cinéma d’art et essai, Lausanne</p>
+                    </div>
+                    <a href="/realisations#zinema" class="btn btn--solid btn--sm"><span>Voir le projet</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+                </div>
+            </article>
         </section>
 
-        <!-- À LA UNE — un projet mis en avant, son client, son lien. -->
-        <article class="card feature reveal" aria-labelledby="featureName">
-            <div class="feature__media">
-                <img src="assets/images/shot-zinema-800.webp"
-                    srcset="assets/images/shot-zinema-800.webp 800w, assets/images/shot-zinema-1600.webp 1600w"
-                    sizes="(min-width: 900px) 60vw, 92vw" alt="Page d’accueil du site de Zinéma"
-                    width="1600" height="1000" fetchpriority="high" decoding="async">
+        <!-- TRAVAUX CHOISIS — huit cartes égales : photo, nom, client. -->
+        <section class="section" aria-labelledby="workTitle">
+            <div class="section-head">
+                <h2 class="section-head__title" id="workTitle">Travaux choisis</h2>
+                <a href="/realisations" class="link-arrow">Tous les projets <svg class="icon" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
             </div>
-            <div class="feature__body">
-                <div>
-                    <h2 class="feature__name" id="featureName">Zinéma</h2>
-                    <p class="feature__client">Cinéma d’art et essai, Lausanne</p>
-                </div>
-                <a href="/realisations#zinema" class="btn btn--solid"><span>Voir le projet</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
-            </div>
-        </article>
-
-        <!-- TRAVAUX CHOISIS — des cartes égales : photo, nom, client. -->
-        <section class="section reveal" aria-labelledby="workTitle">
-                <div class="section-head">
-                    <h2 class="section-head__title" id="workTitle">Travaux choisis</h2>
-                    <a href="/realisations" class="link-arrow">Tous les projets <svg class="icon" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
-                </div>
-                <ul class="work-cards">
-                    <li>
-                        <a class="card work-card" href="/realisations#alliani">
-                            <div class="work-card__media">
-                                <img src="assets/images/work-alliani-720.webp"
-                                    srcset="assets/images/work-alliani-720.webp 720w, assets/images/work-alliani-1440.webp 1440w"
-                                    sizes="(min-width: 1000px) 30vw, (min-width: 700px) 45vw, 78vw" alt=""
-                                    width="720" height="900" loading="lazy" decoding="async">
+            <ul class="work-cards">
+                <li>
+                    <a class="card work-card" href="/realisations#alliani">
+                        <div class="work-card__media">
+                            <img src="assets/images/work-alliani-720.webp"
+                                srcset="assets/images/work-alliani-720.webp 720w, assets/images/work-alliani-1440.webp 1440w"
+                                sizes="(min-width: 1000px) 22vw, (min-width: 700px) 45vw, 66vw" alt=""
+                                width="720" height="900" loading="lazy" decoding="async">
+                        </div>
+                        <div class="work-card__body">
+                            <div class="work-card__text">
+                                <h3 class="work-card__name">Maison Alliani</h3>
+                                <p class="work-card__client">Haute joaillerie</p>
                             </div>
-                            <div class="work-card__body">
-                                <div>
-                                    <h3 class="work-card__name">Maison Alliani</h3>
-                                    <p class="work-card__client">Haute joaillerie</p>
-                                </div>
-                                <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg>
+                            <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card work-card" href="/realisations#amarte">
+                        <div class="work-card__media">
+                            <img src="assets/images/work-amarte-720.webp"
+                                srcset="assets/images/work-amarte-720.webp 720w, assets/images/work-amarte-1440.webp 1440w"
+                                sizes="(min-width: 1000px) 22vw, (min-width: 700px) 45vw, 66vw" alt=""
+                                width="720" height="900" loading="lazy" decoding="async">
+                        </div>
+                        <div class="work-card__body">
+                            <div class="work-card__text">
+                                <h3 class="work-card__name">Amarte Studio</h3>
+                                <p class="work-card__client">Yoga et Pilates, Épalinges</p>
                             </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="card work-card" href="/realisations#amarte">
-                            <div class="work-card__media">
-                                <img src="assets/images/work-amarte-720.webp"
-                                    srcset="assets/images/work-amarte-720.webp 720w, assets/images/work-amarte-1440.webp 1440w"
-                                    sizes="(min-width: 1000px) 30vw, (min-width: 700px) 45vw, 78vw" alt=""
-                                    width="720" height="900" loading="lazy" decoding="async">
+                            <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card work-card" href="/realisations#central">
+                        <div class="work-card__media">
+                            <img src="assets/images/work-central-720.webp"
+                                srcset="assets/images/work-central-720.webp 720w, assets/images/work-central-1440.webp 1440w"
+                                sizes="(min-width: 1000px) 22vw, (min-width: 700px) 45vw, 66vw" alt=""
+                                width="720" height="900" loading="lazy" decoding="async">
+                        </div>
+                        <div class="work-card__body">
+                            <div class="work-card__text">
+                                <h3 class="work-card__name">Le P’tit Central</h3>
+                                <p class="work-card__client">Café-restaurant, Lausanne</p>
                             </div>
-                            <div class="work-card__body">
-                                <div>
-                                    <h3 class="work-card__name">Amarte Studio</h3>
-                                    <p class="work-card__client">Yoga et Pilates, Épalinges</p>
-                                </div>
-                                <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg>
+                            <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card work-card" href="/realisations#dj">
+                        <div class="work-card__media">
+                            <img src="assets/images/work-dj-720.webp"
+                                srcset="assets/images/work-dj-720.webp 720w, assets/images/work-dj-1440.webp 1440w"
+                                sizes="(min-width: 1000px) 22vw, (min-width: 700px) 45vw, 66vw" alt=""
+                                width="720" height="900" loading="lazy" decoding="async">
+                        </div>
+                        <div class="work-card__body">
+                            <div class="work-card__text">
+                                <h3 class="work-card__name">LAZIZZE DJ</h3>
+                                <p class="work-card__client">DJ house, Lausanne</p>
                             </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="card work-card" href="/realisations#central">
-                            <div class="work-card__media">
-                                <img src="assets/images/work-central-720.webp"
-                                    srcset="assets/images/work-central-720.webp 720w, assets/images/work-central-1440.webp 1440w"
-                                    sizes="(min-width: 1000px) 30vw, (min-width: 700px) 45vw, 78vw" alt=""
-                                    width="720" height="900" loading="lazy" decoding="async">
+                            <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card work-card" href="/realisations#memo">
+                        <div class="work-card__media">
+                            <img src="assets/images/work-memo-720.webp"
+                                srcset="assets/images/work-memo-720.webp 720w, assets/images/work-memo-1440.webp 1440w"
+                                sizes="(min-width: 1000px) 22vw, (min-width: 700px) 45vw, 66vw" alt=""
+                                width="720" height="900" loading="lazy" decoding="async">
+                        </div>
+                        <div class="work-card__body">
+                            <div class="work-card__text">
+                                <h3 class="work-card__name">LE MEMO</h3>
+                                <p class="work-card__client">Collectif artistique, Lausanne</p>
                             </div>
-                            <div class="work-card__body">
-                                <div>
-                                    <h3 class="work-card__name">Le P’tit Central</h3>
-                                    <p class="work-card__client">Café-restaurant, Lausanne</p>
-                                </div>
-                                <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg>
+                            <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card work-card" href="/realisations#commissione">
+                        <div class="work-card__media">
+                            <img src="assets/images/work-commissione-720.webp"
+                                srcset="assets/images/work-commissione-720.webp 720w, assets/images/work-commissione-1440.webp 1440w"
+                                sizes="(min-width: 1000px) 22vw, (min-width: 700px) 45vw, 66vw" alt=""
+                                width="720" height="900" loading="lazy" decoding="async">
+                        </div>
+                        <div class="work-card__body">
+                            <div class="work-card__text">
+                                <h3 class="work-card__name">Commissione Entretien</h3>
+                                <p class="work-card__client">Entretien, Bavois</p>
                             </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="card work-card" href="/realisations#dj">
-                            <div class="work-card__media">
-                                <img src="assets/images/work-dj-720.webp"
-                                    srcset="assets/images/work-dj-720.webp 720w, assets/images/work-dj-1440.webp 1440w"
-                                    sizes="(min-width: 1000px) 30vw, (min-width: 700px) 45vw, 78vw" alt=""
-                                    width="720" height="900" loading="lazy" decoding="async">
+                            <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card work-card" href="/realisations#nadege">
+                        <div class="work-card__media">
+                            <img src="assets/images/work-nadege-720.webp"
+                                srcset="assets/images/work-nadege-720.webp 720w, assets/images/work-nadege-1440.webp 1440w"
+                                sizes="(min-width: 1000px) 22vw, (min-width: 700px) 45vw, 66vw" alt=""
+                                width="720" height="900" loading="lazy" decoding="async">
+                        </div>
+                        <div class="work-card__body">
+                            <div class="work-card__text">
+                                <h3 class="work-card__name">Nadège Mouine</h3>
+                                <p class="work-card__client">Portfolio d’architecture</p>
                             </div>
-                            <div class="work-card__body">
-                                <div>
-                                    <h3 class="work-card__name">LAZIZZE DJ</h3>
-                                    <p class="work-card__client">DJ house, Lausanne</p>
-                                </div>
-                                <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg>
+                            <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card work-card" href="/realisations#slack">
+                        <div class="work-card__media">
+                            <img src="assets/images/work-slack-720.webp"
+                                srcset="assets/images/work-slack-720.webp 720w, assets/images/work-slack-1440.webp 1440w"
+                                sizes="(min-width: 1000px) 22vw, (min-width: 700px) 45vw, 66vw" alt=""
+                                width="720" height="900" loading="lazy" decoding="async">
+                        </div>
+                        <div class="work-card__body">
+                            <div class="work-card__text">
+                                <h3 class="work-card__name">La Slack</h3>
+                                <p class="work-card__client">Portfolio créatif</p>
                             </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="card work-card" href="/realisations#commissione">
-                            <div class="work-card__media">
-                                <img src="assets/images/work-commissione-720.webp"
-                                    srcset="assets/images/work-commissione-720.webp 720w, assets/images/work-commissione-1440.webp 1440w"
-                                    sizes="(min-width: 1000px) 30vw, (min-width: 700px) 45vw, 78vw" alt=""
-                                    width="720" height="900" loading="lazy" decoding="async">
-                            </div>
-                            <div class="work-card__body">
-                                <div>
-                                    <h3 class="work-card__name">Commissione Entretien</h3>
-                                    <p class="work-card__client">Entretien, Bavois</p>
-                                </div>
-                                <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="card work-card" href="/realisations#nadege">
-                            <div class="work-card__media">
-                                <img src="assets/images/work-nadege-720.webp"
-                                    srcset="assets/images/work-nadege-720.webp 720w, assets/images/work-nadege-1440.webp 1440w"
-                                    sizes="(min-width: 1000px) 30vw, (min-width: 700px) 45vw, 78vw" alt=""
-                                    width="720" height="900" loading="lazy" decoding="async">
-                            </div>
-                            <div class="work-card__body">
-                                <div>
-                                    <h3 class="work-card__name">Nadège Mouine</h3>
-                                    <p class="work-card__client">Portfolio d’architecture</p>
-                                </div>
-                                <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
+                            <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg>
+                        </div>
+                    </a>
+                </li>
+            </ul>
         </section>
 
         <!-- CE QUE NOUS FAISONS — trois onglets, une ligne par carte. -->
-        <section class="section tabs reveal" data-tabs aria-labelledby="skillsTitle">
-                <div class="section-head">
-                    <h2 class="section-head__title" id="skillsTitle">Ce que nous faisons</h2>
-                    <a href="/services" class="link-arrow">Tous les services <svg class="icon" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
-                </div>
-                <div class="tabs__list" role="tablist" aria-label="Nos métiers">
-                    <button type="button" class="tabs__tab" role="tab" id="tab-tech" aria-controls="panel-tech" aria-selected="true">Technologie</button>
-                    <button type="button" class="tabs__tab" role="tab" id="tab-brand" aria-controls="panel-brand" aria-selected="false">Image de marque</button>
-                    <button type="button" class="tabs__tab" role="tab" id="tab-advice" aria-controls="panel-advice" aria-selected="false">Conseil</button>
-                </div>
-                <div class="tabs__panel" role="tabpanel" id="panel-tech" aria-labelledby="tab-tech" tabindex="0">
-                    <ul class="skill-grid">
-                        <li class="card skill">
-                            <span class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-app-window" /></svg></span>
-                            <div>
-                                <h3 class="skill__title">Sites sur mesure</h3>
-                                <p class="skill__text">Codés de A à Z, rapides sur mobile, pensés pour Google.</p>
-                            </div>
-                        </li>
-                        <li class="card skill">
-                            <span class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-layout-dashboard" /></svg></span>
-                            <div>
-                                <h3 class="skill__title">Applications de gestion</h3>
-                                <p class="skill__text">Dessinées autour de votre métier, livrées module par module.</p>
-                            </div>
-                        </li>
-                        <li class="card skill">
-                            <span class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-plug" /></svg></span>
-                            <div>
-                                <h3 class="skill__title">Intégrations</h3>
-                                <p class="skill__text">Caisse, CMS, boutique&nbsp;: vous gérez vos contenus seul.</p>
-                            </div>
-                        </li>
-                        <li class="card skill">
-                            <span class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-workflow" /></svg></span>
-                            <div>
-                                <h3 class="skill__title">Automatisation</h3>
-                                <p class="skill__text">Devis, factures et suivi client se font tout seuls.</p>
-                            </div>
-                        </li>
-                        <li class="card skill">
-                            <span class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-mail" /></svg></span>
-                            <div>
-                                <h3 class="skill__title">Newsletters</h3>
-                                <p class="skill__text">Créées et envoyées automatiquement.</p>
-                            </div>
-                        </li>
-                        <li class="card skill">
-                            <span class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-sparkles" /></svg></span>
-                            <div>
-                                <h3 class="skill__title">Intelligence artificielle</h3>
-                                <p class="skill__text">Intégrée là où elle fait gagner du temps.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tabs__panel" role="tabpanel" id="panel-brand" aria-labelledby="tab-brand" tabindex="0">
-                    <ul class="skill-grid">
-                        <li class="card skill">
-                            <span class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-pen-tool" /></svg></span>
-                            <div>
-                                <h3 class="skill__title">Identité visuelle</h3>
-                                <p class="skill__text">Logo et identité, cohérents sur chaque support.</p>
-                            </div>
-                        </li>
-                        <li class="card skill">
-                            <span class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-id-card" /></svg></span>
-                            <div>
-                                <h3 class="skill__title">Supports imprimés</h3>
-                                <p class="skill__text">Cartes de visite et imprimés, dans la même ligne.</p>
-                            </div>
-                        </li>
-                        <li class="card skill">
-                            <span class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-clapperboard" /></svg></span>
-                            <div>
-                                <h3 class="skill__title">Motion design</h3>
-                                <p class="skill__text">Le mouvement qui fait vivre la marque à l’écran.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tabs__panel" role="tabpanel" id="panel-advice" aria-labelledby="tab-advice" tabindex="0">
-                    <ul class="skill-grid">
-                        <li class="card skill">
-                            <span class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-compass" /></svg></span>
-                            <div>
-                                <h3 class="skill__title">Choisir ses outils</h3>
-                                <p class="skill__text">Les bons logiciels, avant la première ligne de code.</p>
-                            </div>
-                        </li>
-                        <li class="card skill">
-                            <span class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-list-checks" /></svg></span>
-                            <div>
-                                <h3 class="skill__title">Automatiser</h3>
-                                <p class="skill__text">Repérer ce qui peut se faire tout seul.</p>
-                            </div>
-                        </li>
-                        <li class="card skill">
-                            <span class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-brain" /></svg></span>
-                            <div>
-                                <h3 class="skill__title">L’IA, à sa place</h3>
-                                <p class="skill__text">Là où elle sert vraiment, et pas ailleurs.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-        </section>
-
-        <!-- LE STUDIO — les personnes, puis des faits vérifiés. -->
-        <section class="section reveal" aria-labelledby="studioTitle">
-                <div class="section-head">
-                    <h2 class="section-head__title" id="studioTitle">Le studio</h2>
-                    <a href="/studio" class="link-arrow">Rencontrer l’équipe <svg class="icon" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
-                </div>
-                <ul class="bento">
-                    <li class="card bento__cell bento__cell--lead">
-                        <ul class="faces">
-                            <li><img src="assets/images/avatar-eliott.webp" alt="Eliott Pina" width="144" height="144" loading="lazy" decoding="async"></li>
-                            <li><img src="assets/images/avatar-matt.webp" alt="Matt Pina" width="144" height="144" loading="lazy" decoding="async"></li>
-                            <li><img src="assets/images/avatar-ivan.webp" alt="Ivan Jakovlevski" width="144" height="144" loading="lazy" decoding="async"></li>
-                        </ul>
+        <section class="section tabs" data-tabs aria-labelledby="skillsTitle">
+            <div class="section-head">
+                <h2 class="section-head__title" id="skillsTitle">Ce que nous faisons</h2>
+                <a href="/services" class="link-arrow">Tous les services <svg class="icon" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+            </div>
+            <div class="tabs__list" role="tablist" aria-label="Nos métiers">
+                <button type="button" class="tabs__tab" role="tab" id="tab-tech" aria-controls="panel-tech" aria-selected="true">Technologie</button>
+                <button type="button" class="tabs__tab" role="tab" id="tab-brand" aria-controls="panel-brand" aria-selected="false">Image de marque</button>
+                <button type="button" class="tabs__tab" role="tab" id="tab-advice" aria-controls="panel-advice" aria-selected="false">Conseil</button>
+            </div>
+            <div class="tabs__panel" role="tabpanel" id="panel-tech" aria-labelledby="tab-tech" tabindex="0">
+                <ul class="skill-grid">
+                    <li class="card skill">
+                        <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-app-window" /></svg></span>
                         <div>
-                            <h3 class="bento__title">Deux frères, un seul interlocuteur.</h3>
-                            <p class="bento__text">Eliott dessine, Matt développe, Ivan vous suit.</p>
+                            <h3 class="skill__title">Sites sur mesure</h3>
+                            <p class="skill__text">Codés de A à Z, rapides sur mobile, pensés pour Google.</p>
                         </div>
                     </li>
-                    <li class="card bento__cell">
-                        <span class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-clock" /></svg></span>
+                    <li class="card skill">
+                        <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-layout-dashboard" /></svg></span>
                         <div>
-                            <h3 class="bento__title">Réponse sous 24&nbsp;h ouvrées</h3>
-                            <p class="bento__text">Sans engagement.</p>
+                            <h3 class="skill__title">Applications de gestion</h3>
+                            <p class="skill__text">Dessinées autour de votre métier, livrées module par module.</p>
                         </div>
                     </li>
-                    <li class="card bento__cell">
-                        <span class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-calendar" /></svg></span>
+                    <li class="card skill">
+                        <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-plug" /></svg></span>
                         <div>
-                            <h3 class="bento__title">Site vitrine en 3&nbsp;à&nbsp;6&nbsp;semaines</h3>
-                            <p class="bento__text">Davantage pour du sur-mesure.</p>
+                            <h3 class="skill__title">Intégrations</h3>
+                            <p class="skill__text">Caisse, CMS, boutique&nbsp;: vous gérez vos contenus seul.</p>
                         </div>
                     </li>
-                    <li class="card bento__cell">
-                        <span class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-server" /></svg></span>
+                    <li class="card skill">
+                        <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-workflow" /></svg></span>
                         <div>
-                            <h3 class="bento__title">Hébergement suisse</h3>
-                            <p class="bento__text">Inclus avec votre site.</p>
+                            <h3 class="skill__title">Automatisation</h3>
+                            <p class="skill__text">Devis, factures et suivi client se font tout seuls.</p>
                         </div>
                     </li>
-                    <li class="card bento__cell">
-                        <span class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-wallet" /></svg></span>
+                    <li class="card skill">
+                        <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-mail" /></svg></span>
                         <div>
-                            <h3 class="bento__title">Paiement en plusieurs fois</h3>
-                            <p class="bento__text">En mensualités, si vous le souhaitez.</p>
+                            <h3 class="skill__title">Newsletters</h3>
+                            <p class="skill__text">Créées et envoyées automatiquement.</p>
                         </div>
                     </li>
-                    <li class="card bento__cell">
-                        <span class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-map-pin" /></svg></span>
+                    <li class="card skill">
+                        <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-sparkles" /></svg></span>
                         <div>
-                            <h3 class="bento__title">Lausanne</h3>
-                            <p class="bento__text bento__where"><time data-local-time>--:--</time><span class="studio-status" data-local-status hidden></span></p>
+                            <h3 class="skill__title">Intelligence artificielle</h3>
+                            <p class="skill__text">Intégrée là où elle fait gagner du temps.</p>
                         </div>
                     </li>
                 </ul>
+            </div>
+            <div class="tabs__panel" role="tabpanel" id="panel-brand" aria-labelledby="tab-brand" tabindex="0">
+                <ul class="skill-grid">
+                    <li class="card skill">
+                        <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-pen-tool" /></svg></span>
+                        <div>
+                            <h3 class="skill__title">Identité visuelle</h3>
+                            <p class="skill__text">Logo et identité, cohérents sur chaque support.</p>
+                        </div>
+                    </li>
+                    <li class="card skill">
+                        <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-id-card" /></svg></span>
+                        <div>
+                            <h3 class="skill__title">Supports imprimés</h3>
+                            <p class="skill__text">Cartes de visite et imprimés, dans la même ligne.</p>
+                        </div>
+                    </li>
+                    <li class="card skill">
+                        <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-clapperboard" /></svg></span>
+                        <div>
+                            <h3 class="skill__title">Motion design</h3>
+                            <p class="skill__text">Le mouvement qui fait vivre la marque à l’écran.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="tabs__panel" role="tabpanel" id="panel-advice" aria-labelledby="tab-advice" tabindex="0">
+                <ul class="skill-grid">
+                    <li class="card skill">
+                        <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-compass" /></svg></span>
+                        <div>
+                            <h3 class="skill__title">Choisir ses outils</h3>
+                            <p class="skill__text">Les bons logiciels, avant la première ligne de code.</p>
+                        </div>
+                    </li>
+                    <li class="card skill">
+                        <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-list-checks" /></svg></span>
+                        <div>
+                            <h3 class="skill__title">Automatiser</h3>
+                            <p class="skill__text">Repérer ce qui peut se faire tout seul.</p>
+                        </div>
+                    </li>
+                    <li class="card skill">
+                        <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-brain" /></svg></span>
+                        <div>
+                            <h3 class="skill__title">L’IA, à sa place</h3>
+                            <p class="skill__text">Là où elle sert vraiment, et pas ailleurs.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- LE STUDIO — les personnes, puis quatre faits vérifiés. -->
+        <section class="section" aria-labelledby="studioTitle">
+            <div class="section-head">
+                <h2 class="section-head__title" id="studioTitle">Le studio</h2>
+                <a href="/studio" class="link-arrow">Rencontrer l’équipe <svg class="icon" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+            </div>
+            <ul class="bento">
+                <li class="card people">
+                    <ul class="people__photos">
+                        <li><img src="assets/images/team-eliott-400.webp" alt="Eliott Pina" width="400" height="500" loading="lazy" decoding="async"></li>
+                        <li><img src="assets/images/team-matt-400.webp" alt="Matt Pina" width="400" height="500" loading="lazy" decoding="async"></li>
+                        <li><img src="assets/images/team-ivan-400.webp" alt="Ivan Jakovlevski" width="400" height="500" loading="lazy" decoding="async"></li>
+                    </ul>
+                    <div class="people__caption">
+                        <h3 class="people__title">Deux frères, un seul interlocuteur.</h3>
+                        <p class="people__text">Eliott dessine, Matt développe, Ivan vous suit.</p>
+                    </div>
+                </li>
+                <li class="card fact">
+                    <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-clock" /></svg></span>
+                    <div>
+                        <h3 class="fact__title">Réponse sous 24&nbsp;h ouvrées</h3>
+                        <p class="fact__text">Sans engagement.</p>
+                    </div>
+                </li>
+                <li class="card fact">
+                    <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-calendar" /></svg></span>
+                    <div>
+                        <h3 class="fact__title">Site vitrine en 3&nbsp;à&nbsp;6&nbsp;semaines</h3>
+                        <p class="fact__text">Davantage pour du sur-mesure.</p>
+                    </div>
+                </li>
+                <li class="card fact">
+                    <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-server" /></svg></span>
+                    <div>
+                        <h3 class="fact__title">Hébergement suisse</h3>
+                        <p class="fact__text">Inclus avec votre site.</p>
+                    </div>
+                </li>
+                <li class="card fact">
+                    <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-wallet" /></svg></span>
+                    <div>
+                        <h3 class="fact__title">Paiement en plusieurs fois</h3>
+                        <p class="fact__text">En mensualités, si vous le souhaitez.</p>
+                    </div>
+                </li>
+            </ul>
         </section>
 
         <!-- CONTACT — la question sur l’encre, les liens à côté. -->
-        <section class="section reveal" aria-labelledby="contactTitle">
-            <div class="contact">
-                <div class="card surface-ink contact__lead">
+        <section class="section contact" aria-labelledby="contactTitle">
+            <div class="card surface-ink contact__lead">
+                <div>
                     <h2 class="contact__title" id="contactTitle">On commence par un&nbsp;café&nbsp;?</h2>
-                    <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="btn btn--solid"><span>Démarrer un projet</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+                    <p class="contact__note">Réponse sous 24&nbsp;h ouvrées.</p>
                 </div>
-                <nav class="card link-card" aria-label="Liens rapides">
-                    <p class="link-card__label">Ou directement</p>
-                    <ul class="link-card__list">
-                        <li><a class="link-row" href="mailto:contact@wearebrothers.ch"><svg class="icon" aria-hidden="true"><use href="#i-mail" /></svg><span>Écrire un email</span></a></li>
-                        <li><a class="link-row" href="/realisations"><svg class="icon" aria-hidden="true"><use href="#i-layout-grid" /></svg><span>Voir le travail</span></a></li>
-                        <li><a class="link-row" href="/services"><svg class="icon" aria-hidden="true"><use href="#i-app-window" /></svg><span>Les services</span></a></li>
-                        <li><a class="link-row" href="/studio"><svg class="icon" aria-hidden="true"><use href="#i-users" /></svg><span>Rencontrer l’équipe</span></a></li>
-                    </ul>
-                </nav>
+                <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="btn btn--solid"><span>Démarrer un projet</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
             </div>
+            <nav class="card link-card" aria-label="Liens rapides">
+                <ul class="link-card__list">
+                    <li><a class="link-row" href="mailto:contact@wearebrothers.ch"><svg class="icon" aria-hidden="true"><use href="#i-mail" /></svg><span>Écrire un email</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg></a></li>
+                    <li><a class="link-row" href="/realisations"><svg class="icon" aria-hidden="true"><use href="#i-layout-grid" /></svg><span>Voir le travail</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg></a></li>
+                    <li><a class="link-row" href="/services"><svg class="icon" aria-hidden="true"><use href="#i-app-window" /></svg><span>Les services</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg></a></li>
+                    <li><a class="link-row" href="/studio"><svg class="icon" aria-hidden="true"><use href="#i-users" /></svg><span>Rencontrer l’équipe</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg></a></li>
+                </ul>
+            </nav>
         </section>
 
     </main>
@@ -816,6 +859,7 @@
                     <p class="footer-links__head">Contact</p>
                     <ul class="footer-links__list">
                         <li><a href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a></li>
+                        <li><a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog">Formulaire</a></li>
                     </ul>
                 </div>
             </div>

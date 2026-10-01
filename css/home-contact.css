@@ -1,19 +1,23 @@
 /* ============================================
    WAB. — Accueil : contact
-   Deux cartes côte à côte : à gauche, la question et le bouton sur la
-   seule surface encre de la page ; à droite, une carte-liste de liens
-   d'après Nav List Card (arihantcodes, 21st.dev) — chaque ligne glisse
-   de 2 px au survol avec un léger ressort, et s'enfonce à l'appui.
+   Deux cartes à la même hauteur, taillées à leur contenu : la
+   question et le bouton sur la seule surface encre de la page ; à
+   côté, une carte-liste de liens d'après Nav List Card (arihantcodes,
+   21st.dev) — chaque ligne glisse de 2 px avec un léger ressort au
+   survol et s'enfonce à l'appui.
    ============================================ */
 
+/* minmax(0, 1fr) : sans borne, le bouton insécable élargissait la
+   colonne au-delà de l'écran à 320 px. */
 .contact {
     display: grid;
-    gap: var(--space-4);
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--gap);
 }
 
 @media (min-width: 900px) {
     .contact {
-        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+        grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
     }
 }
 
@@ -22,17 +26,23 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    gap: var(--space-6);
-    padding: var(--space-6) var(--space-5);
+    gap: var(--space-5);
+    padding: clamp(20px, 2.4vw, 32px);
 }
 
 .contact__title {
-    max-width: 14ch;
-    font-size: var(--text-2xl);
+    max-width: 16ch;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
     font-weight: var(--w-strong);
     letter-spacing: -0.045em;
     line-height: 1.08;
     text-wrap: balance;
+}
+
+.contact__note {
+    margin-top: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--ink-muted);
 }
 
 @media (max-width: 480px) {
@@ -43,21 +53,26 @@
 
 /* ── La carte-liste ── */
 .link-card {
-    padding: var(--space-5) var(--space-3) var(--space-3);
+    padding: var(--space-2);
 }
 
-.link-card__label {
-    padding-inline: var(--space-3);
-    font-size: var(--text-sm);
-    font-weight: var(--w-strong);
-    color: var(--ink-muted);
-}
-
+/* Colonnes bornées : sans elles, l'adresse email élargit la ligne et
+   pousse la flèche hors de la carte à 320 px. */
 .link-card__list {
     display: grid;
-    gap: var(--space-1);
-    margin-top: var(--space-3);
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: 1fr;
+    height: 100%;
     list-style: none;
+}
+
+.link-card__list li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.link-card__list li + li {
+    box-shadow: inset 0 1px 0 var(--surface-line);
 }
 
 /* Le ressort de l'original (bounce 0,4 sur 0,3 s) traduit en courbe
@@ -66,10 +81,10 @@
     display: flex;
     align-items: center;
     gap: var(--space-3);
-    min-height: 48px;
+    min-height: 52px;
     padding: 0 var(--space-3);
-    border-radius: var(--radius-md);
-    font-size: var(--text-md);
+    border-radius: var(--r-inner);
+    font-size: 0.9375rem;
     font-weight: var(--w-strong);
     letter-spacing: -0.01em;
     color: var(--ink);
@@ -86,11 +101,13 @@
 }
 
 .link-row .icon {
+    width: 16px;
+    height: 16px;
     color: var(--ink-muted);
 }
 
 .link-row:hover {
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--surface-sunk);
 }
 
 @media (hover: hover) and (pointer: fine) {

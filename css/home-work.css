@@ -1,19 +1,18 @@
 /* ============================================
    WAB. — Accueil : travaux choisis
-   D'après Vucko et Apple Developer : des cartes égales, une photo du
-   projet en situation, le nom en gras et le client en une ligne.
-   Trois colonnes sur ordinateur, deux sur tablette ; au téléphone,
-   une rangée qui défile au doigt et s'aimante, pour ne pas empiler
-   six cartes l'une sous l'autre.
+   Huit cartes égales sur quatre colonnes (deux sur tablette) : la
+   photo en situation au format 4/5, posée à 8 px du bord, puis le
+   nom et le client sur une ligne chacun. Au téléphone, une rangée
+   qui défile au doigt et s'aimante.
    ============================================ */
 
 .work-cards {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: min(78vw, 320px);
-    gap: var(--space-4);
+    grid-auto-columns: min(66vw, 260px);
+    gap: var(--gap);
     margin-inline: calc(-1 * var(--gutter));
-    padding: 0 var(--gutter) var(--space-2);
+    padding: 0 var(--gutter) 2px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-padding-inline: var(--gutter);
@@ -41,21 +40,22 @@
 
 @media (min-width: 1000px) {
     .work-cards {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 }
 
 .work-card {
     display: block;
     height: 100%;
-    overflow: hidden;
+    padding: 8px;
     -webkit-tap-highlight-color: transparent;
 }
 
 .work-card__media {
     aspect-ratio: 4 / 5;
     overflow: hidden;
-    background: var(--ink);
+    border-radius: var(--r-inner);
+    background: var(--surface-sunk);
 }
 
 .work-card__media img {
@@ -67,27 +67,40 @@
 
 .work-card__body {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: var(--space-3);
-    padding: var(--space-4) var(--space-5) var(--space-5);
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-2) var(--space-1);
+}
+
+.work-card__text {
+    min-width: 0;
+}
+
+.work-card__name,
+.work-card__client {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .work-card__name {
-    font-size: var(--text-md);
+    font-size: 0.9375rem;
     font-weight: var(--w-strong);
     letter-spacing: -0.02em;
+    line-height: 1.35;
 }
 
 .work-card__client {
-    margin-top: 2px;
-    font-size: var(--text-sm);
+    font-size: 0.8125rem;
+    line-height: 1.45;
     color: var(--ink-muted);
 }
 
 .work-card__body > .icon {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
+    margin-top: 3px;
     color: var(--ink-muted);
     transition: translate var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out);
 }
