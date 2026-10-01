@@ -1,8 +1,8 @@
 # WAB. — Design système
 
-Version 2 — 1er octobre 2026. Branche `refonte-studio`, appliquée à l'accueil et au socle commun (barre, boutons, jetons). Les autres pages suivront une fois l'accueil validé.
+Version 3 — 1er octobre 2026. Branche `refonte-studio`, appliquée à l'accueil et au socle commun (barre, boutons, jetons, icônes). Les autres pages suivront une fois l'accueil validé.
 
-La version 1 de l'accueil (plaques remplies de texte, commit `9ec3f4f`) a été jugée par Eliott « trop de texte, il faut quelque chose de plus original et impactant ». La version 2 garde les jetons, la barre, les boutons et les icônes, et change la mise en scène : le travail montré porte l'impact, le texte tient en quelques mots.
+Historique de l'accueil : version 1 (plaques remplies de texte, commit `9ec3f4f`) jugée « trop de texte » ; version 2 (sigle géant dont le point s'ouvre sur le travail, commit `db37cd1`) écartée au profit d'une direction donnée par Eliott — [Vucko](https://vucko.co/) et [Apple Developer Design](https://developer.apple.com/design/) : « pas mal de cartes, hyper clean et clair », avec ses composants favoris de 21st.dev.
 
 ---
 
@@ -19,17 +19,30 @@ Ce qui est écarté, et pourquoi :
 - les repères et filets au-dessus des titres, l'en-tête titre/phrase en deux colonnes (rejetés) ;
 - les chiffres en exposant, les projets en très grand à tailles alternées, les ornements (rejetés).
 
-### La signature de l'accueil : le point de WAB.
+### L'accueil, version 3 : des cartes de verre, claires et égales
 
-Le sigle WAB. occupe l'écran d'un bord à l'autre (sur deux lignes, « WA / B. », au téléphone). Son point n'est pas un point : c'est une fenêtre carrée qui laisse déjà voir un vrai projet. Au défilement, ce carré grandit depuis sa place exacte jusqu'au plein cadre, pendant que les lettres, agrandies autour du même centre, passent de part et d'autre comme si l'on traversait le point. La page se referme sur le même sigle géant, dont le point final est cette fois rose — le seul aplat de l'accent sur la page.
-
-Ce qui en fait une signature et pas un effet : elle naît du nom du studio, elle montre le travail au lieu de le décrire, et elle n'existe nulle part ailleurs.
+Tout le contenu de l'accueil vit dans des cartes de verre clair posées sur le ciel rose animé, aux coins de 18 px, de même matière, rangées sur des grilles régulières. Une carte porte une image ou une icône, un titre en gras et une ligne au plus. Le travail est montré en photos de mise en situation ; le texte détaillé vit sur Work, Services et About. Le décor (ciel, grain, oiseaux, Sligoil) reste l'identité ; la grille de cartes apporte la clarté « à la Apple ».
 
 ---
 
 ## 2. Références retenues
 
-**Version 2 — accueils dont l'impact vient du visuel**
+**Version 3 — direction donnée par Eliott**
+
+| Référence | Ce qu'on en garde |
+|---|---|
+| [Vucko](https://vucko.co/) | Une phrase d'intention courte, beaucoup d'air ; les projets en cartes avec le nom et le client ; un projet mis en avant avec « Voir le projet ». |
+| [Apple Developer Design](https://developer.apple.com/design/) | Des cartes égales en grille de trois, coins arrondis, une image ou une icône, un titre en gras, une à deux lignes, un lien ; une hiérarchie très nette. |
+| [Header 3](https://21st.dev/efferd/header-3/default) (efferd) | La barre transparente au repos, floutée au défilement ; le tiroir mobile qui apparaît de 97 % à 100 % en fondu. |
+| [Tabbed Feature Categories](https://21st.dev/olewandowski1/features-4/default) (olewandowski1) | Les métiers en trois onglets, chacun une grille de cartes icône / titre / ligne ; la case d'icône qui passe à l'encre au survol. |
+| [Ruixen Bento Cards](https://21st.dev/ruixen.ui/ruixen-bento-cards/default) (ruixen.ui) | Le bento sur six colonnes du bloc « Le studio » ; sans les « + » d'angle, ornementaux. |
+| [Nav List Card](https://21st.dev/arihantcodes_1f7b8c4d/nav-list-card/default) (arihantcodes) | La carte-liste de liens du contact : lignes à icône qui glissent de 2 px avec un léger ressort et s'enfoncent à l'appui. |
+| [Footer Section 4](https://21st.dev/solaceui/footer-section-4/default) (solaceui) | Le pied de page en deux cartes : marque et liens ; sans newsletter. |
+| Feature 197 (shadcnblocks, id 688) | Écarté : un accordéon qui change l'image demande des images de déroulé que le studio n'a pas, et ajouterait du texte. |
+
+Les adresses 21st.dev des composants sont déduites du modèle `21st.dev/<auteur>/<composant>/default` (l'outil ne renvoie que l'adresse d'installation).
+
+**Version 2 — accueils dont l'impact vient du visuel** (écartée)
 
 | Référence | Ce qui la rend mémorable, en une phrase |
 |---|---|
@@ -151,31 +164,31 @@ Courbes : `--ease` (entrée, ressort doux), `--ease-out` (réponse au geste). Du
 
 ## 5. Composants
 
-**Barre de navigation** — plaque de verre flottante, coins 12 px. Sigle à gauche, trois liens et un bouton d'encre « Contact » à droite. Les lettres basculent au survol. Sur téléphone, quatre carrés qui pivotent ouvrent le panneau dans la plaque.
+**Barre de navigation** — plaque de verre flottante, coins 12 px. Au repos, tout en haut de la page, presque transparente et sans ombre ; dès 10 px de défilement, le verre s'épaissit et se floute (`.is-scrolled`, `js/nav.js`, d'après Header 3). Sigle à gauche, trois liens et un bouton d'encre « Contact » à droite. Sur téléphone, quatre carrés qui pivotent ouvrent le panneau, dont le contenu arrive de 97 % à 100 % en fondu (`css/nav-panel.css`).
 
-**Plaque** (`.plate`) — un bloc de verre, réservé à ce qui doit se lire posé sur le ciel : l'appel final (variante `.surface-ink`, une seule par page) et le pied de page. Jamais une plaque dans une plaque, jamais une plaque remplie de paragraphes.
+**Carte** (`.card`, `css/plate.css`) — le bloc de contenu : verre clair à 66 %, flou de 22 px, coins 18 px, liseré et ombre douce. Variante `.surface-ink` : une seule par page, pour l'appel au contact. Jamais une carte dans une carte. Une ligne de texte au plus.
 
-**En-tête de section** — le titre porte son action sur la même ligne (« Travaux choisis » / « Tous les projets → »), comme les rayons de l'App Store. Pas d'étiquette, pas de filet au-dessus, pas de phrase d'introduction sur l'accueil.
+**En-tête de section** (`.section-head`) — le titre porte son action sur la même ligne (« Travaux choisis » / « Tous les projets → »), comme les rayons de l'App Store. Pas d'étiquette, pas de filet au-dessus, pas de phrase dessous.
 
-**Introduction de page** — le titre ne vient jamais seul : il est accompagné de son action et d'une preuve visuelle. Sur l'accueil, la preuve est le sigle lui-même, dont le point ouvre sur le travail.
+**Introduction de page** — une phrase d'intention courte en grand, une seule action, de l'air au-dessus (Vucko). Sur l'accueil, le projet à la une suit immédiatement : la preuve est posée sous la promesse.
 
-**Sigle géant** (`.mark`) — WAB. en Sligoil Bold, la taille calculée pour que l'encre remplisse la colonne (2,16 em de large, 1,18 em sur deux lignes au téléphone). Le point est un carré aux mesures exactes du glyphe (case de 0,6 em, carré de 0,18 em à 0,21 em du bord) : on peut le mesurer et l'animer. Deux emplois seulement : l'ouverture et la fermeture de l'accueil.
+**Projet à la une** — une grande carte : la capture du site sur deux tiers, le nom, le client en une ligne et « Voir le projet » sur le tiers restant ; l'image au-dessus sur téléphone.
 
-**L'ouverture** — `js/home/opening.js` : une section de 260 % d'écran, une scène collée en haut. Le masque du cadre (`clip-path`) et l'échelle des lettres suivent la même progression exponentielle : l'ouverture est toujours le point agrandi.
+**Onglets** (`css/home-tabs.css`, `js/home/tabs.js`) — motif ARIA complet (flèches, Début, Fin ; un seul onglet dans l'ordre de tabulation). Sans script, les panneaux se lisent à la suite. Sur téléphone, les onglets se partagent la largeur et les cartes deviennent des rangées basses icône + titre.
 
-**La planche** — huit photos de mise en situation, format 4/5, le nom seul dessous. Ordinateur : la scène se fige et la rangée glisse au défilement. Téléphone et « réduire les animations » : rangée native, aimantée photo par photo. Au clavier, une photo qui reçoit le focus fait défiler la page jusqu'à elle.
+**Bento** (`css/home-bento.css`) — six colonnes : une grande carte pour les personnes (visages, une phrase), cinq petites pour des faits vérifiés. Deux colonnes sur tablette, une sur téléphone.
 
 **Boutons** — pilule pleine d'encre (une seule action principale par plaque) ; pilule fantôme à contour pour une action secondaire. Montée de 2 px au survol, enfoncement à 97 % à l'appui. Sur les écrans de moins de 380 px, le libellé descend d'un cran pour tenir sur une ligne.
 
 **Lien fléché** (`.link-arrow`) — l'action secondaire : un mot souligné et une flèche qui avance de 3 px au survol.
 
-**Photo de projet** — la photo de mise en situation au format 4/5, coins de 12 px, le nom seul dessous suivi d'une flèche diagonale. Jamais de ligne de contexte ni de disciplines. Les captures brutes (`shot-*`, 16/10) servent au plein cadre de l'ouverture sur ordinateur.
+**Carte projet** (`css/home-work.css`) — la photo de mise en situation au format 4/5, puis le nom en gras et le client en une ligne, et une flèche diagonale. Trois colonnes, deux sur tablette ; au téléphone, une rangée qui défile au doigt.
 
-**Visages** — les trois avatars ronds de 48 px, chevauchés d'un quart, posés à côté du bouton de contact : on sait à qui l'on écrit.
+**Visages** — les trois avatars ronds de 56 px, chevauchés d'un quart, dans la grande carte du studio.
 
-**Pied de page** (`.site-footer`) — la dernière plaque : l'email en grand, puis les pages et le lieu avec l'heure de Lausanne sur une ligne. Sur téléphone, une seule ligne secondaire.
+**Pied de page** (`.site-footer`, `css/footer.css`) — deux cartes : la marque sur le seul aplat de rose foncé de la page (`--pink-deep`, texte blanc à 7,7:1), le slogan et la signature ; les liens en verre clair (pages, email). Sur l'accueil d'abord.
 
-**Les oiseaux** — ils volent derrière tout le contenu et se voilent devant le texte (`js/birds/`). Plus d'oiseau posé sur l'accueil : l'élément inattendu est désormais le point du sigle, et l'on n'accumule pas les surprises.
+**Les oiseaux** — ils volent derrière toutes les cartes et se voilent devant le texte (`js/birds/`). Pas d'oiseau posé, pas d'autre surprise : la clarté prime.
 
 ---
 
@@ -183,7 +196,7 @@ Courbes : `--ease` (entrée, ressort doux), `--ease-out` (réponse au geste). Du
 
 Ton : français, direct, concret, vouvoiement.
 
-**Sur l'accueil : au plus une ligne par bloc.** Une promesse de six mots et une action à l'ouverture ; le nom seul sous chaque projet ; les métiers en trois mots-liens ; une question et un bouton pour finir. Aucun paragraphe descriptif, aucune liste de livrables : le détail vit sur Work, Services et About, où l'on garde deux longueurs de phrase — des titres de 2 à 10 mots, puis un paragraphe de 15 à 30 mots.
+**Sur l'accueil : au plus une ligne par carte.** Une promesse de six mots et une action à l'ouverture ; le nom et le client sous chaque projet ; un titre et une ligne par carte de métier ou de fait ; une question et un bouton pour finir. Aucun paragraphe descriptif, aucune liste de livrables : le détail vit sur Work, Services et About, où l'on garde deux longueurs de phrase — des titres de 2 à 10 mots, puis un paragraphe de 15 à 30 mots.
 
 1. **Commencer par une définition vérifiable.** « WeAreBrothers est un studio fondé à Lausanne par deux frères. »
 2. **La preuve plutôt que le superlatif.** Un délai, un lieu, un nom de projet réel. Jamais « innovant », « unique », « passionné ».
@@ -212,6 +225,6 @@ Règles :
 - toujours `aria-hidden="true"` : l'icône n'est jamais seule à porter le sens ;
 - pas d'animation propre à l'icône : seule la flèche d'un lien avance au survol.
 
-Icônes en place : `arrow-right`, `arrow-up-right`, `app-window`, `layout-dashboard`, `pen-tool`, `clock`, `calendar`, `wallet`, `pause`, `play`. Le bouton menu (quatre carrés) n'est pas une icône Lucide : c'est un signe propre au studio, il reste.
+Icônes en place sur l’accueil, regroupées une seule fois dans un sprite SVG en tête de page et appelées par `<use href="#i-…">` : `arrow-right`, `arrow-up-right`, `app-window`, `layout-dashboard`, `plug`, `workflow`, `mail`, `sparkles`, `pen-tool`, `id-card`, `clapperboard`, `compass`, `list-checks`, `brain`, `clock`, `calendar`, `server`, `wallet`, `map-pin`, `layout-grid`, `users`. Le bouton menu (quatre carrés) n’est pas une icône Lucide : c’est un signe propre au studio, il reste.
 
 Dette connue : les pages intérieures utilisent encore des icônes dessinées à la main en quatre épaisseurs (1,6 à 2). Elles passeront à Lucide 1,5 avec leur refonte.

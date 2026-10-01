@@ -1,0 +1,104 @@
+/* ============================================
+   WAB. — Accueil : contact
+   Deux cartes côte à côte : à gauche, la question et le bouton sur la
+   seule surface encre de la page ; à droite, une carte-liste de liens
+   d'après Nav List Card (arihantcodes, 21st.dev) — chaque ligne glisse
+   de 2 px au survol avec un léger ressort, et s'enfonce à l'appui.
+   ============================================ */
+
+.contact {
+    display: grid;
+    gap: var(--space-4);
+}
+
+@media (min-width: 900px) {
+    .contact {
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    }
+}
+
+.contact__lead {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-6);
+    padding: var(--space-6) var(--space-5);
+}
+
+.contact__title {
+    max-width: 14ch;
+    font-size: var(--text-2xl);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.045em;
+    line-height: 1.08;
+    text-wrap: balance;
+}
+
+@media (max-width: 480px) {
+    .contact__lead .btn {
+        width: 100%;
+    }
+}
+
+/* ── La carte-liste ── */
+.link-card {
+    padding: var(--space-5) var(--space-3) var(--space-3);
+}
+
+.link-card__label {
+    padding-inline: var(--space-3);
+    font-size: var(--text-sm);
+    font-weight: var(--w-strong);
+    color: var(--ink-muted);
+}
+
+.link-card__list {
+    display: grid;
+    gap: var(--space-1);
+    margin-top: var(--space-3);
+    list-style: none;
+}
+
+/* Le ressort de l'original (bounce 0,4 sur 0,3 s) traduit en courbe
+   qui dépasse à peine sa cible. */
+.link-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: 48px;
+    padding: 0 var(--space-3);
+    border-radius: var(--radius-md);
+    font-size: var(--text-md);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    transition: background-color 0.15s var(--ease-out), translate 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        scale 0.15s var(--ease-out);
+}
+
+.link-row > span {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.link-row .icon {
+    color: var(--ink-muted);
+}
+
+.link-row:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .link-row:hover {
+        translate: 2px 0;
+    }
+}
+
+.link-row:active {
+    scale: 0.98;
+}

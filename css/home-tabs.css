@@ -1,0 +1,144 @@
+/* ============================================
+   WAB. — Accueil : ce que nous faisons
+   D'après Tabbed Feature Categories (olewandowski1, 21st.dev) : trois
+   onglets — Technologie, Image de marque, Conseil — et, sous chacun,
+   une grille de cartes égales : une case d'icône, un titre, une
+   ligne. Sans script, les trois panneaux restent visibles à la suite
+   (js/home/tabs.js ne masque que s'il prend la main).
+   ============================================ */
+
+/* La barre d'onglets : une pilule de verre, l'onglet actif en
+   blanc plein. */
+.tabs__list {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: var(--space-5);
+    padding: 4px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: var(--edge);
+}
+
+.tabs__tab {
+    min-height: 40px;
+    padding: 6px var(--space-4);
+    line-height: 1.2;
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    font-weight: var(--w-strong);
+    color: var(--ink-muted);
+    transition: background-color var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out),
+        box-shadow var(--dur-1) var(--ease-out);
+}
+
+/* Sur téléphone, les trois onglets se partagent la largeur au lieu
+   de passer sur deux rangées. */
+@media (max-width: 639px) {
+    .tabs__list {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .tabs__tab {
+        flex: 1 1 auto;
+        padding-inline: var(--space-2);
+        font-size: 0.8rem;
+    }
+}
+
+.tabs__tab:hover {
+    color: var(--ink);
+}
+
+.tabs__tab[aria-selected='true'] {
+    background: var(--white);
+    color: var(--ink);
+    box-shadow: var(--edge), 0 1px 2px rgba(11, 11, 12, 0.06);
+}
+
+.tabs__panel + .tabs__panel {
+    margin-top: var(--space-4);
+}
+
+.tabs.is-ready .tabs__panel + .tabs__panel {
+    margin-top: 0;
+}
+
+/* Le panneau qui arrive se pose en fondu, sans glisser : on change
+   de rayon, pas de page. */
+.tabs.is-ready .tabs__panel:not([hidden]) {
+    animation: tab-in var(--dur-2) var(--ease-out);
+}
+
+@keyframes tab-in {
+    from {
+        opacity: 0;
+    }
+}
+
+/* ── Les cartes ── */
+.skill-grid {
+    display: grid;
+    gap: var(--space-3);
+    list-style: none;
+}
+
+@media (min-width: 640px) {
+    .skill-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-4);
+    }
+}
+
+@media (min-width: 1000px) {
+    .skill-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* Sur téléphone, une rangée basse : l'icône et le titre, sans la
+   phrase — six cartes de deux lignes faisaient un mur de texte. Dès
+   640 px, l'icône au-dessus et la phrase dessous, comme chez Apple. */
+.skill {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    height: 100%;
+    padding: var(--space-4);
+}
+
+.skill__title {
+    font-size: var(--text-md);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+}
+
+.skill__text {
+    display: none;
+    margin-top: var(--space-1);
+    font-size: var(--text-sm);
+    line-height: 1.55;
+    text-wrap: pretty;
+    color: var(--ink-muted);
+}
+
+@media (min-width: 640px) {
+    .skill {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--space-5);
+    }
+
+    .skill__text {
+        display: block;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .skill:hover .icon-box {
+        background: var(--ink);
+        color: var(--on-ink);
+    }
+}

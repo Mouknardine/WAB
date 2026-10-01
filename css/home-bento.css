@@ -1,0 +1,121 @@
+/* ============================================
+   WAB. — Accueil : le studio, en bento
+   D'après Ruixen Bento Cards (ruixen.ui, 21st.dev) : une grille de
+   six colonnes où les cartes prennent des largeurs différentes. Une
+   grande carte pour les personnes, cinq petites pour les faits
+   vérifiés (PRODUCT.md). Écarté de l'original : les « + » dessinés
+   aux angles, ornementaux, et le titre qui chevauche la grille.
+
+   Placement sur six colonnes, sans trou :
+     rangées 1-2 : studio (3 × 2) | réponse (3), délai (3)
+     rangée 3    : hébergement (2) | paiement (2) | Lausanne (2)
+   ============================================ */
+
+.bento {
+    display: grid;
+    gap: var(--space-3);
+    list-style: none;
+}
+
+.bento__cell {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    height: 100%;
+    padding: var(--space-4);
+}
+
+.bento__title {
+    font-size: var(--text-md);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+}
+
+.bento__text {
+    margin-top: var(--space-1);
+    font-size: var(--text-sm);
+    line-height: 1.55;
+    color: var(--ink-muted);
+}
+
+/* La grande carte : les visages, le titre, une ligne et le lien. */
+.bento__cell--lead {
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-5);
+    padding: var(--space-5);
+}
+
+.bento__cell--lead .bento__title {
+    font-size: var(--text-xl);
+    letter-spacing: -0.035em;
+    line-height: 1.15;
+    text-wrap: balance;
+}
+
+.faces {
+    display: flex;
+    list-style: none;
+}
+
+.faces img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.9);
+}
+
+.faces li + li {
+    margin-left: -12px;
+}
+
+@media (min-width: 640px) {
+    .bento {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-4);
+    }
+
+    .bento__cell {
+        flex-direction: column;
+        padding: var(--space-5);
+    }
+
+    .bento__cell--lead,
+    .bento > li:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (min-width: 1000px) {
+    .bento {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    .bento > li {
+        grid-column: span 2;
+    }
+
+    .bento > li:nth-child(1) {
+        grid-column: 1 / span 3;
+        grid-row: span 2;
+    }
+
+    .bento > li:nth-child(2),
+    .bento > li:nth-child(3) {
+        grid-column: 4 / span 3;
+    }
+
+    .bento > li:last-child {
+        grid-column: span 2;
+    }
+}
+
+/* L’heure de Lausanne et le statut du studio, sur une même ligne. */
+.bento__where {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1) var(--space-3);
+}

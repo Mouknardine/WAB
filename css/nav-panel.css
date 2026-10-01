@@ -1,0 +1,182 @@
+/* ============================================
+   WAB. — Barre de navigation : le menu du téléphone
+   Le bouton de quatre carrés, le panneau qui se déroule dans la
+   plaque et le voile derrière. Séparé de nav.css, qui garde la
+   barre elle-même.
+
+   Tiroir d'après Header 3 (efferd, 21st.dev) : à l'ouverture, le
+   contenu du panneau arrive de 97 % à 100 % de sa taille avec un
+   fondu, en 150 ms ; il repart plus vite encore à la fermeture.
+   ============================================ */
+
+/* ── Bouton menu ──
+   Quatre carrés disposés en carré. À l'ouverture, le groupe pivote
+   d'un quart de tour : la même figure devient une croix, sans qu'on
+   ait à redessiner quoi que ce soit. */
+.topbar__menu {
+    margin-left: auto;
+    margin-right: -10px;
+    width: 44px;
+    height: 44px;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.topbar__dots {
+    display: grid;
+    grid-template-columns: repeat(2, 6px);
+    gap: 5px;
+    transition: transform 0.45s var(--ease);
+}
+
+.topbar__dots span {
+    width: 6px;
+    height: 6px;
+    border-radius: 1px;
+    background: var(--ink);
+    transition: transform 0.45s var(--ease);
+}
+
+.topbar__menu:hover .topbar__dots {
+    transform: scale(1.08);
+}
+
+.topbar__menu[aria-expanded='true'] .topbar__dots {
+    transform: rotate(45deg);
+}
+
+/* ── Le menu déroulé ──
+   La hauteur est animée par une piste de grille qui passe de 0fr à
+   1fr : le panneau s'ouvre sans qu'on ait à le mesurer. */
+.topbar__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.45s var(--ease);
+}
+
+.topbar__inner.is-open .topbar__panel {
+    grid-template-rows: 1fr;
+}
+
+.topbar__panel-inner {
+    overflow: hidden;
+    /* visibility retire les liens du parcours au clavier tant que le
+       menu est replié — une hauteur nulle ne suffit pas. */
+    visibility: hidden;
+    transition: visibility 0s linear 0.45s;
+}
+
+.topbar__inner.is-open .topbar__panel-inner {
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.panel__nav,
+.panel__meta {
+    opacity: 0;
+    scale: 0.97;
+    transform-origin: top center;
+    transition: opacity 0.12s var(--ease-out), scale 0.12s var(--ease-out);
+}
+
+.topbar__inner.is-open .panel__nav,
+.topbar__inner.is-open .panel__meta {
+    opacity: 1;
+    scale: 1;
+    transition-duration: 0.15s;
+    transition-delay: 0.08s;
+}
+
+/* Le panneau suit la même marge que la barre. */
+.panel__nav,
+.panel__meta {
+    padding-inline: var(--pill-pad);
+}
+
+.panel__nav {
+    padding-top: 6px;
+}
+
+.panel__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    font-size: 1.2rem;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    box-shadow: inset 0 -1px 0 var(--line);
+    transition: color 0.25s var(--ease-out);
+}
+
+.panel__link:hover,
+.panel__link:active {
+    color: var(--pink);
+}
+
+.panel__link svg {
+    color: var(--ink-muted);
+}
+
+.panel__meta {
+    padding-top: 18px;
+    padding-bottom: 22px;
+    display: grid;
+    gap: 12px;
+}
+
+.panel__row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.panel__key {
+    font-weight: var(--w-strong);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--pink);
+    white-space: nowrap;
+}
+
+.panel__value {
+    text-align: right;
+    color: var(--ink);
+    word-break: break-word;
+}
+
+a.panel__value:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* ── Voile derrière le menu ouvert ── */
+.topbar-scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 118;
+    background: rgba(11, 11, 12, 0.28);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s var(--ease-out);
+}
+
+.topbar-scrim.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ── Bureau ── */
+@media (min-width: 900px) {
+    .topbar__menu,
+    .topbar__panel,
+    .topbar-scrim {
+        display: none;
+    }
+}

@@ -1,0 +1,98 @@
+/* ============================================
+   WAB. — Accueil : l'ouverture et le projet à la une
+   D'après Vucko : une phrase d'intention courte, beaucoup d'air, une
+   seule action ; puis un projet mis en avant dans une grande carte,
+   avec son nom, son client et « Voir le projet ».
+   ============================================ */
+
+.hero {
+    display: grid;
+    align-content: end;
+    gap: var(--space-6);
+    padding: calc(var(--topbar-h) + var(--space-7)) var(--gutter) var(--space-6);
+}
+
+/* Sur ordinateur, de l'air au-dessus de la promesse, comme chez Vucko.
+   Sur téléphone, la carte à la une doit déjà poindre au premier
+   écran : pas de hauteur imposée. */
+@media (min-width: 700px) {
+    .hero {
+        min-height: min(78svh, 760px);
+    }
+}
+
+.hero__title {
+    max-width: 20ch;
+    font-size: var(--text-2xl);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.045em;
+    line-height: 1.08;
+    text-wrap: balance;
+}
+
+@media (max-width: 480px) {
+    .hero .btn {
+        width: 100%;
+    }
+}
+
+/* ── À la une ──
+   L'image à gauche (deux tiers), le nom et l'action à droite, calés
+   en bas. Sur téléphone, l'image au-dessus, le texte dessous. */
+.feature {
+    display: grid;
+    overflow: hidden;
+    margin-inline: var(--gutter);
+}
+
+.feature__media {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--ink);
+}
+
+.feature__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: scale var(--dur-3) var(--ease);
+}
+
+.feature__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-5);
+}
+
+.feature__name {
+    font-size: var(--text-xl);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.035em;
+    line-height: 1.15;
+}
+
+.feature__client {
+    margin-top: var(--space-1);
+    font-size: var(--text-md);
+    color: var(--ink-muted);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .feature:hover .feature__media img {
+        scale: 1.02;
+    }
+}
+
+@media (min-width: 900px) {
+    .feature {
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    }
+
+    .feature__body {
+        padding: var(--space-6);
+    }
+}

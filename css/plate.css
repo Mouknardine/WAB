@@ -1,46 +1,86 @@
 /* ============================================
-   WAB. — La plaque, et ce qu'elle porte
-   Le composant de base du design système (DESIGN-SYSTEM.md) : une
-   plaque de verre dépoli posée sur le ciel. Tout grand bloc de
-   contenu en est une ; entre deux plaques, le ciel respire et les
-   oiseaux passent. Une plaque n'en contient jamais une autre : à
-   l'intérieur, ce sont des filets et des colonnes qui rangent.
+   WAB. — Cartes de verre
+   Le composant de base de l'accueil (DESIGN-SYSTEM.md, version 3) :
+   une carte de verre clair posée sur le ciel, coins de 18 px. Toutes
+   les cartes partagent la même matière ; seules leur taille et leur
+   contenu changent. Une carte n'en contient jamais une autre.
 
-   Aussi ici : le lien fléché et l'icône, que toutes les plaques
-   partagent.
+   Aussi ici : l'en-tête de section, la case d'icône, le lien fléché
+   et l'icône — les pièces que toutes les cartes partagent.
    ============================================ */
 
-.plate {
+.card {
     position: relative;
-    padding: var(--plate-pad);
     border-radius: var(--radius-lg);
     background: var(--plate-bg);
     -webkit-backdrop-filter: var(--plate-blur);
     backdrop-filter: var(--plate-blur);
-    box-shadow: var(--edge), var(--edge-sheen), var(--shadow-lg);
+    box-shadow: var(--edge), var(--edge-sheen), var(--shadow-md);
     color: var(--ink);
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-    .plate {
+    .card {
         background: var(--card);
     }
 
-    .plate.surface-ink {
+    .card.surface-ink {
         background: #0b0b0c;
     }
 }
 
-/* Sur une surface encre, le reflet clair de l'arête haute devient
-   un liseré à peine visible : le verre reste du verre. */
-.plate.surface-ink {
+/* Sur une surface encre, le reflet de l'arête devient un liseré à
+   peine visible : le verre reste du verre. */
+.card.surface-ink {
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.14),
-        var(--shadow-lg);
+        var(--shadow-md);
+}
+
+/* ── Section ──
+   Toutes les sections de l'accueil partent de la gouttière et sont
+   séparées par le même écart. */
+.section {
+    padding: var(--space-7) var(--gutter) 0;
+}
+
+/* ── En-tête de section ──
+   Le titre ne vient jamais seul : il porte son action sur la même
+   ligne, comme les rayons de l'App Store. Pas de phrase dessous. */
+.section-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-5);
+    margin-bottom: var(--space-5);
+}
+
+.section-head__title {
+    font-size: var(--text-xl);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.035em;
+    line-height: 1.18;
+    text-wrap: balance;
+}
+
+/* ── Case d'icône ──
+   D'après Tabbed Feature Categories (21st.dev) : un carré de 44 px
+   aux coins de 8 px. Au survol de la carte, il passe à l'encre. */
+.icon-box {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    flex: none;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: var(--edge);
+    color: var(--ink);
+    transition: background-color var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out);
 }
 
 /* ── Lien fléché ──
-   L'action secondaire : un mot, une flèche qui avance au survol.
-   Pas de bouton là où un lien suffit. */
+   L'action secondaire : un mot souligné et une flèche qui avance. */
 .link-arrow {
     display: inline-flex;
     align-items: center;
@@ -75,8 +115,17 @@
 }
 
 /* ── Icône ──
-   Un seul jeu, une seule épaisseur de trait, quelle que soit la
-   taille : la graisse se règle ici, jamais dans le balisage. */
+   Un seul jeu (Lucide), une seule épaisseur de trait, quelle que soit
+   la taille. Les tracés vivent une fois dans le sprite de la page. */
+/* Hors du flux mais pas en display: none : certains moteurs
+   refusent alors de servir les symboles aux balises <use>. */
+.sprite {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
 .icon {
     flex: none;
     width: 1.25em;
@@ -86,9 +135,4 @@
     stroke-width: var(--icon-stroke, 1.5);
     stroke-linecap: round;
     stroke-linejoin: round;
-}
-
-.icon--lg {
-    width: 24px;
-    height: 24px;
 }

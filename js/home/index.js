@@ -1,14 +1,11 @@
 // @ts-check
 /**
  * WAB. — Accueil
- * Les deux scènes pilotées par le défilement : l'ouverture (le point
- * de WAB. qui s'ouvre sur le travail) et la planche de projets.
- * Chacune vérifie son propre balisage et renonce sans bruit s'il
- * manque : la page reste lisible, simplement immobile.
+ * Les onglets des métiers. Le reste de la page est en CSS seul ;
+ * les apparitions au défilement viennent de js/reveal.js, l'heure de
+ * Lausanne de nav-clock.js.
  */
 
-import { initOpening } from './opening.js?v=1';
-import { initGallery } from './gallery.js?v=1';
+import { initTabs } from './tabs.js?v=1';
 
-initOpening();
-initGallery();
+initTabs();
