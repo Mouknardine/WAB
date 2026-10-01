@@ -1,6 +1,6 @@
 /* ============================================
    WAB. — Réalisations : l'en-tête et la grille
-   Un titre franc, puis les projets en grille
+   L'en-tête (page.css), puis les projets en grille
    régulière. Sobre et posé : c'est le travail qui parle, pas la
    mise en scène. La légende de chaque projet est dans
    work-piece.css.
@@ -8,21 +8,6 @@
 
 .band--projets {
     padding-top: calc(var(--topbar-h) + clamp(32px, 5vw, 72px));
-}
-
-/* ── En-tête ──
-   Le titre va chercher le bord gauche, comme le sigle de la barre. */
-.work-head {
-    margin-bottom: clamp(36px, 5vw, 64px);
-    padding-inline: var(--gutter);
-}
-
-.work-head__title {
-    font-size: clamp(2.8rem, 7vw, 5.8rem);
-    font-weight: var(--w-strong);
-    letter-spacing: -0.045em;
-    line-height: 0.95;
-    color: var(--ink);
 }
 
 /* ── La grille ──

@@ -1,24 +1,8 @@
 /* ============================================
    WAB. — About
-   Sobre et posé : le titre, puis l'équipe en photos à la suite. Les
-   savoir-faire reprennent les cartes de verre de css/process.css.
+   Sobre et posé : l'en-tête (page.css), puis l'équipe en photos à
+   la suite. Les savoir-faire reprennent les cartes de verre de css/process.css.
    ============================================ */
-
-/* ── En-tête ──
-   Le titre seul, avec la même marge que le reste de la page. */
-.studio-intro {
-    padding-inline: var(--gutter);
-}
-
-.studio-intro__title {
-    max-width: 18ch;
-    font-size: clamp(2.2rem, 4.8vw, 4rem);
-    font-weight: var(--w-strong);
-    letter-spacing: -0.04em;
-    line-height: 1.08;
-    text-wrap: balance;
-    color: var(--ink);
-}
 
 /* ── Équipe ──
    Les photos à la suite, au même format 4/5, le nom et le rôle dans
