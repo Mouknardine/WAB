@@ -18,6 +18,27 @@
     color: var(--ink);
 }
 
+/* Verre dépoli : la carte laisse deviner le ciel rose sous un flou
+   épais, comme la barre du haut. Assez de blanc pour que le texte
+   gris reste lisible sur le rose le plus soutenu (4,5:1 au moins).
+   Un liseré blanc et un reflet sur l'arête haute donnent l'épaisseur
+   du verre. Sans flou disponible, la carte reste opaque. */
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+    .card:not(.surface-ink) {
+        --surface-line: rgba(255, 255, 255, 0.75);
+        background: var(--surface-glass);
+        -webkit-backdrop-filter: var(--blur-card);
+        backdrop-filter: var(--blur-card);
+        box-shadow: inset 0 0 0 1px var(--surface-line), var(--edge-sheen), var(--surface-shadow);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        a.card:not(.surface-ink):hover {
+            box-shadow: inset 0 0 0 1px var(--surface-line), var(--edge-sheen), var(--surface-lift);
+        }
+    }
+}
+
 /* Une carte-lien se soulève à peine au survol : l'ombre seule, rien
    ne bouge. */
 a.card {
@@ -32,7 +53,7 @@ a.card {
 
 /* Sur la surface claire, un vrai gris pour le texte secondaire : le
    gris presque noir réglé pour le fond animé écrasait la hiérarchie.
-   #5e5b63 sur blanc : 6,4:1. */
+   #4a4750 : 8:1 sur blanc, 5:1 sur le verre le plus rose. */
 .card:not(.surface-ink) {
     --ink-soft: var(--surface-soft);
     --ink-muted: var(--surface-muted);

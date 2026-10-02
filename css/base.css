@@ -164,12 +164,15 @@
        vient qu'au survol. Un rayon dehors, un plus petit dedans
        (16 − 8 de marge = 8). Les cartes se suivent à 12 px. */
     --surface: rgba(255, 255, 255, 0.95);
+    /* La même carte en verre dépoli (plate.css), là où le flou existe. */
+    --surface-glass: rgba(255, 255, 255, 0.7);
+    --blur-card: blur(24px) saturate(1.5);
     --surface-sunk: #f6f3f5;
     --surface-line: rgba(11, 11, 12, 0.08);
     /* Le gris du texte secondaire posé sur une carte claire
-       (6,4:1 sur blanc) ; ailleurs, --ink-muted reste réglé pour le
-       fond animé. */
-    --surface-muted: #5e5b63;
+       (8:1 sur blanc, 5:1 sur le verre posé au plus rose du fond) ;
+       ailleurs, --ink-muted reste réglé pour le fond animé. */
+    --surface-muted: #4a4750;
     --surface-soft: #2b2930;
     --surface-shadow: 0 1px 2px rgba(11, 11, 12, 0.04);
     --surface-lift: 0 1px 2px rgba(11, 11, 12, 0.04), 0 8px 24px rgba(11, 11, 12, 0.08);
