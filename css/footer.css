@@ -60,3 +60,36 @@
         box-shadow: none;
     }
 }
+
+/* ── Variante avec appel final ──
+   L'appel final et la carte du pied de page se partagent la dernière
+   rangée : côte à côte sur ordinateur, à 12 px l'un de l'autre, à la
+   même hauteur. Dans sa demi-largeur, la carte du pied de page
+   s'empile : le sigle en haut, les liens, la signature en bas. */
+.site-footer--cta {
+    display: grid;
+    gap: var(--gap);
+}
+
+@media (min-width: 1000px) {
+    .site-footer--cta {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    .site-footer--cta .footer-card {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .site-footer--cta .footer-card__nav {
+        gap: 0 var(--space-4);
+    }
+
+    .site-footer--cta .footer-card__sign {
+        flex-basis: auto;
+        width: 100%;
+        padding-top: var(--space-3);
+        box-shadow: inset 0 1px 0 var(--surface-line);
+    }
+}

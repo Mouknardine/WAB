@@ -162,11 +162,13 @@
     .svc-bento--brand > :nth-child(1) { grid-column: 1 / span 2; grid-row: span 2; }
 }
 
-/* ── L'appel final ── */
+/* ── L'appel final ──
+   Posé dans le pied de page, à côté de sa carte (footer.css,
+   .site-footer--cta) : le titre en haut, les boutons en bas. */
 .svc-closing {
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: space-between;
     gap: var(--space-5);
     padding: clamp(24px, 3vw, 40px);
