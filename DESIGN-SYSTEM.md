@@ -30,6 +30,14 @@ Ce qui est écarté, et pourquoi :
 - Le statut du studio en direct (`nav-clock.js`) : « Lausanne, en direct », l'heure en très grand, et « Au studio », « Lausanne dort »… avec le point rose qui bat aux heures de bureau.
 - Humour sobre, sans rien inventer : la case libre « Votre projet — Cette place vous attend. » (reprise de Work) avec son oiseau qui attend ; la signature « Codé à la main à Lausanne, oiseaux compris. »
 
+### La page Services (2 octobre 2026)
+
+Le système de cartes appliqué à une page intérieure.
+- **Ouverture sans en-tête** : le titre de la page dans une carte, et à côté deux cartes de chapitre (pastille de couleur, nom, flèche vers le bas) qui mènent aux sections. Aucun paragraphe. Au téléphone, les chapitres deviennent deux rangées basses.
+- **Tuile** (`.sv-tile`, `css/service-tiles.css`) : une carte nette dont l'aperçu, posé à 6 px du bord, est une nappe de couleurs vives propre à la prestation (`service-mesh.css`). Deux mises en page : aperçu en haut, ou texte à gauche et aperçu à droite pour la tuile large. Un titre, une ligne.
+- **Bentos** : quatre colonnes pour Technologie (une grande, une haute, une large, trois petites), trois pour Image de marque (une grande, deux petites) — jamais deux sections au même gabarit.
+- **Mouvement** : inclinaison 3D vers la souris et reflet de lumière (`js/service-tilt.js`), et chaque aperçu fait le geste de ce qu'il montre ; rien au doigt ni sous « réduire les animations ».
+
 ---
 
 ## 2. Références retenues

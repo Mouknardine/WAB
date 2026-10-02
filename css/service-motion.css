@@ -1,104 +1,100 @@
 /* ============================================
-   WAB. — Services : le mouvement des cartes
-   Au survol, la carte s'incline vers la souris (js/service-tilt.js,
-   d'après la « Tilt Card » de tom_ui sur 21st.dev), un reflet de
-   lumière suit le curseur et une ombre douce apparaît. On y ajoute un geste propre à chaque aperçu — les fenêtres
-   s'écartent, les cartes de visite s'ouvrent en éventail,
-   l'étiquette se redresse — pour que la carte réponde à ce qu'elle
-   montre. Les cartes entrent l'une après l'autre au défilement
-   (js/reveal.js).
+   WAB. — Services : le mouvement des tuiles
+   Au survol, la tuile s'incline vers la souris (js/service-tilt.js,
+   d'après la « Tilt Card » de tom_ui sur 21st.dev), un reflet suit le
+   curseur, et l'aperçu fait le geste de ce qu'il montre — les
+   fenêtres s'écartent, les cartes de visite s'ouvrent en éventail,
+   l'étiquette se redresse.
 
-   Le survol passe par les propriétés « translate », « rotate » et
-   « scale », pas par « transform » : l'entrée au défilement et les
-   inclinaisons de départ (brand-visuals.css) utilisent déjà
-   « transform », les deux mouvements s'additionnent sans se gêner.
+   Le survol passe par « translate », « rotate » et « scale » sur les
+   aperçus, et par « transform » sur la tuile : l'entrée au défilement
+   (js/reveal.js) a fini d'utiliser « transform » avant que le script
+   ne prenne la main.
    ============================================ */
 
-.svc-card.reveal {
+.sv-tile.reveal {
     transition: opacity 0.7s var(--ease-out), transform 0.75s var(--ease),
         box-shadow 0.4s var(--ease-out);
 }
 
-/* Pendant le survol, la carte suit la souris sans traîner ; en la
-   quittant, elle reprend la transition lente ci-dessus et revient
-   à plat en douceur. */
-.svc-card.reveal.is-tilting {
+/* Pendant le survol, la tuile suit la souris sans traîner ; en la
+   quittant, elle reprend la transition lente et revient à plat. */
+.sv-tile.reveal.is-tilting {
     transition: opacity 0.7s var(--ease-out), transform 0.12s linear,
         box-shadow 0.4s var(--ease-out);
     will-change: transform;
 }
 
 /* Le reflet : une tache de lumière blanche centrée sur le curseur. */
-.svc-card {
-    position: relative;
-}
-
-.svc-card::after {
+.sv-tile::after {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: inherit;
     background: radial-gradient(420px circle at var(--shine-x, 50%) var(--shine-y, 50%),
-            rgba(255, 255, 255, 0.38), transparent 45%);
+            rgba(255, 255, 255, 0.3), transparent 45%);
     opacity: 0;
     transition: opacity 0.4s var(--ease-out);
     pointer-events: none;
 }
 
-.svc-card.is-tilting::after {
+.sv-tile.is-tilting::after {
     opacity: 1;
 }
 
-.svc-visual > * {
+.sv-media > * {
     transition: translate 0.6s var(--ease), rotate 0.6s var(--ease), scale 0.6s var(--ease);
 }
 
-/* Uniquement avec une souris : sur un écran tactile, le survol reste
-   « collé » après un appui et laisserait une carte soulevée. */
+/* Uniquement avec une souris : au doigt, le survol reste « collé »
+   après un appui et laisserait une tuile soulevée. */
 @media (hover: hover) and (pointer: fine) {
-    .svc-card:hover {
-        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.95),
-            0 28px 50px -18px rgba(60, 20, 45, 0.28);
+    .sv-tile:hover {
+        box-shadow: inset 0 0 0 1px var(--surface-line), 0 24px 44px -20px rgba(60, 20, 45, 0.3);
     }
 
-    /* Illustrations et captures plein cadre : léger rapprochement. */
-    .svc-card:hover .svc-visual__img {
+    .sv-tile:hover .sv-media__img {
         scale: 1.03;
     }
 
+    .sv-tile:hover .sv-body > .icon {
+        translate: 2px -2px;
+        color: var(--ink);
+    }
+
     /* Sites : les deux fenêtres s'écartent. */
-    .svc-card:hover .mock-window--back {
+    .sv-tile:hover .mock-window--back {
         translate: -8px -6px;
     }
 
-    .svc-card:hover .mock-window--front {
+    .sv-tile:hover .mock-window--front {
         translate: 8px 6px;
     }
 
     /* Application : la fenêtre monte vers le regard. */
-    .svc-card:hover .mock-window--app {
+    .sv-tile:hover .mock-window--app {
         translate: 0 -8px;
     }
 
     /* Devis, e-mail, conversation : le document se lève. */
-    .svc-card:hover .mock-doc,
-    .svc-card:hover .mock-chat {
+    .sv-tile:hover .mock-doc,
+    .sv-tile:hover .mock-chat {
         translate: 0 -6px;
     }
 
     /* Print : les cartes de visite s'ouvrent en éventail. */
-    .svc-card:hover .mock-bcard--back {
+    .sv-tile:hover .mock-bcard--back {
         translate: -6px -4px;
         rotate: -3deg;
     }
 
-    .svc-card:hover .mock-bcard--front {
+    .sv-tile:hover .mock-bcard--front {
         translate: 6px 4px;
         rotate: 3deg;
     }
 
     /* Vêtements : l'étiquette se redresse. */
-    .svc-card:hover .mock-label {
+    .sv-tile:hover .mock-label {
         rotate: 3deg;
         scale: 1.04;
     }

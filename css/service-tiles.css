@@ -1,0 +1,128 @@
+/* ============================================
+   WAB. — Services : la tuile
+   Une carte nette (.card, plate.css) qui porte un aperçu de ce qu'on
+   livre, posé à 6 px du bord au rayon intérieur, puis un titre et une
+   ligne. L'aperçu est une nappe de couleur vive propre à chaque tuile
+   (service-mesh.css) ; les petites interfaces dessinées dedans sont
+   dans service-visuals.css et brand-visuals.css.
+
+   Deux mises en page, et trois tailles (services.css) :
+     .sv-tile          aperçu en haut, texte dessous ;
+     .sv-tile--side    texte à gauche, aperçu à droite (tuile large).
+   ============================================ */
+
+.sv-tile {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 6px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* ── L'aperçu ── */
+.sv-media {
+    --mesh-1: #24cc71;
+    --mesh-2: #01b7fd;
+    --mesh-a: 10% 12%;
+    --mesh-b: 92% 88%;
+    position: relative;
+    flex: 1;
+    display: grid;
+    place-items: center;
+    min-height: 170px;
+    overflow: hidden;
+    border-radius: 10px;
+    background:
+        radial-gradient(58% 62% at var(--mesh-a), var(--mesh-1) 0%, transparent 72%),
+        radial-gradient(62% 58% at var(--mesh-b), var(--mesh-1) 0%, transparent 72%),
+        var(--mesh-2);
+}
+
+/* Une image plein cadre à la place d'un aperçu dessiné. */
+.sv-media__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 45%;
+}
+
+.sv-media__img--top {
+    object-position: left top;
+}
+
+/* ── Le texte ── */
+.sv-body {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: 14px var(--space-3) var(--space-2);
+}
+
+.sv-title {
+    font-size: 1rem;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+}
+
+.sv-line {
+    margin-top: 2px;
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    text-wrap: pretty;
+    color: var(--ink-muted);
+}
+
+.sv-body > .icon {
+    width: 18px;
+    height: 18px;
+    margin-bottom: 2px;
+    color: var(--ink-muted);
+    transition: translate var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out);
+}
+
+/* Dans un bento à rangées fixes (ordinateur), l'aperçu prend ce que
+   le texte lui laisse : c'est lui qui cède, jamais la ligne. */
+@media (min-width: 1000px) {
+    .svc-bento .sv-media {
+        min-height: 0;
+    }
+}
+
+/* Les grandes tuiles : le titre monte d'un cran. */
+.sv-tile--lead .sv-title {
+    font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+    letter-spacing: -0.03em;
+}
+
+/* ── Texte à gauche, aperçu à droite ── */
+@media (min-width: 700px) {
+    .sv-tile--side {
+        flex-direction: row;
+    }
+
+    .sv-tile--side .sv-body {
+        flex: 0 0 34%;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding: var(--space-4);
+    }
+}
+
+/* La mention que PRODUCT.md impose sur les captures de l'application. */
+.sv-note {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    z-index: 2;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: var(--surface);
+    font-size: 0.6875rem;
+    font-weight: var(--w-strong);
+    color: var(--surface-soft);
+}
