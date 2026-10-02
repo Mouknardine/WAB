@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr-CH" class="no-js">
+<html lang="fr-CH" class="no-js is-landing">
 
 <head>
     <meta charset="UTF-8">
@@ -43,8 +43,8 @@
     <meta name="twitter:image" content="https://wearebrothers.ch/assets/og-image.jpg">
 
     <!-- Données structurées (JSON-LD) — studio, site, fondateurs + page.
-         Les questions fréquentes vivent sur /creation-site-internet-lausanne,
-         où elles sont affichées : le bloc FAQPage les y accompagne. -->
+         Les questions fréquentes vivent désormais sur /studio, où elles
+         sont affichées : le bloc FAQPage les y accompagne. -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -344,7 +344,6 @@
 
     <!-- Police — Sligoil seule, servie depuis le site -->
     <link rel="preload" href="assets/fonts/Sligoil-Micro.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="assets/fonts/Sligoil-MicroBold.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/base.css?v=32">
@@ -352,39 +351,26 @@
     <link rel="stylesheet" href="css/nav-panel.css?v=1">
     <link rel="stylesheet" href="css/contact-modal.css?v=7">
     <link rel="stylesheet" href="css/contact-form.css?v=3">
-    <link rel="stylesheet" href="css/plate.css?v=5">
-    <link rel="stylesheet" href="css/home-type.css?v=2">
-    <link rel="stylesheet" href="css/home-hero.css?v=6">
-    <link rel="stylesheet" href="css/home-work.css?v=4">
-    <link rel="stylesheet" href="css/home-contact.css?v=4">
-    <link rel="stylesheet" href="css/footer.css?v=11">
+    <link rel="stylesheet" href="css/landing.css?v=10">
+    <link rel="stylesheet" href="css/landing-plate.css?v=5">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=2" defer></script>
-    <script src="js/reveal.js?v=4" defer></script>
     <script src="js/nav.js?v=6" defer></script>
     <script src="js/letter-swap.js?v=1" defer></script>
-    <script type="module" src="js/birds/perch.js?v=4"></script>
     <script type="module" src="js/mesh/index.js?v=2"></script>
     <script type="module" src="js/birds/index.js?v=6"></script>
     <script type="module" src="js/contact/index.js?v=9"></script>
 </head>
 
-<body class="home" data-birds="calm">
+<body class="landing" data-birds="dense">
 
-    <!-- Icônes — Lucide (licence ISC), trait réglé en CSS (.icon). -->
-    <svg class="sprite" aria-hidden="true" focusable="false">
-        <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></symbol>
-        <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></symbol>
-    </svg>
+    <a class="skip-link" href="#studio-intro">Aller au contenu</a>
 
-
-    <a class="skip-link" href="#contenu">Aller au contenu</a>
-
-    <!-- Le ciel occupe tout l’écran, sous les plaques de verre. -->
+    <!-- Le ciel occupe tout l'écran, sous les trois plaques de verre. -->
     <canvas id="birdCanvas" aria-hidden="true"></canvas>
 
-    <!-- BARRE FLOTTANTE — la plaque se prolonge pour contenir le menu -->
+    <!-- BARRE FLOTTANTE — la pilule se prolonge pour contenir le menu -->
     <header class="topbar" id="topbar">
         <div class="topbar__inner" id="topbarBar">
             <div class="topbar__bar">
@@ -394,7 +380,7 @@
                     <a href="/realisations" class="topbar__link">Work</a>
                     <a href="/services" class="topbar__link">Services</a>
                     <a href="/studio" class="topbar__link">About</a>
-                    <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="topbar__link">Contact</a>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="topbar__link">Contact</a>
                 </nav>
 
                 <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
@@ -410,19 +396,19 @@
                     <nav class="panel__nav" aria-label="Navigation">
                         <a href="/realisations" class="panel__link">
                             Work
-                            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg>
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
                         <a href="/services" class="panel__link">
                             Services
-                            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg>
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
                         <a href="/studio" class="panel__link">
                             About
-                            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg>
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
-                        <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="panel__link">
+                        <a href="mailto:contact@wearebrothers.ch" data-contact class="panel__link">
                             Contact
-                            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg>
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                         </a>
                     </nav>
 
@@ -443,165 +429,60 @@
 
     <div class="topbar-scrim" id="topbarScrim"></div>
 
-    <main id="contenu" tabindex="-1">
+    <main>
 
-        <!-- L’OUVERTURE — la promesse, puis Zinéma à la une. -->
-        <section class="opening" aria-labelledby="heroTitle">
-            <div class="card intro">
+        <!-- LA PLAQUE — ce que fait le studio, qui s'en occupe, ce qu'il
+             a déjà fait, et le chemin vers ce travail. Le porte-plaque la cale sur
+             la même verticale que la barre du haut et la ligne du bas. -->
+        <div class="landing__anchor">
+            <section class="landing__plate" id="studio-intro" tabindex="-1" aria-labelledby="landingHello">
                 <!-- La fin du titre reste lue par Google et la navigation
                      vocale : « agence web » et « site internet » à Lausanne
-                     doivent rester dans le H1 de l’accueil. -->
-                <h1 class="intro__title" id="heroTitle">
-                    Design et code, sous le même toit.<span class="sr-only"> WeAreBrothers, agence web et création de site internet à Lausanne.</span>
+                     doivent rester dans le H1 de l'accueil. -->
+                <h1 class="landing__hello" id="landingHello">
+                    Design d'interface et de système sur mesure.<span class="sr-only"> WeAreBrothers, agence web et création de site internet à Lausanne.</span>
                 </h1>
-                <div class="intro__actions">
-                    <a href="/realisations" class="btn btn--solid btn--sm"><span>Voir nos réalisations</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
-                    <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="btn btn--ghost btn--sm">Démarrer un projet</a>
-                </div>
-            </div>
+                <p class="landing__intro">
+                    Deux frères à Lausanne, design et développement sous le même toit. Un seul
+                    interlocuteur du premier café à la mise en ligne, réponse sous 24&nbsp;h ouvrées,
+                    sans engagement.
+                </p>
 
-            <article class="card feature" aria-labelledby="featureName">
-                <div class="feature__media">
-                    <picture>
-                        <source media="(min-width: 700px)"
-                            srcset="assets/images/shot-zinema-800.webp 800w, assets/images/shot-zinema-1600.webp 1600w" sizes="92vw"
-                            width="1600" height="1000">
-                        <img src="assets/images/work-zinema-720.webp"
-                            srcset="assets/images/work-zinema-720.webp 720w, assets/images/work-zinema-1440.webp 1440w" sizes="92vw"
-                            alt="Le site de Zinéma" width="720" height="900" fetchpriority="high" decoding="async">
-                    </picture>
-                    <div class="overlay surface-ink">
-                        <div>
-                            <p class="label">À la une</p>
-                            <h2 class="overlay__title" id="featureName">Zinéma</h2>
-                            <p class="overlay__sub">Cinéma d’art et essai, Lausanne</p>
-                        </div>
-                        <a href="/realisations#zinema" class="btn btn--solid btn--sm"><span>Voir le projet</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
-                    </div>
-                </div>
-            </article>
-        </section>
+                <a class="landing__proof" href="/realisations">
+                    <span class="landing__thumbs" aria-hidden="true">
+                        <img class="landing__thumb" src="assets/images/thumb-zinema.webp" alt="" width="360" height="225" decoding="async">
+                        <img class="landing__thumb" src="assets/images/thumb-alliani.webp" alt="" width="360" height="225" decoding="async">
+                        <img class="landing__thumb" src="assets/images/thumb-amarte.webp" alt="" width="360" height="225" decoding="async">
+                        <img class="landing__thumb" src="assets/images/thumb-central.webp" alt="" width="360" height="225" decoding="async">
+                    </span>
+                    <span class="sr-only">Réalisations : Zinéma, Maison Alliani, Amarte Studio, Le P'tit Central</span>
+                </a>
 
-        <!-- TRAVAUX CHOISIS — un grand projet, trois satellites, une case libre. -->
-        <section class="section" aria-labelledby="workTitle">
-            <div class="section-head">
-                <h2 class="section-head__title" id="workTitle">Travaux choisis</h2>
-                <a href="/realisations" class="link-arrow">Tous les projets <svg class="icon" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
-            </div>
-            <ul class="work-bento">
-                <li>
-                    <a class="card work-tile" href="/realisations#alliani">
-                        <div class="work-tile__media">
-                            <img src="assets/images/work-alliani-720.webp"
-                                srcset="assets/images/work-alliani-720.webp 720w, assets/images/work-alliani-1440.webp 1440w"
-                                sizes="(min-width: 1000px) 46vw, 92vw" alt="" width="720" height="900" loading="lazy" decoding="async">
-                            <div class="overlay surface-ink">
-                                <div>
-                                    <h3 class="overlay__title">Maison Alliani</h3>
-                                    <p class="overlay__sub">Haute joaillerie</p>
-                                </div>
-                                <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg>
-                            </div>
-                        </div>
+                <div class="landing__actions">
+                    <a href="/realisations" class="btn btn--solid">
+                        <span>Voir nos réalisations</span>
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                     </a>
-                </li>
-                <li>
-                    <a class="card work-tile" href="/realisations#amarte">
-                        <div class="work-tile__media">
-                            <img src="assets/images/work-amarte-720.webp"
-                                srcset="assets/images/work-amarte-720.webp 720w, assets/images/work-amarte-1440.webp 1440w"
-                                sizes="(min-width: 1000px) 23vw, 46vw" alt="" width="720" height="900" loading="lazy" decoding="async">
-                            <div class="overlay surface-ink">
-                                <div>
-                                    <h3 class="overlay__title">Amarte Studio</h3>
-                                    <p class="overlay__sub">Yoga et Pilates, Épalinges</p>
-                                </div>
-                                <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a class="card work-tile" href="/realisations#central">
-                        <div class="work-tile__media">
-                            <img src="assets/images/work-central-720.webp"
-                                srcset="assets/images/work-central-720.webp 720w, assets/images/work-central-1440.webp 1440w"
-                                sizes="(min-width: 1000px) 23vw, 46vw" alt="" width="720" height="900" loading="lazy" decoding="async">
-                            <div class="overlay surface-ink">
-                                <div>
-                                    <h3 class="overlay__title">Le P’tit Central</h3>
-                                    <p class="overlay__sub">Café-restaurant, Lausanne</p>
-                                </div>
-                                <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a class="card work-tile" href="/realisations#dj">
-                        <div class="work-tile__media">
-                            <img src="assets/images/work-dj-720.webp"
-                                srcset="assets/images/work-dj-720.webp 720w, assets/images/work-dj-1440.webp 1440w"
-                                sizes="(min-width: 1000px) 23vw, 46vw" alt="" width="720" height="900" loading="lazy" decoding="async">
-                            <div class="overlay surface-ink">
-                                <div>
-                                    <h3 class="overlay__title">LAZIZZE DJ</h3>
-                                    <p class="overlay__sub">DJ house, Lausanne</p>
-                                </div>
-                                <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a class="card slot" href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" data-perch-host>
-                        <canvas class="perch perch-on perch-on--inside" data-perch="fly" data-scale="2" data-color="2" aria-hidden="true"></canvas>
-                        <div>
-                            <h3 class="slot__title">Votre projet</h3>
-                            <p class="slot__text">Cette place vous attend.</p>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </section>
-
-        <!-- CONTACT — la question sur l’encre, et ceux qui répondent. -->
-        <section class="section contact" aria-labelledby="contactTitle">
-            <div class="card surface-ink contact__lead" data-perch-host>
-                <canvas class="perch perch-on" data-perch="fly" data-scale="2" data-color="6" aria-hidden="true"></canvas>
-                <h2 class="contact__title" id="contactTitle">On commence par un&nbsp;café&nbsp;?</h2>
-                <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="btn btn--solid"><span>Démarrer un projet</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
-            </div>
-            <div class="card people">
-                <ul class="people__photos">
-                    <li><img src="assets/images/team-eliott-400.webp" alt="Eliott Pina" width="400" height="500" loading="lazy" decoding="async"></li>
-                    <li><img src="assets/images/team-matt-400.webp" alt="Matt Pina" width="400" height="500" loading="lazy" decoding="async"></li>
-                    <li><img src="assets/images/team-ivan-400.webp" alt="Ivan Jakovlevski" width="400" height="500" loading="lazy" decoding="async"></li>
-                </ul>
-                <div class="overlay surface-ink">
-                    <div>
-                        <p class="overlay__title">Deux frères, un seul interlocuteur.</p>
-                        <p class="overlay__sub">Eliott dessine, Matt développe, Ivan vous suit.</p>
-                    </div>
                 </div>
+            </section>
+        </div>
+
+        <!-- LA LIGNE DU BAS — où écrire, et où nous trouver.
+             Pas de lien vers les deux pages de service ici, et c'est
+             voulu : l'accueil n'est pas le chemin vers elles. Elles
+             restent reliées depuis le pied des pages de texte, ce qui
+             suffit à Google. -->
+        <div class="landing__foot">
+            <div class="landing__foot-inner">
+                <a href="mailto:contact@wearebrothers.ch" class="landing__mail">contact@wearebrothers.ch</a>
+                <span class="landing__where">
+                    <span class="landing__place">Lausanne, Suisse — <time data-local-time>--:--</time></span>
+                    <span class="studio-status" data-local-status hidden></span>
+                </span>
             </div>
-        </section>
+        </div>
 
     </main>
-
-    <!-- PIED DE PAGE — une carte, une ligne. -->
-    <footer class="site-footer">
-        <div class="card footer-card">
-            <p class="footer-card__mark">WAB.</p>
-            <nav class="footer-card__nav" aria-label="Pied de page">
-                <a href="/realisations">Work</a>
-                <a href="/services">Services</a>
-                <a href="/studio">About</a>
-                <a href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
-            </nav>
-            <p class="footer-card__sign">&copy; 2026 WeAreBrothers Studio. Codé à la main à Lausanne, oiseaux compris.</p>
-        </div>
-    </footer>
 
 </body>
 

@@ -296,7 +296,8 @@
     <link rel="stylesheet" href="css/studio.css?v=34">
     <link rel="stylesheet" href="css/process.css?v=11">
     <link rel="stylesheet" href="css/advice.css?v=3">
-    <link rel="stylesheet" href="css/footer.css?v=7">
+    <link rel="stylesheet" href="css/footer.css?v=9">
+    <link rel="stylesheet" href="css/plate.css?v=1">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=2" defer></script>
@@ -548,22 +549,22 @@
 
     </main>
 
-    <footer class="footer">
-        <div class="footer__line">
-            <a href="mailto:contact@wearebrothers.ch" class="footer__mail">contact@wearebrothers.ch</a>
-
-            <div class="footer__aside">
-                <!-- Les deux pages que le menu ne porte pas : sans ces
-                     liens, elles ne seraient atteignables depuis aucune
-                     page de texte. -->
-                <nav class="footer__links" aria-label="Autres pages">
-                    <a href="/creation-site-internet-lausanne">Création de site internet</a>
-                    <a href="/applications">Applications</a>
-                </nav>
-                <span class="footer__place">Lausanne, Suisse — <time data-local-time>--:--</time></span>
-                <span class="studio-status" data-local-status hidden></span>
-                <span class="footer__sign">&copy; 2026 WeAreBrothers Studio</span>
-            </div>
+    <!-- PIED DE PAGE — une seule carte : le sigle, les pages, l'adresse
+         et la signature. Les deux pages que le menu ne porte pas
+         (création de site, applications) n'ont pas d'autre chemin
+         depuis une page de texte : leurs liens ne peuvent pas partir. -->
+    <footer class="site-footer">
+        <div class="card footer-card">
+            <p class="footer-card__mark">WAB.</p>
+            <nav class="footer-card__nav" aria-label="Pied de page">
+                <a href="/realisations">Work</a>
+                <a href="/services">Services</a>
+                <a href="/studio">About</a>
+                <a href="/creation-site-internet-lausanne">Création de site internet</a>
+                <a href="/applications">Applications</a>
+                <a href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
+            </nav>
+            <p class="footer-card__sign">&copy; 2026 WeAreBrothers Studio. Codé à la main à Lausanne, oiseaux compris.</p>
         </div>
     </footer>
 

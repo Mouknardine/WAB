@@ -1,79 +1,10 @@
 /* ============================================
    WAB. — Pied de page
-   Une seule ligne, tout en bas : l'adresse à gauche, les deux
-   pages que le menu ne porte pas au milieu, le lieu et l'heure à
-   droite. Même marge et même filet que la barre du haut — les deux
-   encadrent la page.
-
-   Sur téléphone, la ligne s'enroule sur deux ou trois rangs plutôt
-   que de comprimer le texte : c'est le seul endroit où elle cède.
-   ============================================ */
-
-.footer {
-    border-top: 1px solid var(--line);
-}
-
-.footer__line {
-    padding: 16px var(--gutter);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 10px clamp(20px, 3vw, 36px);
-    font-size: clamp(11px, 2.6vw, 12.5px);
-    line-height: 1.5;
-    color: var(--ink-muted);
-}
-
-.footer__mail {
-    font-weight: var(--w-strong);
-    color: var(--ink);
-    white-space: nowrap;
-    transition: color 0.25s var(--ease-out);
-}
-
-.footer__mail:hover {
-    color: var(--pink);
-}
-
-/* Le reste se groupe à droite, comme les liens de la barre du haut. */
-.footer__aside {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 10px clamp(16px, 2.4vw, 28px);
-}
-
-.footer__links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px clamp(16px, 2.4vw, 28px);
-}
-
-.footer__links a {
-    transition: color 0.25s var(--ease-out);
-}
-
-.footer__links a:hover {
-    color: var(--pink);
-}
-
-.footer__place,
-.footer__sign {
-    white-space: nowrap;
-}
-
-.footer__sign {
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-/* ============================================
-   Pied de page en carte (accueil, version 5)
-   Une seule carte, une seule ligne sur ordinateur : le sigle, les
-   trois pages, l'adresse, la signature. Au téléphone, deux rangées.
-   Posé sur l'accueil d'abord ; la ligne ci-dessus reste celle des
-   pages intérieures jusqu'à leur refonte.
+   Une seule carte (plate.css, .card), une seule ligne sur
+   ordinateur : le sigle, les pages, l'adresse, la signature. Au
+   téléphone, la ligne s'enroule. Les liens vers création de site et
+   applications sont le seul chemin vers ces pages depuis une page de
+   texte : ils restent.
    ============================================ */
 
 .site-footer {
