@@ -21,12 +21,14 @@
     padding: clamp(20px, 2.4vw, 32px);
 }
 
-/* Sur ordinateur, la promesse à gauche et les boutons à droite, sur
-   la même ligne de base : la carte reste basse et pleine. */
+/* Sur ordinateur, la carte se règle sur son contenu au lieu de
+   courir sur toute la largeur : un rectangle compact, calé à gauche,
+   la promesse puis les boutons dessous. */
 @media (min-width: 900px) {
     .intro {
-        flex-direction: row;
-        align-items: flex-end;
+        justify-self: start;
+        width: fit-content;
+        gap: var(--space-5);
     }
 }
 
