@@ -1,10 +1,10 @@
 /* ============================================
    WAB. — Pied de page
-   Une seule carte (plate.css, .card), une seule ligne sur
-   ordinateur : le sigle, les pages, l'adresse, la signature. Au
-   téléphone, la ligne s'enroule. Les liens vers création de site et
-   applications sont le seul chemin vers ces pages depuis une page de
-   texte : ils restent.
+   Une seule carte (plate.css, .card), rangée comme un sommaire : le
+   sigle en grand à gauche, trois colonnes à intitulé discret (Pages,
+   Expertises, Contact), puis une ligne de signature sous un filet.
+   Les liens vers création de site et applications sont le seul
+   chemin vers ces pages depuis une page de texte : ils restent.
    ============================================ */
 
 .site-footer {
@@ -13,59 +13,105 @@
 
 .footer-card {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    flex-direction: column;
     justify-content: space-between;
-    gap: var(--space-3) var(--space-6);
-    padding: var(--space-4) var(--space-5);
+    gap: var(--space-6);
+    padding: clamp(20px, 2.4vw, 32px);
+}
+
+.footer-card__top {
+    display: grid;
+    gap: var(--space-5);
 }
 
 .footer-card__mark {
-    font-size: 1.25rem;
+    font-size: clamp(2.25rem, 4vw, 3.25rem);
     font-weight: var(--w-strong);
-    letter-spacing: -0.04em;
+    letter-spacing: -0.06em;
+    line-height: 0.9;
 }
 
-.footer-card__nav {
+.footer-card__cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5) var(--space-4);
+}
+
+.footer-card__col {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0 var(--space-5);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
     font-size: var(--text-sm);
     font-weight: var(--w-strong);
 }
 
-.footer-card__nav a {
-    display: inline-block;
-    padding-block: 11px;
+/* Intitulé de colonne : petites capitales grises, la seule
+   ornementation du pied de page. */
+.footer-card__label {
+    margin-bottom: var(--space-1);
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+}
+
+.footer-card__col a {
     transition: color var(--dur-1) var(--ease-out);
 }
 
-.footer-card__nav a:hover {
+.footer-card__col a:hover {
     color: var(--accent);
 }
 
-/* La signature, avec sa touche d'humour : une ligne grise, la seule. */
+.footer-card__col span {
+    font-weight: var(--w-regular);
+    color: var(--ink-muted);
+}
+
+/* L'adresse est la plus longue ligne : elle prend toute la rangée
+   au téléphone plutôt que de déborder de sa colonne. */
+.footer-card__col:last-child {
+    grid-column: 1 / -1;
+}
+
 .footer-card__sign {
-    flex-basis: 100%;
-    padding-top: var(--space-3);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-1) var(--space-4);
+    padding-top: var(--space-4);
     box-shadow: inset 0 1px 0 var(--surface-line);
     font-size: var(--text-xs);
     color: var(--ink-muted);
 }
 
+@media (min-width: 700px) {
+    .footer-card__cols {
+        grid-template-columns: repeat(3, auto);
+        justify-content: start;
+        column-gap: clamp(32px, 4vw, 64px);
+    }
+
+    .footer-card__col:last-child {
+        grid-column: auto;
+    }
+}
+
+/* Pied de page seul (pages sans appel final) : le sigle à gauche,
+   les colonnes à droite, sur une seule rangée. */
 @media (min-width: 1000px) {
-    .footer-card__sign {
-        flex-basis: auto;
-        padding-top: 0;
-        box-shadow: none;
+    .site-footer:not(.site-footer--cta) .footer-card__top {
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+        align-items: start;
     }
 }
 
 /* ── Variante avec appel final ──
    L'appel final et la carte du pied de page se partagent la dernière
    rangée : côte à côte sur ordinateur, à 12 px l'un de l'autre, à la
-   même hauteur. Dans sa demi-largeur, la carte du pied de page
-   s'empile : le sigle en haut, les liens, la signature en bas. */
+   même hauteur. */
 .site-footer--cta {
     display: grid;
     gap: var(--gap);
@@ -74,22 +120,5 @@
 @media (min-width: 1000px) {
     .site-footer--cta {
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    }
-
-    .site-footer--cta .footer-card {
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: space-between;
-    }
-
-    .site-footer--cta .footer-card__nav {
-        gap: 0 var(--space-4);
-    }
-
-    .site-footer--cta .footer-card__sign {
-        flex-basis: auto;
-        width: 100%;
-        padding-top: var(--space-3);
-        box-shadow: inset 0 1px 0 var(--surface-line);
     }
 }

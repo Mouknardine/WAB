@@ -161,37 +161,3 @@
 
     .svc-bento--brand > :nth-child(1) { grid-column: 1 / span 2; grid-row: span 2; }
 }
-
-/* ── L'appel final ──
-   Posé dans le pied de page, à côté de sa carte (footer.css,
-   .site-footer--cta) : le titre en haut, les boutons en bas. */
-.svc-closing {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: var(--space-5);
-    padding: clamp(24px, 3vw, 40px);
-}
-
-.svc-closing__title {
-    max-width: 14ch;
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
-    font-weight: var(--w-strong);
-    letter-spacing: -0.045em;
-    line-height: 1.08;
-    text-wrap: balance;
-}
-
-.svc-closing__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-}
-
-@media (max-width: 480px) {
-    .svc-closing__actions,
-    .svc-closing__actions .btn {
-        width: 100%;
-    }
-}

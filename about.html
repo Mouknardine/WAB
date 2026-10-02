@@ -296,7 +296,7 @@
     <link rel="stylesheet" href="css/studio.css?v=34">
     <link rel="stylesheet" href="css/process.css?v=11">
     <link rel="stylesheet" href="css/advice.css?v=3">
-    <link rel="stylesheet" href="css/footer.css?v=9">
+    <link rel="stylesheet" href="css/footer.css?v=11">
     <link rel="stylesheet" href="css/plate.css?v=2">
 
     <!-- Scripts -->
@@ -555,16 +555,28 @@
          depuis une page de texte : leurs liens ne peuvent pas partir. -->
     <footer class="site-footer">
         <div class="card footer-card">
-            <p class="footer-card__mark">WAB.</p>
-            <nav class="footer-card__nav" aria-label="Pied de page">
-                <a href="/realisations">Work</a>
-                <a href="/services">Services</a>
-                <a href="/studio">About</a>
-                <a href="/creation-site-internet-lausanne">Création de site internet</a>
-                <a href="/applications">Applications</a>
-                <a href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
-            </nav>
-            <p class="footer-card__sign">&copy; 2026 WeAreBrothers Studio. Codé à la main à Lausanne, oiseaux compris.</p>
+            <div class="footer-card__top">
+                <p class="footer-card__mark">WAB.</p>
+                <div class="footer-card__cols">
+                    <nav class="footer-card__col" aria-label="Pages">
+                        <p class="footer-card__label">Pages</p>
+                        <a href="/realisations">Work</a>
+                        <a href="/services">Services</a>
+                        <a href="/studio">About</a>
+                    </nav>
+                    <nav class="footer-card__col" aria-label="Expertises">
+                        <p class="footer-card__label">Expertises</p>
+                        <a href="/creation-site-internet-lausanne">Création de site internet</a>
+                        <a href="/applications">Applications</a>
+                    </nav>
+                    <div class="footer-card__col">
+                        <p class="footer-card__label">Contact</p>
+                        <a href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
+                        <span>Lausanne, Suisse</span>
+                    </div>
+                </div>
+            </div>
+            <p class="footer-card__sign"><span>&copy; 2026 WeAreBrothers Studio</span> <span>Codé à la main à Lausanne, oiseaux compris.</span></p>
         </div>
     </footer>
 
