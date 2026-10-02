@@ -69,105 +69,63 @@
 }
 
 /* ============================================
-   Pied de page en cartes (accueil, version 4)
-   D'après Footer Section 4 (solaceui, 21st.dev), resserré : une carte
-   de marque et une carte de liens, taillées à leur contenu, à la même
-   gouttière que le reste de la page. La carte de marque est le seul
-   aplat de rose foncé de la page (--pink-deep, texte blanc à 7,7:1).
-   Pas de newsletter : le studio n'en a pas. Posé sur l'accueil
-   d'abord ; la ligne ci-dessus reste celle des pages intérieures.
+   Pied de page en carte (accueil, version 5)
+   Une seule carte, une seule ligne sur ordinateur : le sigle, les
+   trois pages, l'adresse, la signature. Au téléphone, deux rangées.
+   Posé sur l'accueil d'abord ; la ligne ci-dessus reste celle des
+   pages intérieures jusqu'à leur refonte.
    ============================================ */
 
 .site-footer {
-    display: grid;
-    gap: var(--gap);
     padding: clamp(40px, 4.5vw, 56px) var(--gutter) var(--gutter);
 }
 
-@media (min-width: 900px) {
-    .site-footer {
-        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    }
-}
-
-.footer-brand,
-.footer-links {
+.footer-card {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
-    gap: var(--space-5);
-    padding: clamp(20px, 2.4vw, 28px);
+    gap: var(--space-3) var(--space-6);
+    padding: var(--space-4) var(--space-5);
 }
 
-.footer-brand {
-    background: var(--pink-deep);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
-    color: var(--white);
-}
-
-.footer-brand__mark {
-    font-size: clamp(2rem, 4vw, 3rem);
+.footer-card__mark {
+    font-size: 1.25rem;
     font-weight: var(--w-strong);
-    letter-spacing: -0.05em;
-    line-height: 1;
+    letter-spacing: -0.04em;
 }
 
-.footer-brand__slogan {
-    max-width: 24ch;
-    font-size: 0.9375rem;
-    font-weight: var(--w-strong);
-    line-height: 1.4;
-}
-
-.footer-brand__sign {
-    margin-top: var(--space-2);
-    font-size: var(--text-xs);
-    color: rgba(255, 255, 255, 0.82);
-}
-
-/* Une colonne au téléphone : l'adresse email, insécable, ne tient pas
-   dans une demi-largeur. */
-.footer-links__grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-5);
-}
-
-@media (min-width: 480px) {
-    .footer-links__grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-/* L'intitulé de colonne : petites capitales grises, 11 px — le seul
-   usage des capitales sur la page. */
-.footer-links__head {
-    margin-bottom: var(--space-1);
-    font-size: 0.6875rem;
-    font-weight: var(--w-strong);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-}
-
-.footer-links__list {
-    list-style: none;
-}
-
-.footer-links__list a {
-    display: inline-block;
-    padding-block: 6px;
+.footer-card__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--space-5);
     font-size: var(--text-sm);
     font-weight: var(--w-strong);
+}
+
+.footer-card__nav a {
+    display: inline-block;
+    padding-block: 11px;
     transition: color var(--dur-1) var(--ease-out);
 }
 
-.footer-links__list a:hover {
+.footer-card__nav a:hover {
     color: var(--accent);
 }
 
-@media (max-width: 899px) {
-    .footer-links__list a {
-        padding-block: 11px;
+/* La signature, avec sa touche d'humour : une ligne grise, la seule. */
+.footer-card__sign {
+    flex-basis: 100%;
+    padding-top: var(--space-3);
+    box-shadow: inset 0 1px 0 var(--surface-line);
+    font-size: var(--text-xs);
+    color: var(--ink-muted);
+}
+
+@media (min-width: 1000px) {
+    .footer-card__sign {
+        flex-basis: auto;
+        padding-top: 0;
+        box-shadow: none;
     }
 }

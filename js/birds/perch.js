@@ -9,6 +9,8 @@
  * data-color : rang de la couleur dans BODY_COLORS.
  * data-perch="flap" : bat des ailes tant que le lien parent est survolé.
  * data-perch="fly"  : au clic, s'envole, puis revient se poser.
+ *   Dans une carte marquée data-perch-host (accueil), il s'envole aussi
+ *   quand la souris entre dans la carte.
  *
  * Sous « réduire les animations », l'oiseau reste posé, immobile.
  */
@@ -117,6 +119,14 @@ function setupPerch(canvas) {
     if (flies) {
         const host = canvas.closest('button') || canvas;
         host.addEventListener('click', flyAway);
+    }
+
+    // data-perch-host sur une carte : l'oiseau s'envole quand la souris
+    // entre dans la carte (accueil). Au doigt, pas de survol : il reste
+    // posé. Sous « réduire les animations », flyAway ne fait rien.
+    const card = flies ? canvas.closest('[data-perch-host]') : null;
+    if (card && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        card.addEventListener('pointerenter', flyAway);
     }
 }
 

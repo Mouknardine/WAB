@@ -1,8 +1,8 @@
 # WAB. — Design système
 
-Version 4 — 2 octobre 2026. Branche `refonte-studio`, appliquée à l'accueil et au socle commun (barre, boutons, jetons, icônes). Les autres pages suivront une fois l'accueil validé.
+Version 5 — 2 octobre 2026. Branche `refonte-studio`, appliquée à l'accueil et au socle commun (barre, boutons, jetons, icônes). Les autres pages suivront une fois l'accueil validé.
 
-Historique de l'accueil : version 1 (plaques remplies de texte, `9ec3f4f`) « trop de texte » ; version 2 (sigle géant, `db37cd1`) écartée ; version 3 (cartes de verre rose translucide, `436aa19`) — la bonne structure, d'après [Vucko](https://vucko.co/) et [Apple Developer Design](https://developer.apple.com/design/), mais jugée « cheap » : « plus serré et qualitatif ». La version 4 garde la structure et refait l'exécution.
+Historique de l'accueil : v1 plaques de texte (`9ec3f4f`, « trop de texte ») ; v2 sigle géant (`db37cd1`, écartée) ; v3 cartes de verre rose (`436aa19`, « cheap ») ; v4 cartes nettes et serrées (`14b80ac`, « très plat et sans âme ») ; v5, ci-dessous : la base de la v4, plus la personnalité du studio et une vraie composition, puis — retour d'Eliott en cours de route, « trop d'infos » — l'accueil réduit à quatre blocs, d'après Wild, MOUTHWASH et Pentagram (Mobbin).
 
 ---
 
@@ -19,17 +19,16 @@ Ce qui est écarté, et pourquoi :
 - les repères et filets au-dessus des titres, l'en-tête titre/phrase en deux colonnes (rejetés) ;
 - les chiffres en exposant, les projets en très grand à tailles alternées, les ornements (rejetés).
 
-### L'accueil, version 4 : des cartes nettes, serrées, sur un ciel rose
+### L'accueil, version 5 : quatre blocs, de l'âme dans les cartes
 
-Ce qui faisait « bon marché » en version 3, et la correction :
+**Structure.** Une ouverture (promesse + Lausanne en direct + projet à la une), les travaux en bento, un seul bloc de contact, un pied de page d'une ligne. Tout le reste — services détaillés, faits, liens rapides — vit sur Work, Services et About. Références : [Wild](https://mobbin.com/sites/sections/c18cb634-beea-4af7-8d3a-08211610a68b) (une phrase, trois grandes cartes projet), [MOUTHWASH](https://mobbin.com/sites/sections/364878c8-261d-4943-81e9-d2b944b82247) (un titre court, quatre cartes), [Pentagram](https://mobbin.com/sites/sections/933958ee-3d23-4692-bcb7-650e850a84ee) (nom + une ligne).
 
-| Défaut | Correction |
-|---|---|
-| Cartes en verre rose translucide sur un fond rose : rien ne se détache. | Surface presque opaque (`--surface`, blanc à 95 %), liseré d'un pixel (`--surface-line`), ombre à peine posée au repos, levée seulement au survol (Vercel, Linear). Le rose devient le cadre. |
-| Trop d'air : grandes marges, cartes à moitié vides, premier écran vide. | Gouttière unique de 12 px (`--gap`), sections à 40–56 px, cartes taillées à leur contenu ; l'ouverture tient en deux cartes côte à côte dès le premier écran ; la carte du studio est remplie par les trois portraits. |
-| Hiérarchie lâche. | Titres de section à 20–24 px, titres de carte à 15 px, texte à 13 px dans un vrai gris de surface (`--surface-muted`, 6,4:1) ; petites capitales de 11 px réservées aux intitulés du pied de page. |
-| Pastilles d'icône lourdes, rayons disparates. | Pastilles de 32 px, liseré fin, icône de 16 px ; deux rayons seulement — 16 px dehors (`--r-card`), 8 px dedans (`--r-inner`), images posées à 8 px du bord. |
-| Oiseaux denses derrière les cartes. | Densité « calme » sur l'accueil : ils restent visibles dans les marges et entre les sections. |
+**Composition.** Pas deux blocs au même gabarit : ouverture 2/3 + 1/3 puis une bande pleine largeur ; travaux en 2 × 2 + satellites + case libre ; contact 5/12 encre + 7/12 photos. Dans les cartes, trois mises en page de texte (`css/home-type.css`) : étiquette en petites capitales puis valeur très grande (l'heure de Lausanne) ; texte posé sur l'image, en bas, sur un voile sombre déclaré `.surface-ink` ; titre en grand dans une carte de texte seul.
+
+**Personnalité.**
+- Trois oiseaux du ciel posés sur trois cartes, pas davantage (`perch.js`, `data-perch="fly"` + `data-perch-host` sur la carte) : sur la carte « en direct », dans la case libre « Votre projet », sur la carte encre du contact. Ils s'envolent quand la souris entre dans la carte et reviennent se poser ; au doigt et sous « réduire les animations », ils restent posés, immobiles.
+- Le statut du studio en direct (`nav-clock.js`) : « Lausanne, en direct », l'heure en très grand, et « Au studio », « Lausanne dort »… avec le point rose qui bat aux heures de bureau.
+- Humour sobre, sans rien inventer : la case libre « Votre projet — Cette place vous attend. » (reprise de Work) avec son oiseau qui attend ; la signature « Codé à la main à Lausanne, oiseaux compris. »
 
 ---
 

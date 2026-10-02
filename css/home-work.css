@@ -1,117 +1,151 @@
 /* ============================================
    WAB. — Accueil : travaux choisis
-   Huit cartes égales sur quatre colonnes (deux sur tablette) : la
-   photo en situation au format 4/5, posée à 8 px du bord, puis le
-   nom et le client sur une ligne chacun. Au téléphone, une rangée
-   qui défile au doigt et s'aimante.
+   Un bento, pas une rangée de cartes égales — et peu de projets,
+   comme chez Wild ou MOUTHWASH (Mobbin) :
+     | Maison Alliani (2 × 2) | Amarte     | Central      |
+     |                        | LAZIZZE DJ | Votre projet |
+   Les autres vivent sur Work.
+   Le nom et le client sont posés sur la photo. La dernière case est
+   libre : un oiseau y attend le prochain projet (même texte que la
+   case libre de Work).
    ============================================ */
 
-.work-cards {
+.work-bento {
     display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: min(66vw, 260px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 210px;
     gap: var(--gap);
-    margin-inline: calc(-1 * var(--gutter));
-    padding: 0 var(--gutter) 2px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline: var(--gutter);
-    scrollbar-width: none;
     list-style: none;
 }
 
-.work-cards::-webkit-scrollbar {
-    display: none;
-}
-
-.work-cards > li {
-    scroll-snap-align: start;
+.work-bento > li:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
 }
 
 @media (min-width: 700px) {
-    .work-cards {
-        grid-auto-flow: row;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        margin-inline: 0;
-        padding: 0;
-        overflow: visible;
+    .work-bento {
+        grid-auto-rows: 240px;
     }
 }
 
 @media (min-width: 1000px) {
-    .work-cards {
+    .work-bento {
         grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-auto-rows: clamp(220px, 19vw, 280px);
     }
 }
 
-.work-card {
+.work-tile {
     display: block;
     height: 100%;
-    padding: 8px;
+    padding: 6px;
     -webkit-tap-highlight-color: transparent;
 }
 
-.work-card__media {
-    aspect-ratio: 4 / 5;
+.work-tile__media {
+    position: relative;
+    height: 100%;
     overflow: hidden;
     border-radius: var(--r-inner);
     background: var(--surface-sunk);
 }
 
-.work-card__media img {
+.work-tile__media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: scale var(--dur-3) var(--ease);
 }
 
-.work-card__body {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: var(--space-2);
-    padding: var(--space-3) var(--space-2) var(--space-1);
+.work-tile .overlay {
+    padding: 40px var(--space-3) var(--space-3);
 }
 
-.work-card__text {
-    min-width: 0;
-}
-
-.work-card__name,
-.work-card__client {
+.work-tile .overlay__title,
+.work-tile .overlay__sub {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.work-card__name {
-    font-size: 0.9375rem;
-    font-weight: var(--w-strong);
-    letter-spacing: -0.02em;
-    line-height: 1.35;
+.work-tile .overlay > div {
+    min-width: 0;
 }
 
-.work-card__client {
+.work-tile .overlay .icon {
+    width: 16px;
+    height: 16px;
+    transition: translate var(--dur-2) var(--ease-out);
+}
+
+/* Au téléphone, le nom seul sur les petites cases, sur deux lignes
+   s'il le faut plutôt que tronqué. */
+@media (max-width: 699px) {
+    .work-bento > li:not(:first-child) .overlay__sub,
+    .work-bento > li:not(:first-child) .overlay .icon {
+        display: none;
+    }
+
+    .work-bento > li:not(:first-child) .overlay__title {
+        white-space: normal;
+    }
+}
+
+/* Le grand projet : son nom en grand. */
+.work-bento > li:first-child .overlay {
+    padding: 64px var(--space-5) var(--space-4);
+}
+
+.work-bento > li:first-child .overlay__title {
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    letter-spacing: -0.035em;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .work-tile:hover .work-tile__media img {
+        scale: 1.04;
+    }
+
+    .work-tile:hover .overlay .icon {
+        translate: 2px -2px;
+    }
+}
+
+/* ── La case libre ──
+   Un cadre en pointillés posé dans la carte : la place est prête, il
+   ne manque que le projet. */
+/* Le texte en bas, l'oiseau en haut à droite : ils ne se croisent pas. */
+.slot {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: var(--space-3);
+    height: 100%;
+    padding: 14px;
+    outline: 1.5px dashed var(--line-strong);
+    outline-offset: -8px;
+    transition: outline-color var(--dur-2) var(--ease-out);
+}
+
+.slot:hover {
+    outline-color: var(--ink);
+}
+
+.slot__title {
+    font-size: clamp(0.875rem, 4.2vw, 1.0625rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+}
+
+.slot__text {
+    margin-top: 2px;
     font-size: 0.8125rem;
     line-height: 1.45;
     color: var(--ink-muted);
 }
 
-.work-card__body > .icon {
-    width: 16px;
-    height: 16px;
-    margin-top: 3px;
-    color: var(--ink-muted);
-    transition: translate var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out);
-}
-
-@media (hover: hover) and (pointer: fine) {
-    .work-card:hover .work-card__media img {
-        scale: 1.03;
-    }
-
-    .work-card:hover .work-card__body > .icon {
-        translate: 2px -2px;
-        color: var(--ink);
-    }
+.slot .perch-on {
+    left: var(--space-4);
 }

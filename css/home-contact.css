@@ -1,10 +1,8 @@
 /* ============================================
-   WAB. — Accueil : contact
-   Deux cartes à la même hauteur, taillées à leur contenu : la
-   question et le bouton sur la seule surface encre de la page ; à
-   côté, une carte-liste de liens d'après Nav List Card (arihantcodes,
-   21st.dev) — chaque ligne glisse de 2 px avec un léger ressort au
-   survol et s'enfonce à l'appui.
+   WAB. — Accueil : le contact
+   Un seul bloc, deux cartes : la question et le bouton sur la seule
+   surface encre de la page (un oiseau s'y est posé), et à côté les
+   trois personnes qui répondent, en photo, le titre posé dessus.
    ============================================ */
 
 /* minmax(0, 1fr) : sans borne, le bouton insécable élargissait la
@@ -17,7 +15,7 @@
 
 @media (min-width: 900px) {
     .contact {
-        grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
     }
 }
 
@@ -26,23 +24,17 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    gap: var(--space-5);
+    gap: var(--space-6);
     padding: clamp(20px, 2.4vw, 32px);
 }
 
 .contact__title {
-    max-width: 16ch;
+    max-width: 14ch;
     font-size: clamp(1.75rem, 3vw, 2.5rem);
     font-weight: var(--w-strong);
     letter-spacing: -0.045em;
     line-height: 1.08;
     text-wrap: balance;
-}
-
-.contact__note {
-    margin-top: var(--space-2);
-    font-size: var(--text-sm);
-    color: var(--ink-muted);
 }
 
 @media (max-width: 480px) {
@@ -51,71 +43,54 @@
     }
 }
 
-/* ── La carte-liste ── */
-.link-card {
-    padding: var(--space-2);
+/* ── L'équipe ──
+   Les trois portraits remplissent la carte, posés à 6 px du bord ; le
+   titre posé sur les photos (home-type.css, .overlay). Les photos sont
+   en position absolue dans leur case : elles ne poussent jamais la
+   rangée, c'est la carte encre voisine qui donne la hauteur. */
+.people {
+    position: relative;
+    padding: 6px;
 }
 
-/* Colonnes bornées : sans elles, l'adresse email élargit la ligne et
-   pousse la flèche hors de la carte à 320 px. */
-.link-card__list {
+.people__photos {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    grid-auto-rows: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
     height: 100%;
+    min-height: 260px;
     list-style: none;
 }
 
-.link-card__list li {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-}
-
-.link-card__list li + li {
-    box-shadow: inset 0 1px 0 var(--surface-line);
-}
-
-/* Le ressort de l'original (bounce 0,4 sur 0,3 s) traduit en courbe
-   qui dépasse à peine sa cible. */
-.link-row {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    min-height: 52px;
-    padding: 0 var(--space-3);
-    border-radius: var(--r-inner);
-    font-size: 0.9375rem;
-    font-weight: var(--w-strong);
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    transition: background-color 0.15s var(--ease-out), translate 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-        scale 0.15s var(--ease-out);
-}
-
-.link-row > span {
-    flex: 1;
-    min-width: 0;
+.people__photos li {
+    position: relative;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.link-row .icon {
-    width: 16px;
-    height: 16px;
-    color: var(--ink-muted);
-}
-
-.link-row:hover {
+    border-radius: var(--r-inner);
     background: var(--surface-sunk);
 }
 
-@media (hover: hover) and (pointer: fine) {
-    .link-row:hover {
-        translate: 2px 0;
-    }
+.people__photos img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 20%;
 }
 
-.link-row:active {
-    scale: 0.98;
+.people .overlay {
+    inset: auto 6px 6px;
+}
+
+.people .overlay__title {
+    font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+    letter-spacing: -0.03em;
+}
+
+/* Au téléphone, le titre seul sur les photos : la ligne des rôles
+   ferait une seconde ligne grise sous un titre déjà sur deux lignes. */
+@media (max-width: 699px) {
+    .people .overlay__sub {
+        display: none;
+    }
 }

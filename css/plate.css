@@ -6,9 +6,8 @@
    ce qui est posé dedans (images, pastilles). Les cartes se suivent
    à 12 px : une grille serrée, pas des îlots.
 
-   Aussi ici : la grille, l'en-tête de section, la pastille d'icône,
-   le lien fléché et l'icône — les pièces que toutes les cartes
-   partagent.
+   Aussi ici : l'en-tête de section, le lien fléché et l'icône — les
+   pièces que toutes les cartes partagent.
    ============================================ */
 
 .card {
@@ -39,13 +38,6 @@ a.card {
     --ink-muted: var(--surface-muted);
 }
 
-/* ── La grille ──
-   Une seule gouttière, partout : 12 px entre les cartes. */
-.grid {
-    display: grid;
-    gap: var(--gap);
-}
-
 /* ── Section ──
    Les sections se suivent de près : 56 px sur ordinateur, 40 au
    téléphone. Le titre et son action tiennent sur une ligne. */
@@ -67,27 +59,6 @@ a.card {
     font-weight: var(--w-strong);
     letter-spacing: -0.03em;
     line-height: 1.2;
-}
-
-/* ── Pastille d'icône ──
-   32 px, coins de 8 px, liseré fin : dessinée, pas remplie. Au
-   survol de sa carte, elle passe à l'encre. */
-.icon-chip {
-    display: grid;
-    place-items: center;
-    width: 32px;
-    height: 32px;
-    flex: none;
-    border-radius: var(--radius-sm);
-    background: var(--surface-sunk);
-    box-shadow: inset 0 0 0 1px var(--surface-line);
-    color: var(--ink);
-    transition: background-color var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out);
-}
-
-.icon-chip .icon {
-    width: 16px;
-    height: 16px;
 }
 
 /* ── Lien fléché ── */

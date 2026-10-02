@@ -1,19 +1,27 @@
 /* ============================================
    WAB. — Accueil : l'ouverture
-   Deux cartes côte à côte dès le premier écran, à la même hauteur :
-   la promesse et son action à gauche, le projet à la une à droite
-   (Vucko). Pas de grande zone vide au-dessus d'une phrase.
+   Un bento de trois cartes, trois rôles :
+     | la promesse (large)             | Lausanne, en direct |
+     | Zinéma, à la une, en pleine largeur, texte sur l'image |
+   La carte « en direct » montre l'heure de Lausanne en grand et ce
+   que fait le studio à cet instant (nav-clock.js) ; un oiseau s'y est
+   posé.
    ============================================ */
 
 .opening {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--gap);
     padding: calc(var(--topbar-h) + var(--space-5)) var(--gutter) 0;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 900px) {
     .opening {
-        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    }
+
+    .feature {
+        grid-column: 1 / -1;
     }
 }
 
@@ -27,47 +35,12 @@
 }
 
 .intro__title {
-    max-width: 14ch;
-    font-size: clamp(1.9rem, 3.4vw, 3rem);
+    max-width: 18ch;
+    font-size: clamp(1.9rem, 3.6vw, 3.25rem);
     font-weight: var(--w-strong);
     letter-spacing: -0.045em;
-    line-height: 1.06;
+    line-height: 1.04;
     text-wrap: balance;
-}
-
-/* Les métiers : trois pastilles fines, au rayon intérieur. Masquées
-   au téléphone, où la carte n'a pas de vide à combler et où les
-   onglets plus bas disent la même chose. */
-.intro__tags {
-    display: none;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: var(--space-5);
-    list-style: none;
-}
-
-.intro__tags a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 30px;
-    padding: 0 10px;
-    border-radius: var(--r-inner);
-    background: var(--surface-sunk);
-    box-shadow: inset 0 0 0 1px var(--surface-line);
-    font-size: 0.75rem;
-    font-weight: var(--w-strong);
-    transition: background-color var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out);
-}
-
-.intro__tags a:hover {
-    background: var(--ink);
-    color: var(--on-ink);
-}
-
-@media (min-width: 1000px) {
-    .intro__tags {
-        display: flex;
-    }
 }
 
 .intro__actions {
@@ -76,52 +49,50 @@
     gap: var(--space-2);
 }
 
-/* Le titre tient le haut de la carte, les actions et le lieu le bas :
-   la carte a la hauteur de la capture voisine, sans vide au milieu. */
-.intro__bottom {
-    display: grid;
-    gap: var(--space-4);
-}
-
-/* Le pied de la carte : le lieu et l'heure, en une ligne fine,
-   séparée par un filet. */
-.intro__meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-1) var(--space-4);
-    padding-top: var(--space-3);
-    box-shadow: inset 0 1px 0 var(--surface-line);
-    font-size: var(--text-xs);
-    color: var(--ink-muted);
-}
-
 @media (max-width: 480px) {
     .intro__actions .btn {
         flex: 1 1 100%;
     }
 }
 
-@media (max-width: 599px) {
-    .intro__meta .studio-status {
-        display: none;
-    }
+/* ── Lausanne, en direct ──
+   Étiquette en haut, l'heure en très grand, le statut dessous avec
+   son point qui bat aux heures de bureau (base.css, .studio-status). */
+.live {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-5);
+    padding: clamp(20px, 2.4vw, 32px);
+}
+
+.live__time {
+    display: block;
+    margin-top: var(--space-2);
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.06em;
+    line-height: 0.9;
+}
+
+.live__status {
+    font-size: var(--text-sm);
+    font-weight: var(--w-strong);
 }
 
 /* ── À la une ──
-   L'image posée dans la carte à 8 px du bord, au rayon intérieur ;
-   le nom, le client et l'action sur une ligne dessous. */
+   La capture en pleine largeur, posée à 8 px du bord, au format
+   3/1 sur ordinateur ; la photo en situation au 4/5 au téléphone.
+   Le nom, le client et l'action sont posés sur l'image. */
 .feature {
-    display: flex;
-    flex-direction: column;
+    position: relative;
     padding: 8px;
 }
 
 .feature__media {
-    flex: 1;
-    min-height: 0;
-    aspect-ratio: 16 / 9;
+    position: relative;
     overflow: hidden;
+    aspect-ratio: 4 / 5;
     border-radius: var(--r-inner);
     background: var(--surface-sunk);
 }
@@ -134,25 +105,21 @@
     transition: scale var(--dur-3) var(--ease);
 }
 
-.feature__bar {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-3);
-    padding: var(--space-3) var(--space-3) var(--space-2);
+/* Sur toute la largeur, un bandeau de 3 pour 1 : assez pour voir
+   le site, sans repousser le reste de la page sous l'écran. */
+@media (min-width: 700px) {
+    .feature__media {
+        aspect-ratio: 3 / 1;
+    }
 }
 
-.feature__name {
-    font-size: 1.0625rem;
-    font-weight: var(--w-strong);
-    letter-spacing: -0.02em;
-    line-height: 1.3;
+.feature .overlay {
+    inset: auto 8px 8px;
 }
 
-.feature__client {
-    font-size: var(--text-sm);
-    color: var(--ink-muted);
+.feature .overlay__title {
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    letter-spacing: -0.035em;
 }
 
 @media (hover: hover) and (pointer: fine) {
