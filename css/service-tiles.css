@@ -19,29 +19,26 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-/* ── L'aperçu ── */
-/* Une diagonale douce d'une teinte claire vers une teinte profonde
-   de la même famille, une lumière en haut à gauche, et un liseré
-   intérieur d'un pixel qui dessine le cadre. Les objets posés dedans
-   partagent une seule ombre (--mock-shadow). */
+/* ── L'aperçu ──
+   Un cadre de verre clair, sans teinte, posé dans la carte de verre :
+   un voile blanc un peu plus dense et un liseré blanc d'un pixel.
+   Seuls les objets blancs posés dedans se détachent, par leur ombre
+   commune (--mock-shadow). */
 .sv-media {
-    --tint-1: #fbe4ee;
-    --tint-2: #efb3cd;
-    --mock-shadow: 0 1px 2px rgba(60, 20, 45, 0.08), 0 14px 32px -10px rgba(60, 20, 45, 0.22);
+    --mock-shadow: 0 1px 2px rgba(60, 20, 45, 0.08), 0 14px 32px -10px rgba(60, 20, 45, 0.18);
     position: relative;
     flex: 1;
     display: grid;
     place-items: center;
     min-height: 170px;
     /* De l'air autour d'un aperçu plus haut que la hauteur minimale :
-       il ne touche jamais le bord de son cadre. */
+       il ne touche jamais le bord de son cadre (téléphone et tablette ;
+       sur ordinateur, la rangée du bento fixe la hauteur). */
     padding-block: var(--space-5);
     overflow: hidden;
     border-radius: var(--r-inner);
-    background:
-        radial-gradient(90% 70% at 18% 0%, rgba(255, 255, 255, 0.6), transparent 62%),
-        linear-gradient(155deg, var(--tint-1) 0%, var(--tint-2) 100%);
-    box-shadow: inset 0 0 0 1px rgba(60, 20, 45, 0.06);
+    background: rgba(255, 255, 255, 0.45);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.85);
 }
 
 /* Une image plein cadre à la place d'un aperçu dessiné. */
@@ -95,6 +92,7 @@
 @media (min-width: 1000px) {
     .svc-bento .sv-media {
         min-height: 0;
+        padding-block: 0;
     }
 }
 
