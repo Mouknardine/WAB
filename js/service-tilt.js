@@ -12,10 +12,10 @@
     // Angle maximal, en degrés. Plus la tuile est grande, plus le même
     // angle déplacerait ses bords : on le réduit pour qu'elles bougent
     // toutes autant à l'œil.
-    const TILT = 7;
-    const TILT_LARGE = 3;
+    const TILT = 4;
+    const TILT_LARGE = 2;
     const LARGE_WIDTH = 480;
-    const SCALE = 1.015;
+    const SCALE = 1.01;
     const PERSPECTIVE = 1000;
 
     /** @returns {boolean} */

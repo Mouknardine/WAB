@@ -33,10 +33,10 @@ Ce qui est écarté, et pourquoi :
 ### La page Services (2 octobre 2026)
 
 Le système de cartes appliqué à une page intérieure.
-- **Ouverture sans en-tête** : le titre de la page dans une carte, et à côté deux cartes de chapitre (pastille de couleur, nom, flèche vers le bas) qui mènent aux sections. Aucun paragraphe. Au téléphone, les chapitres deviennent deux rangées basses.
-- **Tuile** (`.sv-tile`, `css/service-tiles.css`) : une carte nette dont l'aperçu, posé à 6 px du bord, est une nappe de couleurs vives propre à la prestation (`service-mesh.css`). Deux mises en page : aperçu en haut, ou texte à gauche et aperçu à droite pour la tuile large. Un titre, une ligne.
+- **Ouverture sans en-tête** : le titre de la page dans une carte (deux lignes sur ordinateur), et à côté deux cartes de chapitre — un repère discret en petites capitales (« 6 prestations »), le nom et une flèche vers le bas. Aucun paragraphe, aucune numérotation. Au téléphone, les chapitres deviennent deux rangées basses, nom et flèche.
+- **Tuile** (`.sv-tile`, `css/service-tiles.css`) : une carte nette dont l'aperçu est posé à 8 px du bord, au rayon de 8 px, avec un liseré intérieur. Son fond est un dégradé doux d'une teinte claire vers une teinte profonde de la même famille (`service-mesh.css`), dans une palette resserrée accordée au rose : rose, lilas, pêche, mauve, bleu crépuscule, violet. Les objets dessinés dedans (fenêtres, documents, cartes) partagent une seule ombre (`--mock-shadow`) et une même échelle. Deux mises en page : aperçu en haut, ou texte à gauche et aperçu à droite pour la tuile large. Un titre, une ligne.
 - **Bentos** : quatre colonnes pour Technologie (une grande, une haute, une large, trois petites), trois pour Image de marque (une grande, deux petites) — jamais deux sections au même gabarit.
-- **Mouvement** : inclinaison 3D vers la souris et reflet de lumière (`js/service-tilt.js`), et chaque aperçu fait le geste de ce qu'il montre ; rien au doigt ni sous « réduire les animations ».
+- **Mouvement** : inclinaison 3D légère (4° au plus, 2° sur les grandes tuiles) et reflet discret (`js/service-tilt.js`), et chaque aperçu fait le geste de ce qu'il montre ; rien au doigt ni sous « réduire les animations ».
 
 ---
 

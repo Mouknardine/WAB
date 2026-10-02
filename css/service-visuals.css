@@ -10,9 +10,9 @@
 .mock-window {
     position: absolute;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 8px;
     background: var(--white);
-    box-shadow: 0 0 0 1px rgba(11, 11, 12, 0.06), 0 14px 34px rgba(60, 20, 45, 0.14);
+    box-shadow: 0 0 0 1px rgba(11, 11, 12, 0.05), var(--mock-shadow);
 }
 
 .mock-bar {
@@ -36,7 +36,11 @@
 
 .mock-window--back { left: 7%; top: 14%; width: 56%; }
 .mock-window--front { right: 7%; top: 30%; width: 60%; }
-.mock-window--app { left: 6%; right: 6%; top: 16%; }
+/* Dans le flux : le cadre la centre (place-items), rien n'est coupé. */
+.mock-window--app {
+    position: relative;
+    width: 78%;
+}
 
 /* ── Petites briques communes ── */
 .mock-line {
@@ -68,11 +72,11 @@
 
 /* ── Automatisation et newsletters : un document ── */
 .mock-doc {
-    width: 76%;
+    width: min(76%, 300px);
     padding: 14px 16px;
-    border-radius: 12px;
+    border-radius: 10px;
     background: var(--white);
-    box-shadow: 0 0 0 1px rgba(11, 11, 12, 0.05), 0 12px 30px rgba(60, 20, 45, 0.1);
+    box-shadow: 0 0 0 1px rgba(11, 11, 12, 0.05), var(--mock-shadow);
     font-size: 0.85rem;
     color: var(--ink);
 }
@@ -105,7 +109,7 @@
 .mock-chat {
     display: grid;
     gap: 8px;
-    width: 80%;
+    width: min(80%, 300px);
 }
 
 .mock-chat__ask {
@@ -123,6 +127,44 @@
     padding: 10px 12px 12px;
     border-radius: 14px 14px 14px 4px;
     background: var(--white);
-    box-shadow: 0 0 0 1px rgba(11, 11, 12, 0.05), 0 8px 22px rgba(60, 20, 45, 0.08);
+    box-shadow: 0 0 0 1px rgba(11, 11, 12, 0.05), var(--mock-shadow);
     color: var(--pink);
+}
+
+/* ── Intégrations : vos outils, reliés au site ──
+   Une carte « Votre site », puis les trois outils qu'on y branche,
+   chacun avec son point vert. Les noms sont génériques : aucun
+   logiciel ni client n'est nommé. */
+.mock-sync {
+    display: grid;
+    gap: 8px;
+    width: min(76%, 260px);
+}
+
+.mock-sync__site,
+.mock-sync__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: var(--white);
+    box-shadow: 0 0 0 1px rgba(11, 11, 12, 0.05), var(--mock-shadow);
+    font-size: 0.8rem;
+    color: var(--ink);
+}
+
+.mock-sync__site {
+    margin-bottom: 6px;
+    background: var(--ink);
+    color: var(--white);
+}
+
+.mock-sync__row i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #1f8a4c;
+    box-shadow: 0 0 0 3px rgba(31, 138, 76, 0.15);
 }

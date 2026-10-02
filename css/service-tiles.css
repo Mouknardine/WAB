@@ -1,8 +1,8 @@
 /* ============================================
    WAB. — Services : la tuile
    Une carte nette (.card, plate.css) qui porte un aperçu de ce qu'on
-   livre, posé à 6 px du bord au rayon intérieur, puis un titre et une
-   ligne. L'aperçu est une nappe de couleur vive propre à chaque tuile
+   livre, posé à 8 px du bord au rayon intérieur (8 px), puis un titre
+   et une ligne. L'aperçu est un dégradé doux propre à chaque tuile
    (service-mesh.css) ; les petites interfaces dessinées dedans sont
    dans service-visuals.css et brand-visuals.css.
 
@@ -15,27 +15,30 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: 6px;
+    padding: 8px;
     -webkit-tap-highlight-color: transparent;
 }
 
 /* ── L'aperçu ── */
+/* Une diagonale douce d'une teinte claire vers une teinte profonde
+   de la même famille, une lumière en haut à gauche, et un liseré
+   intérieur d'un pixel qui dessine le cadre. Les objets posés dedans
+   partagent une seule ombre (--mock-shadow). */
 .sv-media {
-    --mesh-1: #24cc71;
-    --mesh-2: #01b7fd;
-    --mesh-a: 10% 12%;
-    --mesh-b: 92% 88%;
+    --tint-1: #fbe4ee;
+    --tint-2: #efb3cd;
+    --mock-shadow: 0 1px 2px rgba(60, 20, 45, 0.08), 0 14px 32px -10px rgba(60, 20, 45, 0.22);
     position: relative;
     flex: 1;
     display: grid;
     place-items: center;
     min-height: 170px;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: var(--r-inner);
     background:
-        radial-gradient(58% 62% at var(--mesh-a), var(--mesh-1) 0%, transparent 72%),
-        radial-gradient(62% 58% at var(--mesh-b), var(--mesh-1) 0%, transparent 72%),
-        var(--mesh-2);
+        radial-gradient(90% 70% at 18% 0%, rgba(255, 255, 255, 0.6), transparent 62%),
+        linear-gradient(155deg, var(--tint-1) 0%, var(--tint-2) 100%);
+    box-shadow: inset 0 0 0 1px rgba(60, 20, 45, 0.06);
 }
 
 /* Une image plein cadre à la place d'un aperçu dessiné. */
@@ -58,18 +61,18 @@
     align-items: flex-end;
     justify-content: space-between;
     gap: var(--space-3);
-    padding: 14px var(--space-3) var(--space-2);
+    padding: var(--space-4) var(--space-3) var(--space-2);
 }
 
 .sv-title {
-    font-size: 1rem;
+    font-size: 0.9375rem;
     font-weight: var(--w-strong);
     letter-spacing: -0.02em;
     line-height: 1.3;
 }
 
 .sv-line {
-    margin-top: 2px;
+    margin-top: var(--space-1);
     font-size: 0.8125rem;
     line-height: 1.45;
     text-wrap: pretty;
@@ -94,7 +97,7 @@
 
 /* Les grandes tuiles : le titre monte d'un cran. */
 .sv-tile--lead .sv-title {
-    font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+    font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
     letter-spacing: -0.03em;
 }
 
@@ -116,11 +119,12 @@
 /* La mention que PRODUCT.md impose sur les captures de l'application. */
 .sv-note {
     position: absolute;
-    left: 8px;
-    bottom: 8px;
+    left: 12px;
+    bottom: 12px;
     z-index: 2;
-    padding: 3px 8px;
+    padding: 4px 8px;
     border-radius: 6px;
+    box-shadow: var(--mock-shadow);
     background: var(--surface);
     font-size: 0.6875rem;
     font-weight: var(--w-strong);

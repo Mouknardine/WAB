@@ -31,40 +31,41 @@
 
 @media (min-width: 900px) {
     .svc-open {
-        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-columns: minmax(0, 5fr) minmax(0, 2fr) minmax(0, 2fr);
     }
 }
 
 .svc-open__title {
     display: flex;
     align-items: flex-end;
-    min-height: clamp(130px, 12vw, 170px);
+    min-height: clamp(120px, 10vw, 150px);
     padding: clamp(20px, 2.4vw, 32px);
-    font-size: clamp(1.6rem, 3vw, 2.6rem);
+    font-size: clamp(1.6rem, 2.6vw, 2.4rem);
     font-weight: var(--w-strong);
     letter-spacing: -0.045em;
     line-height: 1.08;
     text-wrap: balance;
 }
 
-/* Une carte de chapitre : une pastille de la couleur de la famille,
-   le nom et une flèche vers le bas. */
+/* Une carte de chapitre : en haut, un repère discret — le nombre de
+   prestations de la famille, en petites capitales grises ; en bas, le
+   nom et la flèche. Pas de numérotation : le site n'en a qu'une, sur
+   la page Création de site internet. */
 .chapter {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: var(--space-5);
+    gap: var(--space-4);
     padding: var(--space-5);
 }
 
-.chapter__swatch {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    background:
-        radial-gradient(58% 62% at var(--mesh-a), var(--mesh-1) 0%, transparent 72%),
-        radial-gradient(62% 58% at var(--mesh-b), var(--mesh-1) 0%, transparent 72%),
-        var(--mesh-2);
+.chapter__count {
+    font-size: 0.6875rem;
+    font-weight: var(--w-strong);
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+    text-transform: uppercase;
+    color: var(--ink-muted);
 }
 
 .chapter__row {
@@ -80,17 +81,19 @@
 .chapter .icon {
     width: 18px;
     height: 18px;
-    transition: translate var(--dur-2) var(--ease-out);
+    color: var(--ink-muted);
+    transition: translate var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out);
 }
 
 @media (hover: hover) and (pointer: fine) {
     .chapter:hover .icon {
         translate: 0 3px;
+        color: var(--ink);
     }
 }
 
 /* Au téléphone, les deux chapitres l'un sous l'autre, en rangées
-   basses : pastille, nom, flèche. */
+   basses : le nom et la flèche seulement. */
 @media (max-width: 899px) {
     .svc-open__chapters {
         display: grid;
@@ -98,20 +101,11 @@
     }
 
     .chapter {
-        flex-direction: row;
-        align-items: center;
-        gap: var(--space-3);
-        padding: 12px 14px;
+        padding: 14px var(--space-4);
     }
 
-    .chapter__row {
-        flex: 1;
-    }
-
-    .chapter__swatch {
-        width: 28px;
-        height: 28px;
-        border-radius: var(--radius-sm);
+    .chapter__count {
+        display: none;
     }
 }
 

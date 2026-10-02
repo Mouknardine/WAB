@@ -13,7 +13,7 @@
     aspect-ratio: 1.75;
     padding: 12px 14px;
     border-radius: 8px;
-    box-shadow: 0 12px 28px rgba(60, 20, 45, 0.16);
+    box-shadow: var(--mock-shadow);
 }
 
 .mock-bcard--back {
@@ -58,7 +58,7 @@
     outline-offset: -6px;
     color: var(--white);
     text-align: center;
-    box-shadow: 0 12px 28px rgba(60, 20, 45, 0.18);
+    box-shadow: var(--mock-shadow);
     transform: rotate(-3deg);
 }
 
