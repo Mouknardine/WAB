@@ -1,11 +1,7 @@
 /* ============================================
    WAB. — Accueil : l'ouverture
-   Un bento de trois cartes, trois rôles :
-     | la promesse (large)             | Lausanne, en direct |
-     | Zinéma, à la une, en pleine largeur, texte sur l'image |
-   La carte « en direct » montre l'heure de Lausanne en grand et ce
-   que fait le studio à cet instant (nav-clock.js) ; un oiseau s'y est
-   posé.
+   Deux cartes l'une sous l'autre, sur toute la largeur : la
+   promesse, puis Zinéma à la une, texte posé sur l'image.
    ============================================ */
 
 .opening {
@@ -15,15 +11,6 @@
     padding: calc(var(--topbar-h) + var(--space-5)) var(--gutter) 0;
 }
 
-@media (min-width: 900px) {
-    .opening {
-        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-    }
-
-    .feature {
-        grid-column: 1 / -1;
-    }
-}
 
 /* ── La promesse ── */
 .intro {
@@ -32,6 +19,15 @@
     justify-content: space-between;
     gap: var(--space-6);
     padding: clamp(20px, 2.4vw, 32px);
+}
+
+/* Sur ordinateur, la promesse à gauche et les boutons à droite, sur
+   la même ligne de base : la carte reste basse et pleine. */
+@media (min-width: 900px) {
+    .intro {
+        flex-direction: row;
+        align-items: flex-end;
+    }
 }
 
 .intro__title {
@@ -53,31 +49,6 @@
     .intro__actions .btn {
         flex: 1 1 100%;
     }
-}
-
-/* ── Lausanne, en direct ──
-   Étiquette en haut, l'heure en très grand, le statut dessous avec
-   son point qui bat aux heures de bureau (base.css, .studio-status). */
-.live {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: var(--space-5);
-    padding: clamp(20px, 2.4vw, 32px);
-}
-
-.live__time {
-    display: block;
-    margin-top: var(--space-2);
-    font-size: clamp(3rem, 6vw, 5rem);
-    font-weight: var(--w-strong);
-    letter-spacing: -0.06em;
-    line-height: 0.9;
-}
-
-.live__status {
-    font-size: var(--text-sm);
-    font-weight: var(--w-strong);
 }
 
 /* ── À la une ──

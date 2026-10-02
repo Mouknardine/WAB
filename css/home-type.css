@@ -82,13 +82,3 @@
     right: 4px;
     margin: 0;
 }
-
-@media (max-width: 899px) {
-    .perch-on--live {
-        top: -46px;
-        bottom: auto;
-        left: auto;
-        right: 4px;
-        margin: 0;
-    }
-}
