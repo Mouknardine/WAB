@@ -187,6 +187,15 @@
     }
 }
 
+/* Sur ordinateur à la souris, la navigation passe par le dock en bas
+   de l'écran (Eliott, 03.10) : les liens du haut s'effacent. Sur une
+   tablette tactile, sans dock, ils restent. */
+@media (min-width: 900px) and (hover: hover) and (pointer: fine) {
+    .menubar__nav {
+        display: none;
+    }
+}
+
 @media (min-width: 1180px) {
     .menubar__status:not([hidden]) {
         display: inline;

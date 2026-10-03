@@ -38,9 +38,10 @@
     <link rel="stylesheet" href="/css/os-sky.css?v=3">
     <link rel="stylesheet" href="/css/sym.css?v=4">
     <link rel="stylesheet" href="/css/key-btn.css?v=1">
-    <link rel="stylesheet" href="/css/os-bar.css?v=3">
+    <link rel="stylesheet" href="/css/os-bar.css?v=4">
     <link rel="stylesheet" href="/css/os-window.css?v=3">
     <link rel="stylesheet" href="/css/os-footer.css?v=3">
+    <link rel="stylesheet" href="/css/os-dock.css?v=4">
     <link rel="stylesheet" href="/css/os-overlay.css?v=3">
     <link rel="stylesheet" href="/css/desk-objects.css?v=7">
     <link rel="stylesheet" href="/css/page-404-dialog.css?v=2">
@@ -241,6 +242,18 @@
             <p class="foot__legal">&copy; 2026 WeAreBrothers Studio</p>
         </div>
     </footer>
+
+    <nav class="dock" aria-label="Dock" data-dock>
+        <ul class="dock__apps">
+            <li><a class="dock__item" href="/realisations" data-app="work"><img class="app-icon" src="/assets/icons/app-work.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Work</span></a></li>
+            <li><a class="dock__item" href="/services" data-app="services"><img class="app-icon" src="/assets/icons/app-services.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Services</span></a></li>
+            <li><a class="dock__item" href="/studio" data-app="about"><img class="app-icon" src="/assets/icons/app-about.svg?v=4" alt="" width="48" height="48"><span class="dock__label">About</span></a></li>
+            <li><a class="dock__item" href="/#lettre" data-app="notes"><img class="app-icon" src="/assets/icons/app-notes.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Lettre</span></a></li>
+            <li><button class="dock__item" type="button" data-app="terminal" data-js-only><img class="app-icon" src="/assets/icons/app-terminal.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Terminal</span></button></li>
+            <li><a class="dock__item" href="mailto:contact@wearebrothers.ch" data-contact data-app="contact"><img class="app-icon" src="/assets/icons/app-mail.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Contact</span></a></li>
+        </ul>
+        <ul class="dock__shelf" data-dock-shelf aria-label="Fenêtres réduites" hidden></ul>
+    </nav>
 
 </body>
 
