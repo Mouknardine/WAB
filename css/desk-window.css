@@ -1,0 +1,141 @@
+/* ============================================
+   WAB. — Accueil « bureau » : la fenêtre
+   La pièce de base de toute la page. Une barre de titre grise aux
+   trois pastilles, un contenu, et le nom du fichier posé sous la
+   fenêtre comme sur un bureau. Les petites fenêtres du premier écran,
+   la grande vitrine, les blocs de services, la lettre et les étapes
+   la partagent toutes.
+   ============================================ */
+
+.win {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--win-radius);
+    background: var(--win-bg);
+    box-shadow: 0 0 0 1px var(--win-edge), var(--win-shadow);
+    overflow: hidden;
+}
+
+.win__bar {
+    position: relative;
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: var(--win-bar-h);
+    padding: 0 8px;
+    background: linear-gradient(var(--win-bar-top), var(--win-bar-low));
+    box-shadow: inset 0 -1px 0 var(--line), inset 0 1px 0 var(--sheen-top);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Trois pastilles, dessinées par une seule ombre portée multiple :
+   un élément, aucune image. */
+.win__lights {
+    flex: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--light-red);
+    box-shadow:
+        inset 0 0 0 0.5px var(--line-strong),
+        15px 0 0 var(--light-amber),
+        30px 0 0 var(--light-green);
+    margin-right: 30px;
+}
+
+.win__title {
+    position: absolute;
+    inset: 0 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-size: 11px;
+    line-height: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--ink-faint);
+}
+
+/* La croix de droite, comme sur les fenêtres de la référence. */
+.win__x {
+    margin-left: auto;
+    font-size: 11px;
+    line-height: 1;
+    color: var(--ink-faint);
+}
+
+.win__body {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    background: var(--desk);
+}
+
+.win__body img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Une capture de l'application de gestion : ces chiffres ne sont pas
+   ceux d'un client, la fenêtre le dit. */
+.win__demo {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    z-index: 2;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: var(--veil);
+    box-shadow: 0 0 0 1px var(--line);
+    font-size: 11px;
+    color: var(--ink-muted);
+}
+
+/* Le nom de fichier, sous la fenêtre. */
+.file-name {
+    display: block;
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 1.3;
+    text-align: center;
+    white-space: nowrap;
+    color: var(--ink-faint);
+}
+
+/* ── L'oiseau posé sur une barre de titre ──
+   Le canevas garde de l'air au-dessus de l'oiseau pour l'envol
+   (perch.js), et sept rangs vides sous ses pattes : on le descend
+   d'autant (--drop, sept points de dessin) pour qu'il touche la barre. */
+.win-perch {
+    --drop: 14px;
+    position: absolute;
+    z-index: 3;
+    left: 18px;
+    bottom: calc(100% - var(--drop));
+    pointer-events: none;
+    image-rendering: pixelated;
+}
+
+.win-perch[data-scale='3'] {
+    --drop: 21px;
+}
+
+/* Au téléphone, l'oiseau d'un bloc de services tomberait sur le texte
+   posé juste au-dessus de la fenêtre, et celui du premier écran passerait
+   sous la barre de menus : ils ne se posent qu'avec de la place. */
+@media (max-width: 599px) {
+    .scat .win-perch {
+        display: none;
+    }
+}
+
+@media (max-width: 899px) {
+    .feat .win-perch {
+        display: none;
+    }
+}

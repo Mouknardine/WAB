@@ -1,0 +1,105 @@
+/* ============================================
+   WAB. — Accueil « bureau » : les objets du bureau
+   Autocollant, dossier, kaomoji. Les boutons et la bulle vivent
+   dans desk-aqua.css.
+   ============================================ */
+
+/* ── Autocollant « HELLO my name is » ──
+   Le bandeau rose, la carte blanche, le nom au marqueur… sauf qu'il
+   n'y a pas de marqueur : le nom est tapé, en Sligoil. */
+.sticker {
+    display: block;
+    width: 112px;
+    border-radius: 6px;
+    background: var(--pink);
+    box-shadow: var(--shadow-object);
+    text-align: center;
+    color: var(--on-accent);
+    overflow: hidden;
+}
+
+.sticker__hello {
+    display: block;
+    padding-top: 5px;
+    font-size: 11px;
+    font-weight: var(--w-strong);
+    letter-spacing: 0.08em;
+    line-height: 1;
+}
+
+.sticker__mine {
+    display: block;
+    padding: 2px 0 4px;
+    font-size: 6px;
+    letter-spacing: 0.06em;
+    line-height: 1;
+}
+
+.sticker__name {
+    display: block;
+    margin: 0 4px 6px;
+    padding: 8px 0 7px;
+    border-radius: 2px;
+    background: var(--on-accent);
+    font-size: 1.15rem;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--ink);
+}
+
+/* ── Dossier ── une vraie icône de bureau : l'icône, puis le nom. */
+.folder {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--ink);
+}
+
+.folder svg {
+    display: block;
+    filter: drop-shadow(var(--shadow-icon));
+    transition: transform 0.25s var(--ease-out);
+}
+
+.folder__name {
+    padding: 1px 6px;
+    border-radius: 4px;
+}
+
+@media (hover: hover) {
+    .folder:hover svg {
+        transform: translateY(-2px);
+    }
+
+    .folder:hover .folder__name {
+        background: var(--accent);
+        color: var(--on-accent);
+    }
+}
+
+.folder:focus-visible .folder__name {
+    background: var(--accent);
+    color: var(--on-accent);
+}
+
+/* ── Kaomoji ── */
+.kao {
+    font-size: 1.1rem;
+    white-space: nowrap;
+    color: var(--ink);
+}
+
+.folder__back {
+    fill: var(--folder-back);
+}
+
+.folder__front {
+    fill: var(--folder-front);
+    stroke: var(--folder-edge);
+    stroke-width: 0.8;
+}

@@ -1,0 +1,191 @@
+/* ============================================
+   WAB. — Accueil « bureau » : la lettre et les étapes
+   La lettre d'Eliott et Matt, ouverte dans « lettre.txt », avec
+   leurs deux photos posées à côté comme deux fichiers ouverts. Puis
+   les quatre étapes d'un projet, chacune dans sa petite fenêtre.
+   ============================================ */
+
+.letter-zone {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+}
+
+.letter {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 580px);
+}
+
+.letter .win__title {
+    gap: 6px;
+}
+
+.letter__body {
+    padding: clamp(22px, 4vw, 34px) clamp(20px, 4vw, 36px) clamp(24px, 4vw, 32px);
+    background: var(--win-bg);
+    font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+    line-height: 1.7;
+    color: var(--ink-muted);
+}
+
+.letter__body p + p {
+    margin-top: 14px;
+}
+
+/* Le passage surligné : fond rose pâle, encre pleine, qui suit le
+   retour à la ligne au lieu de dessiner un bloc. */
+.letter mark {
+    padding: 1px 3px;
+    border-radius: 3px;
+    background: var(--mark);
+    color: var(--ink);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+/* Le curseur de saisie, au bout de la dernière ligne. */
+.letter__caret {
+    display: inline-block;
+    width: 1px;
+    height: 1.1em;
+    margin-left: 2px;
+    vertical-align: -0.2em;
+    background: var(--ink);
+    animation: caret 1.1s steps(1) infinite;
+}
+
+@keyframes caret {
+    50% {
+        opacity: 0;
+    }
+}
+
+.letter__sign {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 28px;
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+}
+
+.signer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    line-height: 1.35;
+}
+
+/* Les signatures sont des paragraphes : l'écart entre paragraphes
+   de la lettre ne doit pas décaler la seconde. */
+.letter__sign .signer {
+    margin-top: 0;
+}
+
+.signer img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px var(--line);
+}
+
+.signer__name {
+    display: block;
+    font-weight: var(--w-strong);
+    color: var(--ink);
+}
+
+.signer__role {
+    display: block;
+    font-size: var(--t-small);
+}
+
+/* ── Les photos posées à côté ── visibles dès qu'il y a la place. */
+.photo {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    width: 180px;
+    rotate: var(--tilt, 0deg);
+}
+
+.photo .win__body {
+    aspect-ratio: 4 / 5;
+}
+
+@media (min-width: 1100px) {
+    .photo {
+        display: block;
+    }
+
+    .photo--eliott {
+        --tilt: -4deg;
+        top: 70px;
+        right: calc(50% + 330px);
+    }
+
+    .photo--matt {
+        --tilt: 3deg;
+        top: 230px;
+        left: calc(50% + 330px);
+    }
+}
+
+/* ── Les étapes ── */
+.steps {
+    display: grid;
+    gap: 16px;
+    margin-top: clamp(40px, 6vw, 64px);
+    list-style: none;
+}
+
+.step__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 18px 18px 20px;
+    background: var(--win-bg);
+}
+
+.step__icon {
+    color: var(--accent);
+}
+
+.step__name {
+    font-size: 1.05rem;
+    font-weight: var(--w-strong);
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+}
+
+.step__desc {
+    font-size: var(--t-small);
+    line-height: 1.6;
+    color: var(--ink-muted);
+}
+
+@media (min-width: 640px) {
+    .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1000px) {
+    .steps {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    /* Un léger décalage vertical, comme quatre fenêtres posées à la
+       main — la grille, elle, reste régulière. */
+    .step:nth-child(even) {
+        translate: 0 28px;
+    }
+
+    .step__body {
+        min-height: 196px;
+    }
+}

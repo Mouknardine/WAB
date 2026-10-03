@@ -252,3 +252,39 @@ Règles :
 Icônes en place sur l’accueil, regroupées une seule fois dans un sprite SVG en tête de page et appelées par `<use href="#i-…">` : `arrow-right`, `arrow-up-right`, `app-window`, `layout-dashboard`, `plug`, `workflow`, `mail`, `sparkles`, `pen-tool`, `id-card`, `clapperboard`, `compass`, `list-checks`, `brain`, `clock`, `calendar`, `server`, `wallet`, `map-pin`, `layout-grid`, `users`. Le bouton menu (quatre carrés) n’est pas une icône Lucide : c’est un signe propre au studio, il reste.
 
 Dette connue : les pages intérieures utilisent encore des icônes dessinées à la main en quatre épaisseurs (1,6 à 2). Elles passeront à Lucide 1,5 avec leur refonte.
+
+---
+
+## Accueil bureau (3 octobre 2026, branche `bureau`, en attente de validation)
+
+**Référence : [heyclicky.com](https://www.heyclicky.com/), lecture validée par Eliott.** L'accueil devient le bureau du studio : un fond clair tramé de points, une barre de menus macOS, des fenêtres de projets en désordre autour d'un centre parfaitement net. Ludique en bordure, irréprochable au centre. Le fond rose animé (`js/mesh`) n'est pas chargé sur cette page ; le rose WAB devient l'accent, réservé aux gestes.
+
+**Structure, de haut en bas.**
+1. Barre de menus : WAB., Work, Services, About · l'oiseau en pixel au centre (bat des ailes au survol) · icônes d'état (dès 1180 px), statut du studio et heure de Lausanne (`nav-clock.js`), Contact en rose (`data-contact`). Au téléphone : WAB., l'heure (dès 380 px), Contact et le menu existant (`nav.js`, `nav-panel.css`).
+2. Le centre : « WAB. » (H1, la fin SEO reste réservée aux lecteurs d'écran), « Design d'interface et de système sur mesure. », deux boutons Aqua (Démarrer un projet en rose, Voir le travail en gris), « Réponse sous 24 h, Lausanne ».
+3. Autour : six fenêtres de vrais projets nommées par leur adresse (lepetitcentral.ch, zinema.ch, amarte.ch, maison-alliani.com, lazizze.com, nadegemouine.ch), l'autocollant « HELLO my name is WAB. », deux kaomoji ASCII, le dossier Work (vrai lien vers /realisations), deux oiseaux posés sur des barres de titre. Trois objets au téléphone (deux sous 380 px), cinq sur tablette et petit ordinateur, tout le bureau dès 1280 px.
+4. La vitrine : sept sites en fondu toutes les 5 s, nom du projet dans la barre, adresse dessous, bouton Pause/Lecture (WCAG 2.2.2). Arrêt hors écran, onglet masqué, et démarrage en pause sous « réduire les animations ».
+5. Services en quinconce (textes de /services) : Sites sur mesure, Applications de gestion (la capture Finances défile lentement dans la fenêtre, « Données de démonstration »), Automatisation et IA (notifications dessinées en HTML, aucun chiffre), Image de marque (LAZIZZE). Chaque bloc : bulle « WAB. », un titre, une ligne.
+6. La lettre d'Eliott et Matt dans « lettre.txt », écrite avec les phrases d'About et de PRODUCT.md, un passage surligné, noms tapés (aucune signature manuscrite), leurs photos posées à côté dès 1100 px.
+7. Les quatre étapes réelles (Work) dans quatre fenêtres `on-ecoute.txt`… ; une boîte de dialogue « Nouveau projet » pour l'appel final ; pied de page à colonnes (Pages, Expertises, Contact, note) puis « WAB. » en 59 pixels roses Aqua.
+
+**Écarts assumés avec la référence.** Pas de vidéo (aucune n'existe) : la vitrine montre de vraies captures. Pas de mur de messages, de tarifs ni de FAQ : rien de tout cela n'existe pour WAB, rien n'est inventé. La FAQ de /creation-site-internet-lausanne n'est pas reprise : la dupliquer diluerait la page qui porte la requête.
+
+**Jetons** — tous dans `css/desk-tokens.css`, posés sur `body.desk` (et sur la racine via `:has`, pour le fond du rebond iOS) :
+
+| Jeton | Valeur | Rôle |
+|---|---|---|
+| `--desk` / `--desk-dot` / `--desk-grid` | `#f5f4f5` / encre à 17 % / 22 px | le bureau et sa trame |
+| `--ink` · `--ink-muted` · `--ink-faint` | `#0b0b0c` · `#5c5b63` · `#66656d` | 18:1 · 6,1:1 · 5,2:1 sur le bureau |
+| `--pink` | `#ff2d9b` | décor seulement : autocollant, pixels, point de statut |
+| `--accent` | `#a00f5a` | le rose qui porte du texte (7:1) : Contact, icônes d'étapes, dossier sélectionné |
+| `--mark` | `#ffd0e6` | surlignage et bulle de demande, encre par-dessus |
+| `--aqua-pink-*` | `#ffe1ef → #ffa6d2 → #ff7dbd`, liseré `#d4307f` | bouton principal et bulle ; l'encre reste au-dessus de 7:1 |
+| `--aqua-grey-*` | `#fff → #e4e3e7` | bouton secondaire |
+| `--win-*` | fond blanc, barre `#f7f7f8 → #e7e6ea`, rayon 10 px, barre 22 px | la fenêtre, pièce de base de toute la page |
+| `--smoke` | encre à 62 % | le bouton Pause posé sur les captures (5,6:1 au pire) |
+| `--t-hero` | `clamp(5.5rem, 22vw, 10rem)` | « WAB. », Sligoil Bold, approche −0,06 em |
+
+**Règles.** Un seul rose qui porte du texte (`--accent`). Les objets du bureau sont décoratifs (`aria-hidden`), sauf le dossier. Les trois mouvements se composent sans s'écraser : entrée sur `scale` + `opacity`, parallaxe sur `transform` (`js/desk/parallax.js`), glisser sur `translate` (`js/desk/drag.js`, souris seulement), inclinaison sur `rotate`. Rien ne glisse au doigt (le défilement passerait avant). Sous « réduire les animations », tout est figé.
+
+**Fichiers.** `css/desk-tokens.css`, `desk-bar.css`, `desk-window.css`, `desk-aqua.css`, `desk-objects.css`, `desk-hero.css`, `desk-scatter.css`, `desk-scatter-wide.css`, `desk-blocks.css`, `desk-auto.css`, `desk-letter.css`, `desk-end.css` ; `js/desk/index.js` (entrée), `drag.js`, `parallax.js`, `showcase.js`, `watch.js`, `pixels.js`. `landing.css` et `landing-plate.css`, qui ne servaient qu'à l'ancien accueil, sont supprimées (récupérables dans l'historique git si la proposition est écartée).

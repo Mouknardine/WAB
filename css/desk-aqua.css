@@ -1,0 +1,103 @@
+/* ============================================
+   WAB. — Accueil « bureau » : boutons Aqua et bulle « WAB. »
+   ============================================ */
+
+/* ── Bouton Aqua ──
+   Une pilule brillante : dégradé vertical, reflet blanc sur la
+   moitié haute, liseré soutenu. Le rose est le geste principal,
+   le gris la voie secondaire. Le texte reste à l'encre (7:1). */
+.aqua {
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 24px;
+    border-radius: 999px;
+    font-size: var(--t-body);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    color: var(--ink);
+    background: linear-gradient(var(--aqua-grey-top), var(--aqua-grey-low));
+    box-shadow: 0 0 0 1px var(--aqua-grey-edge), var(--shadow-rest);
+    transition: box-shadow 0.25s var(--ease-out), scale 0.15s var(--ease-out), translate 0.25s var(--ease-out);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.aqua::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 2px 10px 50%;
+    border-radius: 999px 999px 40% 40%;
+    background: linear-gradient(var(--sheen-top), var(--sheen-low));
+    pointer-events: none;
+}
+
+.aqua--pink {
+    background: linear-gradient(var(--aqua-pink-top) 0%, var(--aqua-pink-mid) 52%, var(--aqua-pink-low) 100%);
+    box-shadow: 0 0 0 1px var(--aqua-pink-edge), var(--aqua-glow);
+}
+
+.aqua svg {
+    flex: none;
+    transition: transform 0.25s var(--ease-out);
+}
+
+@media (hover: hover) {
+    .aqua:hover {
+        translate: 0 -1px;
+        box-shadow: 0 0 0 1px var(--aqua-grey-edge), var(--shadow-hover);
+    }
+
+    .aqua--pink:hover {
+        box-shadow: 0 0 0 1px var(--aqua-pink-edge), var(--aqua-glow-hover);
+    }
+
+    .aqua:hover svg {
+        transform: translateX(2px);
+    }
+}
+
+.aqua:active {
+    scale: 0.97;
+}
+
+@media (min-width: 600px) {
+    .aqua {
+        min-height: 48px;
+        padding: 0 28px;
+        font-size: 1.05rem;
+    }
+}
+
+/* ── La bulle « WAB. » ──
+   Une bulle de discussion Aqua rose, la queue en bas à droite. */
+.bubble {
+    position: relative;
+    display: inline-block;
+    padding: 9px 20px 10px;
+    border-radius: 18px;
+    font-size: 1.05rem;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    background: linear-gradient(var(--aqua-pink-top), var(--aqua-pink-mid));
+    box-shadow: 0 0 0 1px var(--aqua-pink-edge), var(--bubble-glow);
+}
+
+.bubble::after {
+    content: '';
+    position: absolute;
+    right: 10px;
+    bottom: -8px;
+    width: 16px;
+    height: 12px;
+    background: var(--aqua-pink-mid);
+    clip-path: polygon(0 0, 100% 0, 85% 100%);
+    filter: drop-shadow(0 1px 0 var(--aqua-pink-edge));
+}

@@ -1,0 +1,150 @@
+/* ============================================
+   WAB. — Accueil « bureau » : les services en quinconce
+   Quatre blocs. Une grande fenêtre d'un côté ; de l'autre, la bulle
+   « WAB. » au milieu et, calés sur le bas de la fenêtre, le nom du
+   service et une ligne. Les côtés alternent.
+   ============================================ */
+
+.section-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+}
+
+.section-title {
+    max-width: 24ch;
+    font-size: var(--t-title);
+    font-weight: var(--w-strong);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+}
+
+.section-lede {
+    max-width: 44ch;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+}
+
+.feats {
+    display: grid;
+    gap: clamp(72px, 9vw, 120px);
+    margin-top: clamp(48px, 7vw, 88px);
+}
+
+.feat {
+    display: grid;
+    gap: 20px;
+}
+
+.feat__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+}
+
+.feat__title {
+    font-size: 1.2rem;
+    font-weight: var(--w-strong);
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+}
+
+.feat__line {
+    margin-top: 6px;
+    max-width: 34ch;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+}
+
+.feat__media {
+    position: relative;
+}
+
+.feat__media .win__body {
+    aspect-ratio: 16 / 10;
+    /* La fenêtre sert d'étalon à la capture qui défile (100cqh). */
+    container-type: size;
+}
+
+.feat__media .win__bar {
+    height: 26px;
+}
+
+/* La marque LAZIZZE est collée au bord gauche de sa capture : le
+   recadrage au format de la fenêtre se fait à droite, sur la photo. */
+.feat__media--brand img {
+    object-position: left center;
+}
+
+/* ── L'application : la capture défile lentement dans la fenêtre ──
+   Plus haute que la fenêtre, elle descend puis remonte. L'animation
+   ne tourne que lorsque la fenêtre est à l'écran (.is-visible). */
+.scroll-shot {
+    position: absolute;
+    inset: 0 0 auto;
+    height: auto !important;
+    object-fit: initial !important;
+    animation: scroll-shot 16s ease-in-out infinite alternate paused;
+}
+
+.is-visible .scroll-shot {
+    animation-play-state: running;
+}
+
+@keyframes scroll-shot {
+    0%,
+    12% {
+        transform: translateY(0);
+    }
+
+    88%,
+    100% {
+        transform: translateY(calc(-100% + 100cqh));
+    }
+}
+
+@media (min-width: 900px) {
+    .feat {
+        grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
+        gap: clamp(40px, 6vw, 88px);
+        align-items: stretch;
+    }
+
+    .feat__text {
+        justify-content: space-between;
+        padding-block: 8% 2px;
+    }
+
+    /* La bulle tient le milieu, le texte se cale sur le bas. */
+    .feat__text .bubble {
+        margin-top: auto;
+    }
+
+    .feat__copy {
+        margin-top: auto;
+    }
+
+    .feat--flip .feat__text {
+        order: 2;
+        align-items: flex-end;
+        text-align: right;
+    }
+
+    .feat--flip {
+        grid-template-columns: minmax(0, 8fr) minmax(0, 5fr);
+    }
+
+    .feat--flip .feat__line {
+        margin-left: auto;
+    }
+
+    .feat--flip .bubble::after {
+        right: auto;
+        left: 10px;
+        clip-path: polygon(0 0, 100% 0, 15% 100%);
+    }
+}

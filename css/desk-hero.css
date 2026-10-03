@@ -1,0 +1,193 @@
+/* ============================================
+   WAB. — Accueil « bureau » : le premier écran
+   Le centre reste parfaitement net : le nom, la promesse, deux
+   boutons Aqua, une ligne fine, puis la grande fenêtre qui fait
+   défiler les projets. Le désordre (desk-scatter.css) reste en
+   bordure, jamais sous le texte.
+   ============================================ */
+
+.hero {
+    position: relative;
+    /* Les fenêtres qui débordent du bord sont coupées par l'écran,
+       sans créer de défilement horizontal. */
+    overflow-x: clip;
+    padding-bottom: clamp(56px, 8vw, 104px);
+}
+
+.hero__center {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 214px var(--gutter) 0;
+    text-align: center;
+    /* Le centre laisse passer le glisser des fenêtres autour : seuls
+       ses textes et boutons captent le pointeur. */
+    pointer-events: none;
+}
+
+.hero__center > * {
+    pointer-events: auto;
+}
+
+.hero__title {
+    font-size: var(--t-hero);
+    font-weight: var(--w-strong);
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    /* La chasse fixe laisse l'approche du point aussi large qu'une
+       lettre : resserré, le nom se lit comme un logo. */
+    margin-right: -0.06em;
+}
+
+.hero__lede {
+    margin-top: clamp(14px, 2vw, 22px);
+    max-width: 48ch;
+    font-size: var(--t-lede);
+    line-height: 1.45;
+    text-wrap: balance;
+}
+
+.hero__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    width: min(100%, 300px);
+    margin-top: clamp(26px, 3vw, 34px);
+}
+
+.hero__note {
+    margin-top: 16px;
+    font-size: var(--t-small);
+    color: var(--ink-faint);
+}
+
+@media (min-width: 600px) {
+    .hero__center {
+        padding-top: 250px;
+    }
+
+    .hero__actions {
+        flex-direction: row;
+        justify-content: center;
+        width: auto;
+        gap: 18px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .hero__center {
+        padding-top: 238px;
+    }
+}
+
+/* ── La vitrine ──
+   La grande fenêtre sous le centre : les projets défilent, un
+   bouton met en pause (js/desk/showcase.js). */
+.showcase {
+    position: relative;
+    z-index: 4;
+    width: min(100% - 2 * var(--gutter), 860px);
+    margin: clamp(44px, 5vw, 56px) auto 0;
+}
+
+.showcase__win {
+    border-radius: 14px;
+}
+
+.showcase .win__bar {
+    height: 28px;
+}
+
+.showcase .win__title {
+    font-size: 12px;
+}
+
+.showcase__stage {
+    aspect-ratio: 16 / 10;
+}
+
+.showcase__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.9s var(--ease-out);
+}
+
+.showcase__slide img {
+    transform: scale(1.04);
+    transition: transform 6s linear;
+}
+
+.showcase__slide.is-current {
+    opacity: 1;
+}
+
+.showcase__slide.is-current img {
+    transform: scale(1);
+}
+
+/* Le bouton lecture/pause : une pilule de verre fumé posée sur
+   l'image, comme le « play video » de la référence. */
+.showcase__toggle {
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    bottom: 14px;
+    translate: -50% 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 0 18px 0 14px;
+    border-radius: 999px;
+    background: var(--smoke);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0 0 0 1px var(--smoke-edge), var(--shadow-rest);
+    font-size: var(--t-small);
+    color: var(--on-accent);
+    transition: background-color 0.2s var(--ease-out), scale 0.15s var(--ease-out);
+}
+
+.showcase__toggle:active {
+    scale: 0.96;
+}
+
+@media (hover: hover) {
+    .showcase__toggle:hover {
+        background: var(--smoke-strong);
+    }
+}
+
+.showcase__toggle:focus-visible {
+    outline-color: var(--on-accent);
+    outline-offset: 2px;
+}
+
+.showcase__toggle [data-icon] {
+    display: none;
+}
+
+.showcase__toggle[data-state='playing'] [data-icon='pause'],
+.showcase__toggle[data-state='paused'] [data-icon='play'] {
+    display: block;
+}
+
+.showcase__caption {
+    margin-top: 12px;
+}
+
+@media (min-width: 600px) {
+    .showcase__toggle {
+        bottom: 22px;
+    }
+}
+
+/* Cible du lien d'évitement, pas une commande : pas d'anneau autour
+   de tout le premier écran. */
+.hero:focus-visible {
+    outline: none;
+}

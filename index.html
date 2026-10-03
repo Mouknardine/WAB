@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr-CH" class="no-js is-landing">
+<html lang="fr-CH" class="no-js">
 
 <head>
     <meta charset="UTF-8">
     <!-- Avant tout rendu : signale au CSS que JavaScript est disponible. -->
     <script>document.documentElement.classList.replace('no-js', 'js');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#FFE4F0">
+    <meta name="theme-color" content="#f5f4f5">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
@@ -345,73 +345,87 @@
     <!-- Police — Sligoil seule, servie depuis le site -->
     <link rel="preload" href="assets/fonts/Sligoil-Micro.woff2" as="font" type="font/woff2" crossorigin>
 
-    <!-- Styles -->
+    <link rel="preload" href="assets/fonts/Sligoil-MicroBold.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Styles — le socle commun, puis les feuilles de l'accueil bureau -->
     <link rel="stylesheet" href="css/base.css?v=33">
-    <link rel="stylesheet" href="css/nav.css?v=19">
     <link rel="stylesheet" href="css/nav-panel.css?v=1">
     <link rel="stylesheet" href="css/contact-modal.css?v=7">
     <link rel="stylesheet" href="css/contact-form.css?v=3">
-    <link rel="stylesheet" href="css/landing.css?v=10">
-    <link rel="stylesheet" href="css/landing-plate.css?v=5">
+    <link rel="stylesheet" href="css/desk-tokens.css?v=1">
+    <link rel="stylesheet" href="css/desk-bar.css?v=1">
+    <link rel="stylesheet" href="css/desk-window.css?v=1">
+    <link rel="stylesheet" href="css/desk-aqua.css?v=1">
+    <link rel="stylesheet" href="css/desk-objects.css?v=1">
+    <link rel="stylesheet" href="css/desk-hero.css?v=1">
+    <link rel="stylesheet" href="css/desk-scatter.css?v=1">
+    <link rel="stylesheet" href="css/desk-scatter-wide.css?v=1">
+    <link rel="stylesheet" href="css/desk-blocks.css?v=1">
+    <link rel="stylesheet" href="css/desk-auto.css?v=1">
+    <link rel="stylesheet" href="css/desk-letter.css?v=1">
+    <link rel="stylesheet" href="css/desk-end.css?v=1">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=2" defer></script>
     <script src="js/nav.js?v=6" defer></script>
-    <script src="js/letter-swap.js?v=1" defer></script>
-    <script type="module" src="js/mesh/index.js?v=2"></script>
+    <script src="js/reveal.js?v=4" defer></script>
     <script type="module" src="js/birds/index.js?v=6"></script>
+    <script type="module" src="js/birds/perch.js?v=6"></script>
     <script type="module" src="js/contact/index.js?v=9"></script>
+    <script type="module" src="js/desk/index.js?v=1"></script>
 </head>
 
-<body class="landing" data-birds="dense">
+<body class="desk">
 
     <a class="skip-link" href="#studio-intro">Aller au contenu</a>
 
-    <!-- Le ciel occupe tout l'écran, sous les trois plaques de verre. -->
+    <!-- Les oiseaux volent sur la trame du bureau, sous les fenêtres. -->
     <canvas id="birdCanvas" aria-hidden="true"></canvas>
 
-    <!-- BARRE FLOTTANTE — la pilule se prolonge pour contenir le menu -->
-    <header class="topbar" id="topbar">
-        <div class="topbar__inner" id="topbarBar">
-            <div class="topbar__bar">
-                <a href="/" class="topbar__brand" aria-current="page">WAB.</a>
+    <!-- BARRE DE MENUS — façon macOS. Le menu du téléphone (nav.js)
+         se déroule sous la barre. -->
+    <header class="menubar" id="topbar">
+        <div class="topbar__inner menubar__inner" id="topbarBar">
+            <div class="menubar__row">
+                <a href="/" class="menubar__brand" aria-current="page">WAB.</a>
 
-                <nav class="topbar__nav" aria-label="Navigation principale">
-                    <a href="/realisations" class="topbar__link">Work</a>
-                    <a href="/services" class="topbar__link">Services</a>
-                    <a href="/studio" class="topbar__link">About</a>
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="topbar__link">Contact</a>
+                <nav class="menubar__nav" aria-label="Navigation principale">
+                    <a href="/realisations" class="menubar__link">Work</a>
+                    <a href="/services" class="menubar__link">Services</a>
+                    <a href="/studio" class="menubar__link">About</a>
                 </nav>
 
-                <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
-                    <span class="topbar__dots" aria-hidden="true">
-                        <span></span><span></span><span></span><span></span>
+                <canvas class="menubar__sigil" data-perch="flap" data-scale="1" data-color="4" aria-hidden="true"></canvas>
+
+                <div class="menubar__state">
+                    <span class="menubar__icons" aria-hidden="true">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 8.8a15 15 0 0 1 20 0"/><path d="M5.5 12.5a10 10 0 0 1 13 0"/><path d="M9 16.2a5 5 0 0 1 6 0"/><circle cx="12" cy="19.5" r="0.6" fill="currentColor"/></svg>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 7 10 10-5 5V2l5 5L7 17"/></svg>
+                        <svg width="24" height="14" viewBox="0 0 30 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="1" y="2" width="24" height="12" rx="3.5"/><rect x="3.5" y="4.5" width="15" height="7" rx="1.5" fill="currentColor" stroke="none"/><path d="M27.5 6v4" stroke-linecap="round"/></svg>
                     </span>
-                    <span class="sr-only">Menu</span>
-                </button>
+                    <span class="menubar__status studio-status" data-local-status hidden></span>
+                    <time class="menubar__time" data-local-time>--:--</time>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="menubar__cta">
+                        Contact
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                    </a>
+                    <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
+                        <span class="topbar__dots" aria-hidden="true">
+                            <span></span><span></span><span></span><span></span>
+                        </span>
+                        <span class="sr-only">Menu</span>
+                    </button>
+                </div>
             </div>
 
             <div class="topbar__panel" id="topbarPanel">
                 <div class="topbar__panel-inner">
                     <nav class="panel__nav" aria-label="Navigation">
-                        <a href="/realisations" class="panel__link">
-                            Work
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
-                        <a href="/services" class="panel__link">
-                            Services
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
-                        <a href="/studio" class="panel__link">
-                            About
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
-                        <a href="mailto:contact@wearebrothers.ch" data-contact class="panel__link">
-                            Contact
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
+                        <a href="/realisations" class="panel__link">Work<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
+                        <a href="/services" class="panel__link">Services<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
+                        <a href="/studio" class="panel__link">About<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
+                        <a href="mailto:contact@wearebrothers.ch" data-contact class="panel__link">Contact<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
                     </nav>
-
                     <div class="panel__meta">
                         <p class="panel__row">
                             <span class="panel__key">Email</span>
@@ -431,58 +445,321 @@
 
     <main>
 
-        <!-- LA PLAQUE — ce que fait le studio, qui s'en occupe, ce qu'il
-             a déjà fait, et le chemin vers ce travail. Le porte-plaque la cale sur
-             la même verticale que la barre du haut et la ligne du bas. -->
-        <div class="landing__anchor">
-            <section class="landing__plate" id="studio-intro" tabindex="-1" aria-labelledby="landingHello">
-                <!-- La fin du titre reste lue par Google et la navigation
-                     vocale : « agence web » et « site internet » à Lausanne
-                     doivent rester dans le H1 de l'accueil. -->
-                <h1 class="landing__hello" id="landingHello">
-                    Design d'interface et de système sur mesure.<span class="sr-only"> WeAreBrothers, agence web et création de site internet à Lausanne.</span>
-                </h1>
-                <p class="landing__intro">
-                    Deux frères à Lausanne, design et développement sous le même toit. Un seul
-                    interlocuteur du premier café à la mise en ligne, réponse sous 24&nbsp;h ouvrées,
-                    sans engagement.
-                </p>
-
-                <a class="landing__proof" href="/realisations">
-                    <span class="landing__thumbs" aria-hidden="true">
-                        <img class="landing__thumb" src="assets/images/thumb-zinema.webp" alt="" width="360" height="225" decoding="async">
-                        <img class="landing__thumb" src="assets/images/thumb-alliani.webp" alt="" width="360" height="225" decoding="async">
-                        <img class="landing__thumb" src="assets/images/thumb-amarte.webp" alt="" width="360" height="225" decoding="async">
-                        <img class="landing__thumb" src="assets/images/thumb-central.webp" alt="" width="360" height="225" decoding="async">
-                    </span>
-                    <span class="sr-only">Réalisations : Zinéma, Maison Alliani, Amarte Studio, Le P'tit Central</span>
-                </a>
-
-                <div class="landing__actions">
-                    <a href="/realisations" class="btn btn--solid">
-                        <span>Voir nos réalisations</span>
-                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                    </a>
+        <!-- LE BUREAU — le centre net, le désordre autour. -->
+        <section class="hero" id="studio-intro" tabindex="-1" aria-labelledby="heroTitle">
+            <div class="hero__center">
+                <!-- « agence web » et « site internet » à Lausanne restent
+                     dans le H1, lus par Google et la navigation vocale. -->
+                <h1 class="hero__title" id="heroTitle"><span translate="no">WAB.</span><span class="sr-only"> WeAreBrothers, agence web et création de site internet à Lausanne.</span></h1>
+                <p class="hero__lede">Design d'interface et de système sur mesure.</p>
+                <div class="hero__actions">
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="aqua aqua--pink">Démarrer un projet</a>
+                    <a href="/realisations" class="aqua">Voir le travail</a>
                 </div>
-            </section>
-        </div>
-
-        <!-- LA LIGNE DU BAS — où écrire, et où nous trouver.
-             Pas de lien vers les deux pages de service ici, et c'est
-             voulu : l'accueil n'est pas le chemin vers elles. Elles
-             restent reliées depuis le pied des pages de texte, ce qui
-             suffit à Google. -->
-        <div class="landing__foot">
-            <div class="landing__foot-inner">
-                <a href="mailto:contact@wearebrothers.ch" class="landing__mail">contact@wearebrothers.ch</a>
-                <span class="landing__where">
-                    <span class="landing__place">Lausanne, Suisse — <time data-local-time>--:--</time></span>
-                    <span class="studio-status" data-local-status hidden></span>
-                </span>
+                <p class="hero__note">Réponse sous 24&nbsp;h, Lausanne</p>
             </div>
-        </div>
+
+            <!-- Les objets du bureau. Décor : masqués aux lecteurs d'écran,
+                 sauf le dossier, qui est un vrai lien. Sur ordinateur, les
+                 fenêtres se prennent et se déplacent (js/desk/drag.js). -->
+            <div class="scatter" data-scatter>
+                <div class="scat scat--portrait scat--central" data-drag aria-hidden="true">
+                    <div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__x">x</span></div><div class="win__body"><img src="assets/images/work-central-720.webp" alt="" width="720" height="900" decoding="async" draggable="false"></div></div>
+                    <span class="file-name">lepetitcentral.ch</span>
+                </div>
+                <div class="scat scat--sticker" data-drag aria-hidden="true">
+                    <span class="sticker"><span class="sticker__hello">HELLO</span><span class="sticker__mine">my name is</span><span class="sticker__name">WAB.</span></span>
+                </div>
+                <span class="scat scat--kao-a kao" aria-hidden="true">(^_^)/</span>
+                <div class="scat scat--land scat--zinema" data-drag data-perch-host aria-hidden="true">
+                    <canvas class="win-perch" data-perch="fly" data-scale="2" data-color="0"></canvas><div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__x">x</span></div><div class="win__body"><img src="assets/images/thumb-zinema.webp" alt="" width="360" height="225" decoding="async" draggable="false"></div></div>
+                    <span class="file-name">zinema.ch</span>
+                </div>
+                <span class="scat scat--kao-b kao" aria-hidden="true">{ ^-^ }</span>
+                <div class="scat scat--land scat--amarte" data-drag aria-hidden="true">
+                    <div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__x">x</span></div><div class="win__body"><img src="assets/images/shot-amarte-800.webp" alt="" width="800" height="500" decoding="async" draggable="false"></div></div>
+                    <span class="file-name">amarte.ch</span>
+                </div>
+                <div class="scat scat--land scat--alliani" data-drag aria-hidden="true">
+                    <div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__x">x</span></div><div class="win__body"><img src="assets/images/thumb-alliani.webp" alt="" width="360" height="225" decoding="async" draggable="false"></div></div>
+                    <span class="file-name">maison-alliani.com</span>
+                </div>
+                <div class="scat scat--portrait scat--dj" data-drag data-perch-host aria-hidden="true">
+                    <canvas class="win-perch" data-perch="fly" data-scale="2" data-color="2"></canvas><div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__x">x</span></div><div class="win__body"><img src="assets/images/work-dj-720.webp" alt="" width="720" height="900" decoding="async" draggable="false"></div></div>
+                    <span class="file-name">lazizze.com</span>
+                </div>
+                <div class="scat scat--land scat--nadege" data-drag aria-hidden="true">
+                    <div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__x">x</span></div><div class="win__body"><img src="assets/images/shot-nadege-800.webp" alt="" width="800" height="500" loading="lazy" decoding="async" draggable="false"></div></div>
+                    <span class="file-name">nadegemouine.ch</span>
+                </div>
+                <a href="/realisations" class="scat scat--folder folder">
+                    <svg width="64" height="50" viewBox="0 0 64 50" aria-hidden="true"><path class="folder__back" d="M3 6a4 4 0 0 1 4-4h15l5 5h30a4 4 0 0 1 4 4v33a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><path class="folder__front" d="M3 15a4 4 0 0 1 4-4h50a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/></svg>
+                    <span class="folder__name">Work</span>
+                </a>
+            </div>
+
+            <!-- LA VITRINE — les projets défilent dans la grande fenêtre. -->
+            <figure class="showcase" data-showcase>
+                <div class="win showcase__win">
+                    <div class="win__bar"><span class="win__lights"></span><span class="win__title" data-showcase-title>Zinéma</span></div>
+                    <div class="win__body showcase__stage">
+                        <div class="showcase__slide is-current" data-slide data-name="Zinéma" data-domain="zinema.ch"><img src="assets/images/shot-zinema-1600.webp" srcset="assets/images/shot-zinema-800.webp 800w, assets/images/shot-zinema-1600.webp 1600w" sizes="(min-width: 920px) 860px, calc(100vw - 32px)" alt="Page d'accueil du Zinéma, cinéma d'art et essai à Lausanne : un mur d'affiches de films" width="1600" height="1000" fetchpriority="high" decoding="async"></div>
+                        <div class="showcase__slide" data-slide data-name="Le P'tit Central" data-domain="lepetitcentral.ch" aria-hidden="true"><img src="assets/images/shot-central-1600.webp" srcset="assets/images/shot-central-800.webp 800w, assets/images/shot-central-1600.webp 1600w" sizes="(min-width: 920px) 860px, calc(100vw - 32px)" alt="Page d'accueil du P'tit Central, café-restaurant de quartier à Lausanne, cadre d'azulejos bleu et blanc" width="1600" height="1000" loading="lazy" decoding="async"></div>
+                        <div class="showcase__slide" data-slide data-name="Amarte Studio" data-domain="amarte.ch" aria-hidden="true"><img src="assets/images/shot-amarte-1600.webp" srcset="assets/images/shot-amarte-800.webp 800w, assets/images/shot-amarte-1600.webp 1600w" sizes="(min-width: 920px) 860px, calc(100vw - 32px)" alt="Page d'accueil d'Amarte Studio, studio de yoga et de Pilates à Épalinges" width="1600" height="1000" loading="lazy" decoding="async"></div>
+                        <div class="showcase__slide" data-slide data-name="Maison Alliani" data-domain="maison-alliani.com" aria-hidden="true"><img src="assets/images/shot-alliani-1600.webp" srcset="assets/images/shot-alliani-800.webp 800w, assets/images/shot-alliani-1600.webp 1600w" sizes="(min-width: 920px) 860px, calc(100vw - 32px)" alt="Galerie de Maison Alliani, atelier suisse de grillz sur mesure, sur fond sombre" width="1600" height="1000" loading="lazy" decoding="async"></div>
+                        <div class="showcase__slide" data-slide data-name="Nadège Mouine" data-domain="nadegemouine.ch" aria-hidden="true"><img src="assets/images/shot-nadege-1600.webp" srcset="assets/images/shot-nadege-800.webp 800w, assets/images/shot-nadege-1600.webp 1600w" sizes="(min-width: 920px) 860px, calc(100vw - 32px)" alt="Portfolio de Nadège Mouine, architecte en formation à l'EPFL" width="1600" height="1000" loading="lazy" decoding="async"></div>
+                        <div class="showcase__slide" data-slide data-name="LAZIZZE DJ" data-domain="lazizze.com" aria-hidden="true"><img src="assets/images/shot-dj-1600.webp" srcset="assets/images/shot-dj-800.webp 800w, assets/images/shot-dj-1600.webp 1600w" sizes="(min-width: 920px) 860px, calc(100vw - 32px)" alt="Site de LAZIZZE, DJ house à Lausanne, typographie noire sur aplat rose" width="1600" height="1000" loading="lazy" decoding="async"></div>
+                        <div class="showcase__slide" data-slide data-name="La Slack" data-domain="la-slack.com" aria-hidden="true"><img src="assets/images/shot-slack-1600.webp" srcset="assets/images/shot-slack-800.webp 800w, assets/images/shot-slack-1600.webp 1600w" sizes="(min-width: 920px) 860px, calc(100vw - 32px)" alt="Portfolio de La Slack, rangé comme un bureau virtuel avec des dossiers" width="1600" height="1000" loading="lazy" decoding="async"></div>
+                        <button type="button" class="showcase__toggle" data-showcase-toggle data-state="playing" hidden>
+                            <svg data-icon="pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.5"/><rect x="14" y="4" width="5" height="16" rx="1.5"/></svg>
+                            <svg data-icon="play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.4-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5Z"/></svg>
+                            <span data-showcase-label>Pause</span>
+                        </button>
+                    </div>
+                </div>
+                <figcaption class="file-name showcase__caption" data-showcase-name>zinema.ch</figcaption>
+            </figure>
+        </section>
+
+        <!-- SERVICES — quatre fenêtres en quinconce. Textes de /services. -->
+        <section class="desk-wrap block" id="services" aria-labelledby="servicesTitle">
+            <div class="section-head reveal">
+                <p class="desk-label">Services</p>
+                <h2 class="section-title" id="servicesTitle">Du site internet aux outils qui font tourner votre entreprise.</h2>
+            </div>
+
+            <div class="feats">
+                <article class="feat reveal">
+                    <div class="feat__text">
+                        <span class="bubble" aria-hidden="true">WAB.</span>
+                        <div class="feat__copy">
+                            <h3 class="feat__title">Sites sur mesure</h3>
+                            <p class="feat__line">Codés de A à Z, rapides sur mobile, pensés pour Google.</p>
+                        </div>
+                    </div>
+                    <figure class="feat__media">
+                        <div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title">lepetitcentral.ch</span></div><div class="win__body"><img src="assets/images/shot-central-1600.webp" srcset="assets/images/shot-central-800.webp 800w, assets/images/shot-central-1600.webp 1600w" sizes="(min-width: 900px) 690px, 100vw" alt="Page d'accueil du P'tit Central, café-restaurant de la rue Centrale à Lausanne" width="1600" height="1000" loading="lazy" decoding="async"></div></div>
+                    </figure>
+                </article>
+
+                <article class="feat feat--flip reveal">
+                    <div class="feat__text">
+                        <span class="bubble" aria-hidden="true">WAB.</span>
+                        <div class="feat__copy">
+                            <h3 class="feat__title">Applications de gestion</h3>
+                            <p class="feat__line">Dessinées autour de votre métier, livrées module par module.</p>
+                        </div>
+                    </div>
+                    <figure class="feat__media" data-watch data-perch-host>
+                        <canvas class="win-perch" data-perch="fly" data-scale="3" data-color="3"></canvas><div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title">Agenda — Finances</span></div><div class="win__body"><img class="scroll-shot" src="assets/images/app-agenda-finances-1280.webp" srcset="assets/images/app-agenda-finances-1280.webp 1280w, assets/images/app-agenda-finances-2560.webp 2560w" sizes="(min-width: 900px) 690px, 100vw" alt="L'écran Finances d'une application de gestion conçue par le studio : encaissé, facturé et derniers paiements" width="1280" height="1000" loading="lazy" decoding="async"><span class="win__demo">Données de démonstration</span></div></div>
+                    </figure>
+                </article>
+
+                <article class="feat reveal">
+                    <div class="feat__text">
+                        <span class="bubble" aria-hidden="true">WAB.</span>
+                        <div class="feat__copy">
+                            <h3 class="feat__title">Automatisation et IA</h3>
+                            <p class="feat__line">Devis, factures et suivi client, tout seuls. L'IA, là où elle fait gagner du temps.</p>
+                        </div>
+                    </div>
+                    <figure class="feat__media" data-watch="once" aria-hidden="true">
+                        <div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title">Automatisations</span></div><div class="win__body">
+                            <div class="auto">
+                                <div class="notif"><span class="notif__icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7V3Z"/><path d="M14 3v5h5"/></svg></span><span class="notif__name">Devis</span><span class="notif__state"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17 19 7"/></svg>Généré</span></div>
+                                <div class="notif"><span class="notif__icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7V3Z"/><path d="M14 3v5h5"/><path d="M10 13h6M10 17h4"/></svg></span><span class="notif__name">Facture</span><span class="notif__state"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17 19 7"/></svg>Envoyée</span></div>
+                                <div class="notif"><span class="notif__icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span class="notif__name">Newsletter</span><span class="notif__state">Envoi automatique</span></div>
+                                <div class="notif notif--ask"><span class="notif__ask">Résume les demandes de la semaine.</span><span class="notif__reply"><span></span><span></span></span></div>
+                            </div>
+                        </div></div>
+                    </figure>
+                </article>
+
+                <article class="feat feat--flip reveal">
+                    <div class="feat__text">
+                        <span class="bubble" aria-hidden="true">WAB.</span>
+                        <div class="feat__copy">
+                            <h3 class="feat__title">Image de marque</h3>
+                            <p class="feat__line">Logo et identité visuelle. Ici, LAZIZZE.</p>
+                        </div>
+                    </div>
+                    <figure class="feat__media feat__media--brand">
+                        <div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title">LAZIZZE — identité</span></div><div class="win__body"><img src="assets/images/service-branding-lazizze.webp" alt="Identité visuelle de LAZIZZE, DJ à Lausanne : logotype noir sur aplat rose" width="900" height="495" loading="lazy" decoding="async"></div></div>
+                    </figure>
+                </article>
+            </div>
+        </section>
+
+        <!-- LA LETTRE — d'Eliott et Matt, écrite avec les phrases du site. -->
+        <section class="desk-wrap block" id="lettre" aria-labelledby="letterTitle">
+            <div class="letter-zone">
+                <h2 class="desk-label reveal" id="letterTitle">Deux frères, un seul interlocuteur</h2>
+
+                <div class="photo photo--eliott" aria-hidden="true">
+                    <div class="win"><div class="win__bar"><span class="win__lights"></span></div><div class="win__body"><img src="assets/images/team-eliott.webp" alt="" width="960" height="1200" loading="lazy" decoding="async"></div></div>
+                    <span class="file-name">eliott.webp</span>
+                </div>
+
+                <article class="win letter reveal">
+                    <div class="win__bar"><span class="win__lights"></span><span class="win__title">lettre.txt</span></div>
+                    <div class="letter__body">
+                        <p>Bonjour,</p>
+                        <p>Nous sommes Eliott et Matt, deux frères à Lausanne. Eliott dessine, Matt développe&nbsp;: design et développement sous le même toit.</p>
+                        <p>Pas d'intermédiaire, pas de chef de projet, pas de production à la chaîne. <mark>Les mêmes personnes, du premier café à la mise en ligne.</mark></p>
+                        <p>Des designs simples, efficaces et dans l'air du temps. Pas d'effet pour l'effet&nbsp;: ce qui fonctionne pour vous, taillé pour vos besoins.</p>
+                        <p>Après la mise en ligne, on ne disparaît pas&nbsp;: maintenance et évolutions, avec les mêmes personnes.</p>
+                        <p>Quelques lignes suffisent pour commencer.<span class="letter__caret" aria-hidden="true"></span></p>
+                        <div class="letter__sign">
+                            <p class="signer"><img src="assets/images/avatar-eliott.webp" alt="" width="144" height="144" loading="lazy" decoding="async"><span><span class="signer__name">Eliott Pina</span><span class="signer__role">Lead designer</span></span></p>
+                            <p class="signer"><img src="assets/images/avatar-matt.webp" alt="" width="144" height="144" loading="lazy" decoding="async"><span><span class="signer__name">Matt Pina</span><span class="signer__role">Lead développeur</span></span></p>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="photo photo--matt" aria-hidden="true">
+                    <div class="win"><div class="win__bar"><span class="win__lights"></span></div><div class="win__body"><img src="assets/images/team-matt.webp" alt="" width="960" height="1200" loading="lazy" decoding="async"></div></div>
+                    <span class="file-name">matt.webp</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- LES ÉTAPES — les quatre temps réels d'un projet (Work). -->
+        <section class="desk-wrap block" id="deroule" aria-labelledby="stepsTitle">
+            <div class="section-head reveal">
+                <h2 class="section-title" id="stepsTitle">Un projet, simplement.</h2>
+                <p class="section-lede">De 3 à 6 semaines pour un site vitrine.</p>
+            </div>
+            <ol class="steps" data-reveal-group>
+                <li class="win step reveal"><div class="win__bar"><span class="win__lights"></span><span class="win__title">on-ecoute.txt</span></div><div class="step__body">
+                    <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3v3M12 3v3"/></svg>
+                    <h3 class="step__name">On écoute.</h3>
+                    <p class="step__desc">Un café à Lausanne ou un appel. Vous parlez de votre métier, on prend des notes.</p>
+                </div></li>
+                <li class="win step reveal"><div class="win__bar"><span class="win__lights"></span><span class="win__title">on-chiffre.txt</span></div><div class="step__body">
+                    <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7V3Z"/><path d="M14 3v5h5"/><path d="M10 13h6M10 17h4"/></svg>
+                    <h3 class="step__name">On chiffre.</h3>
+                    <p class="step__desc">Périmètre, planning et prix posés noir sur blanc, avant de commencer.</p>
+                </div></li>
+                <li class="win step reveal"><div class="win__bar"><span class="win__lights"></span><span class="win__title">on-dessine.txt</span></div><div class="step__body">
+                    <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="m13.5 6-3 12"/></svg>
+                    <h3 class="step__name">On dessine, on code.</h3>
+                    <p class="step__desc">Un point chaque semaine. Vous validez chaque étape.</p>
+                </div></li>
+                <li class="win step reveal"><div class="win__bar"><span class="win__lights"></span><span class="win__title">on-reste-la.txt</span></div><div class="step__body">
+                    <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18Z"/></svg>
+                    <h3 class="step__name">On reste là.</h3>
+                    <p class="step__desc">Après la mise en ligne, on ne disparaît pas&nbsp;: maintenance et évolutions, avec les mêmes personnes.</p>
+                </div></li>
+            </ol>
+        </section>
+
+        <!-- L'APPEL — une boîte de dialogue, le bouton rose par défaut. -->
+        <section class="desk-wrap block" id="contact" aria-labelledby="closingTitle">
+            <div class="win dialog reveal">
+                <div class="win__bar"><span class="win__lights"></span><span class="win__title">Nouveau projet</span></div>
+                <div class="dialog__body">
+                    <canvas class="dialog__icon" data-perch="flap" data-scale="2" data-color="4" aria-hidden="true"></canvas>
+                    <h2 class="dialog__title" id="closingTitle">Et si le prochain projet était le vôtre&nbsp;?</h2>
+                    <p class="dialog__text">Quelques lignes suffisent pour commencer. Nous vous répondons sous 24&nbsp;h ouvrées, sans engagement.</p>
+                    <div class="dialog__actions">
+                        <a href="mailto:contact@wearebrothers.ch" class="aqua">Écrire un email</a>
+                        <a href="mailto:contact@wearebrothers.ch" data-contact class="aqua aqua--pink">Démarrer un projet</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </main>
+
+    <footer class="foot">
+        <div class="desk-wrap">
+            <div class="foot__cols">
+                <nav class="foot__col" aria-label="Pages">
+                    <p class="foot__label">Pages</p>
+                    <a href="/realisations">Work</a>
+                    <a href="/services">Services</a>
+                    <a href="/studio">About</a>
+                </nav>
+                <nav class="foot__col" aria-label="Expertises">
+                    <p class="foot__label">Expertises</p>
+                    <a href="/creation-site-internet-lausanne">Création de site internet</a>
+                    <a href="/applications">Applications</a>
+                </nav>
+                <div class="foot__col">
+                    <p class="foot__label">Contact</p>
+                    <a href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
+                    <span>Lausanne, Suisse — <time data-local-time>--:--</time></span>
+                </div>
+                <p class="foot__note">Codé à la main à Lausanne, oiseaux compris.</p>
+            </div>
+            <svg class="pixel-name" data-watch="once" viewBox="-1 -1 202 72" role="img" aria-label="WAB.">
+                <defs>
+                    <linearGradient id="wab-px-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0"/><stop offset="1"/></linearGradient>
+                    <symbol id="wab-px" viewBox="0 0 10 10" width="10" height="10"><rect class="px__body" x="0.4" y="0.4" width="9.2" height="9.2" rx="2.2"/><rect class="px__shine" x="1.6" y="1.1" width="6.8" height="3.4" rx="1.6"/></symbol>
+                </defs>
+                <use class="px" href="#wab-px" x="0" y="0"/>
+                <use class="px" href="#wab-px" x="40" y="0"/>
+                <use class="px" href="#wab-px" x="0" y="10"/>
+                <use class="px" href="#wab-px" x="40" y="10"/>
+                <use class="px" href="#wab-px" x="0" y="20"/>
+                <use class="px" href="#wab-px" x="40" y="20"/>
+                <use class="px" href="#wab-px" x="0" y="30"/>
+                <use class="px" href="#wab-px" x="20" y="30"/>
+                <use class="px" href="#wab-px" x="40" y="30"/>
+                <use class="px" href="#wab-px" x="0" y="40"/>
+                <use class="px" href="#wab-px" x="20" y="40"/>
+                <use class="px" href="#wab-px" x="40" y="40"/>
+                <use class="px" href="#wab-px" x="0" y="50"/>
+                <use class="px" href="#wab-px" x="20" y="50"/>
+                <use class="px" href="#wab-px" x="40" y="50"/>
+                <use class="px" href="#wab-px" x="10" y="60"/>
+                <use class="px" href="#wab-px" x="30" y="60"/>
+                <use class="px" href="#wab-px" x="70" y="0"/>
+                <use class="px" href="#wab-px" x="80" y="0"/>
+                <use class="px" href="#wab-px" x="90" y="0"/>
+                <use class="px" href="#wab-px" x="60" y="10"/>
+                <use class="px" href="#wab-px" x="100" y="10"/>
+                <use class="px" href="#wab-px" x="60" y="20"/>
+                <use class="px" href="#wab-px" x="100" y="20"/>
+                <use class="px" href="#wab-px" x="60" y="30"/>
+                <use class="px" href="#wab-px" x="70" y="30"/>
+                <use class="px" href="#wab-px" x="80" y="30"/>
+                <use class="px" href="#wab-px" x="90" y="30"/>
+                <use class="px" href="#wab-px" x="100" y="30"/>
+                <use class="px" href="#wab-px" x="60" y="40"/>
+                <use class="px" href="#wab-px" x="100" y="40"/>
+                <use class="px" href="#wab-px" x="60" y="50"/>
+                <use class="px" href="#wab-px" x="100" y="50"/>
+                <use class="px" href="#wab-px" x="60" y="60"/>
+                <use class="px" href="#wab-px" x="100" y="60"/>
+                <use class="px" href="#wab-px" x="120" y="0"/>
+                <use class="px" href="#wab-px" x="130" y="0"/>
+                <use class="px" href="#wab-px" x="140" y="0"/>
+                <use class="px" href="#wab-px" x="150" y="0"/>
+                <use class="px" href="#wab-px" x="120" y="10"/>
+                <use class="px" href="#wab-px" x="160" y="10"/>
+                <use class="px" href="#wab-px" x="120" y="20"/>
+                <use class="px" href="#wab-px" x="160" y="20"/>
+                <use class="px" href="#wab-px" x="120" y="30"/>
+                <use class="px" href="#wab-px" x="130" y="30"/>
+                <use class="px" href="#wab-px" x="140" y="30"/>
+                <use class="px" href="#wab-px" x="150" y="30"/>
+                <use class="px" href="#wab-px" x="120" y="40"/>
+                <use class="px" href="#wab-px" x="160" y="40"/>
+                <use class="px" href="#wab-px" x="120" y="50"/>
+                <use class="px" href="#wab-px" x="160" y="50"/>
+                <use class="px" href="#wab-px" x="120" y="60"/>
+                <use class="px" href="#wab-px" x="130" y="60"/>
+                <use class="px" href="#wab-px" x="140" y="60"/>
+                <use class="px" href="#wab-px" x="150" y="60"/>
+                <use class="px" href="#wab-px" x="180" y="50"/>
+                <use class="px" href="#wab-px" x="190" y="50"/>
+                <use class="px" href="#wab-px" x="180" y="60"/>
+                <use class="px" href="#wab-px" x="190" y="60"/>
+            </svg>
+            <p class="foot__legal">&copy; 2026 WeAreBrothers Studio</p>
+        </div>
+    </footer>
 
 </body>
 

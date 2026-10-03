@@ -1,0 +1,142 @@
+/* ============================================
+   WAB. — Accueil « bureau » : le désordre en bordure
+   Les petites fenêtres de projets, l'autocollant, le dossier Work,
+   les kaomoji. Chaque objet porte sa place (--x, --y, --w) par
+   palier d'écran ; trois au téléphone, tous sur ordinateur.
+
+   Trois mouvements se composent sans s'écraser :
+   — l'entrée : animation sur opacity et scale ;
+   — la parallaxe douce : transform, écrit par js/desk/parallax.js ;
+   — le glisser : translate, posé par js/desk/drag.js ;
+   et l'inclinaison propre à l'objet passe par rotate.
+   ============================================ */
+
+.scatter {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+}
+
+.scat {
+    --x: 0%;
+    --y: 0px;
+    --w: auto;
+    --depth: 1;
+    --tilt: 0deg;
+    position: absolute;
+    z-index: 1;
+    left: var(--x);
+    top: var(--y);
+    width: var(--w);
+    display: none;
+    rotate: var(--tilt);
+    animation: scat-in 0.7s var(--ease-out) both;
+    animation-delay: calc(var(--i, 0) * 70ms + 120ms);
+}
+
+@keyframes scat-in {
+    from {
+        opacity: 0;
+        scale: 0.94;
+    }
+}
+
+/* Une fenêtre qu'on peut prendre : la main l'annonce. */
+@media (hover: hover) and (pointer: fine) {
+    .scat[data-drag] {
+        cursor: grab;
+        touch-action: none;
+    }
+
+    .scat.is-dragging {
+        cursor: grabbing;
+    }
+}
+
+.scat .win {
+    transition: box-shadow 0.25s var(--ease-out);
+}
+
+.scat.is-dragging .win {
+    box-shadow: 0 0 0 1px var(--win-edge), var(--win-shadow-lift);
+}
+
+/* Les captures en portrait (photos de mise en situation, 4:5) et en
+   paysage (pages d'accueil, 16:10) gardent leur format natif. */
+.scat--portrait .win__body {
+    aspect-ratio: 4 / 5;
+}
+
+.scat--land .win__body {
+    aspect-ratio: 16 / 10;
+}
+
+/* ── Téléphone : trois objets au-dessus du titre ── */
+.scat--sticker {
+    --x: 5%;
+    --y: 70px;
+    --tilt: -6deg;
+    --depth: 0.6;
+    display: block;
+}
+
+/* Sous 380 px, l'autocollant et la fenêtre prennent toute la
+   largeur : le dossier s'efface (Work reste dans le menu et sous le
+   bouton « Voir le travail »). */
+.scat--folder {
+    --x: calc(50% - 40px);
+    --y: 84px;
+    --depth: 0.4;
+}
+
+@media (min-width: 380px) {
+    .scat--folder {
+        display: block;
+    }
+}
+
+.scat--zinema {
+    --w: clamp(150px, 42vw, 168px);
+    --x: calc(100% - var(--w) + 12px);
+    --y: 64px;
+    --tilt: 3deg;
+    --depth: 1;
+    display: block;
+}
+
+/* ── Tablette et petit ordinateur : la bande du haut se peuple ── */
+@media (min-width: 600px) {
+    .scat--central {
+        --x: 3%;
+        --y: 96px;
+        --w: 108px;
+        --depth: 1.2;
+        display: block;
+    }
+
+    .scat--sticker {
+        --x: 19%;
+        --y: 72px;
+        --tilt: -4deg;
+    }
+
+    .scat--zinema {
+        --x: calc(50% - 80px);
+        --y: 70px;
+        --w: 160px;
+        --tilt: 0deg;
+    }
+
+    .scat--folder {
+        --x: 22%;
+        --y: 176px;
+    }
+
+    .scat--amarte {
+        --x: calc(100% - 214px);
+        --y: 102px;
+        --w: 196px;
+        --depth: 0.8;
+        display: block;
+    }
+}
