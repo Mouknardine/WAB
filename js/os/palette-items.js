@@ -9,7 +9,7 @@
 
 import { openContact, copyEmail, goTo } from './actions.js?v=1';
 import { loadProjects } from './projects.js?v=1';
-import { launchFinder, launchTerminal, launchCase } from './apps.js?v=2';
+import { launchFinder, launchTerminal, launchCase } from './apps.js?v=3';
 
 /**
  * @typedef {object} PaletteItem

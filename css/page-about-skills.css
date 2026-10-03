@@ -1,24 +1,26 @@
 /* ============================================
-   WAB OS — About : le savoir-faire, trois apps sur le ciel rose
-   Une bande pleine largeur sur le ciel du site (--sky-mesh), fondue
-   dans le bureau en haut et en bas. Trois fenêtres de verre au même
-   gabarit, chacune une app : son icône en carré arrondi, son nom, ce
-   qu'elle couvre. Trois surfaces floutées seulement.
+   WAB OS — About : le savoir-faire, trois apps sur le gris chaud
+   Un grand panneau gris chaud (--panel) au rayon des panneaux, liseré
+   d'un pixel, relief éclairé d'en haut et feuille décalée dessous (la
+   pile). Dedans, trois cartes blanches nettes au même gabarit, chacune
+   une app : sa touche-icône, son nom, ce qu'elle couvre. Aucun flou.
    ============================================ */
 
 .ab-skills {
-    position: relative;
     margin-top: var(--section);
-    padding: clamp(72px, 9vw, 120px) 0 clamp(80px, 10vw, 128px);
-    background:
-        linear-gradient(180deg, var(--desk) 0%, transparent 22%, transparent 78%, var(--desk) 100%),
-        var(--sky-mesh);
+}
+
+.ab-skills__panel {
+    padding: clamp(48px, 7vw, 88px) clamp(12px, 4vw, 48px) clamp(12px, 4vw, 48px);
+    border-radius: var(--r-panel);
+    background: var(--panel);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief), var(--sheet);
 }
 
 .ab-skills__title {
     max-width: 24ch;
     font-size: clamp(2rem, 5vw, 3.4rem);
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
     line-height: 1.1;
     letter-spacing: -0.05em;
     text-wrap: balance;
@@ -26,30 +28,29 @@
 
 .ab-apps {
     display: grid;
-    gap: 18px;
+    gap: 16px;
     max-width: 1040px;
-    margin: clamp(36px, 5vw, 56px) auto 0;
+    margin: clamp(32px, 5vw, 56px) auto 0;
     list-style: none;
 }
 
+/* La carte d'app : du blanc, le liseré, le relief, une ombre courte. */
 .ab-app {
     height: 100%;
+    overflow: hidden;
     border-radius: var(--r-win);
-    background: var(--glass);
-    -webkit-backdrop-filter: var(--glass-blur);
-    backdrop-filter: var(--glass-blur);
-    box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px rgba(255, 255, 255, 0.55), var(--glass-shadow);
+    background: var(--paper);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief), var(--shadow-soft);
 }
 
+/* La barre : le bleu clair des fenêtres, le ↳ à gauche. */
 .ab-app__bar {
     display: flex;
     align-items: center;
-    gap: 10px;
     height: var(--win-bar-h);
-    padding: 0 12px;
-    border-radius: var(--r-win) var(--r-win) 0 0;
-    background: var(--glass-specular);
-    box-shadow: inset 0 -1px 0 var(--glass-edge);
+    padding: 0 10px;
+    background: var(--win-bar);
+    color: var(--win-bar-ink);
 }
 
 .ab-app__body {
@@ -57,48 +58,37 @@
     grid-template-columns: 56px minmax(0, 1fr);
     gap: 18px 16px;
     align-items: center;
-    padding: 22px 22px 26px;
+    padding: clamp(18px, 5vw, 22px) clamp(16px, 5vw, 22px) 26px;
 }
 
-/* L'icône d'app : un carré aux coins à peine arrondis, le dégradé de sa famille, une couche
-   de verre en haut, le pictogramme au trait. */
+/* L'icône d'app : une touche de clavier, bleue, noire ou blanche. */
 .ab-app__icon {
-    position: relative;
     display: grid;
     place-items: center;
     width: 56px;
     height: 56px;
-    border-radius: var(--r-icon);
-    background: linear-gradient(160deg, var(--pink-soft), var(--pink));
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), inset 0 -2px 4px rgba(11, 11, 12, 0.12), var(--shadow-object);
-    color: var(--ink);
-    overflow: hidden;
-}
-
-.ab-app__icon::before {
-    content: '';
-    position: absolute;
-    inset: 0 0 50%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0));
-}
-
-.ab-app__icon svg {
-    position: relative;
+    border-radius: var(--r-ctl);
+    background: var(--key-klein);
+    box-shadow: 0 0 0 var(--hair) var(--key-klein-edge), var(--key-klein-relief);
+    color: var(--on-klein);
 }
 
 .ab-app__icon--ink {
-    background: linear-gradient(160deg, #3a3940, var(--ink));
+    background: linear-gradient(180deg, color-mix(in oklch, var(--ink), var(--paper) 16%), var(--ink));
+    box-shadow: 0 0 0 var(--hair) var(--ink), var(--shadow-soft);
     color: var(--paper);
 }
 
 .ab-app__icon--light {
-    background: linear-gradient(160deg, var(--paper), #ececf0);
+    background: var(--key-light);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--key-light-relief);
     color: var(--ink);
 }
 
+/* « Accompagnement » tient sur une ligne dès 320 px. */
 .ab-app__name {
-    font-size: 1.4rem;
-    font-weight: var(--w-strong);
+    font-size: clamp(1.15rem, 5vw, 1.4rem);
+    font-weight: var(--w-medium);
     letter-spacing: -0.03em;
 }
 
@@ -107,7 +97,7 @@
     display: grid;
     gap: 10px;
     padding-top: 18px;
-    border-top: 2px dotted var(--line-strong);
+    box-shadow: inset 0 var(--hair) 0 var(--line);
     list-style: none;
 }
 
@@ -119,11 +109,12 @@
     line-height: 1.45;
 }
 
+/* La coche, peinte en masque dans le bleu Klein. */
 .ab-app__list li::before {
     content: '';
     width: 18px;
     height: 18px;
-    background: var(--ink);
+    background: var(--klein);
     -webkit-mask: url('../assets/icons/sym-check.svg') center / contain no-repeat;
     mask: url('../assets/icons/sym-check.svg') center / contain no-repeat;
 }
@@ -132,17 +123,4 @@
     .ab-apps {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
-}
-
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-    .ab-app {
-        background: var(--glass-strong);
-    }
-}
-
-/* Le badge posé sur le ciel : le même verre, flouté. */
-.ab-skills .badge {
-    background: var(--glass);
-    -webkit-backdrop-filter: var(--glass-blur);
-    backdrop-filter: var(--glass-blur);
 }

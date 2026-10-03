@@ -1,9 +1,10 @@
 /* ============================================
    WAB OS — About : le premier écran, l'équipe
    Le titre et une phrase au centre, net. Dessous, trois fenêtres
-   « Contacts », une par personne : la vraie photo, puis le nom, le
-   rôle et le texte sur le blanc de la fiche — jamais posés sur le
-   portrait, où ils masquaient le visage. Celle du milieu descend d'un
+   « Contacts », une par personne, au fond gris chaud : la vraie photo
+   posée en retrait, puis une petite carte blanche nette (le nom, le
+   rôle en Sligoil, le texte) — jamais posée sur le portrait, où elle
+   masquait le visage. Celle du milieu descend d'un
    cran (quinconce, comme le bureau de l'accueil) ; l'oiseau reste en
    bordure.
    Au téléphone : les fiches défilent au doigt, le nom de fichier
@@ -83,14 +84,19 @@
 .ab-card .win__body {
     display: flex;
     flex-direction: column;
-    background: var(--win-bg);
+    gap: 8px;
+    padding: 8px;
+    background: var(--panel);
 }
 
 /* Le portrait : 4/5, le format natif des photos d'Eliott et de Matt ;
    celle d'Ivan (3/4) perd 6 % en hauteur, calés sur le visage. */
 .ab-card__photo {
     aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: var(--r-ctl);
     background: var(--desk);
+    box-shadow: 0 0 0 var(--hair) var(--edge);
 }
 
 .ab-card .win__body .ab-card__photo img {
@@ -103,27 +109,35 @@
 
 .ab-card__info {
     display: grid;
-    gap: 4px;
-    padding: 16px 18px 20px;
-    box-shadow: inset 0 1px 0 var(--line);
+    align-content: start;
+    gap: 6px;
+    flex: 1;
+    padding: 14px 16px 18px;
+    border-radius: var(--r-ctl);
+    background: var(--paper);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief);
 }
 
 .ab-card__name {
     font-size: 1.15rem;
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
     line-height: 1.25;
     letter-spacing: -0.03em;
 }
 
-/* Le rôle en encre pleine : au téléphone, le texte est la seule
-   ligne grise de la fiche. */
+/* Le rôle : une étiquette en Sligoil, en bleu Klein (lisible en petit
+   texte sur blanc) ; le texte reste la seule ligne grise de la fiche. */
 .ab-card__role {
-    font-size: var(--t-small);
-    line-height: 1.4;
+    font-family: var(--font-mono);
+    font-size: var(--t-cap);
+    line-height: 1.45;
+    letter-spacing: var(--track-caps);
+    text-transform: uppercase;
+    color: var(--klein);
 }
 
 .ab-card__bio {
-    margin-top: 8px;
+    margin-top: 6px;
     font-size: var(--t-small);
     line-height: 1.6;
     color: var(--ink-muted);

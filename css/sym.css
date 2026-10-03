@@ -4,7 +4,7 @@
    Lucide, licence ISC) : assets/icons/sym-*.svg. Ils sont peints en
    masque, avec la couleur du texte qui les entoure : un symbole suit
    la gamme de sa surface comme n'importe quel texte, en verre clair,
-   sur le rose ou dans le terminal.
+   sur le bleu Klein ou dans le terminal.
    ============================================ */
 
 .sym {
@@ -72,4 +72,12 @@
 
 .sym--trash {
     --sym: url('../assets/icons/sym-trash.svg');
+}
+
+.sym--turn {
+    --sym: url('../assets/icons/sym-turn.svg');
+}
+
+.sym--arrow {
+    --sym: url('../assets/icons/sym-arrow.svg');
 }

@@ -7,51 +7,52 @@
          Sans lui, les sections à apparition restent visibles d'emblée. -->
     <script>document.documentElement.classList.replace('no-js', 'js');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#FFE4F0">
+    <meta name="theme-color" content="#ffffff">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
     <!-- Favicon & icônes d'application -->
-    <link rel="icon" href="/favicon.ico?v=2" sizes="32x32">
-    <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" href="/favicon.ico?v=3" sizes="32x32">
+    <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+    <link rel="manifest" href="/site.webmanifest?v=2">
     <title>Page introuvable | WeAreBrothers Lausanne</title>
     <meta name="description" content="Cette page n'existe pas ou plus. Retour à l'accueil de WeAreBrothers, agence web à Lausanne.">
     <!-- Page d'erreur : jamais indexée. Servie à n'importe quelle
          adresse inconnue, d'où les chemins absolus partout. -->
     <meta name="robots" content="noindex, follow">
 
-    <!-- Police — Sligoil seule, servie depuis le site -->
-    <link rel="preload" href="/assets/fonts/Sligoil-Micro.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/assets/fonts/Sligoil-MicroBold.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- Polices servies depuis le site : Instrument Sans (texte et
+         titres), Sligoil en signature (chargée à la demande). -->
+    <link rel="preload" href="/assets/fonts/InstrumentSans-Var.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Styles — servie à n'importe quelle adresse inconnue : chemins
          absolus partout. Composants partagés de WAB OS, puis la page. -->
-    <link rel="stylesheet" href="/css/base.css?v=33">
-    <link rel="stylesheet" href="/css/nav-panel.css?v=1">
-    <link rel="stylesheet" href="/css/contact-modal.css?v=7">
-    <link rel="stylesheet" href="/css/contact-form.css?v=3">
-    <link rel="stylesheet" href="/css/os-tokens.css?v=3">
-    <link rel="stylesheet" href="/css/os-base.css?v=2">
-    <link rel="stylesheet" href="/css/os-sky.css?v=2">
-    <link rel="stylesheet" href="/css/sym.css?v=3">
-    <link rel="stylesheet" href="/css/glass-btn.css?v=3">
-    <link rel="stylesheet" href="/css/os-bar.css?v=2">
-    <link rel="stylesheet" href="/css/os-window.css?v=2">
-    <link rel="stylesheet" href="/css/os-footer.css?v=2">
+    <link rel="stylesheet" href="/css/base.css?v=34">
+    <link rel="stylesheet" href="/css/base-ui.css?v=1">
+    <link rel="stylesheet" href="/css/nav-panel.css?v=2">
+    <link rel="stylesheet" href="/css/contact-modal.css?v=8">
+    <link rel="stylesheet" href="/css/contact-form.css?v=4">
+    <link rel="stylesheet" href="/css/os-tokens.css?v=4">
+    <link rel="stylesheet" href="/css/os-base.css?v=3">
+    <link rel="stylesheet" href="/css/os-sky.css?v=3">
+    <link rel="stylesheet" href="/css/sym.css?v=4">
+    <link rel="stylesheet" href="/css/key-btn.css?v=1">
+    <link rel="stylesheet" href="/css/os-bar.css?v=3">
+    <link rel="stylesheet" href="/css/os-window.css?v=3">
+    <link rel="stylesheet" href="/css/os-footer.css?v=3">
     <link rel="stylesheet" href="/css/os-overlay.css?v=3">
-    <link rel="stylesheet" href="/css/desk-objects.css?v=6">
-    <link rel="stylesheet" href="/css/page-404-dialog.css?v=1">
+    <link rel="stylesheet" href="/css/desk-objects.css?v=7">
+    <link rel="stylesheet" href="/css/page-404-dialog.css?v=2">
 
     <!-- Scripts -->
     <script src="/nav-clock.js?v=3" defer></script>
     <script src="/js/nav.js?v=6" defer></script>
-    <script type="module" src="/js/birds/index.js?v=8"></script>
-    <script type="module" src="/js/birds/perch.js?v=8"></script>
-    <script type="module" src="/js/contact/index.js?v=10"></script>
-    <script type="module" src="/js/os/index.js?v=2"></script>
-    <script type="module" src="/js/page-404/index.js?v=1"></script>
+    <script type="module" src="/js/birds/index.js?v=9"></script>
+    <script type="module" src="/js/birds/perch.js?v=9"></script>
+    <script type="module" src="/js/contact/index.js?v=11"></script>
+    <script type="module" src="/js/os/index.js?v=3"></script>
+    <script type="module" src="/js/page-404/index.js?v=2"></script>
 </head>
 
 <body class="os page-404">
@@ -81,7 +82,7 @@
                     <span class="menubar__sky" aria-hidden="true"><span class="sym sym--sun" aria-hidden="true"></span><span class="sym sym--moon" aria-hidden="true"></span></span>
                     <span class="menubar__status" data-local-status hidden></span>
                     <time class="menubar__time" data-local-time>--:--</time>
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="menubar__cta glass-btn glass-btn--pink glass-btn--sm">Contact</a>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="menubar__cta key-btn key-btn--klein key-btn--sm">Contact</a>
                     <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
                         <span class="topbar__dots" aria-hidden="true">
                             <span></span><span></span><span></span><span></span>
@@ -128,7 +129,7 @@
                 <canvas class="perch" data-perch="fly" data-scale="4" data-color="0" aria-hidden="true"></canvas>
             </button>
 
-            <section class="win lost-dialog" aria-labelledby="lostTitle">
+            <section class="win win--framed lost-dialog" aria-labelledby="lostTitle">
                 <div class="win__bar">
                     <span class="win__lights"></span>
                     <span class="win__title"><span class="sym sym--file" aria-hidden="true"></span><span data-lost-path>page-introuvable</span></span>
@@ -138,8 +139,8 @@
                     <h1 class="lost-dialog__title" id="lostTitle">Cet oiseau s'est trompé de&nbsp;branche.</h1>
                     <p class="lost-dialog__lede">La page que vous cherchez n'existe pas, ou plus. Le reste du site, lui, est bien là.</p>
                     <div class="lost-dialog__actions">
-                        <a href="/" class="glass-btn glass-btn--pink">Retour à l'accueil</a>
-                        <a href="/realisations" class="glass-btn">Voir le travail</a>
+                        <a href="/" class="key-btn key-btn--klein">Retour à l'accueil</a>
+                        <a href="/realisations" class="key-btn">Voir le travail</a>
                     </div>
                 </div>
             </section>
@@ -147,7 +148,7 @@
         <span class="lost-kao kao" aria-hidden="true">(o_O)</span>
     </main>
 
-    <footer class="foot">
+    <footer class="foot on-klein">
         <div class="desk-wrap">
             <div class="foot__cols">
                 <nav class="foot__col" aria-label="Pages">
@@ -168,9 +169,14 @@
                 </div>
                 <p class="foot__note">Codé à la main à Lausanne, oiseaux compris.</p>
             </div>
+        </div>
+        <!-- Le bandeau : les projets en ligne, en boucle (décor : la
+             liste réelle vit sur /realisations). -->
+        <div class="foot__ticker" aria-hidden="true" translate="no"><ul class="foot__track"><li>Zinéma</li><li>Le P’tit Central</li><li>Amarte Studio</li><li>La Slack</li><li>Nadège Mouine</li><li>Commissione Entretien</li><li>LAZIZZE DJ</li><li>Maison Alliani</li><li>LE MEMO</li></ul><ul class="foot__track"><li>Zinéma</li><li>Le P’tit Central</li><li>Amarte Studio</li><li>La Slack</li><li>Nadège Mouine</li><li>Commissione Entretien</li><li>LAZIZZE DJ</li><li>Maison Alliani</li><li>LE MEMO</li></ul></div>
+        <div class="desk-wrap">
             <svg class="pixel-name" data-watch="once" viewBox="-1 -1 202 72" role="img" aria-label="WAB.">
                 <defs>
-                    <symbol id="wab-px" viewBox="0 0 10 10" width="10" height="10" overflow="visible"><rect class="px__edge" x="0.5" y="1.6" width="9" height="9" rx="0.6"/><rect class="px__body" x="0.5" y="0.5" width="9" height="9" rx="0.6"/></symbol>
+                    <symbol id="wab-px" viewBox="0 0 10 10" width="10" height="10" overflow="visible"><rect class="px__line" x="-0.1" y="0.6" width="10.2" height="1.9"/><rect class="px__line" x="-0.1" y="3.9" width="10.2" height="1.9"/><rect class="px__line" x="-0.1" y="7.2" width="10.2" height="1.9"/></symbol>
                 </defs>
                 <use class="px" href="#wab-px" x="0" y="0"/>
                 <use class="px" href="#wab-px" x="40" y="0"/>

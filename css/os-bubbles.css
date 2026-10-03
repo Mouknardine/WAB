@@ -1,9 +1,9 @@
 /* ============================================
-   WAB OS — les bulles de verre (partagées)
-   Un échange en deux bulles : .chat > .chat__ask (verre rose, la queue
-   en bas à gauche) puis .chat__reply (verre clair, plus petite, à
-   l'opposé). Dans un bloc .feat--flip (texte à droite), l'échange se lit
-   en miroir. Encre fixe --glass-ink : lisible sur toute surface.
+   WAB OS — les bulles (partagées)
+   Un échange en deux bulles : .chat > .chat__ask (gris chaud, encre,
+   la queue en bas à gauche) puis .chat__reply (la réponse de WAB, bleu
+   Klein, texte blanc 8,5:1, plus petite, à l'opposé). Dans un bloc
+   .feat--flip (texte à droite), l'échange se lit en miroir.
    ============================================ */
 
 .chat {
@@ -22,69 +22,48 @@
     text-wrap: balance;
 }
 
-/* La question : du verre rose, la queue en bas à gauche. */
+/* La question : gris chaud, la queue en bas à gauche. */
 .chat__ask {
     justify-self: start;
-    padding: 11px 18px 12px;
-    border-radius: 22px 22px 22px 8px;
-    background: var(--bubble-pink);
-    box-shadow:
-        inset 0 1px 0 var(--glass-rim),
-        inset 0 -1px 2px rgba(160, 15, 90, 0.18),
-        0 0 0 1px rgba(255, 255, 255, 0.6),
-        var(--glass-shadow);
+    padding: 10px 16px 11px;
+    border-radius: 16px 16px 16px 4px;
+    background: var(--bubble-ask);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief), 0 1px 2px oklch(0.18 0.005 265 / 0.08);
     font-size: 1.05rem;
     color: var(--glass-ink);
 }
 
-/* La réponse de WAB : du verre clair, plus petite, à l'opposé. */
+/* La réponse de WAB : bleu Klein, plus petite, à l'opposé. */
 .chat__reply {
     justify-self: end;
-    padding: 8px 15px 9px;
-    border-radius: 18px 18px 8px 18px;
-    background: var(--bubble-clear);
-    box-shadow:
-        inset 0 1px 0 var(--glass-rim),
-        0 0 0 1px var(--glass-edge),
-        var(--glass-shadow);
+    padding: 8px 14px 9px;
+    border-radius: 14px 14px 4px 14px;
+    background: var(--bubble-reply);
+    box-shadow: 0 0 0 var(--hair) var(--klein-deep), inset 0 1px 0 oklch(1 0 0 / 0.28), 0 3px 8px oklch(0.45 0.29 266 / 0.22);
     font-size: var(--t-small);
-    color: var(--glass-ink);
+    color: var(--on-klein);
 }
 
 /* Texte à droite : l'échange se lit en miroir, la question contre le
    bord extérieur. */
 .feat--flip .chat__ask {
     justify-self: end;
-    border-radius: 22px 22px 8px 22px;
+    border-radius: 16px 16px 4px 16px;
 }
 
 .feat--flip .chat__reply {
     justify-self: start;
-    border-radius: 18px 18px 18px 8px;
+    border-radius: 14px 14px 14px 4px;
 }
 
 @media (max-width: 899px) {
     .feat--flip .chat__ask {
         justify-self: start;
-        border-radius: 22px 22px 22px 8px;
+        border-radius: 16px 16px 16px 4px;
     }
 
     .feat--flip .chat__reply {
         justify-self: end;
-        border-radius: 18px 18px 8px 18px;
+        border-radius: 14px 14px 4px 14px;
     }
 }
-
-/* Le reflet spéculaire : la moitié haute de la bulle s'éclaire. */
-.chat__ask::before,
-.chat__reply::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    inset: 1px 8px 50%;
-    border-radius: 20px 20px 50% 50%;
-    background: var(--glass-specular);
-    opacity: 0.75;
-    pointer-events: none;
-}
-

@@ -2,7 +2,7 @@
    WAB OS — les fenêtres qui s'ouvrent
    Chargée à la première ouverture (js/os/apps.js). Même peau que les
    fenêtres posées (os-window.css), mais les pastilles sont de vrais
-   boutons : fermer (rose), réduire dans le dock (encre), agrandir
+   boutons : fermer (Klein), réduire dans le dock (encre), agrandir
    (blanc cerné). Leur cible fait 24 px, le pixel 12. Une fenêtre
    inactive grise ses pastilles, comme tout système qui se respecte.
    Au téléphone : une feuille qui monte du bas, plein écran.
@@ -83,8 +83,9 @@
     height: 36px;
     padding: 0 8px;
     border-radius: var(--r-win) var(--r-win) 0 0;
-    background: var(--glass-specular);
-    box-shadow: inset 0 -1px 0 var(--glass-edge);
+    background: var(--win-bar);
+    box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.4), inset 0 -1px 0 oklch(0.38 0.24 266 / 0.1);
+    color: var(--win-bar-ink);
     cursor: default;
     touch-action: none;
     user-select: none;
@@ -120,8 +121,8 @@
     width: 12px;
     height: 12px;
     border-radius: var(--r-px);
-    background: var(--pink);
-    box-shadow: inset 0 0 0 1px var(--ink);
+    background: var(--klein);
+    box-shadow: inset 0 0 0 1px var(--klein-deep);
     transition: background-color var(--dur-1) var(--ease-out);
 }
 
@@ -144,10 +145,11 @@
     gap: 8px;
     min-width: 0;
     overflow: hidden;
-    font-size: 12px;
-    font-weight: 500;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: var(--w-regular);
     white-space: nowrap;
-    color: var(--ink-muted);
+    color: var(--win-bar-ink);
 }
 
 .oswin__title .sym {
@@ -160,8 +162,8 @@
     text-overflow: ellipsis;
 }
 
-.oswin.is-active .oswin__title {
-    color: var(--ink);
+.oswin:not(.is-active) .oswin__title {
+    opacity: 0.7;
 }
 
 .oswin__body {

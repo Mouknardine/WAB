@@ -1,8 +1,8 @@
 /* ============================================
    WAB OS — Création de site internet : le déroulé
    Quatre étapes reliées par un fil en pointillés (vertical au
-   téléphone, horizontal sur ordinateur), le numéro dans un carré rose
-   aux coins doux, comme les pastilles des fenêtres.
+   téléphone, horizontal sur ordinateur), le numéro en Sligoil sur une
+   touche bleu Klein, comme l'action principale.
    ============================================ */
 
 /* ── Déroulé ── */
@@ -28,11 +28,13 @@
     place-items: center;
     width: 40px;
     height: 40px;
-    border-radius: var(--r-ctl);
-    background: var(--pink);
-    box-shadow: inset 0 0 0 1px var(--ink), 0 3px 0 var(--accent);
-    font-weight: var(--w-strong);
-    color: var(--ink);
+    border: var(--hair) solid var(--key-klein-edge);
+    border-radius: var(--r-key);
+    background: var(--key-klein);
+    box-shadow: var(--key-klein-relief);
+    font-family: var(--font-mono);
+    font-size: var(--t-small);
+    color: var(--on-klein);
 }
 
 /* Le fil en pointillés entre deux numéros (téléphone : vertical). */
@@ -47,7 +49,7 @@
 
 .sx-step__name {
     font-size: var(--sx-h3);
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
     line-height: 1.3;
     letter-spacing: -0.02em;
     text-wrap: balance;

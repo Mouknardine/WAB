@@ -4,7 +4,7 @@
    Liste), les projets, une ligne de pied (l'aide, la page Work).
    Vue icônes : les captures en petites fenêtres, le nom dessous.
    Vue liste : une ligne par projet, contexte et disciplines.
-   Un projet sélectionné prend le rose système.
+   Un projet sélectionné prend le bleu système.
    ============================================ */
 
 .oswin__body:has(> .finder__items) {

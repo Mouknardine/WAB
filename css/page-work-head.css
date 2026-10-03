@@ -1,0 +1,30 @@
+/* ============================================
+   Page Work — l'en-tête des sections
+   Badge Sligoil, titre moyen et net (registre −0,03 em), phrase en
+   gris. Partagé par les projets et le déroulé.
+   Toutes les valeurs viennent de os-tokens.css.
+   ============================================ */
+
+.pw-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+}
+
+.pw-head__title {
+    max-width: 24ch;
+    font-size: var(--t-title);
+    font-weight: var(--w-medium);
+    line-height: 1.15;
+    letter-spacing: var(--track-optical);
+    text-wrap: balance;
+}
+
+.pw-head__lede {
+    max-width: 44ch;
+    font-size: var(--t-lede);
+    color: var(--ink-muted);
+    text-wrap: balance;
+}

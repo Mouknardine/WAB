@@ -9,9 +9,9 @@
  * défilement le referment et rendent le focus.
  */
 
-import { el } from './dom.js?v=2';
+import { el } from './dom.js?v=3';
 import { openContact, copyEmail, SHORTCUT } from './actions.js?v=1';
-import { launchFinder, launchPalette } from './apps.js?v=2';
+import { launchFinder, launchPalette } from './apps.js?v=3';
 
 /** @type {HTMLElement | null} */
 let menu = null;

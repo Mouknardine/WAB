@@ -64,21 +64,19 @@
 /* ── Le focus suit le défilement ──
    Seulement avec le script qui pose .is-current, et jamais sous
    « réduire les animations » : tout reste net d'emblée. */
-html.js .feats.is-tracking .feat {
-    /* Seule l'opacité s'anime ; la désaturation suit sans transition
-       (un filtre animé repeindrait toute la capture à chaque image). */
+html.js .feats.is-tracking :is(.feat__text, .screen > .win) {
+    /* Seule l'opacité s'anime. L'écran bleu, lui, reste franc : estompé,
+       un bleu Klein vire au lavande ; c'est la fenêtre qui s'y fond. */
     transition: opacity 0.6s var(--ease-out);
 }
 
-html.js .feats.is-tracking .feat:not(.is-current) {
+html.js .feats.is-tracking .feat:not(.is-current) :is(.feat__text, .screen > .win) {
     opacity: 0.35;
-    filter: saturate(0.4);
 }
 
 @media (prefers-reduced-motion: reduce) {
-    html.js .feats.is-tracking .feat:not(.is-current) {
+    html.js .feats.is-tracking .feat:not(.is-current) :is(.feat__text, .screen > .win) {
         opacity: 1;
-        filter: none;
     }
 
     .feat.is-current .typing i {

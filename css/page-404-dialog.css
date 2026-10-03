@@ -1,7 +1,8 @@
 /* ============================================
    WAB OS — page introuvable (404)
-   Une boîte de dialogue d'erreur au milieu du bureau à points, dans la
-   fenêtre de verre partagée (os-window.css). Derrière elle, sur grand
+   Une boîte de dialogue d'erreur au milieu du bureau, dans la fenêtre
+   partagée mise en avant (.win--framed : cadre Klein tramé, la seule
+   de l'écran). Derrière elle, sur grand
    écran, deux copies vides en cascade : l'erreur qui se répète. Le
    chemin demandé s'affiche dans la barre (js/page-404/path.js).
    Le tout tient dans la hauteur de l'écran ; le pied de page suit.
@@ -35,7 +36,7 @@
 .lost-dialog {
     position: relative;
     z-index: 1;
-    box-shadow: 0 0 0 1px var(--win-edge), var(--glass-shadow-lift);
+    box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--win-shadow-lift);
 }
 
 .lost-dialog__body {
@@ -72,9 +73,9 @@
     margin-top: 16px;
     max-width: 16ch;
     font-size: var(--t-lost);
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
     line-height: 1.1;
-    letter-spacing: -0.04em;
+    letter-spacing: var(--track-optical);
     text-wrap: balance;
 }
 
@@ -110,7 +111,7 @@
         display: block;
         border-radius: var(--r-win);
         background: var(--win-bg);
-        box-shadow: 0 0 0 1px var(--win-edge), var(--win-shadow);
+        box-shadow: 0 0 0 var(--hair) var(--win-edge), var(--win-shadow);
         overflow: hidden;
     }
 
@@ -130,5 +131,8 @@
         right: max(var(--gutter), calc(50% - 460px));
         bottom: 18%;
         rotate: -4deg;
+        font-family: var(--font-mono);
+        font-size: var(--t-small);
+        color: var(--ink-faint);
     }
 }

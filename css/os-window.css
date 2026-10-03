@@ -1,11 +1,15 @@
 /* ============================================
-   WAB OS — la fenêtre
-   La pièce de base de toute la page, en verre : une barre de verre
-   clair avec son reflet et son liseré lumineux, trois pastilles WAB
-   (carrés aux coins doux : rose, encre, blanc cerné), le titre en
-   Sligoil avec un symbole. Ces fenêtres-là sont nombreuses : elles
-   imitent le verre sans flou réel (aucun backdrop-filter), la
-   performance d'abord. Les fenêtres qui s'ouvrent : os-win.css.
+   WAB OS — la fenêtre (.win)
+   La pièce de base de toute la page : une barre bleu clair avec le
+   nom de fichier centré en Sligoil, ↳ à gauche et [*] à droite, puis
+   le contenu sur du blanc. Liseré d'un pixel, relief éclairé d'en
+   haut, ombre courte. Aucune n'a de flou réel : la performance
+   d'abord. Les fenêtres qui s'ouvrent : os-win.css.
+   — .win--framed : la fenêtre mise en avant, dans un cadre Klein dont
+     le bord intérieur se désagrège en pixels vers le contenu ;
+   — .win--tilt / .win--tilt-r : légère inclinaison (cartes, citations).
+   Le balisage reste celui des pages : .win__lights (vide) devient le
+   ↳, la barre porte elle-même le [*].
    ============================================ */
 
 .win {
@@ -18,81 +22,65 @@
     overflow: hidden;
 }
 
-/* Le liseré du verre, posé par-dessus la capture : un fil blanc d'un
-   pixel tout autour, plus lumineux en haut à gauche, d'où vient la
-   lumière. Sans lui, l'image semble collée sous le cadre. */
-.win::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 4;
-    border-radius: inherit;
-    box-shadow:
-        inset var(--hair) var(--hair) 0 oklch(1 0 0 / 0.55),
-        inset 0 0 0 var(--hair) oklch(1 0 0 / 0.22);
-    pointer-events: none;
-}
-
-/* Le reflet spéculaire du verre, sur le haut de la barre. */
-.win__bar::before {
-    content: '';
-    position: absolute;
-    inset: 0 0 45%;
-    background: var(--glass-specular);
-    opacity: 0.7;
-    pointer-events: none;
-}
-
 .win__bar {
     position: relative;
     flex: none;
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     height: var(--win-bar-h);
-    padding: 0 12px;
+    padding: 0 10px;
     background: var(--win-bar);
-    box-shadow: inset 0 -1px 0 var(--glass-edge), inset 0 1px 0 var(--glass-rim);
+    box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.4), inset 0 -1px 0 oklch(0.38 0.24 266 / 0.1);
+    font-family: var(--font-mono);
+    color: var(--win-bar-ink);
     user-select: none;
     -webkit-user-select: none;
 }
 
-/* Trois pastilles, une seule boîte : le rose, puis l'encre et le
-   blanc cerné dessinés par ombres portées (qui suivent l'arrondi).
-   Décor des fenêtres posées ; les fenêtres qui s'ouvrent ont de vrais
-   boutons (os-win.css). */
+/* Le [*] de droite : un repère de fenêtre, en Sligoil. */
+.win__bar::after {
+    content: '[*]';
+    grid-column: 3;
+    justify-self: end;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 0.04em;
+}
+
+/* Le ↳ de gauche, peint en masque : il prend le bleu de la barre. */
 .win__lights {
-    position: relative;
-    flex: none;
-    width: var(--px-size);
-    height: var(--px-size);
-    border-radius: var(--r-px);
-    background: var(--pink);
-    box-shadow:
-        calc(var(--px-size) + var(--px-gap)) 0 0 var(--ink),
-        calc(2 * (var(--px-size) + var(--px-gap))) 0 0 -1px var(--paper),
-        calc(2 * (var(--px-size) + var(--px-gap))) 0 0 var(--ink);
-    margin-right: calc(2 * (var(--px-size) + var(--px-gap)));
+    grid-column: 1;
+    justify-self: start;
+    width: 11px;
+    height: 11px;
+    background: currentColor;
+    opacity: 0.85;
+    -webkit-mask: url('../assets/icons/sym-turn.svg') center / contain no-repeat;
+    mask: url('../assets/icons/sym-turn.svg') center / contain no-repeat;
 }
 
 .win__title {
+    grid-column: 2;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
     min-width: 0;
+    max-width: 100%;
     overflow: hidden;
-    position: relative;
-    font-size: 11px;
-    font-weight: 500;
+    font-size: 10.5px;
+    font-weight: var(--w-regular);
     line-height: 1;
     white-space: nowrap;
     text-overflow: ellipsis;
-    color: var(--ink-muted);
+    color: var(--win-bar-ink);
 }
 
+/* Le nom suffit : le pictogramme ne reste que s'il est seul. */
 .win__title .sym {
-    width: 14px;
-    height: 14px;
+    display: none;
 }
 
 .win__body {
@@ -108,6 +96,54 @@
     object-fit: cover;
 }
 
+/* ── La fenêtre mise en avant ── un cadre Klein de 12 px autour du
+   contenu ; sous le contenu, une couche bleu clair tramée déborde dans
+   le cadre et s'y désagrège en pixels (bandes SVG en masque). */
+.win--framed {
+    padding: 0 var(--win-frame) var(--win-frame);
+    background: var(--win-frame-color);
+    box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--win-shadow);
+}
+
+.win--framed .win__bar {
+    margin-inline: calc(-1 * var(--win-frame));
+    margin-bottom: var(--win-frame);
+}
+
+.win--framed > .win__body,
+.win--framed > :not(.win__bar) {
+    position: relative;
+    z-index: 1;
+    border-radius: 4px;
+}
+
+.win--framed::before {
+    content: '';
+    position: absolute;
+    inset: var(--win-bar-h) 0 0;
+    background: var(--win-frame-dither);
+    pointer-events: none;
+    -webkit-mask:
+        var(--dither-top) left top / 8px var(--dither) repeat-x,
+        var(--dither-bottom) left bottom / 8px var(--dither) repeat-x,
+        var(--dither-left) left top / var(--dither) 8px repeat-y,
+        var(--dither-right) right top / var(--dither) 8px repeat-y;
+    mask:
+        var(--dither-top) left top / 8px var(--dither) repeat-x,
+        var(--dither-bottom) left bottom / 8px var(--dither) repeat-x,
+        var(--dither-left) left top / var(--dither) 8px repeat-y,
+        var(--dither-right) right top / var(--dither) 8px repeat-y;
+}
+
+/* ── L'inclinaison ── posée par la page sur les cartes et citations. */
+.win--tilt {
+    rotate: calc(-1 * var(--win-tilt));
+}
+
+.win--tilt-r {
+    rotate: var(--win-tilt);
+}
+
 /* Une capture de l'application de gestion : ces chiffres ne sont pas
    ceux d'un client, la fenêtre le dit. */
 .win__demo {
@@ -116,14 +152,14 @@
     bottom: 8px;
     z-index: 2;
     padding: 3px 10px;
-    border-radius: var(--r-pill);
+    border-radius: var(--r-key);
     background: var(--veil);
     box-shadow: 0 0 0 1px var(--line);
     font-size: 11px;
     color: var(--ink-muted);
 }
 
-/* Le nom de fichier, sous la fenêtre. */
+/* Le nom de fichier, sous la fenêtre, en Sligoil (os-base.css). */
 .file-name {
     display: block;
     width: max-content;
@@ -146,7 +182,7 @@
     --drop: 14px;
     position: absolute;
     z-index: 3;
-    right: 14px;
+    right: 34px;
     bottom: calc(100% - var(--drop));
     pointer-events: none;
     image-rendering: pixelated;

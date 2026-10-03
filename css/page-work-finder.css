@@ -1,11 +1,13 @@
 /* ============================================
    Page Work — le dossier Work, ouvert sur le bureau
-   Une fenêtre de verre (os-window.css), une barre d'outils (le
-   nombre de projets, la bascule Icônes / Liste), puis les projets.
-   Vue icônes : la capture en petite fenêtre, le nom dessous, sur deux
-   lignes au plus. Vue liste : une ligne par projet, la capture, le
-   nom et le contexte. Un projet survolé ou pris au clavier prend le
-   rose système, comme dans le Finder.
+   La fenêtre mise en avant de la page (.win--framed : cadre Klein au
+   bord intérieur tramé, feuille décalée dessous), une barre d'outils
+   (le nombre de projets en Sligoil, la bascule Icônes / Liste en
+   touches), puis les projets. Vue icônes : la capture en petite
+   fenêtre, le nom dessous, sur deux lignes au plus. Vue liste :
+   page-work-list.css. Un projet survolé ou pris au clavier prend le
+   bleu Klein, comme une sélection dans le Finder
+   (page-work-select.css).
    La disposition suit la largeur du dossier lui-même (requête de
    conteneur), pas celle de l'écran.
    ============================================ */
@@ -18,7 +20,17 @@
 
 .pw-finder > .win {
     container-type: inline-size;
-    box-shadow: 0 0 0 1px var(--win-edge), var(--glass-shadow-lift);
+    box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--sheet), var(--shadow-lift);
+}
+
+/* Dans le cadre, la barre d'outils et la grille forment une seule
+   feuille : seuls ses coins extérieurs s'arrondissent. */
+.pw-finder > .win--framed > .pw-finder__bar {
+    border-radius: 4px 4px 0 0;
+}
+
+.pw-finder > .win--framed > .pw-finder__items {
+    border-radius: 0 0 4px 4px;
 }
 
 .pw-finder__perch {
@@ -45,7 +57,9 @@
 }
 
 .pw-finder__count {
-    font-size: var(--t-small);
+    font-family: var(--font-mono);
+    font-size: var(--t-cap);
+    letter-spacing: 0.02em;
     white-space: nowrap;
     color: var(--ink-muted);
 }
@@ -54,7 +68,8 @@
     display: flex;
     padding: 2px;
     border-radius: var(--r-ctl);
-    box-shadow: inset 0 0 0 1px var(--line-strong);
+    background: var(--panel);
+    box-shadow: inset 0 0 0 var(--hair) var(--edge);
 }
 
 .pw-finder__view {
@@ -82,9 +97,11 @@
     height: 15px;
 }
 
+/* La vue choisie : une touche Klein enfoncée dans le rail gris. */
 .pw-finder__view[aria-pressed='true'] {
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--key-klein);
+    box-shadow: 0 0 0 var(--hair) var(--key-klein-edge), var(--key-klein-relief);
+    color: var(--on-klein);
 }
 
 .pw-finder__items {
@@ -179,82 +196,5 @@
 @container (min-width: 760px) {
     .pw-finder__items[data-view='icons'] {
         grid-template-columns: repeat(5, minmax(0, 1fr));
-    }
-}
-
-/* ── Vue liste ── */
-.pw-finder__items[data-view='list'] {
-    display: grid;
-    gap: 2px;
-    padding: 8px;
-}
-
-[data-view='list'] .pw-finder__item {
-    display: grid;
-    grid-template-columns: 72px minmax(0, 1fr);
-    grid-template-rows: auto auto;
-    column-gap: 14px;
-    align-content: center;
-    align-items: center;
-}
-
-[data-view='list'] .pw-finder__thumb {
-    grid-row: span 2;
-    border-radius: 8px;
-}
-
-[data-view='list'] .pw-finder__name {
-    align-self: end;
-    font-weight: var(--w-strong);
-}
-
-[data-view='list'] .pw-finder__context {
-    display: block;
-    align-self: start;
-}
-
-/* ── Survol et clavier : le rose système ── */
-[data-view='icons'] .pw-finder__item:focus-visible .pw-finder__name,
-[data-view='list'] .pw-finder__item:focus-visible {
-    background: var(--accent);
-    color: var(--on-accent);
-}
-
-[data-view='list'] .pw-finder__item:focus-visible .pw-finder__context {
-    color: var(--on-accent);
-}
-
-[data-view='icons'] .pw-finder__item:focus-visible .pw-finder__thumb {
-    box-shadow: 0 0 0 2px var(--accent);
-}
-
-@media (hover: hover) {
-    [data-view='icons'] .pw-finder__item:hover .pw-finder__thumb {
-        box-shadow: 0 0 0 1px var(--win-edge), var(--shadow-soft);
-        transform: translateY(-2px);
-    }
-
-    [data-view='icons'] .pw-finder__item:hover .pw-finder__name {
-        background: var(--accent);
-        color: var(--on-accent);
-    }
-
-    [data-view='list'] .pw-finder__item:hover:not(:focus-visible) {
-        background: var(--hover-tint);
-    }
-
-    .pw-finder__view[aria-pressed='false']:hover {
-        color: var(--ink);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .pw-finder__thumb,
-    .pw-finder__view {
-        transition: none;
-    }
-
-    [data-view='icons'] .pw-finder__item:hover .pw-finder__thumb {
-        transform: none;
     }
 }

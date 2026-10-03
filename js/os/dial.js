@@ -3,7 +3,7 @@
  * WAB OS — la complication de Lausanne
  * Un petit cadran de montre, posé devant l'heure de la barre de
  * menus : lunette d'un fil, quatre index, aiguilles des heures et des
- * minutes à l'encre, l'axe en rose WAB. Il donne l'heure de Lausanne,
+ * minutes à l'encre, l'axe en bleu Klein. Il donne l'heure de Lausanne,
  * comme les chiffres à côté, et se met à jour à chaque minute.
  * Décor (aria-hidden) : l'heure lisible reste le texte <time>.
  * Les aiguilles tournent par transform ; sous « réduire les

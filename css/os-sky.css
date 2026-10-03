@@ -6,34 +6,35 @@
    bureau garde sa clarté. Sans script : le jour, neutre.
 
    Contraste : la teinte s'efface sur les 900 premiers pixels de la
-   page. --ink-faint y prend la valeur de --ink-muted (5,2:1 au pire,
-   mesuré sur la teinte la plus dense).
+   page : un blanc froid le matin, un voile bleu
+   le soir et la nuit (jetons --sky-* dans os-tokens.css). --ink-faint
+   y prend la valeur de --ink-muted.
    ============================================ */
 
 [data-sky='matin'] .os,
 :root[data-sky='matin']:has(body.os) {
-    --sky-top: rgba(255, 226, 236, 0.5);
-    --sky-glow: rgba(255, 240, 246, 0.8);
+    --sky-top: var(--sky-dawn);
+    --sky-glow: var(--sky-dawn);
     --ink-faint: var(--ink-muted);
 }
 
 [data-sky='jour'] .os,
 :root[data-sky='jour']:has(body.os) {
-    --sky-top: rgba(255, 255, 255, 0.55);
-    --sky-glow: rgba(255, 255, 255, 0.6);
+    --sky-top: var(--sky-day);
+    --sky-glow: var(--sky-day);
 }
 
 [data-sky='soir'] .os,
 :root[data-sky='soir']:has(body.os) {
-    --sky-top: rgba(255, 190, 220, 0.45);
-    --sky-glow: rgba(255, 168, 208, 0.32);
+    --sky-top: var(--sky-dusk);
+    --sky-glow: var(--sky-dusk);
     --ink-faint: var(--ink-muted);
 }
 
 [data-sky='nuit'] .os,
 :root[data-sky='nuit']:has(body.os) {
-    --sky-top: rgba(190, 198, 232, 0.4);
-    --sky-glow: rgba(150, 160, 214, 0.22);
+    --sky-top: var(--sky-night);
+    --sky-glow: var(--sky-night);
     --ink-faint: var(--ink-muted);
 }
 
@@ -49,7 +50,7 @@
 
 /* ── La complication de Lausanne (js/os/dial.js) ── un cadran de
    16 px devant l'heure de la barre : lunette d'un fil, quatre index,
-   les aiguilles à l'encre, l'axe rose. Sur ordinateur seulement. */
+   les aiguilles à l'encre, l'axe Klein. Sur ordinateur seulement. */
 .dial {
     display: none;
     flex: none;
@@ -93,7 +94,7 @@
 }
 
 .dial__pin {
-    fill: var(--pink);
+    fill: var(--klein);
 }
 
 @media (min-width: 900px) {

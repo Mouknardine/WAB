@@ -1,7 +1,7 @@
 /* ============================================
    WAB OS — About : l'en-tête des sections
-   Le badge de verre (os-base.css), le titre, une phrase : centrés,
-   comme sur l'accueil.
+   Le badge en Sligoil (os-base.css), le titre, une phrase : centrés,
+   comme sur l'accueil. Titres moyens et nets, à −0,03 em.
    ============================================ */
 
 .ab-head {
@@ -15,7 +15,7 @@
 .ab-head__title {
     max-width: 26ch;
     font-size: var(--t-title);
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
     line-height: 1.2;
     letter-spacing: -0.03em;
     text-wrap: balance;

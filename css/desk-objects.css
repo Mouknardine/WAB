@@ -1,9 +1,9 @@
 /* ============================================
    WAB OS — les objets du bureau
-   Le kaomoji et les icônes de bureau : des icônes d'app modernes
-   (assets/icons/app-*.svg, un carré aux coins à peine arrondis, éclairé d'en haut à gauche,
-   un pictogramme au trait). L'autocollant : os-sticker.css.
-   Une icône sélectionnée prend le rose système, comme son nom.
+   Le kaomoji et les icônes de bureau : des touches de clavier 3D
+   (assets/icons/app-*.svg : une jupe, une face éclairée d'en haut à
+   gauche, un pictogramme gravé). L'autocollant : os-sticker.css.
+   Une icône sélectionnée prend le bleu système, comme son nom.
    ============================================ */
 
 /* ── Kaomoji ── */
@@ -35,24 +35,26 @@
     display: block;
     width: 56px;
     height: 56px;
-    filter: drop-shadow(0 3px 6px rgba(11, 11, 12, 0.1));
+    filter: drop-shadow(0 1px 1px oklch(0.18 0.005 265 / 0.16)) drop-shadow(0 8px 10px oklch(0.18 0.005 265 / 0.14));
     transition: transform var(--dur-3) var(--ease-spring);
 }
 
 .icon__name {
-    padding: 1px 8px;
-    border-radius: var(--r-pill);
+    padding: 1px 6px;
+    border-radius: var(--r-px);
+    font-family: var(--font-mono);
     line-height: 1.5;
     white-space: nowrap;
 }
 
 @media (hover: hover) {
     .icon:hover .app-icon {
-        transform: translateY(-3px) scale(1.04);
+        transform: translateY(-2px);
     }
 }
 
-/* Sélectionnée (clic, focus clavier) : le nom passe au rose. */
+/* Sélectionnée (clic, focus clavier) : le nom passe au bleu (au
+   blanc à texte Klein sur le premier écran bleu). */
 .icon:focus-visible,
 .icon.is-selected {
     outline: none;

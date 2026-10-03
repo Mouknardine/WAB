@@ -1,7 +1,8 @@
 /* ============================================
    Services — les deux familles en quinconce
-   Chaque bloc : une grande fenêtre posée dans son écran (le ciel rose
-   en fond d'écran, un liseré sombre), et contre elle une colonne de
+   Chaque bloc : une grande fenêtre posée dans son écran (le bleu Klein
+   à lignes d'écran, un liseré Klein profond, la feuille décalée
+   dessous), et contre elle une colonne de
    360 px — la frappe en haut, l'échange en bulles (os-bubbles.css),
    puis les apps du bloc calées sur le bord bas de la fenêtre. Les côtés
    alternent d'un bloc à l'autre ; le texte s'aligne sur le bord
@@ -55,9 +56,9 @@
 
 .svc-app__name {
     font-size: clamp(1.1rem, 1.6vw, 1.25rem);
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
     line-height: 1.25;
-    letter-spacing: -0.02em;
+    letter-spacing: var(--track-optical);
 }
 
 .svc-app__line {
@@ -67,17 +68,19 @@
     text-wrap: pretty;
 }
 
-/* ── L'écran ── le fond d'écran rose, le liseré, la fenêtre dedans. */
+/* ── L'écran ── le bleu à lignes d'écran, un liseré Klein profond, la
+   feuille décalée dessous ; la fenêtre flotte dedans. Sans la vignette
+   de --klein-screen : sur un cadre de 24 px, on ne verrait qu'elle. */
 .svc-screen {
     position: relative;
     padding: var(--screen-pad);
     border-radius: calc(var(--r-win) + var(--screen-pad));
-    background: var(--wallpaper);
-    box-shadow: 0 0 0 1.5px var(--screen-rim), var(--win-shadow);
+    background: var(--scan-lines), var(--scan-glow), var(--klein);
+    box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--sheet), var(--shadow-object);
 }
 
 .svc-screen .win {
-    box-shadow: 0 0 0 1px var(--win-edge), var(--shadow-soft);
+    box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--relief), var(--shadow-lift);
 }
 
 /* La fenêtre suit le format des captures du studio (16:10). */
@@ -98,14 +101,14 @@
 }
 
 /* ── Le focus suit le défilement ── seulement avec le script. Seule
-   l'opacité s'anime ; la désaturation suit sans transition. */
+   l'opacité s'anime ; pas de désaturation : un bleu Klein désaturé
+   vire au lilas. */
 html.js .svc-feats.is-tracking .svc-feat {
     transition: opacity 0.6s var(--ease-out);
 }
 
 html.js .svc-feats.is-tracking .svc-feat:not(.is-current) {
-    opacity: 0.35;
-    filter: saturate(0.4);
+    opacity: 0.4;
 }
 
 /* ── Ordinateur : fenêtre et colonne côte à côte ── */
@@ -121,6 +124,12 @@ html.js .svc-feats.is-tracking .svc-feat:not(.is-current) {
 
     .svc-feat__media {
         order: 0;
+    }
+
+    /* Sur grand écran, la fenêtre prend de l'air dans son écran bleu ;
+       la colonne de texte suit (elle s'aligne sur le haut de la fenêtre). */
+    .svc-feat {
+        --screen-pad: 24px;
     }
 
     .svc-feat__text {
@@ -154,18 +163,17 @@ html.js .svc-feats.is-tracking .svc-feat:not(.is-current) {
 
     .svc-feat--flip .chat__ask {
         justify-self: end;
-        border-radius: 22px 22px 8px 22px;
+        border-radius: 16px 16px 4px 16px;
     }
 
     .svc-feat--flip .chat__reply {
         justify-self: start;
-        border-radius: 18px 18px 18px 8px;
+        border-radius: 14px 14px 14px 4px;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
     html.js .svc-feats.is-tracking .svc-feat:not(.is-current) {
         opacity: 1;
-        filter: none;
     }
 }

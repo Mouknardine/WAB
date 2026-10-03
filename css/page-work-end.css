@@ -1,22 +1,18 @@
 /* ============================================
    Page Work — le déroulé et l'appel final
-   Le déroulé : une bande pleine largeur sur le ciel rose, quatre
-   cartes de verre au format d'un message (l'icône, le titre sur la
-   même ligne, la phrase dessous).
-   L'appel final : une boîte de dialogue du système posée sur le
-   bureau — l'icône, la question, deux boutons, le rose à droite
+   Le déroulé : une bande pleine largeur sur le gris chaud, quatre
+   cartes blanches au liseré fin et en relief (l'icône dans sa touche,
+   le titre sur la même ligne, la phrase dessous).
+   L'appel final : une boîte de dialogue du système dans son cadre
+   Klein — l'icône, la question, deux boutons, le bleu à droite
    (l'action par défaut, comme sur macOS ; au téléphone, en haut).
    ============================================ */
 
 .pw-steps {
     margin-top: var(--section);
     padding-block: var(--section);
-    background: var(--sky-mesh);
-}
-
-/* Sur le ciel, l'encre pleine : le gris descendrait sous 4,5:1. */
-.pw-steps .pw-head__lede {
-    color: var(--ink);
+    background: var(--panel);
+    box-shadow: inset 0 var(--hair) 0 var(--line), inset 0 calc(-1 * var(--hair)) 0 var(--line);
 }
 
 .pw-steps__list {
@@ -35,28 +31,21 @@
     row-gap: 10px;
     padding: 18px 20px 20px;
     border-radius: var(--r-win);
-    background: var(--glass);
-    -webkit-backdrop-filter: var(--glass-blur);
-    backdrop-filter: var(--glass-blur);
-    box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px var(--glass-edge), var(--glass-shadow);
-    color: var(--glass-ink);
+    background: var(--paper);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief), var(--shadow-soft);
+    color: var(--ink);
 }
 
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-    .pw-step {
-        background: var(--glass-strong);
-    }
-}
-
-/* L'icône dans sa tuile carrée blanche, comme les icônes d'app. */
+/* L'icône dans sa touche blanche, comme les icônes d'app. */
 .pw-step__icon {
     display: grid;
     place-items: center;
     width: 40px;
     height: 40px;
-    border-radius: var(--r-icon);
-    background: var(--paper);
-    box-shadow: 0 0 0 1px var(--win-edge), var(--shadow-soft);
+    border-radius: var(--r-key);
+    background: var(--key-light);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--key-light-relief);
+    color: var(--klein);
 }
 
 .pw-step__icon svg {
@@ -66,16 +55,16 @@
 
 .pw-step__name {
     font-size: var(--t-body);
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
     line-height: 1.25;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
 }
 
 .pw-step__desc {
     grid-column: 1 / -1;
     font-size: var(--t-small);
     line-height: 1.6;
-    color: var(--glass-ink);
+    color: var(--ink-muted);
     text-wrap: pretty;
 }
 
@@ -108,7 +97,11 @@
 }
 
 .pw-alert > .win {
-    box-shadow: 0 0 0 1px var(--win-edge), var(--glass-shadow-lift);
+    box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--sheet), var(--shadow-lift);
+}
+
+.pw-alert .pw-alert__body {
+    background: var(--paper);
 }
 
 .pw-alert__perch {
@@ -132,7 +125,7 @@
 
 .pw-alert__title {
     font-size: clamp(1.35rem, 2.6vw, 1.75rem);
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
     line-height: 1.25;
     letter-spacing: -0.03em;
     text-wrap: balance;
@@ -152,7 +145,7 @@
     margin-top: 12px;
 }
 
-.pw-alert__actions .glass-btn {
+.pw-alert__actions .key-btn {
     width: 100%;
 }
 
@@ -161,7 +154,7 @@
         flex-direction: row;
     }
 
-    .pw-alert__actions .glass-btn {
+    .pw-alert__actions .key-btn {
         flex: 1;
         padding-inline: 16px;
     }

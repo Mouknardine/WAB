@@ -14,11 +14,11 @@
 // Même numéro partout où un fichier est importé : voir js/birds/index.js.
 import { initDrag } from './drag.js?v=2';
 import { initParallax } from './parallax.js?v=1';
-import { initShowcase } from './showcase.js?v=1';
+import { initShowcase } from './showcase.js?v=2';
 import { initWatch } from './watch.js?v=1';
 import { initPixels } from './pixels.js?v=2';
 import { initFocusScroll } from './focus-scroll.js?v=1';
-import { initArrival } from './arrival.js?v=2';
+import { initArrival } from './arrival.js?v=3';
 
 /** @type {Array<[string, () => void]>} */
 const MODULES = [

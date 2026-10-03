@@ -1,6 +1,7 @@
 /* ============================================
    Services — le Launchpad du premier écran
-   Une fenêtre qui range les neuf services en apps, par famille. Sur
+   La fenêtre mise en avant de l'écran (cadre Klein tramé, .win--framed)
+   range les neuf services en apps, par famille. Sur
    ordinateur, les deux familles tiennent sur une ligne, séparées par
    un filet ; au téléphone, elles s'empilent en grilles de trois.
    Chaque icône descend au bloc qui la présente.
@@ -15,7 +16,7 @@
 }
 
 .svc-pad__win {
-    box-shadow: 0 0 0 1px var(--win-edge), var(--glass-shadow-lift);
+    box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--win-shadow-lift), var(--sheet);
 }
 
 .svc-pad__body {
@@ -31,10 +32,11 @@
     gap: 10px;
     padding-inline: 4px;
     font-size: var(--t-small);
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
 }
 
 .svc-pad__label span {
+    font-family: var(--font-mono);
     font-size: var(--t-cap);
     font-weight: var(--w-regular);
     color: var(--ink-faint);

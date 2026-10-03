@@ -1,0 +1,52 @@
+/* ============================================
+   Page Work — la sélection dans le dossier Work
+   Un projet survolé ou pris au clavier prend le bleu Klein, texte
+   blanc (8,5:1), comme une sélection dans le Finder.
+   Toutes les valeurs viennent de os-tokens.css.
+   ============================================ */
+
+/* ── Survol et clavier : la sélection Klein ── */
+[data-view='icons'] .pw-finder__item:focus-visible .pw-finder__name,
+[data-view='list'] .pw-finder__item:focus-visible {
+    background: var(--accent);
+    color: var(--on-accent);
+}
+
+[data-view='list'] .pw-finder__item:focus-visible .pw-finder__context {
+    color: var(--on-accent);
+}
+
+[data-view='icons'] .pw-finder__item:focus-visible .pw-finder__thumb {
+    box-shadow: 0 0 0 2px var(--accent);
+}
+
+@media (hover: hover) {
+    [data-view='icons'] .pw-finder__item:hover .pw-finder__thumb {
+        box-shadow: 0 0 0 1px var(--win-edge), var(--shadow-soft);
+        transform: translateY(-2px);
+    }
+
+    [data-view='icons'] .pw-finder__item:hover .pw-finder__name {
+        background: var(--accent);
+        color: var(--on-accent);
+    }
+
+    [data-view='list'] .pw-finder__item:hover:not(:focus-visible) {
+        background: var(--hover-tint);
+    }
+
+    .pw-finder__view[aria-pressed='false']:hover {
+        color: var(--ink);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pw-finder__thumb,
+    .pw-finder__view {
+        transition: none;
+    }
+
+    [data-view='icons'] .pw-finder__item:hover .pw-finder__thumb {
+        transform: none;
+    }
+}

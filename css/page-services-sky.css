@@ -1,34 +1,38 @@
 /* ============================================
    Services — le ciel : trois façons de travailler avec nous
-   Une bande pleine largeur sur le ciel rose du site (--sky-mesh), qui
-   se fond dans le bureau en haut et en bas. Trois cartes de verre au
-   même gabarit, aucune n'affiche de prix : « Sur devis » tient la
-   place du montant, le périmètre se définit après un premier échange.
-   Celle du milieu porte le bandeau et le bouton roses.
+   Une bande pleine largeur gris chaud (--panel), qui se fond dans le
+   blanc de la page en haut et en bas. Trois panneaux blancs au même
+   gabarit, aucun n'affiche de prix : « Sur devis » tient la place du
+   montant, le périmètre se définit après un premier échange. Celui du
+   milieu porte la barre et la touche Klein, et la feuille décalée.
    ============================================ */
 
 .svc-sky {
     position: relative;
+    isolation: isolate;
     margin-top: var(--section);
     padding: clamp(72px, 9vw, 120px) 0 clamp(80px, 10vw, 140px);
-    background:
-        linear-gradient(180deg, var(--desk) 0%, transparent 22%, transparent 78%, var(--desk) 100%),
-        var(--sky-mesh);
 }
 
-/* Le badge sur le ciel : le même verre, flou réel. */
-.svc-sky .badge {
-    background: var(--glass);
-    -webkit-backdrop-filter: var(--glass-blur);
-    backdrop-filter: var(--glass-blur);
+/* Le gris chaud, en calque masqué : il se fond dans le fond de la page
+   quel qu'il soit (la lumière de l'heure le teinte), sans couture. */
+.svc-sky::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: var(--panel);
+    -webkit-mask: linear-gradient(180deg, transparent, black 18%, black 82%, transparent);
+    mask: linear-gradient(180deg, transparent, black 18%, black 82%, transparent);
+    pointer-events: none;
 }
 
 .svc-sky__title {
     max-width: 20ch;
     font-size: clamp(1.9rem, 4.6vw, 3.2rem);
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
     line-height: 1.1;
-    letter-spacing: -0.05em;
+    letter-spacing: var(--track-optical);
     text-wrap: balance;
 }
 
@@ -48,26 +52,41 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    border-radius: var(--r-win);
-    background: var(--glass);
-    -webkit-backdrop-filter: var(--glass-blur);
-    backdrop-filter: var(--glass-blur);
-    box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px rgba(255, 255, 255, 0.55), var(--glass-shadow);
-    color: var(--glass-ink);
+    border-radius: var(--r-panel);
+    background: var(--paper);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief), var(--shadow-soft);
+    color: var(--ink);
+    overflow: hidden;
 }
 
+/* La barre : celle des fenêtres, le ↳ à gauche, le [*] à droite. */
 .svc-plan__bar {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: var(--win-bar-h);
     padding: 0 12px;
-    border-radius: var(--r-win) var(--r-win) 0 0;
-    background: var(--glass-specular);
-    box-shadow: inset 0 -1px 0 var(--glass-edge);
+    background: var(--win-bar);
+    box-shadow: inset 0 -1px 0 var(--line);
+    font-family: var(--font-mono);
+    color: var(--win-bar-ink);
+}
+
+.svc-plan__bar::after {
+    content: '[*]';
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 0.04em;
+}
+
+/* La formule mise en avant : barre Klein, feuille décalée dessous. */
+.svc-plan--main {
+    box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--relief), var(--sheet), var(--shadow-object);
 }
 
 .svc-plan--main .svc-plan__bar {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 70%), var(--pink-soft);
+    background: var(--klein-screen);
+    color: var(--on-klein);
 }
 
 .svc-plan__body {
@@ -81,8 +100,8 @@
 
 .svc-plan__name {
     font-size: 1.4rem;
-    font-weight: var(--w-strong);
-    letter-spacing: -0.03em;
+    font-weight: var(--w-medium);
+    letter-spacing: var(--track-optical);
 }
 
 .svc-plan__line {
@@ -97,9 +116,9 @@
     padding: 18px 0 6px;
     border-top: 2px dotted var(--line-strong);
     font-size: clamp(1.6rem, 3vw, 2rem);
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
     line-height: 1.1;
-    letter-spacing: -0.04em;
+    letter-spacing: var(--track-optical);
 }
 
 .svc-plan__for {
@@ -132,13 +151,13 @@
     width: 18px;
     height: 18px;
     margin-top: 1px;
-    background: currentColor;
+    background: var(--klein);
     -webkit-mask: url('../assets/icons/sym-check.svg') center / contain no-repeat;
     mask: url('../assets/icons/sym-check.svg') center / contain no-repeat;
 }
 
 /* Le bouton se cale en bas : les trois cartes alignent leurs boutons. */
-.svc-plan .glass-btn {
+.svc-plan .key-btn {
     margin-top: auto;
     align-self: stretch;
 }
@@ -146,12 +165,5 @@
 @media (min-width: 900px) {
     .svc-plans {
         grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
-
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-    .svc-plan,
-    .svc-sky .badge {
-        background: var(--glass-strong);
     }
 }

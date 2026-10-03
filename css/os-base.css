@@ -1,52 +1,44 @@
 /* ============================================
    WAB OS — socle (partagé : body.os)
-   La trame du bureau et sa lumière, le rose système (sélection,
-   focus, curseur texte), la colonne et le rythme des sections.
+   Le fond blanc net et son grain, le bleu système (sélection, focus,
+   curseur), Sligoil en signature, la colonne et le rythme.
    ============================================ */
 
-/* La lumière de l'heure (--sky-*, os-sky.css) sur le fond de la
-   racine, au-dessus du blanc du bureau. Le corps de page reste
-   transparent : la couche de points (z-index négatif) se peint entre
-   le fond de la racine et lui — un fond sur le corps la cacherait. */
+/* La lumière de l'heure (--sky-*, os-sky.css) et le grain sur le fond
+   de la racine. Le corps reste transparent : les oiseaux (canevas à
+   z-index négatif) se peignent entre la racine et lui. */
 :root:has(body.os) {
     background:
         radial-gradient(120% 50% at 50% 0%, var(--sky-glow), transparent 70%),
         linear-gradient(180deg, var(--sky-top), transparent 900px),
         var(--grain) 0 0 / 160px 160px,
         var(--desk);
-    /* La barre de défilement : un trait gris fin, qui ne se colore
-       pas ; elle s'efface devant la page. */
     scrollbar-width: thin;
-    scrollbar-color: oklch(0.15 0.002 286 / 0.22) transparent;
+    scrollbar-color: var(--line-strong) transparent;
 }
 
 body.os {
     background: transparent;
 }
 
-/* La trame : le motif « Dot Pattern » traduit sans React. Une seule
-   couche fixe, sous les oiseaux : sa couleur est le jeton --desk-dot,
-   le SVG vectoriel (16 px, un point de rayon 1 en 1,1) n'en est que le
-   masque — net sur tout écran, recoloriable sans toucher au dessin. */
+/* L'ancien calque de fond (base.css) n'a plus rien à peindre : le
+   blanc est net, sans trame. */
 .os::before {
-    background: var(--desk-dot);
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='1' cy='1' r='1'/%3E%3C/svg%3E") 0 0 / var(--desk-grid) var(--desk-grid) repeat;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='1' cy='1' r='1'/%3E%3C/svg%3E") 0 0 / var(--desk-grid) var(--desk-grid) repeat;
-    animation: none;
+    content: none;
 }
 
-/* ── Le rose, couleur système ── */
+/* ── Le bleu, couleur système ── */
 .os ::selection {
     background: var(--mark);
-    color: var(--ink);
+    color: var(--on-accent);
 }
 
 .os {
-    caret-color: var(--pink);
+    caret-color: var(--klein);
 }
 
-/* L'anneau de focus : un trait rose de 2 px, décollé de 2 px, qui
-   suit l'arrondi de l'élément ; il apparaît sans délai. */
+/* L'anneau de focus : 2 px, décollé de 2 px, sans délai. Sur une
+   surface Klein, --accent devient blanc (os-tokens.css). */
 .os :focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
@@ -60,15 +52,19 @@ body.os {
 .os ::-webkit-scrollbar-thumb {
     border: 3px solid transparent;
     border-radius: var(--r-pill);
-    background: oklch(0.15 0.002 286 / 0.2) padding-box;
+    background: var(--line-strong) padding-box;
 }
 
-/* ── Typographie ── l'interlettrage optique des titres (jeton
-   --track-optical, os-tokens.css) : une seule règle pour tout le
-   site, qui se resserre d'elle-même avec la taille. */
+/* ── Typographie ── titres en Instrument Sans, interlettrage optique
+   qui se resserre avec la taille ; Sligoil en signature seulement. */
 .os :is(h1, h2, h3):not(.badge) {
+    font-weight: var(--w-medium);
     letter-spacing: var(--track-optical);
     text-wrap: balance;
+}
+
+.os :is(kbd, code, samp, time, .file-name, .win__title, .badge) {
+    font-family: var(--font-mono);
 }
 
 .os {
@@ -86,21 +82,30 @@ body.os {
     padding-inline: var(--gutter);
 }
 
-/* Le badge des sections (Services, Le studio, Réalisations, FAQ) :
-   une petite pilule de verre clair. */
+/* Le badge des sections : une petite étiquette en Sligoil, un carré
+   Klein devant, comme une touche de légende. */
 .badge {
     display: inline-flex;
     align-items: center;
-    min-height: 28px;
-    padding: 0 14px;
-    border-radius: var(--r-pill);
-    background: var(--glass-strong);
-    box-shadow: inset 0 var(--hair) 0 var(--glass-rim), 0 0 0 var(--hair) var(--glass-edge), var(--shadow-soft);
+    gap: 8px;
+    min-height: 26px;
+    padding: 0 10px;
+    border-radius: var(--r-key);
+    background: var(--paper);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief), 0 1px 2px oklch(0.18 0.005 265 / 0.08);
     font-size: var(--t-cap);
-    font-weight: 500;
+    font-weight: var(--w-medium);
     letter-spacing: var(--track-caps);
     text-transform: uppercase;
     color: var(--ink-muted);
+}
+
+.badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 1px;
+    background: var(--klein);
 }
 
 .block {

@@ -1,17 +1,16 @@
 /* ============================================
    WAB OS — page Applications : l'approche et l'appel final
-   L'approche : cinq cartes de verre sur le ciel rose du site
-   (--sky-mesh), fondu dans le bureau en haut et en bas, comme le ciel
-   de l'accueil. Trois puis deux sur grand écran, empilées au
-   téléphone. L'appel final : l'oiseau, le titre, deux boutons.
+   L'approche : cinq cartes blanches, liseré d'un pixel et relief
+   éclairé d'en haut, posées sur une bande de gris chaud (--panel).
+   Trois puis deux sur grand écran, en rangée défilante au téléphone.
+   L'appel final : l'oiseau, le titre, deux boutons.
    ============================================ */
 
 .app-sky {
     margin-top: var(--section);
     padding: clamp(72px, 9vw, 120px) 0;
-    background:
-        linear-gradient(180deg, var(--desk) 0%, transparent var(--app-sky-fade), transparent calc(100% - var(--app-sky-fade)), var(--desk) 100%),
-        var(--sky-mesh);
+    background: var(--panel);
+    box-shadow: inset 0 var(--hair) 0 var(--line), inset 0 calc(-1 * var(--hair)) 0 var(--line);
 }
 
 .app-ways {
@@ -52,28 +51,20 @@
     gap: 10px 14px;
     padding: 20px 22px 22px;
     border-radius: var(--r-win);
-    background: var(--glass);
-    -webkit-backdrop-filter: var(--glass-blur);
-    backdrop-filter: var(--glass-blur);
-    box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px rgba(255, 255, 255, 0.55), var(--glass-shadow);
+    background: var(--paper);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief), var(--shadow-soft);
 }
 
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-    .app-way {
-        background: var(--glass-strong);
-    }
-}
-
-/* L'icône dans une petite tuile carrée de verre clair. */
+/* L'icône sur une petite touche blanche, comme les icônes d'app. */
 .app-way__icon {
     display: grid;
     place-items: center;
     width: 36px;
     height: 36px;
-    border-radius: var(--r-icon);
-    background: var(--bubble-clear);
-    box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px var(--glass-edge);
-    color: var(--glass-ink);
+    border-radius: var(--r-key);
+    background: var(--key-light);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--key-light-relief);
+    color: var(--klein);
 }
 
 .app-way__icon .sym {
@@ -83,10 +74,10 @@
 
 .app-way__title {
     font-size: 1.05rem;
-    font-weight: 500;
+    font-weight: var(--w-medium);
     line-height: 1.3;
-    letter-spacing: -0.02em;
-    color: var(--glass-ink);
+    letter-spacing: var(--track-optical);
+    color: var(--ink);
 }
 
 .app-way__text {
@@ -141,9 +132,9 @@
 .app-end__title {
     max-width: 20ch;
     font-size: var(--t-app-end);
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
     line-height: 1.1;
-    letter-spacing: -0.04em;
+    letter-spacing: var(--track-optical);
     text-wrap: balance;
 }
 

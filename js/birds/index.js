@@ -19,9 +19,9 @@
    versions de ces fichiers. Une adresse neuve les en libère. Le
    serveur revalide désormais les scripts à chaque visite (.htaccess) :
    ce numéro n'aura plus à bouger. */
-import { FLIGHT_COLORS } from './frames.js?v=7';
-import { createSpriteBank } from './sprites.js?v=6';
-import { createFlock, TEXT_DIM } from './flock.js?v=7';
+import { FLIGHT_COLORS } from './frames.js?v=8';
+import { createSpriteBank } from './sprites.js?v=7';
+import { createFlock, TEXT_DIM } from './flock.js?v=8';
 import { createShyness } from './shyness.js?v=5';
 
 /* Échelles de dessin disponibles, de l'oiseau le plus lointain au

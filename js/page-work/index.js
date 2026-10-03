@@ -11,9 +11,9 @@
  * continuent, et la page reste entièrement lisible sans eux.
  */
 
-import { initFinderViews } from './finder.js?v=1';
+import { initFinderViews } from './finder.js?v=2';
 import { initFocus } from './focus.js?v=1';
-import { initCaseLinks } from './case-links.js?v=2';
+import { initCaseLinks } from './case-links.js?v=3';
 import { initFootPixels } from './pixels.js?v=1';
 import { report } from './report.js?v=1';
 

@@ -9,7 +9,7 @@
  */
 
 import { CONTACT_EMAIL } from './markup.js?v=8';
-import { requireElement } from './dom.js?v=8';
+import { requireElement } from './dom.js?v=9';
 
 const ENDPOINT = '/send-message.php';
 const TIMEOUT_MS = 15000;

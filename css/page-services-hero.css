@@ -1,6 +1,6 @@
 /* ============================================
    Services — le premier écran
-   Le centre reste net : le badge, le titre, deux boutons de verre.
+   Le centre reste net : le badge, le titre, deux touches.
    Dessous, le Launchpad (page-services-pad.css). L'autocollant reste
    au bord, et seulement là où il y a de la place.
    ============================================ */
@@ -26,9 +26,9 @@
 .svc-hero__title {
     max-width: 22ch;
     font-size: clamp(1.75rem, 4.2vw, 3.5rem);
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
     line-height: 1.1;
-    letter-spacing: -0.04em;
+    letter-spacing: var(--track-optical);
     text-wrap: balance;
 }
 

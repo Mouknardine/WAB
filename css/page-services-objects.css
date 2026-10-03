@@ -14,8 +14,8 @@
 .svc-card,
 .svc-tag {
     position: absolute;
-    border-radius: 6px;
-    box-shadow: var(--shadow-object);
+    border-radius: var(--r-key);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief), var(--shadow-object);
 }
 
 /* Le format d'une carte de visite : 85 × 55 mm. */
@@ -45,6 +45,7 @@
     top: 40%;
     rotate: 4deg;
     background: var(--ink);
+    box-shadow: 0 0 0 var(--hair) var(--ink), var(--shadow-lift);
     color: var(--paper);
 }
 
@@ -52,7 +53,7 @@
     font-size: clamp(16px, 9cqh, 34px);
     line-height: 1;
     letter-spacing: -0.04em;
-    color: var(--pink-soft);
+    color: var(--klein-soft);
 }
 
 /* L'étiquette cousue d'un vêtement. */
@@ -66,7 +67,7 @@
     padding: 6cqh 2cqh;
     rotate: 3deg;
     background: var(--paper);
-    box-shadow: 0 0 0 1px var(--line), var(--shadow-object);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief), var(--shadow-object);
     font-size: clamp(8px, 3cqh, 12px);
     line-height: 1.2;
     text-align: center;
@@ -74,6 +75,11 @@
 
 .svc-tag b {
     font-size: clamp(9px, 3.8cqh, 15px);
+}
+
+.svc-tag span,
+.svc-card span {
+    font-family: var(--font-mono);
 }
 
 .svc-tag small {

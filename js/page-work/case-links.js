@@ -29,7 +29,7 @@ function openFromHash(pieces) {
     if (!piece) return;
     const opener = piece.querySelector('.piece__open');
     const title = opener instanceof HTMLElement ? opener.dataset.title ?? id : id;
-    import('../os/apps.js?v=2')
+    import('../os/apps.js?v=3')
         .then((apps) => apps.launchCase(id, title, opener instanceof HTMLElement ? opener : null))
         .catch((error) => report('case-links', error));
 }

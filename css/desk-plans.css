@@ -1,43 +1,28 @@
 /* ============================================
-   WAB OS — le ciel : trois façons de travailler avec nous
-   Une bande pleine largeur sur le ciel rose du site (--sky-mesh, en
-   CSS), qui se fond dans le bureau en haut et en bas. Trois
-   cartes de verre au même gabarit, trois paliers (prix donnés par
-   Eliott le 3.10) : site vitrine (1'000 – 2'500 CHF), site et outils
-   (2'500 – 7'000 CHF), expérience sur mesure (dès 7'000 CHF, sur
-   devis). Chacune : le nom, une phrase, pour qui, le prix, « Parlons-en »,
-   puis ce qui est inclus. Celle du milieu porte le bouton rose. Dessous, le mini-terminal « contact ».
-   Trois cartes seulement : le flou réel du verre reste raisonnable.
+   WAB OS — trois façons de travailler avec nous
+   Une bande gris chaud (--panel) entre deux filets ; trois fenêtres,
+   trois paliers (prix d'Eliott, 3.10). Celle du milieu est cerclée de
+   Klein, barre bleue et touche principale. Dessous, « > contact ».
    ============================================ */
 
 .plans {
     position: relative;
     margin-top: var(--section);
     padding: clamp(72px, 9vw, 120px) 0 clamp(80px, 10vw, 140px);
-    /* Le ciel se fond dans le bureau en haut comme en bas : aucune
-       coupure d'une section à l'autre. */
-    background:
-        linear-gradient(180deg, var(--desk) 0%, transparent 22%, transparent 78%, var(--desk) 100%),
-        var(--sky-mesh);
+    border-block: var(--hair) solid var(--edge);
+    background: var(--panel);
 }
 
 .plans .section-head {
     gap: 14px;
 }
 
-/* Le badge sur le ciel : le même verre, un peu plus dense. */
-.badge--glass {
-    background: var(--glass);
-    -webkit-backdrop-filter: var(--glass-blur);
-    backdrop-filter: var(--glass-blur);
-}
-
 .plans__title {
     max-width: 22ch;
     font-size: clamp(2rem, 5vw, 3.4rem);
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -0.05em;
+    font-weight: var(--w-medium);
+    line-height: 1.05;
+    letter-spacing: var(--track-optical);
     text-wrap: balance;
 }
 
@@ -61,41 +46,59 @@
     flex-direction: column;
     height: 100%;
     border-radius: var(--r-win);
-    background: var(--glass);
-    -webkit-backdrop-filter: var(--glass-blur);
-    backdrop-filter: var(--glass-blur);
-    box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px rgba(255, 255, 255, 0.55), var(--glass-shadow);
+    background: var(--paper);
+    box-shadow: 0 0 0 var(--hair) var(--win-edge), var(--win-shadow);
 }
 
 .plan__bar {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
-    height: 30px;
-    padding: 0 12px;
+    height: var(--win-bar-h);
+    padding: 0 10px;
     border-radius: var(--r-win) var(--r-win) 0 0;
-    background: var(--glass-specular);
-    box-shadow: inset 0 -1px 0 var(--glass-edge);
+    background: var(--win-bar);
+    box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.4), inset 0 -1px 0 oklch(0.38 0.24 266 / 0.1);
+    font-family: var(--font-mono);
+    color: var(--win-bar-ink); /* la barre des fenêtres */
+}
+
+.plan__bar::after {
+    content: '[*]';
+    grid-column: 3;
+    justify-self: end;
+    font-size: 10px;
+    line-height: 1;
+}
+
+.plan--main {
+    box-shadow: 0 0 0 2px var(--klein), var(--sheet), var(--win-shadow);
 }
 
 .plan--main .plan__bar {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 70%), var(--pink-soft);
+    background: var(--klein);
+    box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.24);
+    color: var(--on-klein);
 }
 
-/* « Ce qui nous distingue » : une pilule dans le verre rose des boutons,
-   à cheval sur le haut de la carte. */
+/* « Ce qui nous distingue » : une étiquette Klein en Sligoil, à cheval
+   sur le haut de la carte. */
 .plan__badge {
     position: absolute;
     z-index: 1;
     top: 0;
     left: 50%;
     translate: -50% -50%;
-    padding: 4px 12px;
-    border-radius: var(--r-pill);
-    background: var(--bubble-pink), var(--paper);
-    box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px rgba(255, 255, 255, 0.6), var(--shadow-soft);
-    font-size: var(--t-cap);
+    padding: 5px 10px;
+    border-radius: var(--r-key);
+    background: var(--paper);
+    box-shadow: 0 0 0 var(--hair) var(--klein), var(--relief), var(--shadow-soft);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: var(--track-caps);
+    text-transform: uppercase;
     white-space: nowrap;
-    color: var(--ink);
+    color: var(--klein);
 }
 
 .plan__body {
@@ -109,8 +112,8 @@
 
 .plan__name {
     font-size: 1.5rem;
-    font-weight: 500;
-    letter-spacing: -0.03em;
+    font-weight: var(--w-medium);
+    letter-spacing: var(--track-optical);
 }
 
 .plan__line {
@@ -134,15 +137,14 @@
     border-block: 2px dotted var(--line-strong);
 }
 
-/* « 1'000 – 2'500 CHF » : 17 signes, soit 10,2 em en chasse fixe. La
-   taille suit la largeur de la carte (8 cqi) pour tenir sur une ligne,
-   de la colonne étroite (900 px) au téléphone. */
+/* « 1'000 – 2'500 CHF » tient sur une ligne : la taille suit la carte. */
 .plan__amount {
-    font-size: min(2.4rem, 8cqi);
+    font-size: min(2.5rem, 9cqi);
     white-space: nowrap;
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
+    font-variant-numeric: tabular-nums;
     line-height: 1.1;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.035em;
 }
 
 .plan__note {
@@ -154,7 +156,10 @@
 .plan__inc {
     align-self: flex-start;
     margin-top: 20px;
-    font-size: var(--t-small);
+    font-family: var(--font-mono);
+    font-size: var(--t-cap);
+    letter-spacing: var(--track-caps);
+    text-transform: uppercase;
     color: var(--ink-muted);
 }
 
@@ -188,12 +193,5 @@
 @media (min-width: 900px) {
     .plans__grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
-
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-    .plan,
-    .badge--glass {
-        background: var(--glass-strong);
     }
 }

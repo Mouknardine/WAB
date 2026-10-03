@@ -1,9 +1,9 @@
 /* ============================================
    WAB OS — Création de site internet : la FAQ et le contact
    La FAQ : l'en-tête à gauche (collant sur ordinateur), l'accordéon
-   <details> dans une carte blanche — chaque réponse reste dans la page,
-   lisible par les moteurs.
-   Le contact : une fenêtre « Nouveau message », au centre.
+   <details> dans un grand panneau blanc posé sur sa feuille décalée —
+   chaque réponse reste dans la page, lisible par les moteurs.
+   Le contact : une fenêtre « Nouveau message » dans son cadre Klein.
    ============================================ */
 
 /* ── La FAQ ── */
@@ -23,15 +23,15 @@
     max-width: 18ch;
 }
 
-.sx-faq__head .glass-btn {
+.sx-faq__head .key-btn {
     margin-top: 8px;
 }
 
 .sx-faq__card {
     padding: 6px clamp(18px, 3vw, 32px);
-    border-radius: var(--r-win);
-    background: var(--win-bg);
-    box-shadow: 0 0 0 1px var(--win-edge), var(--win-shadow);
+    border-radius: var(--r-panel);
+    background: var(--paper);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief), var(--sheet);
 }
 
 .sx-qa + .sx-qa {
@@ -65,13 +65,15 @@
     text-wrap: pretty;
 }
 
-/* Le signe : un plus qui pivote en croix, en masque (couleur du texte). */
+/* Le signe : une petite touche, un plus qui pivote en croix (masque). */
 .sx-qa__mark {
     flex: none;
     width: 28px;
     height: 28px;
-    border-radius: var(--r-pill);
-    background: var(--hover-tint);
+    border-radius: var(--r-key);
+    background: var(--key-light);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--key-light-relief);
+    color: var(--klein);
     position: relative;
 }
 
@@ -130,12 +132,13 @@
     align-items: center;
     gap: 16px;
     padding: clamp(36px, 6vw, 64px) clamp(20px, 5vw, 56px);
+    background: var(--win-bg);
     text-align: center;
 }
 
 .sx-end__title {
     font-size: var(--t-title);
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
     line-height: 1.2;
     letter-spacing: -0.03em;
     text-wrap: balance;

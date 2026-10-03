@@ -1,13 +1,33 @@
 /* ============================================
    WAB OS — le pied de page (partagé)
-   Trois colonnes de liens et une mention, puis « WAB. » en énormes
-   pixels roses sur toute la largeur — avec les oiseaux, la seule chose
-   qui reste en pixel art : la signature du studio.
+   Surface Klein à lignes d'écran (.on-klein), ouverte par trois bandes
+   du bleu clair au Klein ; colonnes de liens, bandeau des projets, puis
+   « WAB. » géant en lignes horizontales, une lettre par cellule.
    ============================================ */
 
-/* ── Pied de page ── */
 .foot {
-    padding: clamp(72px, 10vw, 140px) 0 28px;
+    position: relative;
+    margin-top: clamp(72px, 10vw, 140px);
+    padding: clamp(72px, 9vw, 120px) 0 28px;
+    background:
+        linear-gradient(180deg, var(--klein-tint) 0 6px, var(--klein-soft) 6px 12px, var(--klein-hi) 12px 20px, oklch(0 0 0 / 0) 20px),
+        var(--klein-screen);
+    overflow: hidden;
+}
+
+/* Le grain, par-dessus les lignes. */
+.foot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--grain) 0 0 / 160px 160px;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.foot > * {
+    position: relative;
+    z-index: 1;
 }
 
 .foot__cols {
@@ -21,20 +41,27 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
+    gap: 2px;
 }
 
 .foot__label {
-    margin-bottom: 6px;
-    font-weight: var(--w-strong);
-    color: var(--ink);
+    margin-bottom: 8px;
+    font-family: var(--font-mono);
+    font-size: var(--t-cap);
+    letter-spacing: var(--track-caps);
+    text-transform: uppercase;
+    color: var(--ink-muted);
 }
 
 .foot__col a {
     display: inline-flex;
     align-items: center;
     min-height: 32px;
-    color: var(--ink-muted);
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: oklch(1 0 0 / 0);
+    text-underline-offset: 0.25em;
+    transition: text-decoration-color var(--dur-1) var(--ease-out);
 }
 
 .foot__col span {
@@ -42,38 +69,82 @@
     color: var(--ink-muted);
 }
 
-.foot__col a {
-    transition: color var(--dur-1) var(--ease-out);
-}
-
 @media (hover: hover) {
     .foot__col a:hover {
-        color: var(--accent);
+        text-decoration-color: var(--line-strong);
     }
 }
 
 .foot__note {
     grid-column: 1 / -1;
-    color: var(--ink-muted);
-    line-height: 1.6;
+    max-width: 30ch;
+    font-size: 1.05rem;
+    line-height: 1.45;
+    color: var(--ink);
 }
 
-/* Le nom en pixels : un SVG, chaque pixel un carré rose posé sur son
-   arête plus sombre, sur toute la largeur de la colonne. */
+/* ── Le bandeau ── deux listes identiques glissent d'une largeur. */
+.foot__ticker {
+    display: flex;
+    width: max-content;
+    margin-top: clamp(48px, 7vw, 88px);
+    border-block: var(--hair) solid var(--line);
+    font-size: var(--t-small);
+    white-space: nowrap;
+}
+
+.foot__track {
+    display: flex;
+    flex: none;
+    list-style: none;
+    animation: foot-ticker 48s linear infinite;
+}
+
+.foot__track li {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 18px 12px 14px;
+}
+
+.foot__track li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 1px;
+    background: var(--klein-soft);
+}
+
+/* Le survol l'arrête : on peut lire un nom sans le poursuivre. */
+.foot__ticker:hover .foot__track {
+    animation-play-state: paused;
+}
+
+@keyframes foot-ticker {
+    to {
+        translate: -100% 0;
+    }
+}
+
+/* ── Le nom ── chaque « pixel » est trois lignes horizontales qui se
+   rejoignent d'une case à l'autre ; des filets séparent les lettres
+   en cellules (55, 115 et 175 sur 202 unités de dessin). */
 .pixel-name {
     display: block;
     width: 100%;
     height: auto;
-    margin: clamp(40px, 6vw, 72px) auto 0;
+    margin-top: clamp(28px, 4vw, 48px);
+    padding: clamp(20px, 3vw, 36px) 0;
+    border-block: var(--hair) solid var(--line);
+    background:
+        linear-gradient(90deg, oklch(0 0 0 / 0) calc(27.72% - 0.5px), var(--line) 0 calc(27.72% + 0.5px), oklch(0 0 0 / 0) 0),
+        linear-gradient(90deg, oklch(0 0 0 / 0) calc(57.43% - 0.5px), var(--line) 0 calc(57.43% + 0.5px), oklch(0 0 0 / 0) 0),
+        linear-gradient(90deg, oklch(0 0 0 / 0) calc(87.13% - 0.5px), var(--line) 0 calc(87.13% + 0.5px), oklch(0 0 0 / 0) 0);
     overflow: visible;
 }
 
-.px__edge {
-    fill: var(--accent);
-}
-
-.px__body {
-    fill: var(--pink);
+.px__line {
+    fill: var(--klein-tint);
 }
 
 .pixel-name .px {
@@ -81,13 +152,12 @@
     transform-origin: center;
 }
 
-/* L'arrivée : les pixels se posent de gauche à droite (--d posé par
-   js/desk/pixels.js). */
-/* Masqués seulement si le script qui les révèle est là (pixels.js
-   pose .is-armed) : sur une page sans lui, le nom reste visible. */
+/* L'arrivée : les cases se posent de gauche à droite (--d posé par
+   js/desk/pixels.js). Masquées seulement si le script qui les révèle
+   est là (.is-armed) : sans lui, le nom reste visible. */
 .pixel-name.is-armed .px {
     opacity: 0;
-    scale: 0.6;
+    scale: 1 0.4;
     transition: opacity var(--dur-3) var(--ease-out), scale 0.5s var(--ease-out);
     transition-delay: calc(var(--d, 0) * 1ms);
 }
@@ -98,23 +168,29 @@
 }
 
 .foot__legal {
-    margin-top: 28px;
+    margin-top: 24px;
+    font-family: var(--font-mono);
     font-size: var(--t-cap);
     text-align: center;
-    color: var(--ink-faint);
+    color: var(--ink-muted);
 }
 
 @media (min-width: 800px) {
     .foot__cols {
-        grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.3fr);
+        grid-template-columns: minmax(0, 1.3fr) repeat(3, minmax(0, 1fr));
     }
 
     .foot__note {
-        grid-column: auto;
+        grid-column: 1;
+        grid-row: 1;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .foot__track {
+        animation: none;
+    }
+
     .pixel-name.is-armed .px {
         opacity: 1;
         scale: 1;

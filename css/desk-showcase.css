@@ -1,0 +1,103 @@
+/* ============================================
+   WAB OS — la vitrine du premier écran (accueil)
+   La grande fenêtre encadrée de Klein sous le centre : les projets
+   défilent, un bouton met en pause (js/desk/showcase.js).
+   ============================================ */
+
+.showcase {
+    position: relative;
+    z-index: 4;
+    width: min(100% - 2 * var(--gutter), 860px);
+    margin: clamp(44px, 5vw, 56px) auto 0;
+}
+
+.showcase {
+    --win-bar-h: 34px;
+}
+
+.showcase .win__title {
+    font-size: 12px;
+}
+
+.showcase__stage {
+    aspect-ratio: 16 / 10;
+}
+
+.showcase__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.9s var(--ease-out);
+}
+
+.showcase__slide img {
+    transform: scale(1.04);
+    transition: transform 6s linear;
+}
+
+.showcase__slide.is-current {
+    opacity: 1;
+}
+
+.showcase__slide.is-current img {
+    transform: scale(1);
+}
+
+/* Le bouton lecture/pause : le plateau de verre gris du dock, posé au
+   centre bas de l'image. */
+.showcase__toggle {
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    bottom: 14px;
+    translate: -50% 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 0 18px 0 14px;
+    border: var(--hair) solid oklch(1 0 0 / 0.22);
+    border-radius: var(--r-ctl);
+    background: var(--glass-specular), var(--dock-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+    box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.32), var(--shadow-soft);
+    font-size: var(--t-small);
+    color: var(--on-klein);
+    transition: background-color var(--dur-1) var(--ease-out), scale var(--dur-1) var(--ease-out);
+}
+
+.showcase__toggle:active {
+    scale: 0.96;
+}
+
+@media (hover: hover) {
+    .showcase__toggle:hover {
+        background: var(--smoke-strong);
+    }
+}
+
+.showcase__toggle:focus-visible {
+    outline-color: var(--on-klein);
+    outline-offset: 2px;
+}
+
+.showcase__toggle [data-icon] {
+    display: none;
+}
+
+.showcase__toggle[data-state='playing'] [data-icon='pause'],
+.showcase__toggle[data-state='paused'] [data-icon='play'] {
+    display: block;
+}
+
+.showcase__caption {
+    margin-top: 12px;
+}
+
+@media (min-width: 600px) {
+    .showcase__toggle {
+        bottom: 22px;
+    }
+}
+

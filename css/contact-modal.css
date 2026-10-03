@@ -1,12 +1,9 @@
 /* ============================================
    WAB. — Fenêtre de contact
-   Le site n'a pas de page Contact : le lien ouvre une carte en verre
-   dépoli au-dessus de la page en cours, floutée derrière un voile
-   clair. Même matière que les cartes du site ; c'est la seule à
-   porter une ombre, car elle flotte réellement au-dessus de la page.
-
-   Cette feuille dessine la fenêtre ; les champs sont dans
-   contact-form.css. Le gabarit est écrit par js/contact/markup.js.
+   Le site n'a pas de page Contact : le lien ouvre un grand panneau
+   blanc à feuille décalée au-dessus de la page en cours, floutée
+   derrière un voile d'encre. Champs : contact-form.css ; gabarit :
+   js/contact/markup.js.
    ============================================ */
 
 /* La page derrière ne défile plus. La gouttière de la barre de
@@ -36,7 +33,7 @@ html.has-modal {
 /* ::backdrop n'hérite des variables de :root que dans les navigateurs
    récents : les valeurs y sont écrites en clair. */
 .contact-modal::backdrop {
-    background: rgba(255, 236, 246, 0.42);
+    background: rgba(16, 18, 20, 0.3);
     -webkit-backdrop-filter: blur(14px) saturate(1.2);
     backdrop-filter: blur(14px) saturate(1.2);
     animation: contact-fade-in 0.3s cubic-bezier(0.23, 1, 0.32, 1);
@@ -48,23 +45,19 @@ html.has-modal {
     overflow-y: auto;
     overscroll-behavior: contain;
     padding: clamp(14px, 2.5vw, 20px) clamp(24px, 5vw, 44px) clamp(28px, 5vw, 44px);
-    border-radius: var(--radius-card);
-    /* Verre dépoli, même matière que les cartes du site mais plus
-       dense : le formulaire doit rester parfaitement lisible sur la
-       page floutée, même devant les captures sombres de Réalisations.
-       Liseré blanc d'un pixel, reflet sur l'arête haute, ombre très
-       douce pour la décoller de la page. */
-    background: rgba(255, 255, 255, 0.7);
-    -webkit-backdrop-filter: blur(30px) saturate(1.6);
-    backdrop-filter: blur(30px) saturate(1.6);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.95),
-        0 1px 2px rgba(11, 11, 12, 0.04), 0 24px 60px rgba(60, 20, 45, 0.12);
+    border: var(--hair) solid var(--edge);
+    border-radius: var(--r-panel);
+    /* Un grand panneau blanc, comme ceux d'agentcard : liseré d'un
+       pixel, relief éclairé d'en haut, et une seconde feuille décalée
+       dessous (--sheet) qui le pose sur la page floutée. */
+    background: var(--paper);
+    box-shadow: var(--relief), var(--sheet), var(--shadow-lift);
     animation: contact-rise 0.5s var(--ease);
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     .contact-modal__card {
-        background: rgba(255, 255, 255, 0.94);
+        background: var(--paper);
     }
 }
 
@@ -101,7 +94,7 @@ html.has-modal {
     height: 36px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 0 0 2.5px rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 0 2.5px var(--paper);
     background: var(--paper);
     transition: transform 0.3s var(--ease-out);
 }
@@ -112,10 +105,7 @@ html.has-modal {
     }
 }
 
-/* ── Envol ──
-   Toute la largeur de la carte : l'oiseau la traverse d'un bord à
-   l'autre. Le script redimensionne la surface de dessin à cette
-   taille exacte pour que le pixel art reste net. */
+/* ── Envol ── l'oiseau traverse la carte ; pixel art net. */
 .contact-flight {
     display: block;
     width: 100%;
@@ -127,10 +117,11 @@ html.has-modal {
 .contact-modal__close {
     min-height: 44px;
     padding: 0 14px;
-    border-radius: var(--radius-pill);
+    border-radius: var(--r-key);
+    font-family: var(--font-mono);
     font-size: 11px;
-    font-weight: var(--w-strong);
-    letter-spacing: 0.14em;
+    font-weight: var(--w-regular);
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--ink-muted);
     transition: color 0.2s var(--ease-out), background-color 0.2s var(--ease-out);
@@ -138,7 +129,7 @@ html.has-modal {
 
 .contact-modal__close:hover {
     color: var(--ink);
-    background: rgba(11, 11, 12, 0.05);
+    background: var(--hover-tint);
 }
 
 /* ── Titre ── */

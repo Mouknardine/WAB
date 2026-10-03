@@ -255,6 +255,67 @@ Dette connue : les pages intérieures utilisent encore des icônes dessinées à
 
 ---
 
+## Klein — l'aspect (3 octobre 2026, branche `klein`, en attente de validation)
+
+> Cette section prime sur l'aspect décrit plus bas (« WAB OS », verre liquide rose) : la **structure** WAB OS reste, son **aspect** est remplacé.
+
+**Demande d'Eliott.** « Garder ce layout mais changer l'aspect de beaucoup de choses, même les couleurs, je ne suis plus sûr du rose, pour que ça fasse vraiment professionnel et studio de design senior. J'aime l'aspect des boutons, les textures et le feeling de [agentcard.sh](https://www.agentcard.sh/). » Couleur choisie : le bleu Klein, seule couleur forte.
+
+**Parti pris.** Un bureau d'écrans bleus posé sur du papier blanc : un seul accent, rare et électrique, sur une matière neutre et précise ; tout ce qui est bleu est soit une action, soit un écran.
+
+**Valeurs relevées sur agentcard (styles calculés, Playwright).** Bouton plein #2e3ae8, liseré #151e8b, rayon 8, relief `inset 0 1px 0 blanc/34, inset 0 -2px 0 encre/16, 0 1px 2px encre/24, 0 3px 8px bleu/18` ; barre flottante encre/42 + flou 12 px, onglet actif en pilule blanche ; fenêtre « case » : rayon 12, barre #ccdbff, texte 10 px #1520b8, inclinaison ≈ −2,4° ; grand panneau : rayon 20, liseré encre/16, feuille décalée `7px 7px 0 encre/10` ; écrans : `repeating-linear-gradient(0deg, encre/16 0 1px, transparent 1px 3px)` + vignette + bords assombris ; grain fractal en `soft-light` ; pied de page #050ef4 ; titres Neue Haas Grotesk Display 500 à −0,035 em.
+
+### Palette (OKLCH, `css/os-tokens.css`)
+
+| Rôle | Jeton | Valeur | Contraste |
+|---|---|---|---|
+| Accent unique | `--klein` | `oklch(0.45 0.29 266)` ≈ #161bf2 | blanc dessus 8,5:1 ; lui-même sur blanc 8,5:1 (petit texte permis) |
+| Petit texte sur bleu clair | `--klein-ink` | `oklch(0.38 0.24 266)` | 8,2:1 sur `--klein-tint` |
+| Liserés, lignes sombres | `--klein-deep` | `oklch(0.3 0.19 266)` | — |
+| Barre de fenêtre | `--klein-tint` | `oklch(0.9 0.055 268)` | — |
+| Bleu sur sombre | `--klein-soft` | `oklch(0.8 0.1 268)` | lisible sur le terminal |
+| Page, cartes | `--desk`, `--paper` | blanc | — |
+| Grands panneaux | `--panel` | `oklch(0.96 0.004 85)` (gris chaud) | gris de texte 6,4:1 |
+| Encre, gris | `--ink`, `--ink-muted`, `--ink-faint` | `oklch(0.18 …)`, `0.46`, `0.52` | 18,8 / 7,1 / 5,5:1 sur blanc |
+
+**Paires qui s'inversent (recensées avant de toucher la palette).** Touche bleue sur surface bleue → touche blanche à texte Klein ; touche blanche sur bleu → touche translucide à texte blanc ; sélection Klein sur bleu → sélection blanche ; nom d'icône sélectionné (fond accent + texte sur accent) → blanc à texte Klein ; autocollant Klein sur le premier écran bleu → marge de découpe blanche. Tout passe par `.on-klein`, qui redéfinit la gamme. `--on-klein` (blanc) ne s'inverse jamais : texte des touches bleues, des bulles de réponse, de l'autocollant.
+
+**Rose : zéro.** Plus de rose dans le système, la lumière de l'heure (blanc froid le matin, voile bleu le soir et la nuit), le ciel, les sélections, les oiseaux, le favicon, les icônes de l'écran d'accueil, `theme-color`, le manifeste et l'image de partage. Restent deux textes factuels qui décrivent le site rose d'un client (texte alternatif LAZIZZE, fiche projet) et ses captures elles-mêmes.
+
+### Typographie
+
+- **Instrument Sans** (Rodrigo Fuenzalida, SIL OFL), auto-hébergée : un seul fichier variable `assets/fonts/InstrumentSans-Var.woff2`, graisses 400 à 700, largeur figée à 100, réduit aux glyphes du français (34 Ko), `font-display: swap`, préchargé sur chaque page. Choisie plutôt qu'Inter ou Geist : même netteté grotesque que la Neue Haas d'agentcard, plus de caractère (« a » et « t » dessinés), moins vue.
+- Titres en 500, interlettrage optique `calc(0.4px − 0.045em)` (−0,034 em à 36 px) ; « WAB. » du premier écran en 600 à −0,055 em.
+- **Sligoil** reste la signature, uniquement : noms de fichiers des barres et sous les fenêtres, badges et petites étiquettes, codes et raccourcis, l'heure, le terminal, le pied de page (étiquettes, mention légale).
+
+### Matières
+
+- **Écran Klein** (`--klein-screen`) : ligne d'un pixel tous les trois, vignette, bords assombris, halo central, puis grain. Premier écran de l'accueil, pied de page, écrans derrière les fenêtres (version `--klein-screen-flat`, sans vignette, pour les cadres étroits).
+- **Trame** : bandes Bayer 4×4 en pixels de 2 px (`assets/textures/dither-*.svg`), en masque. Bord bas du premier écran qui s'émiette dans le blanc ; bord intérieur des fenêtres `.win--framed`, en bleu moyen (en blanc, la trame faisait damier).
+- **Grain** : bruit fractal à 3 % sur le blanc, plus dense sur les surfaces bleues.
+- **Relief** : lumière unique d'en haut — fil blanc sur l'arête haute, pénombre de 2 px en bas, ombre courte puis portée ; **feuille décalée** de 7 px sous les grands panneaux.
+
+### Composants
+
+- **Touches** (`.key-btn`, `.key-btn--klein`, `.key-btn--sm`) : rayon 6, relief, appui d'un pixel ; la bleue porte une flèche ↗. Remplacent le verre rose ; le script de reflet du verre est supprimé.
+- **Fenêtres** : barre bleu clair, ↳, nom centré en Sligoil, `[*]` ; `.win--framed` (une par écran : vitrine, lettre, dossier Work, Launchpad, dialogues de fin) ; cartes du mur penchées de ±0,7° en alternance, qui se redressent au survol.
+- **Dock** : la barre flottante d'agentcard traduite — plateau de verre gris fumé, apps en touches. Il n'est pas remplacé par une barre de navigation : la barre du haut porte déjà la navigation, la doubler serait une redite.
+- **Icônes d'app** : touches de clavier 3D (blanches ; Terminal encre ; Contact Klein). **Objets en relief** (fenêtre, crayon, carte de visite, t-shirt) : même lumière, deux par section, dans les marges, dès 1280 px. Pas d'oiseau en relief : l'oiseau reste en pixels.
+- **Pied de page** : Klein à lignes, trois bandes d'ouverture, bandeau des neuf projets en ligne, « WAB. » en lignes horizontales dans quatre cellules.
+- **Badges** : étiquette Sligoil, carré Klein devant. **Bulles** : question gris chaud, réponse Klein. **Offres** : bande gris chaud, fenêtres ; celle du milieu cerclée de Klein. **FAQ** : touches longues, la question ouverte passe au bleu.
+
+### Premier écran de l'accueil : essai retenu
+
+Fond Klein plein à lignes en pleine largeur, titre blanc, fenêtres blanches autour : le plus fort des deux essais (l'autre : fond blanc, titre encre), et il reste lisible (texte blanc 8,5:1, gris clair 5,9:1). La barre du haut, en verre blanc, passe sur le bleu comme sur le blanc.
+
+### Écarté
+
+- Une barre de navigation flottante en plus du dock : redite de la barre du haut.
+- Des objets photoréalistes ou de banque d'images : seuls des objets dessinés, éclairés comme les touches.
+- Un deuxième accent (vert de validation, orange) hors des états système du formulaire.
+
+---
+
 ## WAB OS — accueil (3 octobre 2026, branche `bureau`, en attente de validation)
 
 **Intention.** L'accueil est le système d'exploitation du studio, et il fonctionne : le site est lui-même la démonstration technique. **Structure : celle de [heyclicky.com](https://www.heyclicky.com/), section par section** (« vraiment la même structure, j'aime beaucoup cette vibe », Eliott, 3.10). **Rendu : verre liquide rose**, façon macOS Tahoe / iOS 26 (« ultra moderne »). Seuls les oiseaux et le grand « WAB. » du pied de page restent en pixel art. Le centre du premier écran reste parfaitement net. Toutes les fonctions avancées sont des bonus : sans JavaScript, au doigt ou au lecteur d'écran, le site reste entier.

@@ -1,10 +1,12 @@
 /* ============================================
    WAB OS — About : le conseil
-   À gauche, la note : le texte du conseil dans une fenêtre Notes, un
-   passage surligné, le curseur rose, puis le bouton. À droite, le
-   parcours dans une fenêtre sombre — le seul aplat foncé de la page,
-   qui donne le rythme. La fenêtre sombre redéfinit sa gamme pour
-   elle et ses enfants (--ink, --ink-muted, --line, --accent) : aucun
+   À gauche, la note : le texte du conseil dans une fenêtre Notes,
+   légèrement inclinée comme une carte posée (.win--tilt), un passage
+   surligné en Klein, le curseur bleu, puis le bouton. À
+   droite, le parcours dans une fenêtre sombre — le seul aplat foncé
+   de la page, qui donne le rythme — dont la première ligne, le prix,
+   est un écran Klein à scanlines (.on-klein). Chaque surface
+   redéfinit sa gamme (--ink, --ink-muted, --line, --accent) : aucun
    élément intérieur ne connaît la couleur de son fond.
    ============================================ */
 
@@ -34,9 +36,9 @@
 
 .ab-note mark {
     padding: 1px 3px;
-    border-radius: 4px;
+    border-radius: var(--r-px);
     background: var(--mark);
-    color: var(--ink);
+    color: var(--on-accent);
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
 }
@@ -47,7 +49,7 @@
     height: 1.1em;
     margin-left: 3px;
     vertical-align: -0.2em;
-    background: var(--pink);
+    background: var(--klein);
     animation: ab-caret 1.1s steps(1) infinite;
 }
 
@@ -61,18 +63,14 @@
 .ab-dark {
     --ink: var(--term-ink);
     --ink-muted: var(--term-muted);
-    --line: rgba(236, 235, 239, 0.12);
+    --line: color-mix(in oklch, var(--term-ink) 12%, transparent);
     --accent: var(--term-accent);
     --win-bg: var(--term-bg);
-    --win-edge: rgba(255, 255, 255, 0.08);
-    --win-bar: linear-gradient(180deg, #24232a, #1a191e);
-    --glass-edge: rgba(0, 0, 0, 0.5);
-    --glass-rim: rgba(255, 255, 255, 0.08);
+    --win-edge: color-mix(in oklch, var(--term-ink) 8%, transparent);
+    --win-bar: color-mix(in oklch, var(--term-bg), var(--term-ink) 7%);
+    --win-bar-ink: var(--term-muted);
     color: var(--ink);
-}
-
-.ab-dark .win__bar::before {
-    opacity: 0.06;
+    box-shadow: 0 0 0 var(--hair) var(--win-edge), var(--win-shadow), var(--sheet);
 }
 
 .ab-dark .win__title {
@@ -101,17 +99,19 @@
     place-items: center;
     width: 36px;
     height: 36px;
-    border-radius: 10px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 0 0 1px var(--line);
+    border-radius: var(--r-ctl);
+    background: color-mix(in oklch, var(--ink) 9%, transparent);
+    box-shadow: inset 0 1px 0 color-mix(in oklch, var(--ink) 14%, transparent), 0 0 0 1px var(--line);
     color: var(--ink);
 }
 
-/* Le repère de chaque ligne, dans le rose clair du terminal (9,6:1
-   sur le fond) : au téléphone, la note reste la seule ligne grise. */
+/* Le repère de chaque ligne, en Sligoil, dans le bleu clair du
+   terminal (--klein-soft) ; blanc sur l'écran Klein. Au téléphone,
+   la note reste la seule ligne grise. */
 .ab-fact__label {
+    font-family: var(--font-mono);
     font-size: var(--t-cap);
-    letter-spacing: 0.06em;
+    letter-spacing: var(--track-caps);
     text-transform: uppercase;
     color: var(--accent);
 }
@@ -128,6 +128,13 @@
     line-height: 1.55;
     color: var(--ink-muted);
     text-wrap: pretty;
+}
+
+/* Le prix : un écran Klein à scanlines en tête de la fenêtre sombre,
+   texte blanc (8,5:1), une arête bleu nuit pour le poser. */
+.ab-fact--prize {
+    background: var(--klein-screen);
+    box-shadow: inset 0 -1px 0 var(--klein-deep);
 }
 
 /* Le prix : le chiffre le plus fort de la page, et le seul en grand.

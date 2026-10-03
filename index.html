@@ -6,15 +6,15 @@
     <!-- Avant tout rendu : signale au CSS que JavaScript est disponible. -->
     <script>document.documentElement.classList.replace('no-js', 'js');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#f5f4f5">
+    <meta name="theme-color" content="#ffffff">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
     <!-- Favicon & icônes d'application -->
-    <link rel="icon" href="/favicon.ico?v=2" sizes="32x32">
-    <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" href="/favicon.ico?v=3" sizes="32x32">
+    <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+    <link rel="manifest" href="/site.webmanifest?v=2">
     <title>Agence Web Lausanne — Création de Site Internet | WeAreBrothers</title>
     <meta name="description"
         content="Agence web à Lausanne : création de site internet sur mesure et applications de gestion pour les entreprises de l'arc lémanique. Deux frères, réponse sous 24 h.">
@@ -30,7 +30,7 @@
     <meta property="og:title" content="Agence Web Lausanne — Création de Site Internet | WeAreBrothers">
     <meta property="og:description" content="Agence web à Lausanne : sites internet sur mesure et applications de gestion pour les entreprises de l'arc lémanique.">
     <meta property="og:url" content="https://wearebrothers.ch/">
-    <meta property="og:image" content="https://wearebrothers.ch/assets/og-image.jpg">
+    <meta property="og:image" content="https://wearebrothers.ch/assets/og-image.jpg?v=2">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="fr_CH">
@@ -40,7 +40,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Agence Web Lausanne — Création de Site Internet | WeAreBrothers">
     <meta name="twitter:description" content="Agence web à Lausanne : sites internet sur mesure et applications de gestion pour les entreprises de l'arc lémanique.">
-    <meta name="twitter:image" content="https://wearebrothers.ch/assets/og-image.jpg">
+    <meta name="twitter:image" content="https://wearebrothers.ch/assets/og-image.jpg?v=2">
 
     <!-- Données structurées (JSON-LD) — studio, site, fondateurs + page.
          Les questions fréquentes vivent désormais sur /studio, où elles
@@ -65,7 +65,7 @@
                 "slogan": "Des expériences qui restent dans la mémoire",
                 "url": "https://wearebrothers.ch/",
                 "email": "contact@wearebrothers.ch",
-                "image": "https://wearebrothers.ch/assets/og-image.jpg",
+                "image": "https://wearebrothers.ch/assets/og-image.jpg?v=2",
                 "logo": {
                     "@type": "ImageObject",
                     "url": "https://wearebrothers.ch/assets/icon-512.png",
@@ -323,7 +323,7 @@
                 "about": {
                     "@id": "https://wearebrothers.ch/#organization"
                 },
-                "primaryImageOfPage": "https://wearebrothers.ch/assets/og-image.jpg",
+                "primaryImageOfPage": "https://wearebrothers.ch/assets/og-image.jpg?v=2",
                 "inLanguage": "fr-CH"
             },
             {
@@ -342,51 +342,53 @@
     }
     </script>
 
-    <!-- Police — Sligoil seule, servie depuis le site -->
-    <link rel="preload" href="assets/fonts/Sligoil-Micro.woff2" as="font" type="font/woff2" crossorigin>
-
-    <link rel="preload" href="assets/fonts/Sligoil-MicroBold.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- Polices servies depuis le site : Instrument Sans (texte et
+         titres), Sligoil en signature (chargée à la demande). -->
+    <link rel="preload" href="assets/fonts/InstrumentSans-Var.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Styles — le socle commun, puis les feuilles de l'accueil bureau -->
-    <link rel="stylesheet" href="css/base.css?v=33">
-    <link rel="stylesheet" href="css/nav-panel.css?v=1">
-    <link rel="stylesheet" href="css/contact-modal.css?v=7">
-    <link rel="stylesheet" href="css/contact-form.css?v=3">
+    <link rel="stylesheet" href="css/base.css?v=34">
+    <link rel="stylesheet" href="css/base-ui.css?v=1">
+    <link rel="stylesheet" href="css/nav-panel.css?v=2">
+    <link rel="stylesheet" href="css/contact-modal.css?v=8">
+    <link rel="stylesheet" href="css/contact-form.css?v=4">
     <!-- WAB OS : composants partagés par toutes les pages (OS-COMPONENTS.md) -->
-    <link rel="stylesheet" href="css/os-tokens.css?v=3">
-    <link rel="stylesheet" href="css/os-base.css?v=2">
-    <link rel="stylesheet" href="css/os-sky.css?v=2">
-    <link rel="stylesheet" href="css/sym.css?v=3">
-    <link rel="stylesheet" href="css/glass-btn.css?v=3">
-    <link rel="stylesheet" href="css/os-bar.css?v=2">
-    <link rel="stylesheet" href="css/os-window.css?v=2">
-    <link rel="stylesheet" href="css/os-bubbles.css?v=1">
-    <link rel="stylesheet" href="css/os-footer.css?v=2">
-    <link rel="stylesheet" href="css/os-dock.css?v=3">
+    <link rel="stylesheet" href="css/os-tokens.css?v=4">
+    <link rel="stylesheet" href="css/os-base.css?v=3">
+    <link rel="stylesheet" href="css/os-sky.css?v=3">
+    <link rel="stylesheet" href="css/sym.css?v=4">
+    <link rel="stylesheet" href="css/key-btn.css?v=1">
+    <link rel="stylesheet" href="css/os-bar.css?v=3">
+    <link rel="stylesheet" href="css/os-window.css?v=3">
+    <link rel="stylesheet" href="css/os-bubbles.css?v=2">
+    <link rel="stylesheet" href="css/os-footer.css?v=3">
+    <link rel="stylesheet" href="css/os-dock.css?v=4">
     <link rel="stylesheet" href="css/os-overlay.css?v=3">
-    <link rel="stylesheet" href="css/os-sticker.css?v=1">
+    <link rel="stylesheet" href="css/os-sticker.css?v=2">
     <!-- Accueil -->
-    <link rel="stylesheet" href="css/desk-objects.css?v=6">
-    <link rel="stylesheet" href="css/desk-hero.css?v=5">
+    <link rel="stylesheet" href="css/desk-objects.css?v=7">
+    <link rel="stylesheet" href="css/desk-hero.css?v=6">
+    <link rel="stylesheet" href="css/desk-showcase.css?v=1">
     <link rel="stylesheet" href="css/desk-scatter.css?v=5">
     <link rel="stylesheet" href="css/desk-scatter-wide.css?v=5">
-    <link rel="stylesheet" href="css/desk-blocks.css?v=5">
-    <link rel="stylesheet" href="css/desk-chat.css?v=3">
-    <link rel="stylesheet" href="css/desk-auto.css?v=2">
-    <link rel="stylesheet" href="css/desk-letter.css?v=5">
-    <link rel="stylesheet" href="css/desk-wall.css?v=3">
-    <link rel="stylesheet" href="css/desk-plans.css?v=2">
-    <link rel="stylesheet" href="css/desk-faq.css?v=3">
+    <link rel="stylesheet" href="css/desk-blocks.css?v=6">
+    <link rel="stylesheet" href="css/desk-chat.css?v=4">
+    <link rel="stylesheet" href="css/desk-auto.css?v=3">
+    <link rel="stylesheet" href="css/desk-letter.css?v=6">
+    <link rel="stylesheet" href="css/desk-wall.css?v=4">
+    <link rel="stylesheet" href="css/desk-plans.css?v=3">
+    <link rel="stylesheet" href="css/desk-faq.css?v=4">
+    <link rel="stylesheet" href="css/desk-floaters.css?v=1">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
     <script src="js/reveal.js?v=4" defer></script>
-    <script type="module" src="js/birds/index.js?v=8"></script>
-    <script type="module" src="js/birds/perch.js?v=8"></script>
-    <script type="module" src="js/contact/index.js?v=10"></script>
-    <script type="module" src="js/os/index.js?v=2"></script>
-    <script type="module" src="js/desk/index.js?v=6"></script>
+    <script type="module" src="js/birds/index.js?v=9"></script>
+    <script type="module" src="js/birds/perch.js?v=9"></script>
+    <script type="module" src="js/contact/index.js?v=11"></script>
+    <script type="module" src="js/os/index.js?v=3"></script>
+    <script type="module" src="js/desk/index.js?v=7"></script>
 </head>
 
 <body class="os desk" data-birds="rare">
@@ -418,7 +420,7 @@
                     <span class="menubar__sky" aria-hidden="true"><span class="sym sym--sun" aria-hidden="true"></span><span class="sym sym--moon" aria-hidden="true"></span></span>
                     <span class="menubar__status" data-local-status hidden></span>
                     <time class="menubar__time" data-local-time>--:--</time>
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="menubar__cta glass-btn glass-btn--pink glass-btn--sm">Contact</a>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="menubar__cta key-btn key-btn--klein key-btn--sm">Contact</a>
                     <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
                         <span class="topbar__dots" aria-hidden="true">
                             <span></span><span></span><span></span><span></span>
@@ -455,15 +457,15 @@
     <main>
 
         <!-- LE BUREAU — le centre net, le désordre autour. -->
-        <section class="hero" id="studio-intro" tabindex="-1" aria-labelledby="heroTitle">
+        <section class="hero on-klein" id="studio-intro" tabindex="-1" aria-labelledby="heroTitle">
             <div class="hero__center">
                 <!-- « agence web » et « site internet » à Lausanne restent
                      dans le H1, lus par Google et la navigation vocale. -->
                 <h1 class="hero__title" id="heroTitle"><span translate="no">WAB.</span><span class="sr-only"> WeAreBrothers, agence web et création de site internet à Lausanne.</span></h1>
                 <p class="hero__lede">Design d'interface et de système sur mesure.</p>
                 <div class="hero__actions">
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="glass-btn glass-btn--pink">Démarrer un projet</a>
-                    <a href="/realisations" class="glass-btn">Voir le travail</a>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein">Démarrer un projet</a>
+                    <a href="/realisations" class="key-btn">Voir le travail</a>
                 </div>
                 <p class="hero__note">Réponse sous 24&nbsp;h, Lausanne</p>
             </div>
@@ -502,18 +504,18 @@
                     <span class="file-name">nadegemouine.ch</span>
                 </a>
                 <a href="/realisations" class="scat scat--folder icon" data-desk-icon data-app="work">
-                    <img class="app-icon" src="assets/icons/app-work.svg?v=3" alt="" width="56" height="56">
+                    <img class="app-icon" src="assets/icons/app-work.svg?v=4" alt="" width="56" height="56">
                     <span class="icon__name">Work</span>
                 </a>
                 <button type="button" class="scat scat--trash icon" data-desk-icon data-app="trash" data-js-only>
-                    <img class="app-icon" src="assets/icons/app-trash.svg?v=3" alt="" width="56" height="56">
+                    <img class="app-icon" src="assets/icons/app-trash.svg?v=4" alt="" width="56" height="56">
                     <span class="icon__name">Corbeille</span>
                 </button>
             </div>
 
             <!-- LA VITRINE — les projets défilent dans la grande fenêtre. -->
             <figure class="showcase" data-showcase>
-                <div class="win showcase__win">
+                <div class="win win--framed showcase__win">
                     <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--file" aria-hidden="true"></span><span data-showcase-title>Zinéma</span></span></div>
                     <div class="win__body showcase__stage">
                         <div class="showcase__slide is-current" data-slide data-name="Zinéma" data-domain="zinema.ch"><img src="assets/images/shot-zinema-1600.webp" srcset="assets/images/shot-zinema-800.webp 800w, assets/images/shot-zinema-1600.webp 1600w" sizes="(min-width: 920px) 860px, calc(100vw - 32px)" alt="Page d'accueil du Zinéma, cinéma d'art et essai à Lausanne : un mur d'affiches de films" width="1600" height="1000" fetchpriority="high" decoding="async"></div>
@@ -537,7 +539,8 @@
         <!-- SERVICES — quatre apps en quinconce, chaque fenêtre posée dans
              son écran. Textes de /services ; les bulles sont une mise en
              scène (pas des témoignages), masquées aux lecteurs d'écran. -->
-        <section class="desk-wrap block" id="services" aria-labelledby="servicesTitle">
+        <section class="desk-wrap block has-floaters" id="services" aria-labelledby="servicesTitle">
+            <div class="floaters" aria-hidden="true"><img class="floater floater--l floater--top" src="assets/objects/obj-window.svg" alt="" width="160" height="160" loading="lazy" decoding="async"><img class="floater floater--r floater--mid" src="assets/objects/obj-pencil.svg" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
             <div class="section-head reveal">
                 <p class="badge">Services</p>
                 <h2 class="section-title" id="servicesTitle">Du site internet aux outils qui font tourner votre entreprise.</h2>
@@ -607,7 +610,7 @@
         <section class="block letter-wrap" id="lettre" aria-labelledby="letterTitle">
             <div class="letter-zone">
                 <h2 class="badge reveal" id="letterTitle">Le studio</h2>
-                <article class="win letter reveal">
+                <article class="win win--framed letter reveal">
                     <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--notes" aria-hidden="true"></span>Notes</span></div>
                     <div class="letter__body">
                         <p>Bonjour,</p>
@@ -697,13 +700,14 @@
             </div>
         </section>
 
-        <!-- LE CIEL — trois façons de travailler avec nous, sur le ciel rose
-             du site, en trois paliers (prix donnés par Eliott le 3.10) :
+        <!-- LES OFFRES — trois façons de travailler avec nous, sur une bande
+             gris chaud, en trois paliers (prix donnés par Eliott le 3.10) :
              site vitrine, site et outils, expérience sur mesure. -->
-        <section class="plans" id="offres" aria-labelledby="plansTitle">
+        <section class="plans has-floaters" id="offres" aria-labelledby="plansTitle">
+            <div class="floaters" aria-hidden="true"><img class="floater floater--l floater--top" src="assets/objects/obj-card.svg" alt="" width="160" height="160" loading="lazy" decoding="async"><img class="floater floater--r floater--mid" src="assets/objects/obj-tee.svg" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
             <div class="desk-wrap">
                 <div class="section-head">
-                    <p class="badge badge--glass">Services</p>
+                    <p class="badge">Services</p>
                     <h2 class="plans__title" id="plansTitle">Trois façons de travailler avec nous.</h2>
                     <p class="plans__lede">Le prix suit le périmètre&nbsp;: nous le définissons ensemble après un premier échange.</p>
                 </div>
@@ -718,7 +722,7 @@
                                 <div class="plan__price">
                                     <p class="plan__amount">1&#x27;000 – 2&#x27;500&nbsp;CHF</p>
                                     <p class="plan__note">Pour un simple site vitrine</p>
-                                    <a href="mailto:contact@wearebrothers.ch" data-contact class="glass-btn">Parlons-en</a>
+                                    <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn">Parlons-en</a>
                                 </div>
                                 <p class="plan__inc">Inclus</p>
                                 <ul class="plan__list"><li>Codé à la main, sans WordPress ni Wix</li><li>Dessiné pour le téléphone d’abord</li><li>Pensé pour Google et le référencement local</li><li>Hébergé en Suisse chez Infomaniak, inclus</li><li>Le domaine, le code et les contenus vous appartiennent</li></ul>
@@ -735,7 +739,7 @@
                                 <div class="plan__price">
                                     <p class="plan__amount">2&#x27;500 – 7&#x27;000&nbsp;CHF</p>
                                     <p class="plan__note">Avec outil de gestion, e-commerce et options</p>
-                                    <a href="mailto:contact@wearebrothers.ch" data-contact class="glass-btn glass-btn--pink">Parlons-en</a>
+                                    <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein">Parlons-en</a>
                                 </div>
                                 <p class="plan__inc">Inclus</p>
                                 <ul class="plan__list"><li>Tout ce que comprend le site vitrine</li><li>Un outil de gestion dessiné autour de votre métier</li><li>Une boutique en ligne, en option</li><li>Caisse, CMS, boutique&nbsp;: vous gérez seul</li><li>Automatisations et IA, là où elles font gagner du temps</li></ul>
@@ -752,7 +756,7 @@
                                 <div class="plan__price">
                                     <p class="plan__amount">Dès 7&#x27;000&nbsp;CHF</p>
                                     <p class="plan__note">Sur devis, après un premier échange</p>
-                                    <a href="mailto:contact@wearebrothers.ch" data-contact class="glass-btn">Parlons-en</a>
+                                    <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn">Parlons-en</a>
                                 </div>
                                 <p class="plan__inc">Inclus</p>
                                 <ul class="plan__list"><li>Refonte de marque&nbsp;: logo et identité visuelle</li><li>Direction artistique et motion design</li><li>Un site qui ne ressemble à aucun autre</li><li>Cartes de visite et imprimés</li><li>Des pièces avec Memories Store</li></ul>
@@ -767,7 +771,7 @@
                             <p class="term-card__cmd">&gt; contact<span class="term-card__caret" aria-hidden="true"></span></p>
                             <p class="term-card__text">Écrivez-nous, réponse sous 24&nbsp;h ouvrées. Sans engagement.</p>
                         </div>
-                        <a href="mailto:contact@wearebrothers.ch" data-contact class="glass-btn">Écrire au studio</a>
+                        <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn">Écrire au studio</a>
                     </div>
                 </div>
             </div>
@@ -821,7 +825,7 @@
 
     </main>
 
-    <footer class="foot">
+    <footer class="foot on-klein">
         <div class="desk-wrap">
             <div class="foot__cols">
                 <nav class="foot__col" aria-label="Pages">
@@ -842,9 +846,14 @@
                 </div>
                 <p class="foot__note">Codé à la main à Lausanne, oiseaux compris.</p>
             </div>
+        </div>
+        <!-- Le bandeau : les projets en ligne, en boucle (décor : la
+             liste réelle vit sur /realisations). -->
+        <div class="foot__ticker" aria-hidden="true" translate="no"><ul class="foot__track"><li>Zinéma</li><li>Le P’tit Central</li><li>Amarte Studio</li><li>La Slack</li><li>Nadège Mouine</li><li>Commissione Entretien</li><li>LAZIZZE DJ</li><li>Maison Alliani</li><li>LE MEMO</li></ul><ul class="foot__track"><li>Zinéma</li><li>Le P’tit Central</li><li>Amarte Studio</li><li>La Slack</li><li>Nadège Mouine</li><li>Commissione Entretien</li><li>LAZIZZE DJ</li><li>Maison Alliani</li><li>LE MEMO</li></ul></div>
+        <div class="desk-wrap">
             <svg class="pixel-name" data-watch="once" viewBox="-1 -1 202 72" role="img" aria-label="WAB.">
                 <defs>
-                    <symbol id="wab-px" viewBox="0 0 10 10" width="10" height="10" overflow="visible"><rect class="px__edge" x="0.5" y="1.6" width="9" height="9" rx="0.6"/><rect class="px__body" x="0.5" y="0.5" width="9" height="9" rx="0.6"/></symbol>
+                    <symbol id="wab-px" viewBox="0 0 10 10" width="10" height="10" overflow="visible"><rect class="px__line" x="-0.1" y="0.6" width="10.2" height="1.9"/><rect class="px__line" x="-0.1" y="3.9" width="10.2" height="1.9"/><rect class="px__line" x="-0.1" y="7.2" width="10.2" height="1.9"/></symbol>
                 </defs>
                 <use class="px" href="#wab-px" x="0" y="0"/>
                 <use class="px" href="#wab-px" x="40" y="0"/>
@@ -917,12 +926,12 @@
          range pendant la lecture et revient quand on remonte. -->
     <nav class="dock" aria-label="Dock" data-dock>
         <ul class="dock__apps">
-            <li><a class="dock__item" href="/realisations" data-app="work"><img class="app-icon" src="assets/icons/app-work.svg?v=3" alt="" width="48" height="48"><span class="dock__label">Work</span></a></li>
-            <li><a class="dock__item" href="#services" data-app="services"><img class="app-icon" src="assets/icons/app-services.svg?v=3" alt="" width="48" height="48"><span class="dock__label">Services</span></a></li>
-            <li><a class="dock__item" href="/studio" data-app="about"><img class="app-icon" src="assets/icons/app-about.svg?v=3" alt="" width="48" height="48"><span class="dock__label">About</span></a></li>
-            <li><a class="dock__item" href="#lettre" data-app="notes"><img class="app-icon" src="assets/icons/app-notes.svg?v=3" alt="" width="48" height="48"><span class="dock__label">Lettre</span></a></li>
-            <li><button class="dock__item" type="button" data-app="terminal" data-js-only><img class="app-icon" src="assets/icons/app-terminal.svg?v=3" alt="" width="48" height="48"><span class="dock__label">Terminal</span></button></li>
-            <li><a class="dock__item" href="mailto:contact@wearebrothers.ch" data-contact data-app="contact"><img class="app-icon" src="assets/icons/app-mail.svg?v=3" alt="" width="48" height="48"><span class="dock__label">Contact</span></a></li>
+            <li><a class="dock__item" href="/realisations" data-app="work"><img class="app-icon" src="assets/icons/app-work.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Work</span></a></li>
+            <li><a class="dock__item" href="#services" data-app="services"><img class="app-icon" src="assets/icons/app-services.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Services</span></a></li>
+            <li><a class="dock__item" href="/studio" data-app="about"><img class="app-icon" src="assets/icons/app-about.svg?v=4" alt="" width="48" height="48"><span class="dock__label">About</span></a></li>
+            <li><a class="dock__item" href="#lettre" data-app="notes"><img class="app-icon" src="assets/icons/app-notes.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Lettre</span></a></li>
+            <li><button class="dock__item" type="button" data-app="terminal" data-js-only><img class="app-icon" src="assets/icons/app-terminal.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Terminal</span></button></li>
+            <li><a class="dock__item" href="mailto:contact@wearebrothers.ch" data-contact data-app="contact"><img class="app-icon" src="assets/icons/app-mail.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Contact</span></a></li>
         </ul>
         <ul class="dock__shelf" data-dock-shelf aria-label="Fenêtres réduites" hidden></ul>
     </nav>

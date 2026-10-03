@@ -5,8 +5,8 @@
  * la main, sans WordPress ni Wix (voir les services du studio).
  */
 
-import { openWindow } from './wm.js?v=1';
-import { el, appIcon, keyLink } from './dom.js?v=2';
+import { openWindow } from './wm.js?v=2';
+import { el, appIcon, keyLink } from './dom.js?v=3';
 
 /** @param {HTMLElement | null} opener */
 export function openTrash(opener) {

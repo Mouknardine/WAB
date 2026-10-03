@@ -69,7 +69,7 @@ export function showState(body, message, actions = []) {
  * @param {string} [modifier]
  */
 export function keyLink(label, href, modifier = '') {
-    const link = el('a', `glass-btn glass-btn--sm ${modifier}`.trim(), label);
+    const link = el('a', `key-btn key-btn--sm ${modifier}`.trim(), label);
     link.href = href;
     return link;
 }

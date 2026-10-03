@@ -7,15 +7,15 @@
          Sans lui, les sections à apparition restent visibles d'emblée. -->
     <script>document.documentElement.classList.replace('no-js', 'js');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#FFE4F0">
+    <meta name="theme-color" content="#ffffff">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
     <!-- Favicon & icônes d'application -->
-    <link rel="icon" href="/favicon.ico?v=2" sizes="32x32">
-    <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" href="/favicon.ico?v=3" sizes="32x32">
+    <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+    <link rel="manifest" href="/site.webmanifest?v=2">
     <title>Logiciel &amp; Application Web Sur Mesure — Lausanne | WeAreBrothers</title>
     <meta name="description"
         content="Logiciels et applications web sur mesure à Lausanne : outils de gestion pour les PME de l'arc lémanique (projets, temps, facturation). Devis sous 24 h ouvrées.">
@@ -31,7 +31,7 @@
     <meta property="og:title" content="Logiciel &amp; application web sur mesure — WeAreBrothers, Lausanne">
     <meta property="og:description" content="Applications web de gestion sur mesure pour les PME de Suisse romande, dessinées à partir du métier de chaque entreprise.">
     <meta property="og:url" content="https://wearebrothers.ch/applications">
-    <meta property="og:image" content="https://wearebrothers.ch/assets/og-image.jpg">
+    <meta property="og:image" content="https://wearebrothers.ch/assets/og-image.jpg?v=2">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="fr_CH">
@@ -41,7 +41,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Logiciel &amp; application web sur mesure — WeAreBrothers, Lausanne">
     <meta name="twitter:description" content="Applications web de gestion sur mesure pour les PME de Suisse romande, dessinées à partir du métier de chaque entreprise.">
-    <meta name="twitter:image" content="https://wearebrothers.ch/assets/og-image.jpg">
+    <meta name="twitter:image" content="https://wearebrothers.ch/assets/og-image.jpg?v=2">
 
     <!-- Données structurées (JSON-LD) — page, service, fil d'Ariane -->
     <script type="application/ld+json">
@@ -90,47 +90,48 @@
     }
     </script>
 
-    <!-- Police — Sligoil seule, servie depuis le site -->
-    <link rel="preload" href="assets/fonts/Sligoil-Micro.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="assets/fonts/Sligoil-MicroBold.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- Polices servies depuis le site : Instrument Sans (texte et
+         titres), Sligoil en signature (chargée à la demande). -->
+    <link rel="preload" href="assets/fonts/InstrumentSans-Var.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Styles — le socle commun, les pièces partagées de WAB OS, puis
          les feuilles de la page (page-apps-*). -->
-    <link rel="stylesheet" href="css/base.css?v=33">
-    <link rel="stylesheet" href="css/nav-panel.css?v=1">
-    <link rel="stylesheet" href="css/contact-modal.css?v=7">
-    <link rel="stylesheet" href="css/contact-form.css?v=3">
-    <link rel="stylesheet" href="css/os-tokens.css?v=3">
-    <link rel="stylesheet" href="css/os-base.css?v=2">
-    <link rel="stylesheet" href="css/os-sky.css?v=2">
-    <link rel="stylesheet" href="css/sym.css?v=3">
-    <link rel="stylesheet" href="css/glass-btn.css?v=3">
-    <link rel="stylesheet" href="css/os-bar.css?v=2">
-    <link rel="stylesheet" href="css/os-window.css?v=2">
-    <link rel="stylesheet" href="css/os-bubbles.css?v=1">
-    <link rel="stylesheet" href="css/os-footer.css?v=2">
+    <link rel="stylesheet" href="css/base.css?v=34">
+    <link rel="stylesheet" href="css/base-ui.css?v=1">
+    <link rel="stylesheet" href="css/nav-panel.css?v=2">
+    <link rel="stylesheet" href="css/contact-modal.css?v=8">
+    <link rel="stylesheet" href="css/contact-form.css?v=4">
+    <link rel="stylesheet" href="css/os-tokens.css?v=4">
+    <link rel="stylesheet" href="css/os-base.css?v=3">
+    <link rel="stylesheet" href="css/os-sky.css?v=3">
+    <link rel="stylesheet" href="css/sym.css?v=4">
+    <link rel="stylesheet" href="css/key-btn.css?v=1">
+    <link rel="stylesheet" href="css/os-bar.css?v=3">
+    <link rel="stylesheet" href="css/os-window.css?v=3">
+    <link rel="stylesheet" href="css/os-bubbles.css?v=2">
+    <link rel="stylesheet" href="css/os-footer.css?v=3">
     <link rel="stylesheet" href="css/os-overlay.css?v=3">
-    <link rel="stylesheet" href="css/os-sticker.css?v=1">
+    <link rel="stylesheet" href="css/os-sticker.css?v=2">
     <!-- Pièces de l'accueil réemployées : autocollant et icônes, blocs
          en quinconce et frappe, questions en accordéon. -->
-    <link rel="stylesheet" href="css/desk-objects.css?v=6">
-    <link rel="stylesheet" href="css/desk-blocks.css?v=5">
-    <link rel="stylesheet" href="css/desk-chat.css?v=3">
-    <link rel="stylesheet" href="css/desk-faq.css?v=3">
-    <link rel="stylesheet" href="css/page-apps-tokens.css?v=1">
-    <link rel="stylesheet" href="css/page-apps-hero.css?v=2">
-    <link rel="stylesheet" href="css/page-apps-window.css?v=1">
-    <link rel="stylesheet" href="css/page-apps-sections.css?v=2">
+    <link rel="stylesheet" href="css/desk-objects.css?v=7">
+    <link rel="stylesheet" href="css/desk-blocks.css?v=6">
+    <link rel="stylesheet" href="css/desk-chat.css?v=4">
+    <link rel="stylesheet" href="css/desk-faq.css?v=4">
+    <link rel="stylesheet" href="css/page-apps-tokens.css?v=2">
+    <link rel="stylesheet" href="css/page-apps-hero.css?v=3">
+    <link rel="stylesheet" href="css/page-apps-window.css?v=2">
+    <link rel="stylesheet" href="css/page-apps-sections.css?v=3">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
     <script src="js/reveal.js?v=4" defer></script>
-    <script type="module" src="js/birds/index.js?v=8"></script>
-    <script type="module" src="js/birds/perch.js?v=8"></script>
-    <script type="module" src="js/contact/index.js?v=10"></script>
-    <script type="module" src="js/os/index.js?v=2"></script>
-    <script type="module" src="js/page-apps/index.js?v=1"></script>
+    <script type="module" src="js/birds/index.js?v=9"></script>
+    <script type="module" src="js/birds/perch.js?v=9"></script>
+    <script type="module" src="js/contact/index.js?v=11"></script>
+    <script type="module" src="js/os/index.js?v=3"></script>
+    <script type="module" src="js/page-apps/index.js?v=2"></script>
 </head>
 
 <body class="os page-apps" data-birds="rare">
@@ -161,7 +162,7 @@
                     <span class="menubar__sky" aria-hidden="true"><span class="sym sym--sun" aria-hidden="true"></span><span class="sym sym--moon" aria-hidden="true"></span></span>
                     <span class="menubar__status" data-local-status hidden></span>
                     <time class="menubar__time" data-local-time>--:--</time>
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="menubar__cta glass-btn glass-btn--pink glass-btn--sm">Contact</a>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="menubar__cta key-btn key-btn--klein key-btn--sm">Contact</a>
                     <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
                         <span class="topbar__dots" aria-hidden="true">
                             <span></span><span></span><span></span><span></span>
@@ -207,8 +208,8 @@
                 <h1 class="app-hero__title" id="appTitle">Un logiciel sur mesure, construit sur votre façon de travailler</h1>
                 <p class="app-hero__lede">Nous développons des applications web de gestion pour les PME et les indépendants de l'arc lémanique — Lausanne, Morges, Nyon, Vevey, Genève. Chaque outil est dessiné à partir du métier de l'entreprise qui l'utilise.</p>
                 <div class="app-hero__actions">
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="glass-btn glass-btn--pink">Démarrer un projet</a>
-                    <a href="#exemple" class="glass-btn">Parcourir l'exemple</a>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein">Démarrer un projet</a>
+                    <a href="#exemple" class="key-btn">Parcourir l'exemple</a>
                 </div>
                 <p class="app-hero__note">Devis sous 24&nbsp;h ouvrées</p>
             </div>
@@ -216,7 +217,7 @@
             <!-- Le désordre en bordure : décor, masqué aux lecteurs d'écran. -->
             <div class="app-hero__edge" aria-hidden="true">
                 <span class="app-edge app-edge--sticker"><span class="sticker"><span class="sticker__hello">HELLO</span><span class="sticker__mine">my name is</span><span class="sticker__name">Agenda</span></span></span>
-                <span class="app-edge app-edge--file icon"><img class="app-icon" src="assets/icons/app-file.svg?v=3" alt="" width="56" height="56"><span class="icon__name">tableur.xlsx</span></span>
+                <span class="app-edge app-edge--file icon"><img class="app-icon" src="assets/icons/app-file.svg?v=4" alt="" width="56" height="56"><span class="icon__name">tableur.xlsx</span></span>
             </div>
 
             <figure class="app-stage" aria-label="L'application de gestion, à parcourir module par module">
@@ -318,12 +319,12 @@
             </div>
         </section>
 
-        <!-- L'APPROCHE — cinq principes, en cartes de verre sur le ciel
-             rose du site. -->
+        <!-- L'APPROCHE — cinq principes, en cartes blanches sur une bande
+             de gris chaud. -->
         <section class="app-sky" id="approche" aria-labelledby="approcheTitle">
             <div class="desk-wrap">
                 <div class="section-head reveal">
-                    <p class="badge badge--glass">Approche</p>
+                    <p class="badge">Approche</p>
                     <h2 class="section-title" id="approcheTitle">Notre approche du développement sur mesure</h2>
                 </div>
                 <ul class="app-ways reveal">
@@ -392,15 +393,15 @@
                 <h2 class="app-end__title" id="endTitle">Un outil qui colle à votre métier&nbsp;?</h2>
                 <p class="app-end__lede">Décrivez-nous votre fonctionnement actuel. Nous vous dirons franchement si un développement sur mesure se justifie, ou si un outil existant suffit.</p>
                 <div class="app-end__actions">
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="glass-btn glass-btn--pink">Démarrer un projet</a>
-                    <a href="mailto:contact@wearebrothers.ch" class="glass-btn">Écrire un email</a>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein">Démarrer un projet</a>
+                    <a href="mailto:contact@wearebrothers.ch" class="key-btn">Écrire un email</a>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="foot">
+    <footer class="foot on-klein">
         <div class="desk-wrap">
             <div class="foot__cols">
                 <nav class="foot__col" aria-label="Pages">
@@ -421,9 +422,14 @@
                 </div>
                 <p class="foot__note">Codé à la main à Lausanne, oiseaux compris.</p>
             </div>
+        </div>
+        <!-- Le bandeau : les projets en ligne, en boucle (décor : la
+             liste réelle vit sur /realisations). -->
+        <div class="foot__ticker" aria-hidden="true" translate="no"><ul class="foot__track"><li>Zinéma</li><li>Le P’tit Central</li><li>Amarte Studio</li><li>La Slack</li><li>Nadège Mouine</li><li>Commissione Entretien</li><li>LAZIZZE DJ</li><li>Maison Alliani</li><li>LE MEMO</li></ul><ul class="foot__track"><li>Zinéma</li><li>Le P’tit Central</li><li>Amarte Studio</li><li>La Slack</li><li>Nadège Mouine</li><li>Commissione Entretien</li><li>LAZIZZE DJ</li><li>Maison Alliani</li><li>LE MEMO</li></ul></div>
+        <div class="desk-wrap">
             <svg class="pixel-name" data-watch="once" viewBox="-1 -1 202 72" role="img" aria-label="WAB.">
                 <defs>
-                    <symbol id="wab-px" viewBox="0 0 10 10" width="10" height="10" overflow="visible"><rect class="px__edge" x="0.5" y="1.6" width="9" height="9" rx="0.6"/><rect class="px__body" x="0.5" y="0.5" width="9" height="9" rx="0.6"/></symbol>
+                    <symbol id="wab-px" viewBox="0 0 10 10" width="10" height="10" overflow="visible"><rect class="px__line" x="-0.1" y="0.6" width="10.2" height="1.9"/><rect class="px__line" x="-0.1" y="3.9" width="10.2" height="1.9"/><rect class="px__line" x="-0.1" y="7.2" width="10.2" height="1.9"/></symbol>
                 </defs>
                 <use class="px" href="#wab-px" x="0" y="0"/>
                 <use class="px" href="#wab-px" x="40" y="0"/>

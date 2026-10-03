@@ -11,7 +11,7 @@
 
 import { buildFrame } from './wm-frame.js?v=1';
 import { wire } from './wm-wire.js?v=1';
-import { markOpen, shelve, unshelve, dockVisible, onDockVisibility } from './dock.js?v=1';
+import { markOpen, shelve, unshelve, dockVisible, onDockVisibility } from './dock.js?v=2';
 
 const Z_BASE = 130;
 const CASCADE = 28;

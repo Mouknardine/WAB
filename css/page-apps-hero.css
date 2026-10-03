@@ -23,9 +23,9 @@
 
 .app-hero__title {
     font-size: var(--t-app-hero);
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
     line-height: 1.1;
-    letter-spacing: -0.04em;
+    letter-spacing: var(--track-optical);
     text-wrap: balance;
 }
 

@@ -1,35 +1,36 @@
 /* ============================================
    WAB OS — page Applications : jetons
    Les seules valeurs propres à la page ; tout le reste vient de
-   desk-tokens.css. Les feuilles page-apps-*.css ne font que les
-   demander.
+   os-tokens.css (jetons Klein). Aucune couleur en dur : celles d'ici
+   sont des mélanges de jetons. Les feuilles page-apps-*.css ne font
+   que les demander.
    ============================================ */
 
 .page-apps {
     /* ── La capture de l'application ── relevé sur l'image même
-       (app-agenda-aujourdhui) : le fond de l'app, son filet de barre
-       latérale et la position de ce filet (211 px sur 1280). Ils
-       prolongent la capture la plus courte jusqu'au bas de la fenêtre,
-       sans bande vide sous elle. */
-    --app-bg: #fbf9f7;
-    --app-rule: #eae8e7;
+       (app-agenda-aujourdhui) : le fond de l'app (blanc cassé chaud),
+       son filet de barre latérale et la position de ce filet (211 px
+       sur 1280). Ils prolongent la capture la plus courte jusqu'au bas
+       de la fenêtre, sans bande vide sous elle. Les deux teintes sont
+       recomposées à partir du gris chaud et de l'encre. */
+    --app-bg: color-mix(in oklch, var(--panel) 45%, var(--paper));
+    --app-rule: color-mix(in oklch, var(--panel) 96%, var(--ink));
     --app-side: calc(211 / 1280 * 100%);
 
     /* ── La grande fenêtre ── le format des captures du site. */
     --app-ratio: 16 / 10;
     --app-stage: 1120px;
 
-    /* ── Les onglets ── le verre clair de la barre, l'onglet actif en
-       blanc plein, posé dessus. */
+    /* ── Les onglets ── un rail creusé dans la barre bleu clair ;
+       l'onglet actif est une touche blanche posée dessus, texte Klein. */
     --tab-h: 36px;
-    --tab-track: rgba(11, 11, 12, 0.06);
-    --tab-on: var(--paper);
-    --tab-shadow: 0 1px 2px rgba(11, 11, 12, 0.12), 0 0 0 0.5px rgba(11, 11, 12, 0.08);
+    --tab-track: var(--hover-tint);
+    --tab-on: var(--key-light);
+    --tab-shadow: var(--key-light-relief);
 
     /* ── Titres de la page ── */
     --t-app-hero: clamp(1.9rem, 4.6vw, 3.4rem);
     --t-app-end: clamp(1.9rem, 5vw, 3.2rem);
-    --app-sky-fade: 20%;
     /* Au téléphone, les cartes de l'approche défilent au doigt : la
        carte suivante dépasse du bord pour l'annoncer. */
     --app-way-w: 84%;

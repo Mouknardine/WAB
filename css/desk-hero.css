@@ -1,9 +1,12 @@
 /* ============================================
    WAB. — Accueil « bureau » : le premier écran
-   Le centre reste parfaitement net : le nom, la promesse, deux
-   boutons de verre, une ligne fine, puis la grande fenêtre qui fait
-   défiler les projets. Le désordre (desk-scatter.css) reste en
-   bordure, jamais sous le texte.
+   Une surface Klein pleine largeur à lignes d'écran, comme le premier
+   écran d'agentcard (.on-klein : le texte passe au blanc, les touches
+   s'inversent). Le centre reste parfaitement net : le nom en blanc, la
+   promesse, deux touches, une ligne fine, puis la grande fenêtre
+   encadrée qui fait défiler les projets. Le désordre
+   (desk-scatter.css) reste en bordure, jamais sous le texte. Le bas de
+   la surface se désagrège en pixels dans le blanc de la page.
    ============================================ */
 
 .hero {
@@ -12,6 +15,32 @@
        sans créer de défilement horizontal. */
     overflow-x: clip;
     padding-bottom: clamp(56px, 8vw, 104px);
+    background: var(--klein-screen);
+}
+
+/* Le grain sur les lignes, et le bord bas tramé : seize pixels de bleu
+   qui s'émiettent dans le blanc (même trame que les fenêtres). */
+.hero::before,
+.hero::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+}
+
+.hero::before {
+    inset: 0;
+    background: var(--grain) 0 0 / 160px 160px;
+    opacity: 0.9;
+}
+
+.hero::after {
+    top: 100%;
+    height: var(--dither);
+    background: var(--klein);
+    -webkit-mask: var(--dither-bottom) left top / 8px var(--dither) repeat-x;
+    mask: var(--dither-bottom) left top / 8px var(--dither) repeat-x;
 }
 
 .hero__center {
@@ -35,10 +64,11 @@
     font-size: var(--t-hero);
     font-weight: var(--w-strong);
     line-height: 0.9;
-    letter-spacing: -0.06em;
-    /* La chasse fixe laisse l'approche du point aussi large qu'une
-       lettre : resserré, le nom se lit comme un logo. */
-    margin-right: -0.06em;
+    letter-spacing: -0.055em;
+    /* Resserré, le nom se lit comme un logo ; la marge compense
+       l'approche du point pour qu'il reste centré à l'œil. */
+    margin-right: -0.04em;
+    text-shadow: 0 2px 0 oklch(0.3 0.19 266 / 0.5), 0 18px 40px oklch(0.12 0.06 266 / 0.35);
 }
 
 .hero__lede {
@@ -80,105 +110,6 @@
 @media (min-width: 1280px) {
     .hero__center {
         padding-top: 238px;
-    }
-}
-
-/* ── La vitrine ──
-   La grande fenêtre sous le centre : les projets défilent, un
-   bouton met en pause (js/desk/showcase.js). */
-.showcase {
-    position: relative;
-    z-index: 4;
-    width: min(100% - 2 * var(--gutter), 860px);
-    margin: clamp(44px, 5vw, 56px) auto 0;
-}
-
-.showcase .win__bar {
-    height: 34px;
-}
-
-.showcase .win__title {
-    font-size: 12px;
-}
-
-.showcase__stage {
-    aspect-ratio: 16 / 10;
-}
-
-.showcase__slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.9s var(--ease-out);
-}
-
-.showcase__slide img {
-    transform: scale(1.04);
-    transition: transform 6s linear;
-}
-
-.showcase__slide.is-current {
-    opacity: 1;
-}
-
-.showcase__slide.is-current img {
-    transform: scale(1);
-}
-
-/* Le bouton lecture/pause : une pilule de verre fumé posée au centre
-   bas de l'image, avec le liseré lumineux et le reflet du verre. */
-.showcase__toggle {
-    position: absolute;
-    z-index: 3;
-    left: 50%;
-    bottom: 14px;
-    translate: -50% 0;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    min-height: 40px;
-    padding: 0 18px 0 14px;
-    border-radius: var(--r-pill);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 55%), var(--smoke);
-    -webkit-backdrop-filter: blur(14px) saturate(1.6);
-    backdrop-filter: blur(14px) saturate(1.6);
-    box-shadow: inset 0 0 0 1px var(--smoke-edge), inset 0 1px 0 rgba(255, 255, 255, 0.35), var(--shadow-soft);
-    font-size: var(--t-small);
-    color: var(--on-accent);
-    transition: background-color var(--dur-1) var(--ease-out), scale var(--dur-1) var(--ease-out);
-}
-
-.showcase__toggle:active {
-    scale: 0.96;
-}
-
-@media (hover: hover) {
-    .showcase__toggle:hover {
-        background: var(--smoke-strong);
-    }
-}
-
-.showcase__toggle:focus-visible {
-    outline-color: var(--on-accent);
-    outline-offset: 2px;
-}
-
-.showcase__toggle [data-icon] {
-    display: none;
-}
-
-.showcase__toggle[data-state='playing'] [data-icon='pause'],
-.showcase__toggle[data-state='paused'] [data-icon='play'] {
-    display: block;
-}
-
-.showcase__caption {
-    margin-top: 12px;
-}
-
-@media (min-width: 600px) {
-    .showcase__toggle {
-        bottom: 22px;
     }
 }
 

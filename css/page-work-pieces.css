@@ -1,38 +1,14 @@
 /* ============================================
    Page Work — les projets, un par un
-   Chaque bloc : le site dans sa fenêtre, posée sur son écran (le fond
-   d'écran rose, un liseré sombre), et collée contre elle une colonne
+   Chaque bloc : le site dans sa fenêtre, posée sur son écran (le bleu
+   Klein à scanlines, un liseré Klein profond, la feuille décalée
+   dessous comme une pile), et collée contre elle une colonne
    de texte — l'échange en bulles en haut, le nom, le contexte, les
    disciplines et « Ouvrir la fiche » calés sur le bord bas. Les côtés
    alternent. Au téléphone : la fenêtre, les bulles, le nom.
    Sur ordinateur, seul le bloc au milieu de l'écran est pleinement
    net (js/page-work/focus.js) ; sans script, tout reste net.
    ============================================ */
-
-/* L'en-tête des sections de la page : badge, titre, phrase. */
-.pw-head {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-    text-align: center;
-}
-
-.pw-head__title {
-    max-width: 24ch;
-    font-size: var(--t-title);
-    font-weight: var(--w-strong);
-    line-height: 1.2;
-    letter-spacing: -0.03em;
-    text-wrap: balance;
-}
-
-.pw-head__lede {
-    max-width: 44ch;
-    font-size: var(--t-lede);
-    color: var(--ink-muted);
-    text-wrap: balance;
-}
 
 .pw-pieces {
     padding: var(--section) var(--gutter) 0;
@@ -55,18 +31,21 @@
     position: relative;
 }
 
-/* ── L'écran ── le retrait et le rayon extérieur suivent la fenêtre. */
+/* ── L'écran ── le bleu Klein franc et ses lignes d'écran, sans la
+   vignette (sur 12 px de bord, elle ne laisserait voir que du bleu
+   nuit) ; le retrait et le rayon extérieur suivent la fenêtre.
+   Liseré profond, feuille décalée dessous. */
 .pw-screen {
     display: block;
     padding: var(--screen-pad);
     border-radius: calc(var(--r-win) + var(--screen-pad));
-    background: var(--wallpaper);
-    box-shadow: 0 0 0 1.5px var(--screen-rim), var(--win-shadow);
+    background: var(--scan-lines), var(--klein);
+    box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--sheet), var(--shadow-object);
     -webkit-tap-highlight-color: transparent;
 }
 
 .pw-screen .win {
-    box-shadow: 0 0 0 1px var(--win-edge), var(--shadow-soft);
+    box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--shadow-soft);
     transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
 }
 
@@ -93,7 +72,7 @@
 
 .piece__name {
     font-size: clamp(1.3rem, 2vw, 1.6rem);
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
     line-height: 1.2;
     letter-spacing: -0.03em;
 }
@@ -105,11 +84,14 @@
 }
 
 /* Les disciplines : une ligne de texte, sur ordinateur seulement
-   (au téléphone, une seule ligne grise par bloc : le contexte). */
+   (au téléphone, une seule ligne grise par bloc : le contexte), en
+   Sligoil, comme une étiquette de fichier. */
 .piece__tags {
     display: none;
     list-style: none;
-    font-size: var(--t-small);
+    font-family: var(--font-mono);
+    font-size: var(--t-cap);
+    letter-spacing: 0.02em;
     color: var(--ink-muted);
 }
 
@@ -128,7 +110,7 @@
 @media (hover: hover) {
     .pw-screen:hover .win {
         transform: translateY(-4px);
-        box-shadow: 0 0 0 1px var(--win-edge), var(--win-shadow-lift);
+        box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--shadow-lift);
     }
 }
 

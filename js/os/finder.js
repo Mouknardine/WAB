@@ -8,12 +8,12 @@
  * La vue choisie est retenue d'une visite à l'autre.
  */
 
-import { openWindow } from './wm.js?v=1';
+import { openWindow } from './wm.js?v=2';
 import { loadProjects, imageFrom } from './projects.js?v=1';
-import { el, showState, keyLink } from './dom.js?v=2';
+import { el, showState, keyLink } from './dom.js?v=3';
 import { report } from './lazy.js?v=1';
 import { isOpenGesture, select } from './gesture.js?v=1';
-import { launchCase } from './apps.js?v=2';
+import { launchCase } from './apps.js?v=3';
 
 const VIEW_KEY = 'wabos-finder-view';
 
@@ -139,7 +139,7 @@ async function fill(win) {
         if (win.el.classList.contains('is-active')) win.focusTarget()?.focus({ preventScroll: true });
     } catch (error) {
         report('finder', error);
-        const retry = el('button', 'glass-btn glass-btn--sm', 'Réessayer');
+        const retry = el('button', 'key-btn key-btn--sm', 'Réessayer');
         retry.type = 'button';
         retry.addEventListener('click', () => fill(win));
         showState(win.body, 'Le dossier n’a pas pu être lu.', [retry, keyLink('Ouvrir la page Work', '/realisations')]);

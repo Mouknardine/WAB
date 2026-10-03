@@ -1,7 +1,7 @@
 /* ============================================
    WAB OS — Création de site internet : le premier écran
    Le bureau : au centre net, le titre qui porte la requête, la phrase,
-   les deux actions et trois repères en pastilles de verre. Autour,
+   les deux actions et trois repères en petites touches blanches. Autour,
    quatre vrais sites posés dans leurs fenêtres.
    Téléphone : le texte, puis deux fenêtres qui se chevauchent sous lui.
    Ordinateur (1100 px et plus) : les quatre fenêtres en bordure, le
@@ -28,9 +28,9 @@
 .sx-hero__title {
     max-width: 22ch;
     font-size: var(--sx-h1);
-    font-weight: var(--w-strong);
-    line-height: 1.08;
-    letter-spacing: -0.045em;
+    font-weight: var(--w-medium);
+    line-height: 1.06;
+    letter-spacing: -0.04em;
     text-wrap: balance;
 }
 
@@ -61,7 +61,7 @@
     }
 }
 
-/* Les trois repères : de petites pastilles de verre clair. */
+/* Les trois repères : de petites touches blanches, liseré et relief. */
 .sx-facts {
     display: flex;
     flex-wrap: wrap;
@@ -76,9 +76,9 @@
     gap: 8px;
     min-height: 32px;
     padding: 0 14px;
-    border-radius: var(--r-pill);
-    background: var(--bubble-clear);
-    box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px var(--glass-edge), var(--shadow-soft);
+    border-radius: var(--r-key);
+    background: var(--key-light);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--key-light-relief);
     font-size: var(--t-small);
     color: var(--glass-ink);
 }

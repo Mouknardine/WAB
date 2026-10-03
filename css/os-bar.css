@@ -1,9 +1,10 @@
 /* ============================================
    WAB OS — la barre de menus
-   Une bande de verre pleine largeur, fixée en haut. À gauche le nom et
+   Une bande de verre blanc pleine largeur, fixée en haut ; elle passe
+   aussi bien sur le blanc que sur le bleu du premier écran. À gauche le nom et
    les pages ; au centre l'oiseau ; à droite la recherche (⌘K, avec
    JavaScript), la lumière du jour à Lausanne (soleil ou lune), le
-   statut du studio, l'heure et Contact en verre rose.
+   statut du studio, l'heure et Contact en touche Klein.
    Au téléphone : le nom, l'heure, Contact et le menu existant
    (nav.js, nav-panel.css) qui se déroule sous la barre.
    ============================================ */
@@ -45,7 +46,8 @@
     min-height: 44px;
     margin-right: 10px;
     font-weight: var(--w-strong);
-    letter-spacing: -0.02em;
+    font-size: 1rem;
+    letter-spacing: -0.03em;
 }
 
 .menubar__nav {
@@ -108,10 +110,10 @@
     gap: 8px;
     min-height: 30px;
     padding: 0 6px 0 10px;
-    border-radius: var(--r-pill);
-    border: var(--hair) solid var(--glass-edge);
-    background: var(--glass-strong);
-    box-shadow: inset 0 var(--hair) 0 var(--glass-rim);
+    border-radius: var(--r-key);
+    border: var(--hair) solid var(--edge);
+    background: var(--key-light);
+    box-shadow: var(--relief), 0 1px 2px oklch(0.18 0.005 265 / 0.08);
     font-size: var(--t-cap);
     color: var(--ink-muted);
     transition: border-color var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out);
@@ -119,9 +121,10 @@
 
 .menubar__find kbd {
     padding: 1px 6px;
-    border-radius: var(--r-pill);
+    border-radius: 4px;
     background: var(--hover-tint);
-    font: inherit;
+    font-family: var(--font-mono);
+    font-size: 11px;
     color: var(--ink);
 }
 
@@ -151,7 +154,7 @@
     color: var(--ink);
 }
 
-/* Contact : un petit bouton de verre rose (glass-btn.css). */
+/* Contact : une petite touche Klein (key-btn.css). */
 .menubar__cta {
     min-height: 32px;
     padding: 0 14px;

@@ -1,0 +1,150 @@
+/* ============================================
+   WAB. — Fondations, suite : accessibilité, lien de texte, boutons
+   du formulaire de contact, apparition au défilement, mouvement
+   réduit. Séparé de base.css (polices, reset, jetons de secours).
+   ============================================ */
+
+/* Lien posé dans un paragraphe : un souligné fin, seule marque de
+   lien du site en dehors des boutons. */
+.text-link {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    text-decoration-color: var(--line-strong);
+    transition: text-decoration-color 0.3s var(--ease-out);
+}
+
+.text-link:hover {
+    text-decoration-color: var(--accent);
+}
+
+/* ── Réservé aux lecteurs d'écran ── */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+.skip-link {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 200;
+    padding: 12px 20px;
+    border-radius: var(--radius-pill);
+    background: var(--ink);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: var(--w-strong);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transform: translateY(-160%);
+    transition: transform 0.25s var(--ease-out);
+}
+
+.skip-link:focus-visible {
+    transform: translateY(0);
+    outline-color: var(--white);
+    outline-offset: -6px;
+}
+
+/* ── Boutons du formulaire de contact ── la même touche que
+   .key-btn (key-btn.css) : coins de 6 px, relief, appui d'un pixel.
+   --solid : bleu Klein ; --ghost : touche blanche. */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 0 22px;
+    border: 1px solid var(--edge, rgba(16, 18, 20, 0.16));
+    border-radius: var(--r-key, 6px);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: var(--w-medium, 500);
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+    transition: translate 0.15s var(--ease-out), box-shadow 0.15s var(--ease-out);
+    -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 380px) {
+    .btn {
+        max-width: 100%;
+        padding: 10px 16px;
+        white-space: normal;
+        text-align: center;
+    }
+}
+
+.btn svg {
+    flex: none;
+}
+
+.btn--solid {
+    border-color: var(--key-klein-edge);
+    background: var(--key-klein);
+    box-shadow: var(--key-klein-relief);
+    color: var(--on-klein, #ffffff);
+}
+
+.btn--ghost {
+    background: var(--key-light);
+    box-shadow: var(--key-light-relief);
+    color: var(--glass-ink);
+}
+
+.btn:active {
+    translate: 0 1px;
+    box-shadow: var(--key-pressed);
+}
+
+.btn--lg {
+    min-height: 52px;
+}
+
+/* ── Apparition au défilement ──
+   Le masquage ne s'applique que si JavaScript est là pour révéler
+   (classe « js » posée sur <html> dès l'en-tête). Sans script — robot
+   d'indexation qui ne rend pas la page, lecteur, script bloqué — tout
+   le contenu reste visible : une page qui dépend d'un défilement pour
+   exister n'existe pas pour Bing. */
+.reveal {
+    transition: opacity 0.7s var(--ease-out), transform 0.75s var(--ease);
+}
+
+html.js .reveal:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(24px);
+    will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        /* Le délai compte autant que la durée : sans cette ligne, une
+           entrée décalée de 0.8s ferait attendre le visiteur pour rien
+           avant d'afficher un texte qui, lui, n'a rien d'animé. */
+        animation-delay: 0s !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0s !important;
+        scroll-behavior: auto !important;
+    }
+
+    html.js .reveal:not(.is-visible) {
+        opacity: 1;
+        transform: none;
+    }
+}

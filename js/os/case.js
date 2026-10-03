@@ -7,9 +7,9 @@
  * En feuille au téléphone : la photo en haut, le texte dessous.
  */
 
-import { openWindow } from './wm.js?v=1';
+import { openWindow } from './wm.js?v=2';
 import { loadProjects, imageFrom } from './projects.js?v=1';
-import { el, showState, keyLink } from './dom.js?v=2';
+import { el, showState, keyLink } from './dom.js?v=3';
 import { report } from './lazy.js?v=1';
 
 /** @param {import('./projects.js').Project} project */
@@ -33,7 +33,7 @@ function renderText(project) {
 
     const actions = el('div', 'case-os__actions');
     if (project.href) {
-        const visit = keyLink('Voir le site', project.href, 'glass-btn--pink');
+        const visit = keyLink('Voir le site', project.href, 'key-btn--klein');
         visit.target = '_blank';
         visit.rel = 'noopener noreferrer';
         visit.setAttribute('aria-label', `Voir le site ${project.name} (nouvel onglet)`);
@@ -70,7 +70,7 @@ async function fill(win, id) {
         if (win.el.classList.contains('is-active')) win.focusTarget()?.focus({ preventScroll: true });
     } catch (error) {
         report('case', error);
-        const retry = el('button', 'glass-btn glass-btn--sm', 'Réessayer');
+        const retry = el('button', 'key-btn key-btn--sm', 'Réessayer');
         retry.type = 'button';
         retry.addEventListener('click', () => fill(win, id));
         showState(win.body, 'La fiche n’a pas pu être chargée.', [retry, keyLink('Voir sur la page Work', `/realisations#${encodeURIComponent(id)}`)]);

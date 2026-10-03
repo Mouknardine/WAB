@@ -1,9 +1,7 @@
 /* ============================================
    WAB. — Formulaire de la fenêtre de contact
    La même grammaire que partout : une clé en petites capitales, puis
-   une ligne à remplir fermée par un filet. Sur le blanc de la carte,
-   les clés passent à l'encre : le rose y serait trop pâle pour un
-   texte de onze pixels.
+   une ligne à remplir fermée par un filet ; les clés à l'encre.
    ============================================ */
 
 .contact-form {
@@ -105,14 +103,12 @@
     color: var(--ink);
 }
 
-/* L'astérisque des champs obligatoires : rose, collé à l'intitulé.
-   Il n'est qu'un signe visuel — l'attribut required du champ porte
-   l'information pour les lecteurs d'écran. */
+/* L'astérisque (Klein) n'est qu'un signe : required porte l'info. */
 .contact-field__req {
     margin-left: 1px;
     font-size: 13px;
     letter-spacing: 0;
-    color: var(--pink);
+    color: var(--klein);
 }
 
 /* 16 px minimum : en dessous, Safari iOS zoome sur le champ. */

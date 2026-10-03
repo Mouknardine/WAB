@@ -14,26 +14,27 @@ export const ROWS = 28;
    devant les textes. */
 export const BODY_BOX = { x: 1 / COLS, y: 0, w: 22 / COLS, h: 21 / ROWS };
 
-/* La palette des oiseaux, resserrée sur le rose et l'encre du site
-   (FINITION-PRO.md). Une seule logique : l'oiseau posé — sur une
-   fenêtre, sur la barre, près du curseur — porte le rose WAB (en
-   groupe, il alterne avec le rose poudré) ; ceux qui passent dans le
-   ciel sont des mouettes du Léman, porcelaine ou rose poudré, et
-   s'effacent derrière le contenu. */
+/* La palette des oiseaux, resserrée sur le bleu, l'encre et le blanc
+   du site (DESIGN-SYSTEM.md, section « Klein »). Une seule logique :
+   l'oiseau posé — sur une fenêtre, sur la barre, près du curseur —
+   porte le bleu Klein (en groupe, il alterne avec le bleu ciel) ; ceux
+   qui passent dans le ciel sont des mouettes du Léman, porcelaine ou
+   bleu ciel, et s'effacent derrière le contenu. */
 /* En hexadécimal : le canevas de certains navigateurs ignore oklch()
    et peindrait l'oiseau en noir. Équivalents OKLCH en commentaire. */
-const ROSE = '#ff2d9b'; // oklch(0.667 0.251 355.4), --pink
-const PORCELAINE = '#f8f3f6'; // oklch(0.97 0.006 350)
-const POUDRE = '#fbbcd6'; // oklch(0.86 0.08 352)
+const KLEIN = '#161bf2'; // oklch(0.45 0.29 266), --klein
+const PORCELAINE = '#f4f6fb'; // oklch(0.97 0.006 266)
+const CIEL = '#b4c6ff'; // oklch(0.83 0.08 268)
 
-/** Couleurs de corps, par rang (data-color) : 0 et 4 sont le rose. */
-export const BODY_COLORS = [ROSE, PORCELAINE, POUDRE, PORCELAINE, ROSE, POUDRE, PORCELAINE];
+/** Couleurs de corps, par rang (data-color) : 0 et 4 sont le Klein. */
+export const BODY_COLORS = [KLEIN, PORCELAINE, CIEL, PORCELAINE, KLEIN, CIEL, PORCELAINE];
 
-/** Les oiseaux en vol : jamais le rose, réservé aux oiseaux posés. */
-export const FLIGHT_COLORS = [PORCELAINE, POUDRE];
+/** Les oiseaux en vol : jamais le Klein, réservé aux oiseaux posés. */
+export const FLIGHT_COLORS = [PORCELAINE, CIEL];
 
-/** Couleurs fixes, communes à tous les oiseaux. */
-export const FIXED_COLORS = { K: '#0b0b0c', W: '#ffffff', Y: '#f5a623' };
+/** Couleurs fixes, communes à tous les oiseaux : contour encre, œil
+   blanc, bec bleu pâle. */
+export const FIXED_COLORS = { K: '#101214', W: '#ffffff', Y: '#cedeff' };
 
 export const FRAMES = [
     // IMAGE 0 — ailes en haut

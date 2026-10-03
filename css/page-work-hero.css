@@ -22,9 +22,9 @@
 
 .pw-hero__title {
     font-size: clamp(3.5rem, 13vw, 6.5rem);
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
     line-height: 0.95;
-    letter-spacing: -0.05em;
+    letter-spacing: var(--track-optical);
 }
 
 .pw-hero__lede {
@@ -58,8 +58,9 @@
     rotate: -7deg;
 }
 
-/* ── La case libre ── une fenêtre vide en pointillés, un oiseau qui
-   bat des ailes au survol (perch.js), le nom de fichier dessous. */
+/* ── La case libre ── une case vide en pointillés sur le gris chaud,
+   un oiseau qui bat des ailes au survol (perch.js), l'étiquette et le
+   nom de fichier en Sligoil. */
 .pw-slot {
     position: absolute;
     right: 2.5%;
@@ -78,7 +79,8 @@
     aspect-ratio: 4 / 3;
     border: 1.5px dashed var(--line-strong);
     border-radius: var(--r-win);
-    background: var(--glass);
+    background: var(--panel);
+    box-shadow: var(--relief);
     transition: border-color 0.2s var(--ease-out), transform 0.35s var(--ease-spring);
 }
 
@@ -89,7 +91,9 @@
 .pw-slot__label {
     position: absolute;
     bottom: 10px;
-    font-size: var(--t-cap);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.02em;
     color: var(--ink-muted);
 }
 

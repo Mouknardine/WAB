@@ -4,7 +4,7 @@
    elle et ses enfants (--ink, --ink-muted, --accent, --line) au lieu
    de déclarer ses propres couleurs : l'anneau de focus et le curseur
    suivent sans exception.
-   Rapports sur --term-bg : encre 15,6:1, gris 7,9:1, rose 8,9:1,
+   Rapports sur --term-bg : encre 15,6:1, gris 7,9:1, bleu 9:1,
    erreur 10:1.
    ============================================ */
 
@@ -85,7 +85,7 @@
     outline: none;
 }
 
-/* Le champ lui-même n'a pas d'anneau (le curseur rose suffit à dire
+/* Le champ lui-même n'a pas d'anneau (le curseur bleu suffit à dire
    où l'on tape) : c'est la ligne entière qui le porte au clavier. */
 .term .term__input:focus-visible {
     outline: none;

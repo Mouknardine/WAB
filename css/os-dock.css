@@ -1,11 +1,12 @@
 /* ============================================
    WAB OS — le dock
    Demandé par Eliott le 3.10 (« comme sur les Mac »). Sur ordinateur
-   seulement (souris, 900 px et plus) : une bande de verre liquide en
-   bas de l'écran, rayon 24 px, liseré lumineux et reflet spéculaire,
-   les six apps du studio en icônes d'app. Au survol, l'icône grandit
-   sur un ressort et ses voisines la suivent à moitié. Un point rose
-   marque une app ouverte ; les fenêtres réduites se rangent après le
+   seulement (souris, 900 px et plus) : la barre flottante d'agentcard
+   traduite pour WAB — un plateau de verre gris fumé en bas de l'écran,
+   rayon 12 px, liseré blanc et reflet sur l'arête haute, les six apps
+   du studio en touches. Au survol, la touche grandit sur un ressort et
+   ses voisines la suivent à moitié. Un point blanc marque une app
+   ouverte ; les fenêtres réduites se rangent après le
    séparateur. Il se range pendant la lecture (js/os/dock-hide.js).
    Au téléphone, pas de dock : le menu du haut suffit.
    ============================================ */
@@ -15,10 +16,11 @@
 }
 
 @media (min-width: 900px) and (hover: hover) and (pointer: fine) {
-    /* La page réserve sous elle la place du dock, et un élément qui
-       prend le focus au clavier s'arrête au-dessus de lui. */
-    body.os {
-        padding-bottom: var(--dock-space);
+    /* Le pied de page réserve sous lui la place du dock (le bleu va
+       jusqu'en bas de l'écran), et un élément qui prend le focus au
+       clavier s'arrête au-dessus de lui. */
+    .foot {
+        padding-bottom: calc(28px + var(--dock-space));
     }
 
     :root:has(body.os) {
@@ -34,12 +36,13 @@
         display: flex;
         align-items: flex-end;
         gap: 6px;
-        padding: 7px 9px;
+        padding: 5px 6px;
+        border: var(--hair) solid oklch(1 0 0 / 0.22);
         border-radius: var(--r-dock);
-        background: var(--glass-specular), var(--glass);
+        background: var(--glass-specular), var(--dock-bg);
         -webkit-backdrop-filter: var(--glass-blur);
         backdrop-filter: var(--glass-blur);
-        box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px var(--glass-edge), var(--glass-shadow);
+        box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.32), 0 8px 24px oklch(0.18 0.005 265 / 0.2);
         transition: translate var(--dur-3) var(--ease-out);
     }
 
@@ -50,7 +53,7 @@
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     .dock {
-        background: var(--glass-strong);
+        background: var(--smoke-strong);
     }
 }
 
@@ -66,7 +69,7 @@
 .dock__shelf {
     padding-left: 10px;
     margin-left: 4px;
-    box-shadow: inset 1px 0 0 var(--line-strong);
+    box-shadow: inset 1px 0 0 oklch(1 0 0 / 0.24);
 }
 
 .dock__shelf[hidden] {
@@ -77,8 +80,8 @@
     position: relative;
     display: grid;
     place-items: center;
-    width: 56px;
-    height: 56px;
+    width: 52px;
+    height: 52px;
     padding: 0;
     border: 0;
     border-radius: var(--r-ctl);
@@ -89,12 +92,11 @@
 }
 
 .dock__item .app-icon {
-    width: 48px;
-    height: 48px;
-    filter: drop-shadow(0 2px 4px rgba(11, 11, 12, 0.08));
+    width: 46px;
+    height: 46px;
 }
 
-/* Le nom de l'app : une pilule de verre sombre au-dessus, au survol
+/* Le nom de l'app : une étiquette blanche au-dessus, au survol
    et au focus. Toujours dans le document : les lecteurs d'écran le
    lisent. */
 .dock__label {
@@ -102,13 +104,15 @@
     left: 50%;
     bottom: calc(100% + 12px);
     translate: -50% 4px;
-    padding: 4px 10px;
-    border-radius: var(--r-pill);
-    background: var(--smoke-strong);
-    font-size: 11px;
-    line-height: 1.4;
+    padding: 5px 9px;
+    border-radius: var(--r-key);
+    background: var(--paper);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief), var(--shadow-soft);
+    font-size: 12px;
+    font-weight: var(--w-medium);
+    line-height: 1.3;
     white-space: nowrap;
-    color: var(--paper);
+    color: var(--glass-ink);
     opacity: 0;
     pointer-events: none;
     transition: opacity var(--dur-1) var(--ease-out), translate var(--dur-1) var(--ease-out);
@@ -145,8 +149,8 @@
     width: 4px;
     height: 4px;
     margin-left: -2px;
-    border-radius: 50%;
-    background: var(--pink);
+    border-radius: 1px;
+    background: var(--paper);
     opacity: 0;
     transition: opacity var(--dur-1) var(--ease-out);
 }

@@ -1,8 +1,9 @@
 /* ============================================
    WAB OS — Création de site internet : le studio et la refonte
-   Le studio : le texte à gauche, les communes en pastilles de verre à
-   droite (c'est le texte local que Google lit : de vrais <li>).
-   La refonte : le bloc pleine largeur sur le ciel rose.
+   Le studio : le texte à gauche, les communes en petites touches à
+   droite (c'est le texte local que Google lit : de vrais <li>), dans
+   un panneau gris chaud sur sa feuille décalée.
+   La refonte : la bande pleine largeur en gris chaud.
    ============================================ */
 
 /* ── Le studio ── */
@@ -18,7 +19,7 @@
     gap: 16px;
 }
 
-.sx-prose {
+.sx-copy {
     display: grid;
     gap: 16px;
     max-width: var(--sx-measure-text);
@@ -27,13 +28,13 @@
     text-wrap: pretty;
 }
 
-.sx-prose__links {
+.sx-copy__links {
     display: flex;
     flex-wrap: wrap;
     gap: 4px 24px;
 }
 
-.sx-prose__links .sx-link {
+.sx-copy__links .sx-link {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
@@ -41,7 +42,7 @@
 
 .sx-cities__title {
     font-size: var(--sx-h3);
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
     letter-spacing: -0.02em;
 }
 
@@ -57,15 +58,17 @@
     align-items: center;
     min-height: 36px;
     padding: 0 16px;
-    border-radius: var(--r-pill);
-    background: var(--bubble-clear);
-    box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px var(--glass-edge), var(--shadow-soft);
+    border-radius: var(--r-key);
+    background: var(--key-light);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--key-light-relief);
     color: var(--glass-ink);
 }
 
-/* Le studio est à Lausanne : la première pastille est en verre rose. */
+/* Le studio est à Lausanne : la première touche est bleu Klein. */
 .sx-cities li:first-child {
-    background: var(--bubble-pink);
+    background: var(--key-klein);
+    box-shadow: 0 0 0 var(--hair) var(--key-klein-edge), var(--key-klein-relief);
+    color: var(--on-klein);
 }
 
 .sx-cities__note {
@@ -84,17 +87,19 @@
     .sx-cities-wrap {
         padding: 32px;
         margin-top: 44px;
-        border-radius: var(--r-win);
-        background: var(--win-bg);
-        box-shadow: 0 0 0 1px var(--win-edge), var(--win-shadow);
+        border-radius: var(--r-panel);
+        background: var(--panel);
+        box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief), var(--sheet);
     }
 }
 
-/* ── La refonte, sur le ciel rose ── */
+/* ── La refonte, sur la bande gris chaud ── le bleu reste rare : il
+   est déjà aux écrans des formats et au pied de page. */
 .sx-sky {
     margin-top: var(--section);
     padding-block: clamp(72px, 10vw, 128px);
-    background: var(--sky-mesh);
+    background: var(--panel);
+    box-shadow: inset 0 var(--hair) 0 var(--edge), inset 0 calc(-1 * var(--hair)) 0 var(--edge);
 }
 
 .sx-sky__inner {
@@ -108,7 +113,7 @@
 .sx-sky__title {
     max-width: 24ch;
     font-size: var(--t-title);
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
     line-height: 1.2;
     letter-spacing: -0.03em;
     text-wrap: balance;

@@ -7,13 +7,14 @@
    ============================================ */
 
 .svc {
-    /* La tuile d'app : trois matières, comme sur un vrai Launchpad.
-       Rose : le verre rose des boutons, encre par-dessus (10,7:1).
+    /* La tuile d'app : trois matières de touche, comme le clavier du
+       système. Klein : la touche bleue, pictogramme blanc (8,5:1).
        Encre : le noir du système, pictogramme blanc.
-       Blanc : le verre clair, pictogramme encre. */
-    --app-pink: linear-gradient(180deg, var(--pink-soft), var(--pink));
-    --app-ink: linear-gradient(180deg, #3a3940, var(--ink));
-    --app-clear: linear-gradient(180deg, var(--paper), #eeedf2);
+       Blanc : la touche claire, pictogramme encre. */
+    --app-klein: var(--key-klein);
+    --app-ink: linear-gradient(180deg, color-mix(in oklch, var(--ink) 82%, var(--paper)), var(--ink) 60%);
+    --app-clear: var(--key-light);
+    --app-shade: color-mix(in oklch, var(--ink) 14%, transparent);
     /* La forme des icônes partagées (assets/icons) : un carré aux coins
        à peine arrondis (14 %), en masque, net à toute taille. */
     --icon-shape: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M14 0H86A14 14 0 0 1 100 14V86A14 14 0 0 1 86 100H14A14 14 0 0 1 0 86V14A14 14 0 0 1 14 0Z'/%3E%3C/svg%3E");
@@ -41,7 +42,7 @@
     place-items: center;
     width: var(--app-size);
     height: var(--app-size);
-    filter: drop-shadow(0 1px 1px rgba(11, 11, 12, 0.12)) drop-shadow(0 4px 8px rgba(11, 11, 12, 0.1));
+    filter: drop-shadow(0 1px 1px var(--app-shade)) drop-shadow(0 4px 8px var(--app-shade));
     color: var(--glyph);
 }
 
@@ -54,19 +55,29 @@
     mask: var(--icon-shape) center / 100% 100% no-repeat;
 }
 
-/* La matière, cernée d'un liseré très fin. */
+/* La matière, cernée d'un liseré d'un pixel, en relief de touche :
+   arête haute éclairée, pénombre en bas. */
 .app::before {
     background: var(--app-clear);
-    box-shadow: inset 0 0 0 1px var(--glass-edge);
+    box-shadow: inset 0 0 0 var(--hair) var(--edge), var(--relief);
 }
 
-/* La couche de verre : la moitié haute s'éclaire. */
+/* Le reflet : la moitié haute s'éclaire à peine. */
 .app::after {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 52%);
+    background: linear-gradient(180deg, color-mix(in oklch, var(--paper) 40%, transparent), transparent 50%);
 }
 
-.app--pink::before {
-    background: var(--app-pink);
+.app--klein {
+    --glyph: var(--on-klein);
+}
+
+.app--klein::before {
+    background: var(--app-klein);
+    box-shadow: inset 0 0 0 var(--hair) var(--klein-deep), inset 0 1px 0 color-mix(in oklch, var(--paper) 34%, transparent);
+}
+
+.app--klein::after {
+    opacity: 0.4;
 }
 
 .app--ink {
@@ -105,9 +116,9 @@
 .svc-head__title {
     max-width: 22ch;
     font-size: var(--t-title);
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
     line-height: 1.15;
-    letter-spacing: -0.03em;
+    letter-spacing: var(--track-optical);
     text-wrap: balance;
 }
 
@@ -118,7 +129,7 @@
     gap: 6px;
     min-height: 44px;
     font-size: var(--t-small);
-    font-weight: var(--w-strong);
+    font-weight: var(--w-medium);
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 0.25em;

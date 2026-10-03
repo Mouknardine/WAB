@@ -1,0 +1,37 @@
+/* ============================================
+   Page Work — le dossier Work en vue liste
+   Une ligne par projet : la capture, le nom et le contexte. La
+   sélection (survol, clavier) reste dans page-work-finder.css.
+   Toutes les valeurs viennent de os-tokens.css.
+   ============================================ */
+
+/* ── Vue liste ── */
+.pw-finder__items[data-view='list'] {
+    display: grid;
+    gap: 2px;
+    padding: 8px;
+}
+
+[data-view='list'] .pw-finder__item {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 14px;
+    align-content: center;
+    align-items: center;
+}
+
+[data-view='list'] .pw-finder__thumb {
+    grid-row: span 2;
+    border-radius: 8px;
+}
+
+[data-view='list'] .pw-finder__name {
+    align-self: end;
+    font-weight: var(--w-medium);
+}
+
+[data-view='list'] .pw-finder__context {
+    display: block;
+    align-self: start;
+}

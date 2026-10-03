@@ -1,7 +1,7 @@
 /* ============================================
    WAB OS — la palette de commandes
    Une fenêtre sans barre, au tiers haut de l'écran : le champ, les
-   résultats groupés, une ligne d'aide. L'option active prend le rose
+   résultats groupés, une ligne d'aide. L'option active prend le bleu
    système en aplat, encre par-dessus.
    ============================================ */
 
@@ -62,7 +62,7 @@
     outline: none;
 }
 
-/* Le champ a toujours le focus : un filet rose sous lui le dit, au
+/* Le champ a toujours le focus : un filet bleu sous lui le dit, au
    lieu d'un anneau autour d'une zone sans bord. */
 .palette .palette__input:focus-visible {
     outline: none;

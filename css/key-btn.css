@@ -1,0 +1,152 @@
+/* ============================================
+   WAB OS — le bouton « touche » (.key-btn)
+   Un rectangle aux coins à peine arrondis, en relief comme une touche
+   de clavier : reflet blanc sur l'arête haute, pénombre de 2 px en bas,
+   liseré d'un pixel, ombre courte dessous. À l'appui, la touche
+   descend d'un pixel et son ombre disparaît.
+   — par défaut : touche blanche, encre fixe (--glass-ink) ;
+   — .key-btn--klein : touche bleu Klein, texte blanc (8,5:1) et petite
+     flèche ↗ — l'action principale, une par écran ;
+   — .key-btn--sm : barres, fenêtres, cartes.
+   Sur une surface Klein (.on-klein), le bleu plein deviendrait bleu sur
+   bleu : la touche principale passe en blanc à texte Klein, la
+   secondaire en touche translucide à texte blanc.
+   ============================================ */
+
+.key-btn {
+    --kb-fill: var(--key-light);
+    --kb-edge: var(--edge);
+    --kb-relief: var(--key-light-relief);
+    --kb-ink: var(--glass-ink);
+    --kb-sheen: oklch(1 0 0 / 0);
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 0 20px;
+    border: var(--hair) solid var(--kb-edge);
+    border-radius: var(--r-key);
+    background: linear-gradient(var(--kb-sheen), var(--kb-sheen)), var(--kb-fill);
+    box-shadow: var(--kb-relief);
+    font: inherit;
+    font-size: 0.9375rem;
+    font-weight: var(--w-medium);
+    letter-spacing: -0.005em;
+    line-height: 1;
+    white-space: nowrap;
+    color: var(--kb-ink);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    transition:
+        translate var(--dur-1) var(--ease-out),
+        box-shadow var(--dur-1) var(--ease-out),
+        --kb-sheen var(--dur-1) var(--ease-out);
+}
+
+@property --kb-sheen {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: transparent;
+}
+
+.key-btn svg,
+.key-btn .sym {
+    flex: none;
+}
+
+/* La flèche ↗ de la touche principale, peinte en masque : elle prend
+   la couleur du texte de la touche. */
+.key-btn--klein::after {
+    content: '';
+    flex: none;
+    width: 0.8em;
+    height: 0.8em;
+    background: currentColor;
+    -webkit-mask: url('../assets/icons/sym-arrow.svg') center / contain no-repeat;
+    mask: url('../assets/icons/sym-arrow.svg') center / contain no-repeat;
+    transition: translate var(--dur-2) var(--ease-out);
+}
+
+@media (hover: hover) {
+    .key-btn:hover {
+        --kb-sheen: oklch(1 0 0 / 0.1);
+    }
+
+    .key-btn:not(.key-btn--klein):hover {
+        --kb-sheen: oklch(0.18 0.005 265 / 0.025);
+    }
+
+    .key-btn--klein:hover::after {
+        translate: 1px -1px;
+    }
+}
+
+/* L'appui : la touche descend d'un pixel, l'ombre se résorbe. */
+.key-btn:active {
+    translate: 0 1px;
+    box-shadow: var(--key-pressed);
+}
+
+.key-btn:focus-visible {
+    outline-offset: 3px;
+}
+
+.key-btn--klein {
+    --kb-fill: var(--key-klein);
+    --kb-edge: var(--key-klein-edge);
+    --kb-relief: var(--key-klein-relief);
+    --kb-ink: var(--on-klein);
+}
+
+.key-btn--sm {
+    min-height: 34px;
+    padding: 0 12px;
+    font-size: var(--t-small);
+}
+
+/* ── Sur une surface Klein ── */
+.on-klein .key-btn--klein {
+    --kb-fill: var(--key-light);
+    --kb-edge: oklch(1 0 0);
+    --kb-relief: inset 0 -2px 0 oklch(0.3 0.19 266 / 0.14), 0 1px 2px oklch(0.12 0.06 266 / 0.3), 0 4px 12px oklch(0.12 0.06 266 / 0.3);
+    --kb-ink: var(--klein-ink);
+}
+
+.on-klein .key-btn:not(.key-btn--klein) {
+    --kb-fill: oklch(1 0 0 / 0.1);
+    --kb-edge: oklch(1 0 0 / 0.4);
+    --kb-relief: inset 0 1px 0 oklch(1 0 0 / 0.24), 0 1px 2px oklch(0.12 0.06 266 / 0.24);
+    --kb-ink: oklch(1 0 0);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+.key-btn:disabled,
+.key-btn[aria-disabled='true'] {
+    opacity: 0.5;
+    translate: none;
+    cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .key-btn,
+    .key-btn::after {
+        transition: none;
+    }
+
+    .key-btn:active {
+        translate: none;
+    }
+}
+
+@media (min-width: 600px) {
+    .key-btn:not(.key-btn--sm) {
+        min-height: 48px;
+        padding: 0 22px;
+        font-size: 1rem;
+    }
+}

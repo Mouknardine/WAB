@@ -1,7 +1,7 @@
 /* ============================================
    WAB OS — les services, quatre apps en quinconce
-   Chaque bloc : une grande fenêtre posée dans son écran (fond d'écran
-   rose du site, liseré sombre), et collée contre elle une colonne de
+   Chaque bloc : une grande fenêtre posée dans son écran (bleu Klein à
+   lignes d'écran, liseré bleu nuit), et collée contre elle une colonne de
    texte de 360 px — la frappe en haut, l'échange en bulles au milieu,
    le titre et une ligne calés sur le bord bas de la fenêtre. Les côtés
    alternent ; le texte s'aligne sur le bord extérieur.
@@ -21,9 +21,9 @@
 .section-title {
     max-width: 24ch;
     font-size: var(--t-title);
-    font-weight: var(--w-strong);
-    line-height: 1.2;
-    letter-spacing: -0.03em;
+    font-weight: var(--w-medium);
+    line-height: 1.12;
+    letter-spacing: var(--track-optical);
     text-wrap: balance;
 }
 
@@ -73,17 +73,28 @@
     text-wrap: pretty;
 }
 
-/* ── L'écran ── le fond d'écran rose, le liseré, la fenêtre posée
-   dedans avec son retrait. */
+/* ── L'écran ── le bleu Klein à lignes d'écran, comme les médias des
+   panneaux d'agentcard, puis la fenêtre posée dedans avec son retrait
+   (rayon extérieur = rayon de la fenêtre + retrait). */
 .screen {
-    padding: var(--screen-pad);
-    border-radius: calc(var(--r-win) + var(--screen-pad));
-    background: var(--wallpaper);
-    box-shadow: 0 0 0 1.5px var(--screen-rim), var(--win-shadow);
+    position: relative;
+    padding: clamp(18px, 4vw, 40px);
+    border-radius: calc(var(--r-win) + 8px);
+    background: var(--klein-screen-flat);
+    box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--relief), var(--sheet);
+}
+
+.screen::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--grain) 0 0 / 160px 160px;
+    pointer-events: none;
 }
 
 .screen .win {
-    box-shadow: 0 0 0 1px var(--win-edge), var(--shadow-soft);
+    box-shadow: 0 0 0 var(--hair) var(--klein-deep), 0 2px 4px oklch(0.12 0.06 266 / 0.3), 0 24px 48px -16px oklch(0.12 0.06 266 / 0.6);
 }
 
 .feat__media .win__body {
@@ -138,7 +149,7 @@
     .feat__text {
         justify-content: space-between;
         gap: 24px;
-        padding-top: calc(var(--screen-pad) + 6px);
+        padding-top: clamp(18px, 4vw, 40px);
     }
 
     .feat--flip {
