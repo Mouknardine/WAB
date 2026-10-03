@@ -33,14 +33,17 @@
     pointer-events: auto;
 }
 
+/* Le nom en touches de clavier : leur dessin est dans desk-keys.css.
+   Sur grand écran, un peu d'air sous le nom de fichier de la fenêtre
+   posée au-dessus. */
 .hero__title {
-    font-size: var(--t-hero);
-    font-weight: var(--w-strong);
-    line-height: 0.9;
-    letter-spacing: -0.055em;
-    /* Resserré, le nom se lit comme un logo ; la marge compense
-       l'approche du point pour qu'il reste centré à l'œil. */
-    margin-right: -0.04em;
+    line-height: 1;
+}
+
+@media (min-width: 1180px) {
+    .hero__title {
+        margin-top: 32px;
+    }
 }
 
 .hero__lede {
