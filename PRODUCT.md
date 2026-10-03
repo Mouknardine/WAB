@@ -35,7 +35,7 @@ Priorité commerciale actuelle : les sites web restent le cœur de l'activité ;
 - Déroulé d'un projet site : un café ou un appel, une proposition, puis design et développement avec points réguliers, puis maintenance et évolutions après la mise en ligne.
 - Déroulé d'un projet logiciel : phase d'observation du métier, puis livraison module par module, chaque module utilisable en production dès qu'il est terminé, reprise des données existantes par import.
 - Délai type d'un site vitrine : 3 à 6 semaines. Davantage pour du sur-mesure.
-- Tarification au périmètre, définie après le premier échange, paiement en plusieurs mensualités possible. Depuis le 3.10.2026 (décision d'Eliott), l'accueil affiche trois paliers : un simple site vitrine de 1'000 à 2'500 CHF ; avec outil de gestion, e-commerce et options, de 2'500 à 7'000 CHF ; une expérience poussée avec refonte de marque, dès 7'000 CHF, sur devis.
+- Tarification au périmètre, définie après le premier échange, paiement en plusieurs mensualités possible. Depuis le 3.10.2026 (décision d'Eliott), l'accueil et la page Services affichent trois paliers : un simple site vitrine de 1'000 à 2'500 CHF ; avec outil de gestion, e-commerce et options, de 2'500 à 7'000 CHF ; une expérience poussée avec refonte de marque, dès 7'000 CHF, sur devis.
 
 ## Capabilities and Constraints
 
@@ -100,7 +100,7 @@ Priorité commerciale actuelle : les sites web restent le cœur de l'activité ;
 
 **Application de gestion réelle**, conçue et développée pour une agence : projets, tâches, temps passé, clients, documents, facturation. Trois écrans documentés sur `/applications`, page atteinte par le lien du pied de page (`app-agenda-aujourdhui`, `app-agenda-taches`, `app-agenda-finances`), **avec données de démonstration** — la mention doit rester visible.
 
-**Absences à ne jamais combler par invention** : aucun témoignage client, aucun logo de client, aucun chiffre d'affaires, aucun nombre de projets livrés, aucun prix, aucune certification, aucune récompense. Le nom de l'agence cliente de l'application n'est pas public. Si un futur travail a besoin de preuve sociale, elle doit être demandée, pas fabriquée.
+**Absences à ne jamais combler par invention** : aucun témoignage client, aucun logo de client, aucun chiffre d'affaires, aucun nombre de projets livrés, aucun autre prix que les trois paliers validés, aucune certification, aucune récompense. Le nom de l'agence cliente de l'application n'est pas public. Si un futur travail a besoin de preuve sociale, elle doit être demandée, pas fabriquée.
 
 ## Product Principles
 

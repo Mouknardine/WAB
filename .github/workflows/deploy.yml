@@ -47,6 +47,9 @@ jobs:
             **/.impeccable/**
             PRODUCT.md
             DESIGN.md
+            DESIGN-SYSTEM.md
+            OS-COMPONENTS.md
+            FINITION-PRO.md
             README.md
             indexnow.sh
             dev-server.py
