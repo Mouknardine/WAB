@@ -1,0 +1,194 @@
+/* ============================================
+   WAB OS — la barre de menus
+   Une bande de verre pleine largeur, fixée en haut. À gauche le nom et
+   les pages ; au centre l'oiseau ; à droite la recherche (⌘K, avec
+   JavaScript), la lumière du jour à Lausanne (soleil ou lune), le
+   statut du studio, l'heure et Contact en verre rose.
+   Au téléphone : le nom, l'heure, Contact et le menu existant
+   (nav.js, nav-panel.css) qui se déroule sous la barre.
+   ============================================ */
+
+.menubar {
+    /* nav-panel.css aligne le menu déroulé sur cette marge. */
+    --pill-pad: var(--gutter);
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: var(--z-bar);
+}
+
+.menubar__inner {
+    background: var(--bar-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+    box-shadow: inset 0 -1px 0 var(--glass-edge), inset 0 1px 0 var(--glass-rim);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .menubar__inner {
+        background: var(--desk);
+    }
+}
+
+.menubar__row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: var(--bar-h);
+    padding-inline: var(--gutter);
+    font-size: var(--t-small);
+}
+
+.menubar__brand {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin-right: 10px;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.02em;
+}
+
+.menubar__nav {
+    display: none;
+    align-items: center;
+}
+
+.menubar__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0 10px;
+    border-radius: var(--r-ctl);
+    color: var(--ink-muted);
+    transition: color 0.2s var(--ease-out), background-color 0.2s var(--ease-out);
+}
+
+@media (hover: hover) {
+    .menubar__link:hover {
+        color: var(--ink);
+        background: var(--hover-tint);
+    }
+}
+
+/* Le centre : l'oiseau en pixel, la mascotte ; il bat des ailes au
+   survol (perch.js). Décor, masqué aux lecteurs d'écran. */
+.menubar__os {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    display: none;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--t-cap);
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.menubar__sigil {
+    display: block;
+    image-rendering: pixelated;
+    pointer-events: auto;
+}
+
+.menubar__state {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-left: auto;
+    color: var(--ink-muted);
+}
+
+/* La recherche : un champ factice qui ouvre la palette. */
+.menubar__find {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    min-height: 30px;
+    padding: 0 6px 0 10px;
+    border-radius: var(--r-pill);
+    border: 1px solid var(--glass-edge);
+    background: var(--glass-strong);
+    box-shadow: inset 0 1px 0 var(--glass-rim);
+    font-size: var(--t-cap);
+    color: var(--ink-muted);
+    transition: border-color 0.2s var(--ease-out);
+}
+
+.menubar__find kbd {
+    padding: 1px 6px;
+    border-radius: var(--r-pill);
+    background: var(--hover-tint);
+    font: inherit;
+    color: var(--ink);
+}
+
+/* Les icônes d'état, fines : le soleil le jour, la lune la nuit
+   (os-sky.css choisit). */
+.menubar__sky {
+    display: none;
+    color: var(--ink);
+}
+
+.menubar__status {
+    display: none;
+    white-space: nowrap;
+}
+
+@media (hover: hover) {
+    .menubar__find:hover {
+        border-color: var(--ink);
+    }
+}
+
+.menubar__time {
+    display: none;
+    color: var(--ink);
+}
+
+/* Contact : un petit bouton de verre rose (glass-btn.css). */
+.menubar__cta {
+    min-height: 32px;
+    padding: 0 14px;
+}
+
+/* Le bouton de menu du téléphone (nav-panel.css) se range ici. */
+.menubar .topbar__menu {
+    margin-left: 0;
+}
+
+.menubar .topbar__panel-inner {
+    box-shadow: inset 0 1px 0 var(--line);
+}
+
+.menubar .panel__key {
+    color: var(--accent);
+}
+
+@media (min-width: 380px) {
+    .menubar__time {
+        display: inline;
+    }
+}
+
+@media (min-width: 900px) {
+    .menubar__nav,
+    .menubar__os,
+    .menubar__sky {
+        display: inline-flex;
+    }
+}
+
+@media (min-width: 1180px) {
+    .menubar__status:not([hidden]) {
+        display: inline;
+    }
+}
+
+@media (min-width: 1080px) and (hover: hover) and (pointer: fine) {
+    .menubar__find {
+        display: inline-flex;
+    }
+}

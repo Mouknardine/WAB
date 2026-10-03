@@ -5,7 +5,8 @@
  * défile pas, il est densément peuplé — c'est le décor de la page.
  * Sur les pages de contenu, quelques oiseaux seulement, pour ne pas
  * disputer l'attention au texte : la densité se déclare dans le HTML
- * par `data-birds="dense"`.
+ * par `data-birds="dense"`, ou `data-birds="rare"` sur l'accueil
+ * WAB OS : deux à quatre oiseaux, des mascottes plutôt qu'un ciel.
  *
  * Les oiseaux s'effacent en approchant des textes posés à même le
  * papier, se mettent en pause quand l'onglet passe en arrière-plan,
@@ -36,6 +37,7 @@ const LADDER_LARGE = [2, 3, 4, 5];
 const DENSITY = {
     dense: { area: 27000, min: 20, max: 48 },
     calm: { area: 120000, min: 5, max: 12 },
+    rare: { area: 420000, min: 2, max: 4 },
 };
 
 function ladderFor(width) {
@@ -56,7 +58,8 @@ function initBirds() {
     if (!ctx) return;
     ctx.imageSmoothingEnabled = false;
 
-    const regime = document.body.dataset.birds === 'dense' ? 'dense' : 'calm';
+    const asked = document.body.dataset.birds;
+    const regime = asked === 'dense' || asked === 'rare' ? asked : 'calm';
     const sprites = createSpriteBank();
     const shyness = createShyness();
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');

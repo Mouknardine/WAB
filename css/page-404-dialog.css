@@ -1,0 +1,134 @@
+/* ============================================
+   WAB OS — page introuvable (404)
+   Une boîte de dialogue d'erreur au milieu du bureau à points, dans la
+   fenêtre de verre partagée (os-window.css). Derrière elle, sur grand
+   écran, deux copies vides en cascade : l'erreur qui se répète. Le
+   chemin demandé s'affiche dans la barre (js/page-404/path.js).
+   Le tout tient dans la hauteur de l'écran ; le pied de page suit.
+   ============================================ */
+
+.page-404 {
+    /* Les seules valeurs propres à la page. */
+    --lost-w: 560px;
+    --lost-step: 18px;
+    --lost-drop: 45px;
+    --lost-ghost-near: 0.7;
+    --lost-ghost-far: 0.4;
+    --t-lost: clamp(1.8rem, 5vw, 2.8rem);
+}
+
+.lost-desk {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 100svh;
+    padding: calc(var(--bar-h) + 112px) var(--gutter) 64px;
+    /* La trame s'efface derrière la boîte : le centre reste net. */
+    background: radial-gradient(closest-side, var(--desk) 30%, transparent 100%) center / min(900px, 100%) 70% no-repeat;
+}
+
+.lost-stack {
+    position: relative;
+    width: min(100%, var(--lost-w));
+}
+
+.lost-dialog {
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 0 1px var(--win-edge), var(--glass-shadow-lift);
+}
+
+.lost-dialog__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: clamp(24px, 5vw, 36px);
+    background: var(--win-bg);
+}
+
+/* L'oiseau perdu, posé sur la barre de la boîte : le seul jeu de la
+   page. Son cadre garde de l'air au-dessus de lui pour l'envol
+   (perch.js) et des rangs vides sous ses pattes (mesurés : 45 px à l’échelle 4) : on le descend
+   d'autant (--lost-drop) pour qu'il touche la barre. */
+.lost-bird {
+    position: absolute;
+    z-index: 2;
+    right: clamp(16px, 6vw, 40px);
+    bottom: calc(100% - var(--lost-drop));
+    padding: 0;
+    border: 0;
+    border-radius: var(--r-ctl);
+    background: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.lost-bird canvas {
+    display: block;
+    image-rendering: pixelated;
+}
+
+.lost-dialog__title {
+    margin-top: 16px;
+    max-width: 16ch;
+    font-size: var(--t-lost);
+    font-weight: var(--w-strong);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+}
+
+.lost-dialog__lede {
+    margin-top: 14px;
+    max-width: 40ch;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+}
+
+.lost-dialog__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+/* ── La cascade ── deux fenêtres vides, décalées vers le haut et la
+   gauche, de plus en plus pâles. */
+.lost-ghost {
+    display: none;
+}
+
+.lost-kao {
+    display: none;
+}
+
+@media (min-width: 700px) {
+    .lost-ghost {
+        position: absolute;
+        inset: 0;
+        display: block;
+        border-radius: var(--r-win);
+        background: var(--win-bg);
+        box-shadow: 0 0 0 1px var(--win-edge), var(--win-shadow);
+        overflow: hidden;
+    }
+
+    .lost-ghost--near {
+        translate: calc(-1 * var(--lost-step)) calc(-1 * var(--lost-step));
+        opacity: var(--lost-ghost-near);
+    }
+
+    .lost-ghost--far {
+        translate: calc(-2 * var(--lost-step)) calc(-2 * var(--lost-step));
+        opacity: var(--lost-ghost-far);
+    }
+
+    .lost-kao {
+        position: absolute;
+        display: block;
+        right: max(var(--gutter), calc(50% - 460px));
+        bottom: 18%;
+        rotate: -4deg;
+    }
+}

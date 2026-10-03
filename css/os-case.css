@@ -1,0 +1,133 @@
+/* ============================================
+   WAB OS — la fiche projet
+   Étroite (feuille du téléphone) : la photo en haut, le texte
+   dessous, tout défile d'un bloc. Large : la photo pleine hauteur à
+   gauche, le texte qui défile seul à droite. La bascule suit la
+   largeur de la fenêtre elle-même (requête de conteneur), pas celle
+   de l'écran : une fenêtre agrandie ou une feuille se mettent en
+   page juste.
+   ============================================ */
+
+.oswin__body:has(> .case-os) {
+    container-type: inline-size;
+}
+
+.case-os {
+    display: grid;
+    align-content: start;
+}
+
+.case-os__media {
+    aspect-ratio: 4 / 5;
+    max-height: 56vh;
+    overflow: hidden;
+    background: var(--desk);
+}
+
+.case-os__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.case-os__text {
+    display: grid;
+    align-content: start;
+    gap: 14px;
+    padding: 24px clamp(20px, 4cqi, 36px) 32px;
+}
+
+.case-os__context {
+    font-size: var(--t-small);
+    color: var(--ink-muted);
+}
+
+.case-os__name {
+    margin-top: -8px;
+    font-size: clamp(1.5rem, 4cqi, 2.1rem);
+    font-weight: var(--w-strong);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+}
+
+.case-os__name:focus {
+    outline: none;
+}
+
+.case-os__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    list-style: none;
+}
+
+.case-os__tags li {
+    padding: 3px 10px;
+    border-radius: var(--r-pill);
+    background: var(--hover-tint);
+    font-size: var(--t-cap);
+    color: var(--ink-muted);
+}
+
+.case-os__summary {
+    display: grid;
+    gap: 10px;
+    margin-top: 4px;
+    line-height: 1.65;
+    text-wrap: pretty;
+}
+
+.case-os__approach {
+    display: grid;
+    margin-top: 6px;
+}
+
+.case-os__approach > div {
+    display: grid;
+    gap: 4px;
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+}
+
+.case-os__approach dt {
+    font-size: var(--t-small);
+    font-weight: var(--w-strong);
+}
+
+.case-os__approach dd {
+    font-size: var(--t-small);
+    line-height: 1.6;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+}
+
+.case-os__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 6px;
+}
+
+@container (min-width: 720px) {
+    .case-os {
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+        grid-template-rows: minmax(0, 1fr);
+        align-content: stretch;
+        height: 100%;
+    }
+
+    .case-os__media {
+        aspect-ratio: auto;
+        max-height: none;
+        height: 100%;
+    }
+
+    /* La mise en page tient pile dans la fenêtre : c'est la colonne
+       de texte qui défile, la photo reste en place. */
+    .case-os__text {
+        height: 100%;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        padding-top: 30px;
+    }
+}

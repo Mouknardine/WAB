@@ -7,7 +7,7 @@
          Sans lui, les sections à apparition restent visibles d'emblée. -->
     <script>document.documentElement.classList.replace('no-js', 'js');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#FFE4F0">
+    <meta name="theme-color" content="#fafafa">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
@@ -504,85 +504,84 @@
 
     <!-- Police — Sligoil seule, servie depuis le site -->
     <link rel="preload" href="assets/fonts/Sligoil-Micro.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/Sligoil-MicroBold.woff2" as="font" type="font/woff2" crossorigin>
 
-    <!-- Styles -->
+    <!-- WAB OS : composants partagés (voir OS-COMPONENTS.md) -->
     <link rel="stylesheet" href="css/base.css?v=33">
-    <link rel="stylesheet" href="css/nav.css?v=19">
     <link rel="stylesheet" href="css/nav-panel.css?v=1">
     <link rel="stylesheet" href="css/contact-modal.css?v=7">
     <link rel="stylesheet" href="css/contact-form.css?v=3">
-    <link rel="stylesheet" href="css/page.css?v=12">
-    <link rel="stylesheet" href="css/work.css?v=25">
-    <link rel="stylesheet" href="css/work-piece.css?v=5">
-    <link rel="stylesheet" href="css/case.css?v=3">
-    <link rel="stylesheet" href="css/case-content.css?v=2">
-    <link rel="stylesheet" href="css/case-buttons.css?v=2">
-    <link rel="stylesheet" href="css/case-motion.css?v=1">
-    <link rel="stylesheet" href="css/process.css?v=11">
-    <link rel="stylesheet" href="css/footer.css?v=11">
-    <link rel="stylesheet" href="css/plate.css?v=3">
+    <link rel="stylesheet" href="css/os-tokens.css?v=1">
+    <link rel="stylesheet" href="css/os-base.css?v=1">
+    <link rel="stylesheet" href="css/os-sky.css?v=1">
+    <link rel="stylesheet" href="css/sym.css?v=2">
+    <link rel="stylesheet" href="css/glass-btn.css?v=2">
+    <link rel="stylesheet" href="css/os-bar.css?v=1">
+    <link rel="stylesheet" href="css/os-window.css?v=1">
+    <link rel="stylesheet" href="css/os-bubbles.css?v=1">
+    <link rel="stylesheet" href="css/os-footer.css?v=1">
+    <link rel="stylesheet" href="css/os-dock.css?v=2">
+    <link rel="stylesheet" href="css/os-overlay.css?v=2">
+    <!-- La page Work -->
+    <link rel="stylesheet" href="css/page-work-hero.css?v=1">
+    <link rel="stylesheet" href="css/page-work-finder.css?v=1">
+    <link rel="stylesheet" href="css/page-work-pieces.css?v=1">
+    <link rel="stylesheet" href="css/page-work-end.css?v=1">
 
     <!-- Scripts -->
-    <script src="nav-clock.js?v=2" defer></script>
-    <script src="js/reveal.js?v=4" defer></script>
+    <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
-    <script src="js/letter-swap.js?v=1" defer></script>
-    <script type="module" src="js/birds/perch.js?v=4"></script>
-    <script type="module" src="js/mesh/index.js?v=2"></script>
-    <script type="module" src="js/birds/index.js?v=6"></script>
+    <script type="module" src="js/birds/index.js?v=7"></script>
+    <script type="module" src="js/birds/perch.js?v=7"></script>
     <script type="module" src="js/contact/index.js?v=9"></script>
-    <script type="module" src="js/work/index.js?v=3"></script>
+    <script type="module" src="js/os/index.js?v=1"></script>
+    <script type="module" src="js/page-work/index.js?v=1"></script>
 </head>
 
-<body>
+<body class="os page-work" data-birds="rare">
 
     <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-    <!-- Les oiseaux traversent le fond de toute la page, pas seulement le hero -->
+    <!-- Les oiseaux volent sur la trame du bureau, sous les fenêtres. -->
     <canvas id="birdCanvas" aria-hidden="true"></canvas>
 
-    <!-- BARRE FLOTTANTE — la pilule se prolonge pour contenir le menu -->
-    <header class="topbar" id="topbar">
-        <div class="topbar__inner" id="topbarBar">
-            <div class="topbar__bar">
-                <a href="/" class="topbar__brand">WAB.</a>
+    <header class="menubar" id="topbar">
+        <div class="topbar__inner menubar__inner" id="topbarBar">
+            <div class="menubar__row">
+                <a href="/" class="menubar__brand">WAB.</a>
 
-                <nav class="topbar__nav" aria-label="Navigation principale">
-                    <a href="/realisations" class="topbar__link" aria-current="page">Work</a>
-                    <a href="/services" class="topbar__link">Services</a>
-                    <a href="/studio" class="topbar__link">About</a>
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="topbar__link">Contact</a>
+                <nav class="menubar__nav" aria-label="Navigation principale">
+                    <a href="/realisations" class="menubar__link" aria-current="page">Work</a>
+                    <a href="/services" class="menubar__link">Services</a>
+                    <a href="/studio" class="menubar__link">About</a>
                 </nav>
 
-                <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
-                    <span class="topbar__dots" aria-hidden="true">
-                        <span></span><span></span><span></span><span></span>
-                    </span>
-                    <span class="sr-only">Menu</span>
-                </button>
-            </div>
+                <span class="menubar__os" aria-hidden="true" translate="no"><canvas class="menubar__sigil" data-perch="flap" data-scale="1" data-color="4"></canvas></span>
 
+                <div class="menubar__state">
+                    <button type="button" class="menubar__find" data-palette-open data-js-only aria-keyshortcuts="Meta+K Control+K">
+                        <span class="sym sym--search" aria-hidden="true"></span>Rechercher<kbd data-shortcut>⌘K</kbd>
+                    </button>
+                    <span class="menubar__sky" aria-hidden="true"><span class="sym sym--sun" aria-hidden="true"></span><span class="sym sym--moon" aria-hidden="true"></span></span>
+                    <span class="menubar__status" data-local-status hidden></span>
+                    <time class="menubar__time" data-local-time>--:--</time>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="menubar__cta glass-btn glass-btn--pink glass-btn--sm">Contact</a>
+                    <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
+                        <span class="topbar__dots" aria-hidden="true">
+                            <span></span><span></span><span></span><span></span>
+                        </span>
+                        <span class="sr-only">Menu</span>
+                    </button>
+                </div>
+            </div>
             <div class="topbar__panel" id="topbarPanel">
                 <div class="topbar__panel-inner">
                     <nav class="panel__nav" aria-label="Navigation">
-                        <a href="/realisations" class="panel__link" aria-current="page">
-                            Work
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
-                        <a href="/services" class="panel__link">
-                            Services
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
-                        <a href="/studio" class="panel__link">
-                            About
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
-                        <a href="mailto:contact@wearebrothers.ch" data-contact class="panel__link">
-                            Contact
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
+                        <a href="/realisations" class="panel__link" aria-current="page">Work<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
+                        <a href="/services" class="panel__link">Services<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
+                        <a href="/studio" class="panel__link">About<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
+                        <a href="mailto:contact@wearebrothers.ch" data-contact class="panel__link">Contact<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
                     </nav>
-
                     <div class="panel__meta">
                         <p class="panel__row">
                             <span class="panel__key">Email</span>
@@ -600,681 +599,766 @@
 
     <div class="topbar-scrim" id="topbarScrim"></div>
 
-    <main id="contenu">
+    <main id="contenu" tabindex="-1">
 
-        <section class="band band--projets">
-            <!-- EN-TÊTE — le titre et une phrase, côte à côte. La fin du
-                 titre reste lue par Google et la navigation vocale. -->
-            <header class="page-intro">
-                <h1 class="page-intro__title">
-                    <span lang="en">Work</span><span class="sr-only"> — sites internet et applications créés à Lausanne</span>
-                </h1>
-                <p class="page-intro__text">Sites, identités et outils sur mesure, dessinés et développés à Lausanne.</p>
-            </header>
+        <!-- LE BUREAU — le dossier Work ouvert au centre, les neuf projets
+             en icônes (ou en liste). Un projet ouvre sa fiche dans une
+             fenêtre de verre (js/os, attribut data-card) ; sans
+             JavaScript, il mène à son bloc plus bas. Le désordre reste
+             au bord : l'autocollant, un kaomoji, la case libre. -->
+        <section class="pw-hero" aria-labelledby="workTitle">
+            <div class="pw-hero__head">
+                <h1 class="pw-hero__title" id="workTitle"><span lang="en">Work</span><span class="sr-only"> — sites internet et applications créés à Lausanne</span></h1>
+                <p class="pw-hero__lede">Sites, identités et outils sur mesure, dessinés et développés à Lausanne.</p>
+            </div>
 
-            <!-- LA GRILLE — deux colonnes régulières, toutes les tuiles à la
-                 même taille : le travail est montré posément, sans qu'un
-                 projet écrase les autres. -->
-            <div class="pieces-wrap">
-                <div class="pieces" data-reveal-group>
-                    <article class="piece reveal" id="zinema">
-                        <a class="piece__link" href="https://www.zinema.ch/" target="_blank" rel="noopener noreferrer" data-case-open aria-haspopup="dialog">
-                            <div class="window piece__window">
-                                <span class="window__chrome" aria-hidden="true"><span></span><span></span><span></span></span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/shot-zinema-800.webp"
-                                        srcset="assets/images/shot-zinema-800.webp 800w, assets/images/shot-zinema-1600.webp 1600w"
-                                        sizes="(min-width: 1100px) 30vw, (min-width: 760px) 46vw, 92vw"
-                                        alt="Page d&#x27;accueil du site Zinéma" loading="lazy" decoding="async"
-                                        width="1600" height="1000">
-                                </span>
+            <div class="pw-hero__desk">
+                <div class="pw-finder" data-finder>
+                    <canvas class="win-perch pw-finder__perch" data-perch="fly" data-scale="2" data-color="4" aria-hidden="true"></canvas>
+                    <div class="win">
+                        <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--folder" aria-hidden="true"></span>Work</span></div>
+                        <div class="pw-finder__bar">
+                            <p class="pw-finder__count">9 projets</p>
+                            <div class="pw-finder__views" role="group" aria-label="Présentation des projets" data-js-only>
+                                <button type="button" class="pw-finder__view" data-view="icons" aria-pressed="true"><span class="sym sym--grid" aria-hidden="true"></span>Icônes</button>
+                                <button type="button" class="pw-finder__view" data-view="list" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>Liste</button>
                             </div>
-                            <div class="piece__caption">
-                                <div class="piece__text">
-                                    <h2 class="piece__name">Zinéma</h2>
-                                    <p class="piece__context">Cinéma d'art et essai, rue du Maupas à Lausanne</p>
-                                    <ul class="piece__tags">
-                                        <li>Direction artistique</li>
-                                        <li>Web design</li>
-                                        <li>Développement</li>
-                                        <li>SEO local</li>
-                                    </ul>
-                                </div>
-                                <span class="piece__go" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                                </span>
-                            </div>
-                        </a>
-
-                        <!-- La fiche du projet, lue par la fenêtre qui s'ouvre au clic. -->
-                        <div class="piece__case" hidden>
-                            <img data-case-photo src="assets/images/work-zinema-720.webp"
-                                srcset="assets/images/work-zinema-720.webp 720w, assets/images/work-zinema-1440.webp 1440w"
-                                sizes="(min-width: 1000px) 40vw, 100vw"
-                                alt="Capture du site du Zinéma, cinéma d&#x27;art et essai de la rue du Maupas à Lausanne, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
-                                width="1440" height="1800">
-                            <div data-case-summary>
-                                <p>Le Zinéma est le premier cinéma d&#x27;art et essai miniplex de Lausanne, rue du Maupas. Nous avons conçu et développé son site de bout en bout.</p>
-                                <p>La page d&#x27;accueil est pensée comme un mur d&#x27;affiches&nbsp;: ce sont les films qui accueillent le visiteur, puis l&#x27;agenda des séances et la carte de membre, à portée de clic.</p>
-                            </div>
-                            <dl data-case-approach>
-                                <div>
-                                    <dt>La problématique</dt>
-                                    <dd>Un cinéma indépendant vit de sa programmation, qui change chaque semaine. Le site devait la montrer d&#x27;un coup d&#x27;œil et rester simple à tenir à jour pour l&#x27;équipe.</dd>
-                                </div>
-                                <div>
-                                    <dt>L&#x27;enjeu</dt>
-                                    <dd>Faire venir du monde en salle&nbsp;: trouver un film, une séance et un horaire en quelques secondes, sur téléphone comme sur ordinateur.</dd>
-                                </div>
-                                <div>
-                                    <dt>Notre réponse</dt>
-                                    <dd>Une grille d&#x27;affiches pleine page, une navigation franche en capitales (films, agenda, événements, location, membership) et un agenda qui mène directement à la séance.</dd>
-                                </div>
-                                <div>
-                                    <dt>Difficultés et solutions</dt>
-                                    <dd>Les affiches n&#x27;ont jamais le même format. Plutôt que de les rogner, nous avons construit une grille qui les accueille telles qu&#x27;elles sont, en les chargeant au fil du défilement pour que la page reste rapide.</dd>
-                                </div>
-                            </dl>
                         </div>
-                    </article>
-
-                    <article class="piece reveal" id="memo">
-                        <a class="piece__link" href="https://lememo-eight.vercel.app/" target="_blank" rel="noopener noreferrer" data-case-open aria-haspopup="dialog">
-                            <div class="window piece__window">
-                                <span class="window__chrome" aria-hidden="true"><span></span><span></span><span></span></span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/shot-memo-800.webp"
-                                        srcset="assets/images/shot-memo-800.webp 800w, assets/images/shot-memo-1600.webp 1600w"
-                                        sizes="(min-width: 1100px) 30vw, (min-width: 760px) 46vw, 92vw"
-                                        alt="Page d&#x27;accueil du site LE MEMO" loading="lazy" decoding="async"
-                                        width="1600" height="1000">
-                                </span>
-                            </div>
-                            <div class="piece__caption">
-                                <div class="piece__text">
-                                    <h2 class="piece__name">LE MEMO</h2>
-                                    <p class="piece__context">Collectif artistique et boutique à Lausanne</p>
-                                    <ul class="piece__tags">
-                                        <li>Direction artistique</li>
-                                        <li>Web design</li>
-                                        <li>Développement</li>
-                                        <li>Interaction</li>
-                                    </ul>
-                                </div>
-                                <span class="piece__go" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                                </span>
-                            </div>
+                        <ul class="pw-finder__items" data-view="icons" aria-label="Projets">
+                    <li>
+                        <a class="pw-finder__item" href="#zinema" data-card="zinema" data-title="zinema.ch" aria-haspopup="dialog">
+                            <span class="pw-finder__thumb"><img src="assets/images/finder-zinema.webp" alt="" width="400" height="250" decoding="async"></span>
+                            <span class="pw-finder__name">Zinéma</span>
+                            <span class="pw-finder__context">Cinéma d'art et essai, rue du Maupas à Lausanne</span>
                         </a>
-
-                        <!-- La fiche du projet, lue par la fenêtre qui s'ouvre au clic. -->
-                        <div class="piece__case" hidden>
-                            <img data-case-photo src="assets/images/work-memo-720.webp?v=3"
-                                srcset="assets/images/work-memo-720.webp?v=3 720w, assets/images/work-memo-1440.webp?v=3 1440w"
-                                sizes="(min-width: 1000px) 40vw, 100vw"
-                                alt="Capture du site de LE MEMO, collectif lausannois, dont l&#x27;accueil est un séquenceur musical, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
-                                width="1440" height="1800">
-                            <div data-case-summary>
-                                <p>LE MEMO est un collectif lausannois&nbsp;: des événements, du soutien aux artistes et une boutique de vêtements.</p>
-                                <p>Son site s&#x27;ouvre sur un séquenceur à jouer. Chaque ligne porte une valeur du collectif&nbsp;: PEACE, UNITY, LOVE, HAVING FUN.</p>
-                            </div>
-                            <dl data-case-approach>
-                                <div>
-                                    <dt>La problématique</dt>
-                                    <dd>Un collectif qui organise des soirées ne se présente pas comme une entreprise. Une page d&#x27;accueil classique aurait gommé ce qui le rend unique.</dd>
-                                </div>
-                                <div>
-                                    <dt>L&#x27;enjeu</dt>
-                                    <dd>Donner envie de rester et de revenir, tout en menant vers l&#x27;essentiel&nbsp;: les membres, les dates, l&#x27;histoire du collectif et la boutique.</dd>
-                                </div>
-                                <div>
-                                    <dt>Notre réponse</dt>
-                                    <dd>Un accueil interactif, une grille de pas qui se joue comme une boîte à rythmes. Autour, une navigation sobre en noir et rouge.</dd>
-                                </div>
-                                <div>
-                                    <dt>Difficultés et solutions</dt>
-                                    <dd>Les navigateurs bloquent le son tant qu&#x27;on n&#x27;a pas touché la page, et seize pas tiennent mal sur un téléphone. Le son démarre donc au premier geste du visiteur, et la grille s&#x27;adapte à l&#x27;écran pour rester jouable au doigt.</dd>
-                                </div>
-                            </dl>
-                        </div>
-                    </article>
-
-                    <article class="piece reveal" id="central">
-                        <a class="piece__link" href="https://www.lepetitcentral.ch/" target="_blank" rel="noopener noreferrer" data-case-open aria-haspopup="dialog">
-                            <div class="window piece__window">
-                                <span class="window__chrome" aria-hidden="true"><span></span><span></span><span></span></span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/shot-central-800.webp"
-                                        srcset="assets/images/shot-central-800.webp 800w, assets/images/shot-central-1600.webp 1600w"
-                                        sizes="(min-width: 1100px) 30vw, (min-width: 760px) 46vw, 92vw"
-                                        alt="Page d&#x27;accueil du site Le P&#x27;tit Central" loading="lazy" decoding="async"
-                                        width="1600" height="1000">
-                                </span>
-                            </div>
-                            <div class="piece__caption">
-                                <div class="piece__text">
-                                    <h2 class="piece__name">Le P&#x27;tit Central</h2>
-                                    <p class="piece__context">Café-restaurant de quartier, rue Centrale à Lausanne</p>
-                                    <ul class="piece__tags">
-                                        <li>Direction artistique</li>
-                                        <li>Web design</li>
-                                        <li>Développement</li>
-                                        <li>SEO local</li>
-                                    </ul>
-                                </div>
-                                <span class="piece__go" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                                </span>
-                            </div>
+                    </li>
+                    <li>
+                        <a class="pw-finder__item" href="#memo" data-card="memo" data-title="lememo-eight.vercel.app" aria-haspopup="dialog">
+                            <span class="pw-finder__thumb"><img src="assets/images/finder-memo.webp" alt="" width="400" height="250" decoding="async"></span>
+                            <span class="pw-finder__name">LE MEMO</span>
+                            <span class="pw-finder__context">Collectif artistique et boutique à Lausanne</span>
                         </a>
-
-                        <!-- La fiche du projet, lue par la fenêtre qui s'ouvre au clic. -->
-                        <div class="piece__case" hidden>
-                            <img data-case-photo src="assets/images/work-central-720.webp"
-                                srcset="assets/images/work-central-720.webp 720w, assets/images/work-central-1440.webp 1440w"
-                                sizes="(min-width: 1000px) 40vw, 100vw"
-                                alt="Capture du site du P&#x27;tit Central, café-restaurant de la rue Centrale à Lausanne, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
-                                width="1440" height="1800">
-                            <div data-case-summary>
-                                <p>Le P&#x27;tit Central est un café-restaurant de quartier de la rue Centrale, à Lausanne, ouvert du matin jusque tard le soir.</p>
-                                <p>Nous avons dessiné son site autour de ce qui fait le lieu&nbsp;: les azulejos bleu et blanc, des cadres gravés et la photographie maison.</p>
-                            </div>
-                            <dl data-case-approach>
-                                <div>
-                                    <dt>La problématique</dt>
-                                    <dd>Un café de quartier se choisit sur une impression&nbsp;: l&#x27;ambiance, la carte, les horaires. Le site devait transmettre la chaleur du lieu avant même la première visite.</dd>
-                                </div>
-                                <div>
-                                    <dt>L&#x27;enjeu</dt>
-                                    <dd>Répondre tout de suite aux questions qu&#x27;on se pose en passant devant&nbsp;: est-ce ouvert, qu&#x27;est-ce qu&#x27;on y mange, comment réserver.</dd>
-                                </div>
-                                <div>
-                                    <dt>Notre réponse</dt>
-                                    <dd>Une identité tirée du décor, l&#x27;ouverture du jour affichée en tête de page et deux boutons directs&nbsp;: réserver par téléphone, voir la carte.</dd>
-                                </div>
-                                <div>
-                                    <dt>Difficultés et solutions</dt>
-                                    <dd>Les motifs d&#x27;azulejos sont riches et lourds à charger. Nous les avons préparés en images légères et posé le texte sur un fond calme&nbsp;: le décor encadre, il ne gêne jamais la lecture.</dd>
-                                </div>
-                            </dl>
-                        </div>
-                    </article>
-
-                    <article class="piece reveal" id="alliani">
-                        <a class="piece__link" href="https://maison-alliani.com/" target="_blank" rel="noopener noreferrer" data-case-open aria-haspopup="dialog">
-                            <div class="window piece__window">
-                                <span class="window__chrome" aria-hidden="true"><span></span><span></span><span></span></span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/shot-alliani-800.webp"
-                                        srcset="assets/images/shot-alliani-800.webp 800w, assets/images/shot-alliani-1600.webp 1600w"
-                                        sizes="(min-width: 1100px) 30vw, (min-width: 760px) 46vw, 92vw"
-                                        alt="Page d&#x27;accueil du site Maison Alliani" loading="lazy" decoding="async"
-                                        width="1600" height="1000">
-                                </span>
-                            </div>
-                            <div class="piece__caption">
-                                <div class="piece__text">
-                                    <h2 class="piece__name">Maison Alliani</h2>
-                                    <p class="piece__context">Haute joaillerie, grillz sur mesure</p>
-                                    <ul class="piece__tags">
-                                        <li>Direction artistique</li>
-                                        <li>Web design</li>
-                                        <li>Développement</li>
-                                        <li>Motion</li>
-                                    </ul>
-                                </div>
-                                <span class="piece__go" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                                </span>
-                            </div>
+                    </li>
+                    <li>
+                        <a class="pw-finder__item" href="#central" data-card="central" data-title="lepetitcentral.ch" aria-haspopup="dialog">
+                            <span class="pw-finder__thumb"><img src="assets/images/finder-central.webp" alt="" width="400" height="250" decoding="async"></span>
+                            <span class="pw-finder__name">Le P&#x27;tit Central</span>
+                            <span class="pw-finder__context">Café-restaurant de quartier, rue Centrale à Lausanne</span>
                         </a>
-
-                        <!-- La fiche du projet, lue par la fenêtre qui s'ouvre au clic. -->
-                        <div class="piece__case" hidden>
-                            <img data-case-photo src="assets/images/work-alliani-720.webp"
-                                srcset="assets/images/work-alliani-720.webp 720w, assets/images/work-alliani-1440.webp 1440w"
-                                sizes="(min-width: 1000px) 40vw, 100vw"
-                                alt="Capture de la galerie du site Maison Alliani, atelier de grillz sur mesure, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
-                                width="1440" height="1800">
-                            <div data-case-summary>
-                                <p>Maison Alliani est un atelier suisse de grillz sur mesure.</p>
-                                <p>Nous lui avons créé un écrin digital à l&#x27;esthétique sombre et luxueuse, où chaque pièce est présentée comme un bijou unique.</p>
-                            </div>
-                            <dl data-case-approach>
-                                <div>
-                                    <dt>La problématique</dt>
-                                    <dd>Le grillz reste mal connu et souvent associé à de l&#x27;entrée de gamme. Maison Alliani fabrique des pièces sur mesure&nbsp;: le site devait le faire comprendre immédiatement.</dd>
-                                </div>
-                                <div>
-                                    <dt>L&#x27;enjeu</dt>
-                                    <dd>Installer l&#x27;atelier dans le registre de la joaillerie et accompagner le visiteur jusqu&#x27;à la prise de rendez-vous.</dd>
-                                </div>
-                                <div>
-                                    <dt>Notre réponse</dt>
-                                    <dd>Un univers sombre, une typographie précise et une galerie où chaque pièce est montrée seule, avec ses matériaux et son histoire. Le savoir-faire et le processus sont expliqués pas à pas.</dd>
-                                </div>
-                                <div>
-                                    <dt>Difficultés et solutions</dt>
-                                    <dd>Sur fond noir, le métal poli perd vite ses détails. Nous avons choisi des cadrages qui laissent respirer chaque pièce et un mouvement discret qui leur donne du relief sans alourdir la page.</dd>
-                                </div>
-                            </dl>
-                        </div>
-                    </article>
-
-                    <article class="piece reveal" id="amarte">
-                        <a class="piece__link" href="https://amarte.ch/" target="_blank" rel="noopener noreferrer" data-case-open aria-haspopup="dialog">
-                            <div class="window piece__window">
-                                <span class="window__chrome" aria-hidden="true"><span></span><span></span><span></span></span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/shot-amarte-800.webp"
-                                        srcset="assets/images/shot-amarte-800.webp 800w, assets/images/shot-amarte-1600.webp 1600w"
-                                        sizes="(min-width: 1100px) 30vw, (min-width: 760px) 46vw, 92vw"
-                                        alt="Page d&#x27;accueil du site Amarte Studio" loading="lazy" decoding="async"
-                                        width="1600" height="1000">
-                                </span>
-                            </div>
-                            <div class="piece__caption">
-                                <div class="piece__text">
-                                    <h2 class="piece__name">Amarte Studio</h2>
-                                    <p class="piece__context">Centre de yoga et de Pilates à Épalinges</p>
-                                    <ul class="piece__tags">
-                                        <li>Direction artistique</li>
-                                        <li>Web design</li>
-                                        <li>Développement</li>
-                                        <li>SEO local</li>
-                                    </ul>
-                                </div>
-                                <span class="piece__go" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                                </span>
-                            </div>
+                    </li>
+                    <li>
+                        <a class="pw-finder__item" href="#alliani" data-card="alliani" data-title="maison-alliani.com" aria-haspopup="dialog">
+                            <span class="pw-finder__thumb"><img src="assets/images/finder-alliani.webp" alt="" width="400" height="250" decoding="async"></span>
+                            <span class="pw-finder__name">Maison Alliani</span>
+                            <span class="pw-finder__context">Haute joaillerie, grillz sur mesure</span>
                         </a>
-
-                        <!-- La fiche du projet, lue par la fenêtre qui s'ouvre au clic. -->
-                        <div class="piece__case" hidden>
-                            <img data-case-photo src="assets/images/work-amarte-720.webp?v=2"
-                                srcset="assets/images/work-amarte-720.webp?v=2 720w, assets/images/work-amarte-1440.webp?v=2 1440w"
-                                sizes="(min-width: 1000px) 40vw, 100vw"
-                                alt="Capture du site d&#x27;Amarte Studio, centre de yoga et de Pilates à Épalinges, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
-                                width="1440" height="1800">
-                            <div data-case-summary>
-                                <p>Amarte Studio est un centre de yoga et de Pilates à Épalinges, sur les hauts de Lausanne.</p>
-                                <p>Son site réunit les disciplines, les profs et les horaires dans un parcours qui mène à la réservation.</p>
-                            </div>
-                            <dl data-case-approach>
-                                <div>
-                                    <dt>La problématique</dt>
-                                    <dd>Un studio propose beaucoup&nbsp;: plusieurs disciplines, des profs, des horaires, des formules. Tout cela doit rester simple pour quelqu&#x27;un qui n&#x27;a jamais pratiqué.</dd>
-                                </div>
-                                <div>
-                                    <dt>L&#x27;enjeu</dt>
-                                    <dd>Rassurer les débutants et les amener jusqu&#x27;à un premier cours.</dd>
-                                </div>
-                                <div>
-                                    <dt>Notre réponse</dt>
-                                    <dd>Une promesse courte en ouverture, «&nbsp;Bouger. Respirer. S&#x27;épanouir.&nbsp;», puis deux entrées dès l&#x27;accueil&nbsp;: première fois, ou réserver un cours.</dd>
-                                </div>
-                                <div>
-                                    <dt>Difficultés et solutions</dt>
-                                    <dd>Beaucoup d&#x27;informations pour un seul écran de téléphone. Nous avons hiérarchisé sans rien cacher&nbsp;: l&#x27;essentiel d&#x27;abord, le détail à un geste de là.</dd>
-                                </div>
-                            </dl>
-                        </div>
-                    </article>
-
-                    <article class="piece reveal" id="nadege">
-                        <a class="piece__link" href="https://nadegemouine.ch" target="_blank" rel="noopener noreferrer" data-case-open aria-haspopup="dialog">
-                            <div class="window piece__window">
-                                <span class="window__chrome" aria-hidden="true"><span></span><span></span><span></span></span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/shot-nadege-800.webp"
-                                        srcset="assets/images/shot-nadege-800.webp 800w, assets/images/shot-nadege-1600.webp 1600w"
-                                        sizes="(min-width: 1100px) 30vw, (min-width: 760px) 46vw, 92vw"
-                                        alt="Page d&#x27;accueil du site Nadège Mouine" loading="lazy" decoding="async"
-                                        width="1600" height="1000">
-                                </span>
-                            </div>
-                            <div class="piece__caption">
-                                <div class="piece__text">
-                                    <h2 class="piece__name">Nadège Mouine</h2>
-                                    <p class="piece__context">Site personnel d'une architecte en formation à l'EPFL</p>
-                                    <ul class="piece__tags">
-                                        <li>Web design</li>
-                                        <li>Développement</li>
-                                        <li>Identité</li>
-                                    </ul>
-                                </div>
-                                <span class="piece__go" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                                </span>
-                            </div>
+                    </li>
+                    <li>
+                        <a class="pw-finder__item" href="#amarte" data-card="amarte" data-title="amarte.ch" aria-haspopup="dialog">
+                            <span class="pw-finder__thumb"><img src="assets/images/finder-amarte.webp" alt="" width="400" height="250" decoding="async"></span>
+                            <span class="pw-finder__name">Amarte Studio</span>
+                            <span class="pw-finder__context">Centre de yoga et de Pilates à Épalinges</span>
                         </a>
-
-                        <!-- La fiche du projet, lue par la fenêtre qui s'ouvre au clic. -->
-                        <div class="piece__case" hidden>
-                            <img data-case-photo src="assets/images/work-nadege-720.webp"
-                                srcset="assets/images/work-nadege-720.webp 720w, assets/images/work-nadege-1440.webp 1440w"
-                                sizes="(min-width: 1000px) 40vw, 100vw"
-                                alt="Capture du site de Nadège Mouine, site personnel conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
-                                width="1440" height="1800">
-                            <div data-case-summary>
-                                <p>Nadège Mouine est architecte en formation à l&#x27;EPFL.</p>
-                                <p>Nous lui avons conçu un écrin numérique épuré&nbsp;: ses projets d&#x27;abord, l&#x27;interface s&#x27;efface.</p>
-                            </div>
-                            <dl data-case-approach>
-                                <div>
-                                    <dt>La problématique</dt>
-                                    <dd>Un portfolio d&#x27;architecture montre des dessins, des maquettes et des photos de formats très différents. Une interface trop présente les écrase.</dd>
-                                </div>
-                                <div>
-                                    <dt>L&#x27;enjeu</dt>
-                                    <dd>Présenter le travail avec la rigueur attendue dans le milieu de l&#x27;architecture, dans un site capable d&#x27;accueillir les projets à venir.</dd>
-                                </div>
-                                <div>
-                                    <dt>Notre réponse</dt>
-                                    <dd>Une page blanche, une typographie discrète et une frise où chaque image garde ses proportions. Un titre et une année suffisent sous chaque projet.</dd>
-                                </div>
-                                <div>
-                                    <dt>Difficultés et solutions</dt>
-                                    <dd>Des images lourdes et nombreuses. Nous les avons préparées en plusieurs tailles, pour que chaque écran reçoive la bonne sans perte visible de qualité.</dd>
-                                </div>
-                            </dl>
-                        </div>
-                    </article>
-
-                    <article class="piece reveal" id="dj">
-                        <a class="piece__link" href="https://lazizze.com/#/" target="_blank" rel="noopener noreferrer" data-case-open aria-haspopup="dialog">
-                            <div class="window piece__window">
-                                <span class="window__chrome" aria-hidden="true"><span></span><span></span><span></span></span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/shot-dj-800.webp?v=2"
-                                        srcset="assets/images/shot-dj-800.webp?v=2 800w, assets/images/shot-dj-1600.webp?v=2 1600w"
-                                        sizes="(min-width: 1100px) 30vw, (min-width: 760px) 46vw, 92vw"
-                                        alt="Page d&#x27;accueil du site LAZIZZE DJ" loading="lazy" decoding="async"
-                                        width="1600" height="1000">
-                                </span>
-                            </div>
-                            <div class="piece__caption">
-                                <div class="piece__text">
-                                    <h2 class="piece__name">LAZIZZE DJ</h2>
-                                    <p class="piece__context">Portfolio immersif d'un DJ house lausannois</p>
-                                    <ul class="piece__tags">
-                                        <li>Direction artistique</li>
-                                        <li>Web design</li>
-                                        <li>Développement</li>
-                                        <li>Motion</li>
-                                    </ul>
-                                </div>
-                                <span class="piece__go" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                                </span>
-                            </div>
+                    </li>
+                    <li>
+                        <a class="pw-finder__item" href="#nadege" data-card="nadege" data-title="nadegemouine.ch" aria-haspopup="dialog">
+                            <span class="pw-finder__thumb"><img src="assets/images/finder-nadege.webp" alt="" width="400" height="250" decoding="async"></span>
+                            <span class="pw-finder__name">Nadège Mouine</span>
+                            <span class="pw-finder__context">Site personnel d'une architecte en formation à l'EPFL</span>
                         </a>
-
-                        <!-- La fiche du projet, lue par la fenêtre qui s'ouvre au clic. -->
-                        <div class="piece__case" hidden>
-                            <img data-case-photo src="assets/images/work-dj-720.webp"
-                                srcset="assets/images/work-dj-720.webp 720w, assets/images/work-dj-1440.webp 1440w"
-                                sizes="(min-width: 1000px) 40vw, 100vw"
-                                alt="Capture du site LAZIZZE DJ, portfolio immersif conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
-                                width="1440" height="1800">
-                            <div data-case-summary>
-                                <p>LAZIZZE est un DJ house de Lausanne.</p>
-                                <p>Son portfolio est immersif&nbsp;: esthétique néon underground, typographie brutale et énergie de dancefloor.</p>
-                            </div>
-                            <dl data-case-approach>
-                                <div>
-                                    <dt>La problématique</dt>
-                                    <dd>Un DJ se découvre d&#x27;abord en l&#x27;écoutant. Le site devait donner le ton en une seconde, et servir d&#x27;outil pratique aux organisateurs.</dd>
-                                </div>
-                                <div>
-                                    <dt>L&#x27;enjeu</dt>
-                                    <dd>Transmettre l&#x27;énergie d&#x27;une soirée, et que les organisateurs trouvent sans chercher les sons, les infos et le dossier de presse.</dd>
-                                </div>
-                                <div>
-                                    <dt>Notre réponse</dt>
-                                    <dd>Un rose saturé, une typographie massive et trois entrées seulement&nbsp;: About, Track-ID, Presskit.</dd>
-                                </div>
-                                <div>
-                                    <dt>Difficultés et solutions</dt>
-                                    <dd>Trouver l&#x27;équilibre entre impact et lisibilité&nbsp;: un texte immense casse vite sur un téléphone. Les titres s&#x27;ajustent à la largeur de l&#x27;écran pour garder la même force partout.</dd>
-                                </div>
-                            </dl>
-                        </div>
-                    </article>
-
-                    <article class="piece reveal" id="slack">
-                        <a class="piece__link" href="https://la-slack.com/" target="_blank" rel="noopener noreferrer" data-case-open aria-haspopup="dialog">
-                            <div class="window piece__window">
-                                <span class="window__chrome" aria-hidden="true"><span></span><span></span><span></span></span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/shot-slack-800.webp"
-                                        srcset="assets/images/shot-slack-800.webp 800w, assets/images/shot-slack-1600.webp 1600w"
-                                        sizes="(min-width: 1100px) 30vw, (min-width: 760px) 46vw, 92vw"
-                                        alt="Page d&#x27;accueil du site La Slack" loading="lazy" decoding="async"
-                                        width="1600" height="1000">
-                                </span>
-                            </div>
-                            <div class="piece__caption">
-                                <div class="piece__text">
-                                    <h2 class="piece__name">La Slack</h2>
-                                    <p class="piece__context">Portfolio créatif en forme de bureau virtuel</p>
-                                    <ul class="piece__tags">
-                                        <li>Direction artistique</li>
-                                        <li>Web design</li>
-                                        <li>Développement</li>
-                                        <li>Motion</li>
-                                    </ul>
-                                </div>
-                                <span class="piece__go" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                                </span>
-                            </div>
+                    </li>
+                    <li>
+                        <a class="pw-finder__item" href="#dj" data-card="dj" data-title="lazizze.com" aria-haspopup="dialog">
+                            <span class="pw-finder__thumb"><img src="assets/images/finder-dj.webp" alt="" width="400" height="250" decoding="async"></span>
+                            <span class="pw-finder__name">LAZIZZE DJ</span>
+                            <span class="pw-finder__context">Portfolio immersif d'un DJ house lausannois</span>
                         </a>
-
-                        <!-- La fiche du projet, lue par la fenêtre qui s'ouvre au clic. -->
-                        <div class="piece__case" hidden>
-                            <img data-case-photo src="assets/images/work-slack-720.webp"
-                                srcset="assets/images/work-slack-720.webp 720w, assets/images/work-slack-1440.webp 1440w"
-                                sizes="(min-width: 1000px) 40vw, 100vw"
-                                alt="Capture du site La Slack, portfolio créatif conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
-                                width="1440" height="1800">
-                            <div data-case-summary>
-                                <p>La Slack est un portfolio créatif qui réunit architecture, objets et design graphique.</p>
-                                <p>Nous l&#x27;avons pensé comme un bureau virtuel&nbsp;: chaque discipline est un dossier à ouvrir et à explorer.</p>
-                            </div>
-                            <dl data-case-approach>
-                                <div>
-                                    <dt>La problématique</dt>
-                                    <dd>Un travail qui touche à trois disciplines se range mal dans un menu classique.</dd>
-                                </div>
-                                <div>
-                                    <dt>L&#x27;enjeu</dt>
-                                    <dd>Rendre la visite ludique et mémorable, sans jamais perdre le visiteur.</dd>
-                                </div>
-                                <div>
-                                    <dt>Notre réponse</dt>
-                                    <dd>La métaphore du bureau d&#x27;ordinateur&nbsp;: des dossiers pour les disciplines, le portfolio en fichier à télécharger. Tout le monde sait déjà s&#x27;en servir.</dd>
-                                </div>
-                                <div>
-                                    <dt>Difficultés et solutions</dt>
-                                    <dd>Un bureau se pense pour une souris et un grand écran. Sur téléphone, les dossiers se rangent en colonne et s&#x27;ouvrent d&#x27;un geste&nbsp;: l&#x27;idée reste, la contrainte disparaît.</dd>
-                                </div>
-                            </dl>
-                        </div>
-                    </article>
-
-                    <article class="piece reveal" id="commissione">
-                        <a class="piece__link" href="https://commissione-entretien.ch/" target="_blank" rel="noopener noreferrer" data-case-open aria-haspopup="dialog">
-                            <div class="window piece__window">
-                                <span class="window__chrome" aria-hidden="true"><span></span><span></span><span></span></span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/shot-commissione-800.webp"
-                                        srcset="assets/images/shot-commissione-800.webp 800w, assets/images/shot-commissione-1600.webp 1600w"
-                                        sizes="(min-width: 1100px) 30vw, (min-width: 760px) 46vw, 92vw"
-                                        alt="Page d&#x27;accueil du site Commissione Entretien" loading="lazy" decoding="async"
-                                        width="1600" height="1000">
-                                </span>
-                            </div>
-                            <div class="piece__caption">
-                                <div class="piece__text">
-                                    <h2 class="piece__name">Commissione Entretien</h2>
-                                    <p class="piece__context">Entreprise familiale d'entretien à Bavois (VD)</p>
-                                    <ul class="piece__tags">
-                                        <li>Web design</li>
-                                        <li>Développement</li>
-                                        <li>SEO local</li>
-                                        <li>Conversion</li>
-                                    </ul>
-                                </div>
-                                <span class="piece__go" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                                </span>
-                            </div>
+                    </li>
+                    <li>
+                        <a class="pw-finder__item" href="#slack" data-card="slack" data-title="la-slack.com" aria-haspopup="dialog">
+                            <span class="pw-finder__thumb"><img src="assets/images/finder-slack.webp" alt="" width="400" height="250" decoding="async"></span>
+                            <span class="pw-finder__name">La Slack</span>
+                            <span class="pw-finder__context">Portfolio créatif en forme de bureau virtuel</span>
                         </a>
-
-                        <!-- La fiche du projet, lue par la fenêtre qui s'ouvre au clic. -->
-                        <div class="piece__case" hidden>
-                            <img data-case-photo src="assets/images/work-commissione-720.webp"
-                                srcset="assets/images/work-commissione-720.webp 720w, assets/images/work-commissione-1440.webp 1440w"
-                                sizes="(min-width: 1000px) 40vw, 100vw"
-                                alt="Capture du site Commissione Entretien, site professionnel conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
-                                width="1440" height="1800">
-                            <div data-case-summary>
-                                <p>Commissione Entretien est une entreprise familiale d&#x27;entretien et de débouchage basée à Bavois, dans le canton de Vaud.</p>
-                                <p>Nous lui avons fait un site clair et direct, pensé pour transformer les visites en demandes de devis.</p>
-                            </div>
-                            <dl data-case-approach>
-                                <div>
-                                    <dt>La problématique</dt>
-                                    <dd>On cherche une entreprise de débouchage quand on a un problème, souvent dans l&#x27;urgence. Le site devait rassurer et donner le bon numéro immédiatement.</dd>
-                                </div>
-                                <div>
-                                    <dt>L&#x27;enjeu</dt>
-                                    <dd>Transformer les visites en appels et en demandes de devis, et être trouvé par les habitants de la région qui cherchent sur Google.</dd>
-                                </div>
-                                <div>
-                                    <dt>Notre réponse</dt>
-                                    <dd>Un message clair dès l&#x27;ouverture, le numéro de téléphone toujours à portée de pouce et des services présentés simplement, sans jargon.</dd>
-                                </div>
-                                <div>
-                                    <dt>Difficultés et solutions</dt>
-                                    <dd>Se faire une place dans les résultats locaux face à de plus grands acteurs. Nous avons travaillé le référencement autour de Bavois et du Nord vaudois, et une page rapide sur téléphone, là où se font les recherches urgentes.</dd>
-                                </div>
-                            </dl>
-                        </div>
-                    </article>
-
-                    <!-- LA CASE LIBRE — la dixième place de la grille, pour
-                         le prochain projet. Elle complète la dernière rangée
-                         et ouvre la fenêtre de contact. -->
-                    <article class="piece piece--open reveal">
-                        <a class="piece__link" href="mailto:contact@wearebrothers.ch" data-contact>
-                            <div class="piece__media piece__media--open">
-                                <canvas class="perch" data-perch="flap" data-scale="4" data-color="4" aria-hidden="true"></canvas>
-                                <span class="piece__slot">Case n°&nbsp;10 — libre</span>
-                            </div>
-                            <div class="piece__caption">
-                                <div class="piece__text">
-                                    <h2 class="piece__name">Votre projet</h2>
-                                    <p class="piece__context">Cette place vous attend. On en parle autour d'un café&nbsp;?</p>
-                                </div>
-                                <span class="piece__go" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                                </span>
-                            </div>
+                    </li>
+                    <li>
+                        <a class="pw-finder__item" href="#commissione" data-card="commissione" data-title="commissione-entretien.ch" aria-haspopup="dialog">
+                            <span class="pw-finder__thumb"><img src="assets/images/finder-commissione.webp" alt="" width="400" height="250" decoding="async"></span>
+                            <span class="pw-finder__name">Commissione Entretien</span>
+                            <span class="pw-finder__context">Entreprise familiale d'entretien à Bavois (VD)</span>
                         </a>
-                    </article>
+                    </li>
+                        </ul>
+                    </div>
                 </div>
+
+                <div class="pw-hero__objects" aria-hidden="true">
+                    <span class="pw-sticker"><span class="pw-sticker__hello">HELLO</span><span class="pw-sticker__mine">my name is</span><span class="pw-sticker__name">WAB.</span></span>
+                    <span class="pw-kao">(^_^)/</span>
+                </div>
+
+                <!-- LA CASE LIBRE — la dixième place, pour le prochain projet. -->
+                <a class="pw-slot" href="mailto:contact@wearebrothers.ch" data-contact>
+                    <span class="pw-slot__frame">
+                        <canvas class="perch" data-perch="flap" data-scale="3" data-color="4" aria-hidden="true"></canvas>
+                        <span class="pw-slot__label">Case n°&nbsp;10 — libre</span>
+                    </span>
+                    <span class="file-name pw-slot__name">Votre projet</span>
+                    <span class="sr-only"> : cette place vous attend. On en parle autour d'un café&nbsp;?</span>
+                </a>
             </div>
         </section>
 
-        <!-- DÉROULÉ — quatre cartes blanches, à la manière d'Apple : une
-             icône, un titre court, une phrase. Sur téléphone, elles
-             défilent horizontalement au doigt au lieu de s'empiler. -->
-        <section class="band process" id="deroule" aria-labelledby="processTitle">
-            <div class="process__head">
-                <h2 class="process__title" id="processTitle">Un projet, simplement.</h2>
-                <p class="process__lede">De 3 à 6 semaines pour un site vitrine.</p>
+        <!-- LES PROJETS — un par un, chaque site dans sa fenêtre posée sur
+             son écran, en quinconce. Les bulles sont une mise en scène
+             tirée de la fiche (pas des témoignages), masquées aux lecteurs
+             d'écran. Le bloc caché .piece__case est la fiche complète :
+             la fenêtre de verre de js/os la lit (js/os/projects.js), sur
+             cette page comme depuis l'accueil. -->
+        <section class="pw-pieces" aria-labelledby="piecesTitle">
+            <div class="pw-head">
+                <p class="badge">Réalisations</p>
+                <h2 class="pw-head__title" id="piecesTitle">Neuf projets en ligne, de Lausanne à Bavois.</h2>
             </div>
 
-            <ol class="process__cards" aria-label="Les étapes d'un projet">
-                    <li class="process__card">
-                        <svg class="process__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3v3M12 3v3"/></svg>
-                        <h3 class="process__name">On écoute.</h3>
-                        <p class="process__desc">Un café à Lausanne ou un appel. Vous parlez de votre métier, on prend des notes.</p>
-                    </li>
-                    <li class="process__card">
-                        <svg class="process__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7V3Z"/><path d="M14 3v5h5"/><path d="M10 13h6M10 17h4"/></svg>
-                        <h3 class="process__name">On chiffre.</h3>
-                        <p class="process__desc">Périmètre, planning et prix posés noir sur blanc, avant de commencer.</p>
-                    </li>
-                    <li class="process__card">
-                        <svg class="process__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="m13.5 6-3 12"/></svg>
-                        <h3 class="process__name">On dessine, on code.</h3>
-                        <p class="process__desc">Un point chaque semaine. Vous validez chaque étape.</p>
-                    </li>
-                    <li class="process__card">
-                        <svg class="process__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18Z"/></svg>
-                        <h3 class="process__name">On reste là.</h3>
-                        <p class="process__desc">Après la mise en ligne, on ne disparaît pas&nbsp;: maintenance et évolutions, avec les mêmes personnes.</p>
-                    </li>
-            </ol>
+            <div class="pw-pieces__list" data-pieces>
+                <article class="piece" id="zinema" aria-labelledby="zinema-name">
+                    <figure class="piece__media">
+                        <a class="piece__link pw-screen" href="https://www.zinema.ch/" target="_blank" rel="noopener noreferrer" data-card="zinema" data-title="zinema.ch" aria-haspopup="dialog">
+                            <span class="win">
+                                <span class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--site" aria-hidden="true"></span>zinema.ch</span></span>
+                                <span class="win__body"><img class="window__img" src="assets/images/shot-zinema-800.webp" srcset="assets/images/shot-zinema-800.webp 800w, assets/images/shot-zinema-1600.webp 1600w" sizes="(min-width: 900px) 640px, 92vw" alt="Page d&#x27;accueil du site Zinéma" loading="lazy" decoding="async" width="1600" height="1000"></span>
+                            </span>
+                        </a>
+                    </figure>
+                    <div class="piece__text">
+                        <div class="chat" aria-hidden="true">
+                            <p class="chat__ask">La programmation change chaque semaine.</p>
+                            <p class="chat__reply">Les affiches feront l&#x27;accueil.</p>
+                        </div>
+                        <div class="piece__copy">
+                            <h3 class="piece__name" id="zinema-name">Zinéma</h3>
+                            <p class="piece__context">Cinéma d'art et essai, rue du Maupas à Lausanne</p>
+                            <ul class="piece__tags" aria-label="Disciplines"><li>Direction artistique</li><li>Web design</li><li>Développement</li><li>SEO local</li></ul>
+                            <a class="glass-btn glass-btn--sm piece__open" href="#zinema" data-card="zinema" data-title="zinema.ch" aria-haspopup="dialog" data-js-only>Ouvrir la fiche<span class="sr-only"> Zinéma</span></a>
+                        </div>
+                    </div>
+
+                    <div class="piece__case" hidden>
+                        <img data-case-photo src="assets/images/work-zinema-720.webp"
+                            srcset="assets/images/work-zinema-720.webp 720w, assets/images/work-zinema-1440.webp 1440w"
+                            sizes="(min-width: 1000px) 40vw, 100vw"
+                            alt="Capture du site du Zinéma, cinéma d&#x27;art et essai de la rue du Maupas à Lausanne, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
+                            width="1440" height="1800">
+                        <div data-case-summary>
+                            <p>Le Zinéma est le premier cinéma d&#x27;art et essai miniplex de Lausanne, rue du Maupas. Nous avons conçu et développé son site de bout en bout.</p>
+                            <p>La page d&#x27;accueil est pensée comme un mur d&#x27;affiches&nbsp;: ce sont les films qui accueillent le visiteur, puis l&#x27;agenda des séances et la carte de membre, à portée de clic.</p>
+                        </div>
+                        <dl data-case-approach>
+                            <div>
+                                <dt>La problématique</dt>
+                                <dd>Un cinéma indépendant vit de sa programmation, qui change chaque semaine. Le site devait la montrer d&#x27;un coup d&#x27;œil et rester simple à tenir à jour pour l&#x27;équipe.</dd>
+                            </div>
+                            <div>
+                                <dt>L&#x27;enjeu</dt>
+                                <dd>Faire venir du monde en salle&nbsp;: trouver un film, une séance et un horaire en quelques secondes, sur téléphone comme sur ordinateur.</dd>
+                            </div>
+                            <div>
+                                <dt>Notre réponse</dt>
+                                <dd>Une grille d&#x27;affiches pleine page, une navigation franche en capitales (films, agenda, événements, location, membership) et un agenda qui mène directement à la séance.</dd>
+                            </div>
+                            <div>
+                                <dt>Difficultés et solutions</dt>
+                                <dd>Les affiches n&#x27;ont jamais le même format. Plutôt que de les rogner, nous avons construit une grille qui les accueille telles qu&#x27;elles sont, en les chargeant au fil du défilement pour que la page reste rapide.</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </article>
+
+                <article class="piece piece--flip" id="memo" aria-labelledby="memo-name">
+                    <figure class="piece__media">
+                        <a class="piece__link pw-screen" href="https://lememo-eight.vercel.app/" target="_blank" rel="noopener noreferrer" data-card="memo" data-title="lememo-eight.vercel.app" aria-haspopup="dialog">
+                            <span class="win">
+                                <span class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--site" aria-hidden="true"></span>lememo-eight.vercel.app</span></span>
+                                <span class="win__body"><img class="window__img" src="assets/images/shot-memo-800.webp" srcset="assets/images/shot-memo-800.webp 800w, assets/images/shot-memo-1600.webp 1600w" sizes="(min-width: 900px) 640px, 92vw" alt="Page d&#x27;accueil du site LE MEMO" loading="lazy" decoding="async" width="1600" height="1000"></span>
+                            </span>
+                        </a>
+                    </figure>
+                    <div class="piece__text">
+                        <div class="chat" aria-hidden="true">
+                            <p class="chat__ask">On est un collectif, pas une entreprise.</p>
+                            <p class="chat__reply">L&#x27;accueil se joue comme une boîte à rythmes.</p>
+                        </div>
+                        <div class="piece__copy">
+                            <h3 class="piece__name" id="memo-name">LE MEMO</h3>
+                            <p class="piece__context">Collectif artistique et boutique à Lausanne</p>
+                            <ul class="piece__tags" aria-label="Disciplines"><li>Direction artistique</li><li>Web design</li><li>Développement</li><li>Interaction</li></ul>
+                            <a class="glass-btn glass-btn--sm piece__open" href="#memo" data-card="memo" data-title="lememo-eight.vercel.app" aria-haspopup="dialog" data-js-only>Ouvrir la fiche<span class="sr-only"> LE MEMO</span></a>
+                        </div>
+                    </div>
+
+                    <div class="piece__case" hidden>
+                        <img data-case-photo src="assets/images/work-memo-720.webp?v=3"
+                            srcset="assets/images/work-memo-720.webp?v=3 720w, assets/images/work-memo-1440.webp?v=3 1440w"
+                            sizes="(min-width: 1000px) 40vw, 100vw"
+                            alt="Capture du site de LE MEMO, collectif lausannois, dont l&#x27;accueil est un séquenceur musical, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
+                            width="1440" height="1800">
+                        <div data-case-summary>
+                            <p>LE MEMO est un collectif lausannois&nbsp;: des événements, du soutien aux artistes et une boutique de vêtements.</p>
+                            <p>Son site s&#x27;ouvre sur un séquenceur à jouer. Chaque ligne porte une valeur du collectif&nbsp;: PEACE, UNITY, LOVE, HAVING FUN.</p>
+                        </div>
+                        <dl data-case-approach>
+                            <div>
+                                <dt>La problématique</dt>
+                                <dd>Un collectif qui organise des soirées ne se présente pas comme une entreprise. Une page d&#x27;accueil classique aurait gommé ce qui le rend unique.</dd>
+                            </div>
+                            <div>
+                                <dt>L&#x27;enjeu</dt>
+                                <dd>Donner envie de rester et de revenir, tout en menant vers l&#x27;essentiel&nbsp;: les membres, les dates, l&#x27;histoire du collectif et la boutique.</dd>
+                            </div>
+                            <div>
+                                <dt>Notre réponse</dt>
+                                <dd>Un accueil interactif, une grille de pas qui se joue comme une boîte à rythmes. Autour, une navigation sobre en noir et rouge.</dd>
+                            </div>
+                            <div>
+                                <dt>Difficultés et solutions</dt>
+                                <dd>Les navigateurs bloquent le son tant qu&#x27;on n&#x27;a pas touché la page, et seize pas tiennent mal sur un téléphone. Le son démarre donc au premier geste du visiteur, et la grille s&#x27;adapte à l&#x27;écran pour rester jouable au doigt.</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </article>
+
+                <article class="piece" id="central" aria-labelledby="central-name">
+                    <figure class="piece__media">
+                        <canvas class="win-perch" data-perch="fly" data-scale="2" data-color="0" aria-hidden="true"></canvas>
+                        <a class="piece__link pw-screen" href="https://www.lepetitcentral.ch/" target="_blank" rel="noopener noreferrer" data-card="central" data-title="lepetitcentral.ch" aria-haspopup="dialog">
+                            <span class="win">
+                                <span class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--site" aria-hidden="true"></span>lepetitcentral.ch</span></span>
+                                <span class="win__body"><img class="window__img" src="assets/images/shot-central-800.webp" srcset="assets/images/shot-central-800.webp 800w, assets/images/shot-central-1600.webp 1600w" sizes="(min-width: 900px) 640px, 92vw" alt="Page d&#x27;accueil du site Le P&#x27;tit Central" loading="lazy" decoding="async" width="1600" height="1000"></span>
+                            </span>
+                        </a>
+                    </figure>
+                    <div class="piece__text">
+                        <div class="chat" aria-hidden="true">
+                            <p class="chat__ask">Est-ce ouvert, qu&#x27;est-ce qu&#x27;on y mange&nbsp;?</p>
+                            <p class="chat__reply">L&#x27;ouverture du jour, en tête de page.</p>
+                        </div>
+                        <div class="piece__copy">
+                            <h3 class="piece__name" id="central-name">Le P&#x27;tit Central</h3>
+                            <p class="piece__context">Café-restaurant de quartier, rue Centrale à Lausanne</p>
+                            <ul class="piece__tags" aria-label="Disciplines"><li>Direction artistique</li><li>Web design</li><li>Développement</li><li>SEO local</li></ul>
+                            <a class="glass-btn glass-btn--sm piece__open" href="#central" data-card="central" data-title="lepetitcentral.ch" aria-haspopup="dialog" data-js-only>Ouvrir la fiche<span class="sr-only"> Le P&#x27;tit Central</span></a>
+                        </div>
+                    </div>
+
+                    <div class="piece__case" hidden>
+                        <img data-case-photo src="assets/images/work-central-720.webp"
+                            srcset="assets/images/work-central-720.webp 720w, assets/images/work-central-1440.webp 1440w"
+                            sizes="(min-width: 1000px) 40vw, 100vw"
+                            alt="Capture du site du P&#x27;tit Central, café-restaurant de la rue Centrale à Lausanne, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
+                            width="1440" height="1800">
+                        <div data-case-summary>
+                            <p>Le P&#x27;tit Central est un café-restaurant de quartier de la rue Centrale, à Lausanne, ouvert du matin jusque tard le soir.</p>
+                            <p>Nous avons dessiné son site autour de ce qui fait le lieu&nbsp;: les azulejos bleu et blanc, des cadres gravés et la photographie maison.</p>
+                        </div>
+                        <dl data-case-approach>
+                            <div>
+                                <dt>La problématique</dt>
+                                <dd>Un café de quartier se choisit sur une impression&nbsp;: l&#x27;ambiance, la carte, les horaires. Le site devait transmettre la chaleur du lieu avant même la première visite.</dd>
+                            </div>
+                            <div>
+                                <dt>L&#x27;enjeu</dt>
+                                <dd>Répondre tout de suite aux questions qu&#x27;on se pose en passant devant&nbsp;: est-ce ouvert, qu&#x27;est-ce qu&#x27;on y mange, comment réserver.</dd>
+                            </div>
+                            <div>
+                                <dt>Notre réponse</dt>
+                                <dd>Une identité tirée du décor, l&#x27;ouverture du jour affichée en tête de page et deux boutons directs&nbsp;: réserver par téléphone, voir la carte.</dd>
+                            </div>
+                            <div>
+                                <dt>Difficultés et solutions</dt>
+                                <dd>Les motifs d&#x27;azulejos sont riches et lourds à charger. Nous les avons préparés en images légères et posé le texte sur un fond calme&nbsp;: le décor encadre, il ne gêne jamais la lecture.</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </article>
+
+                <article class="piece piece--flip" id="alliani" aria-labelledby="alliani-name">
+                    <figure class="piece__media">
+                        <a class="piece__link pw-screen" href="https://maison-alliani.com/" target="_blank" rel="noopener noreferrer" data-card="alliani" data-title="maison-alliani.com" aria-haspopup="dialog">
+                            <span class="win">
+                                <span class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--site" aria-hidden="true"></span>maison-alliani.com</span></span>
+                                <span class="win__body"><img class="window__img" src="assets/images/shot-alliani-800.webp" srcset="assets/images/shot-alliani-800.webp 800w, assets/images/shot-alliani-1600.webp 1600w" sizes="(min-width: 900px) 640px, 92vw" alt="Page d&#x27;accueil du site Maison Alliani" loading="lazy" decoding="async" width="1600" height="1000"></span>
+                            </span>
+                        </a>
+                    </figure>
+                    <div class="piece__text">
+                        <div class="chat" aria-hidden="true">
+                            <p class="chat__ask">Le grillz, c&#x27;est de la joaillerie.</p>
+                            <p class="chat__reply">Chaque pièce montrée comme un bijou.</p>
+                        </div>
+                        <div class="piece__copy">
+                            <h3 class="piece__name" id="alliani-name">Maison Alliani</h3>
+                            <p class="piece__context">Haute joaillerie, grillz sur mesure</p>
+                            <ul class="piece__tags" aria-label="Disciplines"><li>Direction artistique</li><li>Web design</li><li>Développement</li><li>Motion</li></ul>
+                            <a class="glass-btn glass-btn--sm piece__open" href="#alliani" data-card="alliani" data-title="maison-alliani.com" aria-haspopup="dialog" data-js-only>Ouvrir la fiche<span class="sr-only"> Maison Alliani</span></a>
+                        </div>
+                    </div>
+
+                    <div class="piece__case" hidden>
+                        <img data-case-photo src="assets/images/work-alliani-720.webp"
+                            srcset="assets/images/work-alliani-720.webp 720w, assets/images/work-alliani-1440.webp 1440w"
+                            sizes="(min-width: 1000px) 40vw, 100vw"
+                            alt="Capture de la galerie du site Maison Alliani, atelier de grillz sur mesure, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
+                            width="1440" height="1800">
+                        <div data-case-summary>
+                            <p>Maison Alliani est un atelier suisse de grillz sur mesure.</p>
+                            <p>Nous lui avons créé un écrin digital à l&#x27;esthétique sombre et luxueuse, où chaque pièce est présentée comme un bijou unique.</p>
+                        </div>
+                        <dl data-case-approach>
+                            <div>
+                                <dt>La problématique</dt>
+                                <dd>Le grillz reste mal connu et souvent associé à de l&#x27;entrée de gamme. Maison Alliani fabrique des pièces sur mesure&nbsp;: le site devait le faire comprendre immédiatement.</dd>
+                            </div>
+                            <div>
+                                <dt>L&#x27;enjeu</dt>
+                                <dd>Installer l&#x27;atelier dans le registre de la joaillerie et accompagner le visiteur jusqu&#x27;à la prise de rendez-vous.</dd>
+                            </div>
+                            <div>
+                                <dt>Notre réponse</dt>
+                                <dd>Un univers sombre, une typographie précise et une galerie où chaque pièce est montrée seule, avec ses matériaux et son histoire. Le savoir-faire et le processus sont expliqués pas à pas.</dd>
+                            </div>
+                            <div>
+                                <dt>Difficultés et solutions</dt>
+                                <dd>Sur fond noir, le métal poli perd vite ses détails. Nous avons choisi des cadrages qui laissent respirer chaque pièce et un mouvement discret qui leur donne du relief sans alourdir la page.</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </article>
+
+                <article class="piece" id="amarte" aria-labelledby="amarte-name">
+                    <figure class="piece__media">
+                        <a class="piece__link pw-screen" href="https://amarte.ch/" target="_blank" rel="noopener noreferrer" data-card="amarte" data-title="amarte.ch" aria-haspopup="dialog">
+                            <span class="win">
+                                <span class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--site" aria-hidden="true"></span>amarte.ch</span></span>
+                                <span class="win__body"><img class="window__img" src="assets/images/shot-amarte-800.webp" srcset="assets/images/shot-amarte-800.webp 800w, assets/images/shot-amarte-1600.webp 1600w" sizes="(min-width: 900px) 640px, 92vw" alt="Page d&#x27;accueil du site Amarte Studio" loading="lazy" decoding="async" width="1600" height="1000"></span>
+                            </span>
+                        </a>
+                    </figure>
+                    <div class="piece__text">
+                        <div class="chat" aria-hidden="true">
+                            <p class="chat__ask">Beaucoup viennent pour un premier cours.</p>
+                            <p class="chat__reply">Deux entrées&nbsp;: première fois, ou réserver.</p>
+                        </div>
+                        <div class="piece__copy">
+                            <h3 class="piece__name" id="amarte-name">Amarte Studio</h3>
+                            <p class="piece__context">Centre de yoga et de Pilates à Épalinges</p>
+                            <ul class="piece__tags" aria-label="Disciplines"><li>Direction artistique</li><li>Web design</li><li>Développement</li><li>SEO local</li></ul>
+                            <a class="glass-btn glass-btn--sm piece__open" href="#amarte" data-card="amarte" data-title="amarte.ch" aria-haspopup="dialog" data-js-only>Ouvrir la fiche<span class="sr-only"> Amarte Studio</span></a>
+                        </div>
+                    </div>
+
+                    <div class="piece__case" hidden>
+                        <img data-case-photo src="assets/images/work-amarte-720.webp?v=2"
+                            srcset="assets/images/work-amarte-720.webp?v=2 720w, assets/images/work-amarte-1440.webp?v=2 1440w"
+                            sizes="(min-width: 1000px) 40vw, 100vw"
+                            alt="Capture du site d&#x27;Amarte Studio, centre de yoga et de Pilates à Épalinges, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
+                            width="1440" height="1800">
+                        <div data-case-summary>
+                            <p>Amarte Studio est un centre de yoga et de Pilates à Épalinges, sur les hauts de Lausanne.</p>
+                            <p>Son site réunit les disciplines, les profs et les horaires dans un parcours qui mène à la réservation.</p>
+                        </div>
+                        <dl data-case-approach>
+                            <div>
+                                <dt>La problématique</dt>
+                                <dd>Un studio propose beaucoup&nbsp;: plusieurs disciplines, des profs, des horaires, des formules. Tout cela doit rester simple pour quelqu&#x27;un qui n&#x27;a jamais pratiqué.</dd>
+                            </div>
+                            <div>
+                                <dt>L&#x27;enjeu</dt>
+                                <dd>Rassurer les débutants et les amener jusqu&#x27;à un premier cours.</dd>
+                            </div>
+                            <div>
+                                <dt>Notre réponse</dt>
+                                <dd>Une promesse courte en ouverture, «&nbsp;Bouger. Respirer. S&#x27;épanouir.&nbsp;», puis deux entrées dès l&#x27;accueil&nbsp;: première fois, ou réserver un cours.</dd>
+                            </div>
+                            <div>
+                                <dt>Difficultés et solutions</dt>
+                                <dd>Beaucoup d&#x27;informations pour un seul écran de téléphone. Nous avons hiérarchisé sans rien cacher&nbsp;: l&#x27;essentiel d&#x27;abord, le détail à un geste de là.</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </article>
+
+                <article class="piece piece--flip" id="nadege" aria-labelledby="nadege-name">
+                    <figure class="piece__media">
+                        <a class="piece__link pw-screen" href="https://nadegemouine.ch" target="_blank" rel="noopener noreferrer" data-card="nadege" data-title="nadegemouine.ch" aria-haspopup="dialog">
+                            <span class="win">
+                                <span class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--site" aria-hidden="true"></span>nadegemouine.ch</span></span>
+                                <span class="win__body"><img class="window__img" src="assets/images/shot-nadege-800.webp" srcset="assets/images/shot-nadege-800.webp 800w, assets/images/shot-nadege-1600.webp 1600w" sizes="(min-width: 900px) 640px, 92vw" alt="Page d&#x27;accueil du site Nadège Mouine" loading="lazy" decoding="async" width="1600" height="1000"></span>
+                            </span>
+                        </a>
+                    </figure>
+                    <div class="piece__text">
+                        <div class="chat" aria-hidden="true">
+                            <p class="chat__ask">Mes projets doivent passer avant tout.</p>
+                            <p class="chat__reply">L&#x27;interface s&#x27;efface.</p>
+                        </div>
+                        <div class="piece__copy">
+                            <h3 class="piece__name" id="nadege-name">Nadège Mouine</h3>
+                            <p class="piece__context">Site personnel d'une architecte en formation à l'EPFL</p>
+                            <ul class="piece__tags" aria-label="Disciplines"><li>Web design</li><li>Développement</li><li>Identité</li></ul>
+                            <a class="glass-btn glass-btn--sm piece__open" href="#nadege" data-card="nadege" data-title="nadegemouine.ch" aria-haspopup="dialog" data-js-only>Ouvrir la fiche<span class="sr-only"> Nadège Mouine</span></a>
+                        </div>
+                    </div>
+
+                    <div class="piece__case" hidden>
+                        <img data-case-photo src="assets/images/work-nadege-720.webp"
+                            srcset="assets/images/work-nadege-720.webp 720w, assets/images/work-nadege-1440.webp 1440w"
+                            sizes="(min-width: 1000px) 40vw, 100vw"
+                            alt="Capture du site de Nadège Mouine, site personnel conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
+                            width="1440" height="1800">
+                        <div data-case-summary>
+                            <p>Nadège Mouine est architecte en formation à l&#x27;EPFL.</p>
+                            <p>Nous lui avons conçu un écrin numérique épuré&nbsp;: ses projets d&#x27;abord, l&#x27;interface s&#x27;efface.</p>
+                        </div>
+                        <dl data-case-approach>
+                            <div>
+                                <dt>La problématique</dt>
+                                <dd>Un portfolio d&#x27;architecture montre des dessins, des maquettes et des photos de formats très différents. Une interface trop présente les écrase.</dd>
+                            </div>
+                            <div>
+                                <dt>L&#x27;enjeu</dt>
+                                <dd>Présenter le travail avec la rigueur attendue dans le milieu de l&#x27;architecture, dans un site capable d&#x27;accueillir les projets à venir.</dd>
+                            </div>
+                            <div>
+                                <dt>Notre réponse</dt>
+                                <dd>Une page blanche, une typographie discrète et une frise où chaque image garde ses proportions. Un titre et une année suffisent sous chaque projet.</dd>
+                            </div>
+                            <div>
+                                <dt>Difficultés et solutions</dt>
+                                <dd>Des images lourdes et nombreuses. Nous les avons préparées en plusieurs tailles, pour que chaque écran reçoive la bonne sans perte visible de qualité.</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </article>
+
+                <article class="piece" id="dj" aria-labelledby="dj-name">
+                    <figure class="piece__media">
+                        <a class="piece__link pw-screen" href="https://lazizze.com/#/" target="_blank" rel="noopener noreferrer" data-card="dj" data-title="lazizze.com" aria-haspopup="dialog">
+                            <span class="win">
+                                <span class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--site" aria-hidden="true"></span>lazizze.com</span></span>
+                                <span class="win__body"><img class="window__img" src="assets/images/shot-dj-800.webp?v=2" srcset="assets/images/shot-dj-800.webp?v=2 800w, assets/images/shot-dj-1600.webp?v=2 1600w" sizes="(min-width: 900px) 640px, 92vw" alt="Page d&#x27;accueil du site LAZIZZE DJ" loading="lazy" decoding="async" width="1600" height="1000"></span>
+                            </span>
+                        </a>
+                    </figure>
+                    <div class="piece__text">
+                        <div class="chat" aria-hidden="true">
+                            <p class="chat__ask">Un DJ, ça s&#x27;écoute d&#x27;abord.</p>
+                            <p class="chat__reply">Le ton, donné en une seconde.</p>
+                        </div>
+                        <div class="piece__copy">
+                            <h3 class="piece__name" id="dj-name">LAZIZZE DJ</h3>
+                            <p class="piece__context">Portfolio immersif d'un DJ house lausannois</p>
+                            <ul class="piece__tags" aria-label="Disciplines"><li>Direction artistique</li><li>Web design</li><li>Développement</li><li>Motion</li></ul>
+                            <a class="glass-btn glass-btn--sm piece__open" href="#dj" data-card="dj" data-title="lazizze.com" aria-haspopup="dialog" data-js-only>Ouvrir la fiche<span class="sr-only"> LAZIZZE DJ</span></a>
+                        </div>
+                    </div>
+
+                    <div class="piece__case" hidden>
+                        <img data-case-photo src="assets/images/work-dj-720.webp"
+                            srcset="assets/images/work-dj-720.webp 720w, assets/images/work-dj-1440.webp 1440w"
+                            sizes="(min-width: 1000px) 40vw, 100vw"
+                            alt="Capture du site LAZIZZE DJ, portfolio immersif conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
+                            width="1440" height="1800">
+                        <div data-case-summary>
+                            <p>LAZIZZE est un DJ house de Lausanne.</p>
+                            <p>Son portfolio est immersif&nbsp;: esthétique néon underground, typographie brutale et énergie de dancefloor.</p>
+                        </div>
+                        <dl data-case-approach>
+                            <div>
+                                <dt>La problématique</dt>
+                                <dd>Un DJ se découvre d&#x27;abord en l&#x27;écoutant. Le site devait donner le ton en une seconde, et servir d&#x27;outil pratique aux organisateurs.</dd>
+                            </div>
+                            <div>
+                                <dt>L&#x27;enjeu</dt>
+                                <dd>Transmettre l&#x27;énergie d&#x27;une soirée, et que les organisateurs trouvent sans chercher les sons, les infos et le dossier de presse.</dd>
+                            </div>
+                            <div>
+                                <dt>Notre réponse</dt>
+                                <dd>Un rose saturé, une typographie massive et trois entrées seulement&nbsp;: About, Track-ID, Presskit.</dd>
+                            </div>
+                            <div>
+                                <dt>Difficultés et solutions</dt>
+                                <dd>Trouver l&#x27;équilibre entre impact et lisibilité&nbsp;: un texte immense casse vite sur un téléphone. Les titres s&#x27;ajustent à la largeur de l&#x27;écran pour garder la même force partout.</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </article>
+
+                <article class="piece piece--flip" id="slack" aria-labelledby="slack-name">
+                    <figure class="piece__media">
+                        <canvas class="win-perch" data-perch="fly" data-scale="2" data-color="4" aria-hidden="true"></canvas>
+                        <a class="piece__link pw-screen" href="https://la-slack.com/" target="_blank" rel="noopener noreferrer" data-card="slack" data-title="la-slack.com" aria-haspopup="dialog">
+                            <span class="win">
+                                <span class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--site" aria-hidden="true"></span>la-slack.com</span></span>
+                                <span class="win__body"><img class="window__img" src="assets/images/shot-slack-800.webp" srcset="assets/images/shot-slack-800.webp 800w, assets/images/shot-slack-1600.webp 1600w" sizes="(min-width: 900px) 640px, 92vw" alt="Page d&#x27;accueil du site La Slack" loading="lazy" decoding="async" width="1600" height="1000"></span>
+                            </span>
+                        </a>
+                    </figure>
+                    <div class="piece__text">
+                        <div class="chat" aria-hidden="true">
+                            <p class="chat__ask">Trois disciplines dans un seul menu&nbsp;?</p>
+                            <p class="chat__reply">Un bureau, et des dossiers à ouvrir.</p>
+                        </div>
+                        <div class="piece__copy">
+                            <h3 class="piece__name" id="slack-name">La Slack</h3>
+                            <p class="piece__context">Portfolio créatif en forme de bureau virtuel</p>
+                            <ul class="piece__tags" aria-label="Disciplines"><li>Direction artistique</li><li>Web design</li><li>Développement</li><li>Motion</li></ul>
+                            <a class="glass-btn glass-btn--sm piece__open" href="#slack" data-card="slack" data-title="la-slack.com" aria-haspopup="dialog" data-js-only>Ouvrir la fiche<span class="sr-only"> La Slack</span></a>
+                        </div>
+                    </div>
+
+                    <div class="piece__case" hidden>
+                        <img data-case-photo src="assets/images/work-slack-720.webp"
+                            srcset="assets/images/work-slack-720.webp 720w, assets/images/work-slack-1440.webp 1440w"
+                            sizes="(min-width: 1000px) 40vw, 100vw"
+                            alt="Capture du site La Slack, portfolio créatif conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
+                            width="1440" height="1800">
+                        <div data-case-summary>
+                            <p>La Slack est un portfolio créatif qui réunit architecture, objets et design graphique.</p>
+                            <p>Nous l&#x27;avons pensé comme un bureau virtuel&nbsp;: chaque discipline est un dossier à ouvrir et à explorer.</p>
+                        </div>
+                        <dl data-case-approach>
+                            <div>
+                                <dt>La problématique</dt>
+                                <dd>Un travail qui touche à trois disciplines se range mal dans un menu classique.</dd>
+                            </div>
+                            <div>
+                                <dt>L&#x27;enjeu</dt>
+                                <dd>Rendre la visite ludique et mémorable, sans jamais perdre le visiteur.</dd>
+                            </div>
+                            <div>
+                                <dt>Notre réponse</dt>
+                                <dd>La métaphore du bureau d&#x27;ordinateur&nbsp;: des dossiers pour les disciplines, le portfolio en fichier à télécharger. Tout le monde sait déjà s&#x27;en servir.</dd>
+                            </div>
+                            <div>
+                                <dt>Difficultés et solutions</dt>
+                                <dd>Un bureau se pense pour une souris et un grand écran. Sur téléphone, les dossiers se rangent en colonne et s&#x27;ouvrent d&#x27;un geste&nbsp;: l&#x27;idée reste, la contrainte disparaît.</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </article>
+
+                <article class="piece" id="commissione" aria-labelledby="commissione-name">
+                    <figure class="piece__media">
+                        <a class="piece__link pw-screen" href="https://commissione-entretien.ch/" target="_blank" rel="noopener noreferrer" data-card="commissione" data-title="commissione-entretien.ch" aria-haspopup="dialog">
+                            <span class="win">
+                                <span class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--site" aria-hidden="true"></span>commissione-entretien.ch</span></span>
+                                <span class="win__body"><img class="window__img" src="assets/images/shot-commissione-800.webp" srcset="assets/images/shot-commissione-800.webp 800w, assets/images/shot-commissione-1600.webp 1600w" sizes="(min-width: 900px) 640px, 92vw" alt="Page d&#x27;accueil du site Commissione Entretien" loading="lazy" decoding="async" width="1600" height="1000"></span>
+                            </span>
+                        </a>
+                    </figure>
+                    <div class="piece__text">
+                        <div class="chat" aria-hidden="true">
+                            <p class="chat__ask">On nous appelle souvent dans l&#x27;urgence.</p>
+                            <p class="chat__reply">Le numéro, toujours à portée de pouce.</p>
+                        </div>
+                        <div class="piece__copy">
+                            <h3 class="piece__name" id="commissione-name">Commissione Entretien</h3>
+                            <p class="piece__context">Entreprise familiale d'entretien à Bavois (VD)</p>
+                            <ul class="piece__tags" aria-label="Disciplines"><li>Web design</li><li>Développement</li><li>SEO local</li><li>Conversion</li></ul>
+                            <a class="glass-btn glass-btn--sm piece__open" href="#commissione" data-card="commissione" data-title="commissione-entretien.ch" aria-haspopup="dialog" data-js-only>Ouvrir la fiche<span class="sr-only"> Commissione Entretien</span></a>
+                        </div>
+                    </div>
+
+                    <div class="piece__case" hidden>
+                        <img data-case-photo src="assets/images/work-commissione-720.webp"
+                            srcset="assets/images/work-commissione-720.webp 720w, assets/images/work-commissione-1440.webp 1440w"
+                            sizes="(min-width: 1000px) 40vw, 100vw"
+                            alt="Capture du site Commissione Entretien, site professionnel conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
+                            width="1440" height="1800">
+                        <div data-case-summary>
+                            <p>Commissione Entretien est une entreprise familiale d&#x27;entretien et de débouchage basée à Bavois, dans le canton de Vaud.</p>
+                            <p>Nous lui avons fait un site clair et direct, pensé pour transformer les visites en demandes de devis.</p>
+                        </div>
+                        <dl data-case-approach>
+                            <div>
+                                <dt>La problématique</dt>
+                                <dd>On cherche une entreprise de débouchage quand on a un problème, souvent dans l&#x27;urgence. Le site devait rassurer et donner le bon numéro immédiatement.</dd>
+                            </div>
+                            <div>
+                                <dt>L&#x27;enjeu</dt>
+                                <dd>Transformer les visites en appels et en demandes de devis, et être trouvé par les habitants de la région qui cherchent sur Google.</dd>
+                            </div>
+                            <div>
+                                <dt>Notre réponse</dt>
+                                <dd>Un message clair dès l&#x27;ouverture, le numéro de téléphone toujours à portée de pouce et des services présentés simplement, sans jargon.</dd>
+                            </div>
+                            <div>
+                                <dt>Difficultés et solutions</dt>
+                                <dd>Se faire une place dans les résultats locaux face à de plus grands acteurs. Nous avons travaillé le référencement autour de Bavois et du Nord vaudois, et une page rapide sur téléphone, là où se font les recherches urgentes.</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <section class="band closing" id="contact">
-            <div class="shell">
-                <h2 class="closing__title">Et si le prochain projet était le vôtre&nbsp;?</h2>
-                <p class="closing__lede">
-                    Quelques lignes suffisent pour commencer. Nous vous répondons sous 24&nbsp;h ouvrées,
-                    sans engagement.
-                </p>
-                <div class="closing__actions">
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="btn btn--solid btn--lg">
-                        <span>Démarrer un projet</span>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                    </a>
-                    <a href="mailto:contact@wearebrothers.ch" class="btn btn--ghost btn--lg">
-                        <span>Écrire un email</span>
-                    </a>
+        <!-- LE DÉROULÉ — sur le ciel rose, quatre cartes de verre. -->
+        <section class="pw-steps" id="deroule" aria-labelledby="processTitle">
+            <div class="os-wrap">
+                <div class="pw-head">
+                    <h2 class="pw-head__title" id="processTitle">Un projet, simplement.</h2>
+                    <p class="pw-head__lede">De 3 à 6 semaines pour un site vitrine.</p>
+                </div>
+                <ol class="pw-steps__list" aria-label="Les étapes d'un projet">
+                    <li class="pw-step">
+                        <span class="pw-step__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3v3M12 3v3"/></svg></span>
+                        <h3 class="pw-step__name">On écoute.</h3>
+                        <p class="pw-step__desc">Un café à Lausanne ou un appel. Vous parlez de votre métier, on prend des notes.</p>
+                    </li>
+                    <li class="pw-step">
+                        <span class="pw-step__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7V3Z"/><path d="M14 3v5h5"/><path d="M10 13h6M10 17h4"/></svg></span>
+                        <h3 class="pw-step__name">On chiffre.</h3>
+                        <p class="pw-step__desc">Périmètre, planning et prix posés noir sur blanc, avant de commencer.</p>
+                    </li>
+                    <li class="pw-step">
+                        <span class="pw-step__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="m13.5 6-3 12"/></svg></span>
+                        <h3 class="pw-step__name">On dessine, on code.</h3>
+                        <p class="pw-step__desc">Un point chaque semaine. Vous validez chaque étape.</p>
+                    </li>
+                    <li class="pw-step">
+                        <span class="pw-step__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18Z"/></svg></span>
+                        <h3 class="pw-step__name">On reste là.</h3>
+                        <p class="pw-step__desc">Après la mise en ligne, on ne disparaît pas&nbsp;: maintenance et évolutions, avec les mêmes personnes.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- L'APPEL FINAL — une boîte de dialogue du système, posée sur le
+             bureau : l'icône, la question, deux boutons (le rose est
+             l'action par défaut, à droite, comme sur macOS). -->
+        <section class="pw-end" id="contact" aria-labelledby="endTitle">
+            <div class="pw-alert">
+                <canvas class="win-perch pw-alert__perch" data-perch="fly" data-scale="2" data-color="2" aria-hidden="true"></canvas>
+                <div class="win">
+                    <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--mail" aria-hidden="true"></span>Nouveau projet</span></div>
+                    <div class="pw-alert__body">
+                        <img class="app-icon pw-alert__icon" src="assets/icons/app-mail.svg" alt="" width="64" height="64" loading="lazy" decoding="async">
+                        <h2 class="pw-alert__title" id="endTitle">Et si le prochain projet était le vôtre&nbsp;?</h2>
+                        <p class="pw-alert__text">Quelques lignes suffisent pour commencer. Nous vous répondons sous 24&nbsp;h ouvrées, sans engagement.</p>
+                        <div class="pw-alert__actions">
+                            <a href="mailto:contact@wearebrothers.ch" class="glass-btn">Écrire un email</a>
+                            <a href="mailto:contact@wearebrothers.ch" data-contact class="glass-btn glass-btn--pink">Démarrer un projet</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- PIED DE PAGE — une seule carte : le sigle, les pages, l'adresse
-         et la signature. Les deux pages que le menu ne porte pas
-         (création de site, applications) n'ont pas d'autre chemin
-         depuis une page de texte : leurs liens ne peuvent pas partir. -->
-    <footer class="site-footer">
-        <div class="card footer-card">
-            <div class="footer-card__top">
-                <p class="footer-card__mark">WAB.</p>
-                <div class="footer-card__cols">
-                    <nav class="footer-card__col" aria-label="Pages">
-                        <p class="footer-card__label">Pages</p>
-                        <a href="/realisations">Work</a>
-                        <a href="/services">Services</a>
-                        <a href="/studio">About</a>
-                    </nav>
-                    <nav class="footer-card__col" aria-label="Expertises">
-                        <p class="footer-card__label">Expertises</p>
-                        <a href="/creation-site-internet-lausanne">Création de site internet</a>
-                        <a href="/applications">Applications</a>
-                    </nav>
-                    <div class="footer-card__col">
-                        <p class="footer-card__label">Contact</p>
-                        <a href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
-                        <span>Lausanne, Suisse</span>
-                    </div>
+    <footer class="foot">
+        <div class="desk-wrap">
+            <div class="foot__cols">
+                <nav class="foot__col" aria-label="Pages">
+                    <p class="foot__label">Pages</p>
+                    <a href="/realisations">Work</a>
+                    <a href="/services">Services</a>
+                    <a href="/studio">About</a>
+                </nav>
+                <nav class="foot__col" aria-label="Expertises">
+                    <p class="foot__label">Expertises</p>
+                    <a href="/creation-site-internet-lausanne">Création de site internet</a>
+                    <a href="/applications">Applications</a>
+                </nav>
+                <div class="foot__col">
+                    <p class="foot__label">Contact</p>
+                    <a href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
+                    <span>Lausanne, Suisse — <time data-local-time>--:--</time></span>
                 </div>
+                <p class="foot__note">Codé à la main à Lausanne, oiseaux compris.</p>
             </div>
-            <p class="footer-card__sign"><span>&copy; 2026 WeAreBrothers Studio</span> <span>Codé à la main à Lausanne, oiseaux compris.</span></p>
+            <svg class="pixel-name" data-watch="once" viewBox="-1 -1 202 72" role="img" aria-label="WAB.">
+                <defs>
+                    <symbol id="wab-px" viewBox="0 0 10 10" width="10" height="10" overflow="visible"><rect class="px__edge" x="0.5" y="1.6" width="9" height="9" rx="0.6"/><rect class="px__body" x="0.5" y="0.5" width="9" height="9" rx="0.6"/></symbol>
+                </defs>
+                <use class="px" href="#wab-px" x="0" y="0"/>
+                <use class="px" href="#wab-px" x="40" y="0"/>
+                <use class="px" href="#wab-px" x="0" y="10"/>
+                <use class="px" href="#wab-px" x="40" y="10"/>
+                <use class="px" href="#wab-px" x="0" y="20"/>
+                <use class="px" href="#wab-px" x="40" y="20"/>
+                <use class="px" href="#wab-px" x="0" y="30"/>
+                <use class="px" href="#wab-px" x="20" y="30"/>
+                <use class="px" href="#wab-px" x="40" y="30"/>
+                <use class="px" href="#wab-px" x="0" y="40"/>
+                <use class="px" href="#wab-px" x="20" y="40"/>
+                <use class="px" href="#wab-px" x="40" y="40"/>
+                <use class="px" href="#wab-px" x="0" y="50"/>
+                <use class="px" href="#wab-px" x="20" y="50"/>
+                <use class="px" href="#wab-px" x="40" y="50"/>
+                <use class="px" href="#wab-px" x="10" y="60"/>
+                <use class="px" href="#wab-px" x="30" y="60"/>
+                <use class="px" href="#wab-px" x="70" y="0"/>
+                <use class="px" href="#wab-px" x="80" y="0"/>
+                <use class="px" href="#wab-px" x="90" y="0"/>
+                <use class="px" href="#wab-px" x="60" y="10"/>
+                <use class="px" href="#wab-px" x="100" y="10"/>
+                <use class="px" href="#wab-px" x="60" y="20"/>
+                <use class="px" href="#wab-px" x="100" y="20"/>
+                <use class="px" href="#wab-px" x="60" y="30"/>
+                <use class="px" href="#wab-px" x="70" y="30"/>
+                <use class="px" href="#wab-px" x="80" y="30"/>
+                <use class="px" href="#wab-px" x="90" y="30"/>
+                <use class="px" href="#wab-px" x="100" y="30"/>
+                <use class="px" href="#wab-px" x="60" y="40"/>
+                <use class="px" href="#wab-px" x="100" y="40"/>
+                <use class="px" href="#wab-px" x="60" y="50"/>
+                <use class="px" href="#wab-px" x="100" y="50"/>
+                <use class="px" href="#wab-px" x="60" y="60"/>
+                <use class="px" href="#wab-px" x="100" y="60"/>
+                <use class="px" href="#wab-px" x="120" y="0"/>
+                <use class="px" href="#wab-px" x="130" y="0"/>
+                <use class="px" href="#wab-px" x="140" y="0"/>
+                <use class="px" href="#wab-px" x="150" y="0"/>
+                <use class="px" href="#wab-px" x="120" y="10"/>
+                <use class="px" href="#wab-px" x="160" y="10"/>
+                <use class="px" href="#wab-px" x="120" y="20"/>
+                <use class="px" href="#wab-px" x="160" y="20"/>
+                <use class="px" href="#wab-px" x="120" y="30"/>
+                <use class="px" href="#wab-px" x="130" y="30"/>
+                <use class="px" href="#wab-px" x="140" y="30"/>
+                <use class="px" href="#wab-px" x="150" y="30"/>
+                <use class="px" href="#wab-px" x="120" y="40"/>
+                <use class="px" href="#wab-px" x="160" y="40"/>
+                <use class="px" href="#wab-px" x="120" y="50"/>
+                <use class="px" href="#wab-px" x="160" y="50"/>
+                <use class="px" href="#wab-px" x="120" y="60"/>
+                <use class="px" href="#wab-px" x="130" y="60"/>
+                <use class="px" href="#wab-px" x="140" y="60"/>
+                <use class="px" href="#wab-px" x="150" y="60"/>
+                <use class="px" href="#wab-px" x="180" y="50"/>
+                <use class="px" href="#wab-px" x="190" y="50"/>
+                <use class="px" href="#wab-px" x="180" y="60"/>
+                <use class="px" href="#wab-px" x="190" y="60"/>
+            </svg>
+            <p class="foot__legal">&copy; 2026 WeAreBrothers Studio</p>
         </div>
     </footer>
 
-
+    <!-- LE DOCK — sur ordinateur (voir OS-COMPONENTS.md, § 10). -->
+    <nav class="dock" aria-label="Dock" data-dock>
+        <ul class="dock__apps">
+            <li><a class="dock__item" href="/realisations" data-app="work" aria-current="page"><img class="app-icon" src="assets/icons/app-work.svg" alt="" width="48" height="48"><span class="dock__label">Work</span></a></li>
+            <li><a class="dock__item" href="/services" data-app="services"><img class="app-icon" src="assets/icons/app-services.svg" alt="" width="48" height="48"><span class="dock__label">Services</span></a></li>
+            <li><a class="dock__item" href="/studio" data-app="about"><img class="app-icon" src="assets/icons/app-about.svg" alt="" width="48" height="48"><span class="dock__label">About</span></a></li>
+            <li><a class="dock__item" href="/#lettre" data-app="notes"><img class="app-icon" src="assets/icons/app-notes.svg" alt="" width="48" height="48"><span class="dock__label">Lettre</span></a></li>
+            <li><button class="dock__item" type="button" data-app="terminal" data-js-only><img class="app-icon" src="assets/icons/app-terminal.svg" alt="" width="48" height="48"><span class="dock__label">Terminal</span></button></li>
+            <li><a class="dock__item" href="mailto:contact@wearebrothers.ch" data-contact data-app="contact"><img class="app-icon" src="assets/icons/app-mail.svg" alt="" width="48" height="48"><span class="dock__label">Contact</span></a></li>
+        </ul>
+        <ul class="dock__shelf" data-dock-shelf aria-label="Fenêtres réduites" hidden></ul>
+    </nav>
 
 </body>
 

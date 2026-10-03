@@ -1,0 +1,22 @@
+/* ============================================
+   WAB OS — About : l'en-tête des sections
+   Le badge de verre (os-base.css), le titre, une phrase : centrés,
+   comme sur l'accueil.
+   ============================================ */
+
+.ab-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+}
+
+.ab-head__title {
+    max-width: 26ch;
+    font-size: var(--t-title);
+    font-weight: var(--w-strong);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+}

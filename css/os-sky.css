@@ -1,0 +1,48 @@
+/* ============================================
+   WAB OS — la lumière du bureau suit l'heure de Lausanne
+   js/os/sky.js pose data-sky sur la racine : matin (6 h–10 h),
+   jour (10 h–17 h), soir (17 h–21 h), nuit (21 h–6 h). Seule la
+   lumière du haut de la page change ; la trame reste grise et le
+   bureau garde sa clarté. Sans script : le jour, neutre.
+
+   Contraste : la teinte s'efface sur les 900 premiers pixels de la
+   page. --ink-faint y prend la valeur de --ink-muted (5,2:1 au pire,
+   mesuré sur la teinte la plus dense).
+   ============================================ */
+
+[data-sky='matin'] .os,
+:root[data-sky='matin']:has(body.os) {
+    --sky-top: rgba(255, 226, 236, 0.5);
+    --sky-glow: rgba(255, 240, 246, 0.8);
+    --ink-faint: #5c5b63;
+}
+
+[data-sky='jour'] .os,
+:root[data-sky='jour']:has(body.os) {
+    --sky-top: rgba(255, 255, 255, 0.55);
+    --sky-glow: rgba(255, 255, 255, 0.6);
+}
+
+[data-sky='soir'] .os,
+:root[data-sky='soir']:has(body.os) {
+    --sky-top: rgba(255, 190, 220, 0.45);
+    --sky-glow: rgba(255, 168, 208, 0.32);
+    --ink-faint: #5c5b63;
+}
+
+[data-sky='nuit'] .os,
+:root[data-sky='nuit']:has(body.os) {
+    --sky-top: rgba(190, 198, 232, 0.4);
+    --sky-glow: rgba(150, 160, 214, 0.22);
+    --ink-faint: #5c5b63;
+}
+
+/* L'icône d'état de la barre : le soleil, ou la lune la nuit. */
+.menubar__sky .sym--moon,
+[data-sky='nuit'] .menubar__sky .sym--sun {
+    display: none;
+}
+
+[data-sky='nuit'] .menubar__sky .sym--moon {
+    display: inline-block;
+}

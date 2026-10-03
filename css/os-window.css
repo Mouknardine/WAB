@@ -1,0 +1,142 @@
+/* ============================================
+   WAB OS — la fenêtre
+   La pièce de base de toute la page, en verre : une barre de verre
+   clair avec son reflet et son liseré lumineux, trois pastilles WAB
+   (carrés aux coins doux : rose, encre, blanc cerné), le titre en
+   Sligoil avec un symbole. Ces fenêtres-là sont nombreuses : elles
+   imitent le verre sans flou réel (aucun backdrop-filter), la
+   performance d'abord. Les fenêtres qui s'ouvrent : os-win.css.
+   ============================================ */
+
+.win {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--r-win);
+    background: var(--win-bg);
+    box-shadow: 0 0 0 1px var(--win-edge), var(--win-shadow);
+    overflow: hidden;
+}
+
+/* Le reflet spéculaire du verre, sur le haut de la barre. */
+.win__bar::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 45%;
+    background: var(--glass-specular);
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.win__bar {
+    position: relative;
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: var(--win-bar-h);
+    padding: 0 12px;
+    background: var(--win-bar);
+    box-shadow: inset 0 -1px 0 var(--glass-edge), inset 0 1px 0 var(--glass-rim);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Trois pastilles, une seule boîte : le rose, puis l'encre et le
+   blanc cerné dessinés par ombres portées (qui suivent l'arrondi).
+   Décor des fenêtres posées ; les fenêtres qui s'ouvrent ont de vrais
+   boutons (os-win.css). */
+.win__lights {
+    position: relative;
+    flex: none;
+    width: var(--px-size);
+    height: var(--px-size);
+    border-radius: var(--r-px);
+    background: var(--pink);
+    box-shadow:
+        calc(var(--px-size) + var(--px-gap)) 0 0 var(--ink),
+        calc(2 * (var(--px-size) + var(--px-gap))) 0 0 -1px var(--paper),
+        calc(2 * (var(--px-size) + var(--px-gap))) 0 0 var(--ink);
+    margin-right: calc(2 * (var(--px-size) + var(--px-gap)));
+}
+
+.win__title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+    overflow: hidden;
+    position: relative;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--ink-muted);
+}
+
+.win__title .sym {
+    width: 14px;
+    height: 14px;
+}
+
+.win__body {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    background: var(--desk);
+}
+
+.win__body img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Une capture de l'application de gestion : ces chiffres ne sont pas
+   ceux d'un client, la fenêtre le dit. */
+.win__demo {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    z-index: 2;
+    padding: 3px 10px;
+    border-radius: var(--r-pill);
+    background: var(--veil);
+    box-shadow: 0 0 0 1px var(--line);
+    font-size: 11px;
+    color: var(--ink-muted);
+}
+
+/* Le nom de fichier, sous la fenêtre. */
+.file-name {
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    margin: 8px auto 0;
+    padding: 1px 6px;
+    border-radius: var(--r-px);
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: center;
+    white-space: nowrap;
+    color: var(--ink-faint);
+}
+
+/* ── L'oiseau posé sur une barre de titre (bureau du premier écran) ──
+   Le canevas garde de l'air au-dessus de l'oiseau pour l'envol
+   (perch.js), et sept rangs vides sous ses pattes : on le descend
+   d'autant (--drop, sept points de dessin) pour qu'il touche la barre. */
+.win-perch {
+    --drop: 14px;
+    position: absolute;
+    z-index: 3;
+    right: 14px;
+    bottom: calc(100% - var(--drop));
+    pointer-events: none;
+    image-rendering: pixelated;
+}
+
+.win-perch[data-scale='3'] {
+    --drop: 21px;
+}

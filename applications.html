@@ -90,82 +90,93 @@
     }
     </script>
 
-
     <!-- Police — Sligoil seule, servie depuis le site -->
     <link rel="preload" href="assets/fonts/Sligoil-Micro.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/Sligoil-MicroBold.woff2" as="font" type="font/woff2" crossorigin>
 
-    <!-- Styles -->
+    <!-- Styles — le socle commun, les pièces partagées de WAB OS, puis
+         les feuilles de la page (page-apps-*). -->
     <link rel="stylesheet" href="css/base.css?v=33">
-    <link rel="stylesheet" href="css/nav.css?v=19">
     <link rel="stylesheet" href="css/nav-panel.css?v=1">
     <link rel="stylesheet" href="css/contact-modal.css?v=7">
     <link rel="stylesheet" href="css/contact-form.css?v=3">
-    <link rel="stylesheet" href="css/page.css?v=7">
-    <link rel="stylesheet" href="css/apps.css?v=4">
-    <link rel="stylesheet" href="css/approach.css?v=1">
-    <link rel="stylesheet" href="css/footer.css?v=11">
-    <link rel="stylesheet" href="css/plate.css?v=3">
+    <link rel="stylesheet" href="css/os-tokens.css?v=1">
+    <link rel="stylesheet" href="css/os-base.css?v=1">
+    <link rel="stylesheet" href="css/os-sky.css?v=1">
+    <link rel="stylesheet" href="css/sym.css?v=2">
+    <link rel="stylesheet" href="css/glass-btn.css?v=2">
+    <link rel="stylesheet" href="css/os-bar.css?v=1">
+    <link rel="stylesheet" href="css/os-window.css?v=1">
+    <link rel="stylesheet" href="css/os-bubbles.css?v=1">
+    <link rel="stylesheet" href="css/os-footer.css?v=1">
+    <link rel="stylesheet" href="css/os-overlay.css?v=2">
+    <!-- Pièces de l'accueil réemployées : autocollant et icônes, blocs
+         en quinconce et frappe, questions en accordéon. -->
+    <link rel="stylesheet" href="css/desk-objects.css?v=4">
+    <link rel="stylesheet" href="css/desk-blocks.css?v=5">
+    <link rel="stylesheet" href="css/desk-chat.css?v=3">
+    <link rel="stylesheet" href="css/desk-faq.css?v=2">
+    <link rel="stylesheet" href="css/page-apps-tokens.css?v=1">
+    <link rel="stylesheet" href="css/page-apps-hero.css?v=1">
+    <link rel="stylesheet" href="css/page-apps-window.css?v=1">
+    <link rel="stylesheet" href="css/page-apps-sections.css?v=1">
 
     <!-- Scripts -->
-    <script src="nav-clock.js?v=2" defer></script>
-    <script src="js/reveal.js?v=4" defer></script>
+    <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
-    <script src="js/letter-swap.js?v=1" defer></script>
-    <script src="js/accordion.js?v=1" defer></script>
-    <script type="module" src="js/mesh/index.js?v=2"></script>
-    <script type="module" src="js/birds/index.js?v=6"></script>
+    <script src="js/reveal.js?v=4" defer></script>
+    <script type="module" src="js/birds/index.js?v=7"></script>
+    <script type="module" src="js/birds/perch.js?v=7"></script>
     <script type="module" src="js/contact/index.js?v=9"></script>
+    <script type="module" src="js/os/index.js?v=1"></script>
+    <script type="module" src="js/page-apps/index.js?v=1"></script>
 </head>
 
-<body>
+<body class="os page-apps" data-birds="rare">
 
     <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-    <!-- Les oiseaux traversent le fond de toute la page -->
+    <!-- Les oiseaux volent sur la trame du bureau, sous les fenêtres. -->
     <canvas id="birdCanvas" aria-hidden="true"></canvas>
 
-    <!-- BARRE FLOTTANTE — la pilule se prolonge pour contenir le menu -->
-    <header class="topbar" id="topbar">
-        <div class="topbar__inner" id="topbarBar">
-            <div class="topbar__bar">
-                <a href="/" class="topbar__brand">WAB.</a>
+    <!-- BARRE DE MENUS — identique à l'accueil. -->
+    <header class="menubar" id="topbar">
+        <div class="topbar__inner menubar__inner" id="topbarBar">
+            <div class="menubar__row">
+                <a href="/" class="menubar__brand">WAB.</a>
 
-                <nav class="topbar__nav" aria-label="Navigation principale">
-                    <a href="/realisations" class="topbar__link">Work</a>
-                    <a href="/services" class="topbar__link">Services</a>
-                    <a href="/studio" class="topbar__link">About</a>
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="topbar__link">Contact</a>
+                <nav class="menubar__nav" aria-label="Navigation principale">
+                    <a href="/realisations" class="menubar__link">Work</a>
+                    <a href="/services" class="menubar__link">Services</a>
+                    <a href="/studio" class="menubar__link">About</a>
                 </nav>
 
-                <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
-                    <span class="topbar__dots" aria-hidden="true">
-                        <span></span><span></span><span></span><span></span>
-                    </span>
-                    <span class="sr-only">Menu</span>
-                </button>
-            </div>
+                <span class="menubar__os" aria-hidden="true" translate="no"><canvas class="menubar__sigil" data-perch="flap" data-scale="1" data-color="4"></canvas></span>
 
+                <div class="menubar__state">
+                    <button type="button" class="menubar__find" data-palette-open data-js-only aria-keyshortcuts="Meta+K Control+K">
+                        <span class="sym sym--search" aria-hidden="true"></span>Rechercher<kbd data-shortcut>⌘K</kbd>
+                    </button>
+                    <span class="menubar__sky" aria-hidden="true"><span class="sym sym--sun" aria-hidden="true"></span><span class="sym sym--moon" aria-hidden="true"></span></span>
+                    <span class="menubar__status" data-local-status hidden></span>
+                    <time class="menubar__time" data-local-time>--:--</time>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="menubar__cta glass-btn glass-btn--pink glass-btn--sm">Contact</a>
+                    <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
+                        <span class="topbar__dots" aria-hidden="true">
+                            <span></span><span></span><span></span><span></span>
+                        </span>
+                        <span class="sr-only">Menu</span>
+                    </button>
+                </div>
+            </div>
             <div class="topbar__panel" id="topbarPanel">
                 <div class="topbar__panel-inner">
                     <nav class="panel__nav" aria-label="Navigation">
-                        <a href="/realisations" class="panel__link">
-                            Work
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
-                        <a href="/services" class="panel__link">
-                            Services
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
-                        <a href="/studio" class="panel__link">
-                            About
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
-                        <a href="mailto:contact@wearebrothers.ch" data-contact class="panel__link">
-                            Contact
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
+                        <a href="/realisations" class="panel__link">Work<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
+                        <a href="/services" class="panel__link">Services<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
+                        <a href="/studio" class="panel__link">About<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
+                        <a href="mailto:contact@wearebrothers.ch" data-contact class="panel__link">Contact<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
                     </nav>
-
                     <div class="panel__meta">
                         <p class="panel__row">
                             <span class="panel__key">Email</span>
@@ -183,242 +194,300 @@
 
     <div class="topbar-scrim" id="topbarScrim"></div>
 
-    <main id="contenu">
 
-        <!-- EN-TÊTE DE PAGE -->
-        <section class="page-head">
-            <div class="shell">
-                <h1 class="page-head__title">Un logiciel sur mesure, construit sur votre façon de travailler</h1>
-                <p class="page-head__sub">Nous développons des applications web de gestion pour les PME et les indépendants de l'arc lémanique — Lausanne, Morges, Nyon, Vevey, Genève. Chaque outil est dessiné à partir du métier de l'entreprise qui l'utilise.</p>
-            </div>
-        </section>
+    <main id="contenu" tabindex="-1">
 
-        <!-- ÉCRANS -->
-        <section class="band" id="exemple">
-            <div class="shell">
-                <h2 class="band-title reveal">Un exemple&nbsp;: une application de gestion complète</h2>
-            </div>
-
-            <!-- Les écrans sortent de la colonne de lecture : pleine
-                 largeur, comme les captures de la page Réalisations. -->
-            <div class="spread">
-                <div class="screens" data-reveal-group>
-                    <article class="screen reveal">
-                        <div class="window-link">
-                            <div class="window">
-                                <span class="window__chrome" aria-hidden="true">
-                                    <span></span><span></span><span></span>
-                                </span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/app-agenda-aujourdhui-1280.webp" srcset="assets/images/app-agenda-aujourdhui-1280.webp 1280w, assets/images/app-agenda-aujourdhui-2560.webp 2560w" sizes="(min-width: 900px) 62vw, 92vw" alt="Tableau de bord d'une application de gestion sur mesure : projets en cours, trésorerie du mois, montants restant à encaisser et tâches du jour" loading="lazy" decoding="async" width="1280" height="520">
-                                </span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h3 class="screen__title">«&nbsp;Où en est ce dossier&nbsp;?&nbsp;»</h3>
-                            <p class="screen__desc">L'écran d'ouverture réunit les projets en cours, la trésorerie du mois, les montants restant à encaisser et les tâches du jour. Une équipe qui reprend un dossier après trois semaines en retrouve l'état complet sur une seule page.</p>
-                            <p class="screen__note">Capture avec des données de démonstration</p>
-                        </div>
-                    </article>
-                    <article class="screen reveal">
-                        <div class="window-link">
-                            <div class="window">
-                                <span class="window__chrome" aria-hidden="true">
-                                    <span></span><span></span><span></span>
-                                </span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/app-agenda-taches-1280.webp" srcset="assets/images/app-agenda-taches-1280.webp 1280w, assets/images/app-agenda-taches-2560.webp 2560w" sizes="(min-width: 900px) 62vw, 92vw" alt="Vue des tâches groupées par échéance, filtrables par personne, par projet et par catégorie" loading="lazy" decoding="async" width="1280" height="520">
-                                </span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h3 class="screen__title">«&nbsp;Qui fait quoi, et pour quand&nbsp;?&nbsp;»</h3>
-                            <p class="screen__desc">Toutes les tâches tiennent dans une vue unique, groupées par échéance et filtrables par personne, par projet ou par type de travail. Une tâche peut être assignée à plusieurs personnes à égalité, parce que c'est ainsi que cette équipe travaille.</p>
-                            <p class="screen__note">Capture avec des données de démonstration</p>
-                        </div>
-                    </article>
-                    <article class="screen reveal">
-                        <div class="window-link">
-                            <div class="window">
-                                <span class="window__chrome" aria-hidden="true">
-                                    <span></span><span></span><span></span>
-                                </span>
-                                <span class="window__view">
-                                    <img class="window__img" src="assets/images/app-agenda-finances-1280.webp" srcset="assets/images/app-agenda-finances-1280.webp 1280w, assets/images/app-agenda-finances-2560.webp 2560w" sizes="(min-width: 900px) 62vw, 92vw" alt="Tableau de bord financier : montants signés, facturés et encaissés, évolution sur douze mois et derniers paiements reçus" loading="lazy" decoding="async" width="1280" height="520">
-                                </span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h3 class="screen__title">«&nbsp;Est-ce qu'on gagne de l'argent&nbsp;?&nbsp;»</h3>
-                            <p class="screen__desc">Le suivi financier affiche ce qui est signé, ce qui est facturé, ce qui est réellement encaissé et ce qu'il reste à recevoir. Les heures pointées sont valorisées au coût interne, ce qui donne la marge réelle projet par projet&nbsp;: un projet entièrement payé peut afficher une marge négative, et l'écran le montre.</p>
-                            <p class="screen__note">Capture avec des données de démonstration</p>
-                        </div>
-                    </article>
+        <!-- LE BUREAU — la promesse au centre, puis l'application ouverte
+             dans son écran. Ses onglets se parcourent vraiment : chaque
+             module montre sa capture (js/page-apps/tabs.js). Sans
+             JavaScript, le premier écran seul, les deux autres plus bas. -->
+        <section class="app-hero" aria-labelledby="appTitle">
+            <div class="app-hero__head">
+                <h1 class="app-hero__title" id="appTitle">Un logiciel sur mesure, construit sur votre façon de travailler</h1>
+                <p class="app-hero__lede">Nous développons des applications web de gestion pour les PME et les indépendants de l'arc lémanique — Lausanne, Morges, Nyon, Vevey, Genève. Chaque outil est dessiné à partir du métier de l'entreprise qui l'utilise.</p>
+                <div class="app-hero__actions">
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="glass-btn glass-btn--pink">Démarrer un projet</a>
+                    <a href="#exemple" class="glass-btn">Parcourir l'exemple</a>
                 </div>
+                <p class="app-hero__note">Devis sous 24&nbsp;h ouvrées</p>
             </div>
-        </section>
 
-        <!-- APPROCHE -->
-        <section class="band" id="approche">
-            <div class="spread split">
-                <div class="split__head">
-                    <h2 class="band-title reveal">Notre approche du développement sur mesure</h2>
-                </div>
+            <!-- Le désordre en bordure : décor, masqué aux lecteurs d'écran. -->
+            <div class="app-hero__edge" aria-hidden="true">
+                <span class="app-edge app-edge--sticker"><span class="sticker"><span class="sticker__hello">HELLO</span><span class="sticker__mine">my name is</span><span class="sticker__name">Agenda</span></span></span>
+                <span class="app-edge app-edge--file icon"><img class="app-icon" src="assets/icons/app-file.svg" alt="" width="56" height="56"><span class="icon__name">tableur.xlsx</span></span>
+                <span class="app-edge app-edge--kao kao">(^-^)b</span>
+            </div>
 
-                <div class="split__body">
-                    <div class="approach approach--pair" data-reveal-group>
-                        <article class="approach__item reveal">
-                            <h3 class="approach__title">On part de votre métier</h3>
-                            <p class="approach__desc">Une phase d'observation précède la première ligne de code. Deux entreprises d'un même secteur travaillent chacune à leur manière&nbsp;: c'est cet écart qui décide de la forme de l'outil.</p>
-                        </article>
-                        <article class="approach__item reveal">
-                            <h3 class="approach__title">Chaque écran a une raison d'être</h3>
-                            <p class="approach__desc">Une fonctionnalité entre dans l'outil parce que quelqu'un s'en servira. Ce choix garde l'interface lisible dans trois ans et le code simple à faire évoluer.</p>
-                        </article>
-                        <article class="approach__item reveal">
-                            <h3 class="approach__title">Le temps gagné est la mesure</h3>
-                            <p class="approach__desc">Un outil se juge aux heures qu'il rend chaque semaine. Vingt minutes récupérées par jour représentent près de deux semaines de travail sur une année, par personne.</p>
-                        </article>
-                        <article class="approach__item reveal">
-                            <h3 class="approach__title">Consultable depuis le téléphone</h3>
-                            <p class="approach__desc">Un dossier s'ouvre chez un client, debout, entre deux rendez-vous. L'interface est dessinée pour le petit écran d'abord.</p>
-                        </article>
-                        <article class="approach__item reveal">
-                            <h3 class="approach__title">L'historique reste consultable</h3>
-                            <p class="approach__desc">Les données archivées restent accessibles et cherchables. Une suppression définitive demande une confirmation explicite, qui annonce ce qu'elle emporte.</p>
-                        </article>
+            <figure class="app-stage" aria-label="L'application de gestion, à parcourir module par module">
+                <div class="screen app-screen" data-perch-host>
+                    <canvas class="win-perch" data-perch="fly" data-scale="2" data-color="4" aria-hidden="true"></canvas>
+                    <div class="win app-win">
+                        <div class="win__bar app-win__bar">
+                            <span class="win__lights"></span>
+                            <span class="win__title app-win__title"><span class="sym sym--grid" aria-hidden="true" data-app-icon></span><span data-app-title>Agenda — Aujourd'hui</span></span>
+                            <div class="app-tabs" role="tablist" aria-label="Modules de l'application" data-js-only data-app-tabs>
+                                <button type="button" class="app-tab" role="tab" id="tab-jour" aria-controls="panel-jour" aria-selected="true" data-icon="grid">
+                                    <span class="sym sym--grid" aria-hidden="true"></span>Aujourd'hui
+                                </button>
+                                <button type="button" class="app-tab" role="tab" id="tab-taches" aria-controls="panel-taches" aria-selected="false" tabindex="-1" data-icon="check">
+                                    <span class="sym sym--check" aria-hidden="true"></span>Tâches
+                                </button>
+                                <button type="button" class="app-tab" role="tab" id="tab-finances" aria-controls="panel-finances" aria-selected="false" tabindex="-1" data-icon="chart">
+                                    <span class="sym sym--chart" aria-hidden="true"></span>Finances
+                                </button>
+                            </div>
+                        </div>
+                        <div class="win__body app-win__body">
+                            <div class="app-panel app-panel--short" role="tabpanel" id="panel-jour" aria-labelledby="tab-jour" tabindex="0">
+                                <img src="assets/images/app-agenda-aujourdhui-1280.webp" srcset="assets/images/app-agenda-aujourdhui-1280.webp 1280w, assets/images/app-agenda-aujourdhui-2560.webp 2560w" sizes="(min-width: 1180px) 1096px, calc(100vw - 56px)" alt="Tableau de bord d'une application de gestion sur mesure : projets en cours, trésorerie du mois, montants restant à encaisser et tâches du jour" width="1280" height="520" fetchpriority="high" decoding="async">
+                            </div>
+                            <div class="app-panel" role="tabpanel" id="panel-taches" aria-labelledby="tab-taches" tabindex="0" hidden>
+                                <img src="assets/images/app-agenda-taches-1280.webp" srcset="assets/images/app-agenda-taches-1280.webp 1280w, assets/images/app-agenda-taches-2560.webp 2560w" sizes="(min-width: 1180px) 1096px, calc(100vw - 56px)" alt="Vue des tâches groupées par échéance, filtrables par personne, par projet et par catégorie" width="1280" height="840" loading="lazy" decoding="async">
+                            </div>
+                            <div class="app-panel" role="tabpanel" id="panel-finances" aria-labelledby="tab-finances" tabindex="0" hidden>
+                                <img src="assets/images/app-agenda-finances-1280.webp" srcset="assets/images/app-agenda-finances-1280.webp 1280w, assets/images/app-agenda-finances-2560.webp 2560w" sizes="(min-width: 1180px) 1096px, calc(100vw - 56px)" alt="Tableau de bord financier : montants signés, facturés et encaissés, évolution sur douze mois et derniers paiements reçus" width="1280" height="1000" loading="lazy" decoding="async">
+                            </div>
+                            <span class="win__demo">Données de démonstration</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </figure>
         </section>
 
-        <!-- QUESTIONS -->
-        <section class="band" id="questions">
-            <div class="spread split">
-                <div class="split__head">
-                    <h2 class="band-title reveal">Ce qu'on nous demande le plus souvent</h2>
-                </div>
+        <!-- LES MODULES — un bloc par écran, en quinconce, comme les
+             services de l'accueil. La question est celle du titre de
+             l'ancienne page ; la réponse de WAB la résume. -->
+        <section class="desk-wrap block" id="exemple" aria-labelledby="exempleTitle">
+            <div class="section-head reveal">
+                <p class="badge">L'application</p>
+                <h2 class="section-title" id="exempleTitle">Un exemple&nbsp;: une application de gestion complète</h2>
+            </div>
 
-                <div class="split__body">
-                    <div class="service-list service-list--pair" data-reveal-group>
-
-                        <article class="service reveal is-open">
-                            <h3 class="service__head">
-                                <button type="button" class="service__toggle" id="faq-combien-coute-un-logiciel-su-label"
-                                    aria-expanded="true" aria-controls="faq-combien-coute-un-logiciel-su">
-                                    <span class="service__name">Combien coûte un logiciel sur mesure&nbsp;?</span>
-                                    <span class="service__icon" aria-hidden="true"></span>
-                                </button>
-                            </h3>
-                            <div class="service__panel" id="faq-combien-coute-un-logiciel-su" role="region" aria-labelledby="faq-combien-coute-un-logiciel-su-label">
-                                <div class="service__panel-inner">
-                                    <p class="service__desc">Le prix suit le périmètre. Nous commençons par la plus petite version réellement utile&nbsp;: vous voyez l'outil fonctionner tôt, et vous décidez ensuite de ce qui mérite d'être construit. Un devis chiffré vous parvient sous 24&nbsp;h ouvrées après un premier échange.</p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="service reveal">
-                            <h3 class="service__head">
-                                <button type="button" class="service__toggle" id="faq-combien-de-temps-faut-il-pou-label"
-                                    aria-expanded="false" aria-controls="faq-combien-de-temps-faut-il-pou">
-                                    <span class="service__name">Combien de temps faut-il pour développer une application de gestion&nbsp;?</span>
-                                    <span class="service__icon" aria-hidden="true"></span>
-                                </button>
-                            </h3>
-                            <div class="service__panel" id="faq-combien-de-temps-faut-il-pou" role="region" aria-labelledby="faq-combien-de-temps-faut-il-pou-label">
-                                <div class="service__panel-inner">
-                                    <p class="service__desc">Nous livrons module par module, chacun utilisable en production dès qu'il est terminé. Concrètement&nbsp;: la gestion des dossiers d'abord, le suivi du temps ensuite, la facturation après. Vous vous en servez pendant que la suite se construit.</p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="service reveal">
-                            <h3 class="service__head">
-                                <button type="button" class="service__toggle" id="faq-faut-il-remplacer-tous-vos-o-label"
-                                    aria-expanded="false" aria-controls="faq-faut-il-remplacer-tous-vos-o">
-                                    <span class="service__name">Faut-il remplacer tous vos outils d'un coup&nbsp;?</span>
-                                    <span class="service__icon" aria-hidden="true"></span>
-                                </button>
-                            </h3>
-                            <div class="service__panel" id="faq-faut-il-remplacer-tous-vos-o" role="region" aria-labelledby="faq-faut-il-remplacer-tous-vos-o-label">
-                                <div class="service__panel-inner">
-                                    <p class="service__desc">Le premier module traite le besoin le plus pressant, souvent celui qui vit dans un tableur partagé. Vos données existantes sont reprises par import, pour que l'outil soit rempli dès sa mise en service. Le reste suit à votre rythme.</p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="service reveal">
-                            <h3 class="service__head">
-                                <button type="button" class="service__toggle" id="faq-nos-donnees-sont-elles-en-se-label"
-                                    aria-expanded="false" aria-controls="faq-nos-donnees-sont-elles-en-se">
-                                    <span class="service__name">Nos données sont-elles en sécurité&nbsp;?</span>
-                                    <span class="service__icon" aria-hidden="true"></span>
-                                </button>
-                            </h3>
-                            <div class="service__panel" id="faq-nos-donnees-sont-elles-en-se" role="region" aria-labelledby="faq-nos-donnees-sont-elles-en-se-label">
-                                <div class="service__panel-inner">
-                                    <p class="service__desc">Les documents sont déposés sur un stockage privé, accessible uniquement par lien signé à durée limitée. La base applique une règle d'accès sur chaque ligne, et seules les adresses que vous autorisez peuvent ouvrir un compte.</p>
-                                </div>
-                            </div>
-                        </article>
-
+            <div class="feats" data-feats>
+                <article class="feat">
+                    <div class="feat__text">
+                        <span class="typing" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                        <div class="chat">
+                            <p class="chat__ask">«&nbsp;Où en est ce dossier&nbsp;?&nbsp;»</p>
+                            <p class="chat__reply" aria-hidden="true">Tout tient sur une page.</p>
+                        </div>
+                        <div class="feat__copy">
+                            <h3 class="feat__title">Aujourd'hui</h3>
+                            <p class="feat__line">L'écran d'ouverture réunit les projets en cours, la trésorerie du mois, les montants restant à encaisser et les tâches du jour. Une équipe qui reprend un dossier après trois semaines en retrouve l'état complet sur une seule page.</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </section>
+                    <figure class="feat__media">
+                        <div class="screen"><div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--grid" aria-hidden="true"></span>Agenda — Aujourd'hui</span></div><div class="win__body app-fill"><img class="app-fill__img" src="assets/images/app-agenda-aujourdhui-1280.webp" srcset="assets/images/app-agenda-aujourdhui-1280.webp 1280w, assets/images/app-agenda-aujourdhui-2560.webp 2560w" sizes="(min-width: 900px) 590px, 100vw" alt="L'écran Aujourd'hui : projets en cours, trésorerie du mois, montants restant à encaisser et tâches du jour" width="1280" height="520" loading="lazy" decoding="async"><span class="win__demo">Données de démonstration</span></div></div></div>
+                    </figure>
+                </article>
 
-        <!-- CONTACT -->
-        <section class="band closing" id="contact">
-            <div class="shell">
-                <h2 class="closing__title">Un outil qui colle à votre métier&nbsp;?</h2>
-                <p class="closing__lede">Décrivez-nous votre fonctionnement actuel. Nous vous dirons franchement si un développement sur mesure se justifie, ou si un outil existant suffit.</p>
-                <div class="closing__actions">
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="btn btn--solid btn--lg">
-                        <span>Démarrer un projet</span>
-                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                    </a>
-                    <a href="mailto:contact@wearebrothers.ch" class="btn btn--ghost btn--lg">
-                        <span>Écrire un email</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- PIED DE PAGE — une seule carte : le sigle, les pages, l'adresse
-         et la signature. Les deux pages que le menu ne porte pas
-         (création de site, applications) n'ont pas d'autre chemin
-         depuis une page de texte : leurs liens ne peuvent pas partir. -->
-    <footer class="site-footer">
-        <div class="card footer-card">
-            <div class="footer-card__top">
-                <p class="footer-card__mark">WAB.</p>
-                <div class="footer-card__cols">
-                    <nav class="footer-card__col" aria-label="Pages">
-                        <p class="footer-card__label">Pages</p>
-                        <a href="/realisations">Work</a>
-                        <a href="/services">Services</a>
-                        <a href="/studio">About</a>
-                    </nav>
-                    <nav class="footer-card__col" aria-label="Expertises">
-                        <p class="footer-card__label">Expertises</p>
-                        <a href="/creation-site-internet-lausanne">Création de site internet</a>
-                        <a href="/applications">Applications</a>
-                    </nav>
-                    <div class="footer-card__col">
-                        <p class="footer-card__label">Contact</p>
-                        <a href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
-                        <span>Lausanne, Suisse</span>
+                <article class="feat feat--flip">
+                    <div class="feat__text">
+                        <span class="typing" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                        <div class="chat">
+                            <p class="chat__ask">«&nbsp;Qui fait quoi, et pour quand&nbsp;?&nbsp;»</p>
+                            <p class="chat__reply" aria-hidden="true">Une seule vue, filtrable.</p>
+                        </div>
+                        <div class="feat__copy">
+                            <h3 class="feat__title">Tâches</h3>
+                            <p class="feat__line">Toutes les tâches tiennent dans une vue unique, groupées par échéance et filtrables par personne, par projet ou par type de travail. Une tâche peut être assignée à plusieurs personnes à égalité, parce que c'est ainsi que cette équipe travaille.</p>
+                        </div>
                     </div>
+                    <figure class="feat__media" data-watch>
+                        <div class="screen"><div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--check" aria-hidden="true"></span>Agenda — Tâches</span></div><div class="win__body"><img class="scroll-shot" src="assets/images/app-agenda-taches-1280.webp" srcset="assets/images/app-agenda-taches-1280.webp 1280w, assets/images/app-agenda-taches-2560.webp 2560w" sizes="(min-width: 900px) 590px, 100vw" alt="L'écran Tâches : les tâches groupées par échéance, filtrables par personne, par projet et par catégorie" width="1280" height="840" loading="lazy" decoding="async"><span class="win__demo">Données de démonstration</span></div></div></div>
+                    </figure>
+                </article>
+
+                <article class="feat">
+                    <div class="feat__text">
+                        <span class="typing" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                        <div class="chat">
+                            <p class="chat__ask">«&nbsp;Est-ce qu'on gagne de l'argent&nbsp;?&nbsp;»</p>
+                            <p class="chat__reply" aria-hidden="true">La marge, projet par projet.</p>
+                        </div>
+                        <div class="feat__copy">
+                            <h3 class="feat__title">Finances</h3>
+                            <p class="feat__line">Le suivi financier affiche ce qui est signé, ce qui est facturé, ce qui est réellement encaissé et ce qu'il reste à recevoir. Les heures pointées sont valorisées au coût interne, ce qui donne la marge réelle projet par projet&nbsp;: un projet entièrement payé peut afficher une marge négative, et l'écran le montre.</p>
+                        </div>
+                    </div>
+                    <figure class="feat__media" data-watch>
+                        <div class="screen"><div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--chart" aria-hidden="true"></span>Agenda — Finances</span></div><div class="win__body"><img class="scroll-shot" src="assets/images/app-agenda-finances-1280.webp" srcset="assets/images/app-agenda-finances-1280.webp 1280w, assets/images/app-agenda-finances-2560.webp 2560w" sizes="(min-width: 900px) 590px, 100vw" alt="L'écran Finances : montants signés, facturés et encaissés, évolution sur douze mois et derniers paiements reçus" width="1280" height="1000" loading="lazy" decoding="async"><span class="win__demo">Données de démonstration</span></div></div></div>
+                    </figure>
+                </article>
+            </div>
+        </section>
+
+        <!-- L'APPROCHE — cinq principes, en cartes de verre sur le ciel
+             rose du site. -->
+        <section class="app-sky" id="approche" aria-labelledby="approcheTitle">
+            <div class="desk-wrap">
+                <div class="section-head reveal">
+                    <p class="badge badge--glass">Approche</p>
+                    <h2 class="section-title" id="approcheTitle">Notre approche du développement sur mesure</h2>
+                </div>
+                <ul class="app-ways reveal">
+                    <li class="app-way">
+                        <span class="app-way__icon"><span class="sym sym--team" aria-hidden="true"></span></span>
+                        <h3 class="app-way__title">On part de votre métier</h3>
+                        <p class="app-way__text">Une phase d'observation précède la première ligne de code. Deux entreprises d'un même secteur travaillent chacune à leur manière&nbsp;: c'est cet écart qui décide de la forme de l'outil.</p>
+                    </li>
+                    <li class="app-way">
+                        <span class="app-way__icon"><span class="sym sym--grid" aria-hidden="true"></span></span>
+                        <h3 class="app-way__title">Chaque écran a une raison d'être</h3>
+                        <p class="app-way__text">Une fonctionnalité entre dans l'outil parce que quelqu'un s'en servira. Ce choix garde l'interface lisible dans trois ans et le code simple à faire évoluer.</p>
+                    </li>
+                    <li class="app-way">
+                        <span class="app-way__icon"><span class="sym sym--clock" aria-hidden="true"></span></span>
+                        <h3 class="app-way__title">Le temps gagné est la mesure</h3>
+                        <p class="app-way__text">Un outil se juge aux heures qu'il rend chaque semaine. Vingt minutes récupérées par jour représentent près de deux semaines de travail sur une année, par personne.</p>
+                    </li>
+                    <li class="app-way">
+                        <span class="app-way__icon"><span class="sym sym--phone" aria-hidden="true"></span></span>
+                        <h3 class="app-way__title">Consultable depuis le téléphone</h3>
+                        <p class="app-way__text">Un dossier s'ouvre chez un client, debout, entre deux rendez-vous. L'interface est dessinée pour le petit écran d'abord.</p>
+                    </li>
+                    <li class="app-way">
+                        <span class="app-way__icon"><span class="sym sym--folder" aria-hidden="true"></span></span>
+                        <h3 class="app-way__title">L'historique reste consultable</h3>
+                        <p class="app-way__text">Les données archivées restent accessibles et cherchables. Une suppression définitive demande une confirmation explicite, qui annonce ce qu'elle emporte.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- LES QUESTIONS — reprises mot pour mot dans le bloc FAQPage du
+             <head> : elles se modifient ensemble. <details> natifs. -->
+        <section class="block" id="questions" aria-labelledby="faqTitle">
+            <div class="desk-wrap">
+                <div class="section-head reveal">
+                    <p class="badge">FAQ</p>
+                    <h2 class="faq-home__title" id="faqTitle">Ce qu'on nous demande le plus souvent</h2>
+                </div>
+                <div class="faq-home__list">
+                    <details class="qa" open>
+                        <summary class="qa__q">Combien coûte un logiciel sur mesure&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
+                        <div class="qa__a"><p>Le prix suit le périmètre. Nous commençons par la plus petite version réellement utile&nbsp;: vous voyez l'outil fonctionner tôt, et vous décidez ensuite de ce qui mérite d'être construit. Un devis chiffré vous parvient sous 24&nbsp;h ouvrées après un premier échange.</p></div>
+                    </details>
+                    <details class="qa">
+                        <summary class="qa__q">Combien de temps faut-il pour développer une application de gestion&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
+                        <div class="qa__a"><p>Nous livrons module par module, chacun utilisable en production dès qu'il est terminé. Concrètement&nbsp;: la gestion des dossiers d'abord, le suivi du temps ensuite, la facturation après. Vous vous en servez pendant que la suite se construit.</p></div>
+                    </details>
+                    <details class="qa">
+                        <summary class="qa__q">Faut-il remplacer tous vos outils d'un coup&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
+                        <div class="qa__a"><p>Le premier module traite le besoin le plus pressant, souvent celui qui vit dans un tableur partagé. Vos données existantes sont reprises par import, pour que l'outil soit rempli dès sa mise en service. Le reste suit à votre rythme.</p></div>
+                    </details>
+                    <details class="qa">
+                        <summary class="qa__q">Nos données sont-elles en sécurité&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
+                        <div class="qa__a"><p>Les documents sont déposés sur un stockage privé, accessible uniquement par lien signé à durée limitée. La base applique une règle d'accès sur chaque ligne, et seules les adresses que vous autorisez peuvent ouvrir un compte.</p></div>
+                    </details>
                 </div>
             </div>
-            <p class="footer-card__sign"><span>&copy; 2026 WeAreBrothers Studio</span> <span>Codé à la main à Lausanne, oiseaux compris.</span></p>
+        </section>
+
+        <!-- L'APPEL FINAL — l'oiseau posé sur le titre, deux boutons. -->
+        <section class="block app-end" id="contact" aria-labelledby="endTitle">
+            <div class="desk-wrap app-end__inner reveal">
+                <canvas class="app-end__bird" data-perch="flap" data-scale="3" data-color="0" aria-hidden="true"></canvas>
+                <h2 class="app-end__title" id="endTitle">Un outil qui colle à votre métier&nbsp;?</h2>
+                <p class="app-end__lede">Décrivez-nous votre fonctionnement actuel. Nous vous dirons franchement si un développement sur mesure se justifie, ou si un outil existant suffit.</p>
+                <div class="app-end__actions">
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="glass-btn glass-btn--pink">Démarrer un projet</a>
+                    <a href="mailto:contact@wearebrothers.ch" class="glass-btn">Écrire un email</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="foot">
+        <div class="desk-wrap">
+            <div class="foot__cols">
+                <nav class="foot__col" aria-label="Pages">
+                    <p class="foot__label">Pages</p>
+                    <a href="/realisations">Work</a>
+                    <a href="/services">Services</a>
+                    <a href="/studio">About</a>
+                </nav>
+                <nav class="foot__col" aria-label="Expertises">
+                    <p class="foot__label">Expertises</p>
+                    <a href="/creation-site-internet-lausanne">Création de site internet</a>
+                    <a href="/applications">Applications</a>
+                </nav>
+                <div class="foot__col">
+                    <p class="foot__label">Contact</p>
+                    <a href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
+                    <span>Lausanne, Suisse — <time data-local-time>--:--</time></span>
+                </div>
+                <p class="foot__note">Codé à la main à Lausanne, oiseaux compris.</p>
+            </div>
+            <svg class="pixel-name" data-watch="once" viewBox="-1 -1 202 72" role="img" aria-label="WAB.">
+                <defs>
+                    <symbol id="wab-px" viewBox="0 0 10 10" width="10" height="10" overflow="visible"><rect class="px__edge" x="0.5" y="1.6" width="9" height="9" rx="0.6"/><rect class="px__body" x="0.5" y="0.5" width="9" height="9" rx="0.6"/></symbol>
+                </defs>
+                <use class="px" href="#wab-px" x="0" y="0"/>
+                <use class="px" href="#wab-px" x="40" y="0"/>
+                <use class="px" href="#wab-px" x="0" y="10"/>
+                <use class="px" href="#wab-px" x="40" y="10"/>
+                <use class="px" href="#wab-px" x="0" y="20"/>
+                <use class="px" href="#wab-px" x="40" y="20"/>
+                <use class="px" href="#wab-px" x="0" y="30"/>
+                <use class="px" href="#wab-px" x="20" y="30"/>
+                <use class="px" href="#wab-px" x="40" y="30"/>
+                <use class="px" href="#wab-px" x="0" y="40"/>
+                <use class="px" href="#wab-px" x="20" y="40"/>
+                <use class="px" href="#wab-px" x="40" y="40"/>
+                <use class="px" href="#wab-px" x="0" y="50"/>
+                <use class="px" href="#wab-px" x="20" y="50"/>
+                <use class="px" href="#wab-px" x="40" y="50"/>
+                <use class="px" href="#wab-px" x="10" y="60"/>
+                <use class="px" href="#wab-px" x="30" y="60"/>
+                <use class="px" href="#wab-px" x="70" y="0"/>
+                <use class="px" href="#wab-px" x="80" y="0"/>
+                <use class="px" href="#wab-px" x="90" y="0"/>
+                <use class="px" href="#wab-px" x="60" y="10"/>
+                <use class="px" href="#wab-px" x="100" y="10"/>
+                <use class="px" href="#wab-px" x="60" y="20"/>
+                <use class="px" href="#wab-px" x="100" y="20"/>
+                <use class="px" href="#wab-px" x="60" y="30"/>
+                <use class="px" href="#wab-px" x="70" y="30"/>
+                <use class="px" href="#wab-px" x="80" y="30"/>
+                <use class="px" href="#wab-px" x="90" y="30"/>
+                <use class="px" href="#wab-px" x="100" y="30"/>
+                <use class="px" href="#wab-px" x="60" y="40"/>
+                <use class="px" href="#wab-px" x="100" y="40"/>
+                <use class="px" href="#wab-px" x="60" y="50"/>
+                <use class="px" href="#wab-px" x="100" y="50"/>
+                <use class="px" href="#wab-px" x="60" y="60"/>
+                <use class="px" href="#wab-px" x="100" y="60"/>
+                <use class="px" href="#wab-px" x="120" y="0"/>
+                <use class="px" href="#wab-px" x="130" y="0"/>
+                <use class="px" href="#wab-px" x="140" y="0"/>
+                <use class="px" href="#wab-px" x="150" y="0"/>
+                <use class="px" href="#wab-px" x="120" y="10"/>
+                <use class="px" href="#wab-px" x="160" y="10"/>
+                <use class="px" href="#wab-px" x="120" y="20"/>
+                <use class="px" href="#wab-px" x="160" y="20"/>
+                <use class="px" href="#wab-px" x="120" y="30"/>
+                <use class="px" href="#wab-px" x="130" y="30"/>
+                <use class="px" href="#wab-px" x="140" y="30"/>
+                <use class="px" href="#wab-px" x="150" y="30"/>
+                <use class="px" href="#wab-px" x="120" y="40"/>
+                <use class="px" href="#wab-px" x="160" y="40"/>
+                <use class="px" href="#wab-px" x="120" y="50"/>
+                <use class="px" href="#wab-px" x="160" y="50"/>
+                <use class="px" href="#wab-px" x="120" y="60"/>
+                <use class="px" href="#wab-px" x="130" y="60"/>
+                <use class="px" href="#wab-px" x="140" y="60"/>
+                <use class="px" href="#wab-px" x="150" y="60"/>
+                <use class="px" href="#wab-px" x="180" y="50"/>
+                <use class="px" href="#wab-px" x="190" y="50"/>
+                <use class="px" href="#wab-px" x="180" y="60"/>
+                <use class="px" href="#wab-px" x="190" y="60"/>
+            </svg>
+            <p class="foot__legal">&copy; 2026 WeAreBrothers Studio</p>
         </div>
     </footer>
-
-
 
 </body>
 

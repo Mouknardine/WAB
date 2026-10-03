@@ -39,7 +39,14 @@
 
     .scat--folder {
         --x: 21.4%;
-        --y: 276px;
+        --y: 262px;
+    }
+
+    .scat--trash {
+        --x: 2.4%;
+        --y: 318px;
+        --depth: 0.3;
+        display: inline-flex;
     }
 
     .scat--amarte {

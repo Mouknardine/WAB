@@ -1,0 +1,135 @@
+/* ============================================
+   WAB OS — le mini-terminal « contact » et la FAQ
+   Sous les cartes du ciel, une fenêtre sombre : « > contact », la
+   réponse, un bouton de verre. Surface sombre : elle redéfinit sa
+   gamme (--ink, --ink-muted) pour elle et ses enfants.
+   Puis les questions fréquentes, reprises mot pour mot de la page
+   Création de site internet, en <details> natifs : ouvrables au
+   clavier et au lecteur d'écran sans une ligne de script.
+   ============================================ */
+
+.term-card {
+    --ink: var(--term-ink);
+    --ink-muted: var(--term-muted);
+    margin-top: 22px;
+    border-radius: var(--r-win);
+    background: var(--term-bg);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), var(--glass-shadow-lift);
+    color: var(--ink);
+    overflow: hidden;
+}
+
+.term-card__bar {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    padding: 0 12px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.term-card__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 20px 22px 24px;
+}
+
+.term-card__cmd {
+    font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+}
+
+.term-card__caret {
+    display: inline-block;
+    width: 2px;
+    height: 1.05em;
+    margin-left: 4px;
+    vertical-align: -0.15em;
+    background: var(--term-accent);
+    animation: caret 1.1s steps(1) infinite;
+}
+
+.term-card__text {
+    margin-top: 6px;
+    color: var(--ink-muted);
+}
+
+@media (min-width: 700px) {
+    .term-card__body {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+/* ── FAQ ── */
+.faq-home__title {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.05em;
+    text-wrap: balance;
+}
+
+.faq-home__list {
+    display: grid;
+    gap: 10px;
+    width: min(100%, 840px);
+    margin: clamp(32px, 5vw, 56px) auto 0;
+}
+
+.qa {
+    border-radius: var(--r-ctl);
+    background: var(--win-bg);
+    box-shadow: 0 0 0 1px var(--win-edge), 0 2px 8px rgba(11, 11, 12, 0.04);
+}
+
+.qa__q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    min-height: 58px;
+    padding: 14px 20px;
+    font-size: clamp(1rem, 1.6vw, 1.12rem);
+    font-weight: 500;
+    line-height: 1.35;
+    cursor: pointer;
+    list-style: none;
+}
+
+.qa__q::-webkit-details-marker {
+    display: none;
+}
+
+.qa__q:focus-visible {
+    outline-offset: -2px;
+    border-radius: var(--r-ctl);
+}
+
+/* Le signe : un plus qui pivote en croix à l'ouverture. */
+.qa__mark {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    background: var(--ink);
+    -webkit-mask: url('../assets/icons/sym-plus.svg') center / contain no-repeat;
+    mask: url('../assets/icons/sym-plus.svg') center / contain no-repeat;
+    transition: rotate 0.3s var(--ease-spring);
+}
+
+.qa[open] .qa__mark {
+    rotate: 45deg;
+}
+
+.qa__a {
+    padding: 0 20px 20px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+}
+
+.qa__a p {
+    max-width: 62ch;
+    text-wrap: pretty;
+}

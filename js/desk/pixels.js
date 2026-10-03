@@ -4,7 +4,7 @@
  * Donne à chaque pixel son retard d'arrivée (--d, en millisecondes),
  * de gauche à droite avec une pointe de haut en bas : le nom se
  * construit comme une ligne qu'on tape. L'arrivée elle-même est en
- * CSS (desk-end.css), déclenchée par watch.js.
+ * CSS (os-footer.css), déclenchée par watch.js.
  */
 
 /** Taille d'une case dans le dessin SVG. */
@@ -13,6 +13,8 @@ const PER_COLUMN_MS = 28;
 const PER_ROW_MS = 14;
 
 export function initPixels() {
+    // Le script est là : les pixels peuvent attendre leur arrivée.
+    document.querySelectorAll('.pixel-name').forEach((name) => name.classList.add('is-armed'));
     document.querySelectorAll('.pixel-name .px').forEach((pixel) => {
         if (!(pixel instanceof SVGElement)) return;
         const column = Number(pixel.getAttribute('x')) / CELL || 0;

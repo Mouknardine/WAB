@@ -1,0 +1,194 @@
+/* ============================================
+   WAB OS — le dossier Work
+   Une barre d'outils (le nombre de projets, la bascule Icônes /
+   Liste), les projets, une ligne de pied (l'aide, la page Work).
+   Vue icônes : les captures en petites fenêtres, le nom dessous.
+   Vue liste : une ligne par projet, contexte et disciplines.
+   Un projet sélectionné prend le rose système.
+   ============================================ */
+
+.oswin__body:has(> .finder__items) {
+    display: flex;
+    flex-direction: column;
+    container-type: inline-size;
+}
+
+.finder__bar,
+.finder__foot {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 14px;
+}
+
+.finder__bar {
+    box-shadow: inset 0 -1px 0 var(--line);
+}
+
+.finder__foot {
+    flex-wrap: wrap;
+    box-shadow: inset 0 1px 0 var(--line);
+}
+
+.finder__count, .finder__hint {
+    font-size: var(--t-small);
+    color: var(--ink-muted);
+}
+
+.finder__views {
+    display: flex;
+    padding: 2px;
+    border-radius: var(--r-ctl);
+    box-shadow: inset 0 0 0 1px var(--line-strong);
+}
+
+.finder__view {
+    min-height: 30px;
+    padding: 0 12px;
+    border: 0;
+    /* Rayon imbriqué : celui du cadre, moins son retrait. */
+    border-radius: calc(var(--r-ctl) - 2px);
+    background: none;
+    font: inherit;
+    font-size: var(--t-small);
+    color: var(--ink-muted);
+    cursor: pointer;
+}
+
+.finder__view[aria-pressed='true'] {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.finder__items {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    list-style: none;
+    padding: 16px;
+}
+
+.finder__item {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    width: 100%;
+    padding: 6px;
+    border: 0;
+    border-radius: var(--r-ctl);
+    background: none;
+    font: inherit;
+    color: var(--ink);
+    text-align: left;
+    cursor: default;
+}
+
+.finder__thumb {
+    display: block;
+    overflow: hidden;
+    border-radius: var(--r-ctl);
+    box-shadow: 0 0 0 1px var(--win-edge);
+    background: var(--desk);
+}
+
+.finder__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.finder__name {
+    display: block;
+    font-size: var(--t-small);
+}
+
+.finder__context,
+.finder__tags {
+    display: none;
+    font-size: var(--t-cap);
+    color: var(--ink-muted);
+}
+
+/* ── Vue icônes ── */
+.finder__items[data-view='icons'] {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 14px 10px;
+    align-content: start;
+}
+
+[data-view='icons'] .finder__thumb {
+    aspect-ratio: 16 / 10;
+}
+
+[data-view='icons'] .finder__name {
+    width: max-content;
+    max-width: 100%;
+    margin: 8px auto 0;
+    padding: 1px 6px;
+    border-radius: var(--r-px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ── Vue liste ── */
+.finder__items[data-view='list'] {
+    display: grid;
+    align-content: start;
+    gap: 2px;
+    padding: 8px;
+}
+
+[data-view='list'] .finder__item {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    column-gap: 14px;
+    align-items: center;
+}
+
+[data-view='list'] .finder__thumb {
+    grid-row: span 3;
+    aspect-ratio: 16 / 10;
+}
+
+[data-view='list'] .finder__name {
+    font-weight: var(--w-strong);
+}
+
+[data-view='list'] .finder__context {
+    display: block;
+}
+
+@container (min-width: 640px) {
+    [data-view='list'] .finder__tags {
+        display: block;
+    }
+}
+
+/* ── Sélection ── */
+.finder__item:focus-visible {
+    outline-offset: 0;
+}
+
+[data-view='icons'] .finder__item.is-selected .finder__name,
+[data-view='list'] .finder__item.is-selected {
+    background: var(--accent);
+    color: var(--on-accent);
+}
+
+[data-view='list'] .finder__item.is-selected .finder__context,
+[data-view='list'] .finder__item.is-selected .finder__tags {
+    color: var(--on-accent);
+}
+
+[data-view='icons'] .finder__item.is-selected .finder__thumb {
+    box-shadow: 0 0 0 2px var(--accent);
+}
+
+@media (hover: hover) {
+    [data-view='list'] .finder__item:not(.is-selected):hover { background: var(--hover-tint); }
+}

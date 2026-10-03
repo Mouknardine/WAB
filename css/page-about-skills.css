@@ -1,0 +1,148 @@
+/* ============================================
+   WAB OS — About : le savoir-faire, trois apps sur le ciel rose
+   Une bande pleine largeur sur le ciel du site (--sky-mesh), fondue
+   dans le bureau en haut et en bas. Trois fenêtres de verre au même
+   gabarit, chacune une app : son icône en squircle, son nom, ce
+   qu'elle couvre. Trois surfaces floutées seulement.
+   ============================================ */
+
+.ab-skills {
+    position: relative;
+    margin-top: var(--section);
+    padding: clamp(72px, 9vw, 120px) 0 clamp(80px, 10vw, 128px);
+    background:
+        linear-gradient(180deg, var(--desk) 0%, transparent 22%, transparent 78%, var(--desk) 100%),
+        var(--sky-mesh);
+}
+
+.ab-skills__title {
+    max-width: 24ch;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: var(--w-strong);
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+    text-wrap: balance;
+}
+
+.ab-apps {
+    display: grid;
+    gap: 18px;
+    max-width: 1040px;
+    margin: clamp(36px, 5vw, 56px) auto 0;
+    list-style: none;
+}
+
+.ab-app {
+    height: 100%;
+    border-radius: var(--r-win);
+    background: var(--glass);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+    box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px rgba(255, 255, 255, 0.55), var(--glass-shadow);
+}
+
+.ab-app__bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: var(--win-bar-h);
+    padding: 0 12px;
+    border-radius: var(--r-win) var(--r-win) 0 0;
+    background: var(--glass-specular);
+    box-shadow: inset 0 -1px 0 var(--glass-edge);
+}
+
+.ab-app__body {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 18px 16px;
+    align-items: center;
+    padding: 22px 22px 26px;
+}
+
+/* L'icône d'app : un squircle, le dégradé de sa famille, une couche
+   de verre en haut, le pictogramme au trait. */
+.ab-app__icon {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 15px;
+    background: linear-gradient(160deg, var(--pink-soft), var(--pink));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), inset 0 -2px 4px rgba(11, 11, 12, 0.12), var(--shadow-object);
+    color: var(--ink);
+    overflow: hidden;
+}
+
+.ab-app__icon::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 50%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0));
+}
+
+.ab-app__icon svg {
+    position: relative;
+}
+
+.ab-app__icon--ink {
+    background: linear-gradient(160deg, #3a3940, var(--ink));
+    color: var(--paper);
+}
+
+.ab-app__icon--light {
+    background: linear-gradient(160deg, var(--paper), #ececf0);
+    color: var(--ink);
+}
+
+.ab-app__name {
+    font-size: 1.4rem;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.03em;
+}
+
+.ab-app__list {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: 10px;
+    padding-top: 18px;
+    border-top: 2px dotted var(--line-strong);
+    list-style: none;
+}
+
+.ab-app__list li {
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr);
+    gap: 10px;
+    font-size: var(--t-small);
+    line-height: 1.45;
+}
+
+.ab-app__list li::before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    background: var(--ink);
+    -webkit-mask: url('../assets/icons/sym-check.svg') center / contain no-repeat;
+    mask: url('../assets/icons/sym-check.svg') center / contain no-repeat;
+}
+
+@media (min-width: 900px) {
+    .ab-apps {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .ab-app {
+        background: var(--glass-strong);
+    }
+}
+
+/* Le badge posé sur le ciel : le même verre, flouté. */
+.ab-skills .badge {
+    background: var(--glass);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+}

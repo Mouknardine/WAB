@@ -1,0 +1,178 @@
+/* ============================================
+   Page Work — le bureau du premier écran
+   Le titre et sa phrase au centre, le dossier Work ouvert dessous
+   (page-work-finder.css). Au bord, sur grand écran seulement :
+   l'autocollant, un kaomoji, la case libre « Votre projet ». Le
+   centre reste net, le désordre reste en bordure.
+   Toutes les valeurs viennent de os-tokens.css.
+   ============================================ */
+
+.pw-hero {
+    position: relative;
+    padding: calc(var(--bar-h) + clamp(40px, 7vw, 72px)) var(--gutter) 0;
+}
+
+.pw-hero__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+}
+
+.pw-hero__title {
+    font-size: clamp(3.5rem, 13vw, 6.5rem);
+    font-weight: var(--w-strong);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+}
+
+.pw-hero__lede {
+    max-width: 40ch;
+    font-size: var(--t-lede);
+    line-height: 1.45;
+    color: var(--ink-muted);
+    text-wrap: balance;
+}
+
+.pw-hero__desk {
+    position: relative;
+    max-width: 1440px;
+    margin: clamp(32px, 5vw, 48px) auto 0;
+}
+
+/* ── Les objets du bord ── absents tant que la marge ne peut pas les
+   accueillir sans toucher au dossier. */
+.pw-hero__objects,
+.pw-slot {
+    display: none;
+}
+
+/* L'autocollant : le bandeau de verre rose, la carte blanche, le nom. */
+.pw-sticker {
+    position: absolute;
+    top: -14%;
+    left: 4%;
+    display: block;
+    width: 112px;
+    border-radius: var(--r-ctl);
+    background: var(--bubble-pink);
+    box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px var(--glass-rim), var(--shadow-object);
+    text-align: center;
+    color: var(--glass-ink);
+    overflow: hidden;
+    rotate: -7deg;
+}
+
+.pw-sticker__hello {
+    display: block;
+    padding-top: 6px;
+    font-size: 11px;
+    font-weight: var(--w-strong);
+    letter-spacing: 0.08em;
+    line-height: 1;
+}
+
+.pw-sticker__mine {
+    display: block;
+    padding: 2px 0 4px;
+    font-size: 7px;
+    letter-spacing: 0.06em;
+    line-height: 1;
+}
+
+.pw-sticker__name {
+    display: block;
+    margin: 0 5px 6px;
+    padding: 8px 0 7px;
+    border-radius: 7px;
+    background: var(--paper);
+    font-size: 1.15rem;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--glass-ink);
+}
+
+.pw-kao {
+    position: absolute;
+    top: -20%;
+    right: 7%;
+    font-size: 1.1rem;
+    white-space: nowrap;
+    color: var(--ink);
+}
+
+/* ── La case libre ── une fenêtre vide en pointillés, un oiseau qui
+   bat des ailes au survol (perch.js), le nom de fichier dessous. */
+.pw-slot {
+    position: absolute;
+    right: 2.5%;
+    bottom: 8%;
+    width: 156px;
+    border-radius: var(--r-ctl);
+    color: var(--ink);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.pw-slot__frame {
+    position: relative;
+    display: grid;
+    place-items: center;
+    gap: 8px;
+    aspect-ratio: 4 / 3;
+    border: 1.5px dashed var(--line-strong);
+    border-radius: var(--r-win);
+    background: var(--glass);
+    transition: border-color 0.2s var(--ease-out), transform 0.35s var(--ease-spring);
+}
+
+.pw-slot__frame .perch {
+    image-rendering: pixelated;
+}
+
+.pw-slot__label {
+    position: absolute;
+    bottom: 10px;
+    font-size: var(--t-cap);
+    color: var(--ink-muted);
+}
+
+.pw-slot:focus-visible {
+    outline-offset: 4px;
+}
+
+.pw-slot:focus-visible .pw-slot__name {
+    background: var(--accent);
+    color: var(--on-accent);
+}
+
+@media (hover: hover) {
+    .pw-slot:hover .pw-slot__frame {
+        border-color: var(--accent);
+        transform: translateY(-3px);
+    }
+}
+
+@media (min-width: 1320px) {
+    .pw-hero__objects {
+        display: block;
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+    }
+
+    .pw-slot {
+        display: block;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pw-slot__frame {
+        transition: none;
+    }
+
+    .pw-slot:hover .pw-slot__frame {
+        transform: none;
+    }
+}

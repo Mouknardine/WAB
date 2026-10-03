@@ -1,0 +1,164 @@
+/* ============================================
+   WAB OS — jetons (partagés par toutes les pages : body.os)
+   L'accueil est le système d'exploitation du studio, rendu en « verre
+   liquide » rose : un bureau blanc à peine gris tramé de points, des
+   fenêtres et des boutons de verre, des icônes d'app modernes. Seuls
+   les oiseaux et le grand « WAB. » du pied de page restent en pixels.
+   Le rose WAB est la couleur système : sélection, focus, curseur texte,
+   pastille de fermeture, bouton principal.
+   Toutes les valeurs vivent ici ; les feuilles os-*.css (partagées),
+   desk-*.css (accueil) et celles des autres pages ne font que les
+   demander. Voir OS-COMPONENTS.md. Voir DESIGN-SYSTEM.md,
+   section « WAB OS ».
+   ============================================ */
+
+/* Posés aussi sur la racine quand elle porte l'accueil : le fond du
+   document (rebond du défilement sur iOS) prend la couleur du bureau. */
+.os,
+:root:has(body.os) {
+    /* ── Bureau ── la lumière (--sky-*) change avec l'heure de
+       Lausanne : voir os-sky.css. */
+    /* Blanc à 2 % de gris, sans teinte chaude. La trame : le motif
+       « Dot Pattern » (16 px, un point de 1 px en 1,1), gris neutre. */
+    --desk: #fafafa;
+    --desk-dot: rgba(163, 163, 163, 0.42);
+    --desk-grid: 16px;
+    --sky-top: rgba(245, 244, 245, 0);
+    --sky-glow: rgba(245, 244, 245, 0);
+
+    /* ── Encre ── (rapports mesurés sur --desk)
+       --ink 18:1, --ink-muted 6,1:1, --ink-faint 5,2:1. */
+    --ink: #0b0b0c;
+    --ink-muted: #5c5b63;
+    --ink-faint: #66656d;
+    --line: rgba(11, 11, 12, 0.12);
+    --line-strong: rgba(11, 11, 12, 0.22);
+    --paper: #ffffff;
+
+    /* ── Rose système, trois nuances ──
+       --pink : aplats et signes (pastille, bouton principal, point du
+         dock, pixels) ; l'encre posée dessus reste à 5,7:1.
+       --accent : le rose qui porte du texte sur le clair (7:1), et
+         l'anneau de focus.
+       --mark : fond de sélection et de surlignage, encre par-dessus. */
+    --pink: #ff2d9b;
+    --pink-soft: #ff8cc6;
+    --accent: #a00f5a;
+    --mark: #ffd0e6;
+    --on-accent: #ffffff;
+
+    /* ── Rayons ── fenêtres et cartes, contrôles, pastilles, pilules. */
+    --r-win: 18px;
+    --r-ctl: 12px;
+    --r-px: 3px;
+    --r-pill: 999px;
+
+    /* ── Verre ── le verre clair des surfaces (barre, fenêtres
+       ouvertes, palette, menu) et ses reflets. Le flou réel n'est posé
+       que sur ces quelques surfaces ; les fenêtres décoratives imitent
+       le verre sans flou. Sans backdrop-filter : surfaces opaques. */
+    --glass: rgba(255, 255, 255, 0.66);
+    --glass-strong: rgba(255, 255, 255, 0.84);
+    --glass-blur: blur(24px) saturate(1.8);
+    --glass-rim: rgba(255, 255, 255, 0.9);
+    --glass-edge: rgba(11, 11, 12, 0.1);
+    /* L'encre du verre : le verre reste clair sur toute surface, même
+       quand une surface sombre redéfinit --ink pour elle-même. */
+    --glass-ink: #0b0b0c;
+    --glass-specular: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0) 60%);
+    --glass-shadow: 0 1px 1px rgba(11, 11, 12, 0.04), 0 12px 32px rgba(11, 11, 12, 0.1), 0 2px 6px rgba(11, 11, 12, 0.05);
+    --glass-shadow-lift: 0 2px 4px rgba(11, 11, 12, 0.06), 0 30px 70px rgba(11, 11, 12, 0.18);
+
+    /* ── Fenêtre ── */
+    --win-bg: #ffffff;
+    --win-bar: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 246, 248, 0.94));
+    --win-edge: rgba(11, 11, 12, 0.09);
+    --win-bar-h: 30px;
+    --win-shadow: 0 1px 2px rgba(11, 11, 12, 0.05), 0 14px 34px rgba(11, 11, 12, 0.09);
+    --win-shadow-lift: 0 2px 4px rgba(11, 11, 12, 0.08), 0 26px 56px rgba(11, 11, 12, 0.18);
+    --win-shadow-active: 0 2px 6px rgba(11, 11, 12, 0.08), 0 34px 80px rgba(11, 11, 12, 0.22);
+    /* Les pastilles WAB : trois carrés aux coins doux, rose, encre et
+       blanc cerné. Fenêtres ouvertes : rose = fermer, encre = agrandir. */
+    --px-size: 10px;
+    --px-gap: 6px;
+
+    /* ── Écran ── le cadre des grandes fenêtres de services : le ciel
+       rose du site (le dégradé de base.css) en fond d'écran, un liseré
+       sombre aux coins arrondis. Le rayon extérieur suit la géométrie :
+       celui de la fenêtre plus le retrait. */
+    --wallpaper:
+        radial-gradient(115% 95% at 12% 8%, #fff5fa 0%, rgba(255, 245, 250, 0) 62%),
+        linear-gradient(150deg, #ffe4f0 0%, #ffd2e6 55%, #ffc4de 100%);
+    --screen-pad: 12px;
+    --screen-rim: #2a292e;
+
+    /* ── Le verre rose et le verre clair ── la texture des bulles des
+       services, devenue celle de tous les boutons (glass-btn.css), de
+       l'autocollant et des pastilles. Encre sur le rose le plus dense :
+       10,7:1. */
+    --bubble-pink: linear-gradient(180deg, rgba(255, 196, 226, 0.85), rgba(255, 140, 198, 0.7));
+    --bubble-clear: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.7));
+
+    /* ── Ciel rose ── le fond pleine largeur des façons de travailler :
+       un mesh rose, lilas et pêche, en CSS (aucune image). */
+    --sky-mesh:
+        radial-gradient(60% 70% at 15% 20%, #ffd9ec 0%, transparent 70%),
+        radial-gradient(55% 60% at 85% 15%, #f3d7ff 0%, transparent 70%),
+        radial-gradient(70% 70% at 70% 85%, #ffd2c2 0%, transparent 70%),
+        radial-gradient(60% 60% at 25% 90%, #ffb8dc 0%, transparent 70%),
+        linear-gradient(160deg, #ffe4f1, #ffc6e2);
+
+    /* ── Barre de menus et dock ── */
+    --bar-h: 44px;
+    --bar-bg: rgba(250, 250, 250, 0.72);
+    --r-dock: 24px;
+    --dock-space: 96px;
+
+    /* ── Calques ── de bas en haut. */
+    --z-desk: 3;
+    --z-win: 130;
+    --z-dock: 180;
+    --z-bar: 190;
+    --z-menu: 210;
+    --z-toast: 220;
+
+    /* ── Typo ── Sligoil, chasse fixe de 0,6 em. */
+    --t-cap: 0.75rem;
+    --t-small: 0.875rem;
+    --t-body: 1rem;
+    --t-lede: clamp(1.05rem, 1.5vw, 1.3rem);
+    --t-title: clamp(1.6rem, 3.4vw, 2.6rem);
+    --t-hero: clamp(5.5rem, 22vw, 10rem);
+
+    /* ── Rythme ── */
+    --gutter: clamp(16px, 4vw, 40px);
+    --section: clamp(80px, 9vw, 128px);
+    --measure: 1120px;
+
+    /* ── Ombres et voiles ── */
+    --shadow-object: 0 1px 2px rgba(11, 11, 12, 0.14), 0 6px 14px rgba(11, 11, 12, 0.12);
+    --shadow-soft: 0 6px 16px rgba(11, 11, 12, 0.08);
+    --veil: rgba(255, 255, 255, 0.92);
+    --hover-tint: rgba(11, 11, 12, 0.06);
+    --scrim: rgba(11, 11, 12, 0.32);
+    /* Le verre fumé du bouton de la vitrine, posé sur les captures :
+       texte blanc à 5,6:1 au pire, sur une capture blanche. */
+    --smoke: rgba(11, 11, 12, 0.62);
+    --smoke-strong: rgba(11, 11, 12, 0.78);
+    --smoke-edge: rgba(255, 255, 255, 0.28);
+
+    /* ── Terminal ── la seule surface sombre : elle redéfinit sa
+       gamme localement (os-terminal.css). */
+    --term-bg: #121114;
+    --term-ink: #ecebef;
+    --term-muted: #a9a7b1;
+    --term-accent: #ff8cc6;
+
+    /* ── Mouvement ── */
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    /* Un ressort léger (rebond d'environ 6 %), pour le dock. */
+    --ease-spring: linear(0, 0.22 7%, 0.6 16%, 0.92 26%, 1.05 35%, 1.06 42%, 1.02 55%, 0.995 70%, 1);
+
+    background: var(--desk);
+    color: var(--ink);
+}

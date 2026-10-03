@@ -1,7 +1,7 @@
 /* ============================================
    WAB. — Accueil « bureau » : le premier écran
    Le centre reste parfaitement net : le nom, la promesse, deux
-   boutons Aqua, une ligne fine, puis la grande fenêtre qui fait
+   boutons de verre, une ligne fine, puis la grande fenêtre qui fait
    défiler les projets. Le désordre (desk-scatter.css) reste en
    bordure, jamais sous le texte.
    ============================================ */
@@ -93,12 +93,8 @@
     margin: clamp(44px, 5vw, 56px) auto 0;
 }
 
-.showcase__win {
-    border-radius: 14px;
-}
-
 .showcase .win__bar {
-    height: 28px;
+    height: 34px;
 }
 
 .showcase .win__title {
@@ -129,8 +125,8 @@
     transform: scale(1);
 }
 
-/* Le bouton lecture/pause : une pilule de verre fumé posée sur
-   l'image, comme le « play video » de la référence. */
+/* Le bouton lecture/pause : une pilule de verre fumé posée au centre
+   bas de l'image, avec le liseré lumineux et le reflet du verre. */
 .showcase__toggle {
     position: absolute;
     z-index: 3;
@@ -142,11 +138,11 @@
     gap: 8px;
     min-height: 40px;
     padding: 0 18px 0 14px;
-    border-radius: 999px;
-    background: var(--smoke);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    box-shadow: inset 0 0 0 1px var(--smoke-edge), var(--shadow-rest);
+    border-radius: var(--r-pill);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 55%), var(--smoke);
+    -webkit-backdrop-filter: blur(14px) saturate(1.6);
+    backdrop-filter: blur(14px) saturate(1.6);
+    box-shadow: inset 0 0 0 1px var(--smoke-edge), inset 0 1px 0 rgba(255, 255, 255, 0.35), var(--shadow-soft);
     font-size: var(--t-small);
     color: var(--on-accent);
     transition: background-color 0.2s var(--ease-out), scale 0.15s var(--ease-out);

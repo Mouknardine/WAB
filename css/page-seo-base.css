@@ -1,0 +1,108 @@
+/* ============================================
+   WAB OS — Création de site internet à Lausanne : le socle de la page
+   Les mesures propres à cette page (posées ici, demandées partout
+   ailleurs), puis ce que toutes ses sections partagent : le rythme,
+   l'en-tête de section, le lien texte, la rangée d'actions.
+   Les couleurs, rayons, verres et ombres viennent de os-tokens.css.
+   ============================================ */
+
+.os {
+    /* ── Bureau du premier écran ── l'espace sous la barre de menus, la
+       colonne centrale, la largeur des fenêtres posées autour. */
+    --sx-hero-top: clamp(112px, 16vh, 168px);
+    --sx-hero-col: 800px;
+    --sx-desk-land: clamp(190px, 15.5vw, 250px);
+    --sx-desk-tall: clamp(150px, 12vw, 190px);
+
+    /* ── Titres ── le H1 et les titres de section. */
+    --sx-h1: clamp(2.1rem, 5.6vw, 3.6rem);
+    --sx-h3: clamp(1.1rem, 1.5vw, 1.25rem);
+
+    /* ── Grilles ── l'écart des cartes et l'air sous les en-têtes. */
+    --sx-gap: clamp(16px, 2vw, 24px);
+    --sx-head-gap: clamp(36px, 5vw, 64px);
+    --sx-measure-text: 62ch;
+}
+
+/* ── Rythme ── chaque section commence par le même souffle. */
+.sx-block {
+    padding-top: var(--section);
+}
+
+/* ── En-tête de section ── badge, titre, une ligne. */
+.sx-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: var(--sx-head-gap);
+    text-align: center;
+}
+
+.sx-title {
+    max-width: 26ch;
+    font-size: var(--t-title);
+    font-weight: var(--w-strong);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+}
+
+.sx-lede {
+    max-width: 48ch;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+}
+
+/* ── Lien texte ── l'encre, soulignée ; le rose au survol. */
+.sx-link {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--line-strong);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+    transition: color 0.2s var(--ease-out), text-decoration-color 0.2s var(--ease-out);
+}
+
+@media (hover: hover) {
+    .sx-link:hover {
+        color: var(--accent);
+        text-decoration-color: currentColor;
+    }
+}
+
+/* ── Rangée d'actions sous une grille ── */
+.sx-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 14px 28px;
+    margin-top: clamp(32px, 4vw, 48px);
+}
+
+.sx-actions .sx-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+}
+
+/* Le passage surligné en rose, dans un texte. */
+.os mark {
+    padding: 0 0.15em;
+    border-radius: var(--r-px);
+    background: var(--mark);
+    color: var(--ink);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+/* Les listes de la page portent leur propre forme : ni puce, ni retrait. */
+.sx-facts,
+.sx-examples,
+.sx-cards,
+.sx-steps,
+.sx-cities {
+    list-style: none;
+    padding-left: 0;
+}

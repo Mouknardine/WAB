@@ -1,8 +1,8 @@
 /* ============================================
    WAB. — Accueil « bureau » : le désordre en bordure
-   Les petites fenêtres de projets, l'autocollant, le dossier Work,
-   les kaomoji. Chaque objet porte sa place (--x, --y, --w) par
-   palier d'écran ; trois au téléphone, tous sur ordinateur.
+   Les fenêtres de projets, l'autocollant, les kaomoji, les icônes de
+   bureau (Work, Corbeille). Chaque objet porte sa place (--x, --y,
+   --w) par palier d'écran ; le dossier seul au téléphone, tout sur ordinateur.
 
    Trois mouvements se composent sans s'écraser :
    — l'entrée : animation sur opacity et scale ;
@@ -14,7 +14,7 @@
 .scatter {
     position: absolute;
     inset: 0;
-    z-index: 3;
+    z-index: var(--z-desk);
 }
 
 .scat {
@@ -39,6 +39,16 @@
         opacity: 0;
         scale: 0.94;
     }
+}
+
+/* Un lien-fenêtre garde l'apparence d'un objet, pas d'un lien. */
+a.scat {
+    color: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.scat:focus-visible {
+    outline-offset: 6px;
 }
 
 /* Une fenêtre qu'on peut prendre : la main l'annonce. */
@@ -71,37 +81,23 @@
     aspect-ratio: 16 / 10;
 }
 
-/* ── Téléphone : trois objets au-dessus du titre ── */
+/* ── Téléphone : le dossier Work seul, à gauche, au-dessus du titre
+   (demande d'Eliott du 3.10). Les autres objets attendent la tablette. */
+.scat--folder {
+    --x: 4%;
+    --y: 72px;
+    --depth: 0.4;
+    display: inline-flex;
+}
+
 .scat--sticker {
-    --x: 5%;
-    --y: 70px;
     --tilt: -6deg;
     --depth: 0.6;
-    display: block;
-}
-
-/* Sous 380 px, l'autocollant et la fenêtre prennent toute la
-   largeur : le dossier s'efface (Work reste dans le menu et sous le
-   bouton « Voir le travail »). */
-.scat--folder {
-    --x: calc(50% - 40px);
-    --y: 84px;
-    --depth: 0.4;
-}
-
-@media (min-width: 380px) {
-    .scat--folder {
-        display: block;
-    }
 }
 
 .scat--zinema {
-    --w: clamp(150px, 42vw, 168px);
-    --x: calc(100% - var(--w) + 12px);
-    --y: 64px;
     --tilt: 3deg;
     --depth: 1;
-    display: block;
 }
 
 /* ── Tablette et petit ordinateur : la bande du haut se peuple ── */
@@ -118,6 +114,7 @@
         --x: 19%;
         --y: 72px;
         --tilt: -4deg;
+        display: block;
     }
 
     .scat--zinema {
@@ -125,11 +122,12 @@
         --y: 70px;
         --w: 160px;
         --tilt: 0deg;
+        display: block;
     }
 
     .scat--folder {
-        --x: 22%;
-        --y: 176px;
+        --x: 21%;
+        --y: 172px;
     }
 
     .scat--amarte {
@@ -138,5 +136,13 @@
         --w: 196px;
         --depth: 0.8;
         display: block;
+    }
+}
+
+/* Au téléphone, l'oiseau d'une fenêtre du bureau passerait sous la
+   barre de menus : il ne se pose qu'avec de la place. */
+@media (max-width: 599px) {
+    .scat .win-perch {
+        display: none;
     }
 }

@@ -1,0 +1,86 @@
+/* ============================================
+   WAB OS — Création de site internet : le déroulé
+   Quatre étapes reliées par un fil en pointillés (vertical au
+   téléphone, horizontal sur ordinateur), le numéro dans un carré rose
+   aux coins doux, comme les pastilles des fenêtres.
+   ============================================ */
+
+/* ── Déroulé ── */
+.sx-steps {
+    position: relative;
+    display: grid;
+    gap: 36px;
+    counter-reset: none;
+}
+
+.sx-step {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-content: start;
+    column-gap: 18px;
+    row-gap: 6px;
+}
+
+.sx-step__num {
+    grid-row: span 2;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--r-ctl);
+    background: var(--pink);
+    box-shadow: inset 0 0 0 1px var(--ink), 0 3px 0 var(--accent);
+    font-weight: var(--w-strong);
+    color: var(--ink);
+}
+
+/* Le fil en pointillés entre deux numéros (téléphone : vertical). */
+.sx-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 52px;
+    bottom: -28px;
+    border-left: 2px dotted var(--line-strong);
+}
+
+.sx-step__name {
+    font-size: var(--sx-h3);
+    font-weight: var(--w-strong);
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+}
+
+.sx-step__text {
+    color: var(--ink-muted);
+    text-wrap: pretty;
+}
+
+@media (min-width: 960px) {
+    .sx-steps {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: var(--sx-gap);
+    }
+
+    .sx-step {
+        grid-template-columns: 1fr;
+        row-gap: 10px;
+    }
+
+    .sx-step__num {
+        grid-row: auto;
+        margin-bottom: 10px;
+    }
+
+    /* Ordinateur : le fil devient horizontal, d'un numéro au suivant. */
+    .sx-step:not(:last-child)::after {
+        left: 54px;
+        right: calc(-1 * var(--sx-gap) + 14px);
+        top: 19px;
+        bottom: auto;
+        border-left: 0;
+        border-top: 2px dotted var(--line-strong);
+    }
+}

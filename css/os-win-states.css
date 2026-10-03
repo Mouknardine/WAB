@@ -1,0 +1,139 @@
+/* ============================================
+   WAB OS — les fenêtres : modes et états
+   Agrandie (toute la place entre la barre et le dock), feuille au
+   téléphone, et le contenu d'attente ou d'erreur d'une fenêtre,
+   jamais vide : une phrase, et une issue.
+   ============================================ */
+
+/* ── Agrandie ── toute la place entre la barre de menus et le dock. */
+.oswin.is-max {
+    translate: 8px calc(var(--bar-h) + 8px) !important;
+    width: calc(100vw - 16px);
+    height: calc(100dvh - var(--bar-h) - var(--dock-space) - 4px);
+}
+
+/* ── Feuille (téléphone) ── elle monte du bas, laisse voir un
+   liseré de page au-dessus, et se ferme d'un geste net. */
+.oswin.is-sheet {
+    inset: max(12px, env(safe-area-inset-top)) 0 0;
+    translate: none !important;
+    width: 100%;
+    height: auto;
+    border-radius: var(--r-win) var(--r-win) 0 0;
+    animation: sheet-in 0.32s var(--ease-out);
+}
+
+.oswin.is-sheet .oswin__bar {
+    height: 48px;
+}
+
+.oswin.is-sheet .oswin__ctl--close {
+    width: 44px;
+    height: 44px;
+}
+
+.oswin.is-sheet .oswin__ctl--max,
+.oswin.is-sheet .oswin__perch {
+    display: none;
+}
+
+.oswin.is-sheet .oswin__body {
+    border-radius: 0;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.oswin::backdrop {
+    background: var(--scrim);
+}
+
+@keyframes sheet-in {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+}
+
+/* ── Les signes des pastilles ── ils n'apparaissent qu'au survol de la
+   barre ou au focus clavier. */
+.oswin__ctl::after {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+    font-weight: var(--w-strong);
+    line-height: 1;
+    opacity: 0;
+    transition: opacity 0.15s var(--ease-out);
+}
+
+.oswin__ctl--close::after {
+    content: '×';
+    color: var(--ink);
+}
+
+.oswin__ctl--min::after {
+    content: '–';
+    color: var(--paper);
+}
+
+.oswin__ctl--max::after {
+    content: '+';
+    color: var(--ink);
+}
+
+.oswin__bar:hover .oswin__ctl::after,
+.oswin__ctl:focus-visible::after {
+    opacity: 1;
+}
+
+/* ── Attente, erreur ── */
+.os-state {
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 16px;
+    min-height: 200px;
+    height: 100%;
+    padding: 32px 24px;
+    text-align: center;
+}
+
+.os-state__text {
+    max-width: 36ch;
+    color: var(--ink-muted);
+}
+
+.os-state__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* ── Note (corbeille) ── */
+.os-note {
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+    padding: 26px 24px 28px;
+    text-align: center;
+}
+
+.os-note__title {
+    margin-top: 4px;
+    font-weight: var(--w-strong);
+}
+
+.os-note__title:focus {
+    outline: none;
+}
+
+.os-note__text {
+    max-width: 30ch;
+    margin-bottom: 8px;
+    font-size: var(--t-small);
+    line-height: 1.6;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+}

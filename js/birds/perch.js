@@ -12,6 +12,10 @@
  *   Dans une carte marquée data-perch-host (accueil), il s'envole aussi
  *   quand la souris entre dans la carte.
  *
+ * Partout, un événement « perch:fly » envoyé au canevas le fait
+ * s'envoler (accueil : la fenêtre sur laquelle il est posé bouge).
+ * setupPerch est exportée pour les fenêtres créées après le chargement.
+ *
  * Sous « réduire les animations », l'oiseau reste posé, immobile.
  */
 
@@ -25,7 +29,9 @@ const RETURN_DELAY_MS = 700;
 const sprites = createSpriteBank();
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-function setupPerch(canvas) {
+export function setupPerch(canvas) {
+    if (canvas.dataset.perchReady) return;
+    canvas.dataset.perchReady = 'true';
     const scale = Number(canvas.dataset.scale) || 4;
     const color = BODY_COLORS[Number(canvas.dataset.color) % BODY_COLORS.length] || BODY_COLORS[0];
     const width = sprites.widthAt(scale);
@@ -119,6 +125,7 @@ function setupPerch(canvas) {
     if (flies) {
         const host = canvas.closest('button') || canvas;
         host.addEventListener('click', flyAway);
+        canvas.addEventListener('perch:fly', flyAway);
     }
 
     // data-perch-host sur une carte : l'oiseau s'envole quand la souris

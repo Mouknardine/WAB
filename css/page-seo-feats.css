@@ -1,0 +1,173 @@
+/* ============================================
+   WAB OS — Création de site internet : les formats en quinconce
+   Chaque bloc : une fenêtre posée dans son écran (fond d'écran rose,
+   liseré sombre) et, contre elle, la colonne de texte — l'échange en
+   bulles, puis le titre et la phrase. Les côtés alternent dès 900 px.
+   Téléphone : les bulles, la fenêtre, puis le titre et la phrase.
+   Le focus suit le défilement (js/page-seo/focus.js) : seules la
+   fenêtre et les bulles s'estompent hors du centre, jamais le texte.
+   ============================================ */
+
+.sx-feats {
+    display: grid;
+    gap: clamp(64px, 8vw, 104px);
+    max-width: 1040px;
+    margin-inline: auto;
+}
+
+.sx-feat {
+    display: grid;
+    gap: 22px;
+}
+
+.sx-feat__text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sx-feat .chat {
+    margin-bottom: 14px;
+}
+
+.sx-feat__title {
+    font-size: clamp(1.25rem, 1.8vw, 1.45rem);
+    font-weight: var(--w-strong);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+
+.sx-feat__line {
+    max-width: 40ch;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+}
+
+/* ── L'écran ── le fond d'écran rose, le liseré, la fenêtre dedans. */
+.sx-screen {
+    padding: var(--screen-pad);
+    border-radius: calc(var(--r-win) + var(--screen-pad));
+    background: var(--wallpaper);
+    box-shadow: 0 0 0 1.5px var(--screen-rim), var(--win-shadow);
+}
+
+.sx-screen .win {
+    box-shadow: 0 0 0 1px var(--win-edge), var(--shadow-soft);
+}
+
+.sx-feat__media .win__body {
+    aspect-ratio: 16 / 10;
+}
+
+/* La boutique : pas de capture client, les quatre étapes d'une vente
+   en pastilles de verre sur le fond d'écran. */
+.sx-shop {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: center;
+    gap: 10px;
+    padding: clamp(14px, 3vw, 28px);
+    background: var(--wallpaper);
+}
+
+.sx-shop__step {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 0;
+    padding: 12px 14px;
+    border-radius: var(--r-ctl);
+    background: var(--bubble-clear);
+    box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px var(--glass-edge), var(--shadow-soft);
+    font-size: var(--t-small);
+    line-height: 1.25;
+    color: var(--glass-ink);
+}
+
+.sx-shop__step svg {
+    width: 22px;
+    height: 22px;
+    color: var(--accent);
+}
+
+/* ── Le focus qui suit le défilement ── */
+.sx-feats.is-tracking .sx-feat__media,
+.sx-feats.is-tracking .sx-feat .chat {
+    opacity: 0.45;
+    scale: 0.985;
+    transition: opacity 0.5s var(--ease-out), scale 0.6s var(--ease-out);
+}
+
+.sx-feats.is-tracking .sx-feat.is-current .sx-feat__media,
+.sx-feats.is-tracking .sx-feat.is-current .chat {
+    opacity: 1;
+    scale: 1;
+}
+
+/* ── Ordinateur : le quinconce ── */
+@media (min-width: 900px) {
+    .sx-feat {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
+        align-items: end;
+        gap: 56px;
+    }
+
+    .sx-feat__text {
+        order: 2;
+        padding-bottom: 8px;
+    }
+
+    .sx-feat--flip {
+        grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+    }
+
+    .sx-feat--flip .sx-feat__text {
+        order: 0;
+    }
+
+    .sx-shop {
+        gap: 14px;
+    }
+
+    .sx-shop__step {
+        font-size: var(--t-body);
+    }
+}
+
+@media (max-width: 899px) {
+    .sx-feat .chat {
+        margin-bottom: 4px;
+    }
+
+    /* Téléphone : les bulles, puis la fenêtre, puis le titre. */
+    .sx-feat__text {
+        display: contents;
+    }
+
+    .sx-feat .chat {
+        order: 0;
+    }
+
+    .sx-feat__media {
+        order: 1;
+    }
+
+    .sx-feat__title {
+        order: 2;
+    }
+
+    .sx-feat__line {
+        order: 3;
+        margin-top: -12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sx-example .win,
+    .sx-feats.is-tracking .sx-feat__media,
+    .sx-feats.is-tracking .sx-feat .chat {
+        transition: none;
+    }
+}

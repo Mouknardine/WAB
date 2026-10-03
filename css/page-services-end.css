@@ -1,0 +1,145 @@
+/* ============================================
+   Services — la méthode, puis l'appel final
+   La méthode : quatre étapes réelles, chacune dans une petite carte
+   blanche, reliées par la ligne de points du bureau (la seule
+   numérotation du site). L'appel final : l'icône Mail du système, la
+   question, deux boutons de verre.
+   ============================================ */
+
+.svc-method {
+    padding-top: var(--section);
+}
+
+.svc-steps {
+    position: relative;
+    display: grid;
+    gap: 14px;
+    margin-top: clamp(36px, 5vw, 56px);
+    list-style: none;
+}
+
+.svc-step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    column-gap: 16px;
+    align-items: start;
+    align-content: start;
+    padding: 20px;
+    border-radius: var(--r-win);
+    background: var(--win-bg);
+    box-shadow: 0 0 0 1px var(--win-edge), var(--win-shadow);
+}
+
+/* Le numéro : une petite tuile en squircle, comme une app. */
+.svc-step__num {
+    grid-row: span 2;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    aspect-ratio: 1;
+    background: var(--app-clear);
+    -webkit-mask: var(--squircle) center / 100% 100% no-repeat;
+    mask: var(--squircle) center / 100% 100% no-repeat;
+    box-shadow: inset 0 0 0 1px var(--glass-edge);
+    font-weight: var(--w-strong);
+}
+
+.svc-step:first-child .svc-step__num {
+    background: var(--app-pink);
+}
+
+.svc-step__name {
+    font-size: 1.05rem;
+    font-weight: var(--w-strong);
+    line-height: 1.3;
+}
+
+.svc-step__line {
+    margin-top: 4px;
+    font-size: var(--t-small);
+    line-height: 1.5;
+    text-wrap: pretty;
+}
+
+/* Ordinateur : quatre colonnes ; une ligne de points relie chaque
+   tuile numérotée à la suivante (22 px de retrait, 40 px de tuile,
+   18 px d'écart entre les colonnes). */
+@media (min-width: 900px) {
+    .svc-steps {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .svc-step:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 43px;
+        left: 72px;
+        right: -30px;
+        border-top: 2px dotted var(--line-strong);
+    }
+
+    .svc-step {
+        grid-template-columns: 1fr;
+        row-gap: 0;
+        padding: 24px 22px 26px;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .svc-step__num {
+        grid-row: auto;
+        margin-bottom: 18px;
+    }
+
+    .svc-step__line {
+        color: var(--ink-muted);
+    }
+}
+
+/* ── L'appel final ── */
+.svc-end {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding-top: var(--section);
+    text-align: center;
+}
+
+.svc-end__icon {
+    width: 72px;
+    height: 72px;
+    filter: drop-shadow(0 1px 1px rgba(11, 11, 12, 0.12)) drop-shadow(0 8px 16px rgba(11, 11, 12, 0.12));
+}
+
+.svc-end__title {
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: var(--w-strong);
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+    text-wrap: balance;
+}
+
+.svc-end__note {
+    color: var(--ink-muted);
+}
+
+.svc-end__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: min(100%, 300px);
+    margin-top: 8px;
+}
+
+@media (min-width: 600px) {
+    .svc-end__actions {
+        flex-direction: row;
+        justify-content: center;
+        width: auto;
+        gap: 16px;
+    }
+}

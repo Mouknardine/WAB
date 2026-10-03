@@ -1,9 +1,11 @@
 // @ts-check
 /**
- * WAB. — Les fenêtres qu'on déplace
+ * WAB OS — les fenêtres qu'on déplace
  * Sur ordinateur, chaque objet marqué [data-drag] se prend à la
- * souris et se repose ailleurs, comme sur un vrai bureau. Celui
- * qu'on prend passe au premier plan.
+ * souris et se repose ailleurs, comme sur un vrai bureau. Un simple
+ * clic le passe au premier plan ; l'oiseau posé sur sa barre
+ * s'envole dès qu'il bouge. Un glisser marque l'objet (data-dragged)
+ * pour que le clic qui le termine n'ouvre pas la fiche (shell.js).
  *
  * Le déplacement passe par la propriété `translate` : il se compose
  * avec la parallaxe (transform), l'inclinaison (rotate) et l'entrée
@@ -15,6 +17,8 @@
 
 /** Ce qui doit rester visible d'un objet poussé hors du bureau. */
 const KEEP_VISIBLE = 48;
+/** En deçà, c'est un clic, pas un glisser. */
+const DRAG_THRESHOLD = 4;
 
 /**
  * @typedef {object} Offset
@@ -68,15 +72,26 @@ function startDrag(item, down) {
     };
 
     dragging = true;
+    // Un glisser précédent dont le clic final n'est jamais venu.
+    delete item.dataset.dragged;
     topLayer += 1;
     item.style.zIndex = String(topLayer);
-    item.classList.add('is-dragging');
     item.setPointerCapture(down.pointerId);
+    let moved = false;
 
     /** @param {PointerEvent} move */
     const onMove = (move) => {
-        const x = clamp(start.x + move.clientX - down.clientX, limits.minX, limits.maxX);
-        const y = clamp(start.y + move.clientY - down.clientY, limits.minY, limits.maxY);
+        const dx = move.clientX - down.clientX;
+        const dy = move.clientY - down.clientY;
+        if (!moved && Math.hypot(dx, dy) < DRAG_THRESHOLD) return;
+        if (!moved) {
+            moved = true;
+            item.dataset.dragged = 'true';
+            item.classList.add('is-dragging');
+            item.querySelectorAll('canvas[data-perch]').forEach((bird) => bird.dispatchEvent(new CustomEvent('perch:fly')));
+        }
+        const x = clamp(start.x + dx, limits.minX, limits.maxX);
+        const y = clamp(start.y + dy, limits.minY, limits.maxY);
         offsets.set(item, { x, y });
         item.style.translate = `${x}px ${y}px`;
     };

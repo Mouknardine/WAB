@@ -1,26 +1,27 @@
 /* ============================================
-   WAB. — Accueil « bureau » : les objets du bureau
-   Autocollant, dossier, kaomoji. Les boutons et la bulle vivent
-   dans desk-aqua.css.
+   WAB OS — les objets du bureau
+   L'autocollant « HELLO my name is », les kaomoji, et les icônes de
+   bureau : des icônes d'app modernes (assets/icons/app-*.svg, une
+   squircle en dégradé, une couche de verre, un pictogramme au trait).
+   Une icône sélectionnée prend le rose système, comme son nom.
    ============================================ */
 
-/* ── Autocollant « HELLO my name is » ──
-   Le bandeau rose, la carte blanche, le nom au marqueur… sauf qu'il
-   n'y a pas de marqueur : le nom est tapé, en Sligoil. */
+/* ── Autocollant ── le bandeau dans le verre rose des boutons (texte
+   encre), la carte blanche, le nom tapé en Sligoil. */
 .sticker {
     display: block;
     width: 112px;
-    border-radius: 6px;
-    background: var(--pink);
-    box-shadow: var(--shadow-object);
+    border-radius: var(--r-ctl);
+    background: var(--bubble-pink);
+    box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px rgba(255, 255, 255, 0.6), var(--shadow-object);
     text-align: center;
-    color: var(--on-accent);
+    color: var(--glass-ink);
     overflow: hidden;
 }
 
 .sticker__hello {
     display: block;
-    padding-top: 5px;
+    padding-top: 6px;
     font-size: 11px;
     font-weight: var(--w-strong);
     letter-spacing: 0.08em;
@@ -30,61 +31,22 @@
 .sticker__mine {
     display: block;
     padding: 2px 0 4px;
-    font-size: 6px;
+    font-size: 7px;
     letter-spacing: 0.06em;
     line-height: 1;
 }
 
 .sticker__name {
     display: block;
-    margin: 0 4px 6px;
+    margin: 0 5px 6px;
     padding: 8px 0 7px;
-    border-radius: 2px;
+    border-radius: 7px;
     background: var(--on-accent);
     font-size: 1.15rem;
     font-weight: var(--w-strong);
     letter-spacing: -0.04em;
     line-height: 1;
     color: var(--ink);
-}
-
-/* ── Dossier ── une vraie icône de bureau : l'icône, puis le nom. */
-.folder {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    padding: 4px;
-    border-radius: 6px;
-    font-size: 12px;
-    color: var(--ink);
-}
-
-.folder svg {
-    display: block;
-    filter: drop-shadow(var(--shadow-icon));
-    transition: transform 0.25s var(--ease-out);
-}
-
-.folder__name {
-    padding: 1px 6px;
-    border-radius: 4px;
-}
-
-@media (hover: hover) {
-    .folder:hover svg {
-        transform: translateY(-2px);
-    }
-
-    .folder:hover .folder__name {
-        background: var(--accent);
-        color: var(--on-accent);
-    }
-}
-
-.folder:focus-visible .folder__name {
-    background: var(--accent);
-    color: var(--on-accent);
 }
 
 /* ── Kaomoji ── */
@@ -94,12 +56,55 @@
     color: var(--ink);
 }
 
-.folder__back {
-    fill: var(--folder-back);
+/* ── Icône de bureau ── l'icône d'app, puis le nom. */
+.icon {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    width: 88px;
+    padding: 4px;
+    border: 0;
+    border-radius: var(--r-ctl);
+    background: none;
+    font: inherit;
+    font-size: 12px;
+    color: var(--ink);
+    cursor: default;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.folder__front {
-    fill: var(--folder-front);
-    stroke: var(--folder-edge);
-    stroke-width: 0.8;
+.app-icon {
+    display: block;
+    width: 56px;
+    height: 56px;
+    filter: drop-shadow(0 3px 6px rgba(11, 11, 12, 0.1));
+    transition: transform 0.35s var(--ease-spring);
+}
+
+.icon__name {
+    padding: 1px 8px;
+    border-radius: var(--r-pill);
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+@media (hover: hover) {
+    .icon:hover .app-icon {
+        transform: translateY(-3px) scale(1.04);
+    }
+}
+
+/* Sélectionnée (clic, focus clavier) : le nom passe au rose. */
+.icon:focus-visible,
+.icon.is-selected {
+    outline: none;
+}
+
+.icon:focus-visible .icon__name,
+.icon.is-selected .icon__name,
+.scat.is-selected .file-name,
+.scat:focus-visible .file-name {
+    background: var(--accent);
+    color: var(--on-accent);
 }

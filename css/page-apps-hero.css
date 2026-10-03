@@ -1,0 +1,94 @@
+/* ============================================
+   WAB OS — page Applications : le premier écran
+   La promesse au centre, en colonne étroite ; sous elle l'application
+   ouverte dans son écran (page-apps-window.css). Le désordre (un
+   autocollant, le tableur que l'outil remplace, un kaomoji) reste en
+   bordure, et seulement sur grand écran.
+   ============================================ */
+
+.app-hero {
+    position: relative;
+    padding: calc(var(--bar-h) + clamp(48px, 9vw, 112px)) var(--gutter) 0;
+}
+
+.app-hero__head {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 880px;
+    margin-inline: auto;
+    text-align: center;
+}
+
+.app-hero__title {
+    font-size: var(--t-app-hero);
+    font-weight: var(--w-strong);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+}
+
+.app-hero__lede {
+    max-width: 58ch;
+    margin-top: 20px;
+    font-size: var(--t-body);
+    line-height: 1.55;
+    text-wrap: pretty;
+}
+
+.app-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.app-hero__note {
+    margin-top: 16px;
+    font-size: var(--t-small);
+    color: var(--ink-faint);
+}
+
+/* ── La bordure ── */
+.app-hero__edge {
+    display: none;
+}
+
+@media (min-width: 1180px) {
+    .app-hero__edge {
+        display: block;
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+    }
+
+    .app-edge {
+        position: absolute;
+    }
+
+    .app-edge--sticker {
+        top: calc(var(--bar-h) + 72px);
+        left: max(var(--gutter), calc(50% - 640px));
+        rotate: -6deg;
+    }
+
+    .app-edge--file {
+        top: calc(var(--bar-h) + 120px);
+        right: max(var(--gutter), calc(50% - 650px));
+        rotate: 3deg;
+    }
+
+    .app-edge--kao {
+        top: calc(var(--bar-h) + 300px);
+        left: max(calc(var(--gutter) + 40px), calc(50% - 560px));
+    }
+}
+
+@media (min-width: 600px) {
+    .app-hero__lede {
+        font-size: var(--t-lede);
+    }
+}

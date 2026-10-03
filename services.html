@@ -7,7 +7,7 @@
          Sans lui, les sections à apparition restent visibles d'emblée. -->
     <script>document.documentElement.classList.replace('no-js', 'js');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#FFE4F0">
+    <meta name="theme-color" content="#fafafa">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
@@ -93,82 +93,88 @@
 
     <!-- Police — Sligoil seule, servie depuis le site -->
     <link rel="preload" href="assets/fonts/Sligoil-Micro.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/Sligoil-MicroBold.woff2" as="font" type="font/woff2" crossorigin>
 
-    <!-- Styles -->
+    <!-- Styles — le socle commun, les composants WAB OS partagés, puis
+         les feuilles de cette page (page-services-*). -->
     <link rel="stylesheet" href="css/base.css?v=33">
-    <link rel="stylesheet" href="css/nav.css?v=19">
     <link rel="stylesheet" href="css/nav-panel.css?v=1">
     <link rel="stylesheet" href="css/contact-modal.css?v=7">
     <link rel="stylesheet" href="css/contact-form.css?v=3">
-    <link rel="stylesheet" href="css/plate.css?v=3">
-    <link rel="stylesheet" href="css/services.css?v=10">
-    <link rel="stylesheet" href="css/service-closing.css?v=2">
-    <link rel="stylesheet" href="css/service-tiles.css?v=5">
-    <link rel="stylesheet" href="css/service-visuals.css?v=3">
-    <link rel="stylesheet" href="css/brand-visuals.css?v=3">
-    <link rel="stylesheet" href="css/service-motion.css?v=4">
-    <link rel="stylesheet" href="css/footer.css?v=11">
+    <link rel="stylesheet" href="css/os-tokens.css?v=1">
+    <link rel="stylesheet" href="css/os-base.css?v=1">
+    <link rel="stylesheet" href="css/os-sky.css?v=1">
+    <link rel="stylesheet" href="css/sym.css?v=2">
+    <link rel="stylesheet" href="css/glass-btn.css?v=2">
+    <link rel="stylesheet" href="css/os-bar.css?v=1">
+    <link rel="stylesheet" href="css/os-window.css?v=1">
+    <link rel="stylesheet" href="css/os-bubbles.css?v=1">
+    <link rel="stylesheet" href="css/os-footer.css?v=1">
+    <link rel="stylesheet" href="css/os-dock.css?v=2">
+    <link rel="stylesheet" href="css/os-overlay.css?v=2">
+    <link rel="stylesheet" href="css/page-services-base.css?v=1">
+    <link rel="stylesheet" href="css/page-services-hero.css?v=1">
+    <link rel="stylesheet" href="css/page-services-pad.css?v=1">
+    <link rel="stylesheet" href="css/page-services-feats.css?v=1">
+    <link rel="stylesheet" href="css/page-services-typing.css?v=1">
+    <link rel="stylesheet" href="css/page-services-previews.css?v=1">
+    <link rel="stylesheet" href="css/page-services-objects.css?v=1">
+    <link rel="stylesheet" href="css/page-services-sky.css?v=1">
+    <link rel="stylesheet" href="css/page-services-end.css?v=1">
 
     <!-- Scripts -->
-    <script src="nav-clock.js?v=2" defer></script>
-    <script src="js/reveal.js?v=4" defer></script>
-    <script src="js/service-tilt.js?v=3" defer></script>
+    <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
-    <script src="js/letter-swap.js?v=1" defer></script>
-    <script type="module" src="js/mesh/index.js?v=2"></script>
-    <script type="module" src="js/birds/index.js?v=6"></script>
+    <script type="module" src="js/birds/index.js?v=7"></script>
     <script type="module" src="js/contact/index.js?v=9"></script>
+    <script type="module" src="js/os/index.js?v=1"></script>
+    <script type="module" src="js/page-services/index.js?v=1"></script>
 </head>
 
-<body>
+<body class="os" data-birds="rare">
 
     <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-    <!-- Les oiseaux traversent le fond de toute la page -->
+    <!-- Les oiseaux volent sur la trame du bureau, sous les fenêtres. -->
     <canvas id="birdCanvas" aria-hidden="true"></canvas>
 
-    <!-- BARRE FLOTTANTE — la pilule se prolonge pour contenir le menu -->
-    <header class="topbar" id="topbar">
-        <div class="topbar__inner" id="topbarBar">
-            <div class="topbar__bar">
-                <a href="/" class="topbar__brand">WAB.</a>
+    <header class="menubar" id="topbar">
+        <div class="topbar__inner menubar__inner" id="topbarBar">
+            <div class="menubar__row">
+                <a href="/" class="menubar__brand">WAB.</a>
 
-                <nav class="topbar__nav" aria-label="Navigation principale">
-                    <a href="/realisations" class="topbar__link">Work</a>
-                    <a href="/services" class="topbar__link" aria-current="page">Services</a>
-                    <a href="/studio" class="topbar__link">About</a>
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="topbar__link">Contact</a>
+                <nav class="menubar__nav" aria-label="Navigation principale">
+                    <a href="/realisations" class="menubar__link">Work</a>
+                    <a href="/services" class="menubar__link" aria-current="page">Services</a>
+                    <a href="/studio" class="menubar__link">About</a>
                 </nav>
 
-                <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
-                    <span class="topbar__dots" aria-hidden="true">
-                        <span></span><span></span><span></span><span></span>
-                    </span>
-                    <span class="sr-only">Menu</span>
-                </button>
-            </div>
+                <span class="menubar__os" aria-hidden="true" translate="no"><canvas class="menubar__sigil" data-perch="flap" data-scale="1" data-color="4"></canvas></span>
 
+                <div class="menubar__state">
+                    <button type="button" class="menubar__find" data-palette-open data-js-only aria-keyshortcuts="Meta+K Control+K">
+                        <span class="sym sym--search" aria-hidden="true"></span>Rechercher<kbd data-shortcut>⌘K</kbd>
+                    </button>
+                    <span class="menubar__sky" aria-hidden="true"><span class="sym sym--sun" aria-hidden="true"></span><span class="sym sym--moon" aria-hidden="true"></span></span>
+                    <span class="menubar__status" data-local-status hidden></span>
+                    <time class="menubar__time" data-local-time>--:--</time>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="menubar__cta glass-btn glass-btn--pink glass-btn--sm">Contact</a>
+                    <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
+                        <span class="topbar__dots" aria-hidden="true">
+                            <span></span><span></span><span></span><span></span>
+                        </span>
+                        <span class="sr-only">Menu</span>
+                    </button>
+                </div>
+            </div>
             <div class="topbar__panel" id="topbarPanel">
                 <div class="topbar__panel-inner">
                     <nav class="panel__nav" aria-label="Navigation">
-                        <a href="/realisations" class="panel__link">
-                            Work
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
-                        <a href="/services" class="panel__link" aria-current="page">
-                            Services
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
-                        <a href="/studio" class="panel__link">
-                            About
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
-                        <a href="mailto:contact@wearebrothers.ch" data-contact class="panel__link">
-                            Contact
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
+                        <a href="/realisations" class="panel__link">Work<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
+                        <a href="/services" class="panel__link" aria-current="page">Services<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
+                        <a href="/studio" class="panel__link">About<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
+                        <a href="mailto:contact@wearebrothers.ch" data-contact class="panel__link">Contact<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
                     </nav>
-
                     <div class="panel__meta">
                         <p class="panel__row">
                             <span class="panel__key">Email</span>
@@ -186,182 +192,410 @@
 
     <div class="topbar-scrim" id="topbarScrim"></div>
 
-    <main id="contenu" class="svc-page">
+    <!-- Les pictogrammes des apps, dessinés une fois (d'après Lucide,
+         licence ISC) : chaque icône les reprend par <use>, au trait de
+         la couleur de sa tuile. -->
+    <svg class="svc-sprite" aria-hidden="true" focusable="false">
+        <symbol id="g-site" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="16" rx="3"/><path d="M2.5 8.5h19"/><path d="M6 6.25h.01M9 6.25h.01"/></symbol>
+        <symbol id="g-link" viewBox="0 0 24 24"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><path d="M8 12h8"/></symbol>
+        <symbol id="g-bolt" viewBox="0 0 24 24"><path d="M13 2 3.5 13.5h8L11 22l9.5-11.5h-8L13 2Z"/></symbol>
+        <symbol id="g-mail" viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7.5 9 6 9-6"/></symbol>
+        <symbol id="g-spark" viewBox="0 0 24 24"><path d="M11 4l1.9 5.1L18 11l-5.1 1.9L11 18l-1.9-5.1L4 11l5.1-1.9L11 4Z"/><path d="M19 3v4M17 5h4"/></symbol>
+        <symbol id="g-board" viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="9" rx="1.8"/><rect x="13.5" y="3" width="7.5" height="5" rx="1.8"/><rect x="13.5" y="11" width="7.5" height="10" rx="1.8"/><rect x="3" y="15" width="7.5" height="6" rx="1.8"/></symbol>
+        <symbol id="g-pen" viewBox="0 0 24 24"><path d="M15.7 21.3a1 1 0 0 1-1.4 0l-1.6-1.6a1 1 0 0 1 0-1.4l5.6-5.6a1 1 0 0 1 1.4 0l1.6 1.6a1 1 0 0 1 0 1.4Z"/><path d="m18 13-1.4-6.9a1 1 0 0 0-.7-.8L3.2 2a1 1 0 0 0-1.2 1.2l3.3 12.7a1 1 0 0 0 .8.7L13 18"/><path d="m2.3 2.3 7.3 7.3"/><circle cx="11" cy="11" r="2"/></symbol>
+        <symbol id="g-print" viewBox="0 0 24 24"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7" rx="1"/></symbol>
+        <symbol id="g-shirt" viewBox="0 0 24 24"><path d="M20.4 3.5 16 2a4 4 0 0 1-8 0L3.6 3.5a2 2 0 0 0-1.3 2.2l.6 3.5a1 1 0 0 0 1 .8H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.2a1 1 0 0 0 1-.8l.6-3.5a2 2 0 0 0-1.4-2.2Z"/></symbol>
+        <symbol id="g-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></symbol>
+        <symbol id="g-check" viewBox="0 0 24 24"><path d="M5 12.5 10 17 19 7"/></symbol>
+    </svg>
 
-        <!-- OUVERTURE — le titre dans une carte, et les deux chapitres de
-             la page à côté. La fin du titre reste lue par Google et la
-             navigation vocale. -->
-        <div class="svc-open">
-            <h1 class="card svc-open__title">Du site internet aux outils qui font tourner votre entreprise.<span class="sr-only"> Services de WeAreBrothers, agence web à Lausanne.</span></h1>
-            <nav class="svc-open__chapters" aria-label="Sur cette page">
-                <a class="card chapter" href="#technologie">
-                    <span class="chapter__count">6 prestations</span>
-                    <span class="chapter__row">Technologie <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14" /><path d="m19 12-7 7-7-7" /></svg></span>
-                </a>
-                <a class="card chapter" href="#image">
-                    <span class="chapter__count">3 prestations</span>
-                    <span class="chapter__row">Image de marque <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14" /><path d="m19 12-7 7-7-7" /></svg></span>
-                </a>
-            </nav>
-        </div>
+    <main id="contenu" class="svc">
 
-        <!-- TECHNOLOGIE — un bento : une grande tuile, une haute, une
-             large qui mène à la fiche de l'application, trois petites. -->
-        <section class="svc-section" id="technologie" aria-labelledby="techTitle">
-            <div class="section-head">
-                <h2 class="section-head__title" id="techTitle">Technologie</h2>
-                <a href="/applications" class="link-arrow">Voir une application <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+        <!-- LE BUREAU — le titre au centre, net ; dessous, le Launchpad du
+             studio : les neuf services en apps, rangés par famille. Chaque
+             icône descend au bloc qui la présente. Le désordre (autocollant,
+             kaomoji) reste au bord, et seulement sur grand écran. -->
+        <section class="svc-hero" aria-labelledby="svcTitle">
+            <span class="svc-hero__sticker svc-sticker" aria-hidden="true"><span class="svc-sticker__hello">HELLO</span><span class="svc-sticker__mine">my name is</span><span class="svc-sticker__name" translate="no">WAB.</span></span>
+            <span class="svc-hero__kao" aria-hidden="true">(•‿•)ノ</span>
+
+            <div class="svc-hero__center">
+                <p class="badge">Services</p>
+                <h1 class="svc-hero__title" id="svcTitle">Du site internet aux outils qui font tourner votre entreprise.<span class="sr-only"> Services de WeAreBrothers, agence web à Lausanne.</span></h1>
+                <div class="svc-hero__actions">
+                    <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="glass-btn glass-btn--pink">Démarrer un projet</a>
+                    <a href="/realisations" class="glass-btn">Voir le travail</a>
+                </div>
             </div>
-            <ul class="svc-bento svc-bento--tech" data-reveal-group>
-                <li class="card sv-tile reveal sv-tile--lead is-wide">
-                        <div class="sv-media" aria-hidden="true"><div class="mock-window mock-window--back"><span class="mock-bar"><i></i><i></i><i></i></span><img src="assets/images/project-amarte-720.webp" alt="" width="720" height="450" loading="lazy" decoding="async"></div><div class="mock-window mock-window--front"><span class="mock-bar"><i></i><i></i><i></i></span><img src="assets/images/project-zinema-720.webp" alt="" width="720" height="401" loading="lazy" decoding="async"></div></div>
-                        <div class="sv-body">
-                            <div>
-                                <h3 class="sv-title">Sites sur mesure</h3>
-                                <p class="sv-line">Codés de A à Z, rapides sur mobile, pensés pour Google.</p>
-                            </div>
-                            
+
+            <nav class="svc-pad" aria-label="Les services de la page">
+                <div class="win svc-pad__win">
+                    <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--grid" aria-hidden="true"></span>Services</span></div>
+                    <div class="svc-pad__body">
+                        <div class="svc-pad__group">
+                            <p class="svc-pad__label" id="padTech">Technologie <span>6 prestations</span></p>
+                            <ul class="svc-pad__grid" aria-labelledby="padTech">
+                                <li><a class="svc-pad__app" href="#sites"><span class="app app--pink" aria-hidden="true"><svg><use href="#g-site"/></svg></span><span class="svc-pad__name">Sites sur mesure</span></a></li>
+                                <li><a class="svc-pad__app" href="#sites"><span class="app" aria-hidden="true"><svg><use href="#g-link"/></svg></span><span class="svc-pad__name">Intégrations</span></a></li>
+                                <li><a class="svc-pad__app" href="#automatisation"><span class="app app--ink" aria-hidden="true"><svg><use href="#g-bolt"/></svg></span><span class="svc-pad__name">Automatisation</span></a></li>
+                                <li><a class="svc-pad__app" href="#automatisation"><span class="app" aria-hidden="true"><svg><use href="#g-mail"/></svg></span><span class="svc-pad__name">Newsletters</span></a></li>
+                                <li><a class="svc-pad__app" href="#automatisation"><span class="app app--ink" aria-hidden="true"><svg><use href="#g-spark"/></svg></span><span class="svc-pad__name">Intelligence artificielle</span></a></li>
+                                <li><a class="svc-pad__app" href="#gestion"><span class="app app--pink" aria-hidden="true"><svg><use href="#g-board"/></svg></span><span class="svc-pad__name">Applications de gestion</span></a></li>
+                            </ul>
                         </div>
-                </li>
-                <li class="card sv-tile reveal">
-                        <div class="sv-media" aria-hidden="true"><div class="mock-sync"><span class="mock-sync__site"><b>Votre site</b></span><span class="mock-sync__row">Caisse<i></i></span><span class="mock-sync__row">CMS<i></i></span><span class="mock-sync__row">Boutique<i></i></span></div></div>
-                        <div class="sv-body">
-                            <div>
-                                <h3 class="sv-title">Intégrations</h3>
-                                <p class="sv-line">Caisse, CMS, boutique&nbsp;: vous gérez seul.</p>
-                            </div>
-                            
+                        <div class="svc-pad__group">
+                            <p class="svc-pad__label" id="padBrand">Image de marque <span>3 prestations</span></p>
+                            <ul class="svc-pad__grid" aria-labelledby="padBrand">
+                                <li><a class="svc-pad__app" href="#branding"><span class="app app--pink" aria-hidden="true"><svg><use href="#g-pen"/></svg></span><span class="svc-pad__name">Branding</span></a></li>
+                                <li><a class="svc-pad__app" href="#objets"><span class="app" aria-hidden="true"><svg><use href="#g-print"/></svg></span><span class="svc-pad__name">Print</span></a></li>
+                                <li><a class="svc-pad__app" href="#objets"><span class="app app--ink" aria-hidden="true"><svg><use href="#g-shirt"/></svg></span><span class="svc-pad__name">Vêtements</span></a></li>
+                            </ul>
                         </div>
-                </li>
-                <li class="card sv-tile reveal">
-                        <div class="sv-media" aria-hidden="true"><div class="mock-doc"><div class="mock-doc__head"><b>Devis</b><span class="mock-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17 19 7"/></svg>Généré</span></div><span class="mock-line"></span><span class="mock-line mock-line--mid"></span><span class="mock-line mock-line--short"></span><div class="mock-doc__head mock-doc__foot"><b>Facture</b><span class="mock-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17 19 7"/></svg>Envoyée</span></div></div></div>
-                        <div class="sv-body">
-                            <div>
-                                <h3 class="sv-title">Automatisation</h3>
-                                <p class="sv-line">Devis, factures et suivi client, tout seuls.</p>
-                            </div>
-                            
-                        </div>
-                </li>
-                <li class="card sv-tile reveal">
-                        <div class="sv-media" aria-hidden="true"><div class="mock-doc mock-mail"><span class="mock-mail__from">Votre entreprise</span><b class="mock-mail__subject">Les nouveautés du mois</b><span class="mock-line"></span><span class="mock-line mock-line--mid"></span><span class="mock-badge mock-badge--end"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17 19 7"/></svg>Envoi automatique</span></div></div>
-                        <div class="sv-body">
-                            <div>
-                                <h3 class="sv-title">Newsletters</h3>
-                                <p class="sv-line">Créées et envoyées automatiquement.</p>
-                            </div>
-                            
-                        </div>
-                </li>
-                <li class="is-wide">
-                    <a class="card sv-tile reveal sv-tile--side sv-tile--lead" href="/applications">
-                        <div class="sv-media" aria-hidden="true"><div class="mock-window mock-window--app"><span class="mock-bar"><i></i><i></i><i></i></span><img src="assets/images/app-agenda-aujourdhui-1280.webp" alt="" width="1280" height="520" loading="lazy" decoding="async"></div><span class="sv-note">Données de démonstration</span></div>
-                        <div class="sv-body">
-                            <div>
-                                <h3 class="sv-title">Applications de gestion</h3>
-                                <p class="sv-line">Dessinées autour de votre métier, livrées module par module.</p>
-                            </div>
-                            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg>
-                        </div>
-                    </a>
-                </li>
-                <li class="card sv-tile reveal">
-                        <div class="sv-media" aria-hidden="true"><div class="mock-chat"><span class="mock-chat__ask">Résume les demandes de la semaine.</span><div class="mock-chat__reply"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/></svg><span class="mock-line"></span><span class="mock-line mock-line--mid"></span></div></div></div>
-                        <div class="sv-body">
-                            <div>
-                                <h3 class="sv-title">Intelligence artificielle</h3>
-                                <p class="sv-line">Là où elle fait gagner du temps.</p>
-                            </div>
-                            
-                        </div>
-                </li>
-            </ul>
+                    </div>
+                </div>
+            </nav>
         </section>
 
-        <!-- IMAGE DE MARQUE — Branding en grand, Print et Vêtements à côté. -->
-        <section class="svc-section" id="image" aria-labelledby="brandTitle">
-            <div class="section-head">
-                <h2 class="section-head__title" id="brandTitle">Image de marque</h2>
-                <a href="/realisations" class="link-arrow">Voir le travail <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+        <!-- TECHNOLOGIE — trois blocs en quinconce : une grande fenêtre
+             posée dans son écran, et contre elle la frappe, un échange en
+             bulles (mise en scène, pas un témoignage : masqué aux lecteurs
+             d'écran), puis les apps du bloc avec leur ligne. -->
+        <section class="svc-family" id="technologie" aria-labelledby="techTitle">
+            <div class="svc-head os-wrap">
+                <p class="badge">6 prestations</p>
+                <h2 class="svc-head__title" id="techTitle">Technologie</h2>
             </div>
-            <ul class="svc-bento svc-bento--brand" data-reveal-group>
-                <li class="card sv-tile reveal sv-tile--lead is-wide">
-                        <div class="sv-media" aria-hidden="true"><img class="sv-media__img sv-media__img--top" src="assets/images/service-branding-lazizze.webp" alt="" width="900" height="495" loading="lazy" decoding="async"></div>
-                        <div class="sv-body">
-                            <div>
-                                <h3 class="sv-title">Branding</h3>
-                                <p class="sv-line">Logo et identité visuelle. Ici, LAZIZZE.</p>
-                            </div>
-                            
+
+            <div class="svc-feats os-wrap" data-svc-feats>
+                <article class="svc-feat" id="sites">
+                    <div class="svc-feat__text">
+                        <span class="svc-typing" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                        <div class="chat" aria-hidden="true">
+                            <p class="chat__ask">Je veux changer ma carte moi-même.</p>
+                            <p class="chat__reply">Le CMS sera branché.</p>
                         </div>
-                </li>
-                <li class="card sv-tile reveal">
-                        <div class="sv-media" aria-hidden="true"><div class="mock-bcard mock-bcard--back"><span class="mock-line"></span><span class="mock-line mock-line--short"></span></div><div class="mock-bcard mock-bcard--front"><b>WAB.</b><span>Lausanne</span></div></div>
-                        <div class="sv-body">
-                            <div>
-                                <h3 class="sv-title">Print</h3>
-                                <p class="sv-line">Cartes de visite et imprimés.</p>
+                        <ul class="svc-apps">
+                            <li class="svc-app"><span class="app app--pink" aria-hidden="true"><svg><use href="#g-site"/></svg></span><div><h3 class="svc-app__name">Sites sur mesure</h3><p class="svc-app__line">Codés de A à Z, rapides sur mobile, pensés pour Google.</p></div></li>
+                            <li class="svc-app"><span class="app" aria-hidden="true"><svg><use href="#g-link"/></svg></span><div><h3 class="svc-app__name">Intégrations</h3><p class="svc-app__line">Caisse, CMS, boutique&nbsp;: vous gérez seul.</p></div></li>
+                        </ul>
+                    </div>
+                    <figure class="svc-feat__media">
+                        <div class="svc-screen">
+                            <div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--site" aria-hidden="true"></span>amarte.ch</span></div><div class="win__body svc-shot"><img src="assets/images/shot-amarte-1600.webp" srcset="assets/images/shot-amarte-800.webp 800w, assets/images/shot-amarte-1600.webp 1600w" sizes="(min-width: 900px) 600px, 100vw" alt="Page d'accueil d'Amarte Studio, centre de yoga et de Pilates à Épalinges, site codé par le studio" width="1600" height="1000" loading="lazy" decoding="async"></div></div>
+                            <div class="svc-sync" aria-hidden="true">
+                                <p class="svc-sync__head"><span class="sym sym--site"></span>Votre site</p>
+                                <p class="svc-sync__row">Caisse<svg><use href="#g-check"/></svg></p>
+                                <p class="svc-sync__row">CMS<svg><use href="#g-check"/></svg></p>
+                                <p class="svc-sync__row">Boutique<svg><use href="#g-check"/></svg></p>
                             </div>
-                            
                         </div>
-                </li>
-                <li class="card sv-tile reveal">
-                        <div class="sv-media" aria-hidden="true"><div class="mock-label"><b>Memories Store</b><span>× WeAreBrothers</span><small>Lausanne</small></div></div>
-                        <div class="sv-body">
-                            <div>
-                                <h3 class="sv-title">Vêtements</h3>
-                                <p class="sv-line">Des pièces avec Memories Store.</p>
+                    </figure>
+                </article>
+
+                <article class="svc-feat svc-feat--flip" id="automatisation">
+                    <div class="svc-feat__text">
+                        <span class="svc-typing" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                        <div class="chat" aria-hidden="true">
+                            <p class="chat__ask">Ma newsletter part quand j'y pense.</p>
+                            <p class="chat__reply">Elle partira toute seule.</p>
+                        </div>
+                        <ul class="svc-apps">
+                            <li class="svc-app"><span class="app app--ink" aria-hidden="true"><svg><use href="#g-bolt"/></svg></span><div><h3 class="svc-app__name">Automatisation</h3><p class="svc-app__line">Devis, factures et suivi client, tout seuls.</p></div></li>
+                            <li class="svc-app"><span class="app" aria-hidden="true"><svg><use href="#g-mail"/></svg></span><div><h3 class="svc-app__name">Newsletters</h3><p class="svc-app__line">Créées et envoyées automatiquement.</p></div></li>
+                            <li class="svc-app"><span class="app app--ink" aria-hidden="true"><svg><use href="#g-spark"/></svg></span><div><h3 class="svc-app__name">Intelligence artificielle</h3><p class="svc-app__line">Là où elle fait gagner du temps.</p></div></li>
+                        </ul>
+                    </div>
+                    <figure class="svc-feat__media" aria-hidden="true">
+                        <div class="svc-screen">
+                            <div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--bolt"></span>Automatisations</span></div><div class="win__body svc-shot">
+                                <div class="svc-notifs" data-watch="once">
+                                    <p class="svc-notif"><span class="svc-notif__icon"><svg><use href="#g-bolt"/></svg></span><span class="svc-notif__name">Devis</span><span class="svc-notif__state"><svg><use href="#g-check"/></svg>Généré</span></p>
+                                    <p class="svc-notif"><span class="svc-notif__icon"><svg><use href="#g-bolt"/></svg></span><span class="svc-notif__name">Facture</span><span class="svc-notif__state"><svg><use href="#g-check"/></svg>Envoyée</span></p>
+                                    <p class="svc-notif"><span class="svc-notif__icon"><svg><use href="#g-mail"/></svg></span><span class="svc-notif__name">Les nouveautés du mois</span><span class="svc-notif__state">Envoi automatique</span></p>
+                                    <p class="svc-notif svc-notif--ask"><span class="svc-notif__icon"><svg><use href="#g-spark"/></svg></span><span class="svc-notif__name">Résume les demandes de la semaine.</span></p>
+                                </div>
+                            </div></div>
+                        </div>
+                    </figure>
+                </article>
+
+                <article class="svc-feat" id="gestion">
+                    <div class="svc-feat__text">
+                        <span class="svc-typing" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                        <div class="chat" aria-hidden="true">
+                            <p class="chat__ask">Je veux suivre mes projets depuis mon téléphone.</p>
+                            <p class="chat__reply">On livre module par module.</p>
+                        </div>
+                        <ul class="svc-apps">
+                            <li class="svc-app"><span class="app app--pink" aria-hidden="true"><svg><use href="#g-board"/></svg></span><div><h3 class="svc-app__name">Applications de gestion</h3><p class="svc-app__line">Dessinées autour de votre métier, livrées module par module.</p></div></li>
+                        </ul>
+                        <a href="/applications" class="svc-link">Voir une application <svg aria-hidden="true"><use href="#g-arrow"/></svg></a>
+                    </div>
+                    <figure class="svc-feat__media">
+                        <div class="svc-screen">
+                            <div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--chart" aria-hidden="true"></span>Agenda — Tâches</span></div><div class="win__body svc-shot svc-shot--top"><img src="assets/images/app-agenda-taches-1280.webp" srcset="assets/images/app-agenda-taches-1280.webp 1280w, assets/images/app-agenda-taches-2560.webp 2560w" sizes="(min-width: 900px) 600px, 100vw" alt="L'écran Tâches d'une application de gestion conçue et développée par le studio pour une agence" width="1280" height="840" loading="lazy" decoding="async"><span class="win__demo">Données de démonstration</span></div></div>
+                        </div>
+                    </figure>
+                </article>
+            </div>
+        </section>
+
+        <!-- IMAGE DE MARQUE — la même grammaire, deux blocs : LAZIZZE pour
+             le branding, puis les objets (cartes de visite, vêtements). -->
+        <section class="svc-family" id="image" aria-labelledby="brandTitle">
+            <div class="svc-head os-wrap">
+                <p class="badge">3 prestations</p>
+                <h2 class="svc-head__title" id="brandTitle">Image de marque</h2>
+            </div>
+
+            <div class="svc-feats os-wrap" data-svc-feats>
+                <article class="svc-feat svc-feat--flip" id="branding">
+                    <div class="svc-feat__text">
+                        <span class="svc-typing" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                        <div class="chat" aria-hidden="true">
+                            <p class="chat__ask">Mon logo ne me ressemble plus.</p>
+                            <p class="chat__reply">On redessine votre identité.</p>
+                        </div>
+                        <ul class="svc-apps">
+                            <li class="svc-app"><span class="app app--pink" aria-hidden="true"><svg><use href="#g-pen"/></svg></span><div><h3 class="svc-app__name">Branding</h3><p class="svc-app__line">Logo et identité visuelle. Ici, LAZIZZE.</p></div></li>
+                        </ul>
+                        <a href="/realisations#dj" class="svc-link" data-card="dj" data-title="lazizze.com">Voir le projet <svg aria-hidden="true"><use href="#g-arrow"/></svg></a>
+                    </div>
+                    <figure class="svc-feat__media">
+                        <div class="svc-screen">
+                            <div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--file" aria-hidden="true"></span>lazizze.com</span></div><div class="win__body svc-shot svc-shot--brand"><img src="assets/images/service-branding-lazizze.webp" alt="L'identité de LAZIZZE, DJ house lausannois : le nom en capitales noires sur un aplat rose, à côté d'une photo du DJ aux platines" width="900" height="495" loading="lazy" decoding="async"></div></div>
+                        </div>
+                    </figure>
+                </article>
+
+                <article class="svc-feat" id="objets">
+                    <div class="svc-feat__text">
+                        <span class="svc-typing" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                        <div class="chat" aria-hidden="true">
+                            <p class="chat__ask">Il me faut des cartes de visite.</p>
+                            <p class="chat__reply">Et pourquoi pas des t-shirts&nbsp;?</p>
+                        </div>
+                        <ul class="svc-apps">
+                            <li class="svc-app"><span class="app" aria-hidden="true"><svg><use href="#g-print"/></svg></span><div><h3 class="svc-app__name">Print</h3><p class="svc-app__line">Cartes de visite et imprimés.</p></div></li>
+                            <li class="svc-app"><span class="app app--ink" aria-hidden="true"><svg><use href="#g-shirt"/></svg></span><div><h3 class="svc-app__name">Vêtements</h3><p class="svc-app__line">Des pièces avec Memories Store, à Lausanne.</p></div></li>
+                        </ul>
+                    </div>
+                    <figure class="svc-feat__media" aria-hidden="true">
+                        <div class="svc-screen">
+                            <div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--file"></span>Aperçu — impression</span></div><div class="win__body svc-shot">
+                                <div class="svc-objects">
+                                    <div class="svc-card svc-card--back"><span>wearebrothers.ch</span><span>Lausanne</span></div>
+                                    <div class="svc-card svc-card--front"><b translate="no">WAB.</b><span>WeAreBrothers Studio</span></div>
+                                    <div class="svc-tag"><b>Memories Store</b><span>× WeAreBrothers</span><small>Lausanne</small></div>
+                                </div>
+                            </div></div>
+                        </div>
+                    </figure>
+                </article>
+            </div>
+        </section>
+
+        <!-- LE CIEL — trois façons de travailler avec nous, sur le ciel rose
+             du site. Ici, aucun prix : chaque projet est chiffré sur devis,
+             après un premier échange. Trois cartes de verre seulement : le
+             flou réel reste raisonnable. -->
+        <section class="svc-sky" id="formules" aria-labelledby="skyTitle">
+            <div class="os-wrap">
+                <div class="svc-head">
+                    <p class="badge">Sur devis</p>
+                    <h2 class="svc-sky__title" id="skyTitle">Trois façons de travailler avec nous.</h2>
+                    <p class="svc-sky__lede">Le prix suit le périmètre&nbsp;: nous le définissons ensemble après un premier échange. Paiement en plusieurs mensualités possible.</p>
+                </div>
+                <ul class="svc-plans">
+                    <li>
+                        <article class="svc-plan">
+                            <div class="svc-plan__bar"><span class="win__lights"></span></div>
+                            <div class="svc-plan__body">
+                                <h3 class="svc-plan__name">Site vitrine</h3>
+                                <p class="svc-plan__line">Votre vitrine, codée de A à Z.</p>
+                                <p class="svc-plan__quote">Sur devis</p>
+                                <p class="svc-plan__for">De 3 à 6 semaines</p>
+                                <ul class="svc-plan__list"><li>Codé à la main, sans WordPress ni Wix</li><li>Dessiné pour le téléphone d’abord</li><li>Pensé pour Google et le référencement local</li><li>Hébergé en Suisse chez Infomaniak</li></ul>
+                                <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="glass-btn">Parlons-en</a>
                             </div>
-                            
-                        </div>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="svc-plan svc-plan--main">
+                            <div class="svc-plan__bar"><span class="win__lights"></span></div>
+                            <div class="svc-plan__body">
+                                <h3 class="svc-plan__name">Site et outils</h3>
+                                <p class="svc-plan__line">Le site, et les outils qui font tourner votre entreprise.</p>
+                                <p class="svc-plan__quote">Sur devis</p>
+                                <p class="svc-plan__for">Pour les process qui vivent dans un tableur</p>
+                                <ul class="svc-plan__list"><li>Tout ce que comprend le site vitrine</li><li>Un outil de gestion dessiné autour de votre métier</li><li>Caisse, CMS, boutique&nbsp;: vous gérez seul</li><li>Automatisations et IA, là où elles font gagner du temps</li></ul>
+                                <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="glass-btn glass-btn--pink">Parlons-en</a>
+                            </div>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="svc-plan">
+                            <div class="svc-plan__bar"><span class="win__lights"></span></div>
+                            <div class="svc-plan__body">
+                                <h3 class="svc-plan__name">Expérience sur mesure</h3>
+                                <p class="svc-plan__line">Une expérience poussée, avec refonte de marque.</p>
+                                <p class="svc-plan__quote">Sur devis</p>
+                                <p class="svc-plan__for">Pour les marques et les créatifs</p>
+                                <ul class="svc-plan__list"><li>Refonte de marque&nbsp;: logo et identité visuelle</li><li>Direction artistique et motion design</li><li>Cartes de visite et imprimés</li><li>Des pièces avec Memories Store</li></ul>
+                                <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="glass-btn">Parlons-en</a>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- LA MÉTHODE — le déroulé réel d'un projet, en quatre étapes
+             reliées par la ligne de points. La seule numérotation du site. -->
+        <section class="svc-method os-wrap" id="methode" aria-labelledby="methodTitle">
+            <div class="svc-head">
+                <p class="badge">Méthode</p>
+                <h2 class="svc-head__title" id="methodTitle">Du premier café à la mise en ligne.</h2>
+            </div>
+            <ol class="svc-steps">
+                <li class="svc-step">
+                    <span class="svc-step__num" aria-hidden="true">1</span>
+                    <h3 class="svc-step__name">Un café ou un appel</h3>
+                    <p class="svc-step__line">Votre activité, vos attentes, les sites que vous aimez. Sans engagement.</p>
                 </li>
-            </ul>
+                <li class="svc-step">
+                    <span class="svc-step__num" aria-hidden="true">2</span>
+                    <h3 class="svc-step__name">Une proposition</h3>
+                    <p class="svc-step__line">Le périmètre, le calendrier et le devis, sous 24&nbsp;h ouvrées.</p>
+                </li>
+                <li class="svc-step">
+                    <span class="svc-step__num" aria-hidden="true">3</span>
+                    <h3 class="svc-step__name">Design et développement</h3>
+                    <p class="svc-step__line">Eliott dessine, Matt développe, avec des points réguliers.</p>
+                </li>
+                <li class="svc-step">
+                    <span class="svc-step__num" aria-hidden="true">4</span>
+                    <h3 class="svc-step__name">Mise en ligne, puis suivi</h3>
+                    <p class="svc-step__line">Maintenance et évolutions, avec les mêmes personnes.</p>
+                </li>
+            </ol>
+        </section>
+
+        <!-- L'APPEL FINAL — l'icône Mail du système, la question, deux
+             boutons de verre. -->
+        <section class="svc-end os-wrap" aria-labelledby="endTitle">
+            <img class="svc-end__icon" src="assets/icons/app-mail.svg" alt="" width="72" height="72" loading="lazy">
+            <h2 class="svc-end__title" id="endTitle">Un projet en tête&nbsp;?</h2>
+            <p class="svc-end__note">Réponse sous 24&nbsp;h ouvrées, sans engagement.</p>
+            <div class="svc-end__actions">
+                <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="glass-btn glass-btn--pink">Démarrer un projet</a>
+                <a href="/realisations" class="glass-btn">Voir le travail</a>
+            </div>
         </section>
 
     </main>
 
-    <!-- PIED DE PAGE — une seule carte : le sigle, les pages, l'adresse
-         et la signature. Les deux pages que le menu ne porte pas
-         (création de site, applications) n'ont pas d'autre chemin
-         depuis une page de texte : leurs liens ne peuvent pas partir. -->
-    <footer class="site-footer site-footer--cta">
-        <!-- APPEL FINAL — la seule surface encre de la page, côte à côte
-             avec la carte du pied de page sur ordinateur. -->
-        <section class="card surface-ink svc-closing" aria-labelledby="closingTitle">
-            <div>
-                <h2 class="svc-closing__title" id="closingTitle">Un projet en tête&nbsp;?</h2>
-                <p class="svc-closing__note">Réponse sous 24&nbsp;h ouvrées, sans engagement.</p>
-            </div>
-            <div class="svc-closing__actions">
-                <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="btn btn--solid"><span>Démarrer un projet</span> <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
-                <a href="/realisations" class="btn btn--ghost">Voir le travail</a>
-            </div>
-        </section>
-        <div class="card footer-card">
-            <div class="footer-card__top">
-                <p class="footer-card__mark">WAB.</p>
-                <div class="footer-card__cols">
-                    <nav class="footer-card__col" aria-label="Pages">
-                        <p class="footer-card__label">Pages</p>
-                        <a href="/realisations">Work</a>
-                        <a href="/services">Services</a>
-                        <a href="/studio">About</a>
-                    </nav>
-                    <nav class="footer-card__col" aria-label="Expertises">
-                        <p class="footer-card__label">Expertises</p>
-                        <a href="/creation-site-internet-lausanne">Création de site internet</a>
-                        <a href="/applications">Applications</a>
-                    </nav>
-                    <div class="footer-card__col">
-                        <p class="footer-card__label">Contact</p>
-                        <a href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
-                        <span>Lausanne, Suisse</span>
-                    </div>
+    <footer class="foot">
+        <div class="desk-wrap">
+            <div class="foot__cols">
+                <nav class="foot__col" aria-label="Pages">
+                    <p class="foot__label">Pages</p>
+                    <a href="/realisations">Work</a>
+                    <a href="/services">Services</a>
+                    <a href="/studio">About</a>
+                </nav>
+                <nav class="foot__col" aria-label="Expertises">
+                    <p class="foot__label">Expertises</p>
+                    <a href="/creation-site-internet-lausanne">Création de site internet</a>
+                    <a href="/applications">Applications</a>
+                </nav>
+                <div class="foot__col">
+                    <p class="foot__label">Contact</p>
+                    <a href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
+                    <span>Lausanne, Suisse — <time data-local-time>--:--</time></span>
                 </div>
+                <p class="foot__note">Codé à la main à Lausanne, oiseaux compris.</p>
             </div>
-            <p class="footer-card__sign"><span>&copy; 2026 WeAreBrothers Studio</span> <span>Codé à la main à Lausanne, oiseaux compris.</span></p>
+            <svg class="pixel-name" data-watch="once" viewBox="-1 -1 202 72" role="img" aria-label="WAB.">
+                <defs>
+                    <symbol id="wab-px" viewBox="0 0 10 10" width="10" height="10" overflow="visible"><rect class="px__edge" x="0.5" y="1.6" width="9" height="9" rx="0.6"/><rect class="px__body" x="0.5" y="0.5" width="9" height="9" rx="0.6"/></symbol>
+                </defs>
+                <use class="px" href="#wab-px" x="0" y="0"/>
+                <use class="px" href="#wab-px" x="40" y="0"/>
+                <use class="px" href="#wab-px" x="0" y="10"/>
+                <use class="px" href="#wab-px" x="40" y="10"/>
+                <use class="px" href="#wab-px" x="0" y="20"/>
+                <use class="px" href="#wab-px" x="40" y="20"/>
+                <use class="px" href="#wab-px" x="0" y="30"/>
+                <use class="px" href="#wab-px" x="20" y="30"/>
+                <use class="px" href="#wab-px" x="40" y="30"/>
+                <use class="px" href="#wab-px" x="0" y="40"/>
+                <use class="px" href="#wab-px" x="20" y="40"/>
+                <use class="px" href="#wab-px" x="40" y="40"/>
+                <use class="px" href="#wab-px" x="0" y="50"/>
+                <use class="px" href="#wab-px" x="20" y="50"/>
+                <use class="px" href="#wab-px" x="40" y="50"/>
+                <use class="px" href="#wab-px" x="10" y="60"/>
+                <use class="px" href="#wab-px" x="30" y="60"/>
+                <use class="px" href="#wab-px" x="70" y="0"/>
+                <use class="px" href="#wab-px" x="80" y="0"/>
+                <use class="px" href="#wab-px" x="90" y="0"/>
+                <use class="px" href="#wab-px" x="60" y="10"/>
+                <use class="px" href="#wab-px" x="100" y="10"/>
+                <use class="px" href="#wab-px" x="60" y="20"/>
+                <use class="px" href="#wab-px" x="100" y="20"/>
+                <use class="px" href="#wab-px" x="60" y="30"/>
+                <use class="px" href="#wab-px" x="70" y="30"/>
+                <use class="px" href="#wab-px" x="80" y="30"/>
+                <use class="px" href="#wab-px" x="90" y="30"/>
+                <use class="px" href="#wab-px" x="100" y="30"/>
+                <use class="px" href="#wab-px" x="60" y="40"/>
+                <use class="px" href="#wab-px" x="100" y="40"/>
+                <use class="px" href="#wab-px" x="60" y="50"/>
+                <use class="px" href="#wab-px" x="100" y="50"/>
+                <use class="px" href="#wab-px" x="60" y="60"/>
+                <use class="px" href="#wab-px" x="100" y="60"/>
+                <use class="px" href="#wab-px" x="120" y="0"/>
+                <use class="px" href="#wab-px" x="130" y="0"/>
+                <use class="px" href="#wab-px" x="140" y="0"/>
+                <use class="px" href="#wab-px" x="150" y="0"/>
+                <use class="px" href="#wab-px" x="120" y="10"/>
+                <use class="px" href="#wab-px" x="160" y="10"/>
+                <use class="px" href="#wab-px" x="120" y="20"/>
+                <use class="px" href="#wab-px" x="160" y="20"/>
+                <use class="px" href="#wab-px" x="120" y="30"/>
+                <use class="px" href="#wab-px" x="130" y="30"/>
+                <use class="px" href="#wab-px" x="140" y="30"/>
+                <use class="px" href="#wab-px" x="150" y="30"/>
+                <use class="px" href="#wab-px" x="120" y="40"/>
+                <use class="px" href="#wab-px" x="160" y="40"/>
+                <use class="px" href="#wab-px" x="120" y="50"/>
+                <use class="px" href="#wab-px" x="160" y="50"/>
+                <use class="px" href="#wab-px" x="120" y="60"/>
+                <use class="px" href="#wab-px" x="130" y="60"/>
+                <use class="px" href="#wab-px" x="140" y="60"/>
+                <use class="px" href="#wab-px" x="150" y="60"/>
+                <use class="px" href="#wab-px" x="180" y="50"/>
+                <use class="px" href="#wab-px" x="190" y="50"/>
+                <use class="px" href="#wab-px" x="180" y="60"/>
+                <use class="px" href="#wab-px" x="190" y="60"/>
+            </svg>
+            <p class="foot__legal">&copy; 2026 WeAreBrothers Studio</p>
         </div>
     </footer>
+
+    <!-- LE DOCK — sur ordinateur, les apps du studio (js/os/dock.js). -->
+    <nav class="dock" aria-label="Dock" data-dock>
+        <ul class="dock__apps">
+            <li><a class="dock__item" href="/realisations" data-app="work"><img class="app-icon" src="assets/icons/app-work.svg" alt="" width="48" height="48"><span class="dock__label">Work</span></a></li>
+            <li><a class="dock__item" href="/services" data-app="services" aria-current="page"><img class="app-icon" src="assets/icons/app-services.svg" alt="" width="48" height="48"><span class="dock__label">Services</span></a></li>
+            <li><a class="dock__item" href="/studio" data-app="about"><img class="app-icon" src="assets/icons/app-about.svg" alt="" width="48" height="48"><span class="dock__label">About</span></a></li>
+            <li><a class="dock__item" href="/#lettre" data-app="notes"><img class="app-icon" src="assets/icons/app-notes.svg" alt="" width="48" height="48"><span class="dock__label">Lettre</span></a></li>
+            <li><button class="dock__item" type="button" data-app="terminal" data-js-only><img class="app-icon" src="assets/icons/app-terminal.svg" alt="" width="48" height="48"><span class="dock__label">Terminal</span></button></li>
+            <li><a class="dock__item" href="mailto:contact@wearebrothers.ch" data-contact data-app="contact"><img class="app-icon" src="assets/icons/app-mail.svg" alt="" width="48" height="48"><span class="dock__label">Contact</span></a></li>
+        </ul>
+        <ul class="dock__shelf" data-dock-shelf aria-label="Fenêtres réduites" hidden></ul>
+    </nav>
 
 </body>
 

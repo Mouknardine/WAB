@@ -1,0 +1,122 @@
+/* ============================================
+   WAB OS — le pied de page (partagé)
+   Trois colonnes de liens et une mention, puis « WAB. » en énormes
+   pixels roses sur toute la largeur — avec les oiseaux, la seule chose
+   qui reste en pixel art : la signature du studio.
+   ============================================ */
+
+/* ── Pied de page ── */
+.foot {
+    padding: clamp(72px, 10vw, 140px) 0 28px;
+}
+
+.foot__cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 24px;
+    font-size: var(--t-small);
+}
+
+.foot__col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.foot__label {
+    margin-bottom: 6px;
+    font-weight: var(--w-strong);
+    color: var(--ink);
+}
+
+.foot__col a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    color: var(--ink-muted);
+}
+
+.foot__col span {
+    padding-block: 6px;
+    color: var(--ink-muted);
+}
+
+.foot__col a {
+    transition: color 0.2s var(--ease-out);
+}
+
+@media (hover: hover) {
+    .foot__col a:hover {
+        color: var(--accent);
+    }
+}
+
+.foot__note {
+    grid-column: 1 / -1;
+    color: var(--ink-muted);
+    line-height: 1.6;
+}
+
+/* Le nom en pixels : un SVG, chaque pixel un carré rose posé sur son
+   arête plus sombre, sur toute la largeur de la colonne. */
+.pixel-name {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: clamp(40px, 6vw, 72px) auto 0;
+    overflow: visible;
+}
+
+.px__edge {
+    fill: var(--accent);
+}
+
+.px__body {
+    fill: var(--pink);
+}
+
+.pixel-name .px {
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+/* L'arrivée : les pixels se posent de gauche à droite (--d posé par
+   js/desk/pixels.js). */
+/* Masqués seulement si le script qui les révèle est là (pixels.js
+   pose .is-armed) : sur une page sans lui, le nom reste visible. */
+.pixel-name.is-armed .px {
+    opacity: 0;
+    scale: 0.6;
+    transition: opacity 0.4s var(--ease-out), scale 0.5s var(--ease-out);
+    transition-delay: calc(var(--d, 0) * 1ms);
+}
+
+.pixel-name.is-armed.is-visible .px {
+    opacity: 1;
+    scale: 1;
+}
+
+.foot__legal {
+    margin-top: 28px;
+    font-size: var(--t-cap);
+    text-align: center;
+    color: var(--ink-faint);
+}
+
+@media (min-width: 800px) {
+    .foot__cols {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.3fr);
+    }
+
+    .foot__note {
+        grid-column: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pixel-name.is-armed .px {
+        opacity: 1;
+        scale: 1;
+    }
+}

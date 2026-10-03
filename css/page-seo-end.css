@@ -1,0 +1,162 @@
+/* ============================================
+   WAB OS — Création de site internet : la FAQ et le contact
+   La FAQ : l'en-tête à gauche (collant sur ordinateur), l'accordéon
+   <details> dans une carte blanche — chaque réponse reste dans la page,
+   lisible par les moteurs.
+   Le contact : une fenêtre « Nouveau message », au centre.
+   ============================================ */
+
+/* ── La FAQ ── */
+.sx-faq {
+    display: grid;
+    gap: 32px;
+}
+
+.sx-faq__head {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.sx-faq__head .sx-title {
+    max-width: 18ch;
+}
+
+.sx-faq__head .glass-btn {
+    margin-top: 8px;
+}
+
+.sx-faq__card {
+    padding: 6px clamp(18px, 3vw, 32px);
+    border-radius: var(--r-win);
+    background: var(--win-bg);
+    box-shadow: 0 0 0 1px var(--win-edge), var(--win-shadow);
+}
+
+.sx-qa + .sx-qa {
+    border-top: 1px solid var(--line);
+}
+
+.sx-qa__q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 64px;
+    padding-block: 16px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.sx-qa__q::-webkit-details-marker {
+    display: none;
+}
+
+.sx-qa__q:focus-visible {
+    outline-offset: 2px;
+    border-radius: var(--r-px);
+}
+
+.sx-qa__name {
+    font-size: var(--t-body);
+    font-weight: 500;
+    line-height: 1.4;
+    text-wrap: pretty;
+}
+
+/* Le signe : un plus qui pivote en croix, en masque (couleur du texte). */
+.sx-qa__mark {
+    flex: none;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--r-pill);
+    background: var(--hover-tint);
+    position: relative;
+}
+
+.sx-qa__mark::before {
+    content: '';
+    position: absolute;
+    inset: 7px;
+    background: currentColor;
+    -webkit-mask: url('../assets/icons/sym-plus.svg') center / contain no-repeat;
+    mask: url('../assets/icons/sym-plus.svg') center / contain no-repeat;
+    transition: rotate 0.25s var(--ease-out);
+}
+
+.sx-qa[open] .sx-qa__mark::before {
+    rotate: 45deg;
+}
+
+@media (hover: hover) {
+    .sx-qa__q:hover .sx-qa__name {
+        color: var(--accent);
+    }
+}
+
+.sx-qa__a {
+    padding-bottom: 20px;
+}
+
+.sx-qa__a p {
+    max-width: 64ch;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+}
+
+@media (min-width: 960px) {
+    .sx-faq {
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+        gap: 56px;
+        align-items: start;
+    }
+
+    .sx-faq__head {
+        position: sticky;
+        top: calc(var(--bar-h) + 32px);
+    }
+}
+
+/* ── Le contact ── */
+.sx-end__win {
+    max-width: 760px;
+    margin-inline: auto;
+}
+
+.sx-end__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: clamp(36px, 6vw, 64px) clamp(20px, 5vw, 56px);
+    text-align: center;
+}
+
+.sx-end__title {
+    font-size: var(--t-title);
+    font-weight: var(--w-strong);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+}
+
+.sx-end__lede {
+    max-width: 44ch;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+}
+
+.sx-end__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sx-qa__mark::before {
+        transition: none;
+    }
+}

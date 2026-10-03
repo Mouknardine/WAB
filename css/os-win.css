@@ -1,0 +1,179 @@
+/* ============================================
+   WAB OS — les fenêtres qui s'ouvrent
+   Chargée à la première ouverture (js/os/apps.js). Même peau que les
+   fenêtres posées (os-window.css), mais les pastilles sont de vrais
+   boutons : fermer (rose), réduire dans le dock (encre), agrandir
+   (blanc cerné). Leur cible fait 24 px, le pixel 12. Une fenêtre
+   inactive grise ses pastilles, comme tout système qui se respecte.
+   Au téléphone : une feuille qui monte du bas, plein écran.
+   ============================================ */
+
+.oswin {
+    --oswin-w: min(620px, 100vw - 48px);
+    --oswin-h: min(420px, 100dvh - var(--bar-h) - var(--dock-space) - 24px);
+    position: fixed;
+    inset: 0 auto auto 0;
+    width: var(--oswin-w);
+    height: var(--oswin-h);
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: var(--r-win);
+    /* Le cadre est du verre : la page passe floutée sous la barre. Le
+       contenu, lui, reste sur du blanc plein (lisibilité). */
+    background: var(--glass);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+    color: var(--ink);
+    box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px var(--glass-edge), var(--glass-shadow-lift);
+    /* L'oiseau se pose au-dessus de la barre : on ne rogne pas. */
+    overflow: visible;
+}
+
+.oswin[open] {
+    display: flex;
+    flex-direction: column;
+    animation: oswin-in 0.22s var(--ease-out);
+}
+
+@keyframes oswin-in {
+    from {
+        opacity: 0;
+        scale: 0.97;
+    }
+}
+
+.oswin:focus {
+    outline: none;
+}
+
+.oswin.is-active {
+    box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px var(--line-strong), var(--win-shadow-active);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .oswin {
+        background: var(--glass-strong);
+    }
+}
+
+.oswin--lg {
+    --oswin-w: min(1040px, 100vw - 48px);
+    --oswin-h: min(720px, 100dvh - var(--bar-h) - var(--dock-space) - 24px);
+}
+
+.oswin--md {
+    --oswin-w: min(800px, 100vw - 48px);
+    --oswin-h: min(560px, 100dvh - var(--bar-h) - var(--dock-space) - 24px);
+}
+
+.oswin--xs {
+    --oswin-w: min(380px, 100vw - 48px);
+    --oswin-h: auto;
+}
+
+/* ── La barre ── */
+.oswin__bar {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 36px;
+    padding: 0 8px;
+    border-radius: var(--r-win) var(--r-win) 0 0;
+    background: var(--glass-specular);
+    box-shadow: inset 0 -1px 0 var(--glass-edge);
+    cursor: default;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.oswin__ctls {
+    display: flex;
+}
+
+.oswin__ctl {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--r-px);
+    background: none;
+    cursor: pointer;
+}
+
+.oswin__ctl[hidden] {
+    display: none;
+}
+
+/* Le pixel, et le signe qui n'apparaît qu'au survol de la barre. */
+.oswin__ctl::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: var(--r-px);
+    background: var(--pink);
+    box-shadow: inset 0 0 0 1px var(--ink);
+    transition: background-color 0.2s var(--ease-out);
+}
+
+.oswin__ctl--min::before {
+    background: var(--ink);
+}
+
+.oswin__ctl--max::before {
+    background: var(--paper);
+}
+
+.oswin:not(.is-active) .oswin__ctl::before {
+    background: var(--line);
+    box-shadow: inset 0 0 0 1px var(--line-strong);
+}
+
+.oswin__title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    overflow: hidden;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    color: var(--ink-muted);
+}
+
+.oswin__title .sym {
+    width: 14px;
+    height: 14px;
+}
+
+.oswin__title span:not(.sym) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.oswin.is-active .oswin__title {
+    color: var(--ink);
+}
+
+.oswin__body {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    border-radius: 0 0 var(--r-win) var(--r-win);
+    background: var(--win-bg);
+}
+
+.oswin__perch {
+    right: 18px;
+}

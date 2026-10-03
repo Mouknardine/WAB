@@ -35,7 +35,7 @@ Priorité commerciale actuelle : les sites web restent le cœur de l'activité ;
 - Déroulé d'un projet site : un café ou un appel, une proposition, puis design et développement avec points réguliers, puis maintenance et évolutions après la mise en ligne.
 - Déroulé d'un projet logiciel : phase d'observation du métier, puis livraison module par module, chaque module utilisable en production dès qu'il est terminé, reprise des données existantes par import.
 - Délai type d'un site vitrine : 3 à 6 semaines. Davantage pour du sur-mesure.
-- Tarification au périmètre, définie après le premier échange, paiement en plusieurs mensualités possible. Aucun prix public n'est affiché.
+- Tarification au périmètre, définie après le premier échange, paiement en plusieurs mensualités possible. Depuis le 3.10.2026 (décision d'Eliott), l'accueil affiche trois paliers : un simple site vitrine de 1'000 à 2'500 CHF ; avec outil de gestion, e-commerce et options, de 2'500 à 7'000 CHF ; une expérience poussée avec refonte de marque, dès 7'000 CHF, sur devis.
 
 ## Capabilities and Constraints
 

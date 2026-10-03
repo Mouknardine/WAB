@@ -1,0 +1,79 @@
+/* ============================================
+   WAB OS — About : l'appel final, un « Nouveau message »
+   La fenêtre de Mail, déjà adressée au studio : le destinataire,
+   l'objet (le titre de la section), le message, puis les deux
+   boutons. Le bouton rose ouvre la vraie fenêtre de contact.
+   ============================================ */
+
+.ab-end {
+    padding-top: var(--section);
+}
+
+.ab-mail {
+    width: min(100%, 680px);
+    margin-inline: auto;
+}
+
+.ab-mail__body {
+    background: var(--win-bg);
+}
+
+.ab-mail__field {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 12px clamp(18px, 3vw, 26px);
+    box-shadow: inset 0 -1px 0 var(--line);
+    font-size: var(--t-small);
+}
+
+.ab-mail__key {
+    flex: none;
+    width: 6ch;
+    color: var(--ink-muted);
+}
+
+.ab-mail__field a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--line-strong);
+    text-underline-offset: 3px;
+}
+
+.ab-mail__title {
+    font-size: clamp(1.35rem, 3vw, 1.9rem);
+    font-weight: var(--w-strong);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+}
+
+.ab-mail__message {
+    padding: 22px clamp(18px, 3vw, 26px) 0;
+    line-height: 1.7;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+}
+
+.ab-mail__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 24px clamp(18px, 3vw, 26px) clamp(22px, 3vw, 28px);
+}
+
+/* Au téléphone : le destinataire et l'étiquette « Objet » se
+   retirent (le message reste la seule ligne grise) ; les deux boutons prennent toute la largeur. */
+@media (max-width: 599px) {
+    .ab-mail__field--to {
+        display: none;
+    }
+
+    .ab-mail__field--subject .ab-mail__key {
+        display: none;
+    }
+
+    .ab-mail__actions .glass-btn {
+        flex: 1 1 100%;
+    }
+}

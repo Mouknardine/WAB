@@ -1,0 +1,191 @@
+/* ============================================
+   WAB OS — Création de site internet : le premier écran
+   Le bureau : au centre net, le titre qui porte la requête, la phrase,
+   les deux actions et trois repères en pastilles de verre. Autour,
+   quatre vrais sites posés dans leurs fenêtres.
+   Téléphone : le texte, puis deux fenêtres qui se chevauchent sous lui.
+   Ordinateur (1100 px et plus) : les quatre fenêtres en bordure, le
+   centre reste dégagé.
+   ============================================ */
+
+.sx-hero {
+    position: relative;
+    overflow-x: clip;
+    padding: var(--sx-hero-top) var(--gutter) 0;
+}
+
+.sx-hero__center {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: var(--sx-hero-col);
+    margin-inline: auto;
+    text-align: center;
+}
+
+.sx-hero__title {
+    max-width: 22ch;
+    font-size: var(--sx-h1);
+    font-weight: var(--w-strong);
+    line-height: 1.08;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+}
+
+.sx-hero__sub {
+    max-width: 52ch;
+    margin-top: clamp(18px, 2.4vw, 26px);
+    font-size: var(--t-lede);
+    line-height: 1.5;
+    text-wrap: pretty;
+}
+
+.sx-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: clamp(26px, 3vw, 34px);
+}
+
+/* Téléphone : deux boutons de même largeur, l'un sous l'autre. */
+@media (max-width: 479px) {
+    .sx-hero__actions {
+        flex-direction: column;
+        align-self: stretch;
+        max-width: 320px;
+        width: 100%;
+        margin-inline: auto;
+    }
+}
+
+/* Les trois repères : de petites pastilles de verre clair. */
+.sx-facts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+}
+
+.sx-facts li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 32px;
+    padding: 0 14px;
+    border-radius: var(--r-pill);
+    background: var(--bubble-clear);
+    box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px var(--glass-edge), var(--shadow-soft);
+    font-size: var(--t-small);
+    color: var(--glass-ink);
+}
+
+/* Petit téléphone : chaque repère tient sur une ligne. */
+@media (max-width: 379px) {
+    .sx-facts li {
+        padding: 0 12px;
+        font-size: var(--t-cap);
+        white-space: nowrap;
+    }
+}
+
+.sx-facts svg {
+    flex: none;
+    color: var(--accent);
+}
+
+/* ── Le bureau ── téléphone : deux fenêtres qui se chevauchent. */
+.sx-desk {
+    position: relative;
+    max-width: 520px;
+    margin: clamp(44px, 8vw, 64px) auto 0;
+    aspect-ratio: 10 / 7;
+}
+
+.sx-desk__item {
+    position: absolute;
+}
+
+.sx-desk__item .win__body {
+    aspect-ratio: 16 / 10;
+}
+
+.sx-desk__item--central .win__body {
+    aspect-ratio: 4 / 5;
+}
+
+.sx-desk__item--zinema {
+    left: 0;
+    top: 0;
+    width: 74%;
+}
+
+.sx-desk__item--central {
+    right: 0;
+    top: 22%;
+    width: 36%;
+    z-index: 1;
+}
+
+.sx-desk__item--amarte,
+.sx-desk__item--commissione {
+    display: none;
+}
+
+.sx-desk .file-name {
+    font-size: var(--t-cap);
+}
+
+/* ── Ordinateur : le centre net, le désordre en bordure ── */
+@media (min-width: 1100px) {
+    .sx-hero {
+        min-height: min(100svh, 920px);
+        padding-bottom: clamp(56px, 7vw, 96px);
+    }
+
+    .sx-desk {
+        position: absolute;
+        inset: 0;
+        max-width: none;
+        margin: 0;
+        aspect-ratio: auto;
+    }
+
+    .sx-desk__item {
+        display: block;
+    }
+
+    .sx-desk__item--zinema {
+        left: 2.5%;
+        top: 17%;
+        width: var(--sx-desk-land);
+        rotate: -2deg;
+    }
+
+    .sx-desk__item--amarte {
+        display: block;
+        left: 3%;
+        top: 66%;
+        width: var(--sx-desk-land);
+        rotate: 1.5deg;
+    }
+
+    .sx-desk__item--central {
+        left: auto;
+        right: 3.5%;
+        top: 14%;
+        width: var(--sx-desk-tall);
+        rotate: 2deg;
+    }
+
+    .sx-desk__item--commissione {
+        display: block;
+        right: 2%;
+        top: 63%;
+        width: var(--sx-desk-land);
+        rotate: -1.5deg;
+    }
+}

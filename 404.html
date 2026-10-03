@@ -24,76 +24,80 @@
 
     <!-- Police — Sligoil seule, servie depuis le site -->
     <link rel="preload" href="/assets/fonts/Sligoil-Micro.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/Sligoil-MicroBold.woff2" as="font" type="font/woff2" crossorigin>
 
-    <!-- Styles -->
+    <!-- Styles — servie à n'importe quelle adresse inconnue : chemins
+         absolus partout. Composants partagés de WAB OS, puis la page. -->
     <link rel="stylesheet" href="/css/base.css?v=33">
-    <link rel="stylesheet" href="/css/nav.css?v=19">
     <link rel="stylesheet" href="/css/nav-panel.css?v=1">
     <link rel="stylesheet" href="/css/contact-modal.css?v=7">
     <link rel="stylesheet" href="/css/contact-form.css?v=3">
-    <link rel="stylesheet" href="/css/lost.css?v=1">
-    <link rel="stylesheet" href="/css/footer.css?v=11">
-    <link rel="stylesheet" href="/css/plate.css?v=3">
+    <link rel="stylesheet" href="/css/os-tokens.css?v=1">
+    <link rel="stylesheet" href="/css/os-base.css?v=1">
+    <link rel="stylesheet" href="/css/os-sky.css?v=1">
+    <link rel="stylesheet" href="/css/sym.css?v=2">
+    <link rel="stylesheet" href="/css/glass-btn.css?v=2">
+    <link rel="stylesheet" href="/css/os-bar.css?v=1">
+    <link rel="stylesheet" href="/css/os-window.css?v=1">
+    <link rel="stylesheet" href="/css/os-footer.css?v=1">
+    <link rel="stylesheet" href="/css/os-overlay.css?v=2">
+    <link rel="stylesheet" href="/css/desk-objects.css?v=4">
+    <link rel="stylesheet" href="/css/page-404-dialog.css?v=1">
 
     <!-- Scripts -->
-    <script src="/nav-clock.js?v=2" defer></script>
+    <script src="/nav-clock.js?v=3" defer></script>
     <script src="/js/nav.js?v=6" defer></script>
-    <script src="/js/letter-swap.js?v=1" defer></script>
-    <script type="module" src="/js/mesh/index.js?v=2"></script>
-    <script type="module" src="/js/birds/index.js?v=6"></script>
-    <script type="module" src="/js/birds/perch.js?v=4"></script>
+    <script type="module" src="/js/birds/index.js?v=7"></script>
+    <script type="module" src="/js/birds/perch.js?v=7"></script>
     <script type="module" src="/js/contact/index.js?v=9"></script>
+    <script type="module" src="/js/os/index.js?v=1"></script>
+    <script type="module" src="/js/page-404/index.js?v=1"></script>
 </head>
 
-<body>
+<body class="os page-404">
 
     <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-    <!-- Les oiseaux traversent le fond de toute la page -->
+    <!-- Les oiseaux volent sur la trame du bureau, sous les fenêtres. -->
     <canvas id="birdCanvas" aria-hidden="true"></canvas>
 
-    <!-- BARRE FLOTTANTE — la pilule se prolonge pour contenir le menu -->
-    <header class="topbar" id="topbar">
-        <div class="topbar__inner" id="topbarBar">
-            <div class="topbar__bar">
-                <a href="/" class="topbar__brand">WAB.</a>
+    <header class="menubar" id="topbar">
+        <div class="topbar__inner menubar__inner" id="topbarBar">
+            <div class="menubar__row">
+                <a href="/" class="menubar__brand">WAB.</a>
 
-                <nav class="topbar__nav" aria-label="Navigation principale">
-                    <a href="/realisations" class="topbar__link">Work</a>
-                    <a href="/services" class="topbar__link">Services</a>
-                    <a href="/studio" class="topbar__link">About</a>
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="topbar__link">Contact</a>
+                <nav class="menubar__nav" aria-label="Navigation principale">
+                    <a href="/realisations" class="menubar__link">Work</a>
+                    <a href="/services" class="menubar__link">Services</a>
+                    <a href="/studio" class="menubar__link">About</a>
                 </nav>
 
-                <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
-                    <span class="topbar__dots" aria-hidden="true">
-                        <span></span><span></span><span></span><span></span>
-                    </span>
-                    <span class="sr-only">Menu</span>
-                </button>
-            </div>
+                <span class="menubar__os" aria-hidden="true" translate="no"><canvas class="menubar__sigil" data-perch="flap" data-scale="1" data-color="4"></canvas></span>
 
+                <div class="menubar__state">
+                    <button type="button" class="menubar__find" data-palette-open data-js-only aria-keyshortcuts="Meta+K Control+K">
+                        <span class="sym sym--search" aria-hidden="true"></span>Rechercher<kbd data-shortcut>⌘K</kbd>
+                    </button>
+                    <span class="menubar__sky" aria-hidden="true"><span class="sym sym--sun" aria-hidden="true"></span><span class="sym sym--moon" aria-hidden="true"></span></span>
+                    <span class="menubar__status" data-local-status hidden></span>
+                    <time class="menubar__time" data-local-time>--:--</time>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="menubar__cta glass-btn glass-btn--pink glass-btn--sm">Contact</a>
+                    <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
+                        <span class="topbar__dots" aria-hidden="true">
+                            <span></span><span></span><span></span><span></span>
+                        </span>
+                        <span class="sr-only">Menu</span>
+                    </button>
+                </div>
+            </div>
             <div class="topbar__panel" id="topbarPanel">
                 <div class="topbar__panel-inner">
                     <nav class="panel__nav" aria-label="Navigation">
-                        <a href="/realisations" class="panel__link">
-                            Work
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
-                        <a href="/services" class="panel__link">
-                            Services
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
-                        <a href="/studio" class="panel__link">
-                            About
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
-                        <a href="mailto:contact@wearebrothers.ch" data-contact class="panel__link">
-                            Contact
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                        </a>
+                        <a href="/realisations" class="panel__link">Work<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
+                        <a href="/services" class="panel__link">Services<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
+                        <a href="/studio" class="panel__link">About<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
+                        <a href="mailto:contact@wearebrothers.ch" data-contact class="panel__link">Contact<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
                     </nav>
-
                     <div class="panel__meta">
                         <p class="panel__row">
                             <span class="panel__key">Email</span>
@@ -111,54 +115,124 @@
 
     <div class="topbar-scrim" id="topbarScrim"></div>
 
+    <!-- LE BUREAU — une boîte de dialogue d'erreur au milieu de la trame,
+         et derrière elle deux copies en cascade : l'erreur qui se
+         répète, comme sur un vieil ordinateur. L'oiseau perdu se pose
+         dessus ; on le touche, il s'envole et revient. -->
+    <main id="contenu" class="lost-desk" tabindex="-1">
+        <div class="lost-stack">
+            <span class="lost-ghost lost-ghost--far" aria-hidden="true"><span class="win__bar"><span class="win__lights"></span></span></span>
+            <span class="lost-ghost lost-ghost--near" aria-hidden="true"><span class="win__bar"><span class="win__lights"></span></span></span>
 
-    <main id="contenu" class="lost">
-        <!-- L'OISEAU PERDU — on le touche, il s'envole et revient se
-             poser. Le seul jeu de la page ; le chemin du retour reste
-             le bouton principal. -->
-        <button type="button" class="lost__bird" aria-label="Faire s'envoler l'oiseau">
-            <canvas class="perch" data-perch="fly" data-scale="4" data-color="0" aria-hidden="true"></canvas>
-        </button>
-        <p class="lost__code">Erreur 404</p>
-        <h1 class="lost__title">Cet oiseau s'est trompé de&nbsp;branche.</h1>
-        <p class="lost__lede">
-            La page que vous cherchez n'existe pas, ou plus. Le reste du site, lui, est bien là.
-        </p>
-        <div class="lost__actions">
-            <a href="/" class="btn btn--solid btn--lg">Retour à l'accueil</a>
-            <a href="/realisations" class="btn btn--ghost btn--lg">Voir nos réalisations</a>
-        </div>
-    </main>
+            <button type="button" class="lost-bird" aria-label="Faire s'envoler l'oiseau">
+                <canvas class="perch" data-perch="fly" data-scale="4" data-color="0" aria-hidden="true"></canvas>
+            </button>
 
-
-    <!-- PIED DE PAGE — une seule carte : le sigle, les pages, l'adresse
-         et la signature. Les deux pages que le menu ne porte pas
-         (création de site, applications) n'ont pas d'autre chemin
-         depuis une page de texte : leurs liens ne peuvent pas partir. -->
-    <footer class="site-footer">
-        <div class="card footer-card">
-            <div class="footer-card__top">
-                <p class="footer-card__mark">WAB.</p>
-                <div class="footer-card__cols">
-                    <nav class="footer-card__col" aria-label="Pages">
-                        <p class="footer-card__label">Pages</p>
-                        <a href="/realisations">Work</a>
-                        <a href="/services">Services</a>
-                        <a href="/studio">About</a>
-                    </nav>
-                    <nav class="footer-card__col" aria-label="Expertises">
-                        <p class="footer-card__label">Expertises</p>
-                        <a href="/creation-site-internet-lausanne">Création de site internet</a>
-                        <a href="/applications">Applications</a>
-                    </nav>
-                    <div class="footer-card__col">
-                        <p class="footer-card__label">Contact</p>
-                        <a href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
-                        <span>Lausanne, Suisse</span>
+            <section class="win lost-dialog" aria-labelledby="lostTitle">
+                <div class="win__bar">
+                    <span class="win__lights"></span>
+                    <span class="win__title"><span class="sym sym--file" aria-hidden="true"></span><span data-lost-path>page-introuvable</span></span>
+                </div>
+                <div class="lost-dialog__body">
+                    <p class="badge">Erreur 404</p>
+                    <h1 class="lost-dialog__title" id="lostTitle">Cet oiseau s'est trompé de&nbsp;branche.</h1>
+                    <p class="lost-dialog__lede">La page que vous cherchez n'existe pas, ou plus. Le reste du site, lui, est bien là.</p>
+                    <div class="lost-dialog__actions">
+                        <a href="/" class="glass-btn glass-btn--pink">Retour à l'accueil</a>
+                        <a href="/realisations" class="glass-btn">Voir le travail</a>
                     </div>
                 </div>
+            </section>
+        </div>
+        <span class="lost-kao kao" aria-hidden="true">(o_O)</span>
+    </main>
+
+    <footer class="foot">
+        <div class="desk-wrap">
+            <div class="foot__cols">
+                <nav class="foot__col" aria-label="Pages">
+                    <p class="foot__label">Pages</p>
+                    <a href="/realisations">Work</a>
+                    <a href="/services">Services</a>
+                    <a href="/studio">About</a>
+                </nav>
+                <nav class="foot__col" aria-label="Expertises">
+                    <p class="foot__label">Expertises</p>
+                    <a href="/creation-site-internet-lausanne">Création de site internet</a>
+                    <a href="/applications">Applications</a>
+                </nav>
+                <div class="foot__col">
+                    <p class="foot__label">Contact</p>
+                    <a href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
+                    <span>Lausanne, Suisse — <time data-local-time>--:--</time></span>
+                </div>
+                <p class="foot__note">Codé à la main à Lausanne, oiseaux compris.</p>
             </div>
-            <p class="footer-card__sign"><span>&copy; 2026 WeAreBrothers Studio</span> <span>Codé à la main à Lausanne, oiseaux compris.</span></p>
+            <svg class="pixel-name" data-watch="once" viewBox="-1 -1 202 72" role="img" aria-label="WAB.">
+                <defs>
+                    <symbol id="wab-px" viewBox="0 0 10 10" width="10" height="10" overflow="visible"><rect class="px__edge" x="0.5" y="1.6" width="9" height="9" rx="0.6"/><rect class="px__body" x="0.5" y="0.5" width="9" height="9" rx="0.6"/></symbol>
+                </defs>
+                <use class="px" href="#wab-px" x="0" y="0"/>
+                <use class="px" href="#wab-px" x="40" y="0"/>
+                <use class="px" href="#wab-px" x="0" y="10"/>
+                <use class="px" href="#wab-px" x="40" y="10"/>
+                <use class="px" href="#wab-px" x="0" y="20"/>
+                <use class="px" href="#wab-px" x="40" y="20"/>
+                <use class="px" href="#wab-px" x="0" y="30"/>
+                <use class="px" href="#wab-px" x="20" y="30"/>
+                <use class="px" href="#wab-px" x="40" y="30"/>
+                <use class="px" href="#wab-px" x="0" y="40"/>
+                <use class="px" href="#wab-px" x="20" y="40"/>
+                <use class="px" href="#wab-px" x="40" y="40"/>
+                <use class="px" href="#wab-px" x="0" y="50"/>
+                <use class="px" href="#wab-px" x="20" y="50"/>
+                <use class="px" href="#wab-px" x="40" y="50"/>
+                <use class="px" href="#wab-px" x="10" y="60"/>
+                <use class="px" href="#wab-px" x="30" y="60"/>
+                <use class="px" href="#wab-px" x="70" y="0"/>
+                <use class="px" href="#wab-px" x="80" y="0"/>
+                <use class="px" href="#wab-px" x="90" y="0"/>
+                <use class="px" href="#wab-px" x="60" y="10"/>
+                <use class="px" href="#wab-px" x="100" y="10"/>
+                <use class="px" href="#wab-px" x="60" y="20"/>
+                <use class="px" href="#wab-px" x="100" y="20"/>
+                <use class="px" href="#wab-px" x="60" y="30"/>
+                <use class="px" href="#wab-px" x="70" y="30"/>
+                <use class="px" href="#wab-px" x="80" y="30"/>
+                <use class="px" href="#wab-px" x="90" y="30"/>
+                <use class="px" href="#wab-px" x="100" y="30"/>
+                <use class="px" href="#wab-px" x="60" y="40"/>
+                <use class="px" href="#wab-px" x="100" y="40"/>
+                <use class="px" href="#wab-px" x="60" y="50"/>
+                <use class="px" href="#wab-px" x="100" y="50"/>
+                <use class="px" href="#wab-px" x="60" y="60"/>
+                <use class="px" href="#wab-px" x="100" y="60"/>
+                <use class="px" href="#wab-px" x="120" y="0"/>
+                <use class="px" href="#wab-px" x="130" y="0"/>
+                <use class="px" href="#wab-px" x="140" y="0"/>
+                <use class="px" href="#wab-px" x="150" y="0"/>
+                <use class="px" href="#wab-px" x="120" y="10"/>
+                <use class="px" href="#wab-px" x="160" y="10"/>
+                <use class="px" href="#wab-px" x="120" y="20"/>
+                <use class="px" href="#wab-px" x="160" y="20"/>
+                <use class="px" href="#wab-px" x="120" y="30"/>
+                <use class="px" href="#wab-px" x="130" y="30"/>
+                <use class="px" href="#wab-px" x="140" y="30"/>
+                <use class="px" href="#wab-px" x="150" y="30"/>
+                <use class="px" href="#wab-px" x="120" y="40"/>
+                <use class="px" href="#wab-px" x="160" y="40"/>
+                <use class="px" href="#wab-px" x="120" y="50"/>
+                <use class="px" href="#wab-px" x="160" y="50"/>
+                <use class="px" href="#wab-px" x="120" y="60"/>
+                <use class="px" href="#wab-px" x="130" y="60"/>
+                <use class="px" href="#wab-px" x="140" y="60"/>
+                <use class="px" href="#wab-px" x="150" y="60"/>
+                <use class="px" href="#wab-px" x="180" y="50"/>
+                <use class="px" href="#wab-px" x="190" y="50"/>
+                <use class="px" href="#wab-px" x="180" y="60"/>
+                <use class="px" href="#wab-px" x="190" y="60"/>
+            </svg>
+            <p class="foot__legal">&copy; 2026 WeAreBrothers Studio</p>
         </div>
     </footer>
 

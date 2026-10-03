@@ -1,0 +1,159 @@
+/* ============================================
+   WAB OS — About : le conseil
+   À gauche, la note : le texte du conseil dans une fenêtre Notes, un
+   passage surligné, le curseur rose, puis le bouton. À droite, le
+   parcours dans une fenêtre sombre — le seul aplat foncé de la page,
+   qui donne le rythme. La fenêtre sombre redéfinit sa gamme pour
+   elle et ses enfants (--ink, --ink-muted, --line, --accent) : aucun
+   élément intérieur ne connaît la couleur de son fond.
+   ============================================ */
+
+.ab-advice__grid {
+    display: grid;
+    gap: 20px;
+    max-width: 1040px;
+    margin: clamp(36px, 5vw, 56px) auto 0;
+}
+
+/* ── La note ── */
+.ab-note__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding: clamp(22px, 4vw, 32px) clamp(20px, 4vw, 30px);
+    background: var(--win-bg);
+}
+
+.ab-note__text {
+    font-size: clamp(1rem, 1.3vw, 1.08rem);
+    line-height: 1.75;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+}
+
+.ab-note mark {
+    padding: 1px 3px;
+    border-radius: 4px;
+    background: var(--mark);
+    color: var(--ink);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+.ab-note__caret {
+    display: inline-block;
+    width: 2px;
+    height: 1.1em;
+    margin-left: 3px;
+    vertical-align: -0.2em;
+    background: var(--pink);
+    animation: ab-caret 1.1s steps(1) infinite;
+}
+
+@keyframes ab-caret {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* ── La fenêtre sombre ── */
+.ab-dark {
+    --ink: var(--term-ink);
+    --ink-muted: var(--term-muted);
+    --line: rgba(236, 235, 239, 0.12);
+    --accent: var(--term-accent);
+    --win-bg: var(--term-bg);
+    --win-edge: rgba(255, 255, 255, 0.08);
+    --win-bar: linear-gradient(180deg, #24232a, #1a191e);
+    --glass-edge: rgba(0, 0, 0, 0.5);
+    --glass-rim: rgba(255, 255, 255, 0.08);
+    color: var(--ink);
+}
+
+.ab-dark .win__bar::before {
+    opacity: 0.06;
+}
+
+.ab-dark .win__title {
+    color: var(--ink-muted);
+}
+
+.ab-facts {
+    list-style: none;
+    background: var(--win-bg);
+}
+
+.ab-fact {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 4px 14px;
+    padding: 20px clamp(18px, 3vw, 26px);
+}
+
+.ab-fact + .ab-fact {
+    box-shadow: inset 0 1px 0 var(--line);
+}
+
+.ab-fact__icon {
+    grid-row: span 3;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 0 0 1px var(--line);
+    color: var(--ink);
+}
+
+/* Le repère de chaque ligne, dans le rose clair du terminal (9,6:1
+   sur le fond) : au téléphone, la note reste la seule ligne grise. */
+.ab-fact__label {
+    font-size: var(--t-cap);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.ab-fact__value {
+    font-size: 1.05rem;
+    font-weight: var(--w-strong);
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+}
+
+.ab-fact__note {
+    font-size: var(--t-small);
+    line-height: 1.55;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+}
+
+/* Le prix : le chiffre le plus fort de la page, et le seul en grand.
+   « 10'000 CHF », 10 signes, soit 6 em : 2,6 rem tient dès 300 px. */
+.ab-fact--prize .ab-fact__value {
+    font-size: clamp(2rem, 8vw, 2.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+}
+
+@media (min-width: 960px) {
+    .ab-advice__grid {
+        grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+        align-items: start;
+        gap: clamp(24px, 3vw, 40px);
+    }
+
+    /* La note descend d'un cran, la fenêtre sombre reste haute : le
+       même quinconce que les fiches de l'équipe. */
+    .ab-note {
+        margin-top: 56px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ab-note__caret {
+        animation: none;
+    }
+}

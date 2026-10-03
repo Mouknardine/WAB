@@ -1,30 +1,46 @@
 /* ============================================
-   WAB. — Accueil « bureau » : la lettre et les étapes
-   La lettre d'Eliott et Matt, ouverte dans « lettre.txt », avec
-   leurs deux photos posées à côté comme deux fichiers ouverts. Puis
-   les quatre étapes d'un projet, chacune dans sa petite fenêtre.
+   WAB OS — la lettre des fondateurs
+   Un badge, puis la lettre d'Eliott et Matt dans Notes, centrée. Une
+   nuée d'oiseaux s'y pose à son arrivée (js/desk/arrival.js, canevas
+   .arrival ci-dessous). Un passage surligné, le
+   curseur rose au bout de la dernière ligne, deux signataires (noms
+   tapés, aucune fausse signature) et le sigle WAB. à droite.
+   Puis le filet en pointillés qui ferme la section, comme une page.
    ============================================ */
+
+.letter-wrap {
+    position: relative;
+    /* Les oiseaux qui arrivent s'arrêtent au bord de l'écran. */
+    overflow-x: clip;
+}
+
+.arrival {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
 
 .letter-zone {
     position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 22px;
+    padding-inline: var(--gutter);
 }
 
 .letter {
     position: relative;
     z-index: 2;
-    width: min(100%, 580px);
-}
-
-.letter .win__title {
-    gap: 6px;
+    width: min(100%, 520px);
 }
 
 .letter__body {
-    padding: clamp(22px, 4vw, 34px) clamp(20px, 4vw, 36px) clamp(24px, 4vw, 32px);
+    padding: clamp(22px, 4vw, 30px) clamp(20px, 4vw, 28px) clamp(24px, 4vw, 30px);
     background: var(--win-bg);
     font-size: clamp(0.95rem, 1.3vw, 1.05rem);
     line-height: 1.7;
@@ -39,21 +55,21 @@
    retour à la ligne au lieu de dessiner un bloc. */
 .letter mark {
     padding: 1px 3px;
-    border-radius: 3px;
+    border-radius: 4px;
     background: var(--mark);
     color: var(--ink);
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
 }
 
-/* Le curseur de saisie, au bout de la dernière ligne. */
+/* Le curseur de saisie, rose : le rose système. */
 .letter__caret {
     display: inline-block;
-    width: 1px;
+    width: 2px;
     height: 1.1em;
     margin-left: 2px;
     vertical-align: -0.2em;
-    background: var(--ink);
+    background: var(--pink);
     animation: caret 1.1s steps(1) infinite;
 }
 
@@ -66,10 +82,9 @@
 .letter__sign {
     display: flex;
     flex-wrap: wrap;
-    gap: 14px 28px;
+    align-items: center;
+    gap: 14px 24px;
     margin-top: 26px;
-    padding-top: 20px;
-    border-top: 1px solid var(--line);
 }
 
 .signer {
@@ -81,15 +96,16 @@
 
 /* Les signatures sont des paragraphes : l'écart entre paragraphes
    de la lettre ne doit pas décaler la seconde. */
-.letter__sign .signer {
+.letter__sign .signer,
+.letter__sign .letter__mark {
     margin-top: 0;
 }
 
 .signer img {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    box-shadow: 0 0 0 1px var(--line);
+    box-shadow: 0 0 0 1px var(--line), 0 2px 6px rgba(11, 11, 12, 0.12);
 }
 
 .signer__name {
@@ -103,89 +119,26 @@
     font-size: var(--t-small);
 }
 
-/* ── Les photos posées à côté ── visibles dès qu'il y a la place. */
-.photo {
-    display: none;
-    position: absolute;
-    z-index: 1;
-    width: 180px;
-    rotate: var(--tilt, 0deg);
-}
-
-.photo .win__body {
-    aspect-ratio: 4 / 5;
-}
-
-@media (min-width: 1100px) {
-    .photo {
-        display: block;
-    }
-
-    .photo--eliott {
-        --tilt: -4deg;
-        top: 70px;
-        right: calc(50% + 330px);
-    }
-
-    .photo--matt {
-        --tilt: 3deg;
-        top: 230px;
-        left: calc(50% + 330px);
-    }
-}
-
-/* ── Les étapes ── */
-.steps {
-    display: grid;
-    gap: 16px;
-    margin-top: clamp(40px, 6vw, 64px);
-    list-style: none;
-}
-
-.step__body {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 18px 18px 20px;
-    background: var(--win-bg);
-}
-
-.step__icon {
+/* Le sigle du studio, tapé, à la place d'une signature manuscrite. */
+.letter__mark {
+    margin-left: auto;
+    font-size: 1.6rem;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.06em;
     color: var(--accent);
 }
 
-.step__name {
-    font-size: 1.05rem;
-    font-weight: var(--w-strong);
-    line-height: 1.3;
-    letter-spacing: -0.02em;
+/* ── Le filet en pointillés ── */
+.rule-dots {
+    width: min(100% - 2 * var(--gutter), var(--measure));
+    margin: var(--section) auto 0;
+    border: 0;
+    border-top: 2px dotted var(--line-strong);
 }
 
-.step__desc {
-    font-size: var(--t-small);
-    line-height: 1.6;
-    color: var(--ink-muted);
-}
-
-@media (min-width: 640px) {
-    .steps {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (min-width: 1000px) {
-    .steps {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 20px;
-    }
-
-    /* Un léger décalage vertical, comme quatre fenêtres posées à la
-       main — la grille, elle, reste régulière. */
-    .step:nth-child(even) {
-        translate: 0 28px;
-    }
-
-    .step__body {
-        min-height: 196px;
+/* Au téléphone, une seule ligne grise : les noms suffisent. */
+@media (max-width: 599px) {
+    .signer__role {
+        display: none;
     }
 }

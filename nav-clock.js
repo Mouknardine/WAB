@@ -44,6 +44,21 @@ function statusFor({ hour, weekday }) {
     return { text: 'Lausanne dort', live: false };
 }
 
+/**
+ * La lumière du jour à Lausanne, pour le bureau de l'accueil
+ * (js/desk/sky.js) : matin, jour, soir, nuit.
+ */
+function phaseFor({ hour }) {
+    if (hour >= 6 && hour < 10) return 'matin';
+    if (hour >= 10 && hour < 17) return 'jour';
+    if (hour >= 17 && hour < 21) return 'soir';
+    return 'nuit';
+}
+
+/* Une seule implémentation pour tout le site : l'accueil (sky.js, le
+   terminal) la lit ici plutôt que de la recopier. */
+window.WABClock = Object.freeze({ ZONE, readLausanne, statusFor, phaseFor });
+
 document.addEventListener('DOMContentLoaded', () => {
     const clocks = document.querySelectorAll('[data-local-time]');
     const statuses = document.querySelectorAll('[data-local-status]');

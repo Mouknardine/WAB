@@ -1,0 +1,75 @@
+/* ============================================
+   WAB OS — les symboles
+   Des pictogrammes au trait, dans l'esprit des SF Symbols (d'après
+   Lucide, licence ISC) : assets/icons/sym-*.svg. Ils sont peints en
+   masque, avec la couleur du texte qui les entoure : un symbole suit
+   la gamme de sa surface comme n'importe quel texte, en verre clair,
+   sur le rose ou dans le terminal.
+   ============================================ */
+
+.sym {
+    display: inline-block;
+    flex: none;
+    width: 1.15em;
+    height: 1.15em;
+    vertical-align: -0.2em;
+    background: currentColor;
+    -webkit-mask: var(--sym) center / contain no-repeat;
+    mask: var(--sym) center / contain no-repeat;
+}
+
+.sym--bolt {
+    --sym: url('../assets/icons/sym-bolt.svg');
+}
+
+.sym--chart {
+    --sym: url('../assets/icons/sym-chart.svg');
+}
+
+.sym--file {
+    --sym: url('../assets/icons/sym-file.svg');
+}
+
+.sym--folder {
+    --sym: url('../assets/icons/sym-folder.svg');
+}
+
+.sym--grid {
+    --sym: url('../assets/icons/sym-grid.svg');
+}
+
+.sym--mail {
+    --sym: url('../assets/icons/sym-mail.svg');
+}
+
+.sym--moon {
+    --sym: url('../assets/icons/sym-moon.svg');
+}
+
+.sym--notes {
+    --sym: url('../assets/icons/sym-notes.svg');
+}
+
+.sym--search {
+    --sym: url('../assets/icons/sym-search.svg');
+}
+
+.sym--site {
+    --sym: url('../assets/icons/sym-site.svg');
+}
+
+.sym--sun {
+    --sym: url('../assets/icons/sym-sun.svg');
+}
+
+.sym--team {
+    --sym: url('../assets/icons/sym-team.svg');
+}
+
+.sym--terminal {
+    --sym: url('../assets/icons/sym-terminal.svg');
+}
+
+.sym--trash {
+    --sym: url('../assets/icons/sym-trash.svg');
+}

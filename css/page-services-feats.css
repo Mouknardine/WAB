@@ -1,0 +1,171 @@
+/* ============================================
+   Services — les deux familles en quinconce
+   Chaque bloc : une grande fenêtre posée dans son écran (le ciel rose
+   en fond d'écran, un liseré sombre), et contre elle une colonne de
+   360 px — la frappe en haut, l'échange en bulles (os-bubbles.css),
+   puis les apps du bloc calées sur le bord bas de la fenêtre. Les côtés
+   alternent d'un bloc à l'autre ; le texte s'aligne sur le bord
+   extérieur. Au téléphone : la fenêtre, les bulles, les apps.
+   Seul le bloc au centre de l'écran est net (js/page-services/focus.js).
+   ============================================ */
+
+.svc-family {
+    padding-top: var(--section);
+}
+
+.svc-feats {
+    display: grid;
+    gap: 72px;
+    max-width: calc(1040px + 2 * var(--gutter));
+    margin-top: clamp(40px, 6vw, 72px);
+}
+
+.svc-feat {
+    display: grid;
+    gap: 22px;
+    /* Une ancre du Launchpad s'arrête sous la barre de menus. */
+    scroll-margin-top: calc(var(--bar-h) + 24px);
+}
+
+.svc-feat__media {
+    order: -1;
+    position: relative;
+}
+
+.svc-feat__text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ── Les apps du bloc ── une icône, le nom, une ligne. Au téléphone,
+   la ligne reste à l'encre : aucune pile de petits textes gris. */
+.svc-apps {
+    display: grid;
+    gap: 16px;
+    list-style: none;
+}
+
+.svc-app {
+    display: grid;
+    grid-template-columns: var(--app-size) minmax(0, 1fr);
+    align-items: center;
+    gap: 14px;
+}
+
+.svc-app__name {
+    font-size: clamp(1.1rem, 1.6vw, 1.25rem);
+    font-weight: var(--w-strong);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+
+.svc-app__line {
+    margin-top: 2px;
+    font-size: var(--t-small);
+    line-height: 1.45;
+    text-wrap: pretty;
+}
+
+/* ── L'écran ── le fond d'écran rose, le liseré, la fenêtre dedans. */
+.svc-screen {
+    position: relative;
+    padding: var(--screen-pad);
+    border-radius: calc(var(--r-win) + var(--screen-pad));
+    background: var(--wallpaper);
+    box-shadow: 0 0 0 1.5px var(--screen-rim), var(--win-shadow);
+}
+
+.svc-screen .win {
+    box-shadow: 0 0 0 1px var(--win-edge), var(--shadow-soft);
+}
+
+/* La fenêtre suit le format des captures du studio (16:10). */
+.svc-shot {
+    aspect-ratio: 16 / 10;
+    container-type: size;
+}
+
+/* L'application : la capture (1280 × 840) garde son haut. */
+.svc-shot--top img {
+    object-position: top left;
+}
+
+/* LAZIZZE : la fenêtre prend le format natif de l'image (900 × 495),
+   rien n'est rogné. */
+.svc-shot--brand {
+    aspect-ratio: 900 / 495;
+}
+
+/* ── Le focus suit le défilement ── seulement avec le script. Seule
+   l'opacité s'anime ; la désaturation suit sans transition. */
+html.js .svc-feats.is-tracking .svc-feat {
+    transition: opacity 0.6s var(--ease-out);
+}
+
+html.js .svc-feats.is-tracking .svc-feat:not(.is-current) {
+    opacity: 0.35;
+    filter: saturate(0.4);
+}
+
+/* ── Ordinateur : fenêtre et colonne côte à côte ── */
+@media (min-width: 900px) {
+    .svc-feats {
+        gap: clamp(112px, 10vw, 144px);
+    }
+
+    .svc-feat {
+        grid-template-columns: var(--feat-text) minmax(0, 1fr);
+        column-gap: var(--feat-gap);
+    }
+
+    .svc-feat__media {
+        order: 0;
+    }
+
+    .svc-feat__text {
+        justify-content: space-between;
+        gap: 24px;
+        padding-top: calc(var(--screen-pad) + 6px);
+    }
+
+    .svc-app__line {
+        color: var(--ink-muted);
+    }
+
+    /* Texte à droite : tout se lit en miroir, contre le bord extérieur. */
+    .svc-feat--flip {
+        grid-template-columns: minmax(0, 1fr) var(--feat-text);
+    }
+
+    .svc-feat--flip .svc-feat__text {
+        order: 2;
+        align-items: flex-end;
+        text-align: right;
+    }
+
+    .svc-feat--flip .svc-app {
+        grid-template-columns: minmax(0, 1fr) var(--app-size);
+    }
+
+    .svc-feat--flip .svc-app .app {
+        order: 2;
+    }
+
+    .svc-feat--flip .chat__ask {
+        justify-self: end;
+        border-radius: 22px 22px 8px 22px;
+    }
+
+    .svc-feat--flip .chat__reply {
+        justify-self: start;
+        border-radius: 18px 18px 18px 8px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html.js .svc-feats.is-tracking .svc-feat:not(.is-current) {
+        opacity: 1;
+        filter: none;
+    }
+}

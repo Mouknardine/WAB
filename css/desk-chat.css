@@ -1,0 +1,87 @@
+/* ============================================
+   WAB OS — la mise en scène des services (accueil)
+   Les bulles elles-mêmes sont partagées (os-bubbles.css). Ici : la
+   frappe, douze traits gris qui s'animent quand le bloc est au centre
+   de l'écran, et le focus qui suit le défilement : seul le bloc au
+   centre est pleinement net (js/desk/focus-scroll.js).
+   ============================================ */
+
+/* ── La frappe ── douze traits de hauteurs variées. */
+.typing {
+    display: none;
+    align-items: center;
+    gap: 4px;
+    height: 22px;
+}
+
+.typing i {
+    --h: 0.45;
+    display: block;
+    width: 4px;
+    height: 22px;
+    border-radius: var(--r-pill);
+    background: var(--ink-faint);
+    transform: scaleY(var(--h));
+    transform-origin: center;
+    opacity: 0.55;
+}
+
+.typing i:nth-child(3n + 1) { --h: 0.3; }
+.typing i:nth-child(4n + 2) { --h: 0.8; }
+.typing i:nth-child(5n + 3) { --h: 1; }
+.typing i:nth-child(7n) { --h: 0.6; }
+.typing i:first-child,
+.typing i:last-child { opacity: 0.25; }
+
+.feat.is-current .typing i {
+    animation: typing 1.1s steps(3, jump-none) infinite alternate;
+    animation-delay: calc(var(--k, 0) * -90ms);
+}
+
+.typing i:nth-child(2) { --k: 1; }
+.typing i:nth-child(3) { --k: 2; }
+.typing i:nth-child(4) { --k: 3; }
+.typing i:nth-child(5) { --k: 4; }
+.typing i:nth-child(6) { --k: 5; }
+.typing i:nth-child(7) { --k: 6; }
+.typing i:nth-child(8) { --k: 7; }
+.typing i:nth-child(9) { --k: 8; }
+.typing i:nth-child(10) { --k: 9; }
+.typing i:nth-child(11) { --k: 10; }
+
+@keyframes typing {
+    to {
+        transform: scaleY(calc(1.15 - var(--h)));
+    }
+}
+
+@media (min-width: 900px) {
+    .typing {
+        display: flex;
+    }
+}
+
+/* ── Le focus suit le défilement ──
+   Seulement avec le script qui pose .is-current, et jamais sous
+   « réduire les animations » : tout reste net d'emblée. */
+html.js .feats.is-tracking .feat {
+    /* Seule l'opacité s'anime ; la désaturation suit sans transition
+       (un filtre animé repeindrait toute la capture à chaque image). */
+    transition: opacity 0.6s var(--ease-out);
+}
+
+html.js .feats.is-tracking .feat:not(.is-current) {
+    opacity: 0.35;
+    filter: saturate(0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html.js .feats.is-tracking .feat:not(.is-current) {
+        opacity: 1;
+        filter: none;
+    }
+
+    .feat.is-current .typing i {
+        animation: none;
+    }
+}

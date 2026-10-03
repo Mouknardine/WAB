@@ -1,0 +1,163 @@
+/* ============================================
+   WAB OS — le dock
+   Demandé par Eliott le 3.10 (« comme sur les Mac »). Sur ordinateur
+   seulement (souris, 900 px et plus) : une bande de verre liquide en
+   bas de l'écran, rayon 24 px, liseré lumineux et reflet spéculaire,
+   les six apps du studio en icônes d'app. Au survol, l'icône grandit
+   sur un ressort et ses voisines la suivent à moitié. Un point rose
+   marque une app ouverte ; les fenêtres réduites se rangent après le
+   séparateur. Il se range pendant la lecture (js/os/dock-hide.js).
+   Au téléphone, pas de dock : le menu du haut suffit.
+   ============================================ */
+
+.dock {
+    display: none;
+}
+
+@media (min-width: 900px) and (hover: hover) and (pointer: fine) {
+    /* La page réserve sous elle la place du dock, et un élément qui
+       prend le focus au clavier s'arrête au-dessus de lui. */
+    body.os {
+        padding-bottom: var(--dock-space);
+    }
+
+    :root:has(body.os) {
+        scroll-padding-bottom: var(--dock-space);
+    }
+
+    .dock {
+        position: fixed;
+        z-index: var(--z-dock);
+        left: 50%;
+        bottom: 14px;
+        translate: -50% 0;
+        display: flex;
+        align-items: flex-end;
+        gap: 6px;
+        padding: 7px 9px;
+        border-radius: var(--r-dock);
+        background: var(--glass-specular), var(--glass);
+        -webkit-backdrop-filter: var(--glass-blur);
+        backdrop-filter: var(--glass-blur);
+        box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px var(--glass-edge), var(--glass-shadow);
+        transition: translate 0.35s var(--ease-out);
+    }
+
+    .dock.is-tucked {
+        translate: -50% calc(100% + 24px);
+    }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .dock {
+        background: var(--glass-strong);
+    }
+}
+
+.dock__apps,
+.dock__shelf {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    list-style: none;
+}
+
+/* Le séparateur, avant les fenêtres réduites. */
+.dock__shelf {
+    padding-left: 10px;
+    margin-left: 4px;
+    box-shadow: inset 1px 0 0 var(--line-strong);
+}
+
+.dock__shelf[hidden] {
+    display: none;
+}
+
+.dock__item {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--r-ctl);
+    background: none;
+    cursor: pointer;
+    transform-origin: 50% 100%;
+    transition: scale 0.45s var(--ease-spring), translate 0.45s var(--ease-spring);
+}
+
+.dock__item .app-icon {
+    width: 48px;
+    height: 48px;
+    filter: drop-shadow(0 2px 4px rgba(11, 11, 12, 0.08));
+}
+
+/* Le nom de l'app : une pilule de verre sombre au-dessus, au survol
+   et au focus. Toujours dans le document : les lecteurs d'écran le
+   lisent. */
+.dock__label {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 12px);
+    translate: -50% 4px;
+    padding: 4px 10px;
+    border-radius: var(--r-pill);
+    background: var(--smoke-strong);
+    font-size: 11px;
+    line-height: 1.4;
+    white-space: nowrap;
+    color: var(--paper);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s var(--ease-out), translate 0.2s var(--ease-out);
+}
+
+.dock__item:hover .dock__label,
+.dock__item:focus-visible .dock__label {
+    opacity: 1;
+    translate: -50% 0;
+}
+
+/* Le grossissement : l'icône survolée, puis ses voisines immédiates. */
+.dock li:has(> .dock__item:hover) > .dock__item {
+    scale: 1.24;
+    translate: 0 -6px;
+}
+
+.dock li:has(+ li > .dock__item:hover) > .dock__item,
+.dock li:has(> .dock__item:hover) + li > .dock__item {
+    scale: 1.08;
+    translate: 0 -2px;
+}
+
+.dock__item:active {
+    scale: 0.94;
+}
+
+/* Le point : une fenêtre de cette app est ouverte (ou réduite). */
+.dock__item::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -4px;
+    width: 4px;
+    height: 4px;
+    margin-left: -2px;
+    border-radius: 50%;
+    background: var(--pink);
+    opacity: 0;
+    transition: opacity 0.2s var(--ease-out);
+}
+
+.dock__item.is-open::after {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dock li > .dock__item {
+        scale: 1 !important;
+        translate: 0 !important;
+    }
+}

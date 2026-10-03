@@ -255,36 +255,48 @@ Dette connue : les pages intérieures utilisent encore des icônes dessinées à
 
 ---
 
-## Accueil bureau (3 octobre 2026, branche `bureau`, en attente de validation)
+## WAB OS — accueil (3 octobre 2026, branche `bureau`, en attente de validation)
 
-**Référence : [heyclicky.com](https://www.heyclicky.com/), lecture validée par Eliott.** L'accueil devient le bureau du studio : un fond clair tramé de points, une barre de menus macOS, des fenêtres de projets en désordre autour d'un centre parfaitement net. Ludique en bordure, irréprochable au centre. Le fond rose animé (`js/mesh`) n'est pas chargé sur cette page ; le rose WAB devient l'accent, réservé aux gestes.
+**Intention.** L'accueil est le système d'exploitation du studio, et il fonctionne : le site est lui-même la démonstration technique. **Structure : celle de [heyclicky.com](https://www.heyclicky.com/), section par section** (« vraiment la même structure, j'aime beaucoup cette vibe », Eliott, 3.10). **Rendu : verre liquide rose**, façon macOS Tahoe / iOS 26 (« ultra moderne »). Seuls les oiseaux et le grand « WAB. » du pied de page restent en pixel art. Le centre du premier écran reste parfaitement net. Toutes les fonctions avancées sont des bonus : sans JavaScript, au doigt ou au lecteur d'écran, le site reste entier.
 
-**Structure, de haut en bas.**
-1. Barre de menus : WAB., Work, Services, About · l'oiseau en pixel au centre (bat des ailes au survol) · icônes d'état (dès 1180 px), statut du studio et heure de Lausanne (`nav-clock.js`), Contact en rose (`data-contact`). Au téléphone : WAB., l'heure (dès 380 px), Contact et le menu existant (`nav.js`, `nav-panel.css`).
-2. Le centre : « WAB. » (H1, la fin SEO reste réservée aux lecteurs d'écran), « Design d'interface et de système sur mesure. », deux boutons Aqua (Démarrer un projet en rose, Voir le travail en gris), « Réponse sous 24 h, Lausanne ».
-3. Autour : six fenêtres de vrais projets nommées par leur adresse (lepetitcentral.ch, zinema.ch, amarte.ch, maison-alliani.com, lazizze.com, nadegemouine.ch), l'autocollant « HELLO my name is WAB. », deux kaomoji ASCII, le dossier Work (vrai lien vers /realisations), deux oiseaux posés sur des barres de titre. Trois objets au téléphone (deux sous 380 px), cinq sur tablette et petit ordinateur, tout le bureau dès 1280 px.
-4. La vitrine : sept sites en fondu toutes les 5 s, nom du projet dans la barre, adresse dessous, bouton Pause/Lecture (WCAG 2.2.2). Arrêt hors écran, onglet masqué, et démarrage en pause sous « réduire les animations ».
-5. Services en quinconce (textes de /services) : Sites sur mesure, Applications de gestion (la capture Finances défile lentement dans la fenêtre, « Données de démonstration »), Automatisation et IA (notifications dessinées en HTML, aucun chiffre), Image de marque (LAZIZZE). Chaque bloc : bulle « WAB. », un titre, une ligne.
-6. La lettre d'Eliott et Matt dans « lettre.txt », écrite avec les phrases d'About et de PRODUCT.md, un passage surligné, noms tapés (aucune signature manuscrite), leurs photos posées à côté dès 1100 px.
-7. Les quatre étapes réelles (Work) dans quatre fenêtres `on-ecoute.txt`… ; une boîte de dialogue « Nouveau projet » pour l'appel final ; pied de page à colonnes (Pages, Expertises, Contact, note) puis « WAB. » en 59 pixels roses Aqua.
+**La séquence (calquée sur la référence).**
+1. **Barre** de verre : WAB., Work, Services, About · l'oiseau au centre · Rechercher ⌘K (dès 1080 px), la lumière du jour (soleil ou lune, symbole fin), le statut du studio (dès 1180 px), l'heure de Lausanne, Contact en verre rose.
+2. **Premier écran** : six fenêtres de vrais projets (liens vers `/realisations#projet`), l'autocollant HELLO, deux kaomoji, le dossier Work et la Corbeille en icônes d'app ; « WAB. », la promesse, deux boutons de verre, « Réponse sous 24 h, Lausanne » ; la vitrine, bouton lecture/pause en verre fumé.
+3. **Trois blocs en quinconce** (Sites sur mesure, Applications de gestion, Automatisation et IA) : la fenêtre posée dans un **écran** (fond d'écran = le ciel rose du site, liseré `--screen-rim`), l'onde en traits, deux bulles de verre (une question plausible en rose, la réponse de WAB en clair : mise en scène, sans nom, masquée aux lecteurs d'écran, jamais un témoignage), le titre et une ligne. Seul le bloc au centre de l'écran est net (`focus-scroll.js`).
+4. **La lettre** d'Eliott et Matt dans Notes, sous le badge « Le studio », accueillie par une **nuée d'oiseaux** qui arrive ensemble des deux côtés et se pose autour de la lettre et sur sa fenêtre (`js/desk/arrival.js`, une fois par visite, posés d'emblée sous « réduire les animations ») ; passage surligné, curseur rose, signataires (noms tapés) et sigle WAB. Puis un filet en pointillés.
+5. **Le mur** : badge « Réalisations », « Fait à Lausanne » en grand (une seule fois), les **9 projets dans leur fenêtre** comme sur le bureau du haut (capture, nom dans la barre, adresse dessous ; colonne du milieu décalée), un clic ouvre la fiche ; carte de bilan « 9 projets en ligne, de Lausanne à Bavois (VD). Voir le travail ».
+6. **Le ciel rose** (`--sky-mesh`, fondu en haut et en bas) : « Trois façons de travailler avec nous. », trois cartes de verre — **Site vitrine 1'000 – 2'500 CHF**, **Site et outils 2'500 – 7'000 CHF** (outil de gestion, e-commerce, options ; badge « Ce qui nous distingue », bouton rose), **Expérience sur mesure dès 7'000 CHF**, sur devis (refonte de marque). Prix donnés par Eliott le 3.10. Puis le mini-terminal sombre « > contact ».
+7. **FAQ** : huit questions reprises mot pour mot de `/creation-site-internet-lausanne`, en `<details>` natifs. Pas de JSON-LD FAQPage sur l'accueil (il reste sur sa page).
+8. **Pied de page** : colonnes, puis « WAB. » en pixels roses sur toute la largeur.
 
-**Écarts assumés avec la référence.** Pas de vidéo (aucune n'existe) : la vitrine montre de vraies captures. Pas de mur de messages, de tarifs ni de FAQ : rien de tout cela n'existe pour WAB, rien n'est inventé. La FAQ de /creation-site-internet-lausanne n'est pas reprise : la dupliquer diluerait la page qui porte la requête.
+**Le verre.** Barre, dock, fenêtres ouvertes, palette, menu, cartes du ciel : `--glass` + `--glass-blur`, liseré lumineux `--glass-rim`, reflet `--glass-specular`, ombres diffuses. Le flou réel n'est posé que sur ces quelques surfaces ; les fenêtres décoratives (nombreuses) imitent le verre sans `backdrop-filter`. Sans prise en charge : surfaces opaques (`--glass-strong`).
 
-**Jetons** — tous dans `css/desk-tokens.css`, posés sur `body.desk` (et sur la racine via `:has`, pour le fond du rebond iOS) :
+**Le bouton `.glass-btn`** (`css/glass-btn.css`, réutilisable). Texture choisie par Eliott : **celle des bulles des services, partout**. Pilule, verre rose clair (`.glass-btn--pink`, `--bubble-pink`) ou clair (`--bubble-clear`), double liseré, reflet spéculaire sur la moitié haute (`::before`), fil de bord flouté (`::after`), pénombre interne en bas, flou léger de l'arrière-plan. Le reflet suit la souris (`--gb-x`, `--gb-y`, `js/desk/glass.js`), gonfle au survol (`scale 1.02`) et s'écrase à l'appui sur un ressort. Texte toujours `--glass-ink` (jamais `--ink`, qu'une surface sombre redéfinit). `.glass-btn--sm`, `:disabled`, mouvement coupé sous « réduire les animations ». Encre sur le rose : 10,7:1.
+
+**Les icônes.** *Icônes d'app* (`assets/icons/app-*.svg`, dock, bureau, fenêtres réduites), sobres façon iOS 26 « teinté » après le retour d'Eliott (« c'est kitsch, plus simple et clean ») : la même squircle blanche à peine nacrée pour toutes, un liseré fin, un pictogramme encre au trait ; un seul rose, réservé à Contact. Ni halo, ni dégradé de couleur, ni ombre sur les pictogrammes. *Symboles* (`sym-*.svg`, d'après Lucide, licence ISC, trait 1,8) peints en masque CSS (`.sym.sym--nom`, `css/sym.css`) : ils prennent la couleur du texte de leur surface. Générés par un script (icônes d'app à couleurs fixes, symboles en masques).
+
+**Le dock** (redemandé par Eliott : « comme sur les Mac ») : verre, rayon `--r-dock` (24 px), six apps, grossissement à ressort, point rose pour une app ouverte, fenêtres réduites après le séparateur ; il se range quand on descend et revient quand on remonte ; la page réserve sa place. Ordinateur seulement.
+
+**Les fonctions.** Fenêtres (`js/os/wm*.js`) : passer devant, déplacer, agrandir, réduire dans le dock, Échap, focus rendu ; feuilles modales sous 760 px. Fiche projet lue sur la page Work (texte et adresses vérifiés seulement). Dossier Work (icônes / liste, flèches). Palette ⌘K / Ctrl+K. Terminal (`aide`, `projets`, `ouvrir N`, `services`, `equipe`, `contact`, `heure`, `effacer`, saisie bornée et nettoyée, `textContent` partout). Clic droit sur le bureau. Lumière du fond à l'heure de Lausanne (`data-sky`, via `window.WABClock` exposé par `nav-clock.js`). Oiseaux, beaucoup moins nombreux (« je veux toujours les oiseaux mais beaucoup moins ») : régime `data-birds="rare"`, deux à quatre en vol ; un posé sur zinema.ch, un sur l'escalier gauche, la mascotte de la barre ; ils s'envolent quand on déplace une fenêtre ; l'un vient se poser près du curseur après 9 s d'inactivité.
+
+**Piège réglé.** La trame est une couche fixe à z-index négatif : elle se peint entre le fond de la racine et le corps de page. Tout fond posé sur `body` la cache ; la lumière de l'heure vit donc sur la racine (`:root:has(body.desk)`), le corps reste transparent.
+
+**Jetons** — tous dans `css/os-tokens.css` (portés par `body.os`) :
 
 | Jeton | Valeur | Rôle |
 |---|---|---|
-| `--desk` / `--desk-dot` / `--desk-grid` | `#f5f4f5` / encre à 17 % / 22 px | le bureau et sa trame |
-| `--ink` · `--ink-muted` · `--ink-faint` | `#0b0b0c` · `#5c5b63` · `#66656d` | 18:1 · 6,1:1 · 5,2:1 sur le bureau |
-| `--pink` | `#ff2d9b` | décor seulement : autocollant, pixels, point de statut |
-| `--accent` | `#a00f5a` | le rose qui porte du texte (7:1) : Contact, icônes d'étapes, dossier sélectionné |
-| `--mark` | `#ffd0e6` | surlignage et bulle de demande, encre par-dessus |
-| `--aqua-pink-*` | `#ffe1ef → #ffa6d2 → #ff7dbd`, liseré `#d4307f` | bouton principal et bulle ; l'encre reste au-dessus de 7:1 |
-| `--aqua-grey-*` | `#fff → #e4e3e7` | bouton secondaire |
-| `--win-*` | fond blanc, barre `#f7f7f8 → #e7e6ea`, rayon 10 px, barre 22 px | la fenêtre, pièce de base de toute la page |
-| `--smoke` | encre à 62 % | le bouton Pause posé sur les captures (5,6:1 au pire) |
-| `--t-hero` | `clamp(5.5rem, 22vw, 10rem)` | « WAB. », Sligoil Bold, approche −0,06 em |
+| `--desk` | `#fafafa` | le bureau : blanc à 2 % de gris, sans teinte chaude |
+| `--desk-dot` · `--desk-grid` | `rgba(163,163,163,.42)` · 16 px, très léger | la trame « Dot Pattern » : un point de rayon 1 en (1,1), SVG en masque, couleur par jeton |
+| `--ink` · `--ink-muted` · `--ink-faint` | `#0b0b0c` · `#5c5b63` · `#66656d` | 19:1 · 6,4:1 · 5,5:1 sur le bureau |
+| `--pink` · `--accent` · `--mark` | `#ff2d9b` · `#a00f5a` · `#ffd0e6` | signes ; rose qui porte du texte et focus (7:1) ; sélection |
+| `--glass` · `--glass-strong` · `--glass-blur` | blanc 66 % · 84 % · flou 24 px, saturation 1,8 | les surfaces de verre |
+| `--glass-rim` · `--glass-edge` · `--glass-specular` | blanc 90 % · encre 10 % · reflet haut | liseré lumineux, trait fin, reflet |
+| `--glass-ink` | `#0b0b0c` | l'encre fixe du verre clair |
+| `--bubble-pink` · `--bubble-clear` | rose `#ffc4e2 → #ff8cc6` translucide · blanc | la texture des boutons, bulles, autocollant, pastilles |
+| `--sky-mesh` | rose, lilas, pêche | le ciel des trois paliers |
+| `--wallpaper` · `--screen-pad` · `--screen-rim` | ciel rose · 12 px · `#2a292e` | l'écran des services |
+| `--r-win` · `--r-ctl` · `--r-px` · `--r-pill` · `--r-dock` | 18 · 12 · 3 · 999 · 24 px | fenêtres et cartes ; contrôles ; pastilles ; pilules ; dock |
+| `--term-*` | fond `#121114`, encre `#ecebef`, gris `#a9a7b1`, rose `#ff8cc6` | terminal et mini-terminal (15,6 · 7,9 · 8,9:1) |
+| `--z-*` | bureau 3 · fenêtres 130+ · dock 180 · barre 190 · menu 210 · notification 220 | les calques |
 
-**Règles.** Un seul rose qui porte du texte (`--accent`). Les objets du bureau sont décoratifs (`aria-hidden`), sauf le dossier. Les trois mouvements se composent sans s'écraser : entrée sur `scale` + `opacity`, parallaxe sur `transform` (`js/desk/parallax.js`), glisser sur `translate` (`js/desk/drag.js`, souris seulement), inclinaison sur `rotate`. Rien ne glisse au doigt (le défilement passerait avant). Sous « réduire les animations », tout est figé.
-
-**Fichiers.** `css/desk-tokens.css`, `desk-bar.css`, `desk-window.css`, `desk-aqua.css`, `desk-objects.css`, `desk-hero.css`, `desk-scatter.css`, `desk-scatter-wide.css`, `desk-blocks.css`, `desk-auto.css`, `desk-letter.css`, `desk-end.css` ; `js/desk/index.js` (entrée), `drag.js`, `parallax.js`, `showcase.js`, `watch.js`, `pixels.js`. `landing.css` et `landing-plate.css`, qui ne servaient qu'à l'ancien accueil, sont supprimées (récupérables dans l'historique git si la proposition est écartée).
+**Fichiers.** *Partagés par toutes les pages* (mode d'emploi : `OS-COMPONENTS.md`, `<body class="os">`) : `os-tokens`, `os-base`, `os-sky`, `sym`, `glass-btn`, `os-bar`, `os-window`, `os-bubbles`, `os-footer`, `os-dock`, `os-overlay`, et à la demande `os-win`, `os-win-states`, `os-case`, `os-finder`, `os-terminal`, `os-palette`, `os-menu` ; JS `js/os/` (entrée `index.js` : sky, glass, shell ; puis apps, lazy, gesture, actions, toast, clock, dock, dock-hide, dom, projects, wm, wm-frame, wm-wire, case, finder, terminal, terminal-commands, palette, palette-items, menu, trash, idle-bird). *Propres à l'accueil* (`body.desk`) : `desk-objects`, `desk-hero`, `desk-scatter`, `desk-scatter-wide`, `desk-blocks`, `desk-chat`, `desk-auto`, `desk-letter`, `desk-wall`, `desk-plans`, `desk-faq` ; JS `js/desk/` (index, drag, parallax, showcase, watch, pixels, focus-scroll, arrival). `desk-aqua.css` est supprimée ; les étapes et l'alerte finale ont quitté l'accueil (absentes de la référence ; les étapes restent sur Work).

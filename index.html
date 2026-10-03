@@ -352,38 +352,51 @@
     <link rel="stylesheet" href="css/nav-panel.css?v=1">
     <link rel="stylesheet" href="css/contact-modal.css?v=7">
     <link rel="stylesheet" href="css/contact-form.css?v=3">
-    <link rel="stylesheet" href="css/desk-tokens.css?v=1">
-    <link rel="stylesheet" href="css/desk-bar.css?v=1">
-    <link rel="stylesheet" href="css/desk-window.css?v=1">
-    <link rel="stylesheet" href="css/desk-aqua.css?v=1">
-    <link rel="stylesheet" href="css/desk-objects.css?v=1">
-    <link rel="stylesheet" href="css/desk-hero.css?v=1">
-    <link rel="stylesheet" href="css/desk-scatter.css?v=1">
-    <link rel="stylesheet" href="css/desk-scatter-wide.css?v=1">
-    <link rel="stylesheet" href="css/desk-blocks.css?v=1">
-    <link rel="stylesheet" href="css/desk-auto.css?v=1">
-    <link rel="stylesheet" href="css/desk-letter.css?v=1">
-    <link rel="stylesheet" href="css/desk-end.css?v=1">
+    <!-- WAB OS : composants partagés par toutes les pages (OS-COMPONENTS.md) -->
+    <link rel="stylesheet" href="css/os-tokens.css?v=1">
+    <link rel="stylesheet" href="css/os-base.css?v=1">
+    <link rel="stylesheet" href="css/os-sky.css?v=1">
+    <link rel="stylesheet" href="css/sym.css?v=2">
+    <link rel="stylesheet" href="css/glass-btn.css?v=2">
+    <link rel="stylesheet" href="css/os-bar.css?v=1">
+    <link rel="stylesheet" href="css/os-window.css?v=1">
+    <link rel="stylesheet" href="css/os-bubbles.css?v=1">
+    <link rel="stylesheet" href="css/os-footer.css?v=1">
+    <link rel="stylesheet" href="css/os-dock.css?v=2">
+    <link rel="stylesheet" href="css/os-overlay.css?v=2">
+    <!-- Accueil -->
+    <link rel="stylesheet" href="css/desk-objects.css?v=4">
+    <link rel="stylesheet" href="css/desk-hero.css?v=4">
+    <link rel="stylesheet" href="css/desk-scatter.css?v=4">
+    <link rel="stylesheet" href="css/desk-scatter-wide.css?v=4">
+    <link rel="stylesheet" href="css/desk-blocks.css?v=5">
+    <link rel="stylesheet" href="css/desk-chat.css?v=3">
+    <link rel="stylesheet" href="css/desk-auto.css?v=2">
+    <link rel="stylesheet" href="css/desk-letter.css?v=5">
+    <link rel="stylesheet" href="css/desk-wall.css?v=2">
+    <link rel="stylesheet" href="css/desk-plans.css?v=2">
+    <link rel="stylesheet" href="css/desk-faq.css?v=2">
 
     <!-- Scripts -->
-    <script src="nav-clock.js?v=2" defer></script>
+    <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
     <script src="js/reveal.js?v=4" defer></script>
-    <script type="module" src="js/birds/index.js?v=6"></script>
-    <script type="module" src="js/birds/perch.js?v=6"></script>
+    <script type="module" src="js/birds/index.js?v=7"></script>
+    <script type="module" src="js/birds/perch.js?v=7"></script>
     <script type="module" src="js/contact/index.js?v=9"></script>
-    <script type="module" src="js/desk/index.js?v=1"></script>
+    <script type="module" src="js/os/index.js?v=1"></script>
+    <script type="module" src="js/desk/index.js?v=5"></script>
 </head>
 
-<body class="desk">
+<body class="os desk" data-birds="rare">
 
     <a class="skip-link" href="#studio-intro">Aller au contenu</a>
 
     <!-- Les oiseaux volent sur la trame du bureau, sous les fenêtres. -->
     <canvas id="birdCanvas" aria-hidden="true"></canvas>
 
-    <!-- BARRE DE MENUS — façon macOS. Le menu du téléphone (nav.js)
-         se déroule sous la barre. -->
+    <!-- BARRE DE MENUS — le nom et les pages, l'oiseau au centre, la
+         lumière et l'heure de Lausanne, la recherche, Contact. -->
     <header class="menubar" id="topbar">
         <div class="topbar__inner menubar__inner" id="topbarBar">
             <div class="menubar__row">
@@ -395,20 +408,16 @@
                     <a href="/studio" class="menubar__link">About</a>
                 </nav>
 
-                <canvas class="menubar__sigil" data-perch="flap" data-scale="1" data-color="4" aria-hidden="true"></canvas>
+                <span class="menubar__os" aria-hidden="true" translate="no"><canvas class="menubar__sigil" data-perch="flap" data-scale="1" data-color="4"></canvas></span>
 
                 <div class="menubar__state">
-                    <span class="menubar__icons" aria-hidden="true">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 8.8a15 15 0 0 1 20 0"/><path d="M5.5 12.5a10 10 0 0 1 13 0"/><path d="M9 16.2a5 5 0 0 1 6 0"/><circle cx="12" cy="19.5" r="0.6" fill="currentColor"/></svg>
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 7 10 10-5 5V2l5 5L7 17"/></svg>
-                        <svg width="24" height="14" viewBox="0 0 30 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="1" y="2" width="24" height="12" rx="3.5"/><rect x="3.5" y="4.5" width="15" height="7" rx="1.5" fill="currentColor" stroke="none"/><path d="M27.5 6v4" stroke-linecap="round"/></svg>
-                    </span>
-                    <span class="menubar__status studio-status" data-local-status hidden></span>
+                    <button type="button" class="menubar__find" data-palette-open data-js-only aria-keyshortcuts="Meta+K Control+K">
+                        <span class="sym sym--search" aria-hidden="true"></span>Rechercher<kbd data-shortcut>⌘K</kbd>
+                    </button>
+                    <span class="menubar__sky" aria-hidden="true"><span class="sym sym--sun" aria-hidden="true"></span><span class="sym sym--moon" aria-hidden="true"></span></span>
+                    <span class="menubar__status" data-local-status hidden></span>
                     <time class="menubar__time" data-local-time>--:--</time>
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="menubar__cta">
-                        Contact
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
-                    </a>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="menubar__cta glass-btn glass-btn--pink glass-btn--sm">Contact</a>
                     <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
                         <span class="topbar__dots" aria-hidden="true">
                             <span></span><span></span><span></span><span></span>
@@ -417,7 +426,6 @@
                     </button>
                 </div>
             </div>
-
             <div class="topbar__panel" id="topbarPanel">
                 <div class="topbar__panel-inner">
                     <nav class="panel__nav" aria-label="Navigation">
@@ -453,55 +461,60 @@
                 <h1 class="hero__title" id="heroTitle"><span translate="no">WAB.</span><span class="sr-only"> WeAreBrothers, agence web et création de site internet à Lausanne.</span></h1>
                 <p class="hero__lede">Design d'interface et de système sur mesure.</p>
                 <div class="hero__actions">
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="aqua aqua--pink">Démarrer un projet</a>
-                    <a href="/realisations" class="aqua">Voir le travail</a>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="glass-btn glass-btn--pink">Démarrer un projet</a>
+                    <a href="/realisations" class="glass-btn">Voir le travail</a>
                 </div>
                 <p class="hero__note">Réponse sous 24&nbsp;h, Lausanne</p>
             </div>
 
-            <!-- Les objets du bureau. Décor : masqués aux lecteurs d'écran,
-                 sauf le dossier, qui est un vrai lien. Sur ordinateur, les
-                 fenêtres se prennent et se déplacent (js/desk/drag.js). -->
+            <!-- Les objets du bureau. Chaque fenêtre est un vrai lien vers la
+                 fiche du projet sur /realisations ; avec JavaScript, un
+                 double-clic (ou Entrée) l'ouvre ici même (js/os). Sur
+                 ordinateur, les fenêtres se prennent et se déplacent. -->
             <div class="scatter" data-scatter>
-                <div class="scat scat--portrait scat--central" data-drag aria-hidden="true">
-                    <div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__x">x</span></div><div class="win__body"><img src="assets/images/work-central-720.webp" alt="" width="720" height="900" decoding="async" draggable="false"></div></div>
+                <a href="/realisations#central" class="scat scat--portrait scat--central" data-drag data-project="central" aria-label="Le P'tit Central, ouvrir la fiche du projet">
+                    <div class="win"><div class="win__bar"><span class="win__lights"></span></div><div class="win__body"><img src="assets/images/work-central-720.webp" alt="" width="720" height="900" decoding="async" draggable="false"></div></div>
                     <span class="file-name">lepetitcentral.ch</span>
-                </div>
+                </a>
                 <div class="scat scat--sticker" data-drag aria-hidden="true">
                     <span class="sticker"><span class="sticker__hello">HELLO</span><span class="sticker__mine">my name is</span><span class="sticker__name">WAB.</span></span>
                 </div>
                 <span class="scat scat--kao-a kao" aria-hidden="true">(^_^)/</span>
-                <div class="scat scat--land scat--zinema" data-drag data-perch-host aria-hidden="true">
-                    <canvas class="win-perch" data-perch="fly" data-scale="2" data-color="0"></canvas><div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__x">x</span></div><div class="win__body"><img src="assets/images/thumb-zinema.webp" alt="" width="360" height="225" decoding="async" draggable="false"></div></div>
+                <a href="/realisations#zinema" class="scat scat--land scat--zinema" data-drag data-project="zinema" data-perch-host aria-label="Zinéma, ouvrir la fiche du projet">
+                    <canvas class="win-perch" data-perch="fly" data-scale="2" data-color="0" aria-hidden="true"></canvas><div class="win"><div class="win__bar"><span class="win__lights"></span></div><div class="win__body"><img src="assets/images/thumb-zinema.webp" alt="" width="360" height="225" decoding="async" draggable="false"></div></div>
                     <span class="file-name">zinema.ch</span>
-                </div>
-                <span class="scat scat--kao-b kao" aria-hidden="true">{ ^-^ }</span>
-                <div class="scat scat--land scat--amarte" data-drag aria-hidden="true">
-                    <div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__x">x</span></div><div class="win__body"><img src="assets/images/shot-amarte-800.webp" alt="" width="800" height="500" decoding="async" draggable="false"></div></div>
-                    <span class="file-name">amarte.ch</span>
-                </div>
-                <div class="scat scat--land scat--alliani" data-drag aria-hidden="true">
-                    <div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__x">x</span></div><div class="win__body"><img src="assets/images/thumb-alliani.webp" alt="" width="360" height="225" decoding="async" draggable="false"></div></div>
-                    <span class="file-name">maison-alliani.com</span>
-                </div>
-                <div class="scat scat--portrait scat--dj" data-drag data-perch-host aria-hidden="true">
-                    <canvas class="win-perch" data-perch="fly" data-scale="2" data-color="2"></canvas><div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__x">x</span></div><div class="win__body"><img src="assets/images/work-dj-720.webp" alt="" width="720" height="900" decoding="async" draggable="false"></div></div>
-                    <span class="file-name">lazizze.com</span>
-                </div>
-                <div class="scat scat--land scat--nadege" data-drag aria-hidden="true">
-                    <div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__x">x</span></div><div class="win__body"><img src="assets/images/shot-nadege-800.webp" alt="" width="800" height="500" loading="lazy" decoding="async" draggable="false"></div></div>
-                    <span class="file-name">nadegemouine.ch</span>
-                </div>
-                <a href="/realisations" class="scat scat--folder folder">
-                    <svg width="64" height="50" viewBox="0 0 64 50" aria-hidden="true"><path class="folder__back" d="M3 6a4 4 0 0 1 4-4h15l5 5h30a4 4 0 0 1 4 4v33a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><path class="folder__front" d="M3 15a4 4 0 0 1 4-4h50a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/></svg>
-                    <span class="folder__name">Work</span>
                 </a>
+                <span class="scat scat--kao-b kao" aria-hidden="true">{ ^-^ }</span>
+                <a href="/realisations#amarte" class="scat scat--land scat--amarte" data-drag data-project="amarte" aria-label="Amarte Studio, ouvrir la fiche du projet">
+                    <div class="win"><div class="win__bar"><span class="win__lights"></span></div><div class="win__body"><img src="assets/images/shot-amarte-800.webp" alt="" width="800" height="500" decoding="async" draggable="false"></div></div>
+                    <span class="file-name">amarte.ch</span>
+                </a>
+                <a href="/realisations#alliani" class="scat scat--land scat--alliani" data-drag data-project="alliani" aria-label="Maison Alliani, ouvrir la fiche du projet">
+                    <div class="win"><div class="win__bar"><span class="win__lights"></span></div><div class="win__body"><img src="assets/images/thumb-alliani.webp" alt="" width="360" height="225" decoding="async" draggable="false"></div></div>
+                    <span class="file-name">maison-alliani.com</span>
+                </a>
+                <a href="/realisations#dj" class="scat scat--portrait scat--dj" data-drag data-project="dj" aria-label="LAZIZZE DJ, ouvrir la fiche du projet">
+                    <div class="win"><div class="win__bar"><span class="win__lights"></span></div><div class="win__body"><img src="assets/images/work-dj-720.webp" alt="" width="720" height="900" decoding="async" draggable="false"></div></div>
+                    <span class="file-name">lazizze.com</span>
+                </a>
+                <a href="/realisations#nadege" class="scat scat--land scat--nadege" data-drag data-project="nadege" aria-label="Nadège Mouine, ouvrir la fiche du projet">
+                    <div class="win"><div class="win__bar"><span class="win__lights"></span></div><div class="win__body"><img src="assets/images/shot-nadege-800.webp" alt="" width="800" height="500" loading="lazy" decoding="async" draggable="false"></div></div>
+                    <span class="file-name">nadegemouine.ch</span>
+                </a>
+                <a href="/realisations" class="scat scat--folder icon" data-desk-icon data-app="work">
+                    <img class="app-icon" src="assets/icons/app-work.svg" alt="" width="56" height="56">
+                    <span class="icon__name">Work</span>
+                </a>
+                <button type="button" class="scat scat--trash icon" data-desk-icon data-app="trash" data-js-only>
+                    <img class="app-icon" src="assets/icons/app-trash.svg" alt="" width="56" height="56">
+                    <span class="icon__name">Corbeille</span>
+                </button>
             </div>
 
             <!-- LA VITRINE — les projets défilent dans la grande fenêtre. -->
             <figure class="showcase" data-showcase>
                 <div class="win showcase__win">
-                    <div class="win__bar"><span class="win__lights"></span><span class="win__title" data-showcase-title>Zinéma</span></div>
+                    <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--file" aria-hidden="true"></span><span data-showcase-title>Zinéma</span></span></div>
                     <div class="win__body showcase__stage">
                         <div class="showcase__slide is-current" data-slide data-name="Zinéma" data-domain="zinema.ch"><img src="assets/images/shot-zinema-1600.webp" srcset="assets/images/shot-zinema-800.webp 800w, assets/images/shot-zinema-1600.webp 1600w" sizes="(min-width: 920px) 860px, calc(100vw - 32px)" alt="Page d'accueil du Zinéma, cinéma d'art et essai à Lausanne : un mur d'affiches de films" width="1600" height="1000" fetchpriority="high" decoding="async"></div>
                         <div class="showcase__slide" data-slide data-name="Le P'tit Central" data-domain="lepetitcentral.ch" aria-hidden="true"><img src="assets/images/shot-central-1600.webp" srcset="assets/images/shot-central-800.webp 800w, assets/images/shot-central-1600.webp 1600w" sizes="(min-width: 920px) 860px, calc(100vw - 32px)" alt="Page d'accueil du P'tit Central, café-restaurant de quartier à Lausanne, cadre d'azulejos bleu et blanc" width="1600" height="1000" loading="lazy" decoding="async"></div>
@@ -521,87 +534,81 @@
             </figure>
         </section>
 
-        <!-- SERVICES — quatre fenêtres en quinconce. Textes de /services. -->
+        <!-- SERVICES — quatre apps en quinconce, chaque fenêtre posée dans
+             son écran. Textes de /services ; les bulles sont une mise en
+             scène (pas des témoignages), masquées aux lecteurs d'écran. -->
         <section class="desk-wrap block" id="services" aria-labelledby="servicesTitle">
             <div class="section-head reveal">
-                <p class="desk-label">Services</p>
+                <p class="badge">Services</p>
                 <h2 class="section-title" id="servicesTitle">Du site internet aux outils qui font tourner votre entreprise.</h2>
             </div>
 
-            <div class="feats">
-                <article class="feat reveal">
+            <div class="feats" data-feats>
+                <article class="feat">
                     <div class="feat__text">
-                        <span class="bubble" aria-hidden="true">WAB.</span>
+                        <span class="typing" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                        <div class="chat" aria-hidden="true">
+                            <p class="chat__ask">Un site qui tient sur mobile&nbsp;?</p>
+                            <p class="chat__reply">On le code de A à Z.</p>
+                        </div>
                         <div class="feat__copy">
                             <h3 class="feat__title">Sites sur mesure</h3>
                             <p class="feat__line">Codés de A à Z, rapides sur mobile, pensés pour Google.</p>
                         </div>
                     </div>
                     <figure class="feat__media">
-                        <div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title">lepetitcentral.ch</span></div><div class="win__body"><img src="assets/images/shot-central-1600.webp" srcset="assets/images/shot-central-800.webp 800w, assets/images/shot-central-1600.webp 1600w" sizes="(min-width: 900px) 690px, 100vw" alt="Page d'accueil du P'tit Central, café-restaurant de la rue Centrale à Lausanne" width="1600" height="1000" loading="lazy" decoding="async"></div></div>
+                        <div class="screen"><div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--site" aria-hidden="true"></span>lepetitcentral.ch</span></div><div class="win__body"><img src="assets/images/shot-central-1600.webp" srcset="assets/images/shot-central-800.webp 800w, assets/images/shot-central-1600.webp 1600w" sizes="(min-width: 900px) 590px, 100vw" alt="Page d'accueil du P'tit Central, café-restaurant de la rue Centrale à Lausanne" width="1600" height="1000" loading="lazy" decoding="async"></div></div></div>
                     </figure>
                 </article>
-
-                <article class="feat feat--flip reveal">
+                <article class="feat feat--flip">
                     <div class="feat__text">
-                        <span class="bubble" aria-hidden="true">WAB.</span>
+                        <span class="typing" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                        <div class="chat" aria-hidden="true">
+                            <p class="chat__ask">Tout vit dans un tableur.</p>
+                            <p class="chat__reply">On en fait votre outil.</p>
+                        </div>
                         <div class="feat__copy">
                             <h3 class="feat__title">Applications de gestion</h3>
                             <p class="feat__line">Dessinées autour de votre métier, livrées module par module.</p>
                         </div>
                     </div>
-                    <figure class="feat__media" data-watch data-perch-host>
-                        <canvas class="win-perch" data-perch="fly" data-scale="3" data-color="3"></canvas><div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title">Agenda — Finances</span></div><div class="win__body"><img class="scroll-shot" src="assets/images/app-agenda-finances-1280.webp" srcset="assets/images/app-agenda-finances-1280.webp 1280w, assets/images/app-agenda-finances-2560.webp 2560w" sizes="(min-width: 900px) 690px, 100vw" alt="L'écran Finances d'une application de gestion conçue par le studio : encaissé, facturé et derniers paiements" width="1280" height="1000" loading="lazy" decoding="async"><span class="win__demo">Données de démonstration</span></div></div>
+                    <figure class="feat__media" data-watch>
+                        <div class="screen"><div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--chart" aria-hidden="true"></span>Agenda — Finances</span></div><div class="win__body"><img class="scroll-shot" src="assets/images/app-agenda-finances-1280.webp" srcset="assets/images/app-agenda-finances-1280.webp 1280w, assets/images/app-agenda-finances-2560.webp 2560w" sizes="(min-width: 900px) 590px, 100vw" alt="L'écran Finances d'une application de gestion conçue par le studio : encaissé, facturé et derniers paiements" width="1280" height="1000" loading="lazy" decoding="async"><span class="win__demo">Données de démonstration</span></div></div></div>
                     </figure>
                 </article>
-
-                <article class="feat reveal">
+                <article class="feat">
                     <div class="feat__text">
-                        <span class="bubble" aria-hidden="true">WAB.</span>
+                        <span class="typing" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                        <div class="chat" aria-hidden="true">
+                            <p class="chat__ask">Les devis me prennent mes soirées.</p>
+                            <p class="chat__reply">Ils partiront tout seuls.</p>
+                        </div>
                         <div class="feat__copy">
                             <h3 class="feat__title">Automatisation et IA</h3>
                             <p class="feat__line">Devis, factures et suivi client, tout seuls. L'IA, là où elle fait gagner du temps.</p>
                         </div>
                     </div>
                     <figure class="feat__media" data-watch="once" aria-hidden="true">
-                        <div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title">Automatisations</span></div><div class="win__body">
+                        <div class="screen"><div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--bolt" aria-hidden="true"></span>Automatisations</span></div><div class="win__body">
                             <div class="auto">
                                 <div class="notif"><span class="notif__icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7V3Z"/><path d="M14 3v5h5"/></svg></span><span class="notif__name">Devis</span><span class="notif__state"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17 19 7"/></svg>Généré</span></div>
                                 <div class="notif"><span class="notif__icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7V3Z"/><path d="M14 3v5h5"/><path d="M10 13h6M10 17h4"/></svg></span><span class="notif__name">Facture</span><span class="notif__state"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17 19 7"/></svg>Envoyée</span></div>
                                 <div class="notif"><span class="notif__icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span class="notif__name">Newsletter</span><span class="notif__state">Envoi automatique</span></div>
                                 <div class="notif notif--ask"><span class="notif__ask">Résume les demandes de la semaine.</span><span class="notif__reply"><span></span><span></span></span></div>
                             </div>
-                        </div></div>
-                    </figure>
-                </article>
-
-                <article class="feat feat--flip reveal">
-                    <div class="feat__text">
-                        <span class="bubble" aria-hidden="true">WAB.</span>
-                        <div class="feat__copy">
-                            <h3 class="feat__title">Image de marque</h3>
-                            <p class="feat__line">Logo et identité visuelle. Ici, LAZIZZE.</p>
-                        </div>
-                    </div>
-                    <figure class="feat__media feat__media--brand">
-                        <div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title">LAZIZZE — identité</span></div><div class="win__body"><img src="assets/images/service-branding-lazizze.webp" alt="Identité visuelle de LAZIZZE, DJ à Lausanne : logotype noir sur aplat rose" width="900" height="495" loading="lazy" decoding="async"></div></div>
+                        </div></div></div>
                     </figure>
                 </article>
             </div>
         </section>
 
-        <!-- LA LETTRE — d'Eliott et Matt, écrite avec les phrases du site. -->
-        <section class="desk-wrap block" id="lettre" aria-labelledby="letterTitle">
+        <!-- LA LETTRE — d'Eliott et Matt, dans Notes. Une nuée d'oiseaux
+             arrive quand elle entre à l'écran (js/desk/arrival.js). -->
+        <section class="block letter-wrap" id="lettre" aria-labelledby="letterTitle">
             <div class="letter-zone">
-                <h2 class="desk-label reveal" id="letterTitle">Deux frères, un seul interlocuteur</h2>
-
-                <div class="photo photo--eliott" aria-hidden="true">
-                    <div class="win"><div class="win__bar"><span class="win__lights"></span></div><div class="win__body"><img src="assets/images/team-eliott.webp" alt="" width="960" height="1200" loading="lazy" decoding="async"></div></div>
-                    <span class="file-name">eliott.webp</span>
-                </div>
-
+                <h2 class="badge reveal" id="letterTitle">Le studio</h2>
                 <article class="win letter reveal">
-                    <div class="win__bar"><span class="win__lights"></span><span class="win__title">lettre.txt</span></div>
+                    <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--notes" aria-hidden="true"></span>Notes</span></div>
                     <div class="letter__body">
                         <p>Bonjour,</p>
                         <p>Nous sommes Eliott et Matt, deux frères à Lausanne. Eliott dessine, Matt développe&nbsp;: design et développement sous le même toit.</p>
@@ -612,59 +619,202 @@
                         <div class="letter__sign">
                             <p class="signer"><img src="assets/images/avatar-eliott.webp" alt="" width="144" height="144" loading="lazy" decoding="async"><span><span class="signer__name">Eliott Pina</span><span class="signer__role">Lead designer</span></span></p>
                             <p class="signer"><img src="assets/images/avatar-matt.webp" alt="" width="144" height="144" loading="lazy" decoding="async"><span><span class="signer__name">Matt Pina</span><span class="signer__role">Lead développeur</span></span></p>
+                            <p class="letter__mark" aria-hidden="true" translate="no">WAB.</p>
                         </div>
                     </div>
                 </article>
+            </div>
+        </section>
 
-                <div class="photo photo--matt" aria-hidden="true">
-                    <div class="win"><div class="win__bar"><span class="win__lights"></span></div><div class="win__body"><img src="assets/images/team-matt.webp" alt="" width="960" height="1200" loading="lazy" decoding="async"></div></div>
-                    <span class="file-name">matt.webp</span>
+        <hr class="rule-dots">
+
+        <!-- LE MUR — les neuf projets en ligne, chacun dans sa fenêtre comme
+             sur le bureau du haut : la capture, le nom, l'adresse. Une
+             fenêtre ouvre la fiche du projet (lien vers /realisations). -->
+        <section class="block wall" id="travail" aria-labelledby="wallTitle">
+            <div class="section-head">
+                <h2 class="badge" id="wallTitle">Réalisations</h2>
+            </div>
+            <p class="wall__title">Fait à Lausanne</p>
+            <div class="desk-wrap">
+                <ul class="wall__grid">
+                    <li>
+                        <a class="shot" href="/realisations#zinema" data-card="zinema" data-title="zinema.ch" aria-label="Zinéma, ouvrir la fiche du projet">
+                            <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">Zinéma</span></span><span class="win__body"><img src="assets/images/shot-zinema-800.webp" srcset="assets/images/shot-zinema-800.webp 800w, assets/images/shot-zinema-1600.webp 1600w" sizes="(min-width: 960px) 340px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
+                            <span class="file-name">zinema.ch</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="shot" href="/realisations#memo" data-card="memo" data-title="lememo-eight.vercel.app" aria-label="LE MEMO, ouvrir la fiche du projet">
+                            <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">LE MEMO</span></span><span class="win__body"><img src="assets/images/shot-memo-800.webp" srcset="assets/images/shot-memo-800.webp 800w, assets/images/shot-memo-1600.webp 1600w" sizes="(min-width: 960px) 340px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
+                            <span class="file-name">lememo-eight.vercel.app</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="shot" href="/realisations#central" data-card="central" data-title="lepetitcentral.ch" aria-label="Le P'tit Central, ouvrir la fiche du projet">
+                            <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">Le P&#x27;tit Central</span></span><span class="win__body"><img src="assets/images/shot-central-800.webp" srcset="assets/images/shot-central-800.webp 800w, assets/images/shot-central-1600.webp 1600w" sizes="(min-width: 960px) 340px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
+                            <span class="file-name">lepetitcentral.ch</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="shot" href="/realisations#alliani" data-card="alliani" data-title="maison-alliani.com" aria-label="Maison Alliani, ouvrir la fiche du projet">
+                            <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">Maison Alliani</span></span><span class="win__body"><img src="assets/images/shot-alliani-800.webp" srcset="assets/images/shot-alliani-800.webp 800w, assets/images/shot-alliani-1600.webp 1600w" sizes="(min-width: 960px) 340px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
+                            <span class="file-name">maison-alliani.com</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="shot" href="/realisations#amarte" data-card="amarte" data-title="amarte.ch" aria-label="Amarte Studio, ouvrir la fiche du projet">
+                            <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">Amarte Studio</span></span><span class="win__body"><img src="assets/images/shot-amarte-800.webp" srcset="assets/images/shot-amarte-800.webp 800w, assets/images/shot-amarte-1600.webp 1600w" sizes="(min-width: 960px) 340px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
+                            <span class="file-name">amarte.ch</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="shot" href="/realisations#nadege" data-card="nadege" data-title="nadegemouine.ch" aria-label="Nadège Mouine, ouvrir la fiche du projet">
+                            <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">Nadège Mouine</span></span><span class="win__body"><img src="assets/images/shot-nadege-800.webp" srcset="assets/images/shot-nadege-800.webp 800w, assets/images/shot-nadege-1600.webp 1600w" sizes="(min-width: 960px) 340px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
+                            <span class="file-name">nadegemouine.ch</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="shot" href="/realisations#dj" data-card="dj" data-title="lazizze.com" aria-label="LAZIZZE DJ, ouvrir la fiche du projet">
+                            <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">LAZIZZE DJ</span></span><span class="win__body"><img src="assets/images/shot-dj-800.webp" srcset="assets/images/shot-dj-800.webp 800w, assets/images/shot-dj-1600.webp 1600w" sizes="(min-width: 960px) 340px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
+                            <span class="file-name">lazizze.com</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="shot" href="/realisations#slack" data-card="slack" data-title="la-slack.com" aria-label="La Slack, ouvrir la fiche du projet">
+                            <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">La Slack</span></span><span class="win__body"><img src="assets/images/shot-slack-800.webp" srcset="assets/images/shot-slack-800.webp 800w, assets/images/shot-slack-1600.webp 1600w" sizes="(min-width: 960px) 340px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
+                            <span class="file-name">la-slack.com</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="shot" href="/realisations#commissione" data-card="commissione" data-title="commissione-entretien.ch" aria-label="Commissione Entretien, ouvrir la fiche du projet">
+                            <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">Commissione Entretien</span></span><span class="win__body"><img src="assets/images/shot-commissione-800.webp" srcset="assets/images/shot-commissione-800.webp 800w, assets/images/shot-commissione-1600.webp 1600w" sizes="(min-width: 960px) 340px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
+                            <span class="file-name">commissione-entretien.ch</span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="wall__banner">9 projets en ligne, de Lausanne à Bavois&nbsp;(VD). <a href="/realisations">Voir le travail</a></p>
+            </div>
+        </section>
+
+        <!-- LE CIEL — trois façons de travailler avec nous, sur le ciel rose
+             du site, en trois paliers (prix donnés par Eliott le 3.10) :
+             site vitrine, site et outils, expérience sur mesure. -->
+        <section class="plans" id="offres" aria-labelledby="plansTitle">
+            <div class="desk-wrap">
+                <div class="section-head">
+                    <p class="badge badge--glass">Services</p>
+                    <h2 class="plans__title" id="plansTitle">Trois façons de travailler avec nous.</h2>
+                    <p class="plans__lede">Le prix suit le périmètre&nbsp;: nous le définissons ensemble après un premier échange.</p>
+                </div>
+                <ul class="plans__grid">
+                    <li>
+                        <article class="plan">
+                            <div class="plan__bar"><span class="win__lights"></span></div>
+                            <div class="plan__body">
+                                <h3 class="plan__name">Site vitrine</h3>
+                                <p class="plan__line">Votre vitrine, codée de A à Z.</p>
+                                <p class="plan__for">De 3 à 6 semaines</p>
+                                <div class="plan__price">
+                                    <p class="plan__amount">1&#x27;000 – 2&#x27;500&nbsp;CHF</p>
+                                    <p class="plan__note">Pour un simple site vitrine</p>
+                                    <a href="mailto:contact@wearebrothers.ch" data-contact class="glass-btn">Parlons-en</a>
+                                </div>
+                                <p class="plan__inc">Inclus</p>
+                                <ul class="plan__list"><li>Codé à la main, sans WordPress ni Wix</li><li>Dessiné pour le téléphone d’abord</li><li>Pensé pour Google et le référencement local</li><li>Hébergé en Suisse chez Infomaniak, inclus</li><li>Le domaine, le code et les contenus vous appartiennent</li></ul>
+                            </div>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="plan plan--main">
+                            <p class="plan__badge">Ce qui nous distingue</p><div class="plan__bar"><span class="win__lights"></span></div>
+                            <div class="plan__body">
+                                <h3 class="plan__name">Site et outils</h3>
+                                <p class="plan__line">Le site, et les outils qui font tourner votre entreprise.</p>
+                                <p class="plan__for">Pour les process qui vivent dans un tableur</p>
+                                <div class="plan__price">
+                                    <p class="plan__amount">2&#x27;500 – 7&#x27;000&nbsp;CHF</p>
+                                    <p class="plan__note">Avec outil de gestion, e-commerce et options</p>
+                                    <a href="mailto:contact@wearebrothers.ch" data-contact class="glass-btn glass-btn--pink">Parlons-en</a>
+                                </div>
+                                <p class="plan__inc">Inclus</p>
+                                <ul class="plan__list"><li>Tout ce que comprend le site vitrine</li><li>Un outil de gestion dessiné autour de votre métier</li><li>Une boutique en ligne, en option</li><li>Caisse, CMS, boutique&nbsp;: vous gérez seul</li><li>Automatisations et IA, là où elles font gagner du temps</li></ul>
+                            </div>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="plan">
+                            <div class="plan__bar"><span class="win__lights"></span></div>
+                            <div class="plan__body">
+                                <h3 class="plan__name">Expérience sur mesure</h3>
+                                <p class="plan__line">Une expérience poussée, avec refonte de marque.</p>
+                                <p class="plan__for">Pour les marques et les créatifs</p>
+                                <div class="plan__price">
+                                    <p class="plan__amount">Dès 7&#x27;000&nbsp;CHF</p>
+                                    <p class="plan__note">Sur devis, après un premier échange</p>
+                                    <a href="mailto:contact@wearebrothers.ch" data-contact class="glass-btn">Parlons-en</a>
+                                </div>
+                                <p class="plan__inc">Inclus</p>
+                                <ul class="plan__list"><li>Refonte de marque&nbsp;: logo et identité visuelle</li><li>Direction artistique et motion design</li><li>Un site qui ne ressemble à aucun autre</li><li>Cartes de visite et imprimés</li><li>Des pièces avec Memories Store</li></ul>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+                <div class="term-card" id="contact">
+                    <div class="term-card__bar"><span class="win__lights"></span></div>
+                    <div class="term-card__body">
+                        <div>
+                            <p class="term-card__cmd">&gt; contact<span class="term-card__caret" aria-hidden="true"></span></p>
+                            <p class="term-card__text">Écrivez-nous, réponse sous 24&nbsp;h ouvrées. Sans engagement.</p>
+                        </div>
+                        <a href="mailto:contact@wearebrothers.ch" data-contact class="glass-btn">Écrire au studio</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- LES ÉTAPES — les quatre temps réels d'un projet (Work). -->
-        <section class="desk-wrap block" id="deroule" aria-labelledby="stepsTitle">
-            <div class="section-head reveal">
-                <h2 class="section-title" id="stepsTitle">Un projet, simplement.</h2>
-                <p class="section-lede">De 3 à 6 semaines pour un site vitrine.</p>
-            </div>
-            <ol class="steps" data-reveal-group>
-                <li class="win step reveal"><div class="win__bar"><span class="win__lights"></span><span class="win__title">on-ecoute.txt</span></div><div class="step__body">
-                    <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3v3M12 3v3"/></svg>
-                    <h3 class="step__name">On écoute.</h3>
-                    <p class="step__desc">Un café à Lausanne ou un appel. Vous parlez de votre métier, on prend des notes.</p>
-                </div></li>
-                <li class="win step reveal"><div class="win__bar"><span class="win__lights"></span><span class="win__title">on-chiffre.txt</span></div><div class="step__body">
-                    <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7V3Z"/><path d="M14 3v5h5"/><path d="M10 13h6M10 17h4"/></svg>
-                    <h3 class="step__name">On chiffre.</h3>
-                    <p class="step__desc">Périmètre, planning et prix posés noir sur blanc, avant de commencer.</p>
-                </div></li>
-                <li class="win step reveal"><div class="win__bar"><span class="win__lights"></span><span class="win__title">on-dessine.txt</span></div><div class="step__body">
-                    <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="m13.5 6-3 12"/></svg>
-                    <h3 class="step__name">On dessine, on code.</h3>
-                    <p class="step__desc">Un point chaque semaine. Vous validez chaque étape.</p>
-                </div></li>
-                <li class="win step reveal"><div class="win__bar"><span class="win__lights"></span><span class="win__title">on-reste-la.txt</span></div><div class="step__body">
-                    <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18Z"/></svg>
-                    <h3 class="step__name">On reste là.</h3>
-                    <p class="step__desc">Après la mise en ligne, on ne disparaît pas&nbsp;: maintenance et évolutions, avec les mêmes personnes.</p>
-                </div></li>
-            </ol>
-        </section>
-
-        <!-- L'APPEL — une boîte de dialogue, le bouton rose par défaut. -->
-        <section class="desk-wrap block" id="contact" aria-labelledby="closingTitle">
-            <div class="win dialog reveal">
-                <div class="win__bar"><span class="win__lights"></span><span class="win__title">Nouveau projet</span></div>
-                <div class="dialog__body">
-                    <canvas class="dialog__icon" data-perch="flap" data-scale="2" data-color="4" aria-hidden="true"></canvas>
-                    <h2 class="dialog__title" id="closingTitle">Et si le prochain projet était le vôtre&nbsp;?</h2>
-                    <p class="dialog__text">Quelques lignes suffisent pour commencer. Nous vous répondons sous 24&nbsp;h ouvrées, sans engagement.</p>
-                    <div class="dialog__actions">
-                        <a href="mailto:contact@wearebrothers.ch" class="aqua">Écrire un email</a>
-                        <a href="mailto:contact@wearebrothers.ch" data-contact class="aqua aqua--pink">Démarrer un projet</a>
-                    </div>
+        <!-- LA FAQ — huit questions reprises mot pour mot de la page Création
+             de site internet ; leur balisage FAQPage reste sur cette page. -->
+        <section class="block faq-home" id="questions" aria-labelledby="faqTitle">
+            <div class="desk-wrap">
+                <div class="section-head">
+                    <p class="badge">FAQ</p>
+                    <h2 class="faq-home__title" id="faqTitle">Questions fréquentes</h2>
+                    <p class="section-lede">Prix, délais, hébergement, référencement&nbsp;: ce qu'on nous demande avant de commencer.</p>
+                </div>
+                <div class="faq-home__list">
+                    <details class="qa" open>
+                        <summary class="qa__q">Site sur mesure ou WordPress, quelle différence&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
+                        <div class="qa__a"><p>Un site WordPress assemble un thème et des extensions qu'il faut maintenir et mettre à jour. Nous écrivons le code de votre site de A à Z&nbsp;: rien d'inutile n'est chargé, la page s'affiche presque instantanément sur téléphone, et le site vous appartient de bout en bout.</p></div>
+                    </details>
+                    <details class="qa">
+                        <summary class="qa__q">Combien coûte la création d'un site internet&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
+                        <div class="qa__a"><p>Le prix suit le périmètre&nbsp;: nombre de pages, design, fonctionnalités, contenus à produire. Nous le définissons ensemble après un premier échange, sans surprise ensuite, et le paiement peut être échelonné en plusieurs mensualités. Vous recevez une proposition sous 24&nbsp;h ouvrées.</p></div>
+                    </details>
+                    <details class="qa">
+                        <summary class="qa__q">Combien de temps prend la création d'un site internet&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
+                        <div class="qa__a"><p>Comptez généralement 3 à 6 semaines pour un site vitrine, davantage pour un projet sur mesure ou une boutique en ligne. Le calendrier est fixé ensemble au départ, avec des points réguliers jusqu'à la mise en ligne.</p></div>
+                    </details>
+                    <details class="qa">
+                        <summary class="qa__q">Que dois-je préparer avant le premier rendez-vous&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
+                        <div class="qa__a"><p>Rien d'obligatoire. Venez avec votre activité, ce que vous attendez du site et, si vous en avez, des sites que vous aimez. Logo, textes et photos existants sont bienvenus&nbsp;; s'ils manquent, nous voyons ensemble comment les produire, et cela entre dans la proposition.</p></div>
+                    </details>
+                    <details class="qa">
+                        <summary class="qa__q">Mon site sera-t-il adapté au téléphone&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
+                        <div class="qa__a"><p>Oui. Chaque site est dessiné pour le petit écran d'abord, puis adapté aux tablettes et aux ordinateurs. La plupart de vos visiteurs arrivent depuis un téléphone, c'est là que le site doit être impeccable.</p></div>
+                    </details>
+                    <details class="qa">
+                        <summary class="qa__q">Mon site internet sera-t-il bien référencé sur Google&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
+                        <div class="qa__a"><p>Chaque site est codé pour être rapide, lisible par Google et structuré pour le référencement local&nbsp;: balises, données structurées, plan du site, textes travaillés avec vous autour de votre activité et de votre région. Le référencement se construit ensuite dans la durée, et nous restons disponibles pour le faire progresser.</p></div>
+                    </details>
+                    <details class="qa">
+                        <summary class="qa__q">Qui héberge le site, et à qui appartient-il&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
+                        <div class="qa__a"><p>Le site est hébergé en Suisse chez Infomaniak, hébergement inclus, avec un guide pour le gérer vous-même. Le nom de domaine, le code et les contenus vous appartiennent.</p></div>
+                    </details>
+                    <details class="qa">
+                        <summary class="qa__q">Faites-vous aussi la refonte d'un site existant&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
+                        <div class="qa__a"><p>Oui. Nous gardons ce qui fonctionne — contenus, adresses des pages, référencement acquis — et nous redessinons et recodons le reste. Les anciennes adresses sont conservées ou redirigées, et le nouveau site remplace l'ancien sans interruption.</p></div>
+                    </details>
                 </div>
             </div>
         </section>
@@ -694,8 +844,7 @@
             </div>
             <svg class="pixel-name" data-watch="once" viewBox="-1 -1 202 72" role="img" aria-label="WAB.">
                 <defs>
-                    <linearGradient id="wab-px-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0"/><stop offset="1"/></linearGradient>
-                    <symbol id="wab-px" viewBox="0 0 10 10" width="10" height="10"><rect class="px__body" x="0.4" y="0.4" width="9.2" height="9.2" rx="2.2"/><rect class="px__shine" x="1.6" y="1.1" width="6.8" height="3.4" rx="1.6"/></symbol>
+                    <symbol id="wab-px" viewBox="0 0 10 10" width="10" height="10" overflow="visible"><rect class="px__edge" x="0.5" y="1.6" width="9" height="9" rx="0.6"/><rect class="px__body" x="0.5" y="0.5" width="9" height="9" rx="0.6"/></symbol>
                 </defs>
                 <use class="px" href="#wab-px" x="0" y="0"/>
                 <use class="px" href="#wab-px" x="40" y="0"/>
@@ -760,6 +909,23 @@
             <p class="foot__legal">&copy; 2026 WeAreBrothers Studio</p>
         </div>
     </footer>
+
+    <!-- LE DOCK — sur ordinateur, les apps du studio, en verre. Sans
+         JavaScript, ce sont de simples liens ; le Terminal n'existe
+         qu'avec lui. Un point marque une app ouverte, les fenêtres
+         réduites se rangent après le séparateur (js/os/dock.js). Il se
+         range pendant la lecture et revient quand on remonte. -->
+    <nav class="dock" aria-label="Dock" data-dock>
+        <ul class="dock__apps">
+            <li><a class="dock__item" href="/realisations" data-app="work"><img class="app-icon" src="assets/icons/app-work.svg" alt="" width="48" height="48"><span class="dock__label">Work</span></a></li>
+            <li><a class="dock__item" href="#services" data-app="services"><img class="app-icon" src="assets/icons/app-services.svg" alt="" width="48" height="48"><span class="dock__label">Services</span></a></li>
+            <li><a class="dock__item" href="/studio" data-app="about"><img class="app-icon" src="assets/icons/app-about.svg" alt="" width="48" height="48"><span class="dock__label">About</span></a></li>
+            <li><a class="dock__item" href="#lettre" data-app="notes"><img class="app-icon" src="assets/icons/app-notes.svg" alt="" width="48" height="48"><span class="dock__label">Lettre</span></a></li>
+            <li><button class="dock__item" type="button" data-app="terminal" data-js-only><img class="app-icon" src="assets/icons/app-terminal.svg" alt="" width="48" height="48"><span class="dock__label">Terminal</span></button></li>
+            <li><a class="dock__item" href="mailto:contact@wearebrothers.ch" data-contact data-app="contact"><img class="app-icon" src="assets/icons/app-mail.svg" alt="" width="48" height="48"><span class="dock__label">Contact</span></a></li>
+        </ul>
+        <ul class="dock__shelf" data-dock-shelf aria-label="Fenêtres réduites" hidden></ul>
+    </nav>
 
 </body>
 

@@ -1,0 +1,260 @@
+/* ============================================
+   Page Work — le dossier Work, ouvert sur le bureau
+   Une fenêtre de verre (os-window.css), une barre d'outils (le
+   nombre de projets, la bascule Icônes / Liste), puis les projets.
+   Vue icônes : la capture en petite fenêtre, le nom dessous, sur deux
+   lignes au plus. Vue liste : une ligne par projet, la capture, le
+   nom et le contexte. Un projet survolé ou pris au clavier prend le
+   rose système, comme dans le Finder.
+   La disposition suit la largeur du dossier lui-même (requête de
+   conteneur), pas celle de l'écran.
+   ============================================ */
+
+.pw-finder {
+    position: relative;
+    width: min(920px, 100%);
+    margin-inline: auto;
+}
+
+.pw-finder > .win {
+    container-type: inline-size;
+    box-shadow: 0 0 0 1px var(--win-edge), var(--glass-shadow-lift);
+}
+
+.pw-finder__perch {
+    display: none;
+    right: 28px;
+}
+
+/* Au téléphone, l'oiseau toucherait la phrase au-dessus du dossier. */
+@media (min-width: 700px) {
+    .pw-finder__perch {
+        display: block;
+    }
+}
+
+.pw-finder__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 50px;
+    padding: 8px 14px;
+    background: var(--paper);
+    box-shadow: inset 0 -1px 0 var(--line);
+}
+
+.pw-finder__count {
+    font-size: var(--t-small);
+    white-space: nowrap;
+    color: var(--ink-muted);
+}
+
+.pw-finder__views {
+    display: flex;
+    padding: 2px;
+    border-radius: var(--r-ctl);
+    box-shadow: inset 0 0 0 1px var(--line-strong);
+}
+
+.pw-finder__view {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 32px;
+    padding: 0 12px;
+    border: 0;
+    /* Rayon imbriqué : celui du cadre, moins son retrait. */
+    border-radius: calc(var(--r-ctl) - 2px);
+    background: none;
+    font: inherit;
+    font-size: var(--t-small);
+    color: var(--ink-muted);
+    cursor: pointer;
+    transition: background-color 0.2s var(--ease-out), color 0.2s var(--ease-out);
+}
+
+.pw-finder__view .sym,
+.pw-finder__view svg {
+    width: 15px;
+    height: 15px;
+}
+
+.pw-finder__view[aria-pressed='true'] {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.pw-finder__items {
+    list-style: none;
+    padding: 14px;
+    background: var(--paper);
+}
+
+.pw-finder__item {
+    -webkit-tap-highlight-color: transparent;
+    display: block;
+    padding: 6px;
+    border-radius: var(--r-ctl);
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.pw-finder__item:focus-visible {
+    outline-offset: 0;
+}
+
+.pw-finder__thumb {
+    display: block;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: var(--r-ctl);
+    background: var(--desk);
+    box-shadow: 0 0 0 1px var(--win-edge);
+    transition: box-shadow 0.2s var(--ease-out), transform 0.3s var(--ease-out);
+}
+
+.pw-finder__thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pw-finder__name {
+    display: block;
+    font-size: var(--t-small);
+    line-height: 1.35;
+}
+
+.pw-finder__context {
+    display: none;
+    font-size: var(--t-cap);
+    line-height: 1.4;
+    color: var(--ink-muted);
+}
+
+/* Dossier étroit (320 px) : le nombre et la bascule tiennent sur une
+   ligne en resserrant les marges. */
+@container (max-width: 340px) {
+    .pw-finder__bar {
+        padding-inline: 10px;
+    }
+
+    .pw-finder__view {
+        padding-inline: 8px;
+    }
+}
+
+/* ── Vue icônes ── */
+.pw-finder__items[data-view='icons'] {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 6px;
+}
+
+[data-view='icons'] .pw-finder__name {
+    display: -webkit-box;
+    width: fit-content;
+    max-width: 100%;
+    margin: 8px auto 0;
+    padding: 1px 6px;
+    border-radius: var(--r-px);
+    overflow: hidden;
+    text-align: center;
+    text-wrap: balance;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+}
+
+@container (min-width: 520px) {
+    .pw-finder__items[data-view='icons'] {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@container (min-width: 760px) {
+    .pw-finder__items[data-view='icons'] {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
+/* ── Vue liste ── */
+.pw-finder__items[data-view='list'] {
+    display: grid;
+    gap: 2px;
+    padding: 8px;
+}
+
+[data-view='list'] .pw-finder__item {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 14px;
+    align-content: center;
+    align-items: center;
+}
+
+[data-view='list'] .pw-finder__thumb {
+    grid-row: span 2;
+    border-radius: 8px;
+}
+
+[data-view='list'] .pw-finder__name {
+    align-self: end;
+    font-weight: var(--w-strong);
+}
+
+[data-view='list'] .pw-finder__context {
+    display: block;
+    align-self: start;
+}
+
+/* ── Survol et clavier : le rose système ── */
+[data-view='icons'] .pw-finder__item:focus-visible .pw-finder__name,
+[data-view='list'] .pw-finder__item:focus-visible {
+    background: var(--accent);
+    color: var(--on-accent);
+}
+
+[data-view='list'] .pw-finder__item:focus-visible .pw-finder__context {
+    color: var(--on-accent);
+}
+
+[data-view='icons'] .pw-finder__item:focus-visible .pw-finder__thumb {
+    box-shadow: 0 0 0 2px var(--accent);
+}
+
+@media (hover: hover) {
+    [data-view='icons'] .pw-finder__item:hover .pw-finder__thumb {
+        box-shadow: 0 0 0 1px var(--win-edge), var(--shadow-soft);
+        transform: translateY(-2px);
+    }
+
+    [data-view='icons'] .pw-finder__item:hover .pw-finder__name {
+        background: var(--accent);
+        color: var(--on-accent);
+    }
+
+    [data-view='list'] .pw-finder__item:hover:not(:focus-visible) {
+        background: var(--hover-tint);
+    }
+
+    .pw-finder__view[aria-pressed='false']:hover {
+        color: var(--ink);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pw-finder__thumb,
+    .pw-finder__view {
+        transition: none;
+    }
+
+    [data-view='icons'] .pw-finder__item:hover .pw-finder__thumb {
+        transform: none;
+    }
+}

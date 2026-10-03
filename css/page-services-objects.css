@@ -1,0 +1,86 @@
+/* ============================================
+   Services — l'aperçu « Print et vêtements »
+   Deux cartes de visite au format réel (85 × 55 mm) et l'étiquette
+   cousue d'un vêtement Memories Store, posées sur la trame du bureau.
+   Les tailles suivent la hauteur de la fenêtre (cqh).
+   ============================================ */
+
+/* ── Print et vêtements : deux cartes de visite et une étiquette ── */
+.svc-objects {
+    display: grid;
+    place-items: center;
+}
+
+.svc-card,
+.svc-tag {
+    position: absolute;
+    border-radius: 6px;
+    box-shadow: var(--shadow-object);
+}
+
+/* Le format d'une carte de visite : 85 × 55 mm. */
+.svc-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 42%;
+    aspect-ratio: 85 / 55;
+    padding: 4cqh 4cqh 3.4cqh;
+    font-size: clamp(8px, 3.2cqh, 13px);
+    line-height: 1.3;
+}
+
+.svc-card--back {
+    left: 6%;
+    top: 14%;
+    rotate: -7deg;
+    /* Le bas de la carte passe sous la carte noire : le texte en haut. */
+    justify-content: flex-start;
+    background: var(--paper);
+    color: var(--ink-muted);
+}
+
+.svc-card--front {
+    left: 18%;
+    top: 40%;
+    rotate: 4deg;
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.svc-card--front b {
+    font-size: clamp(16px, 9cqh, 34px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--pink-soft);
+}
+
+/* L'étiquette cousue d'un vêtement. */
+.svc-tag {
+    right: 6%;
+    top: 22%;
+    display: grid;
+    justify-items: center;
+    gap: 1cqh;
+    width: 26%;
+    padding: 6cqh 2cqh;
+    rotate: 3deg;
+    background: var(--paper);
+    box-shadow: 0 0 0 1px var(--line), var(--shadow-object);
+    font-size: clamp(8px, 3cqh, 12px);
+    line-height: 1.2;
+    text-align: center;
+}
+
+.svc-tag b {
+    font-size: clamp(9px, 3.8cqh, 15px);
+}
+
+.svc-tag small {
+    margin-top: 2cqh;
+    padding-top: 2cqh;
+    border-top: 1px dashed var(--line-strong);
+    font-size: inherit;
+    color: var(--ink-muted);
+}
+

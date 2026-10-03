@@ -1,0 +1,186 @@
+/* ============================================
+   WAB OS — About : le premier écran, l'équipe
+   Le titre et une phrase au centre, net. Dessous, trois fenêtres
+   « Contacts », une par personne : la vraie photo, puis le nom, le
+   rôle et le texte sur le blanc de la fiche — jamais posés sur le
+   portrait, où ils masquaient le visage. Celle du milieu descend d'un
+   cran (quinconce, comme le bureau de l'accueil) ; le désordre
+   (kaomoji, oiseau) reste en bordure.
+   Au téléphone : les fiches défilent au doigt, le nom de fichier et
+   le kaomoji disparaissent.
+   Toutes les valeurs viennent des jetons (os-tokens.css).
+   ============================================ */
+
+.ab-hero {
+    position: relative;
+    padding-top: calc(var(--bar-h) + clamp(48px, 8vw, 104px));
+    overflow-x: clip;
+}
+
+.ab-hero__center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding-inline: var(--gutter);
+    text-align: center;
+}
+
+/* « L'équipe » : 8 signes à 0,6 em en chasse fixe, soit 4,8 em.
+   À 320 px, 14vw donne 45 px, soit 215 px de large pour 288 de
+   colonne ; à 1440 px, le plafond de 8 rem donne 614 px. */
+.ab-hero__title {
+    font-size: clamp(3rem, 14vw, 8rem);
+    font-weight: var(--w-strong);
+    line-height: 0.95;
+    letter-spacing: -0.06em;
+}
+
+.ab-hero__lede {
+    max-width: 58ch;
+    font-size: var(--t-lede);
+    line-height: 1.5;
+    text-wrap: balance;
+}
+
+/* Sur grand écran, une phrase par ligne. */
+@media (min-width: 860px) {
+    .ab-hero__line {
+        display: block;
+    }
+}
+
+/* ── Les fiches ── */
+.ab-team {
+    --card-w: min(78vw, 320px);
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: var(--card-w);
+    gap: 16px;
+    margin-top: clamp(40px, 6vw, 72px);
+    padding: 18px var(--gutter) 28px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+    list-style: none;
+}
+
+.ab-team::-webkit-scrollbar {
+    display: none;
+}
+
+.ab-card {
+    position: relative;
+    scroll-snap-align: start;
+}
+
+.ab-card .win {
+    height: 100%;
+}
+
+.ab-card .win__body {
+    display: flex;
+    flex-direction: column;
+    background: var(--win-bg);
+}
+
+/* Le portrait : 4/5, le format natif des photos d'Eliott et de Matt ;
+   celle d'Ivan (3/4) perd 6 % en hauteur, calés sur le visage. */
+.ab-card__photo {
+    aspect-ratio: 4 / 5;
+    background: var(--desk);
+}
+
+.ab-card .win__body .ab-card__photo img {
+    object-position: 50% 30%;
+}
+
+.ab-card--ivan .win__body .ab-card__photo img {
+    object-position: 45% 38%;
+}
+
+.ab-card__info {
+    display: grid;
+    gap: 4px;
+    padding: 16px 18px 20px;
+    box-shadow: inset 0 1px 0 var(--line);
+}
+
+.ab-card__name {
+    font-size: 1.15rem;
+    font-weight: var(--w-strong);
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+}
+
+/* Le rôle en encre pleine : au téléphone, le texte est la seule
+   ligne grise de la fiche. */
+.ab-card__role {
+    font-size: var(--t-small);
+    line-height: 1.4;
+}
+
+.ab-card__bio {
+    margin-top: 8px;
+    font-size: var(--t-small);
+    line-height: 1.6;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+}
+
+.ab-card > .file-name,
+.ab-kao {
+    display: none;
+}
+
+/* L'oiseau se pose sur la barre de la fiche de Matt, sur ordinateur
+   seulement : au téléphone, le défilement des fiches le rognerait. */
+.ab-card .win-perch {
+    display: none;
+    right: 22px;
+}
+
+/* ── Ordinateur : les trois fiches côte à côte, en quinconce ── */
+@media (min-width: 860px) {
+    .ab-team {
+        grid-auto-flow: row;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-auto-columns: auto;
+        gap: clamp(20px, 2.6vw, 36px);
+        max-width: calc(1040px + 2 * var(--gutter));
+        margin-inline: auto;
+        padding-bottom: 0;
+        overflow: visible;
+    }
+
+    .ab-card:nth-child(2) {
+        translate: 0 48px;
+    }
+
+    .ab-card > .file-name,
+    .ab-card .win-perch {
+        display: block;
+    }
+
+    .ab-kao {
+        display: block;
+        position: absolute;
+        font-size: var(--t-small);
+        white-space: nowrap;
+        color: var(--ink-muted);
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    .ab-kao--a {
+        top: calc(var(--bar-h) + 120px);
+        left: max(var(--gutter), calc(50% - 560px));
+    }
+
+    .ab-kao--b {
+        top: calc(var(--bar-h) + 300px);
+        right: max(var(--gutter), calc(50% - 600px));
+    }
+}

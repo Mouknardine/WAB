@@ -1,0 +1,120 @@
+/* ============================================
+   Services — le premier écran
+   Le centre reste net : le badge, le titre, deux boutons de verre.
+   Dessous, le Launchpad (page-services-pad.css). L'autocollant et le
+   kaomoji restent au bord, et seulement là où il y a de la place.
+   ============================================ */
+
+.svc-hero {
+    position: relative;
+    overflow-x: clip;
+    padding: calc(var(--bar-h) + clamp(56px, 9vw, 120px)) var(--gutter) 0;
+}
+
+.svc-hero__center {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    text-align: center;
+}
+
+/* 62 signes en chasse fixe (0,6 em) : sur trois lignes à 22 signes
+   maximum sur ordinateur, quatre au téléphone. */
+.svc-hero__title {
+    max-width: 22ch;
+    font-size: clamp(1.75rem, 4.2vw, 3.5rem);
+    font-weight: var(--w-strong);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+}
+
+.svc-hero__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: min(100%, 300px);
+    margin-top: 10px;
+}
+
+@media (min-width: 600px) {
+    .svc-hero__actions {
+        flex-direction: row;
+        justify-content: center;
+        width: auto;
+        gap: 16px;
+    }
+}
+
+/* ── Au bord : l'autocollant et le kaomoji ── */
+.svc-hero__sticker,
+.svc-hero__kao {
+    display: none;
+}
+
+@media (min-width: 1100px) {
+    .svc-hero__sticker,
+    .svc-hero__kao {
+        display: block;
+        position: absolute;
+        z-index: 1;
+    }
+
+    .svc-hero__sticker {
+        top: calc(var(--bar-h) + 72px);
+        left: 4vw;
+        rotate: -8deg;
+    }
+
+    .svc-hero__kao {
+        top: calc(var(--bar-h) + 210px);
+        right: 6vw;
+        rotate: 6deg;
+        font-size: var(--t-lede);
+        color: var(--ink-faint);
+    }
+}
+
+/* L'autocollant « HELLO my name is » : une étiquette blanche à bandeau
+   rose, le nom écrit dedans. */
+.svc-sticker {
+    width: 150px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: var(--paper);
+    box-shadow: 0 0 0 1px var(--glass-edge), var(--shadow-object);
+    text-align: center;
+}
+
+.svc-sticker__hello,
+.svc-sticker__mine {
+    display: block;
+    background: var(--pink);
+    color: var(--ink);
+}
+
+.svc-sticker__hello {
+    padding-top: 8px;
+    font-size: 1.1rem;
+    font-weight: var(--w-strong);
+    line-height: 1;
+    letter-spacing: 0.04em;
+}
+
+.svc-sticker__mine {
+    padding: 2px 0 7px;
+    font-size: 10px;
+}
+
+.svc-sticker__name {
+    display: block;
+    padding: 12px 0 14px;
+    font-size: 1.6rem;
+    font-weight: var(--w-strong);
+    line-height: 1;
+    letter-spacing: -0.04em;
+}

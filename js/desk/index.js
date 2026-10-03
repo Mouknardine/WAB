@@ -1,20 +1,24 @@
 // @ts-check
 /**
- * WAB. — Accueil « bureau »
- * Point d'entrée des comportements propres à l'accueil : fenêtres
- * qu'on déplace, parallaxe douce, vitrine des projets, éléments qui
- * s'animent une fois à l'écran, pixels du pied de page.
+ * WAB OS — accueil
+ * Point d'entrée des comportements propres à l'accueil : la lumière
+ * de l'heure, les fenêtres qu'on déplace, la parallaxe douce, la
+ * vitrine des projets, les éléments qui s'animent à l'écran, la
+ * nuée d'oiseaux autour de la lettre, les pixels du pied de page. Le système partagé (shell, ⌘K, fenêtres,
+ * lumière de l'heure, reflet des boutons) part de js/os/index.js.
  *
  * Chaque module est indépendant : si l'un échoue, les autres
  * continuent, et la page reste entièrement lisible sans eux.
  */
 
 // Même numéro partout où un fichier est importé : voir js/birds/index.js.
-import { initDrag } from './drag.js?v=1';
+import { initDrag } from './drag.js?v=2';
 import { initParallax } from './parallax.js?v=1';
 import { initShowcase } from './showcase.js?v=1';
 import { initWatch } from './watch.js?v=1';
-import { initPixels } from './pixels.js?v=1';
+import { initPixels } from './pixels.js?v=2';
+import { initFocusScroll } from './focus-scroll.js?v=1';
+import { initArrival } from './arrival.js?v=1';
 
 /** @type {Array<[string, () => void]>} */
 const MODULES = [
@@ -23,6 +27,8 @@ const MODULES = [
     ['showcase', initShowcase],
     ['watch', initWatch],
     ['pixels', initPixels],
+    ['focus-scroll', initFocusScroll],
+    ['arrival', initArrival],
 ];
 
 function boot() {

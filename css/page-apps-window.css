@@ -1,0 +1,198 @@
+/* ============================================
+   WAB OS — page Applications : l'application ouverte
+   Une grande fenêtre dans son écran (le cadre partagé .screen de
+   desk-blocks.css). Dans la barre, les modules en onglets segmentés ;
+   dans le corps, la capture du module, qui défile dans la fenêtre
+   comme dans l'app. Une capture plus courte que la fenêtre est
+   prolongée par le fond et le filet latéral relevés sur l'image
+   (--app-bg, --app-rule, --app-side) : jamais de bande vide.
+   Les fenêtres des modules, plus bas, reçoivent le même prolongement
+   (.app-fill).
+   ============================================ */
+
+.app-stage {
+    position: relative;
+    max-width: var(--app-stage);
+    margin: clamp(40px, 6vw, 64px) auto 0;
+}
+
+.app-screen {
+    position: relative;
+}
+
+/* L'oiseau sur l'écran : posé à droite, au-dessus des onglets. */
+.app-screen .win-perch {
+    right: 28px;
+}
+
+.app-win {
+    box-shadow: 0 0 0 1px var(--win-edge), var(--glass-shadow-lift);
+}
+
+/* ── La barre ── au téléphone, les onglets passent sous les
+   pastilles, sur toute la largeur. */
+.app-win__bar {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: var(--win-bar-h);
+    padding: 10px 12px;
+    row-gap: 10px;
+}
+
+.app-win__title {
+    display: none;
+}
+
+.app-tabs {
+    display: flex;
+    flex: 1 0 100%;
+    padding: 3px;
+    border-radius: var(--r-pill);
+    background: var(--tab-track);
+}
+
+.app-tab {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: var(--tab-h);
+    padding: 0 10px;
+    border: 0;
+    border-radius: var(--r-pill);
+    background: transparent;
+    font: inherit;
+    font-size: var(--t-cap);
+    font-weight: 500;
+    white-space: nowrap;
+    color: var(--ink-muted);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.2s var(--ease-out), color 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out), scale 0.12s var(--ease-out);
+}
+
+.app-tab .sym {
+    width: 14px;
+    height: 14px;
+}
+
+.app-tab[aria-selected='true'] {
+    background: var(--tab-on);
+    box-shadow: var(--tab-shadow);
+    color: var(--ink);
+}
+
+.app-tab:focus-visible {
+    outline-offset: 1px;
+}
+
+@media (hover: hover) {
+    .app-tab:not([aria-selected='true']):hover {
+        color: var(--ink);
+    }
+}
+
+.app-tab:active {
+    scale: 0.97;
+}
+
+/* ── Le corps ── */
+.app-win__body {
+    aspect-ratio: var(--app-ratio);
+}
+
+.app-panel {
+    position: absolute;
+    inset: 0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    animation: app-panel-in 0.24s var(--ease-out);
+}
+
+.app-panel:focus-visible {
+    outline-offset: -3px;
+}
+
+.app-win__body .app-panel img,
+.app-fill .app-fill__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: initial;
+}
+
+@keyframes app-panel-in {
+    from {
+        opacity: 0;
+    }
+}
+
+/* Le prolongement : le fond de l'app et le filet de sa barre latérale,
+   à la même position que sur la capture. */
+.app-panel,
+.app-fill {
+    background:
+        linear-gradient(90deg,
+            transparent var(--app-side),
+            var(--app-rule) var(--app-side),
+            var(--app-rule) calc(var(--app-side) + 1px),
+            transparent calc(var(--app-side) + 1px)),
+        var(--app-bg);
+}
+
+.app-fill .app-fill__img {
+    position: absolute;
+    inset: 0 0 auto;
+}
+
+/* Très petit écran : les trois onglets tiennent sans leurs symboles. */
+@media (max-width: 379px) {
+    .app-tab {
+        padding: 0 6px;
+    }
+
+    .app-tab .sym {
+        display: none;
+    }
+}
+
+@media (min-width: 700px) {
+    .app-win__bar {
+        position: relative;
+        flex-wrap: nowrap;
+        min-height: 46px;
+        padding-block: 0;
+    }
+
+    /* Les onglets au centre de la barre, comme une barre d'outils. */
+    .app-tabs {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        translate: -50% -50%;
+        flex: none;
+    }
+
+    .app-tab {
+        --tab-h: 32px;
+        flex: none;
+        padding: 0 14px;
+    }
+}
+
+@media (min-width: 900px) {
+    .app-win__title {
+        display: flex;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .app-panel {
+        animation: none;
+    }
+
+    .app-tab:active {
+        scale: 1;
+    }
+}

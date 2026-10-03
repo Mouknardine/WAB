@@ -1,0 +1,51 @@
+/* ============================================
+   WAB OS — ce qui passe par-dessus tout
+   La notification (« Email copié ») et l'oiseau qui vient tenir
+   compagnie au curseur. Toujours au-dessus des fenêtres et du dock.
+   ============================================ */
+
+/* ── La notification ── (js/os/toast.js), en bas au centre, au-dessus
+   du dock quand il est là. */
+.os-toast {
+    position: fixed;
+    z-index: var(--z-toast);
+    left: 50%;
+    bottom: max(24px, env(safe-area-inset-bottom));
+    margin-bottom: var(--toast-lift, 0px);
+    max-width: calc(100vw - 32px);
+    padding: 8px 14px;
+    border-radius: var(--r-ctl);
+    background: var(--ink);
+    font-size: var(--t-small);
+    color: var(--paper);
+    translate: -50% 8px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s var(--ease-out), translate 0.25s var(--ease-out);
+}
+
+@media (min-width: 900px) and (hover: hover) and (pointer: fine) {
+    .os-toast {
+        --toast-lift: var(--dock-space);
+    }
+}
+
+.os-toast.is-shown {
+    opacity: 1;
+    translate: -50% 0;
+}
+
+/* ── L'oiseau compagnon ── (js/os/idle-bird.js) */
+.idle-bird {
+    position: fixed;
+    z-index: var(--z-toast);
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    image-rendering: pixelated;
+    visibility: hidden;
+}
+
+.idle-bird.is-shown {
+    visibility: visible;
+}

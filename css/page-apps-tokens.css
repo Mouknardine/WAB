@@ -1,0 +1,50 @@
+/* ============================================
+   WAB OS — page Applications : jetons
+   Les seules valeurs propres à la page ; tout le reste vient de
+   desk-tokens.css. Les feuilles page-apps-*.css ne font que les
+   demander.
+   ============================================ */
+
+.page-apps {
+    /* ── La capture de l'application ── relevé sur l'image même
+       (app-agenda-aujourdhui) : le fond de l'app, son filet de barre
+       latérale et la position de ce filet (211 px sur 1280). Ils
+       prolongent la capture la plus courte jusqu'au bas de la fenêtre,
+       sans bande vide sous elle. */
+    --app-bg: #fbf9f7;
+    --app-rule: #eae8e7;
+    --app-side: calc(211 / 1280 * 100%);
+
+    /* ── La grande fenêtre ── le format des captures du site. */
+    --app-ratio: 16 / 10;
+    --app-stage: 1120px;
+
+    /* ── Les onglets ── le verre clair de la barre, l'onglet actif en
+       blanc plein, posé dessus. */
+    --tab-h: 36px;
+    --tab-track: rgba(11, 11, 12, 0.06);
+    --tab-on: var(--paper);
+    --tab-shadow: 0 1px 2px rgba(11, 11, 12, 0.12), 0 0 0 0.5px rgba(11, 11, 12, 0.08);
+
+    /* ── Titres de la page ── */
+    --t-app-hero: clamp(1.9rem, 4.6vw, 3.4rem);
+    --t-app-end: clamp(1.9rem, 5vw, 3.2rem);
+    --app-sky-fade: 20%;
+    /* Au téléphone, les cartes de l'approche défilent au doigt : la
+       carte suivante dépasse du bord pour l'annoncer. */
+    --app-way-w: 84%;
+}
+
+/* Les symboles qui manquent à sym.css, au même trait (d'après Lucide,
+   licence ISC), peints en masque comme les autres. */
+.page-apps .sym--check {
+    --sym: url('../assets/icons/sym-check.svg');
+}
+
+.page-apps .sym--clock {
+    --sym: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9.5'/%3E%3Cpath d='M12 7v5l3.2 2'/%3E%3C/svg%3E");
+}
+
+.page-apps .sym--phone {
+    --sym: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='6' y='2.5' width='12' height='19' rx='3'/%3E%3Cpath d='M11 18h2'/%3E%3C/svg%3E");
+}

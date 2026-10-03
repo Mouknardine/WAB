@@ -1,0 +1,88 @@
+/* ============================================
+   WAB OS — socle (partagé : body.os)
+   La trame du bureau et sa lumière, le rose système (sélection,
+   focus, curseur texte), la colonne et le rythme des sections.
+   ============================================ */
+
+/* La lumière de l'heure (--sky-*, os-sky.css) sur le fond de la
+   racine, au-dessus du blanc du bureau. Le corps de page reste
+   transparent : la couche de points (z-index négatif) se peint entre
+   le fond de la racine et lui — un fond sur le corps la cacherait. */
+:root:has(body.os) {
+    background:
+        radial-gradient(120% 50% at 50% 0%, var(--sky-glow), transparent 70%),
+        linear-gradient(180deg, var(--sky-top), transparent 900px),
+        var(--desk);
+}
+
+body.os {
+    background: transparent;
+}
+
+/* La trame : le motif « Dot Pattern » traduit sans React. Une seule
+   couche fixe, sous les oiseaux : sa couleur est le jeton --desk-dot,
+   le SVG vectoriel (16 px, un point de rayon 1 en 1,1) n'en est que le
+   masque — net sur tout écran, recoloriable sans toucher au dessin. */
+.os::before {
+    background: var(--desk-dot);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='1' cy='1' r='1'/%3E%3C/svg%3E") 0 0 / var(--desk-grid) var(--desk-grid) repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='1' cy='1' r='1'/%3E%3C/svg%3E") 0 0 / var(--desk-grid) var(--desk-grid) repeat;
+    animation: none;
+}
+
+/* ── Le rose, couleur système ── */
+.os ::selection {
+    background: var(--mark);
+    color: var(--ink);
+}
+
+.os {
+    caret-color: var(--pink);
+}
+
+.os :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* ── Colonne et rythme ── */
+.os-wrap,
+.desk-wrap {
+    width: 100%;
+    max-width: calc(var(--measure) + 2 * var(--gutter));
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+}
+
+/* Le badge des sections (Services, Le studio, Réalisations, FAQ) :
+   une petite pilule de verre clair. */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 14px;
+    border-radius: var(--r-pill);
+    background: var(--glass-strong);
+    box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px var(--glass-edge), 0 2px 6px rgba(11, 11, 12, 0.05);
+    font-size: var(--t-cap);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+}
+
+.block {
+    padding-top: var(--section);
+}
+
+/* La barre de menus est fixe : une ancre ou un élément qui prend le
+   focus au clavier s'arrête sous elle, jamais dessous. */
+:root:has(body.os) {
+    scroll-padding-top: calc(var(--bar-h) + 16px);
+}
+
+/* Ce qui n'existe qu'avec JavaScript (terminal, recherche, widget
+   horaire) n'apparaît pas sans lui. */
+html.no-js [data-js-only] {
+    display: none !important;
+}
