@@ -21,10 +21,20 @@ body.os {
     background: transparent;
 }
 
-/* L'ancien calque de fond (base.css) n'a plus rien à peindre : le
-   blanc est net, sans trame. */
+/* La trame de points (Eliott, 03.10 : « les petits points d'avant,
+   c'était bien ») : le motif « Dot Pattern » traduit sans React. Une
+   seule couche fixe sous le contenu ; sa couleur est --desk-dot, le
+   SVG (16 px, un point de rayon 1 en 1,1) n'en est que le masque,
+   net sur tout écran. */
 .os::before {
-    content: none;
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background: var(--desk-dot);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='1' cy='1' r='1'/%3E%3C/svg%3E") 0 0 / var(--desk-grid) var(--desk-grid) repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='1' cy='1' r='1'/%3E%3C/svg%3E") 0 0 / var(--desk-grid) var(--desk-grid) repeat;
 }
 
 /* ── Le bleu, couleur système ── */

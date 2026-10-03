@@ -1,12 +1,11 @@
 /* ============================================
    WAB. — Accueil « bureau » : le premier écran
-   Une surface Klein pleine largeur à lignes d'écran, comme le premier
-   écran d'agentcard (.on-klein : le texte passe au blanc, les touches
-   s'inversent). Le centre reste parfaitement net : le nom en blanc, la
-   promesse, deux touches, une ligne fine, puis la grande fenêtre
-   encadrée qui fait défiler les projets. Le désordre
-   (desk-scatter.css) reste en bordure, jamais sous le texte. Le bas de
-   la surface se désagrège en pixels dans le blanc de la page.
+   Sur le bureau à trame de points, comme le reste du site (Eliott,
+   03.10 : le premier écran bleu à lignes a été retiré). Le centre
+   reste parfaitement net : le nom en encre, la promesse, deux
+   touches, une ligne fine, puis la grande fenêtre encadrée qui fait
+   défiler les projets. Le désordre (desk-scatter.css) reste en
+   bordure, jamais sous le texte.
    ============================================ */
 
 .hero {
@@ -15,32 +14,6 @@
        sans créer de défilement horizontal. */
     overflow-x: clip;
     padding-bottom: clamp(56px, 8vw, 104px);
-    background: var(--klein-screen);
-}
-
-/* Le grain sur les lignes, et le bord bas tramé : seize pixels de bleu
-   qui s'émiettent dans le blanc (même trame que les fenêtres). */
-.hero::before,
-.hero::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    pointer-events: none;
-}
-
-.hero::before {
-    inset: 0;
-    background: var(--grain) 0 0 / 160px 160px;
-    opacity: 0.9;
-}
-
-.hero::after {
-    top: 100%;
-    height: var(--dither);
-    background: var(--klein);
-    -webkit-mask: var(--dither-bottom) left top / 8px var(--dither) repeat-x;
-    mask: var(--dither-bottom) left top / 8px var(--dither) repeat-x;
 }
 
 .hero__center {
@@ -68,7 +41,6 @@
     /* Resserré, le nom se lit comme un logo ; la marge compense
        l'approche du point pour qu'il reste centré à l'œil. */
     margin-right: -0.04em;
-    text-shadow: 0 2px 0 oklch(0.3 0.19 266 / 0.5), 0 18px 40px oklch(0.12 0.06 266 / 0.35);
 }
 
 .hero__lede {

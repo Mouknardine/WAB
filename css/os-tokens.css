@@ -28,7 +28,8 @@
 
     /* ── Neutres ── --ink 18,8:1, --ink-muted 7,1:1, --ink-faint 5,5:1
        sur blanc ; sur --panel : 6,4:1 et 4,9:1. */
-    --desk: oklch(1 0 0);
+    /* Un blanc à peine grisé, sous la trame de points. */
+    --desk: oklch(0.985 0 0);
     --paper: oklch(1 0 0);
     --panel: oklch(0.96 0.004 85);
     --ink: oklch(0.18 0.005 265);
@@ -37,7 +38,8 @@
     --line: oklch(0.18 0.005 265 / 0.12);
     --line-strong: oklch(0.18 0.005 265 / 0.22);
     --edge: oklch(0.18 0.005 265 / 0.16);
-    --desk-dot: oklch(0.18 0.005 265 / 0.14);
+    --desk-dot: oklch(0.72 0 0 / 0.42);
+    --desk-grid: 16px;
     --hover-tint: oklch(0.18 0.005 265 / 0.05);
 
     /* ── Matières ── grain fractal à 3 % ; écran Klein : une ligne d'un
