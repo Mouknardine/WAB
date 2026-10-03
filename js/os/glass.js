@@ -32,7 +32,7 @@ export function initGlass() {
         if (!frame) frame = requestAnimationFrame(paint);
     }, { passive: true });
 
-    // Le pointeur s'en va : le reflet revient en haut, au centre.
+    // Le pointeur s'en va : le reflet revient en haut à gauche, d'où vient la lumière.
     document.addEventListener('pointerout', (event) => {
         if (!(event.target instanceof Element)) return;
         const button = event.target.closest('.glass-btn');

@@ -1,8 +1,8 @@
 /* ============================================
    Services — le premier écran
    Le centre reste net : le badge, le titre, deux boutons de verre.
-   Dessous, le Launchpad (page-services-pad.css). L'autocollant et le
-   kaomoji restent au bord, et seulement là où il y a de la place.
+   Dessous, le Launchpad (page-services-pad.css). L'autocollant reste
+   au bord, et seulement là où il y a de la place.
    ============================================ */
 
 .svc-hero {
@@ -50,71 +50,18 @@
     }
 }
 
-/* ── Au bord : l'autocollant et le kaomoji ── */
-.svc-hero__sticker,
-.svc-hero__kao {
+/* ── Au bord : l'autocollant (os-sticker.css) ── */
+.svc-hero__sticker {
     display: none;
 }
 
 @media (min-width: 1100px) {
-    .svc-hero__sticker,
-    .svc-hero__kao {
+    .svc-hero__sticker {
         display: block;
         position: absolute;
         z-index: 1;
-    }
-
-    .svc-hero__sticker {
         top: calc(var(--bar-h) + 72px);
         left: 4vw;
         rotate: -8deg;
     }
-
-    .svc-hero__kao {
-        top: calc(var(--bar-h) + 210px);
-        right: 6vw;
-        rotate: 6deg;
-        font-size: var(--t-lede);
-        color: var(--ink-faint);
-    }
-}
-
-/* L'autocollant « HELLO my name is » : une étiquette blanche à bandeau
-   rose, le nom écrit dedans. */
-.svc-sticker {
-    width: 150px;
-    overflow: hidden;
-    border-radius: 12px;
-    background: var(--paper);
-    box-shadow: 0 0 0 1px var(--glass-edge), var(--shadow-object);
-    text-align: center;
-}
-
-.svc-sticker__hello,
-.svc-sticker__mine {
-    display: block;
-    background: var(--pink);
-    color: var(--ink);
-}
-
-.svc-sticker__hello {
-    padding-top: 8px;
-    font-size: 1.1rem;
-    font-weight: var(--w-strong);
-    line-height: 1;
-    letter-spacing: 0.04em;
-}
-
-.svc-sticker__mine {
-    padding: 2px 0 7px;
-    font-size: 10px;
-}
-
-.svc-sticker__name {
-    display: block;
-    padding: 12px 0 14px;
-    font-size: 1.6rem;
-    font-weight: var(--w-strong);
-    line-height: 1;
-    letter-spacing: -0.04em;
 }

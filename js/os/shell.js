@@ -11,7 +11,7 @@
  */
 
 import { isOpenGesture, select, clearSelection } from './gesture.js?v=1';
-import { launchFinder, launchCase, launchTerminal, launchTrash, launchPalette, launchMenu } from './apps.js?v=1';
+import { launchFinder, launchCase, launchTerminal, launchTrash, launchPalette, launchMenu } from './apps.js?v=2';
 import { SHORTCUT } from './actions.js?v=1';
 import { report } from './lazy.js?v=1';
 import { initDockHide } from './dock-hide.js?v=1';
@@ -135,7 +135,7 @@ function wireContextMenu() {
 function wireIdleBird() {
     if (!finePointer.matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     window.setTimeout(() => {
-        import('./idle-bird.js?v=1').then((m) => m.initIdleBird()).catch((error) => report('idle-bird', error));
+        import('./idle-bird.js?v=2').then((m) => m.initIdleBird()).catch((error) => report('idle-bird', error));
     }, 4000);
 }
 

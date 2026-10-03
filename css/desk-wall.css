@@ -41,7 +41,7 @@
 
 .shot .win {
     box-shadow: 0 0 0 1px var(--win-edge), var(--glass-shadow);
-    transition: translate 0.4s var(--ease-spring), box-shadow 0.3s var(--ease-out);
+    transition: translate var(--dur-3) var(--ease-spring), box-shadow var(--dur-2) var(--ease-out);
 }
 
 .shot .win__title {

@@ -21,7 +21,7 @@
 }
 
 .palette[open] {
-    animation: palette-in 0.18s var(--ease-out);
+    animation: palette-in var(--dur-1) var(--ease-out);
 }
 
 @keyframes palette-in {

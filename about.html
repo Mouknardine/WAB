@@ -294,22 +294,22 @@
     <link rel="stylesheet" href="css/contact-modal.css?v=7">
     <link rel="stylesheet" href="css/contact-form.css?v=3">
     <!-- WAB OS : composants partagés par toutes les pages (OS-COMPONENTS.md) -->
-    <link rel="stylesheet" href="css/os-tokens.css?v=1">
-    <link rel="stylesheet" href="css/os-base.css?v=1">
-    <link rel="stylesheet" href="css/os-sky.css?v=1">
-    <link rel="stylesheet" href="css/sym.css?v=2">
-    <link rel="stylesheet" href="css/glass-btn.css?v=2">
-    <link rel="stylesheet" href="css/os-bar.css?v=1">
-    <link rel="stylesheet" href="css/os-window.css?v=1">
+    <link rel="stylesheet" href="css/os-tokens.css?v=2">
+    <link rel="stylesheet" href="css/os-base.css?v=2">
+    <link rel="stylesheet" href="css/os-sky.css?v=2">
+    <link rel="stylesheet" href="css/sym.css?v=3">
+    <link rel="stylesheet" href="css/glass-btn.css?v=3">
+    <link rel="stylesheet" href="css/os-bar.css?v=2">
+    <link rel="stylesheet" href="css/os-window.css?v=2">
     <link rel="stylesheet" href="css/os-bubbles.css?v=1">
-    <link rel="stylesheet" href="css/os-footer.css?v=1">
-    <link rel="stylesheet" href="css/os-dock.css?v=2">
-    <link rel="stylesheet" href="css/os-overlay.css?v=2">
+    <link rel="stylesheet" href="css/os-footer.css?v=2">
+    <link rel="stylesheet" href="css/os-dock.css?v=3">
+    <link rel="stylesheet" href="css/os-overlay.css?v=3">
     <!-- Accueil -->
 
     <!-- Styles de la page About -->
     <link rel="stylesheet" href="css/page-about-base.css?v=1">
-    <link rel="stylesheet" href="css/page-about-team.css?v=1">
+    <link rel="stylesheet" href="css/page-about-team.css?v=2">
     <link rel="stylesheet" href="css/page-about-advice.css?v=1">
     <link rel="stylesheet" href="css/page-about-skills.css?v=1">
     <link rel="stylesheet" href="css/page-about-end.css?v=1">
@@ -318,10 +318,10 @@
     <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
     <script src="js/reveal.js?v=4" defer></script>
-    <script type="module" src="js/birds/index.js?v=7"></script>
-    <script type="module" src="js/birds/perch.js?v=7"></script>
-    <script type="module" src="js/contact/index.js?v=9"></script>
-    <script type="module" src="js/os/index.js?v=1"></script>
+    <script type="module" src="js/birds/index.js?v=8"></script>
+    <script type="module" src="js/birds/perch.js?v=8"></script>
+    <script type="module" src="js/contact/index.js?v=10"></script>
+    <script type="module" src="js/os/index.js?v=2"></script>
 </head>
 
 <body class="os" data-birds="rare">
@@ -395,8 +395,6 @@
                 <h1 class="ab-hero__title" id="teamTitle">L'équipe<span class="sr-only"> de WeAreBrothers, studio digital fondé à Lausanne</span></h1>
                 <p class="ab-hero__lede">Eliott dessine, Matt développe. <span class="ab-hero__line">Les mêmes personnes, du premier café à la mise en ligne.</span></p>
             </div>
-            <span class="ab-kao ab-kao--a" aria-hidden="true">(^_^)/</span>
-            <span class="ab-kao ab-kao--b" aria-hidden="true">{ ^-^ }</span>
 
             <ul class="ab-team" data-reveal-group tabindex="0" aria-label="Les trois membres de l&apos;équipe">
                 <li class="ab-card reveal">
@@ -663,6 +661,18 @@
             <p class="foot__legal">&copy; 2026 WeAreBrothers Studio</p>
         </div>
     </footer>
+
+    <nav class="dock" aria-label="Dock" data-dock>
+        <ul class="dock__apps">
+            <li><a class="dock__item" href="/realisations" data-app="work"><img class="app-icon" src="assets/icons/app-work.svg?v=2" alt="" width="48" height="48"><span class="dock__label">Work</span></a></li>
+            <li><a class="dock__item" href="/services" data-app="services"><img class="app-icon" src="assets/icons/app-services.svg?v=2" alt="" width="48" height="48"><span class="dock__label">Services</span></a></li>
+            <li><a class="dock__item" href="/studio" data-app="about" aria-current="page"><img class="app-icon" src="assets/icons/app-about.svg?v=2" alt="" width="48" height="48"><span class="dock__label">About</span></a></li>
+            <li><a class="dock__item" href="/#lettre" data-app="notes"><img class="app-icon" src="assets/icons/app-notes.svg?v=2" alt="" width="48" height="48"><span class="dock__label">Lettre</span></a></li>
+            <li><button class="dock__item" type="button" data-app="terminal" data-js-only><img class="app-icon" src="assets/icons/app-terminal.svg?v=2" alt="" width="48" height="48"><span class="dock__label">Terminal</span></button></li>
+            <li><a class="dock__item" href="mailto:contact@wearebrothers.ch" data-contact data-app="contact"><img class="app-icon" src="assets/icons/app-mail.svg?v=2" alt="" width="48" height="48"><span class="dock__label">Contact</span></a></li>
+        </ul>
+        <ul class="dock__shelf" data-dock-shelf aria-label="Fenêtres réduites" hidden></ul>
+    </nav>
 
 </body>
 

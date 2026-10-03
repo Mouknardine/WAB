@@ -2,7 +2,7 @@
    Page Work — le bureau du premier écran
    Le titre et sa phrase au centre, le dossier Work ouvert dessous
    (page-work-finder.css). Au bord, sur grand écran seulement :
-   l'autocollant, un kaomoji, la case libre « Votre projet ». Le
+   l'autocollant et la case libre « Votre projet ». Le
    centre reste net, le désordre reste en bordure.
    Toutes les valeurs viennent de os-tokens.css.
    ============================================ */
@@ -48,59 +48,14 @@
     display: none;
 }
 
-/* L'autocollant : le bandeau de verre rose, la carte blanche, le nom. */
+/* L'autocollant (os-sticker.css), posé de travers au-dessus du
+   dossier. */
 .pw-sticker {
     position: absolute;
     top: -14%;
     left: 4%;
     display: block;
-    width: 112px;
-    border-radius: var(--r-ctl);
-    background: var(--bubble-pink);
-    box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px var(--glass-rim), var(--shadow-object);
-    text-align: center;
-    color: var(--glass-ink);
-    overflow: hidden;
     rotate: -7deg;
-}
-
-.pw-sticker__hello {
-    display: block;
-    padding-top: 6px;
-    font-size: 11px;
-    font-weight: var(--w-strong);
-    letter-spacing: 0.08em;
-    line-height: 1;
-}
-
-.pw-sticker__mine {
-    display: block;
-    padding: 2px 0 4px;
-    font-size: 7px;
-    letter-spacing: 0.06em;
-    line-height: 1;
-}
-
-.pw-sticker__name {
-    display: block;
-    margin: 0 5px 6px;
-    padding: 8px 0 7px;
-    border-radius: 7px;
-    background: var(--paper);
-    font-size: 1.15rem;
-    font-weight: var(--w-strong);
-    letter-spacing: -0.04em;
-    line-height: 1;
-    color: var(--glass-ink);
-}
-
-.pw-kao {
-    position: absolute;
-    top: -20%;
-    right: 7%;
-    font-size: 1.1rem;
-    white-space: nowrap;
-    color: var(--ink);
 }
 
 /* ── La case libre ── une fenêtre vide en pointillés, un oiseau qui

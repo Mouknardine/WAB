@@ -14,7 +14,7 @@ import { el } from './dom.js?v=1';
 import { openContact } from './actions.js?v=1';
 import { report } from './lazy.js?v=1';
 import { run } from './terminal-commands.js?v=1';
-import { launchCase } from './apps.js?v=1';
+import { launchCase } from './apps.js?v=2';
 
 const MAX_INPUT = 60;
 const MAX_LINES = 240;
@@ -53,7 +53,7 @@ async function perchBird(host) {
     bird.setAttribute('aria-hidden', 'true');
     host.append(bird);
     try {
-        const { setupPerch } = await import('../birds/perch.js?v=7');
+        const { setupPerch } = await import('../birds/perch.js?v=8');
         setupPerch(bird);
     } catch (error) {
         bird.remove();

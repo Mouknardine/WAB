@@ -31,7 +31,7 @@
 }
 
 .sym--folder {
-    --sym: url('../assets/icons/sym-folder.svg');
+    --sym: url('../assets/icons/sym-folder.svg?v=2');
 }
 
 .sym--grid {
@@ -67,7 +67,7 @@
 }
 
 .sym--terminal {
-    --sym: url('../assets/icons/sym-terminal.svg');
+    --sym: url('../assets/icons/sym-terminal.svg?v=2');
 }
 
 .sym--trash {

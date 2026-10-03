@@ -14,7 +14,7 @@
 :root[data-sky='matin']:has(body.os) {
     --sky-top: rgba(255, 226, 236, 0.5);
     --sky-glow: rgba(255, 240, 246, 0.8);
-    --ink-faint: #5c5b63;
+    --ink-faint: var(--ink-muted);
 }
 
 [data-sky='jour'] .os,
@@ -27,14 +27,14 @@
 :root[data-sky='soir']:has(body.os) {
     --sky-top: rgba(255, 190, 220, 0.45);
     --sky-glow: rgba(255, 168, 208, 0.32);
-    --ink-faint: #5c5b63;
+    --ink-faint: var(--ink-muted);
 }
 
 [data-sky='nuit'] .os,
 :root[data-sky='nuit']:has(body.os) {
     --sky-top: rgba(190, 198, 232, 0.4);
     --sky-glow: rgba(150, 160, 214, 0.22);
-    --ink-faint: #5c5b63;
+    --ink-faint: var(--ink-muted);
 }
 
 /* L'icône d'état de la barre : le soleil, ou la lune la nuit. */
@@ -45,4 +45,115 @@
 
 [data-sky='nuit'] .menubar__sky .sym--moon {
     display: inline-block;
+}
+
+/* ── La complication de Lausanne (js/os/dial.js) ── un cadran de
+   16 px devant l'heure de la barre : lunette d'un fil, quatre index,
+   les aiguilles à l'encre, l'axe rose. Sur ordinateur seulement. */
+.dial {
+    display: none;
+    flex: none;
+    width: 16px;
+    height: 16px;
+    margin-right: -8px;
+    color: var(--ink);
+    overflow: visible;
+}
+
+.dial__bezel {
+    fill: var(--glass-strong);
+    stroke: currentColor;
+    stroke-opacity: 0.5;
+    stroke-width: 1.4;
+}
+
+.dial__index {
+    stroke: currentColor;
+    stroke-opacity: 0.45;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+}
+
+.dial__hand {
+    stroke: currentColor;
+    stroke-linecap: round;
+    transform-box: view-box;
+    transform-origin: 12px 12px;
+    transition: transform var(--dur-3) var(--ease-spring);
+}
+
+.dial__hand--h {
+    stroke-width: 2.3;
+    transform: rotate(var(--dial-h, 0deg));
+}
+
+.dial__hand--m {
+    stroke-width: 1.6;
+    transform: rotate(var(--dial-m, 0deg));
+}
+
+.dial__pin {
+    fill: var(--pink);
+}
+
+@media (min-width: 900px) {
+    .dial {
+        display: block;
+    }
+}
+
+/* ── L'ombre de l'oiseau (js/os/shade.js) ── une silhouette floue à
+   7 % d'encre, qui passe sur le bureau et ses fenêtres, sous la barre
+   et les fenêtres ouvertes. Les deux images battent des ailes. */
+.os-shade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: calc(var(--z-win) - 10);
+    width: 96px;
+    height: 84px;
+    opacity: 0;
+    pointer-events: none;
+    filter: blur(3px);
+    will-change: transform, opacity;
+}
+
+.os-shade i {
+    position: absolute;
+    inset: 0;
+    background: center / contain no-repeat;
+    opacity: 0.07;
+}
+
+.os-shade i:first-child {
+    animation: shade-a 0.36s linear infinite paused;
+}
+
+.os-shade i + i {
+    animation: shade-b 0.36s linear infinite paused;
+}
+
+/* Les ailes ne battent que pendant le passage (shade.js). */
+.os-shade.is-flying i {
+    animation-play-state: running;
+}
+
+@keyframes shade-a {
+    0%, 49% { opacity: 0.07; }
+    50%, 100% { opacity: 0; }
+}
+
+@keyframes shade-b {
+    0%, 49% { opacity: 0; }
+    50%, 100% { opacity: 0.07; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dial__hand {
+        transition: none;
+    }
+
+    .os-shade {
+        display: none;
+    }
 }

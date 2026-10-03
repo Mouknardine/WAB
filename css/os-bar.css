@@ -60,7 +60,7 @@
     padding: 0 10px;
     border-radius: var(--r-ctl);
     color: var(--ink-muted);
-    transition: color 0.2s var(--ease-out), background-color 0.2s var(--ease-out);
+    transition: color var(--dur-1) var(--ease-out), background-color var(--dur-1) var(--ease-out);
 }
 
 @media (hover: hover) {
@@ -109,12 +109,12 @@
     min-height: 30px;
     padding: 0 6px 0 10px;
     border-radius: var(--r-pill);
-    border: 1px solid var(--glass-edge);
+    border: var(--hair) solid var(--glass-edge);
     background: var(--glass-strong);
-    box-shadow: inset 0 1px 0 var(--glass-rim);
+    box-shadow: inset 0 var(--hair) 0 var(--glass-rim);
     font-size: var(--t-cap);
     color: var(--ink-muted);
-    transition: border-color 0.2s var(--ease-out);
+    transition: border-color var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out);
 }
 
 .menubar__find kbd {
@@ -139,10 +139,13 @@
 
 @media (hover: hover) {
     .menubar__find:hover {
-        border-color: var(--ink);
+        border-color: var(--line-strong);
+        color: var(--ink);
     }
 }
 
+/* L'heure : la complication (os-sky.css) puis les chiffres, à chasse
+   fixe — ils ne bougent pas d'un pixel quand la minute change. */
 .menubar__time {
     display: none;
     color: var(--ink);

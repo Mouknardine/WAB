@@ -4,10 +4,10 @@
    « Contacts », une par personne : la vraie photo, puis le nom, le
    rôle et le texte sur le blanc de la fiche — jamais posés sur le
    portrait, où ils masquaient le visage. Celle du milieu descend d'un
-   cran (quinconce, comme le bureau de l'accueil) ; le désordre
-   (kaomoji, oiseau) reste en bordure.
-   Au téléphone : les fiches défilent au doigt, le nom de fichier et
-   le kaomoji disparaissent.
+   cran (quinconce, comme le bureau de l'accueil) ; l'oiseau reste en
+   bordure.
+   Au téléphone : les fiches défilent au doigt, le nom de fichier
+   disparaît.
    Toutes les valeurs viennent des jetons (os-tokens.css).
    ============================================ */
 
@@ -130,8 +130,7 @@
     text-wrap: pretty;
 }
 
-.ab-card > .file-name,
-.ab-kao {
+.ab-card > .file-name {
     display: none;
 }
 
@@ -162,25 +161,5 @@
     .ab-card > .file-name,
     .ab-card .win-perch {
         display: block;
-    }
-
-    .ab-kao {
-        display: block;
-        position: absolute;
-        font-size: var(--t-small);
-        white-space: nowrap;
-        color: var(--ink-muted);
-        user-select: none;
-        -webkit-user-select: none;
-    }
-
-    .ab-kao--a {
-        top: calc(var(--bar-h) + 120px);
-        left: max(var(--gutter), calc(50% - 560px));
-    }
-
-    .ab-kao--b {
-        top: calc(var(--bar-h) + 300px);
-        right: max(var(--gutter), calc(50% - 600px));
     }
 }

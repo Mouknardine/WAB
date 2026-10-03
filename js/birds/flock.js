@@ -18,7 +18,7 @@
  * ligne reste lisible et le ciel ne se vide jamais.
  */
 
-import { BODY_COLORS, BODY_BOX } from './frames.js?v=5';
+import { FLIGHT_COLORS, BODY_BOX } from './frames.js?v=7';
 
 /* Deux marges, et la sortie est la plus large des deux. L'oiseau
    naît juste derrière le bord, puis n'est mis au repos qu'une fois
@@ -89,7 +89,7 @@ function randomBetween(min, max) {
 }
 
 function pickColor() {
-    return BODY_COLORS[Math.floor(Math.random() * BODY_COLORS.length)];
+    return FLIGHT_COLORS[Math.floor(Math.random() * FLIGHT_COLORS.length)];
 }
 
 /**
@@ -132,7 +132,7 @@ export function createFlock(count, scales) {
             fleeX: 0,      // élan donné par le curseur, en px/s
             fleeY: 0,
             elapsed: 0,
-            color: BODY_COLORS[index % BODY_COLORS.length],
+            color: FLIGHT_COLORS[index % FLIGHT_COLORS.length],
             opacity: 0,
             airborne: false,
             // Les départs sont échelonnés : la volée se remplit en

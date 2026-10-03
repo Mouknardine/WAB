@@ -10,8 +10,8 @@
  */
 
 // Même numéro que partout où ces fichiers sont importés : voir js/birds/index.js.
-import { createSpriteBank } from '../birds/sprites.js?v=5';
-import { BODY_COLORS } from '../birds/frames.js?v=5';
+import { createSpriteBank } from '../birds/sprites.js?v=6';
+import { BODY_COLORS } from '../birds/frames.js?v=7';
 
 const SCALE = 3;
 const DURATION_MS = 1600;

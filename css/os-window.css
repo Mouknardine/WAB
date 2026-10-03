@@ -14,8 +14,23 @@
     flex-direction: column;
     border-radius: var(--r-win);
     background: var(--win-bg);
-    box-shadow: 0 0 0 1px var(--win-edge), var(--win-shadow);
+    box-shadow: 0 0 0 var(--hair) var(--win-edge), var(--win-shadow);
     overflow: hidden;
+}
+
+/* Le liseré du verre, posé par-dessus la capture : un fil blanc d'un
+   pixel tout autour, plus lumineux en haut à gauche, d'où vient la
+   lumière. Sans lui, l'image semble collée sous le cadre. */
+.win::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    border-radius: inherit;
+    box-shadow:
+        inset var(--hair) var(--hair) 0 oklch(1 0 0 / 0.55),
+        inset 0 0 0 var(--hair) oklch(1 0 0 / 0.22);
+    pointer-events: none;
 }
 
 /* Le reflet spéculaire du verre, sur le haut de la barre. */

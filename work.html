@@ -511,19 +511,20 @@
     <link rel="stylesheet" href="css/nav-panel.css?v=1">
     <link rel="stylesheet" href="css/contact-modal.css?v=7">
     <link rel="stylesheet" href="css/contact-form.css?v=3">
-    <link rel="stylesheet" href="css/os-tokens.css?v=1">
-    <link rel="stylesheet" href="css/os-base.css?v=1">
-    <link rel="stylesheet" href="css/os-sky.css?v=1">
-    <link rel="stylesheet" href="css/sym.css?v=2">
-    <link rel="stylesheet" href="css/glass-btn.css?v=2">
-    <link rel="stylesheet" href="css/os-bar.css?v=1">
-    <link rel="stylesheet" href="css/os-window.css?v=1">
+    <link rel="stylesheet" href="css/os-tokens.css?v=2">
+    <link rel="stylesheet" href="css/os-base.css?v=2">
+    <link rel="stylesheet" href="css/os-sky.css?v=2">
+    <link rel="stylesheet" href="css/sym.css?v=3">
+    <link rel="stylesheet" href="css/glass-btn.css?v=3">
+    <link rel="stylesheet" href="css/os-bar.css?v=2">
+    <link rel="stylesheet" href="css/os-window.css?v=2">
     <link rel="stylesheet" href="css/os-bubbles.css?v=1">
-    <link rel="stylesheet" href="css/os-footer.css?v=1">
-    <link rel="stylesheet" href="css/os-dock.css?v=2">
-    <link rel="stylesheet" href="css/os-overlay.css?v=2">
+    <link rel="stylesheet" href="css/os-footer.css?v=2">
+    <link rel="stylesheet" href="css/os-dock.css?v=3">
+    <link rel="stylesheet" href="css/os-overlay.css?v=3">
+    <link rel="stylesheet" href="css/os-sticker.css?v=1">
     <!-- La page Work -->
-    <link rel="stylesheet" href="css/page-work-hero.css?v=1">
+    <link rel="stylesheet" href="css/page-work-hero.css?v=2">
     <link rel="stylesheet" href="css/page-work-finder.css?v=1">
     <link rel="stylesheet" href="css/page-work-pieces.css?v=1">
     <link rel="stylesheet" href="css/page-work-end.css?v=1">
@@ -531,11 +532,11 @@
     <!-- Scripts -->
     <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
-    <script type="module" src="js/birds/index.js?v=7"></script>
-    <script type="module" src="js/birds/perch.js?v=7"></script>
-    <script type="module" src="js/contact/index.js?v=9"></script>
-    <script type="module" src="js/os/index.js?v=1"></script>
-    <script type="module" src="js/page-work/index.js?v=1"></script>
+    <script type="module" src="js/birds/index.js?v=8"></script>
+    <script type="module" src="js/birds/perch.js?v=8"></script>
+    <script type="module" src="js/contact/index.js?v=10"></script>
+    <script type="module" src="js/os/index.js?v=2"></script>
+    <script type="module" src="js/page-work/index.js?v=2"></script>
 </head>
 
 <body class="os page-work" data-birds="rare">
@@ -605,7 +606,7 @@
              en icônes (ou en liste). Un projet ouvre sa fiche dans une
              fenêtre de verre (js/os, attribut data-card) ; sans
              JavaScript, il mène à son bloc plus bas. Le désordre reste
-             au bord : l'autocollant, un kaomoji, la case libre. -->
+             au bord : l'autocollant et la case libre. -->
         <section class="pw-hero" aria-labelledby="workTitle">
             <div class="pw-hero__head">
                 <h1 class="pw-hero__title" id="workTitle"><span lang="en">Work</span><span class="sr-only"> — sites internet et applications créés à Lausanne</span></h1>
@@ -693,8 +694,7 @@
                 </div>
 
                 <div class="pw-hero__objects" aria-hidden="true">
-                    <span class="pw-sticker"><span class="pw-sticker__hello">HELLO</span><span class="pw-sticker__mine">my name is</span><span class="pw-sticker__name">WAB.</span></span>
-                    <span class="pw-kao">(^_^)/</span>
+                    <span class="pw-sticker"><span class="sticker"><span class="sticker__hello">HELLO</span><span class="sticker__mine">my name is</span><span class="sticker__name" translate="no">WAB.</span></span></span>
                 </div>
 
                 <!-- LA CASE LIBRE — la dixième place, pour le prochain projet. -->
@@ -1240,11 +1240,11 @@
              l'action par défaut, à droite, comme sur macOS). -->
         <section class="pw-end" id="contact" aria-labelledby="endTitle">
             <div class="pw-alert">
-                <canvas class="win-perch pw-alert__perch" data-perch="fly" data-scale="2" data-color="2" aria-hidden="true"></canvas>
+                <canvas class="win-perch pw-alert__perch" data-perch="fly" data-scale="2" data-color="0" aria-hidden="true"></canvas>
                 <div class="win">
                     <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--mail" aria-hidden="true"></span>Nouveau projet</span></div>
                     <div class="pw-alert__body">
-                        <img class="app-icon pw-alert__icon" src="assets/icons/app-mail.svg" alt="" width="64" height="64" loading="lazy" decoding="async">
+                        <img class="app-icon pw-alert__icon" src="assets/icons/app-mail.svg?v=2" alt="" width="64" height="64" loading="lazy" decoding="async">
                         <h2 class="pw-alert__title" id="endTitle">Et si le prochain projet était le vôtre&nbsp;?</h2>
                         <p class="pw-alert__text">Quelques lignes suffisent pour commencer. Nous vous répondons sous 24&nbsp;h ouvrées, sans engagement.</p>
                         <div class="pw-alert__actions">
@@ -1350,12 +1350,12 @@
     <!-- LE DOCK — sur ordinateur (voir OS-COMPONENTS.md, § 10). -->
     <nav class="dock" aria-label="Dock" data-dock>
         <ul class="dock__apps">
-            <li><a class="dock__item" href="/realisations" data-app="work" aria-current="page"><img class="app-icon" src="assets/icons/app-work.svg" alt="" width="48" height="48"><span class="dock__label">Work</span></a></li>
-            <li><a class="dock__item" href="/services" data-app="services"><img class="app-icon" src="assets/icons/app-services.svg" alt="" width="48" height="48"><span class="dock__label">Services</span></a></li>
-            <li><a class="dock__item" href="/studio" data-app="about"><img class="app-icon" src="assets/icons/app-about.svg" alt="" width="48" height="48"><span class="dock__label">About</span></a></li>
-            <li><a class="dock__item" href="/#lettre" data-app="notes"><img class="app-icon" src="assets/icons/app-notes.svg" alt="" width="48" height="48"><span class="dock__label">Lettre</span></a></li>
-            <li><button class="dock__item" type="button" data-app="terminal" data-js-only><img class="app-icon" src="assets/icons/app-terminal.svg" alt="" width="48" height="48"><span class="dock__label">Terminal</span></button></li>
-            <li><a class="dock__item" href="mailto:contact@wearebrothers.ch" data-contact data-app="contact"><img class="app-icon" src="assets/icons/app-mail.svg" alt="" width="48" height="48"><span class="dock__label">Contact</span></a></li>
+            <li><a class="dock__item" href="/realisations" data-app="work" aria-current="page"><img class="app-icon" src="assets/icons/app-work.svg?v=2" alt="" width="48" height="48"><span class="dock__label">Work</span></a></li>
+            <li><a class="dock__item" href="/services" data-app="services"><img class="app-icon" src="assets/icons/app-services.svg?v=2" alt="" width="48" height="48"><span class="dock__label">Services</span></a></li>
+            <li><a class="dock__item" href="/studio" data-app="about"><img class="app-icon" src="assets/icons/app-about.svg?v=2" alt="" width="48" height="48"><span class="dock__label">About</span></a></li>
+            <li><a class="dock__item" href="/#lettre" data-app="notes"><img class="app-icon" src="assets/icons/app-notes.svg?v=2" alt="" width="48" height="48"><span class="dock__label">Lettre</span></a></li>
+            <li><button class="dock__item" type="button" data-app="terminal" data-js-only><img class="app-icon" src="assets/icons/app-terminal.svg?v=2" alt="" width="48" height="48"><span class="dock__label">Terminal</span></button></li>
+            <li><a class="dock__item" href="mailto:contact@wearebrothers.ch" data-contact data-app="contact"><img class="app-icon" src="assets/icons/app-mail.svg?v=2" alt="" width="48" height="48"><span class="dock__label">Contact</span></a></li>
         </ul>
         <ul class="dock__shelf" data-dock-shelf aria-label="Fenêtres réduites" hidden></ul>
     </nav>

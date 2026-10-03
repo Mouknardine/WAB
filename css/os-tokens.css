@@ -1,116 +1,126 @@
 /* ============================================
    WAB OS — jetons (partagés par toutes les pages : body.os)
-   L'accueil est le système d'exploitation du studio, rendu en « verre
-   liquide » rose : un bureau blanc à peine gris tramé de points, des
-   fenêtres et des boutons de verre, des icônes d'app modernes. Seuls
-   les oiseaux et le grand « WAB. » du pied de page restent en pixels.
-   Le rose WAB est la couleur système : sélection, focus, curseur texte,
-   pastille de fermeture, bouton principal.
-   Toutes les valeurs vivent ici ; les feuilles os-*.css (partagées),
-   desk-*.css (accueil) et celles des autres pages ne font que les
-   demander. Voir OS-COMPONENTS.md. Voir DESIGN-SYSTEM.md,
-   section « WAB OS ».
+   Le bureau du studio en « verre liquide » rose : un blanc à peine
+   gris tramé de points et d'un grain très fin, des fenêtres et des
+   boutons de verre, des icônes d'app. Seuls les oiseaux et le grand
+   « WAB. » du pied de page restent en pixels.
+   Toutes les valeurs vivent ici, en OKLCH (clarté perçue, chroma,
+   teinte) ; les feuilles os-*.css, desk-*.css et page-*.css ne font
+   que les demander. Voir OS-COMPONENTS.md et DESIGN-SYSTEM.md,
+   section « WAB OS ». Finition : FINITION-PRO.md.
    ============================================ */
 
-/* Posés aussi sur la racine quand elle porte l'accueil : le fond du
-   document (rebond du défilement sur iOS) prend la couleur du bureau. */
+/* Posés aussi sur la racine : le fond du document (rebond du
+   défilement sur iOS) prend la couleur du bureau. */
 .os,
 :root:has(body.os) {
-    /* ── Bureau ── la lumière (--sky-*) change avec l'heure de
-       Lausanne : voir os-sky.css. */
-    /* Blanc à 2 % de gris, sans teinte chaude. La trame : le motif
-       « Dot Pattern » (16 px, un point de 1 px en 1,1), gris neutre. */
-    --desk: #fafafa;
-    --desk-dot: rgba(163, 163, 163, 0.42);
+    /* ── Bureau ── la lumière (--sky-*) suit l'heure : os-sky.css. */
+    --desk: oklch(0.985 0 0);
+    --desk-dot: oklch(0.72 0 0 / 0.42);
     --desk-grid: 16px;
-    --sky-top: rgba(245, 244, 245, 0);
-    --sky-glow: rgba(245, 244, 245, 0);
+    --sky-top: oklch(1 0 0 / 0);
+    --sky-glow: oklch(1 0 0 / 0);
+    /* Le grain : un bruit fractal gris à 3,5 %, sous la trame. Il ôte
+       au blanc son aspect « écran » sans se voir comme une texture. */
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 
     /* ── Encre ── (rapports mesurés sur --desk)
-       --ink 18:1, --ink-muted 6,1:1, --ink-faint 5,2:1. */
-    --ink: #0b0b0c;
-    --ink-muted: #5c5b63;
-    --ink-faint: #66656d;
-    --line: rgba(11, 11, 12, 0.12);
-    --line-strong: rgba(11, 11, 12, 0.22);
-    --paper: #ffffff;
+       --ink 18,9:1, --ink-muted 6,4:1, --ink-faint 5,5:1. */
+    --ink: oklch(0.15 0.002 286);
+    --ink-muted: oklch(0.475 0.013 292);
+    --ink-faint: oklch(0.51 0.013 292);
+    --line: oklch(0.15 0.002 286 / 0.12);
+    --line-strong: oklch(0.15 0.002 286 / 0.22);
+    --paper: oklch(1 0 0);
 
     /* ── Rose système, trois nuances ──
-       --pink : aplats et signes (pastille, bouton principal, point du
-         dock, pixels) ; l'encre posée dessus reste à 5,7:1.
-       --accent : le rose qui porte du texte sur le clair (7:1), et
+       --pink : aplats et signes (pastille, point du dock, pixels) ;
+         l'encre posée dessus reste à 5,7:1.
+       --accent : le rose qui porte du texte sur le clair (7,4:1), et
          l'anneau de focus.
-       --mark : fond de sélection et de surlignage, encre par-dessus. */
-    --pink: #ff2d9b;
-    --pink-soft: #ff8cc6;
-    --accent: #a00f5a;
-    --mark: #ffd0e6;
-    --on-accent: #ffffff;
+       --mark : fond de sélection et de surlignage, encre par-dessus.
+       --pink-print : l'encre d'imprimerie de l'autocollant, texte
+         blanc à 5,4:1. */
+    --pink: oklch(0.667 0.251 355.4);
+    --pink-soft: oklch(0.781 0.153 349.7);
+    --pink-print: oklch(0.55 0.2 358);
+    --accent: oklch(0.465 0.181 357.4);
+    --mark: oklch(0.904 0.06 348.5);
+    --on-accent: oklch(1 0 0);
 
-    /* ── Rayons ── fenêtres et cartes, contrôles, pastilles, pilules. */
+    /* ── Rayons et traits ── une seule épaisseur de liseré. */
     --r-win: 18px;
     --r-ctl: 12px;
     --r-px: 3px;
     --r-pill: 999px;
+    --hair: 1px;
 
-    /* ── Verre ── le verre clair des surfaces (barre, fenêtres
-       ouvertes, palette, menu) et ses reflets. Le flou réel n'est posé
-       que sur ces quelques surfaces ; les fenêtres décoratives imitent
-       le verre sans flou. Sans backdrop-filter : surfaces opaques. */
-    --glass: rgba(255, 255, 255, 0.66);
-    --glass-strong: rgba(255, 255, 255, 0.84);
-    --glass-blur: blur(24px) saturate(1.8);
-    --glass-rim: rgba(255, 255, 255, 0.9);
-    --glass-edge: rgba(11, 11, 12, 0.1);
+    /* ── Verre ── le flou réel ne vit que sur la barre, le dock, les
+       fenêtres ouvertes, la palette et le menu. Sans backdrop-filter :
+       surfaces opaques. Flou court : le verre se lit, il ne bave pas. */
+    --glass: oklch(1 0 0 / 0.7);
+    --glass-strong: oklch(1 0 0 / 0.86);
+    --glass-blur: blur(16px) saturate(1.6);
+    --glass-rim: oklch(1 0 0 / 0.92);
+    --glass-edge: oklch(0.15 0.002 286 / 0.1);
     /* L'encre du verre : le verre reste clair sur toute surface, même
        quand une surface sombre redéfinit --ink pour elle-même. */
-    --glass-ink: #0b0b0c;
-    --glass-specular: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0) 60%);
-    --glass-shadow: 0 1px 1px rgba(11, 11, 12, 0.04), 0 12px 32px rgba(11, 11, 12, 0.1), 0 2px 6px rgba(11, 11, 12, 0.05);
-    --glass-shadow-lift: 0 2px 4px rgba(11, 11, 12, 0.06), 0 30px 70px rgba(11, 11, 12, 0.18);
+    --glass-ink: oklch(0.15 0.002 286);
+    --glass-specular: linear-gradient(180deg, oklch(1 0 0 / 0.9), oklch(1 0 0 / 0) 55%);
+    /* Ombres en couches très douces, de la plus nette à la plus large
+       (le contact, puis la portée) : aucune ne se voit seule. */
+    --glass-shadow:
+        0 1px 1px oklch(0.15 0.01 290 / 0.04),
+        0 2px 4px -1px oklch(0.15 0.01 290 / 0.04),
+        0 8px 16px -4px oklch(0.15 0.01 290 / 0.06),
+        0 20px 40px -12px oklch(0.15 0.01 290 / 0.1);
+    --glass-shadow-lift:
+        0 1px 2px oklch(0.15 0.01 290 / 0.06),
+        0 6px 12px -2px oklch(0.15 0.01 290 / 0.06),
+        0 24px 48px -12px oklch(0.15 0.01 290 / 0.14),
+        0 48px 96px -24px oklch(0.15 0.01 290 / 0.16);
 
     /* ── Fenêtre ── */
-    --win-bg: #ffffff;
-    --win-bar: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 246, 248, 0.94));
-    --win-edge: rgba(11, 11, 12, 0.09);
+    --win-bg: oklch(1 0 0);
+    --win-bar: linear-gradient(180deg, oklch(1 0 0 / 0.98), oklch(0.975 0.002 290 / 0.94));
+    --win-edge: oklch(0.15 0.002 286 / 0.09);
     --win-bar-h: 30px;
-    --win-shadow: 0 1px 2px rgba(11, 11, 12, 0.05), 0 14px 34px rgba(11, 11, 12, 0.09);
-    --win-shadow-lift: 0 2px 4px rgba(11, 11, 12, 0.08), 0 26px 56px rgba(11, 11, 12, 0.18);
-    --win-shadow-active: 0 2px 6px rgba(11, 11, 12, 0.08), 0 34px 80px rgba(11, 11, 12, 0.22);
-    /* Les pastilles WAB : trois carrés aux coins doux, rose, encre et
-       blanc cerné. Fenêtres ouvertes : rose = fermer, encre = agrandir. */
+    --win-shadow: var(--glass-shadow);
+    --win-shadow-lift: var(--glass-shadow-lift);
+    --win-shadow-active:
+        0 1px 2px oklch(0.15 0.01 290 / 0.08),
+        0 8px 16px -4px oklch(0.15 0.01 290 / 0.08),
+        0 32px 64px -16px oklch(0.15 0.01 290 / 0.2),
+        0 64px 120px -32px oklch(0.15 0.01 290 / 0.2);
+    /* Les pastilles WAB : trois carrés aux coins doux. */
     --px-size: 10px;
     --px-gap: 6px;
 
-    /* ── Écran ── le cadre des grandes fenêtres de services : le ciel
-       rose du site (le dégradé de base.css) en fond d'écran, un liseré
-       sombre aux coins arrondis. Le rayon extérieur suit la géométrie :
-       celui de la fenêtre plus le retrait. */
+    /* ── Écran ── le cadre des grandes fenêtres : le ciel rose en fond
+       d'écran, un liseré sombre ; rayon extérieur = rayon + retrait. */
     --wallpaper:
-        radial-gradient(115% 95% at 12% 8%, #fff5fa 0%, rgba(255, 245, 250, 0) 62%),
-        linear-gradient(150deg, #ffe4f0 0%, #ffd2e6 55%, #ffc4de 100%);
+        radial-gradient(115% 95% at 12% 8%, oklch(0.98 0.012 350) 0%, oklch(0.98 0.012 350 / 0) 62%),
+        linear-gradient(150deg, oklch(0.94 0.035 350) 0%, oklch(0.9 0.055 350) 55%, oklch(0.87 0.07 350) 100%);
     --screen-pad: 12px;
-    --screen-rim: #2a292e;
+    --screen-rim: oklch(0.28 0.009 295);
 
-    /* ── Le verre rose et le verre clair ── la texture des bulles des
-       services, devenue celle de tous les boutons (glass-btn.css), de
-       l'autocollant et des pastilles. Encre sur le rose le plus dense :
-       10,7:1. */
-    --bubble-pink: linear-gradient(180deg, rgba(255, 196, 226, 0.85), rgba(255, 140, 198, 0.7));
-    --bubble-clear: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.7));
+    /* ── Le verre rose et le verre clair ── boutons, bulles, pastilles.
+       Rose précieux plutôt que bonbon : chroma tenu (0,04 → 0,09),
+       presque opaque. Encre sur le rose le plus dense : 11,9:1. */
+    --bubble-pink: linear-gradient(180deg, oklch(0.935 0.04 352 / 0.95), oklch(0.85 0.092 354 / 0.93));
+    --bubble-clear: linear-gradient(180deg, oklch(1 0 0 / 0.94), oklch(0.975 0.002 290 / 0.78));
 
-    /* ── Ciel rose ── le fond pleine largeur des façons de travailler :
-       un mesh rose, lilas et pêche, en CSS (aucune image). */
+    /* ── Ciel rose ── le fond pleine largeur, en CSS (aucune image). */
     --sky-mesh:
-        radial-gradient(60% 70% at 15% 20%, #ffd9ec 0%, transparent 70%),
-        radial-gradient(55% 60% at 85% 15%, #f3d7ff 0%, transparent 70%),
-        radial-gradient(70% 70% at 70% 85%, #ffd2c2 0%, transparent 70%),
-        radial-gradient(60% 60% at 25% 90%, #ffb8dc 0%, transparent 70%),
-        linear-gradient(160deg, #ffe4f1, #ffc6e2);
+        radial-gradient(60% 70% at 15% 20%, oklch(0.92 0.045 350) 0%, transparent 70%),
+        radial-gradient(55% 60% at 85% 15%, oklch(0.91 0.055 315) 0%, transparent 70%),
+        radial-gradient(70% 70% at 70% 85%, oklch(0.9 0.05 40) 0%, transparent 70%),
+        radial-gradient(60% 60% at 25% 90%, oklch(0.86 0.08 350) 0%, transparent 70%),
+        linear-gradient(160deg, oklch(0.94 0.035 350), oklch(0.88 0.07 350));
 
     /* ── Barre de menus et dock ── */
     --bar-h: 44px;
-    --bar-bg: rgba(250, 250, 250, 0.72);
+    --bar-bg: oklch(0.985 0 0 / 0.74);
     --r-dock: 24px;
     --dock-space: 96px;
 
@@ -122,13 +132,18 @@
     --z-menu: 210;
     --z-toast: 220;
 
-    /* ── Typo ── Sligoil, chasse fixe de 0,6 em. */
+    /* ── Typo ── Sligoil, chasse fixe de 0,6 em : les chiffres sont
+       tabulaires par nature. L'interlettrage optique se resserre avec
+       la taille : -0,02 em à 18 px, -0,045 em à 40 px, -0,06 em à
+       160 px (0,8 px − 0,065 em). Capitales : +0,08 em. */
     --t-cap: 0.75rem;
     --t-small: 0.875rem;
     --t-body: 1rem;
     --t-lede: clamp(1.05rem, 1.5vw, 1.3rem);
     --t-title: clamp(1.6rem, 3.4vw, 2.6rem);
     --t-hero: clamp(5.5rem, 22vw, 10rem);
+    --track-optical: calc(0.8px - 0.065em);
+    --track-caps: 0.08em;
 
     /* ── Rythme ── */
     --gutter: clamp(16px, 4vw, 40px);
@@ -136,28 +151,32 @@
     --measure: 1120px;
 
     /* ── Ombres et voiles ── */
-    --shadow-object: 0 1px 2px rgba(11, 11, 12, 0.14), 0 6px 14px rgba(11, 11, 12, 0.12);
-    --shadow-soft: 0 6px 16px rgba(11, 11, 12, 0.08);
-    --veil: rgba(255, 255, 255, 0.92);
-    --hover-tint: rgba(11, 11, 12, 0.06);
-    --scrim: rgba(11, 11, 12, 0.32);
-    /* Le verre fumé du bouton de la vitrine, posé sur les captures :
-       texte blanc à 5,6:1 au pire, sur une capture blanche. */
-    --smoke: rgba(11, 11, 12, 0.62);
-    --smoke-strong: rgba(11, 11, 12, 0.78);
-    --smoke-edge: rgba(255, 255, 255, 0.28);
+    --shadow-object: 0 1px 1px oklch(0.15 0.01 290 / 0.1), 0 2px 4px -1px oklch(0.15 0.01 290 / 0.08), 0 8px 16px -6px oklch(0.15 0.01 290 / 0.14);
+    --shadow-soft: 0 2px 4px -1px oklch(0.15 0.01 290 / 0.04), 0 8px 20px -6px oklch(0.15 0.01 290 / 0.1);
+    --veil: oklch(1 0 0 / 0.92);
+    --hover-tint: oklch(0.15 0.002 286 / 0.055);
+    --scrim: oklch(0.15 0.002 286 / 0.32);
+    /* Le verre fumé posé sur les captures : texte blanc à 5,6:1 au
+       pire, sur une capture blanche. */
+    --smoke: oklch(0.15 0.002 286 / 0.62);
+    --smoke-strong: oklch(0.15 0.002 286 / 0.8);
+    --smoke-edge: oklch(1 0 0 / 0.28);
 
     /* ── Terminal ── la seule surface sombre : elle redéfinit sa
        gamme localement (os-terminal.css). */
-    --term-bg: #121114;
-    --term-ink: #ecebef;
-    --term-muted: #a9a7b1;
-    --term-accent: #ff8cc6;
+    --term-bg: oklch(0.18 0.006 301);
+    --term-ink: oklch(0.942 0.005 298);
+    --term-muted: oklch(0.733 0.014 295);
+    --term-accent: oklch(0.781 0.153 349.7);
 
-    /* ── Mouvement ── */
+    /* ── Mouvement ── trois durées, pas une de plus : 150 ms pour un
+       retour (survol, appui), 250 ms pour un état, 400 ms pour un
+       déplacement. Le ressort rebondit d'environ 3 %. */
+    --dur-1: 150ms;
+    --dur-2: 250ms;
+    --dur-3: 400ms;
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-    /* Un ressort léger (rebond d'environ 6 %), pour le dock. */
-    --ease-spring: linear(0, 0.22 7%, 0.6 16%, 0.92 26%, 1.05 35%, 1.06 42%, 1.02 55%, 0.995 70%, 1);
+    --ease-spring: linear(0, 0.2 6%, 0.56 14%, 0.86 23%, 1.01 32%, 1.03 40%, 1.01 54%, 0.998 70%, 1);
 
     background: var(--desk);
     color: var(--ink);

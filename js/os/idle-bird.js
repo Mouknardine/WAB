@@ -11,8 +11,8 @@
  * animations » (shell.js ne le charge même pas).
  */
 
-import { createSpriteBank } from '../birds/sprites.js?v=5';
-import { BODY_COLORS } from '../birds/frames.js?v=5';
+import { createSpriteBank } from '../birds/sprites.js?v=6';
+import { BODY_COLORS } from '../birds/frames.js?v=7';
 
 const IDLE_MS = 9000;
 const ARRIVE_MS = 1300;
@@ -36,7 +36,8 @@ export function initIdleBird() {
     ctx.imageSmoothingEnabled = false;
     document.body.append(canvas);
 
-    const color = BODY_COLORS[Math.floor(Math.random() * BODY_COLORS.length)] ?? BODY_COLORS[0];
+    // Un oiseau posé : le rose WAB (frames.js).
+    const color = BODY_COLORS[0];
     const pointer = { x: -1, y: -1 };
     /** @type {BirdState} */
     let state = 'away';

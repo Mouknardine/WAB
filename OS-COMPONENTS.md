@@ -18,24 +18,25 @@ Direction : la structure de heyclicky.com, le rendu « verre liquide » rose (ma
     <link rel="stylesheet" href="css/nav-panel.css?v=1">
     <link rel="stylesheet" href="css/contact-modal.css?v=7">
     <link rel="stylesheet" href="css/contact-form.css?v=3">
-    <link rel="stylesheet" href="css/os-tokens.css?v=1">
-    <link rel="stylesheet" href="css/os-base.css?v=1">
-    <link rel="stylesheet" href="css/os-sky.css?v=1">
-    <link rel="stylesheet" href="css/sym.css?v=2">
-    <link rel="stylesheet" href="css/glass-btn.css?v=2">
-    <link rel="stylesheet" href="css/os-bar.css?v=1">
-    <link rel="stylesheet" href="css/os-window.css?v=1">
+    <link rel="stylesheet" href="css/os-tokens.css?v=2">
+    <link rel="stylesheet" href="css/os-base.css?v=2">
+    <link rel="stylesheet" href="css/os-sky.css?v=2">
+    <link rel="stylesheet" href="css/sym.css?v=3">
+    <link rel="stylesheet" href="css/glass-btn.css?v=3">
+    <link rel="stylesheet" href="css/os-bar.css?v=2">
+    <link rel="stylesheet" href="css/os-window.css?v=2">
     <link rel="stylesheet" href="css/os-bubbles.css?v=1">
-    <link rel="stylesheet" href="css/os-footer.css?v=1">
-    <link rel="stylesheet" href="css/os-dock.css?v=2">
-    <link rel="stylesheet" href="css/os-overlay.css?v=2">
+    <link rel="stylesheet" href="css/os-footer.css?v=2">
+    <link rel="stylesheet" href="css/os-dock.css?v=3">
+    <link rel="stylesheet" href="css/os-overlay.css?v=3">
+    <link rel="stylesheet" href="css/os-sticker.css?v=1"> <!-- si la page pose l'autocollant -->
     <!-- puis la ou les feuilles propres à la page (css/page-*.css) -->
 
     <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
-    <script type="module" src="js/birds/index.js?v=7"></script>
-    <script type="module" src="js/contact/index.js?v=9"></script>
-    <script type="module" src="js/os/index.js?v=1"></script>
+    <script type="module" src="js/birds/index.js?v=8"></script>
+    <script type="module" src="js/contact/index.js?v=10"></script>
+    <script type="module" src="js/os/index.js?v=2"></script>
 ```
 
 3. Ne posez **aucun fond sur `body`** : la trame est une couche fixe à z-index négatif qui se peint entre le fond de la racine et le corps. Un fond sur le corps la cache. Les fonds de section se posent sur les sections.
@@ -43,7 +44,7 @@ Direction : la structure de heyclicky.com, le rendu « verre liquide » rose (ma
 
 ## 2. Jetons — `css/os-tokens.css`
 
-Toutes les valeurs vivent ici, aucune valeur en dur ailleurs. Les principaux :
+Toutes les valeurs vivent ici, en OKLCH, aucune valeur en dur ailleurs. Les principaux :
 
 | Jeton | Rôle |
 |---|---|
@@ -58,7 +59,10 @@ Toutes les valeurs vivent ici, aucune valeur en dur ailleurs. Les principaux :
 | `--r-win` 18, `--r-ctl` 12, `--r-px` 3, `--r-pill` 999, `--r-dock` 24 | les rayons |
 | `--term-bg`, `--term-ink`, `--term-muted`, `--term-accent` | surfaces sombres (terminal) |
 | `--t-cap`, `--t-small`, `--t-body`, `--t-lede`, `--t-title`, `--gutter`, `--section`, `--measure` | typo et rythme |
-| `--ease-out`, `--ease-spring` | mouvements |
+| `--track-optical`, `--track-caps` | interlettrage des titres (se resserre avec la taille, appliqué à tous les h1-h3 par os-base.css) ; capitales |
+| `--grain`, `--hair`, `--pink-print` | grain du fond, épaisseur unique des liserés, rose d'imprimerie de l'autocollant |
+| `--dur-1` 150 ms, `--dur-2` 250 ms, `--dur-3` 400 ms | les trois seules durées : retour, état, déplacement |
+| `--ease-out`, `--ease-spring` | courbes (ressort à 3 % de rebond) |
 | `--z-win` 130, `--z-dock` 180, `--z-bar` 190, `--z-menu` 210, `--z-toast` 220 | calques |
 
 Une surface sombre redéfinit localement `--ink`, `--ink-muted`, `--accent`, `--line` pour elle et ses enfants. Exemple : `.term-card` dans `desk-faq.css`.
@@ -173,8 +177,22 @@ Ce sont des répliques de mise en scène, jamais des témoignages : pas de nom, 
 ## 8. Les icônes — `assets/icons/`, `css/sym.css`
 
 - **Symboles au trait** (masques CSS, couleur du texte) : `<span class="sym sym--search" aria-hidden="true"></span>`. Disponibles : `bolt`, `chart`, `file`, `folder`, `grid`, `mail`, `moon`, `notes`, `search`, `site`, `sun`, `team`, `terminal`, `trash`. Les fichiers `sym-check.svg` et `sym-plus.svg` existent aussi, à utiliser en `mask` direct (voir `desk-plans.css`, `desk-faq.css`).
-- **Icônes d'app** (squircle blanche, pictogramme encre, rose pour Contact) : `<img class="app-icon" src="assets/icons/app-work.svg" alt="" width="56" height="56">`. Disponibles : `work`, `services`, `about`, `notes`, `terminal`, `mail`, `trash`, `file`.
+- **Icônes d'app** (squircle blanche éclairée d'en haut à gauche, pictogramme encre en léger relief ; Contact est la seule squircle rose) : `<img class="app-icon" src="assets/icons/app-work.svg?v=2" alt="" width="56" height="56">`. Disponibles : `work`, `services`, `about`, `notes`, `terminal`, `mail`, `trash`, `file`.
 - Seuls les oiseaux et le grand « WAB. » du pied de page restent en pixel art. Aucune autre icône pixel.
+
+## 8 bis. L'autocollant — `css/os-sticker.css`
+
+Une seule version pour tout le site (imprimé : encre rose, grain, reflet de vinyle, ombre d'objet posé). Toujours dans un conteneur `aria-hidden`, positionné par la feuille de la page.
+
+```html
+<span class="sticker"><span class="sticker__hello">HELLO</span><span class="sticker__mine">my name is</span><span class="sticker__name" translate="no">WAB.</span></span>
+```
+
+Kaomoji : deux sur tout le site (le salut de l'accueil, le « (o_O) » de la 404). N'en ajoutez pas.
+
+## 8 ter. Les oiseaux — `js/birds/frames.js`
+
+Palette resserrée, une seule logique : un oiseau **posé** (`data-color="0"` ou `"4"`) est rose WAB (en groupe, il alterne avec le rose poudré) ; les oiseaux **en vol** sont porcelaine ou rose poudré (`FLIGHT_COLORS`). Régime `rare` : deux ou trois oiseaux.
 
 ## 9. Le pied de page — `css/os-footer.css`
 
@@ -278,12 +296,12 @@ Sur ordinateur seulement (souris, 900 px et plus). Il se range quand on descend 
 ```html
     <nav class="dock" aria-label="Dock" data-dock>
         <ul class="dock__apps">
-            <li><a class="dock__item" href="/realisations" data-app="work"><img class="app-icon" src="assets/icons/app-work.svg" alt="" width="48" height="48"><span class="dock__label">Work</span></a></li>
-            <li><a class="dock__item" href="#services" data-app="services"><img class="app-icon" src="assets/icons/app-services.svg" alt="" width="48" height="48"><span class="dock__label">Services</span></a></li>
-            <li><a class="dock__item" href="/studio" data-app="about"><img class="app-icon" src="assets/icons/app-about.svg" alt="" width="48" height="48"><span class="dock__label">About</span></a></li>
-            <li><a class="dock__item" href="#lettre" data-app="notes"><img class="app-icon" src="assets/icons/app-notes.svg" alt="" width="48" height="48"><span class="dock__label">Lettre</span></a></li>
-            <li><button class="dock__item" type="button" data-app="terminal" data-js-only><img class="app-icon" src="assets/icons/app-terminal.svg" alt="" width="48" height="48"><span class="dock__label">Terminal</span></button></li>
-            <li><a class="dock__item" href="mailto:contact@wearebrothers.ch" data-contact data-app="contact"><img class="app-icon" src="assets/icons/app-mail.svg" alt="" width="48" height="48"><span class="dock__label">Contact</span></a></li>
+            <li><a class="dock__item" href="/realisations" data-app="work"><img class="app-icon" src="assets/icons/app-work.svg?v=2" alt="" width="48" height="48"><span class="dock__label">Work</span></a></li>
+            <li><a class="dock__item" href="#services" data-app="services"><img class="app-icon" src="assets/icons/app-services.svg?v=2" alt="" width="48" height="48"><span class="dock__label">Services</span></a></li>
+            <li><a class="dock__item" href="/studio" data-app="about"><img class="app-icon" src="assets/icons/app-about.svg?v=2" alt="" width="48" height="48"><span class="dock__label">About</span></a></li>
+            <li><a class="dock__item" href="#lettre" data-app="notes"><img class="app-icon" src="assets/icons/app-notes.svg?v=2" alt="" width="48" height="48"><span class="dock__label">Lettre</span></a></li>
+            <li><button class="dock__item" type="button" data-app="terminal" data-js-only><img class="app-icon" src="assets/icons/app-terminal.svg?v=2" alt="" width="48" height="48"><span class="dock__label">Terminal</span></button></li>
+            <li><a class="dock__item" href="mailto:contact@wearebrothers.ch" data-contact data-app="contact"><img class="app-icon" src="assets/icons/app-mail.svg?v=2" alt="" width="48" height="48"><span class="dock__label">Contact</span></a></li>
         </ul>
         <ul class="dock__shelf" data-dock-shelf aria-label="Fenêtres réduites" hidden></ul>
     </nav>
@@ -291,11 +309,13 @@ Sur ordinateur seulement (souris, 900 px et plus). Il se range quand on descend 
 
 ## 11. Le système (⌘K, terminal, fenêtres, clic droit) — `js/os/index.js`
 
-Un seul module à charger : `<script type="module" src="js/os/index.js?v=1"></script>`. Il apporte :
+Un seul module à charger : `<script type="module" src="js/os/index.js?v=2"></script>`. Il apporte :
 - la palette ⌘K / Ctrl+K, ouverte aussi par le bouton `[data-palette-open]` de la barre ;
 - le terminal (dock, palette) ;
 - le menu du clic droit sur le fond ;
 - la lumière de l'heure de Lausanne (`data-sky` sur la racine) ;
+- la complication de Lausanne : un petit cadran devant l'heure de la barre (`dial.js`, styles dans `os-sky.css`) ;
+- l'ombre d'un oiseau qui passe sur le bureau, de loin en loin (`shade.js`, ordinateur seulement, jamais sous « réduire les animations ») ;
 - le reflet des boutons de verre ;
 - les fenêtres à la demande : fiche projet lue sur `/realisations`, dossier Work.
 

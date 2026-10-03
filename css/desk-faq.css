@@ -116,7 +116,7 @@
     background: var(--ink);
     -webkit-mask: url('../assets/icons/sym-plus.svg') center / contain no-repeat;
     mask: url('../assets/icons/sym-plus.svg') center / contain no-repeat;
-    transition: rotate 0.3s var(--ease-spring);
+    transition: rotate var(--dur-2) var(--ease-spring);
 }
 
 .qa[open] .qa__mark {

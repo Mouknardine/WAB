@@ -21,7 +21,7 @@
     translate: -50% 8px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.2s var(--ease-out), translate 0.25s var(--ease-out);
+    transition: opacity var(--dur-1) var(--ease-out), translate var(--dur-2) var(--ease-out);
 }
 
 @media (min-width: 900px) and (hover: hover) and (pointer: fine) {

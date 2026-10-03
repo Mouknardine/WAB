@@ -1,29 +1,29 @@
 /* ============================================
    WAB OS — le bouton de verre liquide (.glass-btn)
-   La texture choisie par Eliott le 3.10 : celle des bulles de verre
-   des services, partout. D'après un composant 21st (React + Tailwind)
-   traduit en CSS :
-   — la coque : une pilule de verre (rose clair ou claire), double
-     liseré (blanc lumineux, puis un trait gris très fin), flou léger de
-     ce qui passe derrière, ombre douce et diffuse ;
-   — la profondeur : une pénombre interne au bas de la coque ;
-   — le reflet spéculaire (::before) : la moitié haute qui s'éclaire ;
-   — le fil de bord (::after) : un liseré blanc en retrait, flouté.
+   La texture des bulles de verre des services, partout. Finition
+   « précieuse » (FINITION-PRO.md) :
+   — la coque : une pilule de verre presque opaque, un seul liseré
+     d'un pixel, des ombres en couches très douces (os-tokens.css) ;
+   — le reflet (::before) : une bande étroite en haut, comme la
+     lumière d'une fenêtre sur une lentille, pas un dôme ;
+   — la caustique (::after) : la lumière qui traverse le verre se
+     ramasse au bas de la coque, un halo blanc très léger ;
+   — l'éclairage vient d'en haut à gauche, comme sur les icônes.
    Organique : un reflet suit la souris (--gb-x, --gb-y, posés par
-   js/desk/glass.js), la coque gonfle au survol et s'écrase à l'appui
-   sur un ressort. Tout mouvement est coupé sous « réduire les
-   animations ».
-   Variante rose (.glass-btn--pink) : le verre rose de la bulle, texte
-   encre à 10,7:1. Sans variante : le verre clair de la réponse.
+   js/os/glass.js). L'appui s'enfonce en 150 ms, la coque revient sur
+   le ressort. Tout mouvement est coupé sous « réduire les animations ».
+   Variante rose (.glass-btn--pink) : texte encre à 11,9:1 au pire.
    Petite taille : .glass-btn--sm.
    ============================================ */
 
 .glass-btn {
-    --gb-x: 50%;
+    --gb-x: 30%;
     --gb-y: 0%;
-    --gb-shine: 0.35;
+    --gb-shine: 0.3;
     --gb-fill: var(--bubble-clear);
-    --gb-depth: inset 0 -1px 2px rgba(11, 11, 12, 0.06);
+    --gb-edge: var(--glass-edge);
+    --gb-depth: inset 0 calc(-1 * var(--hair)) 0 oklch(0.15 0.01 290 / 0.06);
+    --gb-glow: oklch(0.15 0.01 290 / 0);
     position: relative;
     isolation: isolate;
     overflow: hidden;
@@ -36,15 +36,15 @@
     border: 0;
     border-radius: var(--r-pill);
     background:
-        radial-gradient(140px 70px at var(--gb-x) var(--gb-y), rgba(255, 255, 255, var(--gb-shine)), transparent 70%),
+        radial-gradient(120px 60px at var(--gb-x) var(--gb-y), oklch(1 0 0 / var(--gb-shine)), transparent 70%),
         var(--gb-fill);
-    -webkit-backdrop-filter: blur(5px) brightness(1.05);
-    backdrop-filter: blur(5px) brightness(1.05);
+    -webkit-backdrop-filter: blur(6px) saturate(1.4);
+    backdrop-filter: blur(6px) saturate(1.4);
     box-shadow:
-        inset 0 1px 0 var(--glass-rim),
+        inset 0 var(--hair) 0 var(--glass-rim),
         var(--gb-depth),
-        0 0 0 1px rgba(255, 255, 255, 0.6),
-        0 0 0 1.5px var(--glass-edge),
+        0 0 0 var(--hair) var(--gb-edge),
+        0 6px 14px -6px var(--gb-glow),
         var(--glass-shadow);
     font: inherit;
     font-size: var(--t-body);
@@ -58,32 +58,32 @@
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
-    transition: scale 0.25s var(--ease-spring), --gb-shine 0.25s var(--ease-out);
+    transition:
+        scale var(--dur-3) var(--ease-spring),
+        --gb-shine var(--dur-2) var(--ease-out);
 }
 
-/* Le reflet spéculaire : la moitié haute de la coque s'éclaire,
-   exactement comme les bulles des services. */
+/* Le reflet : une bande étroite sous le liseré du haut. */
 .glass-btn::before {
     content: '';
     position: absolute;
     z-index: -1;
-    inset: 1px 10px 50%;
-    border-radius: var(--r-pill) var(--r-pill) 50% 50%;
-    background: var(--glass-specular);
-    opacity: 0.75;
+    inset: 1px 6% 50%;
+    border-radius: var(--r-pill) var(--r-pill) 0 0;
+    background: radial-gradient(60% 100% at 50% 0%, oklch(1 0 0 / 0.75), oklch(1 0 0 / 0) 80%);
+    opacity: 0.8;
     pointer-events: none;
-    transition: opacity 0.25s var(--ease-out);
+    transition: opacity var(--dur-2) var(--ease-out);
 }
 
-/* Le fil de bord : un liseré blanc en retrait, flouté d'un pixel. */
+/* La caustique : la lumière ramassée au bas de la coque. */
 .glass-btn::after {
     content: '';
     position: absolute;
     z-index: -1;
-    inset: 4.5px;
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    border-radius: inherit;
-    filter: blur(1px);
+    inset: 50% 18% 0;
+    border-radius: 50% 50% var(--r-pill) var(--r-pill);
+    background: radial-gradient(60% 80% at 50% 100%, oklch(1 0 0 / 0.45), transparent 75%);
     pointer-events: none;
 }
 
@@ -95,13 +95,12 @@
 @property --gb-shine {
     syntax: '<number>';
     inherits: false;
-    initial-value: 0.35;
+    initial-value: 0.3;
 }
 
 @media (hover: hover) {
     .glass-btn:hover {
-        --gb-shine: 0.75;
-        scale: 1.02;
+        --gb-shine: 0.7;
     }
 
     .glass-btn:hover::before {
@@ -109,15 +108,28 @@
     }
 }
 
-/* L'appui : la coque s'écrase, puis revient sur le ressort. */
+/* L'appui : la coque s'enfonce, le reflet s'éteint, l'ombre se
+   resserre d'un coup (seule l'échelle est animée) ; au relâché, le
+   ressort la ramène. */
 .glass-btn:active {
-    scale: 0.98;
-    transition-duration: 0.1s;
+    --gb-shine: 0.15;
+    scale: 0.97;
+    box-shadow:
+        inset 0 var(--hair) 2px oklch(0.15 0.01 290 / 0.1),
+        0 0 0 var(--hair) var(--gb-edge),
+        0 1px 2px oklch(0.15 0.01 290 / 0.08);
+    transition-duration: var(--dur-1);
+}
+
+.glass-btn:focus-visible {
+    outline-offset: 3px;
 }
 
 .glass-btn--pink {
     --gb-fill: var(--bubble-pink);
-    --gb-depth: inset 0 -1px 2px rgba(160, 15, 90, 0.18);
+    --gb-edge: oklch(0.55 0.15 356 / 0.24);
+    --gb-depth: inset 0 calc(-1 * var(--hair)) 0 oklch(0.55 0.18 356 / 0.2);
+    --gb-glow: oklch(0.62 0.2 356 / 0.28);
 }
 
 .glass-btn--sm {
@@ -136,11 +148,11 @@
 /* Sans flou d'arrière-plan : une coque opaque, aussi lisible. */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     .glass-btn:not(.glass-btn--pink) {
-        --gb-fill: linear-gradient(180deg, #ffffff, #f1f1f3);
+        --gb-fill: linear-gradient(180deg, oklch(1 0 0), oklch(0.96 0.002 290));
     }
 
     .glass-btn--pink {
-        --gb-fill: linear-gradient(180deg, #ffd6ea, #ffa9d4);
+        --gb-fill: linear-gradient(180deg, oklch(0.93 0.045 352), oklch(0.84 0.105 354));
     }
 }
 

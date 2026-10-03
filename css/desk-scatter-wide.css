@@ -30,13 +30,6 @@
         --w: 184px;
     }
 
-    .scat--kao-b {
-        --x: 61%;
-        --y: 128px;
-        --depth: 0.5;
-        display: block;
-    }
-
     .scat--folder {
         --x: 21.4%;
         --y: 262px;

@@ -20,7 +20,7 @@
     width: 100%;
     height: auto;
     border-radius: var(--r-win) var(--r-win) 0 0;
-    animation: sheet-in 0.32s var(--ease-out);
+    animation: sheet-in var(--dur-3) var(--ease-out);
 }
 
 .oswin.is-sheet .oswin__bar {
@@ -64,7 +64,7 @@
     font-weight: var(--w-strong);
     line-height: 1;
     opacity: 0;
-    transition: opacity 0.15s var(--ease-out);
+    transition: opacity var(--dur-1) var(--ease-out);
 }
 
 .oswin__ctl--close::after {

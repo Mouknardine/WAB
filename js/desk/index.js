@@ -18,7 +18,7 @@ import { initShowcase } from './showcase.js?v=1';
 import { initWatch } from './watch.js?v=1';
 import { initPixels } from './pixels.js?v=2';
 import { initFocusScroll } from './focus-scroll.js?v=1';
-import { initArrival } from './arrival.js?v=1';
+import { initArrival } from './arrival.js?v=2';
 
 /** @type {Array<[string, () => void]>} */
 const MODULES = [

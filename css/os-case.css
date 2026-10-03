@@ -17,9 +17,13 @@
     align-content: start;
 }
 
+/* Le cadre prend toute la largeur de la fiche ; sa hauteur suit le
+   4:5 de la photo, plafonnée à 56 % de l'écran. Pas d'aspect-ratio
+   ici : combiné au plafond, il rétrécissait la largeur et laissait
+   une bande blanche à droite (12 px sur un téléphone de 390 px). */
 .case-os__media {
-    aspect-ratio: 4 / 5;
-    max-height: 56vh;
+    width: 100%;
+    height: min(125cqi, 56vh);
     overflow: hidden;
     background: var(--desk);
 }
@@ -117,8 +121,6 @@
     }
 
     .case-os__media {
-        aspect-ratio: auto;
-        max-height: none;
         height: 100%;
     }
 

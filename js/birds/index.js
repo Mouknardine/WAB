@@ -19,9 +19,9 @@
    versions de ces fichiers. Une adresse neuve les en libère. Le
    serveur revalide désormais les scripts à chaque visite (.htaccess) :
    ce numéro n'aura plus à bouger. */
-import { BODY_COLORS } from './frames.js?v=5';
-import { createSpriteBank } from './sprites.js?v=5';
-import { createFlock, TEXT_DIM } from './flock.js?v=6';
+import { FLIGHT_COLORS } from './frames.js?v=7';
+import { createSpriteBank } from './sprites.js?v=6';
+import { createFlock, TEXT_DIM } from './flock.js?v=7';
 import { createShyness } from './shyness.js?v=5';
 
 /* Échelles de dessin disponibles, de l'oiseau le plus lointain au
@@ -37,7 +37,7 @@ const LADDER_LARGE = [2, 3, 4, 5];
 const DENSITY = {
     dense: { area: 27000, min: 20, max: 48 },
     calm: { area: 120000, min: 5, max: 12 },
-    rare: { area: 420000, min: 2, max: 4 },
+    rare: { area: 420000, min: 2, max: 3 },
 };
 
 function ladderFor(width) {
@@ -178,7 +178,7 @@ function initBirds() {
                 scale,
                 dir: index % 2 === 0 ? 1 : -1,
                 frameIndex: index % 2,
-                color: BODY_COLORS[index % BODY_COLORS.length],
+                color: FLIGHT_COLORS[index % FLIGHT_COLORS.length],
             };
             const visible = shyness.isOpen(bird.x, bird.y, width, height);
             sprites.draw(ctx, bird, visible ? 1 : TEXT_DIM);

@@ -19,8 +19,8 @@
  * Sous « réduire les animations », l'oiseau reste posé, immobile.
  */
 
-import { createSpriteBank } from './sprites.js?v=5';
-import { BODY_COLORS } from './frames.js?v=5';
+import { createSpriteBank } from './sprites.js?v=6';
+import { BODY_COLORS } from './frames.js?v=7';
 
 const BEAT_MS = 110;
 const FLY_MS = 900;

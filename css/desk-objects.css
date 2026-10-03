@@ -1,53 +1,10 @@
 /* ============================================
    WAB OS — les objets du bureau
-   L'autocollant « HELLO my name is », les kaomoji, et les icônes de
-   bureau : des icônes d'app modernes (assets/icons/app-*.svg, une
-   squircle en dégradé, une couche de verre, un pictogramme au trait).
+   Le kaomoji et les icônes de bureau : des icônes d'app modernes
+   (assets/icons/app-*.svg, une squircle éclairée d'en haut à gauche,
+   un pictogramme au trait). L'autocollant : os-sticker.css.
    Une icône sélectionnée prend le rose système, comme son nom.
    ============================================ */
-
-/* ── Autocollant ── le bandeau dans le verre rose des boutons (texte
-   encre), la carte blanche, le nom tapé en Sligoil. */
-.sticker {
-    display: block;
-    width: 112px;
-    border-radius: var(--r-ctl);
-    background: var(--bubble-pink);
-    box-shadow: inset 0 1px 0 var(--glass-rim), 0 0 0 1px rgba(255, 255, 255, 0.6), var(--shadow-object);
-    text-align: center;
-    color: var(--glass-ink);
-    overflow: hidden;
-}
-
-.sticker__hello {
-    display: block;
-    padding-top: 6px;
-    font-size: 11px;
-    font-weight: var(--w-strong);
-    letter-spacing: 0.08em;
-    line-height: 1;
-}
-
-.sticker__mine {
-    display: block;
-    padding: 2px 0 4px;
-    font-size: 7px;
-    letter-spacing: 0.06em;
-    line-height: 1;
-}
-
-.sticker__name {
-    display: block;
-    margin: 0 5px 6px;
-    padding: 8px 0 7px;
-    border-radius: 7px;
-    background: var(--on-accent);
-    font-size: 1.15rem;
-    font-weight: var(--w-strong);
-    letter-spacing: -0.04em;
-    line-height: 1;
-    color: var(--ink);
-}
 
 /* ── Kaomoji ── */
 .kao {
@@ -79,7 +36,7 @@
     width: 56px;
     height: 56px;
     filter: drop-shadow(0 3px 6px rgba(11, 11, 12, 0.1));
-    transition: transform 0.35s var(--ease-spring);
+    transition: transform var(--dur-3) var(--ease-spring);
 }
 
 .icon__name {

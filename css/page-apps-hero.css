@@ -2,8 +2,7 @@
    WAB OS — page Applications : le premier écran
    La promesse au centre, en colonne étroite ; sous elle l'application
    ouverte dans son écran (page-apps-window.css). Le désordre (un
-   autocollant, le tableur que l'outil remplace, un kaomoji) reste en
-   bordure, et seulement sur grand écran.
+   autocollant, le tableur que l'outil remplace) reste en bordure, et seulement sur grand écran.
    ============================================ */
 
 .app-hero {
@@ -79,11 +78,6 @@
         top: calc(var(--bar-h) + 120px);
         right: max(var(--gutter), calc(50% - 650px));
         rotate: 3deg;
-    }
-
-    .app-edge--kao {
-        top: calc(var(--bar-h) + 300px);
-        left: max(calc(var(--gutter) + 40px), calc(50% - 560px));
     }
 }
 

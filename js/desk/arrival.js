@@ -11,8 +11,8 @@
  * « réduire les animations », les oiseaux sont déjà posés.
  */
 
-import { createSpriteBank } from '../birds/sprites.js?v=5';
-import { BODY_COLORS } from '../birds/frames.js?v=5';
+import { createSpriteBank } from '../birds/sprites.js?v=6';
+import { BODY_COLORS } from '../birds/frames.js?v=7';
 
 const FLY_MS = 1500;
 const STAGGER_MS = 380;
@@ -95,7 +95,9 @@ function createFlight(canvas, section, letter) {
                 ty: Math.round(spot.y),
                 delay: (i / spots.length) * STAGGER_MS + rand(0, 120),
                 dir: fromLeft ? 1 : -1,
-                color: BODY_COLORS[i % BODY_COLORS.length],
+                // Posés en groupe : rose WAB et rose poudré en alternance,
+                // pour que l'accent ne fasse pas bloc (frames.js).
+                color: BODY_COLORS[i % 2 === 0 ? 0 : 2],
                 scale,
                 nextFlap: rand(2500, 7000),
             };
