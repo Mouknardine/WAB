@@ -10,7 +10,7 @@
 
 import { openWindow } from './wm.js?v=1';
 import { loadProjects, imageFrom } from './projects.js?v=1';
-import { el, showState, keyLink } from './dom.js?v=1';
+import { el, showState, keyLink } from './dom.js?v=2';
 import { report } from './lazy.js?v=1';
 import { isOpenGesture, select } from './gesture.js?v=1';
 import { launchCase } from './apps.js?v=2';

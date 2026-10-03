@@ -5,10 +5,10 @@
 <linearGradient id="a-terminal-rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></linearGradient>
 <linearGradient id="a-terminal-edge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b0b0c" stop-opacity=".05"/><stop offset="1" stop-color="#0b0b0c" stop-opacity=".18"/></linearGradient>
 </defs>
-<path d="M50 0C88 0 100 12 100 50s-12 50-50 50S0 88 0 50 12 0 50 0Z" fill="url(#a-terminal-bg)"/>
-<path d="M50 0C88 0 100 12 100 50s-12 50-50 50S0 88 0 50 12 0 50 0Z" fill="url(#a-terminal-sp)"/>
-<path d="M50 0C88 0 100 12 100 50s-12 50-50 50S0 88 0 50 12 0 50 0Z" fill="none" stroke="url(#a-terminal-rim)" stroke-width="2" transform="translate(1 1) scale(.98)"/>
-<path d="M50 0C88 0 100 12 100 50s-12 50-50 50S0 88 0 50 12 0 50 0Z" fill="none" stroke="url(#a-terminal-edge)" stroke-width="1" transform="translate(.5 .5) scale(.99)"/>
+<path d="M14 0H86A14 14 0 0 1 100 14V86A14 14 0 0 1 86 100H14A14 14 0 0 1 0 86V14A14 14 0 0 1 14 0Z" fill="url(#a-terminal-bg)"/>
+<path d="M14 0H86A14 14 0 0 1 100 14V86A14 14 0 0 1 86 100H14A14 14 0 0 1 0 86V14A14 14 0 0 1 14 0Z" fill="url(#a-terminal-sp)"/>
+<path d="M14 0H86A14 14 0 0 1 100 14V86A14 14 0 0 1 86 100H14A14 14 0 0 1 0 86V14A14 14 0 0 1 14 0Z" fill="none" stroke="url(#a-terminal-rim)" stroke-width="2" transform="translate(1 1) scale(.98)"/>
+<path d="M14 0H86A14 14 0 0 1 100 14V86A14 14 0 0 1 86 100H14A14 14 0 0 1 0 86V14A14 14 0 0 1 14 0Z" fill="none" stroke="url(#a-terminal-edge)" stroke-width="1" transform="translate(.5 .5) scale(.99)"/>
 <g transform="translate(25.7 26.1) scale(2.083)" fill="none" stroke="#0b0b0c" stroke-opacity=".12" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="m4 17.5 6-5.5-6-5.5"/><path d="M12.5 18.5h7.5"/></g>
 <g transform="translate(25 25) scale(2.083)" fill="none" stroke="#1a1920" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="m4 17.5 6-5.5-6-5.5"/><path d="M12.5 18.5h7.5"/></g>
 </svg>

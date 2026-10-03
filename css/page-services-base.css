@@ -1,6 +1,6 @@
 /* ============================================
    Services — socle de la page (WAB OS)
-   Les quelques valeurs propres à cette page, l'icône d'app en squircle
+   Les quelques valeurs propres à cette page, l'icône d'app en carré arrondi
    (le composant de la page : chaque service est une « app »), les
    en-têtes de section et le lien fléché. Toutes les couleurs viennent
    des jetons partagés (os-tokens.css).
@@ -14,9 +14,9 @@
     --app-pink: linear-gradient(180deg, var(--pink-soft), var(--pink));
     --app-ink: linear-gradient(180deg, #3a3940, var(--ink));
     --app-clear: linear-gradient(180deg, var(--paper), #eeedf2);
-    /* Le squircle d'Apple, celui des icônes partagées (assets/icons),
-       en masque : net à toute taille. */
-    --squircle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0C88 0 100 12 100 50s-12 50-50 50S0 88 0 50 12 0 50 0Z'/%3E%3C/svg%3E");
+    /* La forme des icônes partagées (assets/icons) : un carré aux coins
+       à peine arrondis (14 %), en masque, net à toute taille. */
+    --icon-shape: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M14 0H86A14 14 0 0 1 100 14V86A14 14 0 0 1 86 100H14A14 14 0 0 1 0 86V14A14 14 0 0 1 14 0Z'/%3E%3C/svg%3E");
     --app-size: 44px;
     --feat-text: 360px;
     --feat-gap: 72px;
@@ -32,7 +32,7 @@
 
 /* ── L'icône d'app ──
    L'ombre est portée par la boîte (filter), la matière par la tuile
-   masquée en squircle : un masque couperait une box-shadow. */
+   masquée en carré arrondi : un masque couperait une box-shadow. */
 .app {
     --glyph: var(--glass-ink);
     position: relative;
@@ -50,8 +50,8 @@
     content: '';
     position: absolute;
     inset: 0;
-    -webkit-mask: var(--squircle) center / 100% 100% no-repeat;
-    mask: var(--squircle) center / 100% 100% no-repeat;
+    -webkit-mask: var(--icon-shape) center / 100% 100% no-repeat;
+    mask: var(--icon-shape) center / 100% 100% no-repeat;
 }
 
 /* La matière, cernée d'un liseré très fin. */

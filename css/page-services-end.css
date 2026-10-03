@@ -31,7 +31,7 @@
     box-shadow: 0 0 0 1px var(--win-edge), var(--win-shadow);
 }
 
-/* Le numéro : une petite tuile en squircle, comme une app. */
+/* Le numéro : une petite tuile carrée, comme une app. */
 .svc-step__num {
     grid-row: span 2;
     display: grid;
@@ -39,8 +39,8 @@
     width: 40px;
     aspect-ratio: 1;
     background: var(--app-clear);
-    -webkit-mask: var(--squircle) center / 100% 100% no-repeat;
-    mask: var(--squircle) center / 100% 100% no-repeat;
+    -webkit-mask: var(--icon-shape) center / 100% 100% no-repeat;
+    mask: var(--icon-shape) center / 100% 100% no-repeat;
     box-shadow: inset 0 0 0 1px var(--glass-edge);
     font-weight: var(--w-strong);
 }

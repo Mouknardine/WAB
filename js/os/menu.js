@@ -9,7 +9,7 @@
  * défilement le referment et rendent le focus.
  */
 
-import { el } from './dom.js?v=1';
+import { el } from './dom.js?v=2';
 import { openContact, copyEmail, SHORTCUT } from './actions.js?v=1';
 import { launchFinder, launchPalette } from './apps.js?v=2';
 

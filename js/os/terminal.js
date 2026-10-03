@@ -10,7 +10,7 @@
  */
 
 import { openWindow } from './wm.js?v=1';
-import { el } from './dom.js?v=1';
+import { el } from './dom.js?v=2';
 import { openContact } from './actions.js?v=1';
 import { report } from './lazy.js?v=1';
 import { run } from './terminal-commands.js?v=1';

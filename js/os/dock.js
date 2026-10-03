@@ -7,7 +7,7 @@
  * n'aurait nulle part où revenir).
  */
 
-import { appIcon, el } from './dom.js?v=1';
+import { appIcon, el } from './dom.js?v=2';
 
 const dock = document.querySelector('[data-dock]');
 const shelf = document.querySelector('[data-dock-shelf]');

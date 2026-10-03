@@ -6,7 +6,7 @@
  */
 
 import { openWindow } from './wm.js?v=1';
-import { el, appIcon, keyLink } from './dom.js?v=1';
+import { el, appIcon, keyLink } from './dom.js?v=2';
 
 /** @param {HTMLElement | null} opener */
 export function openTrash(opener) {

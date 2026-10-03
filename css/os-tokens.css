@@ -51,6 +51,9 @@
     /* ── Rayons et traits ── une seule épaisseur de liseré. */
     --r-win: 18px;
     --r-ctl: 12px;
+    /* Icônes d'app : un carré aux coins à peine arrondis (14 %), le même
+       que le tracé des icônes partagées (assets/icons/app-*.svg). */
+    --r-icon: 14%;
     --r-px: 3px;
     --r-pill: 999px;
     --hair: 1px;

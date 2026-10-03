@@ -177,7 +177,7 @@ Ce sont des répliques de mise en scène, jamais des témoignages : pas de nom, 
 ## 8. Les icônes — `assets/icons/`, `css/sym.css`
 
 - **Symboles au trait** (masques CSS, couleur du texte) : `<span class="sym sym--search" aria-hidden="true"></span>`. Disponibles : `bolt`, `chart`, `file`, `folder`, `grid`, `mail`, `moon`, `notes`, `search`, `site`, `sun`, `team`, `terminal`, `trash`. Les fichiers `sym-check.svg` et `sym-plus.svg` existent aussi, à utiliser en `mask` direct (voir `desk-plans.css`, `desk-faq.css`).
-- **Icônes d'app** (squircle blanche éclairée d'en haut à gauche, pictogramme encre en léger relief ; Contact est la seule squircle rose) : `<img class="app-icon" src="assets/icons/app-work.svg?v=2" alt="" width="56" height="56">`. Disponibles : `work`, `services`, `about`, `notes`, `terminal`, `mail`, `trash`, `file`.
+- **Icônes d'app** (carré blanc aux coins à peine arrondis, éclairé d'en haut à gauche, pictogramme encre en léger relief ; Contact est la seule icône rose) : `<img class="app-icon" src="assets/icons/app-work.svg?v=3" alt="" width="56" height="56">`. Disponibles : `work`, `services`, `about`, `notes`, `terminal`, `mail`, `trash`, `file`.
 - Seuls les oiseaux et le grand « WAB. » du pied de page restent en pixel art. Aucune autre icône pixel.
 
 ## 8 bis. L'autocollant — `css/os-sticker.css`
@@ -296,12 +296,12 @@ Sur ordinateur seulement (souris, 900 px et plus). Il se range quand on descend 
 ```html
     <nav class="dock" aria-label="Dock" data-dock>
         <ul class="dock__apps">
-            <li><a class="dock__item" href="/realisations" data-app="work"><img class="app-icon" src="assets/icons/app-work.svg?v=2" alt="" width="48" height="48"><span class="dock__label">Work</span></a></li>
-            <li><a class="dock__item" href="#services" data-app="services"><img class="app-icon" src="assets/icons/app-services.svg?v=2" alt="" width="48" height="48"><span class="dock__label">Services</span></a></li>
-            <li><a class="dock__item" href="/studio" data-app="about"><img class="app-icon" src="assets/icons/app-about.svg?v=2" alt="" width="48" height="48"><span class="dock__label">About</span></a></li>
-            <li><a class="dock__item" href="#lettre" data-app="notes"><img class="app-icon" src="assets/icons/app-notes.svg?v=2" alt="" width="48" height="48"><span class="dock__label">Lettre</span></a></li>
-            <li><button class="dock__item" type="button" data-app="terminal" data-js-only><img class="app-icon" src="assets/icons/app-terminal.svg?v=2" alt="" width="48" height="48"><span class="dock__label">Terminal</span></button></li>
-            <li><a class="dock__item" href="mailto:contact@wearebrothers.ch" data-contact data-app="contact"><img class="app-icon" src="assets/icons/app-mail.svg?v=2" alt="" width="48" height="48"><span class="dock__label">Contact</span></a></li>
+            <li><a class="dock__item" href="/realisations" data-app="work"><img class="app-icon" src="assets/icons/app-work.svg?v=3" alt="" width="48" height="48"><span class="dock__label">Work</span></a></li>
+            <li><a class="dock__item" href="#services" data-app="services"><img class="app-icon" src="assets/icons/app-services.svg?v=3" alt="" width="48" height="48"><span class="dock__label">Services</span></a></li>
+            <li><a class="dock__item" href="/studio" data-app="about"><img class="app-icon" src="assets/icons/app-about.svg?v=3" alt="" width="48" height="48"><span class="dock__label">About</span></a></li>
+            <li><a class="dock__item" href="#lettre" data-app="notes"><img class="app-icon" src="assets/icons/app-notes.svg?v=3" alt="" width="48" height="48"><span class="dock__label">Lettre</span></a></li>
+            <li><button class="dock__item" type="button" data-app="terminal" data-js-only><img class="app-icon" src="assets/icons/app-terminal.svg?v=3" alt="" width="48" height="48"><span class="dock__label">Terminal</span></button></li>
+            <li><a class="dock__item" href="mailto:contact@wearebrothers.ch" data-contact data-app="contact"><img class="app-icon" src="assets/icons/app-mail.svg?v=3" alt="" width="48" height="48"><span class="dock__label">Contact</span></a></li>
         </ul>
         <ul class="dock__shelf" data-dock-shelf aria-label="Fenêtres réduites" hidden></ul>
     </nav>

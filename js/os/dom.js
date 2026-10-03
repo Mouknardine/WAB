@@ -31,14 +31,14 @@ export function symIcon(name) {
 }
 
 /**
- * Une icône d'app (squircle de verre).
+ * Une icône d'app (carré aux coins à peine arrondis).
  * @param {string} name  app-<name>.svg
  * @param {number} size
  * @returns {HTMLImageElement}
  */
 export function appIcon(name, size) {
     const img = el('img', 'app-icon');
-    img.src = new URL(`../../assets/icons/app-${name}.svg`, import.meta.url).href;
+    img.src = new URL(`../../assets/icons/app-${name}.svg?v=3`, import.meta.url).href;
     img.alt = '';
     img.width = size;
     img.height = size;
