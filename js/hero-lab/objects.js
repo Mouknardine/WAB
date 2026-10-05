@@ -1,8 +1,8 @@
 /* ============================================
    Hero 3D (essai) — le catalogue des objets et leurs fabriques.
-   Deux familles, mêlées dans l'orbite :
-   — les images détourées, posées sur des plans (le procédé d'agentcard :
-     vues de profil, elles deviennent un trait) ;
+   Ici, deux familles (les objets en relief sont dans models.js) :
+   — les personnages, en images détourées posées sur des plans (le procédé
+     d'agentcard : vus de profil, ils deviennent un trait) ;
    — les fenêtres du studio, en vraie 3D, avec les captures des sites.
    Pour remplacer un objet par un rendu Endless Tools : déposer le PNG
    ou le WebP détouré dans assets/hero-lab/ et changer `src` ci-dessous.
@@ -27,15 +27,8 @@ const DIR = 'assets/hero-lab/';
    n : nombre d'exemplaires dans l'orbite sur grand écran. */
 export const SPRITES = [
     { src: 'frog.webp', h: 1.7, n: 3 },
-    { src: 'cat.webp', h: 1.3, n: 3 },
-    { src: 'queen.webp', h: 1.55, n: 3 },
-    { src: 'keys.webp', h: 0.95, n: 2 },
-    { src: 'phone.webp', h: 1.55, n: 3 },
-    { src: 'cloud.webp', h: 0.95, n: 4 },
-    { src: 'google.webp', h: 0.9, n: 3 },
-    { src: 'folder.webp', h: 0.95, n: 3 },
+    { src: 'cat.webp', h: 1.3, n: 2 },
     { src: 'psyduck.webp', h: 1.3, n: 3 },
-    { src: 'swiss.webp', h: 0.85, n: 3 },
 ];
 
 /* Les fenêtres : vraies captures du travail, nom du site dans la barre. */

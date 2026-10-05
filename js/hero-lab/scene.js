@@ -27,6 +27,7 @@ import {
     WebGLRenderer,
 } from '../vendor/three-hero.js';
 import { SPRITES, WINDOWS, makeSprite, makeWindow } from './objects.js';
+import { MODELS } from './models.js';
 
 const stage = document.querySelector('[data-hero3d]');
 const canvas = stage?.querySelector('canvas');
@@ -120,14 +121,18 @@ async function init() {
     /* ── Les objets ── */
     const small = Math.min(innerWidth, innerHeight) < 640;
     const dose = small ? 0.6 : 1;
-    const [sprites, windows] = await Promise.all([
+    const [sprites, windows, models] = await Promise.all([
         Promise.all(SPRITES.map(async (def) => ({ make: await makeSprite(def, renderer), n: def.n, flat: true }))),
         Promise.all(WINDOWS.map(async (def) => ({ make: await makeWindow(def, renderer), n: 2, flat: false }))),
+        Promise.all(MODELS.map(async (def) => {
+            const model = await Promise.resolve().then(def.build).catch((err) => (console.error(err), null));
+            return { make: model && ((count) => Array.from({ length: count }, () => model.clone())), n: def.n, flat: false };
+        })),
     ]);
 
     const rand = seeded(11);
     const objects = [];
-    for (const kind of [...sprites, ...windows]) {
+    for (const kind of [...sprites, ...windows, ...models]) {
         if (!kind.make) continue;
         const count = Math.max(1, Math.round(kind.n * dose));
         for (const obj of kind.make(count)) objects.push({ obj, flat: kind.flat });
@@ -266,12 +271,13 @@ async function init() {
                 (it.y + lift) * MathUtils.lerp(1.6, 1, arrive) + Math.sin(t * it.wob + it.bob) * 0.12,
                 Math.sin(it.ang) * it.rz * spread,
             );
+            it.obj.scale.setScalar(it.scale * MathUtils.lerp(0.25, 1, arrive));
             it.obj.rotation.set(
                 it.rot.x + Math.sin(t * it.wob * 0.7 + it.bob) * 0.25,
                 it.rot.y + Math.sin(t * it.wob + it.bob * 2) * it.amp,
                 it.rot.z + Math.cos(t * it.wob * 0.5 + it.bob) * 0.18,
             );
-            if (it.materials[0].opacity < 1) {
+            if (it.materials[0]?.opacity < 1) {
                 for (const m of it.materials) {
                     m.opacity = arrive;
                     if (arrive >= 1 && m.userData.solid) {
