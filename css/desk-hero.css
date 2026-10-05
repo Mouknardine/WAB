@@ -1,14 +1,14 @@
 /* ============================================
    WAB. — Accueil : le premier écran
-   La structure de la hero d'agentcard.sh (demande d'Eliott du
-   5.10.2026) : « WeAreBrothers » au centre, une phrase, une touche,
-   et nos dix objets en relief autour (desk-scatter.css). Le premier
-   écran tient dans la hauteur de l'écran ; la vitrine des projets
-   passe dessous.
+   La hero d'agentcard.sh (demande d'Eliott du 5.10.2026), d'après la
+   capture fournie : l'écran Klein à lignes en plein cadre, le nom en
+   blanc, en relief, posé en diagonale au centre, et une nuée d'objets
+   à toutes les profondeurs, devant et derrière lui (desk-scatter.css,
+   js/desk/field.js). La vitrine des projets passe dessous.
 
-   Tout se règle sur une unité --u : 1 px à 1440 × 900, plus petite
-   quand l'écran est plus étroit ou plus bas. Le nom et les objets
-   gardent ainsi les mêmes proportions à toutes les tailles.
+   Profondeurs, dans l'ordre d'empilement : loin (1), milieu (2), le
+   nom (3), près (4). Chacune est un calque que la parallaxe déplace
+   (data-depth, js/desk/parallax.js).
    ============================================ */
 
 .hero {
@@ -17,94 +17,108 @@
 }
 
 .hero__stage {
-    /* Valeurs de la hero d'agentcard, à recaler sur le relevé :
-       taille, graisse et interlettrage du nom ; amplitude, durée et
-       courbe des mouvements (desk-scatter.css). */
-    --u: min(100vw / 1440, 100svh / 900);
-    --name-size: calc(124 * var(--u));
-    --name-weight: 500;
-    --name-track: -0.035em;
+    /* L'unité des objets : 1vw, bornée par la hauteur sur un écran
+       large et bas (1,6svh), pour que la nuée garde ses proportions. */
+    --u: min(1vw, 1.6svh);
+    /* Le nom : taille relevée sur la capture (≈ 7,7 % de la largeur),
+       angle, relief. */
+    --name-size: min(7.7vw, 12.3svh);
+    --name-turn: 28deg;
+    --name-face: oklch(0.95 0.02 268);
+    --name-side: oklch(0.43 0.24 266);
+    --name-top: oklch(0.5 0.25 266);
     position: relative;
-    display: grid;
-    place-items: center;
-    min-height: 100svh;
-    padding: calc(var(--bar-h) + 16px) var(--gutter) 24px;
-    /* Les objets coupés par les bords de l'écran ne créent pas de
-       défilement horizontal ; vers le bas, ils peuvent déborder. */
-    overflow-x: clip;
+    isolation: isolate;
+    height: 100svh;
+    min-height: 520px;
+    overflow: clip;
+    background: var(--klein-screen);
 }
 
-/* Le centre laisse passer le glisser des objets autour : seuls le
-   nom, la phrase et la touche captent le pointeur. */
-.hero__center {
-    position: relative;
-    z-index: 5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+/* ── Le nom ── */
+.hero__name {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: grid;
+    place-items: center;
     pointer-events: none;
 }
 
-.hero__center > * {
-    pointer-events: auto;
-}
-
-/* Le nom : une ligne, jamais coupée. Son conteneur prend sa largeur
-   exacte, pour que le curseur se pose au bout du dernier mot. */
-.hero__name {
-    position: relative;
-}
-
 .hero__title {
+    position: relative;
+    /* Une perspective légère : la fin du nom vient vers nous, comme
+       sur la capture. */
+    transform: perspective(1400px) rotateY(-10deg) rotateZ(var(--name-turn));
     font-size: var(--name-size);
-    font-weight: var(--name-weight);
+    font-weight: var(--w-strong);
     line-height: 1;
-    letter-spacing: var(--name-track);
+    letter-spacing: -0.03em;
     white-space: nowrap;
-    color: var(--ink);
+    color: var(--name-face);
+    /* Le relief : la tranche part vers le haut des lettres, bleu un peu
+       plus clair que l'écran, la face supérieure plus claire encore. */
+    text-shadow:
+        -0.002em -0.012em 0 var(--name-side),
+        -0.004em -0.024em 0 var(--name-side),
+        -0.006em -0.036em 0 var(--name-side),
+        -0.008em -0.048em 0 var(--name-side),
+        -0.01em -0.06em 0 var(--name-side),
+        -0.012em -0.072em 0 var(--name-side),
+        -0.014em -0.084em 0 var(--name-side),
+        -0.016em -0.096em 0 var(--name-side),
+        -0.018em -0.108em 0 var(--name-side),
+        -0.02em -0.12em 0 var(--name-side),
+        -0.022em -0.132em 0 var(--name-side),
+        -0.024em -0.144em 0 var(--name-side),
+        -0.026em -0.156em 0 var(--name-side),
+        -0.028em -0.168em 0 var(--name-side),
+        -0.03em -0.18em 0 var(--name-side),
+        -0.032em -0.192em 0 var(--name-side),
+        -0.034em -0.204em 0 var(--name-side),
+        -0.036em -0.216em 0 var(--name-side),
+        -0.038em -0.228em 0 var(--name-side),
+        -0.04em -0.24em 0 var(--name-side),
+        -0.042em -0.252em 0 var(--name-side),
+        -0.044em -0.264em 0 var(--name-side),
+        -0.046em -0.276em 0 var(--name-top),
+        -0.048em -0.288em 0 var(--name-top),
+        -0.05em -0.3em 0 var(--name-top);
 }
 
-.hero__lede {
-    margin-top: calc(var(--name-size) * 0.16);
-    max-width: 34ch;
-    font-size: var(--t-lede);
-    line-height: 1.4;
-    color: var(--ink-muted);
-    text-wrap: balance;
+/* Le curseur, au bout du nom, la pointe vers la dernière lettre : il
+   ne suit pas l'inclinaison du nom. */
+.hero__title > .scat--cursor {
+    --w: calc(3.6 * var(--u));
+    --r: calc(var(--name-turn) * -1 - 8deg);
+    left: calc(100% + 0.02em);
+    top: 62%;
+    display: block;
+    font-size: 1rem;
 }
 
-.hero__cta {
-    margin-top: clamp(20px, calc(28 * var(--u)), 32px);
+@media (prefers-reduced-motion: no-preference) {
+    .hero__title {
+        animation: name-in 1s var(--ease-out) 150ms both;
+    }
 }
 
-/* Le curseur, au bout du nom, la pointe vers la dernière lettre :
-   la pointe de l'image est à 40 % de sa largeur, en haut. */
-.hero__name > .scat--cursor {
-    --w: calc(56 * var(--u));
-    --depth: 0.5;
-    left: calc(100% - var(--w) * 0.24);
-    top: 74%;
+@keyframes name-in {
+    from {
+        opacity: 0;
+        scale: 0.92;
+    }
 }
 
-/* Téléphone : le nom prend toute la largeur utile. */
+/* ── Téléphone : le nom en travers de l'écran ── */
 @media (max-width: 599px) {
     .hero__stage {
-        --u: calc(100vw / 390);
-        --name-size: min(calc(56 * var(--u)), (100vw - 2 * var(--gutter)) / 6.9);
-        padding-bottom: 12svh;
+        --u: 1.5vw;
+        --name-size: 13vw;
     }
 
-    .hero__lede {
-        max-width: 24ch;
-    }
-
-    /* Le nom occupe toute la largeur : le curseur se glisse sous
-       sa fin, la pointe vers les dernières lettres. */
-    .hero__name > .scat--cursor {
-        --w: 44px;
-        left: calc(100% - var(--w) * 0.8);
-        top: calc(100% + 2px);
+    .hero__title > .scat--cursor {
+        --w: 40px;
     }
 }
 

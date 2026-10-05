@@ -457,66 +457,65 @@
 
     <main>
 
-        <!-- LE PREMIER ÉCRAN — le nom au centre, les objets autour
-             (structure de la hero d'agentcard.sh, demande d'Eliott du
-             5.10.2026). Chaque objet est un lien vers la page qu'il
-             représente ; sur ordinateur, il se prend et se déplace. -->
+        <!-- LE PREMIER ÉCRAN — la hero d'agentcard.sh (demande d'Eliott
+             du 5.10.2026) : l'écran Klein à lignes, le nom en relief posé
+             en diagonale, et une nuée d'objets à toutes les profondeurs,
+             devant et derrière lui. Les dix objets ci-dessous sont les
+             vrais : chacun mène à ce qu'il représente. Avec JavaScript,
+             js/desk/field.js sème autour d'eux leurs copies décoratives. -->
         <section class="hero" id="studio-intro" tabindex="-1" aria-labelledby="heroTitle">
-            <div class="hero__stage">
-                <div class="hero__center">
-                    <div class="hero__name">
-                        <!-- « agence web » et « site internet » à Lausanne
-                             restent dans le H1, lus par Google et la
-                             navigation vocale. -->
-                        <h1 class="hero__title" id="heroTitle"><span translate="no">WeAreBrothers</span><span class="sr-only">, agence web et création de site internet à Lausanne.</span></h1>
-                        <!-- Le curseur, la pointe tournée vers le nom. -->
-                        <span class="scat scat--cursor" aria-hidden="true" style="--i: 9">
-                            <img class="scat__obj" src="assets/objects/3d/hero-cursor-720.webp" srcset="assets/objects/3d/hero-cursor-360.webp 239w, assets/objects/3d/hero-cursor-720.webp 477w" sizes="(max-width: 599px) 44px, 3.89vw" alt="" width="477" height="720" decoding="async" draggable="false">
-                        </span>
-                    </div>
-                    <p class="hero__lede">Design d'interface et de système sur mesure.</p>
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="hero__cta key-btn key-btn--klein">Démarrer un projet</a>
+            <div class="hero__stage on-klein">
+                <!-- « agence web » et « site internet » à Lausanne restent
+                     dans le H1, lus par Google et la navigation vocale. -->
+                <div class="hero__name" data-depth="0.5">
+                    <h1 class="hero__title" id="heroTitle"><span class="hero__word" translate="no">WeAreBrothers</span><span class="sr-only">, agence web et création de site internet à Lausanne.</span><span class="scat scat--cursor" data-kind="cursor" aria-hidden="true" style="--i: 9">
+                        <img class="scat__obj" src="assets/objects/3d/hero-cursor-720.webp" srcset="assets/objects/3d/hero-cursor-360.webp 239w, assets/objects/3d/hero-cursor-720.webp 477w" sizes="(max-width: 599px) 40px, 3.6vw" alt="" width="477" height="720" decoding="async" draggable="false">
+                    </span></h1>
                 </div>
 
-                <!-- Les objets, dans l'ordre de lecture : la bande du haut,
-                     les côtés du nom, la bande du bas. La loupe n'existe
-                     qu'avec JavaScript (elle ouvre la recherche ⌘K). -->
+                <!-- Trois profondeurs : loin, au milieu (derrière le nom),
+                     près (devant lui). La loupe n'existe qu'avec
+                     JavaScript : elle ouvre la recherche ⌘K. -->
                 <div class="scatter" data-scatter>
-                    <a href="/services#sites" class="scat scat--window" data-drag aria-label="Sites sur mesure, voir les services" style="--i: 0">
-                        <img class="scat__obj" src="assets/objects/3d/hero-window-720.webp" srcset="assets/objects/3d/hero-window-360.webp 360w, assets/objects/3d/hero-window-720.webp 720w" sizes="(max-width: 599px) 72px, 8.33vw" alt="" width="720" height="590" decoding="async" draggable="false">
-                        <span class="scat__tag" aria-hidden="true">Sites sur mesure</span>
-                    </a>
-                    <a href="/applications" class="scat scat--gear" data-drag aria-label="Applications de gestion, voir la page" style="--i: 1">
-                        <img class="scat__obj" src="assets/objects/3d/hero-gear-720.webp" srcset="assets/objects/3d/hero-gear-360.webp 360w, assets/objects/3d/hero-gear-720.webp 720w" sizes="5.83vw" alt="" width="720" height="709" decoding="async" draggable="false">
-                        <span class="scat__tag" aria-hidden="true">Applications</span>
-                    </a>
-                    <span class="scat scat--key" data-drag aria-hidden="true" style="--i: 2">
-                        <img class="scat__obj" src="assets/objects/3d/hero-key-720.webp" srcset="assets/objects/3d/hero-key-360.webp 360w, assets/objects/3d/hero-key-720.webp 720w" sizes="5.28vw" alt="" width="720" height="650" decoding="async" draggable="false">
-                    </span>
-                    <a href="/studio" class="scat scat--card" data-drag aria-label="Le studio" style="--i: 3">
-                        <img class="scat__obj" src="assets/objects/3d/hero-card-720.webp" srcset="assets/objects/3d/hero-card-360.webp 360w, assets/objects/3d/hero-card-720.webp 720w" sizes="7.78vw" alt="" width="720" height="503" decoding="async" draggable="false">
-                        <span class="scat__tag" aria-hidden="true">Le studio</span>
-                    </a>
-                    <a href="/realisations" class="scat scat--phone" data-drag aria-label="Nos réalisations" style="--i: 4">
-                        <img class="scat__obj" src="assets/objects/3d/hero-phone-720.webp" srcset="assets/objects/3d/hero-phone-360.webp 253w, assets/objects/3d/hero-phone-720.webp 506w" sizes="(max-width: 599px) 48px, 5vw" alt="" width="506" height="720" decoding="async" draggable="false">
-                        <span class="scat__tag" aria-hidden="true">Réalisations</span>
-                    </a>
-                    <a href="/services#technologie" class="scat scat--code" data-drag aria-label="Développement, voir les services" style="--i: 5">
-                        <img class="scat__obj" src="assets/objects/3d/hero-code-720.webp" srcset="assets/objects/3d/hero-code-360.webp 360w, assets/objects/3d/hero-code-720.webp 720w" sizes="7.22vw" alt="" width="720" height="499" decoding="async" draggable="false">
-                        <span class="scat__tag" aria-hidden="true">Développement</span>
-                    </a>
-                    <button type="button" class="scat scat--loupe scat--up" data-drag data-palette-open data-js-only aria-label="Rechercher (⌘K)" aria-keyshortcuts="Meta+K Control+K" style="--i: 6">
-                        <img class="scat__obj" src="assets/objects/3d/hero-loupe-720.webp" srcset="assets/objects/3d/hero-loupe-360.webp 352w, assets/objects/3d/hero-loupe-720.webp 703w" sizes="6.39vw" alt="" width="703" height="720" decoding="async" draggable="false">
-                        <span class="scat__tag" aria-hidden="true">Rechercher</span>
-                    </button>
-                    <a href="/services#branding" class="scat scat--pencil scat--up" data-drag aria-label="Branding, voir les services" style="--i: 7">
-                        <img class="scat__obj" src="assets/objects/3d/hero-pencil-720.webp" srcset="assets/objects/3d/hero-pencil-360.webp 360w, assets/objects/3d/hero-pencil-720.webp 720w" sizes="(max-width: 599px) 64px, 7.22vw" alt="" width="720" height="562" decoding="async" draggable="false">
-                        <span class="scat__tag" aria-hidden="true">Branding</span>
-                    </a>
-                    <a href="/services#automatisation" class="scat scat--sparkle scat--up" data-drag aria-label="Automatisation et IA, voir les services" style="--i: 8">
-                        <img class="scat__obj" src="assets/objects/3d/hero-sparkle-720.webp" srcset="assets/objects/3d/hero-sparkle-360.webp 330w, assets/objects/3d/hero-sparkle-720.webp 659w" sizes="(max-width: 599px) 56px, 6.67vw" alt="" width="659" height="720" decoding="async" draggable="false">
-                        <span class="scat__tag" aria-hidden="true">Automatisation et IA</span>
-                    </a>
+                    <div class="field__layer field__layer--far" data-depth="0.35" data-layer="far"></div>
+                    <div class="field__layer field__layer--mid" data-depth="0.65" data-layer="mid"></div>
+                    <div class="field__layer field__layer--near" data-depth="1" data-layer="near">
+                        <a href="/services#sites" class="scat scat--window" data-kind="window" data-drag aria-label="Sites sur mesure, voir les services" style="--i: 0">
+                            <img class="scat__obj" src="assets/objects/3d/hero-window-720.webp" srcset="assets/objects/3d/hero-window-360.webp 360w, assets/objects/3d/hero-window-720.webp 720w" sizes="(max-width: 599px) 96px, 8vw" alt="" width="720" height="590" decoding="async" draggable="false">
+                            <span class="scat__tag" aria-hidden="true">Sites sur mesure</span>
+                        </a>
+                        <a href="/applications" class="scat scat--gear" data-kind="gear" data-drag aria-label="Applications de gestion, voir la page" style="--i: 1">
+                            <img class="scat__obj" src="assets/objects/3d/hero-gear-720.webp" srcset="assets/objects/3d/hero-gear-360.webp 360w, assets/objects/3d/hero-gear-720.webp 720w" sizes="(max-width: 599px) 64px, 6vw" alt="" width="720" height="709" decoding="async" draggable="false">
+                            <span class="scat__tag" aria-hidden="true">Applications</span>
+                        </a>
+                        <span class="scat scat--key" data-kind="key" data-drag aria-hidden="true" style="--i: 2">
+                            <img class="scat__obj" src="assets/objects/3d/hero-key-720.webp" srcset="assets/objects/3d/hero-key-360.webp 360w, assets/objects/3d/hero-key-720.webp 720w" sizes="(max-width: 599px) 60px, 5.5vw" alt="" width="720" height="650" decoding="async" draggable="false">
+                        </span>
+                        <a href="/studio" class="scat scat--card" data-kind="card" data-drag aria-label="Le studio" style="--i: 3">
+                            <img class="scat__obj" src="assets/objects/3d/hero-card-720.webp" srcset="assets/objects/3d/hero-card-360.webp 360w, assets/objects/3d/hero-card-720.webp 720w" sizes="(max-width: 599px) 92px, 8.5vw" alt="" width="720" height="503" decoding="async" draggable="false">
+                            <span class="scat__tag" aria-hidden="true">Le studio</span>
+                        </a>
+                        <a href="/realisations" class="scat scat--phone" data-kind="phone" data-drag aria-label="Nos réalisations" style="--i: 4">
+                            <img class="scat__obj" src="assets/objects/3d/hero-phone-720.webp" srcset="assets/objects/3d/hero-phone-360.webp 253w, assets/objects/3d/hero-phone-720.webp 506w" sizes="(max-width: 599px) 56px, 5vw" alt="" width="506" height="720" decoding="async" draggable="false">
+                            <span class="scat__tag" aria-hidden="true">Réalisations</span>
+                        </a>
+                        <a href="/services#technologie" class="scat scat--code" data-kind="code" data-drag aria-label="Développement, voir les services" style="--i: 5">
+                            <img class="scat__obj" src="assets/objects/3d/hero-code-720.webp" srcset="assets/objects/3d/hero-code-360.webp 360w, assets/objects/3d/hero-code-720.webp 720w" sizes="(max-width: 599px) 84px, 7.5vw" alt="" width="720" height="499" decoding="async" draggable="false">
+                            <span class="scat__tag" aria-hidden="true">Développement</span>
+                        </a>
+                        <button type="button" class="scat scat--loupe scat--up" data-kind="loupe" data-drag data-palette-open data-js-only aria-label="Rechercher (⌘K)" aria-keyshortcuts="Meta+K Control+K" style="--i: 6">
+                            <img class="scat__obj" src="assets/objects/3d/hero-loupe-720.webp" srcset="assets/objects/3d/hero-loupe-360.webp 352w, assets/objects/3d/hero-loupe-720.webp 703w" sizes="(max-width: 599px) 68px, 6.5vw" alt="" width="703" height="720" decoding="async" draggable="false">
+                            <span class="scat__tag" aria-hidden="true">Rechercher</span>
+                        </button>
+                        <a href="/services#branding" class="scat scat--pencil scat--up" data-kind="pencil" data-drag aria-label="Branding, voir les services" style="--i: 7">
+                            <img class="scat__obj" src="assets/objects/3d/hero-pencil-720.webp" srcset="assets/objects/3d/hero-pencil-360.webp 360w, assets/objects/3d/hero-pencil-720.webp 720w" sizes="(max-width: 599px) 84px, 7.5vw" alt="" width="720" height="562" decoding="async" draggable="false">
+                            <span class="scat__tag" aria-hidden="true">Branding</span>
+                        </a>
+                        <a href="/services#automatisation" class="scat scat--sparkle scat--up" data-kind="sparkle" data-drag aria-label="Automatisation et IA, voir les services" style="--i: 8">
+                            <img class="scat__obj" src="assets/objects/3d/hero-sparkle-720.webp" srcset="assets/objects/3d/hero-sparkle-360.webp 330w, assets/objects/3d/hero-sparkle-720.webp 659w" sizes="(max-width: 599px) 72px, 6.5vw" alt="" width="659" height="720" decoding="async" draggable="false">
+                            <span class="scat__tag" aria-hidden="true">Automatisation et IA</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
