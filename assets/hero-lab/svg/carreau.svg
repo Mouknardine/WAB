@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+<!-- Carreau arrondi : fond du drapeau ou de l'icone -->
+<path fill="#000" d="M54 0H186C215.8 0 240 24.2 240 54V186C240 215.8 215.8 240 186 240H54C24.2 240 0 215.8 0 186V54C0 24.2 24.2 0 54 0Z"/>
+</svg>
