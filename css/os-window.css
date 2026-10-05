@@ -164,20 +164,3 @@
     color: var(--ink-faint);
 }
 
-/* ── L'oiseau posé sur une barre de titre (bureau du premier écran) ──
-   Le canevas garde de l'air au-dessus de l'oiseau pour l'envol
-   (perch.js), et sept rangs vides sous ses pattes : on le descend
-   d'autant (--drop, sept points de dessin) pour qu'il touche la barre. */
-.win-perch {
-    --drop: 14px;
-    position: absolute;
-    z-index: 3;
-    right: 34px;
-    bottom: calc(100% - var(--drop));
-    pointer-events: none;
-    image-rendering: pixelated;
-}
-
-.win-perch[data-scale='3'] {
-    --drop: 21px;
-}

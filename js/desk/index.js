@@ -13,7 +13,7 @@
  */
 
 // Même numéro partout où un fichier est importé : voir js/birds/index.js.
-import { initDrag } from './drag.js?v=2';
+import { initDrag } from './drag.js?v=3';
 import { initParallax } from './parallax.js?v=1';
 import { initShowcase } from './showcase.js?v=2';
 import { initWatch } from './watch.js?v=1';

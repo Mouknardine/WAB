@@ -58,8 +58,7 @@
 }
 
 /* ── La case libre ── une case vide en pointillés sur le gris chaud,
-   un oiseau qui bat des ailes au survol (perch.js), l'étiquette et le
-   nom de fichier en Sligoil. */
+   l'étiquette et le nom de fichier en Sligoil. */
 .pw-slot {
     position: absolute;
     right: 2.5%;
@@ -81,10 +80,6 @@
     background: var(--panel);
     box-shadow: var(--relief);
     transition: border-color 0.2s var(--ease-out), transform 0.35s var(--ease-spring);
-}
-
-.pw-slot__frame .perch {
-    image-rendering: pixelated;
 }
 
 .pw-slot__label {

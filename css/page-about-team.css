@@ -148,13 +148,6 @@
     display: none;
 }
 
-/* L'oiseau se pose sur la barre de la fiche de Matt, sur ordinateur
-   seulement : au téléphone, le défilement des fiches le rognerait. */
-.ab-card .win-perch {
-    display: none;
-    right: 22px;
-}
-
 /* ── Ordinateur : trois fiches par rangée, en quinconce ── */
 @media (min-width: 860px) {
     .ab-team {
@@ -172,8 +165,7 @@
         translate: 0 48px;
     }
 
-    .ab-card > .file-name,
-    .ab-card .win-perch {
+    .ab-card > .file-name {
         display: block;
     }
 }

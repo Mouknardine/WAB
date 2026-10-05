@@ -132,11 +132,3 @@ a.scat {
         display: block;
     }
 }
-
-/* Au téléphone, l'oiseau d'une fenêtre du bureau passerait sous la
-   barre de menus : il ne se pose qu'avec de la place. */
-@media (max-width: 599px) {
-    .scat .win-perch {
-        display: none;
-    }
-}

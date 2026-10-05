@@ -33,18 +33,6 @@
     border-radius: 0 0 4px 4px;
 }
 
-.pw-finder__perch {
-    display: none;
-    right: 28px;
-}
-
-/* Au téléphone, l'oiseau toucherait la phrase au-dessus du dossier. */
-@media (min-width: 700px) {
-    .pw-finder__perch {
-        display: block;
-    }
-}
-
 .pw-finder__bar {
     display: flex;
     align-items: center;

@@ -21,11 +21,6 @@
     position: relative;
 }
 
-/* L'oiseau sur l'écran : posé à droite, au-dessus des onglets. */
-.app-screen .win-perch {
-    right: 28px;
-}
-
 .app-win {
     box-shadow: 0 0 0 var(--hair) var(--win-edge), var(--win-shadow-lift);
 }

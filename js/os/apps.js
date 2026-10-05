@@ -53,7 +53,7 @@ export function launchCase(id, title, opener) {
 export function launchTerminal(opener) {
     launch('terminal', async () => {
         await styles('os-terminal');
-        (await import('./terminal.js?v=4')).openTerminal(opener);
+        (await import('./terminal.js?v=5')).openTerminal(opener);
     }, () => toast('Le terminal n’a pas pu s’ouvrir.'));
 }
 

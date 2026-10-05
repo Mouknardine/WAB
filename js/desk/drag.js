@@ -88,7 +88,6 @@ function startDrag(item, down) {
             moved = true;
             item.dataset.dragged = 'true';
             item.classList.add('is-dragging');
-            item.querySelectorAll('canvas[data-perch]').forEach((bird) => bird.dispatchEvent(new CustomEvent('perch:fly')));
         }
         const x = clamp(start.x + dx, limits.minX, limits.maxX);
         const y = clamp(start.y + dy, limits.minY, limits.maxY);

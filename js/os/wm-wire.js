@@ -49,8 +49,5 @@ export function wire(win, frame, actions) {
         canMove: () => !win.sheet && !el.classList.contains('is-max'),
         get: () => win.pos,
         set: (x, y) => actions.place(win, x, y),
-        onStart: () => el.querySelectorAll('canvas[data-perch]').forEach((bird) => {
-            bird.dispatchEvent(new CustomEvent('perch:fly'));
-        }),
     });
 }

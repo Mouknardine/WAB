@@ -12,7 +12,6 @@
     /* Les seules valeurs propres à la page. */
     --lost-w: 560px;
     --lost-step: 18px;
-    --lost-drop: 45px;
     --lost-ghost-near: 0.7;
     --lost-ghost-far: 0.4;
     --t-lost: clamp(1.8rem, 5vw, 2.8rem);
@@ -45,28 +44,6 @@
     align-items: flex-start;
     padding: clamp(24px, 5vw, 36px);
     background: var(--win-bg);
-}
-
-/* L'oiseau perdu, posé sur la barre de la boîte : le seul jeu de la
-   page. Son cadre garde de l'air au-dessus de lui pour l'envol
-   (perch.js) et des rangs vides sous ses pattes (mesurés : 45 px à l’échelle 4) : on le descend
-   d'autant (--lost-drop) pour qu'il touche la barre. */
-.lost-bird {
-    position: absolute;
-    z-index: 2;
-    right: clamp(16px, 6vw, 40px);
-    bottom: calc(100% - var(--lost-drop));
-    padding: 0;
-    border: 0;
-    border-radius: var(--r-ctl);
-    background: none;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.lost-bird canvas {
-    display: block;
-    image-rendering: pixelated;
 }
 
 .lost-dialog__title {

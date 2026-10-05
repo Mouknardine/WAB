@@ -32,8 +32,7 @@
     height: 44px;
 }
 
-.oswin.is-sheet .oswin__ctl--max,
-.oswin.is-sheet .oswin__perch {
+.oswin.is-sheet .oswin__ctl--max {
     display: none;
 }
 

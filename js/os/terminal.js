@@ -43,24 +43,6 @@ function makePrinter(log) {
     };
 }
 
-/** Un oiseau posé sur la barre de la fenêtre. */
-/** @param {HTMLElement} host */
-async function perchBird(host) {
-    const bird = el('canvas', 'win-perch oswin__perch');
-    bird.dataset.perch = 'fly';
-    bird.dataset.scale = '2';
-    bird.dataset.color = '4';
-    bird.setAttribute('aria-hidden', 'true');
-    host.append(bird);
-    try {
-        const { setupPerch } = await import('../birds/perch.js?v=9');
-        setupPerch(bird);
-    } catch (error) {
-        bird.remove();
-        report('terminal-bird', error);
-    }
-}
-
 /** @param {import('./wm.js').OsWindow} win */
 function build(win) {
     const term = el('div', 'term');
@@ -126,7 +108,6 @@ function build(win) {
     print(['WAB OS, Terminal.', 'Tapez aide pour commencer.'], 'accent');
     term.append(log, form);
     win.body.append(term);
-    perchBird(win.el);
 }
 
 /** @param {HTMLElement | null} opener */

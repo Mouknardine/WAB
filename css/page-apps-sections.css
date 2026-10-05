@@ -123,12 +123,6 @@
     text-align: center;
 }
 
-.app-end__bird {
-    display: block;
-    margin-bottom: 4px;
-    image-rendering: pixelated;
-}
-
 .app-end__title {
     max-width: 20ch;
     font-size: var(--t-app-end);
