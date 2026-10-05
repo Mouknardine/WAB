@@ -11,7 +11,7 @@
  */
 
 import { isOpenGesture, select, clearSelection } from './gesture.js?v=1';
-import { launchFinder, launchCase, launchTerminal, launchTrash, launchPalette, launchMenu } from './apps.js?v=3';
+import { launchFinder, launchCase, launchTerminal, launchTrash, launchPalette, launchMenu } from './apps.js?v=4';
 import { SHORTCUT } from './actions.js?v=1';
 import { report } from './lazy.js?v=1';
 import { initDockHide } from './dock-hide.js?v=1';

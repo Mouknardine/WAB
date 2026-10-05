@@ -13,8 +13,8 @@ import { openWindow } from './wm.js?v=2';
 import { el } from './dom.js?v=3';
 import { openContact } from './actions.js?v=1';
 import { report } from './lazy.js?v=1';
-import { run } from './terminal-commands.js?v=1';
-import { launchCase } from './apps.js?v=3';
+import { run } from './terminal-commands.js?v=2';
+import { launchCase } from './apps.js?v=4';
 
 const MAX_INPUT = 60;
 const MAX_LINES = 240;

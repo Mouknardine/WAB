@@ -22,17 +22,19 @@ const TIMINGS = ['Maintenant', "D'ici 3 mois", 'Plus tard'];
 
 const ARROW = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>';
 
-/* Les trois visages de l'équipe, en haut de la fenêtre : on écrit à
-   des personnes, pas à un formulaire. Portraits de 144 px, affichés
+/* Les visages de l'équipe, en haut de la fenêtre : le studio
+   derrière le formulaire. Portraits de 144 px, affichés
    à 36 : nets sur écran haute densité, 4 Ko chacun. */
 const TEAM = [
     { name: 'Eliott', file: 'avatar-eliott.webp' },
     { name: 'Matt', file: 'avatar-matt.webp' },
     { name: 'Ivan', file: 'avatar-ivan.webp' },
+    { name: 'Yael', file: 'avatar-yael.webp' },
+    { name: 'Anaïs', file: 'avatar-anais.webp' },
 ];
 
 const TEAM_FACES = `
-        <ul class="contact-faces" aria-label="L'équipe qui vous répond">${TEAM.map(({ name, file }) => `
+        <ul class="contact-faces" aria-label="L'équipe du studio">${TEAM.map(({ name, file }) => `
             <li><img class="contact-faces__img" src="/assets/images/${file}" alt="${name}" title="${name}" width="36" height="36" decoding="async"></li>`).join('')}
         </ul>`;
 
@@ -68,8 +70,8 @@ const TEMPLATE = `
     </div>
 
     <div data-view="form">
-        <h2 class="contact-modal__title" id="contactModalTitle">On travaille ensemble&nbsp;?</h2>
-        <p class="contact-modal__lede">Vous écrivez directement à Eliott, Matt et Ivan. Nous vous répondons sous 24&nbsp;h ouvrées, sans engagement.</p>
+        <h2 class="contact-modal__title" id="contactModalTitle">Démarrer un projet</h2>
+        <p class="contact-modal__lede">Présentez-nous votre projet&nbsp;: notre équipe revient vers vous sous 24&nbsp;h ouvrées.</p>
 
         <form class="contact-form" action="/send-message.php" method="POST" novalidate>
             <!-- Piège anti-spam : hors du champ visuel, jamais atteint au clavier -->
@@ -82,13 +84,13 @@ const TEMPLATE = `
                 <div class="contact-field">
                     <label class="contact-field__label" for="contactName">Nom${REQUIRED}</label>
                     <input class="contact-field__input" type="text" id="contactName" name="Nom" maxlength="120" autocomplete="name" autocapitalize="words" enterkeyhint="next" placeholder="Votre nom" required aria-describedby="contactNameError">
-                    <p class="contact-field__error" id="contactNameError">Dites-nous au moins comment vous appeler.</p>
+                    <p class="contact-field__error" id="contactNameError">Veuillez indiquer votre nom.</p>
                 </div>
 
                 <div class="contact-field">
                     <label class="contact-field__label" for="contactEmail">Email${REQUIRED}</label>
                     <input class="contact-field__input" type="email" id="contactEmail" name="Email" maxlength="200" autocomplete="email" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="next" placeholder="Votre email" required aria-describedby="contactEmailError">
-                    <p class="contact-field__error" id="contactEmailError">Il nous faut un email valide pour vous répondre.</p>
+                    <p class="contact-field__error" id="contactEmailError">Veuillez indiquer une adresse email valide.</p>
                 </div>
             </div>
 
@@ -103,7 +105,7 @@ const TEMPLATE = `
             <div class="contact-field">
                 <label class="contact-field__label" for="contactMessage">Message${REQUIRED}</label>
                 <textarea class="contact-field__input contact-field__input--area" id="contactMessage" name="Message" rows="3" maxlength="5000" placeholder="Vos objectifs, votre site actuel, vos contraintes…" required aria-describedby="contactMessageError"></textarea>
-                <p class="contact-field__error" id="contactMessageError">Quelques mots sur votre projet nous aideront à bien vous répondre.</p>
+                <p class="contact-field__error" id="contactMessageError">Veuillez décrire votre projet en quelques mots.</p>
             </div>
 
             <button type="submit" class="btn btn--solid btn--lg contact-form__submit">
@@ -116,10 +118,10 @@ const TEMPLATE = `
 
     <div data-view="sent" hidden>
         <canvas class="contact-flight" width="320" height="120" aria-hidden="true"></canvas>
-        <h2 class="contact-modal__title" tabindex="-1">Bien reçu.</h2>
+        <h2 class="contact-modal__title" tabindex="-1">Merci.</h2>
         <p class="contact-modal__lede">
-            Pas de robot ni de file d'attente&nbsp;: l'un de nous vous répond sous 24&nbsp;h
-            ouvrées, idéalement pour convenir d'un café ou d'un appel.
+            Votre demande a bien été transmise. Notre équipe vous répond
+            sous 24&nbsp;h ouvrées.
         </p>
         <button type="button" class="btn btn--ghost btn--lg contact-modal__done" data-contact-close>Fermer</button>
     </div>

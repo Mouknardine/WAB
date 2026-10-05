@@ -2,7 +2,7 @@
 /**
  * WAB OS — les commandes du terminal
  * Des réponses vraies, tirées du site (Services, About, Work, l'heure
- * de nav-clock.js), avec un peu d'humour sobre. Aucune réponse
+ * de nav-clock.js), sur un ton sobre. Aucune réponse
  * n'invente un chiffre, un client ou une promesse.
  */
 
@@ -22,7 +22,7 @@ const HELP = [
     '  projets    les projets du studio',
     '  ouvrir N   la fiche du projet numéro N',
     '  services   ce que fait le studio',
-    '  equipe     qui vous répond',
+    '  equipe     l’équipe du studio',
     '  contact    écrire au studio',
     '  heure      l’heure à Lausanne',
     '  effacer    vider l’écran',
@@ -30,9 +30,9 @@ const HELP = [
 
 const SERVICES = [
     'Technologie',
-    '  Sites sur mesure          codés de A à Z, rapides sur mobile, pensés pour Google',
-    '  Applications de gestion   dessinées autour de votre métier, livrées module par module',
-    '  Automatisation et IA      devis, factures et suivi client, tout seuls',
+    '  Sites internet            conçus et développés sur mesure, optimisés pour le référencement',
+    '  Applications métier       conçues autour de vos processus, déployées par étapes',
+    '  Automatisation et IA      tâches récurrentes automatisées, IA là où elle crée de la valeur',
     '  Intégrations, newsletters, intelligence artificielle',
     'Image de marque',
     '  Branding, print, vêtements',
@@ -42,17 +42,17 @@ const SERVICES = [
 const TEAM = [
     'Eliott Pina   Lead designer',
     'Matt Pina     Lead développeur',
-    'Deux frères à Lausanne. Pas d’intermédiaire, pas de chef de projet\u00a0:',
-    'les mêmes personnes, du premier café à la mise en ligne.',
+    'Studio indépendant de design et de développement, fondé à Lausanne.',
+    'Nous accompagnons marques, institutions et entreprises, de la stratégie à la mise en ligne.',
 ];
 
 /** Quelques réponses cachées, hors de « aide ». */
 /** @type {Record<string, string>} */
 const EASTER = {
-    sudo: 'Pas besoin de sudo\u00a0: ici, c’est vous qui décidez.',
-    wordpress: 'Introuvable. Ici, tout est codé à la main, sans WordPress ni Wix.',
-    cafe: 'C’est souvent comme ça que tout commence. Tapez contact.',
-    bonjour: 'Bonjour. Tapez aide pour voir ce que je sais faire.',
+    sudo: 'Aucun accès administrateur requis. Tapez aide pour la liste des commandes.',
+    wordpress: 'Introuvable. Chaque site est développé sur mesure, sans WordPress ni Wix.',
+    cafe: 'Pour démarrer un projet, tapez contact.',
+    bonjour: 'Bonjour. Tapez aide pour afficher les commandes disponibles.',
 };
 
 /** @param {TermIO} io */

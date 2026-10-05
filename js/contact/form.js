@@ -8,7 +8,7 @@
  * n'est pas parti.
  */
 
-import { CONTACT_EMAIL } from './markup.js?v=8';
+import { CONTACT_EMAIL } from './markup.js?v=9';
 import { requireElement } from './dom.js?v=9';
 
 const ENDPOINT = '/send-message.php';
@@ -145,7 +145,7 @@ function showFailure(status, href) {
     link.className = 'text-link';
     link.href = href;
     link.textContent = CONTACT_EMAIL;
-    status.replaceChildren('L’envoi n’a pas fonctionné. Écrivez-nous directement : ', link);
+    status.replaceChildren('L’envoi n’a pas abouti. Vous pouvez nous écrire à l’adresse : ', link);
     status.classList.add('is-error');
 }
 

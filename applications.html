@@ -18,7 +18,7 @@
     <link rel="manifest" href="/site.webmanifest?v=2">
     <title>Logiciel &amp; Application Web Sur Mesure — Lausanne | WeAreBrothers</title>
     <meta name="description"
-        content="Logiciels et applications web sur mesure à Lausanne : outils de gestion pour les PME de l'arc lémanique (projets, temps, facturation). Devis sous 24 h ouvrées.">
+        content="Conception et développement de logiciels et d'applications web sur mesure à Lausanne : outils de gestion pour les PME de l'arc lémanique (projets, temps, facturation). Devis sous 24 h ouvrées.">
 
     <!-- SEO -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -29,7 +29,7 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Logiciel &amp; application web sur mesure — WeAreBrothers, Lausanne">
-    <meta property="og:description" content="Applications web de gestion sur mesure pour les PME de Suisse romande, dessinées à partir du métier de chaque entreprise.">
+    <meta property="og:description" content="Applications web de gestion conçues et développées sur mesure pour les PME de Suisse romande, autour de leurs processus.">
     <meta property="og:url" content="https://wearebrothers.ch/applications">
     <meta property="og:image" content="https://wearebrothers.ch/assets/og-image.jpg?v=2">
     <meta property="og:image:width" content="1200">
@@ -40,7 +40,7 @@
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Logiciel &amp; application web sur mesure — WeAreBrothers, Lausanne">
-    <meta name="twitter:description" content="Applications web de gestion sur mesure pour les PME de Suisse romande, dessinées à partir du métier de chaque entreprise.">
+    <meta name="twitter:description" content="Applications web de gestion conçues et développées sur mesure pour les PME de Suisse romande, autour de leurs processus.">
     <meta name="twitter:image" content="https://wearebrothers.ch/assets/og-image.jpg?v=2">
 
     <!-- Données structurées (JSON-LD) — page, service, fil d'Ariane -->
@@ -73,7 +73,7 @@
                 "@id": "https://wearebrothers.ch/applications#faq",
                 "mainEntity": [
                     { "@type": "Question", "name": "Combien coûte un logiciel sur mesure ?", "acceptedAnswer": { "@type": "Answer", "text": "Le prix suit le périmètre. Nous commençons par la plus petite version réellement utile : vous voyez l'outil fonctionner tôt, et vous décidez ensuite de ce qui mérite d'être construit. Un devis chiffré vous parvient sous 24 h ouvrées après un premier échange." } },
-                    { "@type": "Question", "name": "Combien de temps faut-il pour développer une application de gestion ?", "acceptedAnswer": { "@type": "Answer", "text": "Nous livrons module par module, chacun utilisable en production dès qu'il est terminé. Concrètement : la gestion des dossiers d'abord, le suivi du temps ensuite, la facturation après. Vous vous en servez pendant que la suite se construit." } },
+                    { "@type": "Question", "name": "Combien de temps faut-il pour développer une application de gestion ?", "acceptedAnswer": { "@type": "Answer", "text": "Nous livrons module par module, chacun utilisable en production dès qu'il est terminé. Concrètement : la gestion des dossiers d'abord, le suivi du temps ensuite, la facturation après. Vos équipes l'utilisent pendant que la suite se construit." } },
                     { "@type": "Question", "name": "Faut-il remplacer tous vos outils d'un coup ?", "acceptedAnswer": { "@type": "Answer", "text": "Le premier module traite le besoin le plus pressant, souvent celui qui vit dans un tableur partagé. Vos données existantes sont reprises par import, pour que l'outil soit rempli dès sa mise en service. Le reste suit à votre rythme." } },
                     { "@type": "Question", "name": "Nos données sont-elles en sécurité ?", "acceptedAnswer": { "@type": "Answer", "text": "Les documents sont déposés sur un stockage privé, accessible uniquement par lien signé à durée limitée. La base applique une règle d'accès sur chaque ligne, et seules les adresses que vous autorisez peuvent ouvrir un compte." } }
                 ]
@@ -130,7 +130,7 @@
     <script src="js/reveal.js?v=4" defer></script>
     <script type="module" src="js/birds/index.js?v=9"></script>
     <script type="module" src="js/birds/perch.js?v=9"></script>
-    <script type="module" src="js/contact/index.js?v=11"></script>
+    <script type="module" src="js/contact/index.js?v=12"></script>
     <script type="module" src="js/os/index.js?v=3"></script>
     <script type="module" src="js/page-apps/index.js?v=2"></script>
 </head>
@@ -206,11 +206,11 @@
              JavaScript, le premier écran seul, les deux autres plus bas. -->
         <section class="app-hero" aria-labelledby="appTitle">
             <div class="app-hero__head">
-                <h1 class="app-hero__title" id="appTitle">Un logiciel sur mesure, construit sur votre façon de travailler</h1>
-                <p class="app-hero__lede">Nous développons des applications web de gestion pour les PME et les indépendants de l'arc lémanique — Lausanne, Morges, Nyon, Vevey, Genève. Chaque outil est dessiné à partir du métier de l'entreprise qui l'utilise.</p>
+                <h1 class="app-hero__title" id="appTitle">Des logiciels sur mesure, conçus autour de vos processus</h1>
+                <p class="app-hero__lede">Nous concevons et développons des applications web de gestion pour les PME et les indépendants de l'arc lémanique — Lausanne, Morges, Nyon, Vevey, Genève. Chaque outil part de l'analyse de vos processus et se déploie par étapes.</p>
                 <div class="app-hero__actions">
                     <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein">Démarrer un projet</a>
-                    <a href="#exemple" class="key-btn">Parcourir l'exemple</a>
+                    <a href="#exemple" class="key-btn">Voir l'étude de cas</a>
                 </div>
                 <p class="app-hero__note">Devis sous 24&nbsp;h ouvrées</p>
             </div>
@@ -262,8 +262,8 @@
              l'ancienne page ; la réponse de WAB la résume. -->
         <section class="desk-wrap block" id="exemple" aria-labelledby="exempleTitle">
             <div class="section-head reveal">
-                <p class="badge">L'application</p>
-                <h2 class="section-title" id="exempleTitle">Un exemple&nbsp;: une application de gestion complète</h2>
+                <p class="badge">Étude de cas</p>
+                <h2 class="section-title" id="exempleTitle">Une application de gestion, écran par écran</h2>
             </div>
 
             <div class="feats" data-feats>
@@ -276,7 +276,7 @@
                         </div>
                         <div class="feat__copy">
                             <h3 class="feat__title">Aujourd'hui</h3>
-                            <p class="feat__line">L'écran d'ouverture réunit les projets en cours, la trésorerie du mois, les montants restant à encaisser et les tâches du jour. Une équipe qui reprend un dossier après trois semaines en retrouve l'état complet sur une seule page.</p>
+                            <p class="feat__line">L'écran d'ouverture synthétise l'activité&nbsp;: projets en cours, trésorerie du mois, montants restant à encaisser et tâches du jour. Un dossier repris après trois semaines se lit en entier, sur une seule page.</p>
                         </div>
                     </div>
                     <figure class="feat__media">
@@ -293,7 +293,7 @@
                         </div>
                         <div class="feat__copy">
                             <h3 class="feat__title">Tâches</h3>
-                            <p class="feat__line">Toutes les tâches tiennent dans une vue unique, groupées par échéance et filtrables par personne, par projet ou par type de travail. Une tâche peut être assignée à plusieurs personnes à égalité, parce que c'est ainsi que cette équipe travaille.</p>
+                            <p class="feat__line">Une vue unique rassemble toutes les tâches, groupées par échéance et filtrables par personne, par projet ou par type de travail. Une tâche peut être assignée à plusieurs personnes à égalité, conformément au fonctionnement de l'équipe.</p>
                         </div>
                     </div>
                     <figure class="feat__media" data-watch>
@@ -310,7 +310,7 @@
                         </div>
                         <div class="feat__copy">
                             <h3 class="feat__title">Finances</h3>
-                            <p class="feat__line">Le suivi financier affiche ce qui est signé, ce qui est facturé, ce qui est réellement encaissé et ce qu'il reste à recevoir. Les heures pointées sont valorisées au coût interne, ce qui donne la marge réelle projet par projet&nbsp;: un projet entièrement payé peut afficher une marge négative, et l'écran le montre.</p>
+                            <p class="feat__line">Le suivi financier distingue les montants signés, facturés, encaissés et restant à recevoir. Les heures pointées sont valorisées au coût interne pour établir la marge réelle de chaque projet&nbsp;: un projet entièrement payé peut afficher une marge négative, et l'écran le rend visible.</p>
                         </div>
                     </div>
                     <figure class="feat__media" data-watch>
@@ -331,28 +331,28 @@
                 <ul class="app-ways reveal">
                     <li class="app-way">
                         <span class="app-way__icon"><span class="sym sym--team" aria-hidden="true"></span></span>
-                        <h3 class="app-way__title">On part de votre métier</h3>
-                        <p class="app-way__text">Une phase d'observation précède la première ligne de code. Deux entreprises d'un même secteur travaillent chacune à leur manière&nbsp;: c'est cet écart qui décide de la forme de l'outil.</p>
+                        <h3 class="app-way__title">L'analyse du métier d'abord</h3>
+                        <p class="app-way__text">Une phase d'observation précède toute ligne de code. Deux entreprises d'un même secteur ne travaillent jamais de la même manière&nbsp;: cet écart détermine la forme de l'outil.</p>
                     </li>
                     <li class="app-way">
                         <span class="app-way__icon"><span class="sym sym--grid" aria-hidden="true"></span></span>
                         <h3 class="app-way__title">Chaque écran a une raison d'être</h3>
-                        <p class="app-way__text">Une fonctionnalité entre dans l'outil parce que quelqu'un s'en servira. Ce choix garde l'interface lisible dans trois ans et le code simple à faire évoluer.</p>
+                        <p class="app-way__text">Une fonctionnalité n'entre dans l'outil que si elle répond à un usage réel. Cette exigence garde l'interface lisible dans la durée et le code simple à faire évoluer.</p>
                     </li>
                     <li class="app-way">
                         <span class="app-way__icon"><span class="sym sym--clock" aria-hidden="true"></span></span>
-                        <h3 class="app-way__title">Le temps gagné est la mesure</h3>
-                        <p class="app-way__text">Un outil se juge aux heures qu'il rend chaque semaine. Vingt minutes récupérées par jour représentent près de deux semaines de travail sur une année, par personne.</p>
+                        <h3 class="app-way__title">Le temps gagné comme mesure</h3>
+                        <p class="app-way__text">Un outil se juge aux heures qu'il libère chaque semaine. Vingt minutes gagnées par jour représentent près de deux semaines de travail par an et par personne.</p>
                     </li>
                     <li class="app-way">
                         <span class="app-way__icon"><span class="sym sym--phone" aria-hidden="true"></span></span>
-                        <h3 class="app-way__title">Consultable depuis le téléphone</h3>
-                        <p class="app-way__text">Un dossier s'ouvre chez un client, debout, entre deux rendez-vous. L'interface est dessinée pour le petit écran d'abord.</p>
+                        <h3 class="app-way__title">Pensé pour le mobile d'abord</h3>
+                        <p class="app-way__text">Un dossier se consulte chez un client, entre deux rendez-vous. L'interface est conçue pour le petit écran en premier.</p>
                     </li>
                     <li class="app-way">
                         <span class="app-way__icon"><span class="sym sym--folder" aria-hidden="true"></span></span>
                         <h3 class="app-way__title">L'historique reste consultable</h3>
-                        <p class="app-way__text">Les données archivées restent accessibles et cherchables. Une suppression définitive demande une confirmation explicite, qui annonce ce qu'elle emporte.</p>
+                        <p class="app-way__text">Les données archivées restent accessibles et cherchables. Toute suppression définitive exige une confirmation explicite, qui précise ce qu'elle entraîne.</p>
                     </li>
                 </ul>
             </div>
@@ -364,7 +364,7 @@
             <div class="desk-wrap">
                 <div class="section-head reveal">
                     <p class="badge">FAQ</p>
-                    <h2 class="faq-home__title" id="faqTitle">Ce qu'on nous demande le plus souvent</h2>
+                    <h2 class="faq-home__title" id="faqTitle">Les questions les plus fréquentes</h2>
                 </div>
                 <div class="faq-home__list">
                     <details class="qa" open>
@@ -373,7 +373,7 @@
                     </details>
                     <details class="qa">
                         <summary class="qa__q">Combien de temps faut-il pour développer une application de gestion&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
-                        <div class="qa__a"><p>Nous livrons module par module, chacun utilisable en production dès qu'il est terminé. Concrètement&nbsp;: la gestion des dossiers d'abord, le suivi du temps ensuite, la facturation après. Vous vous en servez pendant que la suite se construit.</p></div>
+                        <div class="qa__a"><p>Nous livrons module par module, chacun utilisable en production dès qu'il est terminé. Concrètement&nbsp;: la gestion des dossiers d'abord, le suivi du temps ensuite, la facturation après. Vos équipes l'utilisent pendant que la suite se construit.</p></div>
                     </details>
                     <details class="qa">
                         <summary class="qa__q">Faut-il remplacer tous vos outils d'un coup&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
@@ -391,11 +391,11 @@
         <section class="block app-end" id="contact" aria-labelledby="endTitle">
             <div class="desk-wrap app-end__inner reveal">
                 <canvas class="app-end__bird" data-perch="flap" data-scale="3" data-color="0" aria-hidden="true"></canvas>
-                <h2 class="app-end__title" id="endTitle">Un outil qui colle à votre métier&nbsp;?</h2>
-                <p class="app-end__lede">Décrivez-nous votre fonctionnement actuel. Nous vous dirons franchement si un développement sur mesure se justifie, ou si un outil existant suffit.</p>
+                <h2 class="app-end__title" id="endTitle">Parlons de votre projet d'application.</h2>
+                <p class="app-end__lede">Présentez-nous votre fonctionnement actuel. Nous évaluons avec vous si un développement sur mesure se justifie ou si une solution existante suffit. Notre équipe vous répond sous 24&nbsp;h ouvrées.</p>
                 <div class="app-end__actions">
                     <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein">Démarrer un projet</a>
-                    <a href="mailto:contact@wearebrothers.ch" class="key-btn">Écrire un email</a>
+                    <a href="mailto:contact@wearebrothers.ch" class="key-btn">Nous écrire</a>
                 </div>
             </div>
         </section>
@@ -421,7 +421,7 @@
                     <a href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
                     <span>Lausanne, Suisse — <time data-local-time>--:--</time></span>
                 </div>
-                <p class="foot__note">Codé à la main à Lausanne, oiseaux compris.</p>
+                <p class="foot__note">Conçu et développé à Lausanne.</p>
             </div>
         </div>
         <!-- Le bandeau : les projets en ligne, en boucle (décor : la

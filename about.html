@@ -18,7 +18,7 @@
     <link rel="manifest" href="/site.webmanifest?v=2">
     <title>Notre Studio — Agence Web à Lausanne | WeAreBrothers</title>
     <meta name="description"
-        content="Deux frères, une agence web à Lausanne. Design, développement de sites internet et branding sur mesure pour l'arc lémanique. Rencontrons-nous autour d'un café.">
+        content="WAB est une agence web indépendante à Lausanne : design, développement de sites internet et identité de marque sur mesure pour l'arc lémanique.">
 
     <!-- SEO -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -29,7 +29,7 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Notre Studio — Agence Web à Lausanne | WeAreBrothers">
-    <meta property="og:description" content="Deux frères, une agence web à Lausanne. Design, développement de sites internet et branding sur mesure.">
+    <meta property="og:description" content="Agence web indépendante à Lausanne. Design, développement de sites internet et identité de marque sur mesure.">
     <meta property="og:url" content="https://wearebrothers.ch/studio">
     <meta property="og:image" content="https://wearebrothers.ch/assets/og-image.jpg?v=2">
     <meta property="og:image:width" content="1200">
@@ -40,7 +40,7 @@
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Notre Studio — Agence Web à Lausanne | WeAreBrothers">
-    <meta name="twitter:description" content="Deux frères, une agence web à Lausanne. Design, développement de sites internet et branding sur mesure.">
+    <meta name="twitter:description" content="Agence web indépendante à Lausanne. Design, développement de sites internet et identité de marque sur mesure.">
     <meta name="twitter:image" content="https://wearebrothers.ch/assets/og-image.jpg?v=2">
 
     <!-- Données structurées (JSON-LD) — studio, site, fondateurs + page -->
@@ -78,7 +78,7 @@
                 "WeAreBrothers",
                 "WAB Studio"
             ],
-            "description": "Agence web fondée par deux frères à Lausanne : création de sites internet sur mesure, refonte de sites, web design, branding, motion design, e-commerce et applications de gestion pour les PME et indépendants de l'arc lémanique.",
+            "description": "Agence web fondée à Lausanne par Eliott et Matt Pina : création de sites internet sur mesure, refonte de sites, web design, branding, motion design, e-commerce et applications de gestion pour les PME et indépendants de l'arc lémanique.",
             "slogan": "Des expériences qui restent dans la mémoire",
             "url": "https://wearebrothers.ch/",
             "email": "contact@wearebrothers.ch",
@@ -259,6 +259,38 @@
             ]
         },
         {
+            "@type": "Person",
+            "@id": "https://wearebrothers.ch/#yael",
+            "name": "Yael Peccatus",
+            "jobTitle": "Gestionnaire de projet",
+            "worksFor": {
+                "@id": "https://wearebrothers.ch/#organization"
+            },
+            "knowsAbout": [
+                "Gestion de projet",
+                "Coordination",
+                "Commerce de détail"
+            ]
+        },
+        {
+            "@type": "Person",
+            "@id": "https://wearebrothers.ch/#anais",
+            "name": "Anaïs Polo",
+            "jobTitle": "Web designeuse",
+            "worksFor": {
+                "@id": "https://wearebrothers.ch/#organization"
+            },
+            "alumniOf": {
+                "@type": "CollegeOrUniversity",
+                "name": "ECAL"
+            },
+            "knowsAbout": [
+                "Web design",
+                "Design d'interface",
+                "Media & Interaction Design"
+            ]
+        },
+        {
             "@type": "AboutPage",
             "@id": "https://wearebrothers.ch/studio#webpage",
             "breadcrumb": {
@@ -266,7 +298,7 @@
             },
             "url": "https://wearebrothers.ch/studio",
             "name": "À propos — WeAreBrothers Studio, agence web à Lausanne",
-            "description": "L'histoire, les valeurs et l'équipe du studio digital WeAreBrothers, fondé par les frères Eliott et Matt Pina à Lausanne.",
+            "description": "L'histoire, les valeurs et l'équipe du studio digital WeAreBrothers, fondé par Eliott et Matt Pina à Lausanne.",
             "isPartOf": {
                 "@id": "https://wearebrothers.ch/#website"
             },
@@ -301,7 +333,6 @@
     <link rel="stylesheet" href="css/key-btn.css?v=1">
     <link rel="stylesheet" href="css/os-bar.css?v=4">
     <link rel="stylesheet" href="css/os-window.css?v=3">
-    <link rel="stylesheet" href="css/os-bubbles.css?v=2">
     <link rel="stylesheet" href="css/os-footer.css?v=3">
     <link rel="stylesheet" href="css/os-dock.css?v=4">
     <link rel="stylesheet" href="css/os-overlay.css?v=3">
@@ -309,7 +340,7 @@
 
     <!-- Styles de la page About -->
     <link rel="stylesheet" href="css/page-about-base.css?v=2">
-    <link rel="stylesheet" href="css/page-about-team.css?v=3">
+    <link rel="stylesheet" href="css/page-about-team.css?v=4">
     <link rel="stylesheet" href="css/page-about-advice.css?v=3">
     <link rel="stylesheet" href="css/page-about-skills.css?v=4">
     <link rel="stylesheet" href="css/page-about-end.css?v=3">
@@ -320,7 +351,7 @@
     <script src="js/reveal.js?v=4" defer></script>
     <script type="module" src="js/birds/index.js?v=9"></script>
     <script type="module" src="js/birds/perch.js?v=9"></script>
-    <script type="module" src="js/contact/index.js?v=11"></script>
+    <script type="module" src="js/contact/index.js?v=12"></script>
     <script type="module" src="js/os/index.js?v=3"></script>
 </head>
 
@@ -393,10 +424,10 @@
         <section class="ab-hero" id="studio" aria-labelledby="teamTitle">
             <div class="ab-hero__center">
                 <h1 class="ab-hero__title" id="teamTitle">L'équipe<span class="sr-only"> de WeAreBrothers, studio digital fondé à Lausanne</span></h1>
-                <p class="ab-hero__lede">Eliott dessine, Matt développe. <span class="ab-hero__line">Les mêmes personnes, du premier café à la mise en ligne.</span></p>
+                <p class="ab-hero__lede">Studio indépendant de design et de développement, fondé à Lausanne par Eliott et Matt Pina. <span class="ab-hero__line">Nous accompagnons marques, institutions culturelles et entreprises, de la stratégie à la mise en ligne.</span></p>
             </div>
 
-            <ul class="ab-team" data-reveal-group tabindex="0" aria-label="Les trois membres de l&apos;équipe">
+            <ul class="ab-team" data-reveal-group tabindex="0" aria-label="Les membres de l&apos;équipe">
                 <li class="ab-card reveal">
                     <article class="win">
                         <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--team" aria-hidden="true"></span>Contacts</span></div>
@@ -405,7 +436,7 @@
                             <div class="ab-card__info">
                                 <h2 class="ab-card__name">Eliott Pina</h2>
                                 <p class="ab-card__role">Lead designer, direction artistique</p>
-                                <p class="ab-card__bio">Identité visuelle, interfaces et animations. Chaque projet passe par ses mains.</p>
+                                <p class="ab-card__bio">Identités visuelles, interfaces et motion design. Il assure la direction artistique de chaque projet.</p>
                             </div>
                         </div>
                     </article>
@@ -420,7 +451,7 @@
                             <div class="ab-card__info">
                                 <h2 class="ab-card__name">Matt Pina</h2>
                                 <p class="ab-card__role">Lead développeur full-stack</p>
-                                <p class="ab-card__bio">Développement et mise en ligne. Des sites rapides, fiables et simples à faire évoluer. Également au Centre Patronal.</p>
+                                <p class="ab-card__bio">Architecture technique, développement et mise en ligne. Des sites rapides, fiables et évolutifs. Également en poste au Centre Patronal.</p>
                             </div>
                         </div>
                     </article>
@@ -434,11 +465,39 @@
                             <div class="ab-card__info">
                                 <h2 class="ab-card__name">Ivan Jakovlevski</h2>
                                 <p class="ab-card__role">Commercial et relation client</p>
-                                <p class="ab-card__bio">Votre premier interlocuteur, du premier contact au lancement. Également en R&amp;D chez VEG Consulting, grande fiduciaire lausannoise.</p>
+                                <p class="ab-card__bio">Développement commercial et suivi des clients, de la prise de contact au lancement. Également en R&amp;D chez VEG Consulting, grande fiduciaire lausannoise.</p>
                             </div>
                         </div>
                     </article>
                     <span class="file-name" aria-hidden="true">ivan.vcf</span>
+                </li>
+                <li class="ab-card reveal">
+                    <article class="win">
+                        <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--team" aria-hidden="true"></span>Contacts</span></div>
+                        <div class="win__body">
+                            <figure class="ab-card__photo"><img src="assets/images/team-yael.webp" alt="Yael Peccatus, gestionnaire de projet chez WeAreBrothers Studio à Lausanne" width="960" height="1200" loading="lazy" decoding="async"></figure>
+                            <div class="ab-card__info">
+                                <h2 class="ab-card__name">Yael Peccatus</h2>
+                                <p class="ab-card__role">Gestionnaire de projet</p>
+                                <p class="ab-card__bio">Coordination des projets, du cadrage à la livraison. Il a notamment piloté la boutique Memories Store et le label LE&nbsp;MEMO.</p>
+                            </div>
+                        </div>
+                    </article>
+                    <span class="file-name" aria-hidden="true">yael.vcf</span>
+                </li>
+                <li class="ab-card reveal">
+                    <article class="win">
+                        <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--team" aria-hidden="true"></span>Contacts</span></div>
+                        <div class="win__body">
+                            <figure class="ab-card__photo"><img src="assets/images/team-anais.webp" alt="Anaïs Polo, web designeuse chez WeAreBrothers Studio à Lausanne" width="960" height="1200" loading="lazy" decoding="async"></figure>
+                            <div class="ab-card__info">
+                                <h2 class="ab-card__name">Anaïs Polo</h2>
+                                <p class="ab-card__role">Web designeuse</p>
+                                <p class="ab-card__bio">Interfaces et design web. Elle suit le Bachelor Media &amp; Interaction Design de l&apos;ECAL.</p>
+                            </div>
+                        </div>
+                    </article>
+                    <span class="file-name" aria-hidden="true">anais.vcf</span>
                 </li>
             </ul>
         </section>
@@ -457,7 +516,7 @@
                     <article class="win ab-note reveal">
                         <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--notes" aria-hidden="true"></span>Notes</span></div>
                         <div class="ab-note__body">
-                            <p class="ab-note__text">Quels outils choisir, quoi automatiser, où l'intelligence artificielle a vraiment sa place&nbsp;: <mark>on en parle avant d'écrire la première ligne.</mark> Derrière chaque recommandation, la formation d'Eliott en droit et en systèmes d'information, et l'expérience de Matt et d'Ivan dans deux institutions vaudoises.<span class="ab-note__caret" aria-hidden="true"></span></p>
+                            <p class="ab-note__text">Choix des outils, automatisation, place de l'intelligence artificielle&nbsp;: <mark>chaque orientation est définie avant la première ligne de code.</mark> Nos recommandations s'appuient sur une formation en droit et en systèmes d'information, et sur une expérience acquise au sein de deux institutions vaudoises.<span class="ab-note__caret" aria-hidden="true"></span></p>
                             <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein">Demander un conseil</a>
                         </div>
                     </article>
@@ -475,7 +534,7 @@
                                 <span class="ab-fact__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 21h10M5 7h14"/><path d="m5 7-3 6a3 3 0 0 0 6 0L5 7ZM19 7l-3 6a3 3 0 0 0 6 0l-3-6Z"/></svg></span>
                                 <span class="ab-fact__label">Eliott — diplôme</span>
                                 <p class="ab-fact__value">Bachelor en droit</p>
-                                <p class="ab-fact__note">Contrats, données personnelles, mentions légales&nbsp;: les questions juridiques d'un projet ne sont pas un angle mort.</p>
+                                <p class="ab-fact__note">Contrats, protection des données, mentions légales&nbsp;: le cadre juridique de chaque projet est pris en compte dès le départ.</p>
                             </li>
                             <li class="ab-fact">
                                 <span class="ab-fact__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 9 10-5 10 5-10 5L2 9Z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg></span>
@@ -487,7 +546,7 @@
                                 <span class="ab-fact__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg></span>
                                 <span class="ab-fact__label">Matt et Ivan — en parallèle</span>
                                 <p class="ab-fact__value">Centre Patronal et VEG Consulting</p>
-                                <p class="ab-fact__note">Matt travaille au Centre Patronal&nbsp;; Ivan chez VEG Consulting, grande fiduciaire lausannoise. Deux regards sur le quotidien réel des entreprises vaudoises.</p>
+                                <p class="ab-fact__note">Matt travaille au Centre Patronal&nbsp;; Ivan chez VEG Consulting, grande fiduciaire lausannoise. Une connaissance concrète du fonctionnement des entreprises vaudoises.</p>
                             </li>
                         </ul>
                     </article>
@@ -502,7 +561,7 @@
                 <div class="ab-skills__panel">
                     <div class="ab-head reveal">
                         <p class="badge">Savoir-faire</p>
-                        <h2 class="ab-skills__title" id="skillsTitle">Tout sous le même toit.</h2>
+                        <h2 class="ab-skills__title" id="skillsTitle">Des expertises intégrées.</h2>
                     </div>
                     <ul class="ab-apps" data-reveal-group>
                         <li class="reveal">
@@ -562,8 +621,8 @@
                     <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--mail" aria-hidden="true"></span>Nouveau message</span></div>
                     <div class="ab-mail__body">
                         <p class="ab-mail__field ab-mail__field--to"><span class="ab-mail__key">À</span><a href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a></p>
-                        <div class="ab-mail__field ab-mail__field--subject"><span class="ab-mail__key" aria-hidden="true">Objet</span><h2 class="ab-mail__title" id="endTitle">Et si le prochain projet était le vôtre&nbsp;?</h2></div>
-                        <p class="ab-mail__message">Quelques lignes suffisent pour commencer. Nous vous répondons sous 24&nbsp;h ouvrées, sans engagement.</p>
+                        <div class="ab-mail__field ab-mail__field--subject"><span class="ab-mail__key" aria-hidden="true">Objet</span><h2 class="ab-mail__title" id="endTitle">Parlons de votre projet.</h2></div>
+                        <p class="ab-mail__message">Présentez-nous votre projet&nbsp;: notre équipe revient vers vous sous 24&nbsp;h ouvrées, sans engagement.</p>
                         <div class="ab-mail__actions">
                             <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein">Démarrer un projet</a>
                             <a href="mailto:contact@wearebrothers.ch" class="key-btn">Écrire un email</a>
@@ -594,7 +653,7 @@
                     <a href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
                     <span>Lausanne, Suisse — <time data-local-time>--:--</time></span>
                 </div>
-                <p class="foot__note">Codé à la main à Lausanne, oiseaux compris.</p>
+                <p class="foot__note">Conçu et développé à Lausanne.</p>
             </div>
         </div>
         <!-- Le bandeau : les projets en ligne, en boucle (décor : la

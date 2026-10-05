@@ -53,7 +53,7 @@ export function launchCase(id, title, opener) {
 export function launchTerminal(opener) {
     launch('terminal', async () => {
         await styles('os-terminal');
-        (await import('./terminal.js?v=3')).openTerminal(opener);
+        (await import('./terminal.js?v=4')).openTerminal(opener);
     }, () => toast('Le terminal n’a pas pu s’ouvrir.'));
 }
 
@@ -61,7 +61,7 @@ export function launchTerminal(opener) {
 export function launchTrash(opener) {
     launch('trash', async () => {
         await styles();
-        (await import('./trash.js?v=2')).openTrash(opener);
+        (await import('./trash.js?v=3')).openTrash(opener);
     }, () => toast('La corbeille est vide.'));
 }
 

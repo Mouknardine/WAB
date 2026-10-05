@@ -24,8 +24,8 @@ export function openTrash(opener) {
             box.append(
                 appIcon('trash', 64),
                 title,
-                el('p', 'os-note__text', 'Pas de thème tout fait à jeter ici\u00a0: nos sites sont codés à la main, sans WordPress ni Wix.'),
-                keyLink('Voir ce qu’on en fait', '/realisations'),
+                el('p', 'os-note__text', 'Aucun thème préfabriqué\u00a0: nos sites sont développés sur mesure, sans WordPress ni Wix.'),
+                keyLink('Voir nos réalisations', '/realisations'),
             );
             win.body.append(box);
         },

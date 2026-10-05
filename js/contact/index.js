@@ -13,8 +13,8 @@
  */
 
 // Même numéro partout où un fichier est importé : voir js/birds/index.js.
-import { CONTACT_EMAIL, createContactDialog } from './markup.js?v=8';
-import { bindContactForm, resetContactForm } from './form.js?v=9';
+import { CONTACT_EMAIL, createContactDialog } from './markup.js?v=9';
+import { bindContactForm, resetContactForm } from './form.js?v=10';
 import { requireElement } from './dom.js?v=9';
 import { playFlight } from './flight.js?v=11';
 

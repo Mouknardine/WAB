@@ -1,10 +1,10 @@
 /* ============================================
    WAB OS — About : le premier écran, l'équipe
-   Le titre et une phrase au centre, net. Dessous, trois fenêtres
-   « Contacts », une par personne, au fond gris chaud : la vraie photo
+   Le titre et une phrase au centre, net. Dessous, une fenêtre
+   « Contacts » par personne, au fond gris chaud : la vraie photo
    posée en retrait, puis une petite carte blanche nette (le nom, le
    rôle en Sligoil, le texte) — jamais posée sur le portrait, où elle
-   masquait le visage. Celle du milieu descend d'un
+   masquait le visage. La colonne du milieu descend d'un
    cran (quinconce, comme le bureau de l'accueil) ; l'oiseau reste en
    bordure.
    Au téléphone : les fiches défilent au doigt, le nom de fichier
@@ -155,7 +155,7 @@
     right: 22px;
 }
 
-/* ── Ordinateur : les trois fiches côte à côte, en quinconce ── */
+/* ── Ordinateur : trois fiches par rangée, en quinconce ── */
 @media (min-width: 860px) {
     .ab-team {
         grid-auto-flow: row;
@@ -168,7 +168,7 @@
         overflow: visible;
     }
 
-    .ab-card:nth-child(2) {
+    .ab-card:nth-child(3n + 2) {
         translate: 0 48px;
     }
 

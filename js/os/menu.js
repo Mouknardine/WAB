@@ -11,7 +11,7 @@
 
 import { el } from './dom.js?v=3';
 import { openContact, copyEmail, SHORTCUT } from './actions.js?v=1';
-import { launchFinder, launchPalette } from './apps.js?v=3';
+import { launchFinder, launchPalette } from './apps.js?v=4';
 
 /** @type {HTMLElement | null} */
 let menu = null;
