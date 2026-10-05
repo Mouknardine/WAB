@@ -1,0 +1,19 @@
+/* ============================================
+   WAB OS — le fond animé des cadres bleus
+   Le canvas des lignes nodales (js/desk/nodal-lines.js), posé sous le
+   contenu d'un cadre Klein. Le cadre porte isolation: isolate pour
+   que le canvas reste derrière l'aperçu. Les caractères prennent la
+   police mono et la couleur définies ici.
+   ============================================ */
+
+.nodal-field {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    font-family: var(--font-mono);
+    color: oklch(1 0 0 / 0.7);
+    pointer-events: none;
+}

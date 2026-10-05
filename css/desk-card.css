@@ -1,7 +1,7 @@
 /* ============================================
    WAB OS — la carte de prestation (accueil)
    Une carte blanche qui épouse son contenu : en haut, la zone bleu
-   Klein où courent les lignes nodales (js/desk/nodal-lines.js) et où
+   Klein où courent les lignes nodales (os-nodal.css) et où
    l'aperçu est posé, droit et sans barre de fenêtre ; en dessous, le
    titre, une ligne et le bouton. Liseré d'un pixel, ombre franche
    décalée (--sheet), aucun flou.
@@ -25,17 +25,6 @@
     background: radial-gradient(80% 70% at 30% 20%, oklch(0.6 0.24 266 / 0.5), oklch(0.6 0.24 266 / 0) 70%), var(--klein);
     overflow: hidden;
     isolation: isolate;
-}
-
-.card__field {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    font-family: var(--font-mono);
-    color: oklch(1 0 0 / 0.7);
-    pointer-events: none;
 }
 
 /* L'aperçu : la fenêtre sans sa barre, juste le contenu arrondi. */

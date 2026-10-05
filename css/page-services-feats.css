@@ -68,15 +68,16 @@
     text-wrap: pretty;
 }
 
-/* ── L'écran ── le bleu à lignes d'écran, un liseré Klein profond, la
-   feuille décalée dessous ; la fenêtre flotte dedans. Sans la vignette
-   de --klein-screen : sur un cadre de 24 px, on ne verrait qu'elle. */
+/* ── L'écran ── le bleu Klein et ses lignes nodales animées
+   (os-nodal.css), un liseré Klein profond, la feuille décalée
+   dessous ; la fenêtre flotte dedans. */
 .svc-screen {
     position: relative;
     padding: var(--screen-pad);
     border-radius: calc(var(--r-win) + var(--screen-pad));
-    background: var(--scan-lines), var(--scan-glow), var(--klein);
+    background: radial-gradient(80% 70% at 30% 20%, oklch(0.6 0.24 266 / 0.5), oklch(0.6 0.24 266 / 0) 70%), var(--klein);
     box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--sheet), var(--shadow-object);
+    isolation: isolate;
 }
 
 .svc-screen .win {
