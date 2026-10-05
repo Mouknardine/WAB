@@ -1,0 +1,293 @@
+/* ============================================
+   Hero 3D (essai) — page autonome, hors du système WAB OS.
+   Le fond Klein d'agentcard, la barre flottante en bas, le texte et les
+   objets dans le canvas (js/hero-lab/scene.js).
+   ============================================ */
+
+@font-face {
+    font-family: 'Instrument Sans';
+    src: url('../assets/fonts/InstrumentSans-Var.woff2') format('woff2');
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sligoil';
+    src: url('../assets/fonts/Sligoil-MicroMedium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Le premier écran est bleu dans les deux thèmes : les jetons ne changent
+   pas, ils sont redéclarés pour que le thème sombre ne les écrase pas. */
+:root {
+    --klein: oklch(0.45 0.29 266);
+    --klein-hi: oklch(0.56 0.25 266);
+    --klein-deep: oklch(0.3 0.19 266);
+    --klein-ink: oklch(0.38 0.24 266);
+    --on-klein: oklch(1 0 0);
+    --on-klein-muted: oklch(1 0 0 / 0.78);
+    --paper: oklch(1 0 0);
+    --ink: oklch(0.18 0.005 265);
+    --ink-muted: oklch(0.46 0.012 265);
+    --bar: oklch(0.18 0.005 265 / 0.42);
+    --bar-rim: oklch(1 0 0 / 0.16);
+    --key: #2e3ae8;
+    --key-rim: #151e8b;
+    color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --paper: oklch(0.985 0 0);
+        --ink: oklch(0.18 0.005 265);
+    }
+}
+
+:root[data-theme="dark"] {
+    --paper: oklch(0.985 0 0);
+    --ink: oklch(0.18 0.005 265);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    background: var(--klein-deep);
+}
+
+body {
+    font-family: 'Instrument Sans', system-ui, sans-serif;
+    color: var(--on-klein);
+    -webkit-font-smoothing: antialiased;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ── La piste : le premier écran reste collé pendant 1,8 écran de
+   défilement, le temps de la bascule. ── */
+.hero3d-track {
+    position: relative;
+    height: 280vh;
+    height: 280svh;
+}
+
+.hero3d {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100svh;
+    overflow: hidden;
+    background:
+        radial-gradient(110% 85% at 50% 42%, var(--klein-hi) 0%, var(--klein) 48%, var(--klein-deep) 100%);
+}
+
+/* Grain fin sur le bleu, comme les écrans Klein du site. */
+.hero3d::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.16;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.hero3d__canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease-out;
+}
+
+.hero3d.is-ready .hero3d__canvas {
+    opacity: 1;
+}
+
+/* Sans WebGL : le titre en HTML, au même endroit. */
+.hero3d__fallback {
+    display: none;
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    place-content: center;
+    text-align: center;
+    font-size: clamp(56px, 13vw, 220px);
+    font-weight: 600;
+    line-height: 0.92;
+    letter-spacing: -0.05em;
+}
+
+.hero3d.is-fallback .hero3d__fallback {
+    display: grid;
+}
+
+.hero3d__tag,
+.hero3d__draft {
+    position: absolute;
+    top: max(20px, env(safe-area-inset-top));
+    z-index: 2;
+    margin: 0;
+    font-family: 'Sligoil', ui-monospace, monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--on-klein-muted);
+}
+
+.hero3d__tag {
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hero3d__sq {
+    width: 9px;
+    height: 9px;
+    background: var(--on-klein);
+}
+
+.hero3d__draft {
+    right: 20px;
+}
+
+/* ── La barre flottante, traduite d'agentcard ── */
+.hero3d__bar {
+    position: absolute;
+    left: 50%;
+    bottom: max(20px, env(safe-area-inset-bottom));
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    max-width: calc(100% - 32px);
+    padding: 4px;
+    translate: -50% 0;
+    border: 1px solid var(--bar-rim);
+    border-radius: 11px;
+    background: var(--bar);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+}
+
+.hero3d__tab,
+.hero3d__cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 0 14px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    color: var(--on-klein);
+    text-decoration: none;
+}
+
+.hero3d__tab.is-current {
+    background: var(--paper);
+    color: var(--klein-ink);
+}
+
+.hero3d__cta {
+    gap: 8px;
+    margin-left: 6px;
+    border: 1px solid var(--key-rim);
+    background: var(--key);
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.34),
+        inset 0 -2px 0 rgb(10 12 40 / 0.16),
+        0 1px 2px rgb(10 12 40 / 0.24),
+        0 3px 8px rgb(22 27 242 / 0.18);
+}
+
+.hero3d__cta::after {
+    content: '↗';
+    font-size: 0.95em;
+}
+
+.hero3d__cta-short {
+    display: none;
+}
+
+@media (hover: hover) {
+    .hero3d__tab:not(.is-current):hover {
+        background: rgb(255 255 255 / 0.1);
+    }
+}
+
+.hero3d__tab:focus-visible,
+.hero3d__cta:focus-visible {
+    outline: 2px solid var(--on-klein);
+    outline-offset: 2px;
+}
+
+@media (max-width: 560px) {
+    .hero3d__tab--wide,
+    .hero3d__draft {
+        display: none;
+    }
+
+    .hero3d__tab,
+    .hero3d__cta {
+        padding: 0 11px;
+        font-size: 14px;
+    }
+
+    .hero3d__cta-long {
+        display: none;
+    }
+
+    .hero3d__cta-short {
+        display: inline;
+    }
+}
+
+/* ── La suite de la page, sur papier ── */
+.after {
+    position: relative;
+    min-height: 70vh;
+    margin-top: -24px;
+    padding: 64px 20px;
+    border-radius: 24px 24px 0 0;
+    background: var(--paper);
+    color: var(--ink);
+}
+
+.after__label {
+    margin: 0 0 12px;
+    font-family: 'Sligoil', ui-monospace, monospace;
+    font-size: 12px;
+    color: var(--ink-muted);
+}
+
+.after__text {
+    max-width: 34ch;
+    margin: 0;
+    font-size: clamp(24px, 3.4vw, 40px);
+    font-weight: 500;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr-CH">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <!-- Page d'essai du hero 3D : jamais indexée, reliée à aucune page. -->
+    <meta name="robots" content="noindex, nofollow">
+    <title>Essai hero 3D</title>
+    <meta name="description" content="Essai du premier écran : WE ARE BROTHERS en relief, les objets du studio en orbite.">
+    <meta name="theme-color" content="#161bf2">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="assets/fonts/InstrumentSans-Var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/Sligoil-MicroMedium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/hero-lab.css">
+    <link rel="modulepreload" href="js/vendor/three-hero.js">
+    <script type="module" src="js/hero-lab/scene.js"></script>
+</head>
+<body>
+    <div class="hero3d-track" data-hero3d-track>
+        <section class="hero3d" data-hero3d aria-labelledby="hero3d-title">
+            <h1 class="sr-only" id="hero3d-title" translate="no">WE ARE BROTHERS<span> — WeAreBrothers, agence web et création de site internet à Lausanne</span></h1>
+            <canvas class="hero3d__canvas" aria-hidden="true"></canvas>
+            <p class="hero3d__fallback" aria-hidden="true" translate="no">WE ARE<br>BROTHERS</p>
+
+            <p class="hero3d__tag"><span class="hero3d__sq" aria-hidden="true"></span>Studio digital · Lausanne</p>
+            <p class="hero3d__draft">Essai · objets provisoires</p>
+
+            <nav class="hero3d__bar" aria-label="Navigation principale">
+                <a class="hero3d__tab is-current" href="/" aria-current="page">Accueil</a>
+                <a class="hero3d__tab" href="/realisations">Work</a>
+                <a class="hero3d__tab" href="/services">Services</a>
+                <a class="hero3d__tab hero3d__tab--wide" href="/studio">About</a>
+                <a class="hero3d__cta" href="mailto:contact@wearebrothers.ch"><span class="hero3d__cta-long">Démarrer un projet</span><span class="hero3d__cta-short">Contact</span></a>
+            </nav>
+        </section>
+    </div>
+
+    <main class="after">
+        <p class="after__label">Suite de l'accueil</p>
+        <p class="after__text">Le premier écran bascule pendant le défilement, puis la page reprend ici.</p>
+    </main>
+</body>
+</html>
