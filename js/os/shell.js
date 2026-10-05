@@ -2,65 +2,28 @@
 /**
  * WAB OS — le shell
  * Le seul morceau du système chargé d'emblée, et il est léger : il
- * écoute le bureau, le dock, ⌘K et le clic droit, et ne charge une
+ * écoute le mur, le dock, ⌘K et le clic droit, et ne charge une
  * app qu'au moment où on l'ouvre (apps.js).
  *
- * Sans lui, rien ne manque : les fenêtres du bureau, les cartes du
- * mur et le dossier Work restent des liens vers /realisations, le dock
- * des liens.
+ * Sans lui, rien ne manque : les cartes du mur et le dossier Work
+ * restent des liens vers /realisations, le dock des liens.
+ *
+ * Le bureau de l'ancien premier écran (fenêtres de projets, icônes
+ * Work et Corbeille, sélection au clic, ouverture au double-clic) a
+ * quitté l'accueil le 5.10.2026 : ses objets sont désormais de
+ * simples liens (js/desk/drag.js).
  */
 
-import { isOpenGesture, select, clearSelection } from './gesture.js?v=1';
-import { launchFinder, launchCase, launchTerminal, launchTrash, launchPalette, launchMenu } from './apps.js?v=4';
+import { launchFinder, launchCase, launchTerminal, launchPalette, launchMenu } from './apps.js?v=4';
 import { SHORTCUT } from './actions.js?v=1';
 import { report } from './lazy.js?v=1';
 import { initDockHide } from './dock-hide.js?v=1';
 
-const DESK_ITEM = '[data-project], [data-desk-icon]';
 const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 
 /** @param {MouseEvent} event */
 function withModifier(event) {
     return event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
-}
-
-/** @param {HTMLElement} item */
-function openDeskItem(item) {
-    const project = item.dataset.project;
-    if (project) {
-        const title = item.querySelector('.file-name')?.textContent?.trim() || project;
-        launchCase(project, title, item);
-        return;
-    }
-    const app = item.dataset.app;
-    if (app === 'work') launchFinder(item);
-    else if (app === 'trash') launchTrash(item);
-}
-
-/** Le bureau : sélectionner à la souris, ouvrir au double-clic, à Entrée, au doigt. */
-function wireDesk() {
-    document.addEventListener('click', (event) => {
-        if (!(event.target instanceof Element)) return;
-        const item = event.target.closest(DESK_ITEM);
-        if (!(item instanceof HTMLElement)) {
-            if (event.target.closest('[data-scatter]')) clearSelection('.scat');
-            return;
-        }
-        if (withModifier(event)) return;
-        event.preventDefault();
-        // Un glisser se termine par un clic : il ne doit rien ouvrir.
-        if (item.dataset.dragged) {
-            delete item.dataset.dragged;
-            return;
-        }
-        if (isOpenGesture(event)) openDeskItem(item);
-        else select(item, '.scat');
-    });
-
-    document.addEventListener('dblclick', (event) => {
-        const item = event.target instanceof Element ? event.target.closest(DESK_ITEM) : null;
-        if (item instanceof HTMLElement) openDeskItem(item);
-    });
 }
 
 /**
@@ -140,7 +103,6 @@ function wireIdleBird() {
 }
 
 export function initShell() {
-    wireDesk();
     wireWall();
     wireDock();
     initDockHide();

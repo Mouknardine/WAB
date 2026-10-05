@@ -2,7 +2,7 @@
 /**
  * WAB OS — accueil
  * Point d'entrée des comportements propres à l'accueil : la lumière
- * de l'heure, les fenêtres qu'on déplace, la parallaxe douce, la
+ * de l'heure, les objets qu'on déplace, la parallaxe douce, la
  * vitrine des projets, les éléments qui s'animent à l'écran, la
  * nuée d'oiseaux autour de la lettre, les pixels du pied de page,
  * le fond animé des cartes de prestation. Le système partagé (shell, ⌘K, fenêtres,
@@ -13,8 +13,8 @@
  */
 
 // Même numéro partout où un fichier est importé : voir js/birds/index.js.
-import { initDrag } from './drag.js?v=2';
-import { initParallax } from './parallax.js?v=1';
+import { initDrag } from './drag.js?v=3';
+import { initParallax } from './parallax.js?v=2';
 import { initShowcase } from './showcase.js?v=2';
 import { initWatch } from './watch.js?v=1';
 import { initPixels } from './pixels.js?v=2';

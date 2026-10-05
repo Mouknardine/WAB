@@ -1,7 +1,7 @@
 // @ts-check
 /**
- * WAB. — Parallaxe douce du bureau
- * Les objets autour du titre suivent la souris de quelques pixels,
+ * WAB. — Parallaxe douce du premier écran
+ * Les objets autour du nom suivent la souris de quelques pixels,
  * chacun selon sa profondeur (--depth, desk-scatter.css). Le script
  * écrit directement le transform de chaque objet : changer une
  * variable sur le calque forcerait le recalcul de tous ses enfants.
@@ -33,9 +33,10 @@ export function initParallax() {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (!finePointer.matches) return;
 
+    // Les objets du bureau, et le curseur posé au bout du nom.
     /** @type {Layer[]} */
     const layers = [];
-    root.querySelectorAll('.scat').forEach((el) => {
+    (root.closest('.hero') ?? root).querySelectorAll('.scat').forEach((el) => {
         if (!(el instanceof HTMLElement)) return;
         const depth = parseFloat(getComputedStyle(el).getPropertyValue('--depth')) || 1;
         layers.push({ el, depth });

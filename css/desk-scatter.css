@@ -1,26 +1,35 @@
 /* ============================================
-   WAB. — Accueil « bureau » : le désordre en bordure
-   Les fenêtres de projets, l'autocollant, les kaomoji, les icônes de
-   bureau (Work, Corbeille). Chaque objet porte sa place (--x, --y,
-   --w) par palier d'écran ; le dossier seul au téléphone, tout sur ordinateur.
+   WAB. — Accueil : les objets autour du nom
+   Dix objets en relief, petits, multicolores (exception assumée à
+   l'accent unique : ce sont des objets, pas de l'interface). Chacun
+   porte sa place (--x en % de la largeur, --y en svh, --w en --u)
+   par palier d'écran : desk-scatter-wide.css ; ici, le téléphone.
 
-   Trois mouvements se composent sans s'écraser :
-   — l'entrée : animation sur opacity et scale ;
-   — la parallaxe douce : transform, écrit par js/desk/parallax.js ;
-   — le glisser : translate, posé par js/desk/drag.js.
-   Aucun objet n'est penché : tout reste droit.
+   Quatre mouvements se composent sans s'écraser :
+   — l'entrée : opacity et scale de l'objet ;
+   — la parallaxe : transform de l'objet, écrit par js/desk/parallax.js ;
+   — le glisser : translate de l'objet, posé par js/desk/drag.js ;
+   — le flottement : transform de l'image ; le survol, son scale.
    ============================================ */
 
 .scatter {
     position: absolute;
     inset: 0;
     z-index: var(--z-desk);
+    /* Valeurs de mouvement de la hero d'agentcard, à recaler sur le
+       relevé (voir desk-hero.css). */
+    --enter-dur: 900ms;
+    --enter-step: 80ms;
+    --float-dur: 6s;
+    --float-amp: calc(5 * var(--u));
+    --float-turn: 2deg;
+    --hover-scale: 1.1;
 }
 
 .scat {
     --x: 0%;
-    --y: 0px;
-    --w: auto;
+    --y: 0svh;
+    --w: calc(64 * var(--u));
     --depth: 1;
     position: absolute;
     z-index: 1;
@@ -28,29 +37,67 @@
     top: var(--y);
     width: var(--w);
     display: none;
-    animation: scat-in 0.7s var(--ease-out) both;
-    animation-delay: calc(var(--i, 0) * 70ms + 120ms);
-}
-
-@keyframes scat-in {
-    from {
-        opacity: 0;
-        scale: 0.94;
-    }
-}
-
-/* Un lien-fenêtre garde l'apparence d'un objet, pas d'un lien. */
-a.scat {
+    padding: 0;
+    border: 0;
+    border-radius: var(--r-ctl);
+    background: none;
+    font: inherit;
     color: inherit;
     -webkit-tap-highlight-color: transparent;
+}
+
+.scat__obj {
+    display: block;
+    width: 100%;
+    height: auto;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* L'étiquette : celle du dock, une touche blanche à texte encre, sous
+   l'objet (au-dessus pour la bande du bas). Au survol et au focus. */
+.scat__tag {
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 8px);
+    translate: -50% -4px;
+    padding: 5px 9px;
+    border-radius: var(--r-key);
+    background: var(--paper);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief), var(--shadow-soft);
+    font-size: 12px;
+    font-weight: var(--w-medium);
+    line-height: 1.3;
+    white-space: nowrap;
+    color: var(--glass-ink);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--dur-1) var(--ease-out), translate var(--dur-1) var(--ease-out);
+}
+
+.scat--up .scat__tag {
+    top: auto;
+    bottom: calc(100% + 8px);
+    translate: -50% 4px;
 }
 
 .scat:focus-visible {
     outline-offset: 6px;
 }
 
-/* Une fenêtre qu'on peut prendre : la main l'annonce. */
+.scat:focus-visible .scat__tag {
+    opacity: 1;
+    translate: -50% 0;
+}
+
 @media (hover: hover) and (pointer: fine) {
+    .scat:is(a, button):hover .scat__tag {
+        opacity: 1;
+        translate: -50% 0;
+    }
+
+    /* Un objet qu'on peut prendre : la main l'annonce. */
     .scat[data-drag] {
         cursor: grab;
         touch-action: none;
@@ -59,84 +106,82 @@ a.scat {
     .scat.is-dragging {
         cursor: grabbing;
     }
+
+    .scat.is-dragging .scat__tag {
+        opacity: 0;
+    }
 }
 
-.scat .win {
-    transition: box-shadow var(--dur-2) var(--ease-out);
+@media (prefers-reduced-motion: no-preference) {
+    .scat {
+        animation: scat-in var(--enter-dur) var(--ease-spring) both;
+        animation-delay: calc(var(--i, 0) * var(--enter-step) + 200ms);
+    }
+
+    .scat__obj {
+        animation: scat-float var(--float-dur) ease-in-out infinite alternate;
+        animation-delay: calc(var(--i, 0) * -1.7s);
+        transition: scale var(--dur-3) var(--ease-spring);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        .scat:is(a, button):hover .scat__obj,
+        .scat.is-dragging .scat__obj {
+            scale: var(--hover-scale);
+        }
+    }
 }
 
-.scat.is-dragging .win {
-    box-shadow: 0 0 0 1px var(--win-edge), var(--win-shadow-lift);
+@keyframes scat-in {
+    from {
+        opacity: 0;
+        scale: 0.4;
+    }
 }
 
-/* Les captures en portrait (photos de mise en situation, 4:5) et en
-   paysage (pages d'accueil, 16:10) gardent leur format natif. */
-.scat--portrait .win__body {
-    aspect-ratio: 4 / 5;
+@keyframes scat-float {
+    from {
+        transform: translateY(calc(var(--float-amp) * -1)) rotate(calc(var(--float-turn) * -1));
+    }
+
+    to {
+        transform: translateY(var(--float-amp)) rotate(var(--float-turn));
+    }
 }
 
-.scat--land .win__body {
-    aspect-ratio: 16 / 10;
+/* ── Téléphone : cinq objets, entre 44 et 72 px, hors du texte ── */
+.scat--window {
+    --x: 7%;
+    --y: 15svh;
+    --w: 72px;
+    --depth: 0.8;
+    display: block;
 }
 
-/* ── Téléphone : le dossier Work seul, à gauche, au-dessus du titre
-   (demande d'Eliott du 3.10). Les autres objets attendent la tablette. */
-.scat--folder {
-    --x: 4%;
-    --y: 72px;
-    --depth: 0.4;
-    display: inline-flex;
+.scat--phone {
+    --x: calc(100% - 66px);
+    --y: 22svh;
+    --w: 48px;
+    --depth: 1.2;
+    display: block;
 }
 
-.scat--sticker {
-    --depth: 0.6;
-}
-
-.scat--zinema {
+.scat--pencil {
+    --x: 10%;
+    --y: 72svh;
+    --w: 64px;
     --depth: 1;
+    display: block;
 }
 
-/* ── Tablette et petit ordinateur : la bande du haut se peuple ── */
-@media (min-width: 600px) {
-    .scat--central {
-        --x: 3%;
-        --y: 96px;
-        --w: 108px;
-        --depth: 1.2;
-        display: block;
-    }
-
-    .scat--sticker {
-        --x: 19%;
-        --y: 72px;
-        display: block;
-    }
-
-    .scat--zinema {
-        --x: calc(50% - 80px);
-        --y: 70px;
-        --w: 160px;
-            display: block;
-    }
-
-    .scat--folder {
-        --x: 21%;
-        --y: 172px;
-    }
-
-    .scat--amarte {
-        --x: calc(100% - 214px);
-        --y: 102px;
-        --w: 196px;
-        --depth: 0.8;
-        display: block;
-    }
+.scat--sparkle {
+    --x: calc(100% - 92px);
+    --y: 69svh;
+    --w: 56px;
+    --depth: 0.9;
+    display: block;
 }
 
-/* Au téléphone, l'oiseau d'une fenêtre du bureau passerait sous la
-   barre de menus : il ne se pose qu'avec de la place. */
-@media (max-width: 599px) {
-    .scat .win-perch {
-        display: none;
-    }
+.scat--cursor {
+    display: block;
 }

@@ -1,18 +1,19 @@
 // @ts-check
 /**
- * WAB OS — les fenêtres qu'on déplace
+ * WAB OS — les objets qu'on déplace
  * Sur ordinateur, chaque objet marqué [data-drag] se prend à la
  * souris et se repose ailleurs, comme sur un vrai bureau. Un simple
- * clic le passe au premier plan ; l'oiseau posé sur sa barre
- * s'envole dès qu'il bouge. Un glisser marque l'objet (data-dragged)
- * pour que le clic qui le termine n'ouvre pas la fiche (shell.js).
+ * clic suit le lien de l'objet ; après un glisser, le clic qui le
+ * termine est avalé (data-dragged), il n'ouvre rien.
  *
  * Le déplacement passe par la propriété `translate` : il se compose
  * avec la parallaxe (transform) et l'entrée (scale) sans jamais
  * les écraser.
  *
- * Au doigt, rien : un glisser bloquerait le défilement de la page.
- * Ces objets sont un décor, la page ne dépend jamais d'eux.
+ * Au doigt, rien : un glisser bloquerait le défilement de la page, et
+ * un appui suit le lien. Sous « réduire les animations », rien non
+ * plus : tout reste à sa place. Ces objets sont un décor, la page ne
+ * dépend jamais d'eux.
  */
 
 /** Ce qui doit rester visible d'un objet poussé hors du bureau. */
@@ -32,6 +33,8 @@ let topLayer = 10;
 /** Un seul objet à la fois : un second doigt ou clic est ignoré. */
 let dragging = false;
 
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
 export function initDrag() {
     const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
     if (!finePointer.matches) return;
@@ -40,12 +43,22 @@ export function initDrag() {
     items.forEach((item) => {
         if (item instanceof HTMLElement) makeDraggable(item);
     });
+
+    // Le clic qui termine un glisser : avalé avant tout autre écouteur
+    // (lien, recherche ⌘K de la loupe).
+    window.addEventListener('click', (event) => {
+        const item = event.target instanceof Element ? event.target.closest('[data-drag]') : null;
+        if (!(item instanceof HTMLElement) || !item.dataset.dragged) return;
+        delete item.dataset.dragged;
+        event.preventDefault();
+        event.stopPropagation();
+    }, true);
 }
 
 /** @param {HTMLElement} item */
 function makeDraggable(item) {
     item.addEventListener('pointerdown', (event) => {
-        if (event.button !== 0 || dragging) return;
+        if (event.button !== 0 || dragging || reduced.matches) return;
         event.preventDefault();
         startDrag(item, event);
     });

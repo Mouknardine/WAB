@@ -364,14 +364,12 @@
     <link rel="stylesheet" href="css/os-footer.css?v=3">
     <link rel="stylesheet" href="css/os-dock.css?v=4">
     <link rel="stylesheet" href="css/os-overlay.css?v=3">
-    <link rel="stylesheet" href="css/os-sticker.css?v=2">
     <!-- Accueil -->
     <link rel="stylesheet" href="css/desk-objects.css?v=7">
-    <link rel="stylesheet" href="css/desk-hero.css?v=10">
-    <link rel="stylesheet" href="css/desk-keys.css?v=2">
+    <link rel="stylesheet" href="css/desk-hero.css?v=11">
     <link rel="stylesheet" href="css/desk-showcase.css?v=1">
-    <link rel="stylesheet" href="css/desk-scatter.css?v=5">
-    <link rel="stylesheet" href="css/desk-scatter-wide.css?v=5">
+    <link rel="stylesheet" href="css/desk-scatter.css?v=6">
+    <link rel="stylesheet" href="css/desk-scatter-wide.css?v=6">
     <link rel="stylesheet" href="css/desk-blocks.css?v=7">
     <link rel="stylesheet" href="css/os-nodal.css?v=1">
     <link rel="stylesheet" href="css/desk-card.css?v=2">
@@ -390,8 +388,8 @@
     <script type="module" src="js/birds/index.js?v=9"></script>
     <script type="module" src="js/birds/perch.js?v=9"></script>
     <script type="module" src="js/contact/index.js?v=12"></script>
-    <script type="module" src="js/os/index.js?v=3"></script>
-    <script type="module" src="js/desk/index.js?v=8"></script>
+    <script type="module" src="js/os/index.js?v=4"></script>
+    <script type="module" src="js/desk/index.js?v=9"></script>
 </head>
 
 <body class="os desk" data-birds="rare">
@@ -459,61 +457,67 @@
 
     <main>
 
-        <!-- LE BUREAU — le centre net, le désordre autour. -->
+        <!-- LE PREMIER ÉCRAN — le nom au centre, les objets autour
+             (structure de la hero d'agentcard.sh, demande d'Eliott du
+             5.10.2026). Chaque objet est un lien vers la page qu'il
+             représente ; sur ordinateur, il se prend et se déplace. -->
         <section class="hero" id="studio-intro" tabindex="-1" aria-labelledby="heroTitle">
-            <div class="hero__center">
-                <!-- « agence web » et « site internet » à Lausanne restent
-                     dans le H1, lus par Google et la navigation vocale. -->
-                <h1 class="hero__title" id="heroTitle"><span class="keys" aria-hidden="true" translate="no"><span class="key" style="--i: 0"><span class="key__face">W</span></span><span class="key" style="--i: 1"><span class="key__face">A</span></span><span class="key" style="--i: 2"><span class="key__face">B</span></span><span class="key key--dot" style="--i: 3"><span class="key__face">.</span></span></span><span class="sr-only" translate="no">WAB.</span><span class="sr-only"> WeAreBrothers, agence web et création de site internet à Lausanne.</span></h1>
-                <p class="hero__lede">Studio de design et de technologie à&nbsp;Lausanne. Nous concevons des marques, des sites et des produits numériques.</p>
-                <div class="hero__actions">
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein">Démarrer un projet</a>
-                    <a href="/realisations" class="key-btn">Voir le travail</a>
+            <div class="hero__stage">
+                <div class="hero__center">
+                    <div class="hero__name">
+                        <!-- « agence web » et « site internet » à Lausanne
+                             restent dans le H1, lus par Google et la
+                             navigation vocale. -->
+                        <h1 class="hero__title" id="heroTitle"><span translate="no">WeAreBrothers</span><span class="sr-only">, agence web et création de site internet à Lausanne.</span></h1>
+                        <!-- Le curseur, la pointe tournée vers le nom. -->
+                        <span class="scat scat--cursor" aria-hidden="true" style="--i: 9">
+                            <img class="scat__obj" src="assets/objects/3d/hero-cursor-720.webp" srcset="assets/objects/3d/hero-cursor-360.webp 239w, assets/objects/3d/hero-cursor-720.webp 477w" sizes="(max-width: 599px) 44px, 3.89vw" alt="" width="477" height="720" decoding="async" draggable="false">
+                        </span>
+                    </div>
+                    <p class="hero__lede">Design d'interface et de système sur mesure.</p>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="hero__cta key-btn key-btn--klein">Démarrer un projet</a>
                 </div>
-                <p class="hero__note">Réponse sous 24&nbsp;h ouvrées</p>
-            </div>
 
-            <!-- Les objets du bureau. Chaque fenêtre est un vrai lien vers la
-                 fiche du projet sur /realisations ; avec JavaScript, un
-                 double-clic (ou Entrée) l'ouvre ici même (js/os). Sur
-                 ordinateur, les fenêtres se prennent et se déplacent. -->
-            <div class="scatter" data-scatter>
-                <a href="/realisations#central" class="scat scat--portrait scat--central" data-drag data-project="central" aria-label="Le P'tit Central, ouvrir la fiche du projet">
-                    <div class="win"><div class="win__bar"><span class="win__lights"></span></div><div class="win__body"><img src="assets/images/work-central-720.webp" alt="" width="720" height="900" decoding="async" draggable="false"></div></div>
-                    <span class="file-name">lepetitcentral.ch</span>
-                </a>
-                <div class="scat scat--sticker" data-drag aria-hidden="true">
-                    <span class="sticker"><span class="sticker__hello">HELLO</span><span class="sticker__mine">my name is</span><span class="sticker__name">WAB.</span></span>
+                <!-- Les objets, dans l'ordre de lecture : la bande du haut,
+                     les côtés du nom, la bande du bas. La loupe n'existe
+                     qu'avec JavaScript (elle ouvre la recherche ⌘K). -->
+                <div class="scatter" data-scatter>
+                    <a href="/services#sites" class="scat scat--window" data-drag aria-label="Sites sur mesure, voir les services" style="--i: 0">
+                        <img class="scat__obj" src="assets/objects/3d/hero-window-720.webp" srcset="assets/objects/3d/hero-window-360.webp 360w, assets/objects/3d/hero-window-720.webp 720w" sizes="(max-width: 599px) 72px, 8.33vw" alt="" width="720" height="590" decoding="async" draggable="false">
+                        <span class="scat__tag" aria-hidden="true">Sites sur mesure</span>
+                    </a>
+                    <a href="/applications" class="scat scat--gear" data-drag aria-label="Applications de gestion, voir la page" style="--i: 1">
+                        <img class="scat__obj" src="assets/objects/3d/hero-gear-720.webp" srcset="assets/objects/3d/hero-gear-360.webp 360w, assets/objects/3d/hero-gear-720.webp 720w" sizes="5.83vw" alt="" width="720" height="709" decoding="async" draggable="false">
+                        <span class="scat__tag" aria-hidden="true">Applications</span>
+                    </a>
+                    <span class="scat scat--key" data-drag aria-hidden="true" style="--i: 2">
+                        <img class="scat__obj" src="assets/objects/3d/hero-key-720.webp" srcset="assets/objects/3d/hero-key-360.webp 360w, assets/objects/3d/hero-key-720.webp 720w" sizes="5.28vw" alt="" width="720" height="650" decoding="async" draggable="false">
+                    </span>
+                    <a href="/studio" class="scat scat--card" data-drag aria-label="Le studio" style="--i: 3">
+                        <img class="scat__obj" src="assets/objects/3d/hero-card-720.webp" srcset="assets/objects/3d/hero-card-360.webp 360w, assets/objects/3d/hero-card-720.webp 720w" sizes="7.78vw" alt="" width="720" height="503" decoding="async" draggable="false">
+                        <span class="scat__tag" aria-hidden="true">Le studio</span>
+                    </a>
+                    <a href="/realisations" class="scat scat--phone" data-drag aria-label="Nos réalisations" style="--i: 4">
+                        <img class="scat__obj" src="assets/objects/3d/hero-phone-720.webp" srcset="assets/objects/3d/hero-phone-360.webp 253w, assets/objects/3d/hero-phone-720.webp 506w" sizes="(max-width: 599px) 48px, 5vw" alt="" width="506" height="720" decoding="async" draggable="false">
+                        <span class="scat__tag" aria-hidden="true">Réalisations</span>
+                    </a>
+                    <a href="/services#technologie" class="scat scat--code" data-drag aria-label="Développement, voir les services" style="--i: 5">
+                        <img class="scat__obj" src="assets/objects/3d/hero-code-720.webp" srcset="assets/objects/3d/hero-code-360.webp 360w, assets/objects/3d/hero-code-720.webp 720w" sizes="7.22vw" alt="" width="720" height="499" decoding="async" draggable="false">
+                        <span class="scat__tag" aria-hidden="true">Développement</span>
+                    </a>
+                    <button type="button" class="scat scat--loupe scat--up" data-drag data-palette-open data-js-only aria-label="Rechercher (⌘K)" aria-keyshortcuts="Meta+K Control+K" style="--i: 6">
+                        <img class="scat__obj" src="assets/objects/3d/hero-loupe-720.webp" srcset="assets/objects/3d/hero-loupe-360.webp 352w, assets/objects/3d/hero-loupe-720.webp 703w" sizes="6.39vw" alt="" width="703" height="720" decoding="async" draggable="false">
+                        <span class="scat__tag" aria-hidden="true">Rechercher</span>
+                    </button>
+                    <a href="/services#branding" class="scat scat--pencil scat--up" data-drag aria-label="Branding, voir les services" style="--i: 7">
+                        <img class="scat__obj" src="assets/objects/3d/hero-pencil-720.webp" srcset="assets/objects/3d/hero-pencil-360.webp 360w, assets/objects/3d/hero-pencil-720.webp 720w" sizes="(max-width: 599px) 64px, 7.22vw" alt="" width="720" height="562" decoding="async" draggable="false">
+                        <span class="scat__tag" aria-hidden="true">Branding</span>
+                    </a>
+                    <a href="/services#automatisation" class="scat scat--sparkle scat--up" data-drag aria-label="Automatisation et IA, voir les services" style="--i: 8">
+                        <img class="scat__obj" src="assets/objects/3d/hero-sparkle-720.webp" srcset="assets/objects/3d/hero-sparkle-360.webp 330w, assets/objects/3d/hero-sparkle-720.webp 659w" sizes="(max-width: 599px) 56px, 6.67vw" alt="" width="659" height="720" decoding="async" draggable="false">
+                        <span class="scat__tag" aria-hidden="true">Automatisation et IA</span>
+                    </a>
                 </div>
-                <span class="scat scat--kao-a kao" aria-hidden="true">(^_^)/</span>
-                <a href="/realisations#zinema" class="scat scat--land scat--zinema" data-drag data-project="zinema" data-perch-host aria-label="Zinéma, ouvrir la fiche du projet">
-                    <canvas class="win-perch" data-perch="fly" data-scale="2" data-color="0" aria-hidden="true"></canvas><div class="win"><div class="win__bar"><span class="win__lights"></span></div><div class="win__body"><img src="assets/images/thumb-zinema.webp" alt="" width="360" height="225" decoding="async" draggable="false"></div></div>
-                    <span class="file-name">zinema.ch</span>
-                </a>
-                <a href="/realisations#amarte" class="scat scat--land scat--amarte" data-drag data-project="amarte" aria-label="Amarte Studio, ouvrir la fiche du projet">
-                    <div class="win"><div class="win__bar"><span class="win__lights"></span></div><div class="win__body"><img src="assets/images/shot-amarte-800.webp" alt="" width="800" height="500" decoding="async" draggable="false"></div></div>
-                    <span class="file-name">amarte.ch</span>
-                </a>
-                <a href="/realisations#alliani" class="scat scat--land scat--alliani" data-drag data-project="alliani" aria-label="Maison Alliani, ouvrir la fiche du projet">
-                    <div class="win"><div class="win__bar"><span class="win__lights"></span></div><div class="win__body"><img src="assets/images/thumb-alliani.webp" alt="" width="360" height="225" decoding="async" draggable="false"></div></div>
-                    <span class="file-name">maison-alliani.com</span>
-                </a>
-                <a href="/realisations#dj" class="scat scat--portrait scat--dj" data-drag data-project="dj" aria-label="LAZIZZE DJ, ouvrir la fiche du projet">
-                    <div class="win"><div class="win__bar"><span class="win__lights"></span></div><div class="win__body"><img src="assets/images/work-dj-720.webp" alt="" width="720" height="900" decoding="async" draggable="false"></div></div>
-                    <span class="file-name">lazizze.com</span>
-                </a>
-                <a href="/realisations#nadege" class="scat scat--land scat--nadege" data-drag data-project="nadege" aria-label="Nadège Mouine, ouvrir la fiche du projet">
-                    <div class="win"><div class="win__bar"><span class="win__lights"></span></div><div class="win__body"><img src="assets/images/shot-nadege-800.webp" alt="" width="800" height="500" loading="lazy" decoding="async" draggable="false"></div></div>
-                    <span class="file-name">nadegemouine.ch</span>
-                </a>
-                <a href="/realisations" class="scat scat--folder icon" data-desk-icon data-app="work">
-                    <img class="app-icon" src="assets/icons/app-work.svg?v=4" alt="" width="56" height="56">
-                    <span class="icon__name">Work</span>
-                </a>
-                <button type="button" class="scat scat--trash icon" data-desk-icon data-app="trash" data-js-only>
-                    <img class="app-icon" src="assets/icons/app-trash.svg?v=4" alt="" width="56" height="56">
-                    <span class="icon__name">Corbeille</span>
-                </button>
             </div>
 
             <!-- LA VITRINE — les projets défilent dans la grande fenêtre. -->

@@ -1,31 +1,48 @@
 /* ============================================
-   WAB. — Accueil « bureau » : le premier écran
-   Sur le bureau à trame de points, comme le reste du site (Eliott,
-   03.10 : le premier écran bleu à lignes a été retiré). Le centre
-   reste parfaitement net : le nom en encre, la promesse, deux
-   touches, une ligne fine, puis la grande fenêtre encadrée qui fait
-   défiler les projets. Le désordre (desk-scatter.css) reste en
-   bordure, jamais sous le texte.
+   WAB. — Accueil : le premier écran
+   La structure de la hero d'agentcard.sh (demande d'Eliott du
+   5.10.2026) : « WeAreBrothers » au centre, une phrase, une touche,
+   et nos dix objets en relief autour (desk-scatter.css). Le premier
+   écran tient dans la hauteur de l'écran ; la vitrine des projets
+   passe dessous.
+
+   Tout se règle sur une unité --u : 1 px à 1440 × 900, plus petite
+   quand l'écran est plus étroit ou plus bas. Le nom et les objets
+   gardent ainsi les mêmes proportions à toutes les tailles.
    ============================================ */
 
 .hero {
     position: relative;
-    /* Les fenêtres qui débordent du bord sont coupées par l'écran,
-       sans créer de défilement horizontal. */
-    overflow-x: clip;
     padding-bottom: clamp(56px, 8vw, 104px);
 }
 
+.hero__stage {
+    /* Valeurs de la hero d'agentcard, à recaler sur le relevé :
+       taille, graisse et interlettrage du nom ; amplitude, durée et
+       courbe des mouvements (desk-scatter.css). */
+    --u: min(100vw / 1440, 100svh / 900);
+    --name-size: calc(124 * var(--u));
+    --name-weight: 500;
+    --name-track: -0.035em;
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 100svh;
+    padding: calc(var(--bar-h) + 16px) var(--gutter) 24px;
+    /* Les objets coupés par les bords de l'écran ne créent pas de
+       défilement horizontal ; vers le bas, ils peuvent déborder. */
+    overflow-x: clip;
+}
+
+/* Le centre laisse passer le glisser des objets autour : seuls le
+   nom, la phrase et la touche captent le pointeur. */
 .hero__center {
     position: relative;
     z-index: 5;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 214px var(--gutter) 0;
     text-align: center;
-    /* Le centre laisse passer le glisser des fenêtres autour : seuls
-       ses textes et boutons captent le pointeur. */
     pointer-events: none;
 }
 
@@ -33,58 +50,61 @@
     pointer-events: auto;
 }
 
-/* Le nom en touches de clavier : leur dessin est dans desk-keys.css.
-   Sur grand écran, un peu d'air sous le nom de fichier de la fenêtre
-   posée au-dessus. */
-.hero__title {
-    line-height: 1;
+/* Le nom : une ligne, jamais coupée. Son conteneur prend sa largeur
+   exacte, pour que le curseur se pose au bout du dernier mot. */
+.hero__name {
+    position: relative;
 }
 
-@media (min-width: 1180px) {
-    .hero__title {
-        margin-top: 32px;
-    }
+.hero__title {
+    font-size: var(--name-size);
+    font-weight: var(--name-weight);
+    line-height: 1;
+    letter-spacing: var(--name-track);
+    white-space: nowrap;
+    color: var(--ink);
 }
 
 .hero__lede {
-    margin-top: clamp(14px, 2vw, 22px);
-    max-width: 48ch;
+    margin-top: calc(var(--name-size) * 0.16);
+    max-width: 34ch;
     font-size: var(--t-lede);
-    line-height: 1.45;
+    line-height: 1.4;
+    color: var(--ink-muted);
     text-wrap: balance;
 }
 
-.hero__actions {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 14px;
-    width: min(100%, 300px);
-    margin-top: clamp(26px, 3vw, 34px);
+.hero__cta {
+    margin-top: clamp(20px, calc(28 * var(--u)), 32px);
 }
 
-.hero__note {
-    margin-top: 16px;
-    font-size: var(--t-small);
-    color: var(--ink-faint);
+/* Le curseur, au bout du nom, la pointe vers la dernière lettre :
+   la pointe de l'image est à 40 % de sa largeur, en haut. */
+.hero__name > .scat--cursor {
+    --w: calc(56 * var(--u));
+    --depth: 0.5;
+    left: calc(100% - var(--w) * 0.24);
+    top: 74%;
 }
 
-@media (min-width: 600px) {
-    .hero__center {
-        padding-top: 250px;
+/* Téléphone : le nom prend toute la largeur utile. */
+@media (max-width: 599px) {
+    .hero__stage {
+        --u: calc(100vw / 390);
+        --name-size: min(calc(56 * var(--u)), (100vw - 2 * var(--gutter)) / 6.9);
+        padding-bottom: 12svh;
     }
 
-    .hero__actions {
-        flex-direction: row;
-        justify-content: center;
-        width: auto;
-        gap: 18px;
+    .hero__lede {
+        max-width: 24ch;
     }
-}
 
-@media (min-width: 1280px) {
-    .hero__center {
-        padding-top: 238px;
+    /* Le nom occupe toute la largeur : le curseur se glisse sous
+       sa fin, la pointe vers les dernières lettres. */
+    .hero__name > .scat--cursor {
+        --w: 44px;
+        left: calc(100% - var(--w) * 0.8);
+        top: calc(100% + 2px);
     }
 }
 

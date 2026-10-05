@@ -1,85 +1,77 @@
 /* ============================================
-   WAB. — Accueil « bureau » : le bureau complet (ordinateur)
-   Les places de chaque objet à partir de 1280 px, reprises de la
-   composition de la référence. Voir desk-scatter.css.
+   WAB. — Accueil : les dix objets (tablette et ordinateur)
+   La disposition de base pour 1440 × 900 (x en % de la largeur,
+   y en svh, largeur en px multipliée par --u, qui vaut 1 à cette
+   taille) : trois bandes autour du nom — quatre objets au-dessus,
+   un de chaque côté, trois en dessous. Le crayon reste au-dessus du
+   dock, les étincelles à sa droite. Voir desk-scatter.css.
    ============================================ */
 
-/* ── Ordinateur : tout le bureau ── */
-@media (min-width: 1280px) {
-    .scat--central {
-        --x: 8.6%;
-        --y: 120px;
-        --w: 124px;
-    }
-
-    .scat--sticker {
-        --x: 21.8%;
-        --y: 74px;
-    }
-
-    .scat--kao-a {
-        --x: 27%;
-        --y: 178px;
-        --depth: 0.5;
+@media (min-width: 600px) {
+    .scat {
         display: block;
     }
 
-    .scat--zinema {
-        --x: 36.5%;
-        --y: 74px;
-        --w: 184px;
+    .scat--window {
+        --x: 14%;
+        --y: 22svh;
+        --w: calc(120 * var(--u));
+        --depth: 0.9;
     }
 
-    .scat--folder {
-        --x: 21.4%;
-        --y: 262px;
+    .scat--gear {
+        --x: 32%;
+        --y: 16svh;
+        --w: calc(84 * var(--u));
+        --depth: 0.6;
     }
 
-    .scat--trash {
-        --x: 2.4%;
-        --y: 318px;
-        --depth: 0.3;
-        display: inline-flex;
-    }
-
-    .scat--amarte {
-        --x: 69.2%;
-        --y: 110px;
-        --w: 248px;
-    }
-
-    /* À gauche de la vitrine (860 px au centre), jamais dessous :
-       place et largeur se calculent depuis le milieu du bureau. */
-    .scat--alliani {
-        --x: max(16px, 50% - 690px);
-        --y: 452px;
-        --w: min(222px, 50% - 470px);
-        --depth: 1.4;
-        display: block;
-    }
-
-    .scat--dj {
-        --x: calc(100% - 178px);
-        --y: 428px;
-        --w: 148px;
-        --depth: 1.1;
-        display: block;
-    }
-
-    .scat--nadege {
-        --x: max(24px, 50% - 670px);
-        --y: 700px;
-        --w: min(176px, 50% - 480px);
+    .scat--key {
+        --x: 62%;
+        --y: 18svh;
+        --w: calc(76 * var(--u));
         --depth: 0.7;
-        display: block;
     }
-}
 
-/* Au-delà de 1600 px, le bureau garde la composition dessinée pour
-   1440 px au lieu d'écarter les objets jusqu'aux bords. */
-@media (min-width: 1600px) {
-    .scatter {
-        left: calc(50% - 760px);
-        right: calc(50% - 760px);
+    .scat--card {
+        --x: 80%;
+        --y: 20svh;
+        --w: calc(112 * var(--u));
+        --depth: 1.1;
+    }
+
+    .scat--phone {
+        --x: 8%;
+        --y: 48svh;
+        --w: calc(72 * var(--u));
+        --depth: 1.2;
+    }
+
+    .scat--code {
+        --x: 84%;
+        --y: 50svh;
+        --w: calc(104 * var(--u));
+        --depth: 1;
+    }
+
+    .scat--loupe {
+        --x: 18%;
+        --y: 72svh;
+        --w: calc(92 * var(--u));
+        --depth: 0.8;
+    }
+
+    .scat--pencil {
+        --x: 38%;
+        --y: 78svh;
+        --w: calc(104 * var(--u));
+        --depth: 1.3;
+    }
+
+    .scat--sparkle {
+        --x: 66%;
+        --y: 76svh;
+        --w: calc(96 * var(--u));
+        --depth: 0.9;
     }
 }

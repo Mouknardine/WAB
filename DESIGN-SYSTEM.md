@@ -255,6 +255,41 @@ Dette connue : les pages intérieures utilisent encore des icônes dessinées à
 
 ---
 
+## Premier écran de l'accueil — la hero d'agentcard (5 octobre 2026, en attente de validation)
+
+> Remplace le point 2 de la séquence WAB OS ci-dessous (fenêtres de projets, autocollant HELLO, kaomoji, icônes Work et Corbeille, « WAB. » en touches de clavier) et l'« essai retenu » de la section Klein. Le reste de la page ne change pas.
+
+**Demande d'Eliott (5.10.2026).** Le premier écran de l'accueil reprend la structure de la hero de [agentcard.sh](https://www.agentcard.sh/) : le nom en très grand au centre, de petits objets en relief dispersés autour, qui entrent, flottent, suivent la souris et se prennent à la main. Deux choses changent : le nom, « WeAreBrothers » (il remplace « WAB. » dans la hero ; la barre garde le sigle WAB.), et les objets, les nôtres. Rien n'est copié d'agentcard : ni fichiers, ni images, ni textes, ni police.
+
+**Composition.** Un écran de haut (`100svh`), le nom au centre, la phrase « Design d'interface et de système sur mesure. » et une seule touche Klein « Démarrer un projet » (`data-contact`) dessous. Le nom domine, les objets restent de petits détails autour : quatre au-dessus, un de chaque côté, trois en dessous, le curseur au bout du nom, la pointe vers la dernière lettre. Aucun objet sous un texte, un bouton, la barre ou le dock. La vitrine des projets passe sous ce premier écran, inchangée.
+
+**Échelle.** Tout se règle sur `--u` = `min(100vw / 1440, 100svh / 900)` : 1 px à 1440 × 900, moins sur un écran plus étroit ou plus bas, 1,2 à 1920 × 1080. Nom : Instrument Sans 500, interlettrage −0,035 em, encre, `124 × --u` (124 px à 1440, une ligne, jamais coupé). Sur téléphone, le nom prend toute la largeur utile (≈ 52 px à 390).
+
+**Les objets** (`assets/objects/3d/hero-<nom>-360.webp` et `-720.webp`, rendus 3D du studio, `render_objects.py` hors dépôt). Multicolores **par exception à la règle d'un seul accent** : ce sont des objets posés sur le bureau, pas de l'interface ; le Klein reste la seule couleur des actions. Leur couleur n'est jamais filtrée.
+
+| Objet | Place à 1440 × 900 (x, y, largeur) | Action | Étiquette au survol |
+|---|---|---|---|
+| Fenêtre de navigateur (bleu) | 14 %, 22 svh, 120 | lien `/services#sites` | Sites sur mesure |
+| Engrenage (orange) | 32 %, 16 svh, 84 | lien `/applications` | Applications |
+| Touche ⌘ (menthe) | 62 %, 18 svh, 76 | décor | — |
+| Carte de visite WeAreBrothers | 80 %, 20 svh, 112 | lien `/studio` | Le studio |
+| Téléphone (sarcelle) | 8 %, 48 svh, 72 | lien `/realisations` | Réalisations |
+| Balise `</>` (rose) | 84 %, 50 svh, 104 | lien `/services#technologie` | Développement |
+| Loupe (rouge) | 18 %, 72 svh, 92 | ouvre la recherche ⌘K (`<button data-palette-open data-js-only>`) | Rechercher |
+| Crayon jaune | 38 %, 78 svh, 104 | lien `/services#branding` | Branding |
+| Étincelles de l'IA (lilas) | 66 %, 76 svh, 96 | lien `/services#automatisation` | Automatisation et IA |
+| Curseur | au bout du nom, 56 | décor | — |
+
+Sur téléphone, cinq objets seulement, de 44 à 72 px : fenêtre, téléphone, crayon, étincelles, et le curseur glissé sous la fin du nom. `sizes` donne la largeur affichée : le navigateur charge la version 360 px.
+
+**Mouvement** (`desk-scatter.css`, `js/desk/parallax.js`, `js/desk/drag.js`). Entrée : chaque objet grandit de 0,4 à 1 en apparaissant, sur le ressort `--ease-spring`, 900 ms, 80 ms d'écart de l'un à l'autre. Flottement : ±5 px et ±2°, 6 s, aller-retour, déphasé par objet. Souris : parallaxe de 12 px × `--depth`. Survol : l'objet grandit à 1,1 et son étiquette (la touche blanche du dock) apparaît ; au clavier, anneau de focus et étiquette. Glisser : à la souris, chaque objet se prend et se repose ; un clic sans glisser suit le lien, le clic qui termine un glisser n'ouvre rien. Au doigt : ni parallaxe ni glisser, un appui suit le lien, pas d'étiquette. Sous « réduire les animations » : rien ne bouge, tout est à sa place, le glisser est coupé. Sans JavaScript : la loupe disparaît, les liens marchent.
+
+**À recaler sur agentcard.** Leur site était inaccessible depuis l'environnement de travail le 5.10 (réseau) : les valeurs ci-dessus suivent la base donnée par Eliott, pas un relevé. Taille, graisse, casse et interlettrage du nom ; amplitude, durée et courbe des mouvements sont réunis en variables en tête de `desk-hero.css` (`--name-*`) et de `desk-scatter.css` (`--enter-*`, `--float-*`, `--hover-scale`), pour être recalés en une passe.
+
+**Retiré.** `css/desk-keys.css` (le nom en touches), `os-sticker.css` sur l'accueil (il reste sur les autres pages), le câblage du bureau dans `js/os/shell.js` (sélection au clic, ouverture au double-clic des fenêtres de projets et des icônes). La Corbeille n'a plus d'entrée : `js/os/trash.js` reste en place, en attente d'une décision.
+
+---
+
 ## Klein — l'aspect (3 octobre 2026, branche `klein`, en attente de validation)
 
 > Cette section prime sur l'aspect décrit plus bas (« WAB OS », verre liquide rose) : la **structure** WAB OS reste, son **aspect** est remplacé.
@@ -312,7 +347,7 @@ Fond Klein plein à lignes en pleine largeur, titre blanc, fenêtres blanches au
 
 - Une barre de navigation flottante en plus du dock : redite de la barre du haut.
 - Des objets photoréalistes ou de banque d'images : seuls des objets dessinés, éclairés comme les touches.
-- Un deuxième accent (vert de validation, orange) hors des états système du formulaire.
+- Un deuxième accent (vert de validation, orange) hors des états système du formulaire — à une exception près depuis le 5.10 : les objets 3D du premier écran de l'accueil, multicolores (voir « Premier écran de l'accueil »).
 
 ---
 

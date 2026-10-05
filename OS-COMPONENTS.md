@@ -41,7 +41,7 @@ Direction **Klein** (3 octobre 2026, branche `klein`) : la structure de heyclick
     <script src="js/nav.js?v=6" defer></script>
     <script type="module" src="js/birds/index.js?v=9"></script>
     <script type="module" src="js/contact/index.js?v=11"></script>
-    <script type="module" src="js/os/index.js?v=3"></script>
+    <script type="module" src="js/os/index.js?v=4"></script>
 ```
 
 3. Ne posez **aucun fond sur `body`** : les oiseaux sont un canevas fixe à z-index négatif qui se peint entre le fond de la racine (blanc, grain, lumière de l'heure) et le corps. Les fonds de section se posent sur les sections.
@@ -192,6 +192,7 @@ La question en gris chaud, la réponse de WAB en bleu Klein (texte blanc). Ce so
 - **Symboles au trait** (masques CSS, couleur du texte) : `<span class="sym sym--search" aria-hidden="true"></span>`. Disponibles : `arrow` (↗), `bolt`, `chart`, `file`, `folder`, `grid`, `mail`, `moon`, `notes`, `search`, `site`, `sun`, `team`, `terminal`, `trash`, `turn` (↳). `sym-check.svg` et `sym-plus.svg` s'emploient en `mask` direct.
 - **Icônes d'app** : des touches de clavier 3D (jupe, face éclairée d'en haut à gauche, pictogramme gravé). Blanches, sauf Terminal (encre) et Contact (Klein) : `<img class="app-icon" src="assets/icons/app-work.svg?v=4" alt="" width="56" height="56">`. Disponibles : `work`, `services`, `about`, `notes`, `terminal`, `mail`, `trash`, `file`. Générées par un script (lumière commune) : ne pas les retoucher à la main.
 - **Objets en relief** (`assets/objects/obj-*.svg` : `window`, `pencil`, `card`, `tee`) : décor de l'accueil, dans les marges, sur grand écran (`css/desk-floaters.css`).
+- **Objets 3D du premier écran** (`assets/objects/3d/hero-<nom>-360.webp` et `-720.webp` : `window`, `phone`, `code`, `gear`, `sparkle`, `pencil`, `card`, `loupe`, `key`, `cursor`) : propres à l'accueil (`css/desk-hero.css`, `desk-scatter.css`, `desk-scatter-wide.css`), multicolores par exception. Toujours `width`/`height`, `srcset` aux largeurs réelles des fichiers, `sizes` à la largeur affichée, `decoding="async"`, `alt=""`, `draggable="false"`, jamais `loading="lazy"`.
 - Seuls les oiseaux restent en pixel art ; le grand « WAB. » du pied de page est en lignes.
 
 ## 8 bis. L'autocollant — `css/os-sticker.css`
@@ -270,7 +271,7 @@ Sur ordinateur seulement (souris, 900 px et plus) : un plateau de verre gris fum
 
 ## 11. Le système (⌘K, terminal, fenêtres, clic droit) — `js/os/index.js`
 
-Un seul module à charger : `<script type="module" src="js/os/index.js?v=3"></script>`. Il apporte :
+Un seul module à charger : `<script type="module" src="js/os/index.js?v=4"></script>`. Il apporte :
 - la palette ⌘K / Ctrl+K, ouverte aussi par le bouton `[data-palette-open]` de la barre ;
 - le terminal (dock, palette) ;
 - le menu du clic droit sur le fond ;

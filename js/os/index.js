@@ -6,11 +6,11 @@
  * dock, fenêtres à la demande). Chaque module est indépendant : si l'un échoue, les autres
  * continuent, et la page reste entièrement utilisable sans eux.
  *
- *   <script type="module" src="/js/os/index.js?v=3"></script>
+ *   <script type="module" src="/js/os/index.js?v=4"></script>
  */
 
 import { initSky } from './sky.js?v=1';
-import { initShell } from './shell.js?v=3';
+import { initShell } from './shell.js?v=4';
 import { initDial } from './dial.js?v=2';
 import { initShade } from './shade.js?v=2';
 import { report } from './lazy.js?v=1';
