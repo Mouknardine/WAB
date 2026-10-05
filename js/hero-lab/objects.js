@@ -32,8 +32,6 @@ export const SPRITES = [
     { src: 'desktop.webp', h: 0.75, w: 2 },
     { src: 'cursor-a.webp', h: 0.75, w: 2 },
     { src: 'cursor-b.webp', h: 0.65, w: 2 },
-    { src: 'icon-w-a.webp', h: 0.7, w: 2 },
-    { src: 'icon-w-b.webp', h: 0.7, w: 2 },
 ];
 
 /* Charge les images ; chaque type garde un plan et un matériau partagés
