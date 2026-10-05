@@ -135,10 +135,12 @@
 
 .palette__option[aria-selected='true'] {
     background: var(--mark);
+    color: var(--on-accent);
 }
 
-.palette__option[aria-selected='true'] .palette__hint {
-    color: var(--ink);
+/* Sur le bleu, le texte et l'icône passent au blanc. */
+.palette__option[aria-selected='true'] :is(.palette__label, .palette__hint, svg) {
+    color: var(--on-accent);
 }
 
 .palette__empty {

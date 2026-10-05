@@ -4,7 +4,8 @@
  * Point d'entrée des comportements propres à l'accueil : la lumière
  * de l'heure, les fenêtres qu'on déplace, la parallaxe douce, la
  * vitrine des projets, les éléments qui s'animent à l'écran, la
- * nuée d'oiseaux autour de la lettre, les pixels du pied de page. Le système partagé (shell, ⌘K, fenêtres,
+ * nuée d'oiseaux autour de la lettre, les pixels du pied de page,
+ * le fond animé des cartes de prestation. Le système partagé (shell, ⌘K, fenêtres,
  * lumière de l'heure, reflet des boutons) part de js/os/index.js.
  *
  * Chaque module est indépendant : si l'un échoue, les autres
@@ -19,6 +20,7 @@ import { initWatch } from './watch.js?v=1';
 import { initPixels } from './pixels.js?v=2';
 import { initFocusScroll } from './focus-scroll.js?v=1';
 import { initArrival } from './arrival.js?v=3';
+import { initNodalLines } from './nodal-lines.js?v=1';
 
 /** @type {Array<[string, () => void]>} */
 const MODULES = [
@@ -29,6 +31,7 @@ const MODULES = [
     ['pixels', initPixels],
     ['focus-scroll', initFocusScroll],
     ['arrival', initArrival],
+    ['nodal-lines', initNodalLines],
 ];
 
 function boot() {

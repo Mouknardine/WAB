@@ -162,7 +162,7 @@
         text-align: right;
     }
 
-    .feat--flip .feat__line {
+    .feat--flip .feat__text .feat__line {
         margin-left: auto;
     }
 }

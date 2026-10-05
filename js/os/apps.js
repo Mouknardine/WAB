@@ -68,7 +68,7 @@ export function launchTrash(opener) {
 /** @param {HTMLElement | null} opener */
 export function launchPalette(opener) {
     launch('palette', async () => {
-        await loadStyle('os-palette', 3);
+        await loadStyle('os-palette', 4);
         (await import('./palette.js?v=3')).togglePalette(opener);
     }, () => toast('La recherche n’a pas pu s’ouvrir.'));
 }
