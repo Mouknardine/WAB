@@ -1,10 +1,9 @@
 /* ============================================
    Hero 3D (essai) — le catalogue des objets et leurs fabriques.
-   Trois familles, mêlées dans l'orbite :
+   Deux familles, mêlées dans l'orbite :
    — les images détourées, posées sur des plans (le procédé d'agentcard :
      vues de profil, elles deviennent un trait) ;
-   — les fenêtres du studio, en vraie 3D, avec les captures des sites ;
-   — les touches W, A, B et le point, en vraie 3D.
+   — les fenêtres du studio, en vraie 3D, avec les captures des sites.
    Pour remplacer un objet par un rendu Endless Tools : déposer le PNG
    ou le WebP détouré dans assets/hero-lab/ et changer `src` ci-dessous.
    ============================================ */
@@ -30,9 +29,13 @@ export const SPRITES = [
     { src: 'frog.webp', h: 1.7, n: 3 },
     { src: 'cat.webp', h: 1.3, n: 3 },
     { src: 'queen.webp', h: 1.55, n: 3 },
-    { src: 'keys.webp', h: 0.95, n: 3 },
-    { src: 'phone.webp', h: 1.55, n: 4 },
+    { src: 'keys.webp', h: 0.95, n: 2 },
+    { src: 'phone.webp', h: 1.55, n: 3 },
     { src: 'cloud.webp', h: 0.95, n: 4 },
+    { src: 'google.webp', h: 0.9, n: 3 },
+    { src: 'folder.webp', h: 0.95, n: 3 },
+    { src: 'psyduck.webp', h: 1.3, n: 3 },
+    { src: 'swiss.webp', h: 0.85, n: 3 },
 ];
 
 /* Les fenêtres : vraies captures du travail, nom du site dans la barre. */
@@ -44,8 +47,6 @@ export const WINDOWS = [
     { src: 'assets/images/shot-central-800.webp', label: 'lepetitcentral.ch' },
     { src: DIR + 'desktop.webp', label: 'bureau.png' },
 ];
-
-export const KEYS = ['W', 'A', 'B', '.'];
 
 const loader = new TextureLoader();
 
@@ -84,11 +85,9 @@ export async function makeSprite(def, renderer) {
     })));
 }
 
-/* La couleur des tokens Klein, en sRGB pour le canvas. */
-const KLEIN = '#161bf2';
+/* Les bleus des fenêtres du site, en sRGB pour le canvas. */
 const KLEIN_TINT = '#ccdbff';
 const KLEIN_INK = '#1520b8';
-const INK = '#16171a';
 
 /* Une fenêtre du studio : barre bleu clair, nom du site en Sligoil,
    capture dessous ; posée sur une plaque blanche à bords arrondis. */
@@ -126,39 +125,6 @@ export async function makeWindow(def, renderer) {
         const glass = new Mesh(face, solid(new MeshBasicMaterial({ map: screen, toneMapped: false, transparent: true, opacity: 0 })));
         glass.position.z = 0.0365;
         group.add(shell, glass);
-        return group;
-    });
-}
-
-/* Une touche de clavier : blanche à lettre encre ; le point en bleu Klein. */
-export function makeKey(char) {
-    const isDot = char === '.';
-    const c = document.createElement('canvas');
-    c.width = c.height = 256;
-    const g = c.getContext('2d');
-    g.fillStyle = isDot ? '#ffffff' : INK;
-    g.font = '600 150px "Instrument Sans", system-ui, sans-serif';
-    g.textAlign = 'center'; g.textBaseline = 'middle';
-    g.fillText(char, 128, isDot ? 112 : 136);
-    const legend = new CanvasTexture(c);
-    legend.colorSpace = SRGBColorSpace;
-
-    const cap = new RoundedBoxGeometry(0.62, 0.62, 0.34, 5, 0.1);
-    const top = new PlaneGeometry(0.48, 0.48);
-    const capMat = new MeshPhysicalMaterial({
-        color: isDot ? KLEIN : 0xfbfbfd,
-        roughness: isDot ? 0.28 : 0.42,
-        clearcoat: 0.5,
-        clearcoatRoughness: 0.3,
-        transparent: true,
-        opacity: 0,
-    });
-    return (count) => Array.from({ length: count }, () => {
-        const group = new Group();
-        const body = new Mesh(cap, solid(capMat.clone()));
-        const face = new Mesh(top, new MeshBasicMaterial({ map: legend, toneMapped: false, transparent: true, opacity: 0, depthWrite: false }));
-        face.position.z = 0.171;
-        group.add(body, face);
         return group;
     });
 }

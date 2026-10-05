@@ -26,7 +26,7 @@ import {
     Timer,
     WebGLRenderer,
 } from '../vendor/three-hero.js';
-import { KEYS, SPRITES, WINDOWS, makeKey, makeSprite, makeWindow } from './objects.js';
+import { SPRITES, WINDOWS, makeSprite, makeWindow } from './objects.js';
 
 const stage = document.querySelector('[data-hero3d]');
 const canvas = stage?.querySelector('canvas');
@@ -82,12 +82,8 @@ async function init() {
     sun.position.set(1.5, 6, 6);
     scene.add(sun, new HemisphereLight(0xe8ecff, 0x1820c8, 0.9));
 
-    /* Les polices du canvas (Sligoil, Instrument Sans) doivent être prêtes
-       avant de dessiner les barres de fenêtres et les lettres des touches. */
-    await Promise.all([
-        document.fonts?.load('500 20px Sligoil'),
-        document.fonts?.load('600 150px "Instrument Sans"'),
-    ].filter(Boolean)).catch(() => {});
+    /* Sligoil doit être prête avant de dessiner les barres de fenêtres. */
+    await document.fonts?.load('500 20px Sligoil').catch(() => {});
 
     /* ── Le texte ── */
     const fontData = await fetch('assets/hero-lab/instrument-600.typeface.json').then((r) => r.json());
@@ -128,11 +124,10 @@ async function init() {
         Promise.all(SPRITES.map(async (def) => ({ make: await makeSprite(def, renderer), n: def.n, flat: true }))),
         Promise.all(WINDOWS.map(async (def) => ({ make: await makeWindow(def, renderer), n: 2, flat: false }))),
     ]);
-    const keys = KEYS.map((char) => ({ make: makeKey(char), n: 3, flat: false }));
 
     const rand = seeded(11);
     const objects = [];
-    for (const kind of [...sprites, ...windows, ...keys]) {
+    for (const kind of [...sprites, ...windows]) {
         if (!kind.make) continue;
         const count = Math.max(1, Math.round(kind.n * dose));
         for (const obj of kind.make(count)) objects.push({ obj, flat: kind.flat });
