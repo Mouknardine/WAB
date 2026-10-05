@@ -7,8 +7,8 @@
    Trois mouvements se composent sans s'écraser :
    — l'entrée : animation sur opacity et scale ;
    — la parallaxe douce : transform, écrit par js/desk/parallax.js ;
-   — le glisser : translate, posé par js/desk/drag.js ;
-   et l'inclinaison propre à l'objet passe par rotate.
+   — le glisser : translate, posé par js/desk/drag.js.
+   Aucun objet n'est penché : tout reste droit.
    ============================================ */
 
 .scatter {
@@ -22,14 +22,12 @@
     --y: 0px;
     --w: auto;
     --depth: 1;
-    --tilt: 0deg;
     position: absolute;
     z-index: 1;
     left: var(--x);
     top: var(--y);
     width: var(--w);
     display: none;
-    rotate: var(--tilt);
     animation: scat-in 0.7s var(--ease-out) both;
     animation-delay: calc(var(--i, 0) * 70ms + 120ms);
 }
@@ -91,12 +89,10 @@ a.scat {
 }
 
 .scat--sticker {
-    --tilt: -6deg;
     --depth: 0.6;
 }
 
 .scat--zinema {
-    --tilt: 3deg;
     --depth: 1;
 }
 
@@ -113,7 +109,6 @@ a.scat {
     .scat--sticker {
         --x: 19%;
         --y: 72px;
-        --tilt: -4deg;
         display: block;
     }
 
@@ -121,8 +116,7 @@ a.scat {
         --x: calc(50% - 80px);
         --y: 70px;
         --w: 160px;
-        --tilt: 0deg;
-        display: block;
+            display: block;
     }
 
     .scat--folder {

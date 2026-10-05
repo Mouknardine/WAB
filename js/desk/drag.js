@@ -8,8 +8,8 @@
  * pour que le clic qui le termine n'ouvre pas la fiche (shell.js).
  *
  * Le déplacement passe par la propriété `translate` : il se compose
- * avec la parallaxe (transform), l'inclinaison (rotate) et l'entrée
- * (scale) sans jamais les écraser.
+ * avec la parallaxe (transform) et l'entrée (scale) sans jamais
+ * les écraser.
  *
  * Au doigt, rien : un glisser bloquerait le défilement de la page.
  * Ces objets sont un décor, la page ne dépend jamais d'eux.

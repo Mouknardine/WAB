@@ -71,13 +71,11 @@
     .app-edge--sticker {
         top: calc(var(--bar-h) + 72px);
         left: max(var(--gutter), calc(50% - 640px));
-        rotate: -6deg;
     }
 
     .app-edge--file {
         top: calc(var(--bar-h) + 120px);
         right: max(var(--gutter), calc(50% - 650px));
-        rotate: 3deg;
     }
 }
 

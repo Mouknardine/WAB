@@ -7,7 +7,7 @@
  * variable sur le calque forcerait le recalcul de tous ses enfants.
  *
  * Le transform ne porte que la parallaxe : le glisser passe par
- * translate (drag.js), l'inclinaison par rotate, l'entrée par scale.
+ * translate (drag.js), l'entrée par scale.
  *
  * Seulement à la souris, seulement quand le premier écran est
  * visible, jamais sous « réduire les animations ».

@@ -70,7 +70,6 @@
         --x: max(24px, 50% - 670px);
         --y: 700px;
         --w: min(176px, 50% - 480px);
-        --tilt: -2deg;
         --depth: 0.7;
         display: block;
     }

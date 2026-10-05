@@ -42,17 +42,7 @@
 }
 
 .shot .win {
-    --tilt: 0deg;
-    rotate: var(--tilt);
-    transition: translate var(--dur-3) var(--ease-spring), rotate var(--dur-3) var(--ease-spring), box-shadow var(--dur-2) var(--ease-out);
-}
-
-.wall__grid li:nth-child(odd) .win {
-    --tilt: calc(-0.6 * var(--win-tilt));
-}
-
-.wall__grid li:nth-child(4n + 2) .win {
-    --tilt: calc(0.6 * var(--win-tilt));
+    transition: translate var(--dur-3) var(--ease-spring), box-shadow var(--dur-2) var(--ease-out);
 }
 
 .shot .win__title {
@@ -81,16 +71,9 @@
     color: var(--on-accent);
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .shot .win {
-        rotate: none;
-    }
-}
-
 @media (hover: hover) {
     .shot:hover .win {
         translate: 0 -6px;
-        rotate: 0deg;
         box-shadow: 0 0 0 var(--hair) var(--win-edge), var(--win-shadow-lift);
     }
 

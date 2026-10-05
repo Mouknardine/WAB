@@ -7,7 +7,6 @@
    d'abord. Les fenêtres qui s'ouvrent : os-win.css.
    — .win--framed : la fenêtre mise en avant, dans un cadre Klein dont
      le bord intérieur se désagrège en pixels vers le contenu ;
-   — .win--tilt / .win--tilt-r : légère inclinaison (cartes, citations).
    Le balisage reste celui des pages : .win__lights (vide) devient le
    ↳, la barre porte elle-même le [*].
    ============================================ */
@@ -133,15 +132,6 @@
         var(--dither-bottom) left bottom / 8px var(--dither) repeat-x,
         var(--dither-left) left top / var(--dither) 8px repeat-y,
         var(--dither-right) right top / var(--dither) 8px repeat-y;
-}
-
-/* ── L'inclinaison ── posée par la page sur les cartes et citations. */
-.win--tilt {
-    rotate: calc(-1 * var(--win-tilt));
-}
-
-.win--tilt-r {
-    rotate: var(--win-tilt);
 }
 
 /* Une capture de l'application de gestion : ces chiffres ne sont pas

@@ -62,7 +62,6 @@
 @keyframes floater {
     to {
         translate: 0 -10px;
-        rotate: 2deg;
     }
 }
 

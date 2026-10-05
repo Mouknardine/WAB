@@ -162,7 +162,6 @@
         left: 2.5%;
         top: 17%;
         width: var(--sx-desk-land);
-        rotate: -2deg;
     }
 
     .sx-desk__item--amarte {
@@ -170,7 +169,6 @@
         left: 3%;
         top: 66%;
         width: var(--sx-desk-land);
-        rotate: 1.5deg;
     }
 
     .sx-desk__item--central {
@@ -178,7 +176,6 @@
         right: 3.5%;
         top: 14%;
         width: var(--sx-desk-tall);
-        rotate: 2deg;
     }
 
     .sx-desk__item--commissione {
@@ -186,6 +183,5 @@
         right: 2%;
         top: 63%;
         width: var(--sx-desk-land);
-        rotate: -1.5deg;
     }
 }

@@ -48,14 +48,13 @@
     display: none;
 }
 
-/* L'autocollant (os-sticker.css), posé de travers au-dessus du
+/* L'autocollant (os-sticker.css), posé droit au-dessus du
    dossier. */
 .pw-sticker {
     position: absolute;
     top: -14%;
     left: 4%;
     display: block;
-    rotate: -7deg;
 }
 
 /* ── La case libre ── une case vide en pointillés sur le gris chaud,

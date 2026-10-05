@@ -114,7 +114,6 @@
     --win-shadow: var(--relief), var(--shadow-object);
     --win-shadow-lift: var(--relief), var(--shadow-lift);
     --win-shadow-active: var(--relief), var(--shadow-lift);
-    --win-tilt: 1.2deg;
     --screen-pad: 12px;
 
     /* ── Bulles ── question gris chaud, réponse de WAB en bleu. */

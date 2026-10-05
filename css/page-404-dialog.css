@@ -130,7 +130,6 @@
         display: block;
         right: max(var(--gutter), calc(50% - 460px));
         bottom: 18%;
-        rotate: -4deg;
         font-family: var(--font-mono);
         font-size: var(--t-small);
         color: var(--ink-faint);

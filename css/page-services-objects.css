@@ -33,7 +33,6 @@
 .svc-card--back {
     left: 6%;
     top: 14%;
-    rotate: -7deg;
     /* Le bas de la carte passe sous la carte noire : le texte en haut. */
     justify-content: flex-start;
     background: var(--paper);
@@ -43,7 +42,6 @@
 .svc-card--front {
     left: 18%;
     top: 40%;
-    rotate: 4deg;
     background: var(--ink);
     box-shadow: 0 0 0 var(--hair) var(--ink), var(--shadow-lift);
     color: var(--paper);
@@ -65,7 +63,6 @@
     gap: 1cqh;
     width: 26%;
     padding: 6cqh 2cqh;
-    rotate: 3deg;
     background: var(--paper);
     box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief), var(--shadow-object);
     font-size: clamp(8px, 3cqh, 12px);
