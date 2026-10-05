@@ -97,15 +97,17 @@
 }
 
 .pw-alert > .win {
+    padding-top: var(--win-frame);
     box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--sheet), var(--shadow-lift);
+}
+
+/* Sans barre de titre : le cadre tramé fait le tour complet. */
+.pw-alert > .win::before {
+    inset: 0;
 }
 
 .pw-alert .pw-alert__body {
     background: var(--paper);
-}
-
-.pw-alert__perch {
-    right: 36px;
 }
 
 .pw-alert__body {
