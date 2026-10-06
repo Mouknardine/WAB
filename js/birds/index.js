@@ -19,9 +19,9 @@
    versions de ces fichiers. Une adresse neuve les en libère. Le
    serveur revalide désormais les scripts à chaque visite (.htaccess) :
    ce numéro n'aura plus à bouger. */
-import { FLIGHT_COLORS, VIVID_COLORS } from './frames.js?v=9';
+import { FLIGHT_COLORS, HOME_COLORS, OPENING_COLORS } from './frames.js?v=10';
 import { createSpriteBank } from './sprites.js?v=7';
-import { createFlock, TEXT_DIM } from './flock.js?v=11';
+import { createFlock, TEXT_DIM } from './flock.js?v=14';
 import { createShyness } from './shyness.js?v=5';
 
 /* Échelles de dessin disponibles, de l'oiseau le plus lointain au
@@ -33,6 +33,15 @@ const LADDER_LARGE = [2, 3, 4, 5];
 const TOP_SKY = 0.58;
 /** Même seuil que le premier écran de l'accueil (desk-hero.css). */
 const NARROW = '(max-width: 899px)';
+
+/* La volée d'ouverture : nombreuse, rapide (flock.js), et le ciel
+   ordinaire ne commence qu'après son passage. */
+const OPENING_HANDOVER = 1800;
+
+/** @param {number} width */
+function openingCount(width) {
+    return width < 700 ? 26 : 46;
+}
 
 /* Un oiseau pour tant de pixels carrés d'écran, puis bornes. Deux
    régimes : le décor de l'accueil et le fond des pages de contenu.
@@ -117,16 +126,27 @@ function initBirds() {
     document.documentElement.addEventListener('pointerleave', () => { sky.pointer = null; });
     window.addEventListener('blur', () => { sky.pointer = null; });
 
-    // L'accueil peut demander une volée de toutes les couleurs
-    // (data-birds-colors="vives") et, au téléphone, un ciel limité au
-    // haut de l'écran (data-birds-sky="top") : le texte y est en bas ;
-    // sur ordinateur il est au centre, la volée l'entoure.
-    const vivid = document.body.dataset.birdsColors === 'vives';
+    // L'accueil règle son ciel dans le HTML : sa palette blanc et bleu
+    // (data-birds-colors="accueil"), au téléphone un ciel limité au
+    // haut de l'écran (data-birds-sky="top", le texte y est en bas), et
+    // une volée d'ouverture de toutes les couleurs qui traverse une
+    // fois, vite (data-birds-opening). Après elle, au téléphone, le
+    // ciel se vide ; sur ordinateur, le ciel blanc et bleu prend le relais.
+    const homeColors = document.body.dataset.birdsColors === 'accueil';
+    const palette = homeColors ? HOME_COLORS : FLIGHT_COLORS;
     const topSky = document.body.dataset.birdsSky === 'top';
+    const withOpening = 'birdsOpening' in document.body.dataset && !motionQuery.matches;
     const narrow = window.matchMedia(NARROW);
+    const skyShare = () => (topSky && narrow.matches ? TOP_SKY : 1);
     const flock = createFlock(1, ladderFor(window.innerWidth), {
-        colors: vivid ? VIVID_COLORS : FLIGHT_COLORS,
-        skyShare: () => (topSky && narrow.matches ? TOP_SKY : 1),
+        colors: palette,
+        skyShare,
+        delay: withOpening ? OPENING_HANDOVER : 0,
+    });
+    const opening = createFlock(withOpening ? openingCount(window.innerWidth) : 0, ladderFor(window.innerWidth), {
+        colors: OPENING_COLORS,
+        skyShare,
+        once: true,
     });
 
     function resizeCanvas() {
@@ -135,7 +155,8 @@ function initBirds() {
         sky.width = canvas.width;
         sky.height = canvas.height;
         flock.setScales(ladderFor(canvas.width));
-        flock.setCount(countFor(canvas.width, canvas.height, regime));
+        opening.setScales(ladderFor(canvas.width));
+        flock.setCount(withOpening && narrow.matches ? 0 : countFor(canvas.width, canvas.height, regime));
     }
 
     resizeCanvas();
@@ -156,8 +177,12 @@ function initBirds() {
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         shyness.frame(canvasTop(), canvas.height);
+        opening.advance(delta, sky, shyness);
         flock.advance(delta, sky, shyness);
 
+        for (const bird of opening.birds) {
+            if (!bird.done) sprites.draw(ctx, bird, bird.opacity);
+        }
         for (const bird of flock.birds) {
             sprites.draw(ctx, bird, bird.opacity);
         }
@@ -212,7 +237,7 @@ function initBirds() {
                 scale,
                 dir: index % 2 === 0 ? 1 : -1,
                 frameIndex: index % 2,
-                color: (vivid ? VIVID_COLORS : FLIGHT_COLORS)[index % (vivid ? VIVID_COLORS : FLIGHT_COLORS).length],
+                color: palette[index % palette.length],
             };
             const visible = shyness.isOpen(bird.x, bird.y, width, height);
             sprites.draw(ctx, bird, visible ? 1 : TEXT_DIM);

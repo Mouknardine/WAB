@@ -18,7 +18,7 @@
  * ligne reste lisible et le ciel ne se vide jamais.
  */
 
-import { FLIGHT_COLORS, BODY_BOX } from './frames.js?v=9';
+import { FLIGHT_COLORS, BODY_BOX } from './frames.js?v=10';
 
 /* Deux marges, et la sortie est la plus large des deux. L'oiseau
    naît juste derrière le bord, puis n'est mis au repos qu'une fois
@@ -72,6 +72,8 @@ const BOB_PERIOD_MAX = 3600;
 const REST_MIN = 150;
 const REST_MAX = 2800;
 
+/** Une volée d'ouverture part en moins d'une demi-seconde. */
+const ONCE_SPREAD = 450;
 const TRIES = 5;           // hauteurs essayées au moment du départ
 
 /* L'approche du curseur. Un oiseau qui passe à moins de FLEE_RADIUS
@@ -103,17 +105,23 @@ function pickScaleIndex(levels) {
  * @param {number} count   nombre d'oiseaux dans le ciel
  * @param {number[]} scales échelle des tailles, de la plus lointaine
  *                          à la plus proche
- * @param {{ colors?: string[], skyShare?: () => number }} [options]
+ * @param {{ colors?: string[], skyShare?: () => number,
+ *          once?: boolean, delay?: number }} [options]
  *        colors : la palette du vol ; skyShare : part haute de l'écran
  *        où passent les routes (1 = tout l'écran), relue à chaque
- *        départ. Un ciel limité au haut ne reçoit que des entrées
- *        latérales, presque à plat.
+ *        départ — un ciel limité au haut ne reçoit que des entrées
+ *        latérales, presque à plat ; once : chaque oiseau ne traverse
+ *        qu'une fois, vite (la volée d'ouverture), tous partent
+ *        presque ensemble ; delay : attente
+ *        avant les premiers départs, en ms.
  */
 export function createFlock(count, scales, options = {}) {
     let ladder = scales;
     const birds = [];
     const colors = options.colors ?? FLIGHT_COLORS;
     const skyShare = options.skyShare ?? (() => 1);
+    const once = options.once ?? false;
+    const delay = options.delay ?? 0;
     const pickColor = () => colors[Math.floor(Math.random() * colors.length)];
 
     function makeBird(index) {
@@ -142,7 +150,7 @@ export function createFlock(count, scales, options = {}) {
             airborne: false,
             // Les départs sont échelonnés : la volée se remplit en
             // quelques secondes au lieu d'apparaître d'un bloc.
-            restFor: index * randomBetween(60, 320),
+            restFor: once ? randomBetween(0, ONCE_SPREAD) : delay + index * randomBetween(60, 320),
         };
     }
 
@@ -188,6 +196,8 @@ export function createFlock(count, scales, options = {}) {
     /** Renvoie l'oiseau hors champ pour un court repos. */
     function sendToRest(bird) {
         bird.airborne = false;
+        // La volée d'ouverture ne revient pas.
+        if (once) bird.done = true;
         bird.restFor = randomBetween(REST_MIN, REST_MAX);
         bird.opacity = 0;
     }
@@ -215,7 +225,10 @@ export function createFlock(count, scales, options = {}) {
 
         // Le proche va vite, le lointain plane : c'est cet écart qui
         // creuse la profondeur bien plus que la taille seule.
-        const speed = randomBetween(SPEED_MIN, SPEED_MAX) * (0.35 + 0.65 * depth);
+        // La volée d'ouverture file, même au loin : l'écran se vide vite.
+        const speed = once
+            ? randomBetween(SPEED_MAX * 0.7, SPEED_MAX * 1.4) * (0.75 + 0.25 * depth)
+            : randomBetween(SPEED_MIN, SPEED_MAX) * (0.35 + 0.65 * depth);
         bird.beatMs = BEAT_SLOW - (BEAT_SLOW - BEAT_FAST)
             * Math.min(1, (speed - SPEED_MIN) / (SPEED_MAX - SPEED_MIN));
 
@@ -292,6 +305,7 @@ export function createFlock(count, scales, options = {}) {
         const seconds = delta / 1000;
 
         for (const bird of birds) {
+            if (bird.done) continue;
             if (!bird.airborne) {
                 bird.restFor -= delta;
                 if (bird.restFor <= 0) launch(bird, sky, shyness);
