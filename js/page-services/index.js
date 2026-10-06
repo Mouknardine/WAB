@@ -2,9 +2,8 @@
 /**
  * Services — point d'entrée de la page
  * Le focus qui suit le défilement dans les deux familles, les éléments
- * qui s'animent à l'écran (les notifications des automatisations, les
- * pixels du pied de page, le fond animé des cadres bleus) : ces trois
- * derniers reprennent les modules
+ * qui s'animent à l'écran (les notifications des automatisations, le
+ * fond animé des cadres bleus) : ces deux derniers reprennent les modules
  * de l'accueil, avec les mêmes numéros de version pour que le
  * navigateur ne les charge qu'une fois.
  *
@@ -15,7 +14,6 @@
  */
 
 import { initWatch } from '../desk/watch.js?v=1';
-import { initPixels } from '../desk/pixels.js?v=2';
 import { initFocus } from './focus.js?v=1';
 import { initNodalLines } from '../desk/nodal-lines.js?v=1';
 
@@ -31,7 +29,6 @@ const MODULES = [
         initWatch();
         armNotifications();
     }],
-    ['pixels', initPixels],
     ['nodal-lines', initNodalLines],
 ];
 

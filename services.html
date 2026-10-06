@@ -110,7 +110,7 @@
     <link rel="stylesheet" href="css/os-bar.css?v=4">
     <link rel="stylesheet" href="css/os-window.css?v=4">
     <link rel="stylesheet" href="css/os-bubbles.css?v=2">
-    <link rel="stylesheet" href="css/os-footer.css?v=3">
+    <link rel="stylesheet" href="css/os-footer.css?v=5">
     <link rel="stylesheet" href="css/os-dock.css?v=5">
     <link rel="stylesheet" href="css/os-overlay.css?v=3">
     <link rel="stylesheet" href="css/os-sticker.css?v=2">
@@ -128,10 +128,10 @@
     <!-- Scripts -->
     <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
-    <script type="module" src="js/birds/index.js?v=16"></script>
+    <script type="module" src="js/birds/index.js?v=17"></script>
     <script type="module" src="js/contact/index.js?v=12"></script>
     <script type="module" src="js/os/index.js?v=4"></script>
-    <script type="module" src="js/page-services/index.js?v=3"></script>
+    <script type="module" src="js/page-services/index.js?v=4"></script>
 </head>
 
 <body class="os" data-birds="rare">
@@ -495,11 +495,17 @@
 
     </main>
 
-    <footer class="foot on-klein">
+    <!-- PIED DE PAGE — le nom et la promesse, les pages, les expertises,
+         le contact ; une ligne de mentions. Sobre, sur papier blanc. -->
+    <footer class="foot">
         <div class="desk-wrap">
-            <div class="foot__cols">
+            <div class="foot__main">
+                <div class="foot__brand">
+                    <a href="/" class="foot__logo" aria-label="WAB., accueil">WAB.</a>
+                    <p class="foot__pitch">Studio de design et de technologie à&nbsp;Lausanne. Marques, sites et produits numériques.</p>
+                </div>
                 <nav class="foot__col" aria-label="Pages">
-                    <p class="foot__label">Pages</p>
+                    <p class="foot__label">Studio</p>
                     <a href="/realisations">Work</a>
                     <a href="/services">Services</a>
                     <a href="/studio">About</a>
@@ -507,85 +513,19 @@
                 <nav class="foot__col" aria-label="Expertises">
                     <p class="foot__label">Expertises</p>
                     <a href="/creation-site-internet-lausanne">Création de site internet</a>
-                    <a href="/applications">Applications</a>
+                    <a href="/applications">Applications de gestion</a>
                 </nav>
                 <div class="foot__col">
                     <p class="foot__label">Contact</p>
                     <a href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
-                    <span>Lausanne, Suisse — <time data-local-time>--:--</time></span>
+                    <p>Lausanne, Suisse</p>
+                    <p>Il est <time data-local-time>--:--</time> au studio</p>
                 </div>
-                <p class="foot__note">Conçu et développé à Lausanne.</p>
             </div>
-        </div>
-        <!-- Le bandeau : les projets en ligne, en boucle (décor : la
-             liste réelle vit sur /realisations). -->
-        <div class="foot__ticker" aria-hidden="true" translate="no"><ul class="foot__track"><li>Zinéma</li><li>Le P’tit Central</li><li>Amarte Studio</li><li>La Slack</li><li>Nadège Mouine</li><li>Commissione Entretien</li><li>LAZIZZE DJ</li><li>Maison Alliani</li><li>LE MEMO</li></ul><ul class="foot__track"><li>Zinéma</li><li>Le P’tit Central</li><li>Amarte Studio</li><li>La Slack</li><li>Nadège Mouine</li><li>Commissione Entretien</li><li>LAZIZZE DJ</li><li>Maison Alliani</li><li>LE MEMO</li></ul></div>
-        <div class="desk-wrap">
-            <svg class="pixel-name" data-watch="once" viewBox="-1 -1 202 72" role="img" aria-label="WAB.">
-                <defs>
-                    <symbol id="wab-px" viewBox="0 0 10 10" width="10" height="10" overflow="visible"><rect class="px__line" x="-0.1" y="0.6" width="10.2" height="1.9"/><rect class="px__line" x="-0.1" y="3.9" width="10.2" height="1.9"/><rect class="px__line" x="-0.1" y="7.2" width="10.2" height="1.9"/></symbol>
-                </defs>
-                <use class="px" href="#wab-px" x="0" y="0"/>
-                <use class="px" href="#wab-px" x="40" y="0"/>
-                <use class="px" href="#wab-px" x="0" y="10"/>
-                <use class="px" href="#wab-px" x="40" y="10"/>
-                <use class="px" href="#wab-px" x="0" y="20"/>
-                <use class="px" href="#wab-px" x="40" y="20"/>
-                <use class="px" href="#wab-px" x="0" y="30"/>
-                <use class="px" href="#wab-px" x="20" y="30"/>
-                <use class="px" href="#wab-px" x="40" y="30"/>
-                <use class="px" href="#wab-px" x="0" y="40"/>
-                <use class="px" href="#wab-px" x="20" y="40"/>
-                <use class="px" href="#wab-px" x="40" y="40"/>
-                <use class="px" href="#wab-px" x="0" y="50"/>
-                <use class="px" href="#wab-px" x="20" y="50"/>
-                <use class="px" href="#wab-px" x="40" y="50"/>
-                <use class="px" href="#wab-px" x="10" y="60"/>
-                <use class="px" href="#wab-px" x="30" y="60"/>
-                <use class="px" href="#wab-px" x="70" y="0"/>
-                <use class="px" href="#wab-px" x="80" y="0"/>
-                <use class="px" href="#wab-px" x="90" y="0"/>
-                <use class="px" href="#wab-px" x="60" y="10"/>
-                <use class="px" href="#wab-px" x="100" y="10"/>
-                <use class="px" href="#wab-px" x="60" y="20"/>
-                <use class="px" href="#wab-px" x="100" y="20"/>
-                <use class="px" href="#wab-px" x="60" y="30"/>
-                <use class="px" href="#wab-px" x="70" y="30"/>
-                <use class="px" href="#wab-px" x="80" y="30"/>
-                <use class="px" href="#wab-px" x="90" y="30"/>
-                <use class="px" href="#wab-px" x="100" y="30"/>
-                <use class="px" href="#wab-px" x="60" y="40"/>
-                <use class="px" href="#wab-px" x="100" y="40"/>
-                <use class="px" href="#wab-px" x="60" y="50"/>
-                <use class="px" href="#wab-px" x="100" y="50"/>
-                <use class="px" href="#wab-px" x="60" y="60"/>
-                <use class="px" href="#wab-px" x="100" y="60"/>
-                <use class="px" href="#wab-px" x="120" y="0"/>
-                <use class="px" href="#wab-px" x="130" y="0"/>
-                <use class="px" href="#wab-px" x="140" y="0"/>
-                <use class="px" href="#wab-px" x="150" y="0"/>
-                <use class="px" href="#wab-px" x="120" y="10"/>
-                <use class="px" href="#wab-px" x="160" y="10"/>
-                <use class="px" href="#wab-px" x="120" y="20"/>
-                <use class="px" href="#wab-px" x="160" y="20"/>
-                <use class="px" href="#wab-px" x="120" y="30"/>
-                <use class="px" href="#wab-px" x="130" y="30"/>
-                <use class="px" href="#wab-px" x="140" y="30"/>
-                <use class="px" href="#wab-px" x="150" y="30"/>
-                <use class="px" href="#wab-px" x="120" y="40"/>
-                <use class="px" href="#wab-px" x="160" y="40"/>
-                <use class="px" href="#wab-px" x="120" y="50"/>
-                <use class="px" href="#wab-px" x="160" y="50"/>
-                <use class="px" href="#wab-px" x="120" y="60"/>
-                <use class="px" href="#wab-px" x="130" y="60"/>
-                <use class="px" href="#wab-px" x="140" y="60"/>
-                <use class="px" href="#wab-px" x="150" y="60"/>
-                <use class="px" href="#wab-px" x="180" y="50"/>
-                <use class="px" href="#wab-px" x="190" y="50"/>
-                <use class="px" href="#wab-px" x="180" y="60"/>
-                <use class="px" href="#wab-px" x="190" y="60"/>
-            </svg>
-            <p class="foot__legal">&copy; 2026 WeAreBrothers Studio</p>
+            <div class="foot__bar">
+                <p>&copy; 2026 WeAreBrothers Studio</p>
+                <p>Conçu et développé à&nbsp;Lausanne</p>
+            </div>
         </div>
     </footer>
 

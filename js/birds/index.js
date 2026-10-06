@@ -130,8 +130,8 @@ function initBirds() {
     // (data-birds-colors="accueil"), au téléphone un ciel limité au
     // haut de l'écran (data-birds-sky="top", le texte y est en bas), et
     // une volée d'ouverture de toutes les couleurs qui traverse une
-    // fois, vite (data-birds-opening). Après elle, au téléphone, le
-    // ciel se vide ; sur ordinateur, le ciel blanc et bleu prend le relais.
+    // fois, vite (data-birds-opening). Après elle, le ciel blanc et
+    // bleu prend le relais.
     const homeColors = document.body.dataset.birdsColors === 'accueil';
     const palette = homeColors ? HOME_COLORS : FLIGHT_COLORS;
     const topSky = document.body.dataset.birdsSky === 'top';
@@ -156,7 +156,7 @@ function initBirds() {
         sky.height = canvas.height;
         flock.setScales(ladderFor(canvas.width));
         opening.setScales(ladderFor(canvas.width));
-        flock.setCount(withOpening && narrow.matches ? 0 : countFor(canvas.width, canvas.height, regime));
+        flock.setCount(countFor(canvas.width, canvas.height, regime));
     }
 
     resizeCanvas();

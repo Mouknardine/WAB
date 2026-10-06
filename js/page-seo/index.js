@@ -1,25 +1,19 @@
 // @ts-check
 /**
  * WAB OS — page Création de site internet à Lausanne
- * Les comportements propres à la page : le focus qui suit le
- * défilement dans les formats, et l'arrivée des pixels du pied de page
- * (modules de l'accueil, réutilisés tels quels). Le système partagé
+ * Le comportement propre à la page : le focus qui suit le
+ * défilement dans les formats. Le système partagé
  * (⌘K, lumière de l'heure, reflet des boutons) part de js/os/index.js.
  *
  * Chaque module est indépendant : si l'un échoue, les autres
  * continuent, et la page reste entièrement lisible sans eux.
  */
 
-// Même numéro que dans js/desk/index.js : un seul fichier en cache.
-import { initWatch } from '../desk/watch.js?v=1';
-import { initPixels } from '../desk/pixels.js?v=2';
 import { initFocus } from './focus.js?v=1';
 
 /** @type {Array<[string, () => void]>} */
 const MODULES = [
     ['focus', initFocus],
-    ['pixels', initPixels],
-    ['watch', initWatch],
 ];
 
 function boot() {

@@ -3,8 +3,7 @@
  * WAB OS — accueil
  * Point d'entrée des comportements propres à l'accueil : la vitrine
  * des projets, les éléments qui s'animent à leur arrivée à l'écran
- * (bulles des cartes et de l'appel final), les pixels du pied de
- * page. Le système partagé (shell, ⌘K, fenêtres, lumière de l'heure)
+ * (bulles des cartes et de l'appel final). Le système partagé (shell, ⌘K, fenêtres, lumière de l'heure)
  * part de js/os/index.js.
  *
  * Chaque module est indépendant : si l'un échoue, les autres
@@ -14,13 +13,11 @@
 // Même numéro partout où un fichier est importé : voir js/birds/index.js.
 import { initShowcase } from './showcase.js?v=2';
 import { initWatch } from './watch.js?v=1';
-import { initPixels } from './pixels.js?v=2';
 
 /** @type {Array<[string, () => void]>} */
 const MODULES = [
     ['showcase', initShowcase],
     ['watch', initWatch],
-    ['pixels', initPixels],
 ];
 
 function boot() {
