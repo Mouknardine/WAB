@@ -12,7 +12,6 @@
 import { launchFinder, launchCase, launchTerminal, launchPalette, launchMenu } from './apps.js?v=4';
 import { SHORTCUT } from './actions.js?v=1';
 import { report } from './lazy.js?v=1';
-import { initDockHide } from './dock-hide.js?v=1';
 
 const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 
@@ -100,7 +99,6 @@ function wireIdleBird() {
 export function initShell() {
     wireWall();
     wireDock();
-    initDockHide();
     wirePalette();
     wireContextMenu();
     wireIdleBird();

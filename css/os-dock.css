@@ -7,7 +7,7 @@
    du studio en touches. Au survol, la touche grandit sur un ressort et
    ses voisines la suivent à moitié. Un point blanc marque une app
    ouverte ; les fenêtres réduites se rangent après le
-   séparateur. Il se range pendant la lecture (js/os/dock-hide.js).
+   séparateur. Il reste affiché en permanence (demande d'Eliott, 6.10).
    Au téléphone, pas de dock : le menu du haut suffit.
    ============================================ */
 
@@ -43,11 +43,6 @@
         -webkit-backdrop-filter: var(--glass-blur);
         backdrop-filter: var(--glass-blur);
         box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.32), 0 8px 24px oklch(0.18 0.005 265 / 0.2);
-        transition: translate var(--dur-3) var(--ease-out);
-    }
-
-    .dock.is-tucked {
-        translate: -50% calc(100% + 24px);
     }
 }
 
