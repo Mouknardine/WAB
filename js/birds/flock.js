@@ -103,18 +103,17 @@ function pickScaleIndex(levels) {
  * @param {number} count   nombre d'oiseaux dans le ciel
  * @param {number[]} scales échelle des tailles, de la plus lointaine
  *                          à la plus proche
- * @param {{ colors?: string[], skyShare?: number }} [options]
+ * @param {{ colors?: string[], skyShare?: () => number }} [options]
  *        colors : la palette du vol ; skyShare : part haute de l'écran
- *        où passent les routes (1 = tout l'écran). Un ciel limité au
- *        haut ne reçoit que des entrées latérales, presque à plat.
+ *        où passent les routes (1 = tout l'écran), relue à chaque
+ *        départ. Un ciel limité au haut ne reçoit que des entrées
+ *        latérales, presque à plat.
  */
 export function createFlock(count, scales, options = {}) {
     let ladder = scales;
     const birds = [];
     const colors = options.colors ?? FLIGHT_COLORS;
-    const skyShare = options.skyShare ?? 1;
-    const sideShare = skyShare < 1 ? 1 : SIDE_ENTRY_SHARE;
-    const tiltSide = skyShare < 1 ? TILT_SIDE * 0.35 : TILT_SIDE;
+    const skyShare = options.skyShare ?? (() => 1);
     const pickColor = () => colors[Math.floor(Math.random() * colors.length)];
 
     function makeBird(index) {
@@ -174,7 +173,7 @@ export function createFlock(count, scales, options = {}) {
 
     /** Cherche une hauteur de route dégagée pour une entrée latérale. */
     function pickRoute(bird, sky, shyness) {
-        const ceiling = Math.max(1, sky.height * skyShare - bird.height);
+        const ceiling = Math.max(1, sky.height * skyShare() - bird.height);
         let fallback = Math.random() * ceiling;
 
         for (let i = 0; i < TRIES; i++) {
@@ -221,9 +220,11 @@ export function createFlock(count, scales, options = {}) {
             * Math.min(1, (speed - SPEED_MIN) / (SPEED_MAX - SPEED_MIN));
 
         let tilt;
-        if (Math.random() < sideShare) {
+        const topOnly = skyShare() < 1;
+        if (topOnly || Math.random() < SIDE_ENTRY_SHARE) {
             bird.x = bird.dir === 1 ? -bird.width - ENTRY_MARGIN : sky.width + ENTRY_MARGIN;
             bird.routeY = pickRoute(bird, sky, shyness);
+            const tiltSide = topOnly ? TILT_SIDE * 0.35 : TILT_SIDE;
             tilt = randomBetween(-tiltSide, tiltSide);
         } else {
             const fromTop = Math.random() < 0.5;

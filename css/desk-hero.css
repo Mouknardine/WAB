@@ -1,9 +1,9 @@
 /* ============================================
    WAB. — Accueil : le premier écran
-   Sur le bureau à trame de points, tout l'écran : en haut, le ciel,
-   une nuée d'oiseaux de toutes les couleurs (js/birds, data-birds
-   « dense », « vives », « top ») ; en bas, le nom en touches, la
-   promesse et deux touches. La vitrine des projets
+   Sur le bureau à trame de points, tout l'écran : une nuée d'oiseaux
+   de toutes les couleurs (js/birds, data-birds « dense », « vives »,
+   « top ») ; le nom en touches, la promesse et deux touches au
+   centre sur ordinateur, en bas au téléphone sous le ciel. La vitrine des projets
    (desk-showcase.css) suit juste en dessous.
    ============================================ */
 
@@ -73,9 +73,14 @@
     margin-top: 0;
 }
 
-/* Sur ordinateur, le dock flotte en bas : le bloc s'arrête au-dessus. */
+/* Sur ordinateur, le nom et la promesse reviennent au centre de
+   l'écran, la volée tout autour ; le bas garde la place du dock. */
 @media (min-width: 900px) {
+    .hero {
+        place-items: center;
+    }
+
     .hero__center {
-        padding-bottom: clamp(112px, 15vh, 150px);
+        padding-bottom: 96px;
     }
 }

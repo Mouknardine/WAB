@@ -21,7 +21,7 @@
    ce numéro n'aura plus à bouger. */
 import { FLIGHT_COLORS, VIVID_COLORS } from './frames.js?v=8';
 import { createSpriteBank } from './sprites.js?v=7';
-import { createFlock, TEXT_DIM } from './flock.js?v=9';
+import { createFlock, TEXT_DIM } from './flock.js?v=10';
 import { createShyness } from './shyness.js?v=5';
 
 /* Échelles de dessin disponibles, de l'oiseau le plus lointain au
@@ -29,8 +29,10 @@ import { createShyness } from './shyness.js?v=5';
 const LADDER_SMALL = [2, 3, 4];
 const LADDER_LARGE = [2, 3, 4, 5];
 
-/** Part haute de l'écran où vole un ciel « top ». */
+/** Part haute de l'écran où vole un ciel « top » (téléphone). */
 const TOP_SKY = 0.58;
+/** Même seuil que le premier écran de l'accueil (desk-hero.css). */
+const NARROW = '(max-width: 899px)';
 
 /* Un oiseau pour tant de pixels carrés d'écran, puis bornes. Deux
    régimes : le décor de l'accueil et le fond des pages de contenu.
@@ -97,12 +99,15 @@ function initBirds() {
     window.addEventListener('blur', () => { sky.pointer = null; });
 
     // L'accueil peut demander une volée de toutes les couleurs
-    // (data-birds-colors="vives") et un ciel limité au haut de
-    // l'écran (data-birds-sky="top") : le texte est en bas.
+    // (data-birds-colors="vives") et, au téléphone, un ciel limité au
+    // haut de l'écran (data-birds-sky="top") : le texte y est en bas ;
+    // sur ordinateur il est au centre, la volée l'entoure.
     const vivid = document.body.dataset.birdsColors === 'vives';
+    const topSky = document.body.dataset.birdsSky === 'top';
+    const narrow = window.matchMedia(NARROW);
     const flock = createFlock(1, ladderFor(window.innerWidth), {
         colors: vivid ? VIVID_COLORS : FLIGHT_COLORS,
-        skyShare: document.body.dataset.birdsSky === 'top' ? TOP_SKY : 1,
+        skyShare: () => (topSky && narrow.matches ? TOP_SKY : 1),
     });
 
     function resizeCanvas() {
