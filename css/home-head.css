@@ -1,10 +1,8 @@
 /* ============================================
-   WAB OS — accueil : en-têtes de section, garanties et preuves
+   WAB OS — accueil : en-têtes de section et garanties
    Chaque section s'ouvre de la même façon, centrée : le badge, un
    titre en deux temps (une affirmation, puis sa raison), une phrase.
-   Sous le premier écran, les quatre garanties en pastilles ; sous la
-   vitrine, la bande de preuves : trois faits vérifiables, en cartes
-   égales (DIRECTION-ARTISTIQUE.md, sections 5 et 6).
+   Sous le premier écran, les quatre garanties en pastilles.
    ============================================ */
 
 .home-head {
@@ -84,80 +82,5 @@
 @media (min-width: 760px) {
     .hero__facts {
         max-width: none;
-    }
-}
-
-/* ── Les preuves ── au téléphone, une seule carte : trois lignes
-   séparées d'un filet, le chiffre à gauche, sa légende en encre à
-   droite (pas de cartes empilées ni de lignes grises). Dès 760 px,
-   trois cartes égales : le chiffre en haut, la légende en bas. */
-.proof {
-    padding-top: clamp(48px, 6vw, 72px);
-}
-
-.proof__grid {
-    display: grid;
-    border-radius: var(--r-win);
-    background: var(--paper);
-    box-shadow: 0 0 0 var(--hair) var(--line);
-    list-style: none;
-}
-
-.proof__item {
-    display: grid;
-    grid-template-columns: 5.25rem minmax(0, 1fr);
-    align-items: center;
-    gap: 14px;
-    padding: 16px 18px;
-}
-
-.proof__item + .proof__item {
-    box-shadow: inset 0 var(--hair) 0 var(--line);
-}
-
-.proof__value {
-    font-size: 1.625rem;
-    font-weight: var(--w-medium);
-    font-variant-numeric: tabular-nums;
-    line-height: 1;
-    letter-spacing: -0.04em;
-    white-space: nowrap;
-}
-
-.proof__label {
-    font-size: 0.9375rem;
-    line-height: 1.4;
-    text-wrap: pretty;
-}
-
-@media (min-width: 760px) {
-    .proof__grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-        border-radius: 0;
-        background: none;
-        box-shadow: none;
-    }
-
-    .proof__item,
-    .proof__item + .proof__item {
-        grid-template-columns: none;
-        align-content: space-between;
-        align-items: start;
-        gap: 16px;
-        min-height: 180px;
-        padding: 28px;
-        border-radius: var(--r-win);
-        background: var(--paper);
-        box-shadow: 0 0 0 var(--hair) var(--line);
-    }
-
-    .proof__value {
-        font-size: clamp(2.5rem, 4vw, 3.5rem);
-    }
-
-    .proof__label {
-        max-width: 28ch;
-        color: var(--ink-muted);
     }
 }
