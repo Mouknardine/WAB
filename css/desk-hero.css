@@ -1,13 +1,16 @@
 /* ============================================
    WAB. — Accueil : le premier écran
-   Sur le bureau à trame de points. Le centre net, rien autour : le
-   nom en touches, la promesse, deux touches, les garanties en
-   pastilles (home-head.css), puis la vitrine des projets
-   (desk-showcase.css), qui commence dans le premier écran.
+   Sur le bureau à trame de points, tout l'écran : le nom en touches,
+   la promesse, deux touches, au centre ; autour, rien que la nuée
+   d'oiseaux qui traverse (js/birds, data-birds="dense"). La vitrine
+   des projets (desk-showcase.css) suit juste en dessous.
    ============================================ */
 
 .hero {
     position: relative;
+    display: grid;
+    place-items: center;
+    min-height: max(520px, 100svh);
     overflow-x: clip;
 }
 
@@ -15,7 +18,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: calc(var(--bar-h) + clamp(48px, 8vw, 96px)) var(--gutter) 0;
+    padding: calc(var(--bar-h) + 32px) var(--gutter) 72px;
     text-align: center;
 }
 
@@ -54,4 +57,13 @@
    de tout le premier écran. */
 .hero:focus-visible {
     outline: none;
+}
+
+/* La vitrine des projets, sa propre section sous le premier écran. */
+.showcase-band {
+    padding-bottom: clamp(56px, 8vw, 104px);
+}
+
+.showcase-band .showcase {
+    margin-top: 0;
 }

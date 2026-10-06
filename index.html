@@ -366,10 +366,10 @@
     <link rel="stylesheet" href="css/os-overlay.css?v=3">
     <!-- Accueil « bureau rangé » -->
     <link rel="stylesheet" href="css/desk-objects.css?v=8">
-    <link rel="stylesheet" href="css/desk-hero.css?v=11">
+    <link rel="stylesheet" href="css/desk-hero.css?v=12">
     <link rel="stylesheet" href="css/desk-keys.css?v=3">
     <link rel="stylesheet" href="css/desk-showcase.css?v=2">
-    <link rel="stylesheet" href="css/home-head.css?v=3">
+    <link rel="stylesheet" href="css/home-head.css?v=4">
     <link rel="stylesheet" href="css/home-card.css?v=1">
     <link rel="stylesheet" href="css/home-tiles.css?v=1">
     <link rel="stylesheet" href="css/home-steps.css?v=1">
@@ -383,15 +383,20 @@
     <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
     <script src="js/reveal.js?v=4" defer></script>
+    <script type="module" src="js/birds/index.js?v=9"></script>
     <script type="module" src="js/birds/perch.js?v=10"></script>
     <script type="module" src="js/contact/index.js?v=12"></script>
     <script type="module" src="js/os/index.js?v=4"></script>
     <script type="module" src="js/desk/index.js?v=9"></script>
 </head>
 
-<body class="os desk">
+<body class="os desk" data-birds="dense">
 
     <a class="skip-link" href="#studio-intro">Aller au contenu</a>
+
+    <!-- Le ciel : une nuée d'oiseaux traverse l'écran, sous le contenu ;
+         ils s'effacent devant les textes (js/birds). -->
+    <canvas id="birdCanvas" aria-hidden="true"></canvas>
 
     <!-- BARRE DE MENUS — le nom et les pages, l'oiseau au centre, la
          lumière et l'heure de Lausanne, la recherche, Contact. -->
@@ -464,15 +469,12 @@
                     <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein">Démarrer un projet</a>
                     <a href="/realisations" class="key-btn">Voir le travail</a>
                 </div>
-                <ul class="hero__facts" aria-label="Nos engagements">
-                    <li>Prix affichés</li>
-                    <li>Code sur mesure</li>
-                    <li>Hébergé en Suisse</li>
-                    <li>Réponse sous 24&nbsp;h ouvrées</li>
-                </ul>
             </div>
+        </section>
 
-            <!-- LA VITRINE — les projets défilent dans la grande fenêtre. -->
+        <!-- LA VITRINE — les projets défilent dans la grande fenêtre. -->
+        <section class="showcase-band" aria-label="Projets récents">
+
             <figure class="showcase" data-showcase>
                 <div class="win showcase__win">
                     <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--file" aria-hidden="true"></span><span data-showcase-title>Zinéma</span></span></div>
