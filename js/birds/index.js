@@ -19,9 +19,9 @@
    versions de ces fichiers. Une adresse neuve les en libère. Le
    serveur revalide désormais les scripts à chaque visite (.htaccess) :
    ce numéro n'aura plus à bouger. */
-import { FLIGHT_COLORS, VIVID_COLORS } from './frames.js?v=8';
+import { FLIGHT_COLORS, VIVID_COLORS } from './frames.js?v=9';
 import { createSpriteBank } from './sprites.js?v=7';
-import { createFlock, TEXT_DIM } from './flock.js?v=10';
+import { createFlock, TEXT_DIM } from './flock.js?v=11';
 import { createShyness } from './shyness.js?v=5';
 
 /* Échelles de dessin disponibles, de l'oiseau le plus lointain au
@@ -79,6 +79,25 @@ function initBirds() {
         pointer: null,
     };
 
+    /* Deux montages du calque : fixé à l'écran (toutes les pages), ou
+       attaché à une section qu'il suit au défilement (le premier
+       écran de l'accueil). Les zones de texte et le curseur sont
+       ramenés dans les coordonnées du calque dans les deux cas. */
+    const pinned = window.getComputedStyle(canvas).position === 'fixed';
+    let inView = true;
+
+    /** Haut du calque dans la page, en px. */
+    function canvasTop() {
+        return pinned ? window.scrollY : canvas.getBoundingClientRect().top + window.scrollY;
+    }
+
+    /** @param {PointerEvent} event */
+    function toCanvas(event) {
+        if (pinned) return { x: event.clientX, y: event.clientY };
+        const rect = canvas.getBoundingClientRect();
+        return { x: event.clientX - rect.left, y: event.clientY - rect.top };
+    }
+
     /* Le curseur, pour que les oiseaux s'en écartent. Le calque est
        fixé à l'écran : les coordonnées du curseur sont directement
        celles du dessin. Au doigt, seul le moment du toucher compte —
@@ -87,11 +106,11 @@ function initBirds() {
     let touchTimer = 0;
     window.addEventListener('pointermove', (event) => {
         if (event.pointerType === 'touch') return;
-        sky.pointer = { x: event.clientX, y: event.clientY };
+        sky.pointer = toCanvas(event);
     }, { passive: true });
     window.addEventListener('pointerdown', (event) => {
         if (event.pointerType !== 'touch') return;
-        sky.pointer = { x: event.clientX, y: event.clientY };
+        sky.pointer = toCanvas(event);
         window.clearTimeout(touchTimer);
         touchTimer = window.setTimeout(() => { sky.pointer = null; }, TOUCH_MS);
     }, { passive: true });
@@ -136,7 +155,7 @@ function initBirds() {
         }
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        shyness.frame(window.scrollY, canvas.height);
+        shyness.frame(canvasTop(), canvas.height);
         flock.advance(delta, sky, shyness);
 
         for (const bird of flock.birds) {
@@ -177,7 +196,7 @@ function initBirds() {
         stop();
         resizeCanvas();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        shyness.frame(window.scrollY, canvas.height);
+        shyness.frame(canvasTop(), canvas.height);
 
         const ladder = ladderFor(canvas.width);
         const biggest = ladder[ladder.length - 1];
@@ -202,8 +221,16 @@ function initBirds() {
 
     function syncPlayback() {
         if (motionQuery.matches) drawStill();
-        else if (document.hidden) stop();
+        else if (document.hidden || !inView) stop();
         else start();
+    }
+
+    // Attaché à une section, le ciel ne vole que lorsqu'elle est à l'écran.
+    if (!pinned && 'IntersectionObserver' in window) {
+        new IntersectionObserver(([entry]) => {
+            inView = entry.isIntersecting;
+            syncPlayback();
+        }).observe(canvas);
     }
 
     /* Le calque étant fixe, les oiseaux immobiles se retrouveraient

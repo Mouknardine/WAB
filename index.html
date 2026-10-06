@@ -366,7 +366,7 @@
     <link rel="stylesheet" href="css/os-overlay.css?v=3">
     <!-- Accueil « bureau rangé » -->
     <link rel="stylesheet" href="css/desk-objects.css?v=8">
-    <link rel="stylesheet" href="css/desk-hero.css?v=14">
+    <link rel="stylesheet" href="css/desk-hero.css?v=15">
     <link rel="stylesheet" href="css/desk-keys.css?v=3">
     <link rel="stylesheet" href="css/desk-showcase.css?v=2">
     <link rel="stylesheet" href="css/home-head.css?v=4">
@@ -383,7 +383,7 @@
     <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
     <script src="js/reveal.js?v=4" defer></script>
-    <script type="module" src="js/birds/index.js?v=12"></script>
+    <script type="module" src="js/birds/index.js?v=13"></script>
     <script type="module" src="js/birds/perch.js?v=10"></script>
     <script type="module" src="js/contact/index.js?v=12"></script>
     <script type="module" src="js/os/index.js?v=4"></script>
@@ -393,11 +393,6 @@
 <body class="os desk" data-birds="dense" data-birds-colors="vives" data-birds-sky="top">
 
     <a class="skip-link" href="#studio-intro">Aller au contenu</a>
-
-    <!-- Le ciel : une nuée d'oiseaux de toutes les couleurs traverse le
-         haut de l'écran, sous le contenu ; ils s'effacent devant les
-         textes (js/birds). -->
-    <canvas id="birdCanvas" aria-hidden="true"></canvas>
 
     <!-- BARRE DE MENUS — le nom et les pages, l'oiseau au centre, la
          lumière et l'heure de Lausanne, la recherche, Contact. -->
@@ -461,6 +456,10 @@
              promesse, deux touches, quatre garanties ; puis la vitrine
              des projets. Rien autour : le bureau est rangé. -->
         <section class="hero" id="studio-intro" tabindex="-1" aria-labelledby="heroTitle">
+            <!-- Le ciel : une volée d'oiseaux blancs et bleus (un rose de temps
+                 en temps) traverse le premier écran et défile avec lui ;
+                 ils s'effacent devant les textes (js/birds). -->
+            <canvas id="birdCanvas" aria-hidden="true"></canvas>
             <div class="hero__center">
                 <!-- « agence web » et « site internet » à Lausanne restent
                      dans le H1, lus par Google et la navigation vocale. -->

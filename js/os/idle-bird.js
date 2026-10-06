@@ -12,7 +12,7 @@
  */
 
 import { createSpriteBank } from '../birds/sprites.js?v=7';
-import { BODY_COLORS } from '../birds/frames.js?v=8';
+import { BODY_COLORS } from '../birds/frames.js?v=9';
 
 const IDLE_MS = 9000;
 const ARRIVE_MS = 1300;

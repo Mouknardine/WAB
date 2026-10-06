@@ -15,7 +15,17 @@
     overflow-x: clip;
 }
 
+/* Le ciel est attaché au premier écran (et non fixé à la fenêtre) :
+   il défile avec lui, sous le texte. */
+.hero > #birdCanvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
 .hero__center {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
