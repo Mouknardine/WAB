@@ -1,50 +1,74 @@
 /* ============================================
    WAB OS — le pied de page (partagé)
-   Papier blanc, un filet en haut : le nom et la promesse, puis trois
-   colonnes (Studio, Expertises,
-   Contact), et une ligne de mentions sous un second filet. Rien qui
-   bouge : c'est la fin de la page, elle doit être nette et lisible.
+   Papier blanc, un filet en haut. L'invitation d'abord : l'adresse en
+   grand, l'heure du studio. Puis les pages en deux colonnes et la
+   promesse. Pour finir, « WAB. » en grandes touches de clavier (le
+   dessin de desk-keys.css) sur toute la largeur, des oiseaux posés
+   dessus (js/birds/perch.js) ; une ligne de mentions dessous.
    ============================================ */
 
 .foot {
     margin-top: clamp(72px, 10vw, 140px);
-    padding: clamp(56px, 7vw, 88px) 0 28px;
+    padding: clamp(64px, 8vw, 104px) 0 28px;
     border-top: var(--hair) solid var(--line);
     background: var(--paper);
     font-size: var(--t-small);
 }
 
-.foot__main {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 40px 24px;
-}
-
-/* ── Le nom et la promesse ── */
-.foot__brand {
-    grid-column: 1 / -1;
+/* ── L'invitation ── */
+.foot__hello {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 14px;
 }
 
-.foot__logo {
-    font-size: 1.5rem;
-    font-weight: var(--w-medium);
-    letter-spacing: -0.03em;
-    line-height: 1;
-    color: var(--ink);
-}
-
-.foot__pitch {
-    max-width: 30ch;
-    font-size: 1rem;
-    line-height: 1.5;
+.foot__kicker {
+    font-size: var(--t-lede);
     color: var(--ink-muted);
 }
 
-/* ── Les colonnes ── */
+/* L'adresse tient toujours sur une ligne : sa taille suit la largeur
+   (24 caractères, environ 13,5 cadratins). */
+.foot__mail {
+    font-size: min(4.5rem, (100vw - 2 * var(--gutter)) / 13.5);
+    font-weight: var(--w-medium);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    white-space: nowrap;
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-thickness: max(2px, 0.04em);
+    text-decoration-color: var(--line-strong);
+    text-underline-offset: 0.16em;
+    transition: color var(--dur-1) var(--ease-out), text-decoration-color var(--dur-1) var(--ease-out);
+}
+
+@media (hover: hover) {
+    .foot__mail:hover {
+        color: var(--klein);
+        text-decoration-color: var(--klein);
+    }
+}
+
+.foot__meta {
+    color: var(--ink-muted);
+    text-wrap: balance;
+}
+
+.foot__meta time {
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+}
+
+/* ── Les pages et la promesse ── */
+.foot__main {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 24px;
+    margin-top: clamp(48px, 6vw, 80px);
+}
+
 .foot__col {
     display: flex;
     flex-direction: column;
@@ -62,15 +86,10 @@
     color: var(--ink-faint);
 }
 
-.foot__col a,
-.foot__col p {
+.foot__col a {
     display: inline-flex;
     align-items: center;
     min-height: 32px;
-    max-width: 100%;
-}
-
-.foot__col a {
     color: var(--ink);
     text-decoration: underline;
     text-decoration-color: oklch(0 0 0 / 0);
@@ -78,19 +97,55 @@
     transition: text-decoration-color var(--dur-1) var(--ease-out);
 }
 
-.foot__col p {
-    color: var(--ink-muted);
-}
-
-.foot__col time {
-    margin-inline: 0.3em;
-    font-variant-numeric: tabular-nums;
-    color: var(--ink);
-}
-
 @media (hover: hover) {
     .foot__col a:hover {
         text-decoration-color: var(--line-strong);
+    }
+}
+
+.foot__pitch {
+    grid-column: 1 / -1;
+    max-width: 34ch;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--ink-muted);
+}
+
+/* ── « WAB. » en touches ── quatre touches et trois espaces d'un
+   dixième : 4,3 largeurs de touche sur la largeur du contenu
+   (sélecteur appuyé : desk-keys.css, chargé après, fixe sa taille). */
+.foot .foot__keys {
+    --key: min(240px, (100vw - 2 * var(--gutter)) / 4.3);
+    justify-content: space-between;
+    margin-top: clamp(72px, 9vw, 120px);
+}
+
+/* La frappe d'ouverture est celle du premier écran, pas du pied de page. */
+.foot__keys .key__face {
+    animation: none;
+}
+
+/* Les oiseaux posés sur l'arête haute de leur touche : le bas du
+   dessin est vide sur un quart de sa hauteur, on l'y fait descendre. */
+.foot__bird {
+    position: absolute;
+    bottom: 100%;
+    translate: 0 33%;
+    left: 14%;
+    z-index: 1;
+    image-rendering: pixelated;
+    pointer-events: none;
+}
+
+.foot__bird--far {
+    left: 52%;
+}
+
+/* Au téléphone, les touches sont petites : un oiseau de moitié. */
+@media (max-width: 599px) {
+    .foot__bird {
+        scale: 0.5;
+        transform-origin: bottom left;
     }
 }
 
@@ -100,34 +155,22 @@
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 6px 24px;
-    margin-top: clamp(48px, 6vw, 72px);
+    margin-top: clamp(28px, 4vw, 40px);
     padding-top: 20px;
     border-top: var(--hair) solid var(--line);
     font-size: var(--t-cap);
     color: var(--ink-faint);
 }
 
-/* Au téléphone, le contact prend toute la ligne : l'adresse e-mail
-   tient sans se couper. */
-@media (max-width: 599px) {
-    .foot__col:last-child {
-        grid-column: 1 / -1;
-    }
-}
-
-@media (min-width: 600px) {
-    .foot__main {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
-
 @media (min-width: 900px) {
     .foot__main {
-        grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr));
-        gap: 40px 32px;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
+        gap: 32px;
     }
 
-    .foot__brand {
+    .foot__pitch {
         grid-column: auto;
+        justify-self: end;
+        text-align: right;
     }
 }

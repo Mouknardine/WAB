@@ -520,7 +520,8 @@
     <link rel="stylesheet" href="css/os-bar.css?v=4">
     <link rel="stylesheet" href="css/os-window.css?v=4">
     <link rel="stylesheet" href="css/os-bubbles.css?v=2">
-    <link rel="stylesheet" href="css/os-footer.css?v=5">
+    <link rel="stylesheet" href="css/os-footer.css?v=8">
+    <link rel="stylesheet" href="css/desk-keys.css?v=3">
     <link rel="stylesheet" href="css/os-dock.css?v=5">
     <link rel="stylesheet" href="css/os-overlay.css?v=3">
     <link rel="stylesheet" href="css/os-sticker.css?v=2">
@@ -537,7 +538,7 @@
     <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
     <script type="module" src="js/birds/index.js?v=17"></script>
-    <script type="module" src="js/birds/perch.js?v=10"></script>
+    <script type="module" src="js/birds/perch.js?v=11"></script>
     <script type="module" src="js/contact/index.js?v=12"></script>
     <script type="module" src="js/os/index.js?v=4"></script>
     <script type="module" src="js/page-work/index.js?v=4"></script>
@@ -1256,15 +1257,18 @@
 
     </main>
 
-    <!-- PIED DE PAGE — le nom et la promesse, les pages, les expertises,
-         le contact ; une ligne de mentions. Sobre, sur papier blanc. -->
+    <!-- PIED DE PAGE — l'invitation (l'adresse en grand, l'heure du
+         studio), les pages, puis « WAB. » en grandes touches de clavier
+         où des oiseaux se sont posés : ils battent des ailes quand on
+         survole leur touche. -->
     <footer class="foot">
         <div class="desk-wrap">
+            <div class="foot__hello">
+                <p class="foot__kicker">Un projet en tête&nbsp;? Écrivez-nous.</p>
+                <a class="foot__mail" href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
+                <p class="foot__meta">Lausanne, Suisse · il est <time data-local-time>--:--</time> au studio · réponse sous 24&nbsp;h ouvrées</p>
+            </div>
             <div class="foot__main">
-                <div class="foot__brand">
-                    <a href="/" class="foot__logo" aria-label="WAB., accueil">WAB.</a>
-                    <p class="foot__pitch">Studio de design et de technologie à&nbsp;Lausanne. Marques, sites et produits numériques.</p>
-                </div>
                 <nav class="foot__col" aria-label="Pages">
                     <p class="foot__label">Studio</p>
                     <a href="/realisations">Work</a>
@@ -1276,12 +1280,13 @@
                     <a href="/creation-site-internet-lausanne">Création de site internet</a>
                     <a href="/applications">Applications de gestion</a>
                 </nav>
-                <div class="foot__col">
-                    <p class="foot__label">Contact</p>
-                    <a href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
-                    <p>Lausanne, Suisse</p>
-                    <p>Il est <time data-local-time>--:--</time> au studio</p>
-                </div>
+                <p class="foot__pitch">Studio de design et de technologie à&nbsp;Lausanne. Marques, sites et produits numériques.</p>
+            </div>
+            <div class="foot__keys keys" aria-hidden="true" translate="no">
+                <span class="key" data-perch-host><canvas class="foot__bird" data-perch="flap" data-scale="3" data-color="1"></canvas><span class="key__face">W</span></span>
+                <span class="key"><span class="key__face">A</span></span>
+                <span class="key" data-perch-host><canvas class="foot__bird foot__bird--far" data-perch="flap" data-scale="2" data-color="2"></canvas><span class="key__face">B</span></span>
+                <span class="key key--dot" data-perch-host><canvas class="foot__bird" data-perch="flap" data-scale="3" data-color="3"></canvas><span class="key__face">.</span></span>
             </div>
             <div class="foot__bar">
                 <p>&copy; 2026 WeAreBrothers Studio</p>

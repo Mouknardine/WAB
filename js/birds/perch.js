@@ -1,8 +1,9 @@
 /**
  * WAB. — L'oiseau de la barre de menus
  * Un oiseau du ciel du site dessiné en petit, au centre de la barre :
- * la signature du studio. Il bat des ailes tant que son lien parent
- * est survolé ou a le focus.
+ * la signature du studio ; d'autres sont posés sur les touches du pied
+ * de page. Chacun bat des ailes tant que son hôte (lien, bouton ou
+ * élément [data-perch-host]) est survolé ou a le focus.
  *
  *   <canvas data-perch="flap" data-scale="1" data-color="4"></canvas>
  *
@@ -60,7 +61,7 @@ function setupPerch(canvas) {
     }
 
     land();
-    const host = canvas.closest('a, button') || canvas;
+    const host = canvas.closest('a, button, [data-perch-host]') || canvas;
     host.addEventListener('pointerenter', flap);
     host.addEventListener('pointerleave', land);
     host.addEventListener('focusin', flap);
