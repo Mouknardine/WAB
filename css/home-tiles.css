@@ -1,0 +1,97 @@
+/* ============================================
+   WAB OS — les aperçus posés dans les tuiles (accueil)
+   Une seule mini-interface réelle par tuile : la fenêtre d'un site
+   livré, l'écran de l'application de gestion (données de
+   démonstration), ou trois notifications d'automatisation. La
+   fenêtre sort de la tuile par la droite et par le bas, comme posée
+   sur un bureau plus grand : la tuile la coupe net.
+   ============================================ */
+
+.tile-win {
+    position: absolute;
+    top: 48px;
+    bottom: -14px;
+    left: 18%;
+    right: -14%;
+    box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--shadow-object);
+}
+
+.tile-win .win__body img {
+    object-position: top left;
+}
+
+/* L'écran de l'application est dense : on le montre plus grand, coupé
+   comme la fenêtre, pour que les montants se lisent. */
+.tile-win--app .win__body img {
+    width: 150%;
+    max-width: none;
+    height: auto;
+}
+
+/* La mention « Données de démonstration » reste dans la part visible
+   de la fenêtre : en bas à gauche, au-dessus du bord coupé. */
+.tile-win .win__demo {
+    right: auto;
+    left: 8px;
+    bottom: 22px;
+}
+
+/* ── Les notifications ── trois lignes posées l'une sous l'autre :
+   l'icône, le document, son état. */
+.notifs {
+    position: absolute;
+    inset: 48px 18px auto;
+    display: grid;
+    gap: 8px;
+}
+
+.notif {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+    min-height: 40px;
+    padding: 6px 12px 6px 6px;
+    border-radius: var(--r-ctl);
+    background: var(--paper);
+    box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--shadow-object);
+    font-size: var(--t-small);
+    line-height: 1.2;
+    color: var(--glass-ink);
+}
+
+.notif__icon {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    aspect-ratio: 1;
+    border-radius: var(--r-key);
+    background: var(--klein-wash);
+    color: var(--klein);
+}
+
+.notif__name {
+    font-weight: var(--w-strong);
+}
+
+.notif__state {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--klein-ink);
+}
+
+@media (min-width: 900px) {
+    .tile-win,
+    .notifs {
+        top: 52px;
+    }
+
+    .notifs {
+        gap: 10px;
+    }
+
+    .notif {
+        min-height: 42px;
+    }
+}

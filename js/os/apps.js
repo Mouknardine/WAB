@@ -1,7 +1,7 @@
 // @ts-check
 /**
  * WAB OS — les lanceurs
- * Chaque app (dossier Work, fiche projet, terminal, corbeille,
+ * Chaque app (dossier Work, fiche projet, terminal,
  * palette, menu du clic droit) n'est chargée qu'à sa première
  * ouverture : sa feuille de style, puis son module. Si le chargement
  * échoue, le visiteur n'est jamais bloqué : on l'envoie vers la page
@@ -55,14 +55,6 @@ export function launchTerminal(opener) {
         await styles('os-terminal');
         (await import('./terminal.js?v=5')).openTerminal(opener);
     }, () => toast('Le terminal n’a pas pu s’ouvrir.'));
-}
-
-/** @param {HTMLElement | null} opener */
-export function launchTrash(opener) {
-    launch('trash', async () => {
-        await styles();
-        (await import('./trash.js?v=3')).openTrash(opener);
-    }, () => toast('La corbeille est vide.'));
 }
 
 /** @param {HTMLElement | null} opener */

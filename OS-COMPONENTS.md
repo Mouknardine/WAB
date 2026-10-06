@@ -6,7 +6,7 @@ Direction **Klein** (3 octobre 2026, branche `klein`) : la structure de heyclick
 
 ## 1. Mise en place d'une page
 
-1. `<body class="os">` — c'est la classe `os` qui porte les jetons, le fond blanc à grain fin et le bleu système (sélection, focus, curseur). Ajoutez `data-birds="rare"` pour deux à quatre oiseaux (l'accueil), rien pour le régime calme.
+1. `<body class="os">` — c'est la classe `os` qui porte les jetons, le fond blanc à grain fin et le bleu système (sélection, focus, curseur). Ajoutez `data-birds="rare"` pour deux à quatre oiseaux, rien pour le régime calme. L'accueil n'a plus de volée depuis le 06.10 : seul l'oiseau-logo de la barre.
 2. Dans le `<head>`, après les balises SEO :
 
 ```html
@@ -59,6 +59,7 @@ Toutes les valeurs vivent ici, en OKLCH, aucune valeur en dur ailleurs. Les prin
 | `--klein-tint`, `--klein-wash`, `--klein-soft` | barre de fenêtre ; survols ; bleu lisible sur surface sombre |
 | `--on-klein` | le blanc fixe posé sur le Klein (ne s'inverse jamais) |
 | `--accent`, `--on-accent`, `--mark` | texte d'accent et focus ; texte sur l'accent ; sélection (s'inversent sur `.on-klein`) |
+| `--bubble-ask`, `--bubble-reply`, `--bubble-reply-ink`, `--bubble-reply-edge` | les bulles ; sur `.on-klein`, la réponse passe en blanc à texte Klein |
 | `--desk`, `--paper`, `--panel` | blanc de la page ; blanc des cartes ; gris chaud des grands panneaux |
 | `--ink`, `--ink-muted`, `--ink-faint` | encre 18,8:1, gris 7,1:1 et 5,5:1 sur blanc |
 | `--line`, `--line-strong`, `--edge` | filets ; liseré d'un pixel des objets |
@@ -67,7 +68,7 @@ Toutes les valeurs vivent ici, en OKLCH, aucune valeur en dur ailleurs. Les prin
 | `--relief`, `--shadow-object`, `--shadow-soft`, `--shadow-lift`, `--sheet` | relief éclairé d'en haut ; ombres ; la feuille décalée de 7 px (effet de pile) |
 | `--key-klein`, `--key-light` (+ `-relief`, `--key-pressed`) | les touches |
 | `--win-bar`, `--win-bar-ink`, `--win-frame`, `--win-frame-color`, `--win-tilt` | la fenêtre |
-| `--r-win` 12, `--r-panel` 20, `--r-ctl` 8, `--r-key` 6, `--r-icon` 22 % | les rayons |
+| `--r-win` 12, `--r-panel` 20, `--r-ctl` 8, `--r-key` 6, `--r-pill` | les rayons |
 | `--font-display` (Instrument Sans), `--font-mono` (Sligoil), `--w-regular/medium/strong` 400/500/600 | typo |
 | `--t-*`, `--track-optical`, `--track-caps`, `--gutter`, `--section`, `--measure` | échelle et rythme |
 | `--sky-dawn/day/dusk/night` | la lumière de l'heure (blanc froid, voile bleu) |
@@ -191,7 +192,7 @@ La question en gris chaud, la réponse de WAB en bleu Klein (texte blanc). Ce so
 
 - **Symboles au trait** (masques CSS, couleur du texte) : `<span class="sym sym--search" aria-hidden="true"></span>`. Disponibles : `arrow` (↗), `bolt`, `chart`, `file`, `folder`, `grid`, `mail`, `moon`, `notes`, `search`, `site`, `sun`, `team`, `terminal`, `trash`, `turn` (↳). `sym-check.svg` et `sym-plus.svg` s'emploient en `mask` direct.
 - **Icônes d'app** : des touches de clavier 3D (jupe, face éclairée d'en haut à gauche, pictogramme gravé). Blanches, sauf Terminal (encre) et Contact (Klein) : `<img class="app-icon" src="assets/icons/app-work.svg?v=4" alt="" width="56" height="56">`. Disponibles : `work`, `services`, `about`, `notes`, `terminal`, `mail`, `trash`, `file`. Générées par un script (lumière commune) : ne pas les retoucher à la main.
-- **Objets en relief** (`assets/objects/obj-*.svg` : `window`, `pencil`, `card`, `tee`) : décor de l'accueil, dans les marges, sur grand écran (`css/desk-floaters.css`).
+- **Objets en relief** (fenêtre, crayon, carte, t-shirt isométriques) : retirés du site le 06.10 (« bureau rangé », rien de travers) ; les SVG restent dans l'historique git.
 - Seuls les oiseaux restent en pixel art ; le grand « WAB. » du pied de page est en lignes.
 
 ## 8 bis. L'autocollant — `css/os-sticker.css`
@@ -202,7 +203,7 @@ Une seule version pour tout le site : encre Klein, marge de découpe blanche de 
 <span class="sticker"><span class="sticker__hello">HELLO</span><span class="sticker__mine">my name is</span><span class="sticker__name" translate="no">WAB.</span></span>
 ```
 
-Kaomoji : deux sur tout le site (le salut de l'accueil, le « (o_O) » de la 404). N'en ajoutez pas.
+Kaomoji : un seul sur tout le site, le « (o_O) » de la 404 (l'accueil n'a plus ni autocollant ni kaomoji depuis le 06.10). N'en ajoutez pas.
 
 ## 8 ter. Les oiseaux — `js/birds/frames.js`
 

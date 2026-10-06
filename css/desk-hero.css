@@ -1,54 +1,32 @@
 /* ============================================
-   WAB. — Accueil « bureau » : le premier écran
-   Sur le bureau à trame de points, comme le reste du site (Eliott,
-   03.10 : le premier écran bleu à lignes a été retiré). Le centre
-   reste parfaitement net : le nom en encre, la promesse, deux
-   touches, une ligne fine, puis la grande fenêtre encadrée qui fait
-   défiler les projets. Le désordre (desk-scatter.css) reste en
-   bordure, jamais sous le texte.
+   WAB. — Accueil : le premier écran
+   Sur le bureau à trame de points. Le centre net, rien autour : le
+   nom en touches, la promesse, deux touches, les garanties en
+   pastilles (home-head.css), puis la vitrine des projets
+   (desk-showcase.css), qui commence dans le premier écran.
    ============================================ */
 
 .hero {
     position: relative;
-    /* Les fenêtres qui débordent du bord sont coupées par l'écran,
-       sans créer de défilement horizontal. */
     overflow-x: clip;
-    padding-bottom: clamp(56px, 8vw, 104px);
 }
 
 .hero__center {
-    position: relative;
-    z-index: 5;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 214px var(--gutter) 0;
+    padding: calc(var(--bar-h) + clamp(48px, 8vw, 96px)) var(--gutter) 0;
     text-align: center;
-    /* Le centre laisse passer le glisser des fenêtres autour : seuls
-       ses textes et boutons captent le pointeur. */
-    pointer-events: none;
 }
 
-.hero__center > * {
-    pointer-events: auto;
-}
-
-/* Le nom en touches de clavier : leur dessin est dans desk-keys.css.
-   Sur grand écran, un peu d'air sous le nom de fichier de la fenêtre
-   posée au-dessus. */
+/* Le nom en touches de clavier : leur dessin est dans desk-keys.css. */
 .hero__title {
     line-height: 1;
 }
 
-@media (min-width: 1180px) {
-    .hero__title {
-        margin-top: 32px;
-    }
-}
-
 .hero__lede {
-    margin-top: clamp(14px, 2vw, 22px);
-    max-width: 48ch;
+    margin-top: clamp(18px, 2.4vw, 26px);
+    max-width: 44ch;
     font-size: var(--t-lede);
     line-height: 1.45;
     text-wrap: balance;
@@ -58,33 +36,17 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 14px;
+    gap: 12px;
     width: min(100%, 300px);
-    margin-top: clamp(26px, 3vw, 34px);
-}
-
-.hero__note {
-    margin-top: 16px;
-    font-size: var(--t-small);
-    color: var(--ink-faint);
+    margin-top: clamp(26px, 3vw, 32px);
 }
 
 @media (min-width: 600px) {
-    .hero__center {
-        padding-top: 250px;
-    }
-
     .hero__actions {
         flex-direction: row;
         justify-content: center;
         width: auto;
-        gap: 18px;
-    }
-}
-
-@media (min-width: 1280px) {
-    .hero__center {
-        padding-top: 238px;
+        gap: 16px;
     }
 }
 

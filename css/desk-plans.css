@@ -1,160 +1,80 @@
 /* ============================================
-   WAB OS — trois façons de travailler avec nous
-   Une bande gris chaud (--panel) entre deux filets ; trois fenêtres,
-   trois paliers (prix d'Eliott, 3.10). Celle du milieu est cerclée de
-   Klein, barre bleue et touche principale. Dessous, « > contact ».
+   WAB OS — les offres (accueil)
+   Une bande gris chaud (--panel) entre deux filets ; trois cartes WAB
+   (home-card.css), trois paliers (prix d'Eliott, 3.10). La tuile porte
+   l'objectif, le nom et le prix ; le corps, l'accroche, le périmètre
+   et ce qui est inclus. Celle du milieu, recommandée, a la tuile
+   Klein pleine et la touche principale.
    ============================================ */
 
 .plans {
-    position: relative;
     margin-top: var(--section);
-    padding: clamp(72px, 9vw, 120px) 0 clamp(80px, 10vw, 140px);
-    border-block: var(--hair) solid var(--edge);
+    padding-block: var(--section);
+    border-block: var(--hair) solid var(--line);
     background: var(--panel);
-}
-
-.plans .section-head {
-    gap: 14px;
-}
-
-.plans__title {
-    max-width: 22ch;
-    font-size: clamp(2rem, 5vw, 3.4rem);
-    font-weight: var(--w-medium);
-    line-height: 1.05;
-    letter-spacing: var(--track-optical);
-    text-wrap: balance;
-}
-
-.plans__lede {
-    max-width: 46ch;
-    color: var(--ink-muted);
-    text-wrap: balance;
 }
 
 .plans__grid {
     display: grid;
-    gap: 18px;
-    margin-top: clamp(36px, 5vw, 56px);
+    gap: 12px;
     list-style: none;
 }
 
 .plan {
-    position: relative;
+    --rows: 6;
+}
+
+/* ── La tuile ── l'objectif en haut, le nom, puis le prix en grand.
+   La tuile sert d'étalon au prix (et non la carte : un conteneur de
+   requêtes ne peut pas être une sous-grille). */
+.plan__tile {
     container-type: inline-size;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    border-radius: var(--r-win);
-    background: var(--paper);
-    box-shadow: 0 0 0 var(--hair) var(--win-edge), var(--win-shadow);
-}
-
-.plan__bar {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-    align-items: center;
-    height: var(--win-bar-h);
-    padding: 0 10px;
-    border-radius: var(--r-win) var(--r-win) 0 0;
-    background: var(--win-bar);
-    box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.4), inset 0 -1px 0 oklch(0.38 0.24 266 / 0.1);
-    font-family: var(--font-mono);
-    color: var(--win-bar-ink); /* la barre des fenêtres */
-}
-
-.plan__bar::after {
-    content: '[*]';
-    grid-column: 3;
-    justify-self: end;
-    font-size: 10px;
-    line-height: 1;
-}
-
-.plan--main {
-    box-shadow: 0 0 0 2px var(--klein), var(--sheet), var(--win-shadow);
-}
-
-.plan--main .plan__bar {
-    background: var(--klein);
-    box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.24);
-    color: var(--on-klein);
-}
-
-/* « Ce qui nous distingue » : une étiquette Klein en Sligoil, à cheval
-   sur le haut de la carte. */
-.plan__badge {
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 50%;
-    translate: -50% -50%;
-    padding: 5px 10px;
-    border-radius: var(--r-key);
-    background: var(--paper);
-    box-shadow: 0 0 0 var(--hair) var(--klein), var(--relief), var(--shadow-soft);
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: var(--track-caps);
-    text-transform: uppercase;
-    white-space: nowrap;
-    color: var(--klein);
-}
-
-.plan__body {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    padding: 22px 22px 26px;
-    text-align: center;
+    height: auto;
+    min-height: 156px;
+    padding: 16px 18px 18px;
 }
 
 .plan__name {
-    font-size: 1.5rem;
-    font-weight: var(--w-medium);
-    letter-spacing: var(--track-optical);
-}
-
-.plan__line {
-    margin-top: 8px;
-    text-wrap: balance;
-}
-
-.plan__for {
-    margin-top: 6px;
-    font-size: var(--t-small);
-    color: var(--ink-muted);
-}
-
-.plan__price {
-    display: grid;
-    justify-items: center;
-    gap: 8px;
-    width: 100%;
-    margin-top: 20px;
-    padding: 22px 0 24px;
-    border-block: 2px dotted var(--line-strong);
+    margin-top: auto;
+    padding-top: 28px;
+    font-size: 1.375rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
 }
 
 /* « 1'000 – 2'500 CHF » tient sur une ligne : la taille suit la carte. */
 .plan__amount {
-    font-size: min(2.5rem, 9cqi);
-    white-space: nowrap;
+    margin-top: 6px;
+    font-size: min(2.25rem, 10cqi);
     font-weight: var(--w-medium);
     font-variant-numeric: tabular-nums;
     line-height: 1.1;
     letter-spacing: -0.035em;
+    white-space: nowrap;
 }
 
-.plan__note {
-    margin-bottom: 8px;
-    font-size: var(--t-small);
-    color: var(--ink-muted);
+/* « Recommandé » : une pastille blanche, texte Klein, sous
+   l'objectif de la tuile pleine. */
+.plan__badge {
+    align-self: flex-start;
+    margin-top: 10px;
+    padding: 4px 10px;
+    border-radius: var(--r-pill);
+    background: var(--paper);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: var(--track-caps);
+    text-transform: uppercase;
+    color: var(--klein-ink);
+}
+
+.plan--main {
+    box-shadow: 0 0 0 2px var(--klein);
 }
 
 .plan__inc {
-    align-self: flex-start;
     margin-top: 20px;
     font-family: var(--font-mono);
     font-size: var(--t-cap);
@@ -163,35 +83,22 @@
     color: var(--ink-muted);
 }
 
-.plan__list {
-    display: grid;
-    gap: 10px;
-    width: 100%;
-    margin-top: 12px;
-    list-style: none;
-    text-align: left;
+.plan .wcard__list {
+    margin-top: 10px;
 }
 
-.plan__list li {
-    display: grid;
-    grid-template-columns: 18px minmax(0, 1fr);
-    gap: 10px;
+.plan .wcard__list li {
+    padding-block: 9px;
     font-size: var(--t-small);
-    line-height: 1.45;
-}
-
-.plan__list li::before {
-    content: '';
-    width: 18px;
-    height: 18px;
-    margin-top: 1px;
-    background: var(--ink);
-    -webkit-mask: url('../assets/icons/sym-check.svg') center / contain no-repeat;
-    mask: url('../assets/icons/sym-check.svg') center / contain no-repeat;
 }
 
 @media (min-width: 900px) {
     .plans__grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
+        row-gap: 0;
+    }
+
+    .plan__tile {
+        min-height: 172px;
     }
 }

@@ -27,8 +27,7 @@
     --mark: var(--klein);
 
     /* ── Neutres ── --ink 18,8:1, --ink-muted 7,1:1, --ink-faint 5,5:1
-       sur blanc ; sur --panel : 6,4:1 et 4,9:1. */
-    /* Un blanc à peine grisé, sous la trame de points. */
+       sur blanc ; sur --panel : 6,4:1 et 4,9:1. --desk : sous les points. */
     --desk: oklch(0.985 0 0);
     --paper: oklch(1 0 0);
     --panel: oklch(0.96 0.004 85);
@@ -54,7 +53,6 @@
     --klein-screen: var(--scan-lines), var(--scan-depth), var(--scan-glow), var(--klein);
     /* Sans vignette : écran étroit autour d'une fenêtre. */
     --klein-screen-flat: var(--scan-lines), radial-gradient(80% 70% at 30% 20%, oklch(0.6 0.24 266 / 0.55), oklch(0.6 0.24 266 / 0) 70%), var(--klein);
-    --wallpaper: var(--klein-screen);
     --dither-top: url('../assets/textures/dither-top.svg');
     --dither-bottom: url('../assets/textures/dither-bottom.svg');
     --dither-left: url('../assets/textures/dither-left.svg');
@@ -66,7 +64,6 @@
     --r-panel: 20px;
     --r-ctl: 8px;
     --r-key: 6px;
-    --r-icon: 22%;
     --r-px: 3px;
     --r-pill: 999px;
     --hair: 1px;
@@ -96,11 +93,8 @@
     --glass-edge: oklch(0.18 0.005 265 / 0.12);
     --glass-ink: oklch(0.18 0.005 265);
     --glass-specular: linear-gradient(180deg, oklch(1 0 0 / 0.14), oklch(1 0 0 / 0) 60%);
-    --glass-shadow: var(--shadow-soft);
     --glass-shadow-lift: var(--shadow-lift);
-    --smoke: oklch(0.18 0.005 265 / 0.42);
     --smoke-strong: oklch(0.18 0.005 265 / 0.82);
-    --smoke-edge: oklch(1 0 0 / 0.22);
 
     /* ── Fenêtre ── barre bleu clair, ↳, nom centré, [*] ; cadre tramé. */
     --win-bg: oklch(1 0 0);
@@ -119,6 +113,8 @@
     /* ── Bulles ── question gris chaud, réponse de WAB en bleu. */
     --bubble-ask: var(--panel);
     --bubble-reply: var(--klein);
+    --bubble-reply-ink: var(--on-klein);
+    --bubble-reply-edge: var(--klein-deep);
 
     /* ── La lumière de l’heure (os-sky.css) ── blanc froid, voile bleu. */
     --sky-top: oklch(1 0 0 / 0);
@@ -154,7 +150,6 @@
     --t-body: 1rem;
     --t-lede: clamp(1.05rem, 1.5vw, 1.25rem);
     --t-title: clamp(1.75rem, 3.4vw, 2.5rem);
-    --t-hero: clamp(5.5rem, 22vw, 11rem);
     --track-optical: calc(0.4px - 0.045em);
     --track-caps: 0.06em;
 
@@ -196,5 +191,9 @@
     --on-accent: var(--klein-ink);
     --mark: oklch(1 0 0);
     --hover-tint: oklch(1 0 0 / 0.1);
+    /* Réponse de WAB : blanche, texte Klein (8,2:1). */
+    --bubble-reply: oklch(1 0 0);
+    --bubble-reply-ink: var(--klein-ink);
+    --bubble-reply-edge: oklch(1 0 0 / 0.6);
     color: var(--ink);
 }

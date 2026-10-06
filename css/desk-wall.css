@@ -1,48 +1,28 @@
 /* ============================================
-   WAB OS — le mur
-   « Fait à Lausanne » en grand, puis les neuf projets en ligne, chacun dans sa fenêtre comme sur le
-   bureau du haut (demande d'Eliott du 3.10), et une carte de bilan.
-   Pas de fondu sur le dernier rang : les neuf sont la liste complète.
-   Les fenêtres penchent d'un rien, en alternance, comme des cartes
-   posées à la main ; au survol, la carte se redresse et se lève.
+   WAB OS — les réalisations (accueil)
+   Les neuf projets en ligne, en grille régulière : trois colonnes de
+   fenêtres de même hauteur, droites. Sous chaque fenêtre, le nom du
+   projet et son contexte (repris de /realisations). Toute la carte
+   ouvre la fiche du projet. Au survol, seul le liseré change.
+   Au téléphone, les quatre premiers projets ; la touche mène aux neuf.
    ============================================ */
 
-.wall .section-head {
-    padding-inline: var(--gutter);
-}
-
-/* ── Le titre ── une seule ligne, en grand (sans répétition, demande
-   d'Eliott du 3.10). */
-.wall__title {
-    margin-top: 16px;
-    padding-inline: var(--gutter);
-    font-size: clamp(2.2rem, 6vw, 4.4rem);
-    font-weight: var(--w-medium);
-    line-height: 1.05;
-    letter-spacing: var(--track-optical);
-    text-align: center;
-    text-wrap: balance;
-}
-
-/* ── La grille ── */
 .wall__grid {
     display: grid;
-    gap: 28px 22px;
-    margin-top: clamp(28px, 4vw, 44px);
+    gap: 28px 16px;
     list-style: none;
 }
 
-/* Chaque projet dans sa fenêtre, comme sur le bureau du haut : la
-   capture 16:10, le nom dans la barre, l'adresse en nom de fichier.
-   Toute la fenêtre ouvre la fiche du projet. */
 .shot {
-    display: block;
+    display: grid;
+    gap: 4px;
     color: inherit;
     -webkit-tap-highlight-color: transparent;
 }
 
 .shot .win {
-    transition: translate var(--dur-3) var(--ease-spring), box-shadow var(--dur-2) var(--ease-out);
+    margin-bottom: 10px;
+    transition: box-shadow var(--dur-1) var(--ease-out);
 }
 
 .shot .win__title {
@@ -53,9 +33,15 @@
     aspect-ratio: 16 / 10;
 }
 
-/* La capture s'avance doucement dans sa fenêtre au survol. */
-.shot .win__body img {
-    transition: scale 0.6s var(--ease-out);
+.shot__name {
+    font-weight: var(--w-medium);
+    line-height: 1.3;
+}
+
+.shot__context {
+    font-size: var(--t-small);
+    line-height: 1.4;
+    color: var(--ink-muted);
 }
 
 .shot:focus-visible {
@@ -63,64 +49,40 @@
 }
 
 .shot:focus-visible .win {
-    box-shadow: 0 0 0 2px var(--accent), var(--win-shadow-lift);
-}
-
-.shot:focus-visible .file-name {
-    background: var(--accent);
-    color: var(--on-accent);
+    box-shadow: 0 0 0 2px var(--accent), var(--win-shadow);
 }
 
 @media (hover: hover) {
     .shot:hover .win {
-        translate: 0 -6px;
-        box-shadow: 0 0 0 var(--hair) var(--win-edge), var(--win-shadow-lift);
+        box-shadow: 0 0 0 var(--hair) var(--klein), var(--win-shadow);
     }
 
-    .shot:hover .win__body img {
-        scale: 1.035;
+    .shot:hover .shot__name {
+        color: var(--klein);
     }
 }
 
-/* ── La carte de bilan ── */
-.wall__banner {
-    position: relative;
-    z-index: 2;
+.wall__more {
+    display: flex;
+    justify-content: center;
     margin-top: 36px;
-    padding: 22px 24px;
-    border: var(--hair) solid var(--edge);
-    border-radius: var(--r-panel);
-    background: var(--panel);
-    box-shadow: var(--relief), var(--sheet);
-    font-size: clamp(1rem, 1.6vw, 1.2rem);
-    font-weight: var(--w-medium);
-    text-align: center;
-    text-wrap: balance;
 }
 
-.wall__banner a {
-    color: var(--klein);
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 4px;
+@media (max-width: 599px) {
+    .wall__grid > li:nth-child(n + 5) {
+        display: none;
+    }
 }
 
 @media (min-width: 600px) {
     .wall__grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-
 }
 
 @media (min-width: 960px) {
     .wall__grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        padding-bottom: 48px;
-    }
-
-    /* La colonne du milieu descend d'un cran : le rythme d'un mur, pas
-       celui d'un tableau. La marge du bas lui garde sa place. */
-    .wall__grid li:nth-child(3n + 2) {
-        translate: 0 48px;
+        gap: 36px 16px;
     }
 }

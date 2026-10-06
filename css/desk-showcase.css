@@ -1,18 +1,15 @@
 /* ============================================
    WAB OS — la vitrine du premier écran (accueil)
-   La grande fenêtre encadrée de Klein sous le centre : les projets
-   défilent, un bouton met en pause (js/desk/showcase.js).
+   La grande fenêtre sous le centre, liseré net : les projets
+   défilent, un bouton met en pause (js/desk/showcase.js). C'est la
+   seule chose qui bouge seule sur la page.
    ============================================ */
 
 .showcase {
-    position: relative;
-    z-index: 4;
-    width: min(100% - 2 * var(--gutter), 860px);
-    margin: clamp(44px, 5vw, 56px) auto 0;
-}
-
-.showcase {
     --win-bar-h: 34px;
+    position: relative;
+    width: min(100% - 2 * var(--gutter), 920px);
+    margin: clamp(40px, 5vw, 56px) auto 0;
 }
 
 .showcase .win__title {

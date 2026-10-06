@@ -1,49 +1,26 @@
 /* ============================================
-   WAB OS — la lettre des fondateurs
-   Un badge, puis la lettre d'Eliott et Matt dans Notes, centrée. Une
-   nuée d'oiseaux s'y pose à son arrivée (js/desk/arrival.js, canevas
-   .arrival ci-dessous). La lettre est LA fenêtre mise en avant de la
-   section : cadre Klein tramé (.win--framed). Un passage surligné, le
-   curseur Klein au bout de la dernière ligne, deux signataires (noms
-   tapés, aucune fausse signature) et le sigle WAB. à droite.
-   Puis le filet en pointillés qui ferme la section, comme une page.
+   WAB OS — la lettre du studio (accueil)
+   Un badge, puis la lettre d'Eliott et Matt dans Notes : une fenêtre
+   nette, sans cadre tramé ni oiseaux autour. Un passage surligné, les
+   deux signataires (noms tapés, aucune fausse signature) et le sigle
+   WAB., puis l'équipe sous un filet ; une touche vers /studio.
    ============================================ */
 
-.letter-wrap {
-    position: relative;
-    /* Les oiseaux qui arrivent s'arrêtent au bord de l'écran. */
-    overflow-x: clip;
-}
-
-.arrival {
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
 .letter-zone {
-    position: relative;
-    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 22px;
-    padding-inline: var(--gutter);
 }
 
 .letter {
-    position: relative;
-    z-index: 2;
-    width: min(100%, 520px);
+    width: min(100%, 720px);
 }
 
 .letter__body {
-    padding: clamp(22px, 4vw, 30px) clamp(20px, 4vw, 28px) clamp(24px, 4vw, 30px);
+    padding: clamp(22px, 4vw, 36px) clamp(20px, 4vw, 40px);
     background: var(--win-bg);
-    font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+    font-size: clamp(1rem, 1.3vw, 1.0625rem);
     line-height: 1.7;
     color: var(--ink-muted);
 }
@@ -63,29 +40,29 @@
     box-decoration-break: clone;
 }
 
-/* Le curseur de saisie : le bleu système. */
-.letter__caret {
-    display: inline-block;
-    width: 2px;
-    height: 1.1em;
-    margin-left: 2px;
-    vertical-align: -0.2em;
-    background: var(--klein);
-    animation: caret 1.1s steps(1) infinite;
-}
-
-@keyframes caret {
-    50% {
-        opacity: 0;
-    }
-}
-
-.letter__sign {
+.letter__sign,
+.letter__team {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 14px 24px;
     margin-top: 26px;
+}
+
+/* L'équipe : sous un filet, « Avec » puis deux personnes. */
+.letter__team {
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: var(--hair) solid var(--line);
+}
+
+.letter__body .letter__with {
+    width: 100%;
+    margin-top: 0;
+    font-family: var(--font-mono);
+    font-size: var(--t-cap);
+    letter-spacing: var(--track-caps);
+    text-transform: uppercase;
 }
 
 .signer {
@@ -97,8 +74,8 @@
 
 /* Les signatures sont des paragraphes : l'écart entre paragraphes
    de la lettre ne doit pas décaler la seconde. */
-.letter__sign .signer,
-.letter__sign .letter__mark {
+.letter__body .signer,
+.letter__body .letter__mark {
     margin-top: 0;
 }
 
@@ -106,7 +83,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    box-shadow: 0 0 0 1px var(--line), 0 2px 6px oklch(0.18 0.005 265 / 0.12);
+    box-shadow: 0 0 0 1px var(--line);
 }
 
 .signer__name {
@@ -129,18 +106,13 @@
     color: var(--klein);
 }
 
-/* ── Le filet en pointillés ── */
-.rule-dots {
-    width: min(100% - 2 * var(--gutter), var(--measure));
-    margin: var(--section) auto 0;
-    border: 0;
-    border-top: 2px dotted var(--line-strong);
-    opacity: 0.8;
-}
-
 /* Au téléphone, une seule ligne grise : les noms suffisent. */
 @media (max-width: 599px) {
     .signer__role {
+        display: none;
+    }
+
+    .letter__mark {
         display: none;
     }
 }

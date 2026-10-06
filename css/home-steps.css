@@ -1,0 +1,84 @@
+/* ============================================
+   WAB OS — la méthode en quatre étapes (accueil)
+   Une seule carte blanche partagée par des filets : quatre colonnes
+   sur ordinateur, quatre rangées au téléphone. Le numéro d'étape en
+   Sligoil, à hauteur de ligne (jamais en exposant) — la seule
+   numérotation de la page.
+   ============================================ */
+
+.steps {
+    display: grid;
+    border-radius: var(--r-win);
+    background: var(--paper);
+    box-shadow: 0 0 0 var(--hair) var(--line);
+    list-style: none;
+}
+
+.step {
+    display: grid;
+    align-content: start;
+    gap: 8px;
+    padding: 22px 20px;
+}
+
+.step + .step {
+    border-top: var(--hair) solid var(--line);
+}
+
+.step__num {
+    font-family: var(--font-mono);
+    font-size: var(--t-cap);
+    letter-spacing: var(--track-caps);
+    text-transform: uppercase;
+    color: var(--klein-ink);
+}
+
+.step__name {
+    font-size: 1.25rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+
+.step__line {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+}
+
+@media (min-width: 600px) {
+    .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .step + .step {
+        border-top: 0;
+    }
+
+    .step:nth-child(even) {
+        border-left: var(--hair) solid var(--line);
+    }
+
+    .step:nth-child(n + 3) {
+        border-top: var(--hair) solid var(--line);
+    }
+}
+
+@media (min-width: 1000px) {
+    .steps {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .step {
+        min-height: 200px;
+        padding: 28px 24px;
+    }
+
+    .step:nth-child(n + 2) {
+        border-left: var(--hair) solid var(--line);
+    }
+
+    .step:nth-child(n + 3) {
+        border-top: 0;
+    }
+}
