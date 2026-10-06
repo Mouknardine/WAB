@@ -32,6 +32,12 @@ export const BODY_COLORS = [KLEIN, PORCELAINE, CIEL, PORCELAINE, KLEIN, CIEL, PO
 /** Les oiseaux en vol : jamais le Klein, réservé aux oiseaux posés. */
 export const FLIGHT_COLORS = [PORCELAINE, CIEL];
 
+/** Le ciel de l'accueil (data-birds-colors="vives") : une volée de
+   toutes les couleurs, le Klein compris. */
+export const VIVID_COLORS = [
+    KLEIN, '#ff7eb3', '#ffd23f', '#ff8a3d', '#5fe0b0', '#b9a3ff', PORCELAINE, CIEL,
+];
+
 /** Couleurs fixes, communes à tous les oiseaux : contour encre, œil
    blanc, bec bleu pâle. */
 export const FIXED_COLORS = { K: '#101214', W: '#ffffff', Y: '#cedeff' };

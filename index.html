@@ -366,7 +366,7 @@
     <link rel="stylesheet" href="css/os-overlay.css?v=3">
     <!-- Accueil « bureau rangé » -->
     <link rel="stylesheet" href="css/desk-objects.css?v=8">
-    <link rel="stylesheet" href="css/desk-hero.css?v=12">
+    <link rel="stylesheet" href="css/desk-hero.css?v=13">
     <link rel="stylesheet" href="css/desk-keys.css?v=3">
     <link rel="stylesheet" href="css/desk-showcase.css?v=2">
     <link rel="stylesheet" href="css/home-head.css?v=4">
@@ -383,19 +383,20 @@
     <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
     <script src="js/reveal.js?v=4" defer></script>
-    <script type="module" src="js/birds/index.js?v=9"></script>
+    <script type="module" src="js/birds/index.js?v=10"></script>
     <script type="module" src="js/birds/perch.js?v=10"></script>
     <script type="module" src="js/contact/index.js?v=12"></script>
     <script type="module" src="js/os/index.js?v=4"></script>
     <script type="module" src="js/desk/index.js?v=9"></script>
 </head>
 
-<body class="os desk" data-birds="dense">
+<body class="os desk" data-birds="dense" data-birds-colors="vives" data-birds-sky="top">
 
     <a class="skip-link" href="#studio-intro">Aller au contenu</a>
 
-    <!-- Le ciel : une nuée d'oiseaux traverse l'écran, sous le contenu ;
-         ils s'effacent devant les textes (js/birds). -->
+    <!-- Le ciel : une nuée d'oiseaux de toutes les couleurs traverse le
+         haut de l'écran, sous le contenu ; ils s'effacent devant les
+         textes (js/birds). -->
     <canvas id="birdCanvas" aria-hidden="true"></canvas>
 
     <!-- BARRE DE MENUS — le nom et les pages, l'oiseau au centre, la
@@ -464,7 +465,7 @@
                 <!-- « agence web » et « site internet » à Lausanne restent
                      dans le H1, lus par Google et la navigation vocale. -->
                 <h1 class="hero__title" id="heroTitle"><span class="keys" aria-hidden="true" translate="no"><span class="key" style="--i: 0"><span class="key__face">W</span></span><span class="key" style="--i: 1"><span class="key__face">A</span></span><span class="key" style="--i: 2"><span class="key__face">B</span></span><span class="key key--dot" style="--i: 3"><span class="key__face">.</span></span></span><span class="sr-only" translate="no">WAB.</span><span class="sr-only"> WeAreBrothers, agence web et création de site internet à Lausanne.</span></h1>
-                <p class="hero__lede">Studio de design et de technologie à&nbsp;Lausanne. Nous concevons des marques, des sites et des produits numériques.</p>
+                <p class="hero__lede">Marques, sites et produits numériques. <span class="hero__nowrap">Conçus à&nbsp;Lausanne.</span></p>
                 <div class="hero__actions">
                     <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein">Démarrer un projet</a>
                     <a href="/realisations" class="key-btn">Voir le travail</a>

@@ -88,9 +88,6 @@ function randomBetween(min, max) {
     return min + Math.random() * (max - min);
 }
 
-function pickColor() {
-    return FLIGHT_COLORS[Math.floor(Math.random() * FLIGHT_COLORS.length)];
-}
 
 /**
  * Tire une taille dans l'échelle fournie, en penchant vers les
@@ -106,10 +103,19 @@ function pickScaleIndex(levels) {
  * @param {number} count   nombre d'oiseaux dans le ciel
  * @param {number[]} scales échelle des tailles, de la plus lointaine
  *                          à la plus proche
+ * @param {{ colors?: string[], skyShare?: number }} [options]
+ *        colors : la palette du vol ; skyShare : part haute de l'écran
+ *        où passent les routes (1 = tout l'écran). Un ciel limité au
+ *        haut ne reçoit que des entrées latérales, presque à plat.
  */
-export function createFlock(count, scales) {
+export function createFlock(count, scales, options = {}) {
     let ladder = scales;
     const birds = [];
+    const colors = options.colors ?? FLIGHT_COLORS;
+    const skyShare = options.skyShare ?? 1;
+    const sideShare = skyShare < 1 ? 1 : SIDE_ENTRY_SHARE;
+    const tiltSide = skyShare < 1 ? TILT_SIDE * 0.35 : TILT_SIDE;
+    const pickColor = () => colors[Math.floor(Math.random() * colors.length)];
 
     function makeBird(index) {
         return {
@@ -132,7 +138,7 @@ export function createFlock(count, scales) {
             fleeX: 0,      // élan donné par le curseur, en px/s
             fleeY: 0,
             elapsed: 0,
-            color: FLIGHT_COLORS[index % FLIGHT_COLORS.length],
+            color: colors[index % colors.length],
             opacity: 0,
             airborne: false,
             // Les départs sont échelonnés : la volée se remplit en
@@ -168,7 +174,7 @@ export function createFlock(count, scales) {
 
     /** Cherche une hauteur de route dégagée pour une entrée latérale. */
     function pickRoute(bird, sky, shyness) {
-        const ceiling = Math.max(1, sky.height - bird.height);
+        const ceiling = Math.max(1, sky.height * skyShare - bird.height);
         let fallback = Math.random() * ceiling;
 
         for (let i = 0; i < TRIES; i++) {
@@ -215,10 +221,10 @@ export function createFlock(count, scales) {
             * Math.min(1, (speed - SPEED_MIN) / (SPEED_MAX - SPEED_MIN));
 
         let tilt;
-        if (Math.random() < SIDE_ENTRY_SHARE) {
+        if (Math.random() < sideShare) {
             bird.x = bird.dir === 1 ? -bird.width - ENTRY_MARGIN : sky.width + ENTRY_MARGIN;
             bird.routeY = pickRoute(bird, sky, shyness);
-            tilt = randomBetween(-TILT_SIDE, TILT_SIDE);
+            tilt = randomBetween(-tiltSide, tiltSide);
         } else {
             const fromTop = Math.random() < 0.5;
             bird.x = Math.random() * Math.max(1, sky.width - bird.width);

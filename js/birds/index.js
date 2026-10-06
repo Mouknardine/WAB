@@ -19,15 +19,18 @@
    versions de ces fichiers. Une adresse neuve les en libère. Le
    serveur revalide désormais les scripts à chaque visite (.htaccess) :
    ce numéro n'aura plus à bouger. */
-import { FLIGHT_COLORS } from './frames.js?v=8';
+import { FLIGHT_COLORS, VIVID_COLORS } from './frames.js?v=8';
 import { createSpriteBank } from './sprites.js?v=7';
-import { createFlock, TEXT_DIM } from './flock.js?v=8';
+import { createFlock, TEXT_DIM } from './flock.js?v=9';
 import { createShyness } from './shyness.js?v=5';
 
 /* Échelles de dessin disponibles, de l'oiseau le plus lointain au
    plus proche. Un point de plus, c'est 32 px de largeur en plus. */
 const LADDER_SMALL = [2, 3, 4];
 const LADDER_LARGE = [2, 3, 4, 5];
+
+/** Part haute de l'écran où vole un ciel « top ». */
+const TOP_SKY = 0.58;
 
 /* Un oiseau pour tant de pixels carrés d'écran, puis bornes. Deux
    régimes : le décor de l'accueil et le fond des pages de contenu.
@@ -93,7 +96,14 @@ function initBirds() {
     document.documentElement.addEventListener('pointerleave', () => { sky.pointer = null; });
     window.addEventListener('blur', () => { sky.pointer = null; });
 
-    const flock = createFlock(1, ladderFor(window.innerWidth));
+    // L'accueil peut demander une volée de toutes les couleurs
+    // (data-birds-colors="vives") et un ciel limité au haut de
+    // l'écran (data-birds-sky="top") : le texte est en bas.
+    const vivid = document.body.dataset.birdsColors === 'vives';
+    const flock = createFlock(1, ladderFor(window.innerWidth), {
+        colors: vivid ? VIVID_COLORS : FLIGHT_COLORS,
+        skyShare: document.body.dataset.birdsSky === 'top' ? TOP_SKY : 1,
+    });
 
     function resizeCanvas() {
         canvas.width = canvas.offsetWidth;
@@ -178,7 +188,7 @@ function initBirds() {
                 scale,
                 dir: index % 2 === 0 ? 1 : -1,
                 frameIndex: index % 2,
-                color: FLIGHT_COLORS[index % FLIGHT_COLORS.length],
+                color: (vivid ? VIVID_COLORS : FLIGHT_COLORS)[index % (vivid ? VIVID_COLORS : FLIGHT_COLORS).length],
             };
             const visible = shyness.isOpen(bird.x, bird.y, width, height);
             sprites.draw(ctx, bird, visible ? 1 : TEXT_DIM);

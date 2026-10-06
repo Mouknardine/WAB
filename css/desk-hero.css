@@ -1,16 +1,17 @@
 /* ============================================
    WAB. — Accueil : le premier écran
-   Sur le bureau à trame de points, tout l'écran : le nom en touches,
-   la promesse, deux touches, au centre ; autour, rien que la nuée
-   d'oiseaux qui traverse (js/birds, data-birds="dense"). La vitrine
-   des projets (desk-showcase.css) suit juste en dessous.
+   Sur le bureau à trame de points, tout l'écran : en haut, le ciel,
+   une nuée d'oiseaux de toutes les couleurs (js/birds, data-birds
+   « dense », « vives », « top ») ; en bas, le nom en touches, la
+   promesse et deux touches. La vitrine des projets
+   (desk-showcase.css) suit juste en dessous.
    ============================================ */
 
 .hero {
     position: relative;
     display: grid;
-    place-items: center;
-    min-height: max(520px, 100svh);
+    place-items: end center;
+    min-height: max(560px, 100svh);
     overflow-x: clip;
 }
 
@@ -18,7 +19,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: calc(var(--bar-h) + 32px) var(--gutter) 72px;
+    padding: calc(var(--bar-h) + 32px) var(--gutter) clamp(48px, 9vh, 72px);
     text-align: center;
 }
 
@@ -44,6 +45,10 @@
     margin-top: clamp(26px, 3vw, 32px);
 }
 
+.hero__nowrap {
+    white-space: nowrap;
+}
+
 @media (min-width: 600px) {
     .hero__actions {
         flex-direction: row;
@@ -66,4 +71,11 @@
 
 .showcase-band .showcase {
     margin-top: 0;
+}
+
+/* Sur ordinateur, le dock flotte en bas : le bloc s'arrête au-dessus. */
+@media (min-width: 900px) {
+    .hero__center {
+        padding-bottom: clamp(112px, 15vh, 150px);
+    }
 }
