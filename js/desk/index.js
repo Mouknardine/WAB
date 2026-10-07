@@ -1,8 +1,7 @@
 // @ts-check
 /**
  * WAB OS — accueil
- * Point d'entrée des comportements propres à l'accueil : le halo du
- * premier écran, les éléments qui s'animent à leur arrivée à l'écran
+ * Point d'entrée des comportements propres à l'accueil : les éléments qui s'animent à leur arrivée à l'écran
  * (bulles des cartes et de l'appel final). Le système partagé (shell, ⌘K, fenêtres, lumière de l'heure)
  * part de js/os/index.js.
  *
@@ -12,12 +11,10 @@
 
 // Même numéro partout où un fichier est importé : voir js/birds/index.js.
 import { initWatch } from './watch.js?v=1';
-import { initHeroGlow } from './hero-glow.js?v=1';
 
 /** @type {Array<[string, () => void]>} */
 const MODULES = [
     ['watch', initWatch],
-    ['hero-glow', initHeroGlow],
 ];
 
 function boot() {

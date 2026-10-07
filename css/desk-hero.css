@@ -1,104 +1,71 @@
 /* ============================================
    WAB. — Accueil : le premier écran
-   Demandé par Eliott le 07.10 : un fond bleu Klein qui réagit à la
-   souris, et des cartes blanches posées dessus en mosaïque (trois
-   colonnes de largeurs inégales, cartes de hauteurs inégales).
-   — le fond : le Klein à scanlines du site, un halo plus clair qui
-     suit la souris (js/desk/hero-glow.js) ; sans souris, il dérive
-     tout seul, lentement ; immobile sous « réduire les animations » ;
-   — le ciel : la volée d'oiseaux (js/birds) passe derrière les cartes ;
-   — les cartes : desk-hero-cards.css.
-   Au téléphone, une colonne : le nom d'abord, puis le studio, l'heure
-   et un projet.
+   Sur le bureau à trame de points, tout l'écran : une nuée d'oiseaux
+   de toutes les couleurs (js/birds, data-birds « dense », « vives »,
+   « top ») ; le nom en touches, la promesse et deux touches au
+   centre sur ordinateur, en bas au téléphone sous le ciel. Les
+   services suivent juste en dessous.
    ============================================ */
 
 .hero {
     position: relative;
-    isolation: isolate;
     display: grid;
-    align-items: start;
+    place-items: end center;
     min-height: max(560px, 100svh);
-    padding: calc(var(--bar-h) + 16px) var(--gutter) 48px;
-    overflow: clip;
-    background: var(--scan-lines), var(--klein);
+    overflow-x: clip;
 }
 
-/* Le fond s'assombrit vers les bords, comme les écrans Klein du site. */
-.hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    pointer-events: none;
-    background:
-        radial-gradient(120% 90% at 50% 40%, oklch(0 0 0 / 0) 55%, oklch(0.12 0.06 266 / 0.45)),
-        linear-gradient(oklch(0.12 0.06 266 / 0), oklch(0.12 0.06 266 / 0.3));
-}
-
-/* Le halo : un disque de lumière plus claire, avec la trame de points
-   du bureau qui n'apparaît que dans sa lumière. Déplacé par transform
-   seulement (aucun repeint) : hero-glow.js écrit --glow-x / --glow-y. */
-.hero__glow {
-    --glow-size: clamp(420px, 60vw, 860px);
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: var(--glow-size);
-    aspect-ratio: 1;
-    pointer-events: none;
-    translate: calc(var(--glow-x, 62vw) - 50%) calc(var(--glow-y, 32svh) - 50%);
-    background: radial-gradient(closest-side, oklch(0.68 0.2 266 / 0.7), oklch(0.68 0.2 266 / 0.22) 55%, oklch(0.68 0.2 266 / 0));
-    will-change: translate;
-}
-
-.hero__glow::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: oklch(1 0 0 / 0.22);
-    -webkit-mask:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='1' cy='1' r='1'/%3E%3C/svg%3E") 0 0 / var(--desk-grid) var(--desk-grid),
-        radial-gradient(closest-side, #000 20%, transparent);
-    -webkit-mask-composite: source-in;
-    mask:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='1' cy='1' r='1'/%3E%3C/svg%3E") 0 0 / var(--desk-grid) var(--desk-grid),
-        radial-gradient(closest-side, #000 20%, transparent);
-    mask-composite: intersect;
-}
-
-/* Sans souris (téléphone, tablette) : le halo se promène seul. */
-@media (prefers-reduced-motion: no-preference) and (hover: none), (prefers-reduced-motion: no-preference) and (pointer: coarse) {
-    .hero__glow {
-        animation: glow-drift 18s ease-in-out infinite alternate;
-    }
-}
-
-@keyframes glow-drift {
-    0% { translate: calc(78vw - 50%) calc(12svh - 50%); }
-    50% { translate: calc(24vw - 50%) calc(38svh - 50%); }
-    100% { translate: calc(70vw - 50%) calc(70svh - 50%); }
-}
-
-/* Le ciel : attaché au premier écran, il défile avec lui, entre le
-   fond et les cartes. */
+/* Le ciel est attaché au premier écran (et non fixé à la fenêtre) :
+   il défile avec lui, sous le texte. */
 .hero > #birdCanvas {
     position: absolute;
     inset: 0;
     z-index: 0;
-    width: 100%;
-    height: 100%;
 }
 
-/* ── La mosaïque ── */
-.hero__grid {
+.hero__center {
     position: relative;
     z-index: 1;
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: calc(var(--bar-h) + 32px) var(--gutter) clamp(48px, 9vh, 72px);
+    text-align: center;
+}
+
+/* Le nom en touches de clavier : leur dessin est dans desk-keys.css. */
+.hero__title {
+    line-height: 1;
+}
+
+.hero__lede {
+    margin-top: clamp(18px, 2.4vw, 26px);
+    max-width: 44ch;
+    font-size: var(--t-lede);
+    line-height: 1.45;
+    text-wrap: balance;
+}
+
+.hero__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     gap: 12px;
-    width: 100%;
-    max-width: 1240px;
-    margin-inline: auto;
+    width: min(100%, 300px);
+    margin-top: clamp(26px, 3vw, 32px);
+}
+
+.hero__nowrap {
+    white-space: nowrap;
+}
+
+@media (min-width: 600px) {
+    .hero__actions {
+        flex-direction: row;
+        justify-content: center;
+        width: auto;
+        gap: 16px;
+    }
 }
 
 /* Cible du lien d'évitement, pas une commande : pas d'anneau autour
@@ -107,20 +74,14 @@
     outline: none;
 }
 
-/* Sur ordinateur : trois colonnes, étroite, large, étroite. Le titre
-   occupe deux rangs au centre ; le bas garde la place du dock. */
+/* Sur ordinateur, le nom et la promesse reviennent au centre de
+   l'écran, la volée tout autour ; le bas garde la place du dock. */
 @media (min-width: 900px) {
     .hero {
-        align-items: center;
-        padding: calc(var(--bar-h) + 24px) var(--gutter) calc(var(--dock-space) + 8px);
+        place-items: center;
     }
 
-    .hero__grid {
-        grid-template-columns: 1fr 1.9fr 1fr;
-        grid-template-rows: auto minmax(0, 1fr) auto;
-        grid-template-areas:
-            "studio title place"
-            "studio title side"
-            "skills work  plans";
+    .hero__center {
+        padding-bottom: 96px;
     }
 }

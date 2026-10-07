@@ -14,7 +14,7 @@
  */
 
 import { createSpriteBank } from './sprites.js?v=7';
-import { BODY_COLORS } from './frames.js?v=11';
+import { BODY_COLORS } from './frames.js?v=10';
 
 const BEAT_MS = 110;
 

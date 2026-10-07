@@ -19,7 +19,7 @@
    versions de ces fichiers. Une adresse neuve les en libère. Le
    serveur revalide désormais les scripts à chaque visite (.htaccess) :
    ce numéro n'aura plus à bouger. */
-import { FLIGHT_COLORS, HOME_COLORS, OPENING_COLORS } from './frames.js?v=11';
+import { FLIGHT_COLORS, HOME_COLORS, OPENING_COLORS } from './frames.js?v=10';
 import { createSpriteBank } from './sprites.js?v=7';
 import { createFlock, TEXT_DIM } from './flock.js?v=14';
 import { createShyness } from './shyness.js?v=5';

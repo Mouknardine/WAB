@@ -32,22 +32,21 @@ export const BODY_COLORS = [KLEIN, PORCELAINE, CIEL, PORCELAINE, KLEIN, CIEL, PO
 /** Les oiseaux en vol : jamais le Klein, réservé aux oiseaux posés. */
 export const FLIGHT_COLORS = [PORCELAINE, CIEL];
 
-/** Le ciel de l'accueil (data-birds-colors="accueil") : le premier
-   écran est bleu Klein, ses oiseaux sont donc blancs et bleu ciel —
-   un Klein s'y fondrait —, et de temps en temps un rose. Tirage au
-   hasard dans cette liste : le nombre d'entrées fait la fréquence
-   (rose : 1 sur 10). */
+/** Le ciel de l'accueil (data-birds-colors="accueil") : le blanc et
+   les bleus du site, et de temps en temps un rose. Tirage au hasard
+   dans cette liste : le nombre d'entrées fait la fréquence (rose : 1
+   sur 10). */
 export const HOME_COLORS = [
-    PORCELAINE, PORCELAINE, PORCELAINE, PORCELAINE, PORCELAINE,
-    CIEL, CIEL, CIEL, CIEL,
+    PORCELAINE, PORCELAINE, PORCELAINE, PORCELAINE,
+    CIEL, CIEL, CIEL,
+    KLEIN, KLEIN,
     '#ff7eb3',
 ];
 
 /** La volée d'ouverture de l'accueil (data-birds-opening) : toutes les
-   couleurs sauf le Klein, invisible sur le bleu du premier écran ;
-   une seule traversée. */
+   couleurs, une seule traversée. */
 export const OPENING_COLORS = [
-    '#ff7eb3', '#ffd23f', '#ff8a3d', '#5fe0b0', '#b9a3ff', CIEL, PORCELAINE,
+    KLEIN, '#ff7eb3', '#ffd23f', '#ff8a3d', '#5fe0b0', '#b9a3ff', CIEL, PORCELAINE,
 ];
 
 /** Couleurs fixes, communes à tous les oiseaux : contour encre, œil

@@ -367,8 +367,6 @@
     <!-- Accueil « bureau rangé » -->
     <link rel="stylesheet" href="css/desk-objects.css?v=8">
     <link rel="stylesheet" href="css/desk-hero.css?v=17">
-    <link rel="stylesheet" href="css/desk-hero-cards.css?v=1">
-    <link rel="stylesheet" href="css/desk-hero-tiles.css?v=1">
     <link rel="stylesheet" href="css/desk-keys.css?v=3">
     <link rel="stylesheet" href="css/home-head.css?v=4">
     <link rel="stylesheet" href="css/home-card.css?v=1">
@@ -384,14 +382,14 @@
     <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
     <script src="js/reveal.js?v=4" defer></script>
-    <script type="module" src="js/birds/index.js?v=18"></script>
-    <script type="module" src="js/birds/perch.js?v=12"></script>
+    <script type="module" src="js/birds/index.js?v=17"></script>
+    <script type="module" src="js/birds/perch.js?v=11"></script>
     <script type="module" src="js/contact/index.js?v=12"></script>
     <script type="module" src="js/os/index.js?v=4"></script>
     <script type="module" src="js/desk/index.js?v=12"></script>
 </head>
 
-<body class="os desk" data-birds="dense" data-birds-colors="accueil" data-birds-opening>
+<body class="os desk" data-birds="dense" data-birds-colors="accueil" data-birds-sky="top" data-birds-opening>
 
     <a class="skip-link" href="#studio-intro">Aller au contenu</a>
 
@@ -453,69 +451,23 @@
 
     <main>
 
-        <!-- LE PREMIER ÉCRAN — des cartes blanches en mosaïque sur le
-             bleu Klein ; un halo suit la souris (js/desk/hero-glow.js), la
-             volée d'oiseaux passe derrière les cartes (js/birds). -->
+        <!-- LE PREMIER ÉCRAN — le centre net : le nom en touches, la
+             promesse, deux touches, quatre garanties ; puis la vitrine
+             des projets. Rien autour : le bureau est rangé. -->
         <section class="hero" id="studio-intro" tabindex="-1" aria-labelledby="heroTitle">
-            <div class="hero__glow" aria-hidden="true"></div>
+            <!-- Le ciel : une volée d'oiseaux blancs et bleus (un rose de temps
+                 en temps) traverse le premier écran et défile avec lui ;
+                 ils s'effacent devant les textes (js/birds). -->
             <canvas id="birdCanvas" aria-hidden="true"></canvas>
-            <div class="hero__grid">
-                <div class="hcard hcard--title">
-                    <p class="badge">WeAreBrothers</p>
-                    <!-- « agence web » et « site internet » à Lausanne restent
-                         dans le H1, lus par Google et la navigation vocale. -->
-                    <h1 class="hero__title" id="heroTitle"><span class="keys" aria-hidden="true" translate="no"><span class="key" style="--i: 0"><span class="key__face">W</span></span><span class="key" style="--i: 1"><span class="key__face">A</span></span><span class="key" style="--i: 2"><span class="key__face">B</span></span><span class="key key--dot" style="--i: 3"><span class="key__face">.</span></span></span><span class="sr-only" translate="no">WAB.</span><span class="sr-only"> WeAreBrothers, agence web et création de site internet à Lausanne.</span></h1>
-                    <p class="hero__lede">Marques, sites et produits numériques. <em>Conçus à&nbsp;Lausanne.</em></p>
-                    <div class="hero__actions">
-                        <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein">Démarrer un projet</a>
-                        <a href="/realisations" class="key-btn">Voir le travail</a>
-                    </div>
+            <div class="hero__center">
+                <!-- « agence web » et « site internet » à Lausanne restent
+                     dans le H1, lus par Google et la navigation vocale. -->
+                <h1 class="hero__title" id="heroTitle"><span class="keys" aria-hidden="true" translate="no"><span class="key" style="--i: 0"><span class="key__face">W</span></span><span class="key" style="--i: 1"><span class="key__face">A</span></span><span class="key" style="--i: 2"><span class="key__face">B</span></span><span class="key key--dot" style="--i: 3"><span class="key__face">.</span></span></span><span class="sr-only" translate="no">WAB.</span><span class="sr-only"> WeAreBrothers, agence web et création de site internet à Lausanne.</span></h1>
+                <p class="hero__lede">Marques, sites et produits numériques. <span class="hero__nowrap">Conçus à&nbsp;Lausanne.</span></p>
+                <div class="hero__actions">
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein">Démarrer un projet</a>
+                    <a href="/realisations" class="key-btn">Voir le travail</a>
                 </div>
-
-                <div class="hcard hcard--studio">
-                    <p class="badge">Studio</p>
-                    <div>
-                        <p class="hcard__people"><img src="assets/images/avatar-eliott.webp" alt="" width="144" height="144" decoding="async"><img src="assets/images/avatar-matt.webp" alt="" width="144" height="144" decoding="async"></p>
-                        <p class="hcard__name">Eliott &amp; Matt</p>
-                        <p class="hcard__text">Deux frères, un studio de design. Marques, sites et applications, du premier croquis à la mise en&nbsp;ligne.</p>
-                    </div>
-                </div>
-
-                <div class="hcard hcard--place">
-                    <p class="hcard__head"><span class="badge">Lieu</span><strong>Lausanne, Suisse</strong></p>
-                    <p class="hcard__clock"><time data-local-time>--:--</time><span data-local-status hidden></span></p>
-                </div>
-
-                <a href="/realisations" class="hcard hcard--work hcard--side">
-                    <img src="assets/images/work-amarte-720.webp" srcset="assets/images/work-amarte-720.webp 720w, assets/images/work-amarte-1440.webp 1440w" sizes="(min-width: 900px) 25vw, 100vw" alt="" width="720" height="900" decoding="async">
-                    <span class="badge">Projet</span>
-                    <span class="hcard__caption">Amarte Studio <span>Site</span></span>
-                </a>
-
-                <div class="hcard hcard--skills">
-                    <p class="badge">Expertises</p>
-                    <ul class="hcard__chips">
-                        <li>Branding</li>
-                        <li>Sites internet</li>
-                        <li>Applications</li>
-                        <li>SEO</li>
-                    </ul>
-                </div>
-
-                <a href="/realisations" class="hcard hcard--work">
-                    <img src="assets/images/work-central-720.webp" srcset="assets/images/work-central-720.webp 720w, assets/images/work-central-1440.webp 1440w" sizes="(min-width: 900px) 50vw, 100vw" alt="" width="720" height="900" decoding="async">
-                    <span class="badge">Projet</span>
-                    <span class="hcard__caption">Le P'tit Central <span>Site</span></span>
-                </a>
-
-                <a href="#offres" class="hcard hcard--plans">
-                    <span class="badge">Offres</span>
-                    <ul class="hcard__plans">
-                        <li><span>Site vitrine</span><span>1'000 – 2'500&nbsp;CHF</span></li>
-                        <li><span>Site et outils</span><span>2'500 – 7'000&nbsp;CHF</span></li>
-                        <li><span>Sur mesure</span><span>Dès 7'000&nbsp;CHF</span></li>
-                    </ul>
-                </a>
             </div>
         </section>
 
