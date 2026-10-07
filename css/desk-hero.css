@@ -9,7 +9,7 @@
    — le ciel : la volée d'oiseaux (js/birds) passe derrière les cartes ;
    — les cartes : desk-hero-cards.css.
    Au téléphone, une colonne : le nom d'abord, puis le studio, l'heure
-   et un projet. La vitrine des projets (desk-showcase.css) suit.
+   et un projet.
    ============================================ */
 
 .hero {
@@ -105,16 +105,6 @@
    de tout le premier écran. */
 .hero:focus-visible {
     outline: none;
-}
-
-/* La vitrine des projets, sa propre section sous le premier écran. */
-.showcase-band {
-    padding-top: clamp(56px, 8vw, 104px);
-    padding-bottom: clamp(56px, 8vw, 104px);
-}
-
-.showcase-band .showcase {
-    margin-top: 0;
 }
 
 /* Sur ordinateur : trois colonnes, étroite, large, étroite. Le titre

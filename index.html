@@ -366,11 +366,10 @@
     <link rel="stylesheet" href="css/os-overlay.css?v=3">
     <!-- Accueil « bureau rangé » -->
     <link rel="stylesheet" href="css/desk-objects.css?v=8">
-    <link rel="stylesheet" href="css/desk-hero.css?v=16">
+    <link rel="stylesheet" href="css/desk-hero.css?v=17">
     <link rel="stylesheet" href="css/desk-hero-cards.css?v=1">
     <link rel="stylesheet" href="css/desk-hero-tiles.css?v=1">
     <link rel="stylesheet" href="css/desk-keys.css?v=3">
-    <link rel="stylesheet" href="css/desk-showcase.css?v=2">
     <link rel="stylesheet" href="css/home-head.css?v=4">
     <link rel="stylesheet" href="css/home-card.css?v=1">
     <link rel="stylesheet" href="css/home-tiles.css?v=1">
@@ -389,7 +388,7 @@
     <script type="module" src="js/birds/perch.js?v=12"></script>
     <script type="module" src="js/contact/index.js?v=12"></script>
     <script type="module" src="js/os/index.js?v=4"></script>
-    <script type="module" src="js/desk/index.js?v=11"></script>
+    <script type="module" src="js/desk/index.js?v=12"></script>
 </head>
 
 <body class="os desk" data-birds="dense" data-birds-colors="accueil" data-birds-opening>
@@ -518,31 +517,6 @@
                     </ul>
                 </a>
             </div>
-        </section>
-
-        <!-- LA VITRINE — les projets défilent dans la grande fenêtre. -->
-        <section class="showcase-band" aria-label="Projets récents">
-
-            <figure class="showcase" data-showcase>
-                <div class="win showcase__win">
-                    <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--file" aria-hidden="true"></span><span data-showcase-title>Zinéma</span></span></div>
-                    <div class="win__body showcase__stage">
-                        <div class="showcase__slide is-current" data-slide data-name="Zinéma" data-domain="zinema.ch"><img src="assets/images/shot-zinema-1600.webp" srcset="assets/images/shot-zinema-800.webp 800w, assets/images/shot-zinema-1600.webp 1600w" sizes="(min-width: 1000px) 920px, calc(100vw - 32px)" alt="Page d'accueil du Zinéma, cinéma d'art et essai à Lausanne : un mur d'affiches de films" width="1600" height="1000" fetchpriority="high" decoding="async"></div>
-                        <div class="showcase__slide" data-slide data-name="Le P'tit Central" data-domain="lepetitcentral.ch" aria-hidden="true"><img src="assets/images/shot-central-1600.webp" srcset="assets/images/shot-central-800.webp 800w, assets/images/shot-central-1600.webp 1600w" sizes="(min-width: 1000px) 920px, calc(100vw - 32px)" alt="Page d'accueil du P'tit Central, café-restaurant de quartier à Lausanne, cadre d'azulejos bleu et blanc" width="1600" height="1000" loading="lazy" decoding="async"></div>
-                        <div class="showcase__slide" data-slide data-name="Amarte Studio" data-domain="amarte.ch" aria-hidden="true"><img src="assets/images/shot-amarte-1600.webp" srcset="assets/images/shot-amarte-800.webp 800w, assets/images/shot-amarte-1600.webp 1600w" sizes="(min-width: 1000px) 920px, calc(100vw - 32px)" alt="Page d'accueil d'Amarte Studio, studio de yoga et de Pilates à Épalinges" width="1600" height="1000" loading="lazy" decoding="async"></div>
-                        <div class="showcase__slide" data-slide data-name="Maison Alliani" data-domain="maison-alliani.com" aria-hidden="true"><img src="assets/images/shot-alliani-1600.webp" srcset="assets/images/shot-alliani-800.webp 800w, assets/images/shot-alliani-1600.webp 1600w" sizes="(min-width: 1000px) 920px, calc(100vw - 32px)" alt="Galerie de Maison Alliani, atelier suisse de grillz sur mesure, sur fond sombre" width="1600" height="1000" loading="lazy" decoding="async"></div>
-                        <div class="showcase__slide" data-slide data-name="Nadège Mouine" data-domain="nadegemouine.ch" aria-hidden="true"><img src="assets/images/shot-nadege-1600.webp" srcset="assets/images/shot-nadege-800.webp 800w, assets/images/shot-nadege-1600.webp 1600w" sizes="(min-width: 1000px) 920px, calc(100vw - 32px)" alt="Portfolio de Nadège Mouine, architecte en formation à l'EPFL" width="1600" height="1000" loading="lazy" decoding="async"></div>
-                        <div class="showcase__slide" data-slide data-name="LAZIZZE DJ" data-domain="lazizze.com" aria-hidden="true"><img src="assets/images/shot-dj-1600.webp" srcset="assets/images/shot-dj-800.webp 800w, assets/images/shot-dj-1600.webp 1600w" sizes="(min-width: 1000px) 920px, calc(100vw - 32px)" alt="Site de LAZIZZE, DJ house à Lausanne, typographie noire sur aplat rose" width="1600" height="1000" loading="lazy" decoding="async"></div>
-                        <div class="showcase__slide" data-slide data-name="La Slack" data-domain="la-slack.com" aria-hidden="true"><img src="assets/images/shot-slack-1600.webp" srcset="assets/images/shot-slack-800.webp 800w, assets/images/shot-slack-1600.webp 1600w" sizes="(min-width: 1000px) 920px, calc(100vw - 32px)" alt="Portfolio de La Slack, rangé comme un bureau virtuel avec des dossiers" width="1600" height="1000" loading="lazy" decoding="async"></div>
-                        <button type="button" class="showcase__toggle" data-showcase-toggle data-state="playing" hidden>
-                            <svg data-icon="pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.5"/><rect x="14" y="4" width="5" height="16" rx="1.5"/></svg>
-                            <svg data-icon="play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.4-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5Z"/></svg>
-                            <span data-showcase-label>Pause</span>
-                        </button>
-                    </div>
-                </div>
-                <figcaption class="file-name showcase__caption" data-showcase-name>zinema.ch</figcaption>
-            </figure>
         </section>
 
         <!-- SERVICES — trois cartes WAB : la tuile (un vrai aperçu), puis
