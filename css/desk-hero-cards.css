@@ -1,0 +1,130 @@
+/* ============================================
+   WAB. — Accueil : les cartes du premier écran
+   Du papier blanc posé sur le bleu, droit, coins de panneau (20 px),
+   relief et ombre portée bleutée. Chaque carte porte le badge des
+   sections (os-base.css) en haut ; son contenu est calé en bas.
+   — .hcard--title : le nom en touches (desk-keys.css), la promesse et
+     les deux touches ;
+   — .hcard--studio : Eliott et Matt ;
+   — .hcard--place : Lausanne, l'heure et le statut du studio
+     (nav-clock.js) ;
+   Les projets, les expertises, les offres et la place de chaque
+   carte dans la mosaïque : desk-hero-tiles.css.
+   ============================================ */
+
+.hcard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    min-width: 0;
+    padding: 20px;
+    border-radius: var(--r-panel);
+    background: var(--paper);
+    box-shadow:
+        var(--relief),
+        0 1px 2px oklch(0.2 0.12 266 / 0.25),
+        0 24px 48px -28px oklch(0.15 0.14 266 / 0.7);
+    overflow: hidden;
+}
+
+.hcard > .badge {
+    align-self: flex-start;
+}
+
+/* ── Le titre ── */
+.hcard--title {
+    order: -1;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 22px;
+    padding: 24px 20px 28px;
+}
+
+.hcard--title .keys {
+    --key: clamp(60px, 17vw, 96px);
+    justify-content: flex-start;
+}
+
+.hero__lede {
+    max-width: 20ch;
+    font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.25rem);
+    font-weight: var(--w-medium);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+}
+
+.hero__lede em {
+    font-style: normal;
+    color: var(--klein);
+}
+
+.hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* ── Le studio ── */
+.hcard__people {
+    display: flex;
+    margin-bottom: 14px;
+}
+
+.hcard__people img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--paper);
+}
+
+.hcard__people img + img {
+    margin-left: -12px;
+}
+
+.hcard__name {
+    margin-bottom: 6px;
+    font-size: 1.0625rem;
+    font-weight: var(--w-strong);
+    letter-spacing: -0.01em;
+}
+
+.hcard__text {
+    max-width: 34ch;
+    color: var(--ink-muted);
+    line-height: 1.45;
+}
+
+/* ── Le lieu ── */
+.hcard__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.hcard__head strong {
+    font-weight: var(--w-strong);
+}
+
+.hcard__clock {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+}
+
+.hcard__clock time {
+    font-family: 'Sligoil', ui-monospace, monospace;
+    font-size: 2.75rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.hcard__clock [data-local-status] {
+    font-size: var(--t-small);
+    color: var(--ink-muted);
+}

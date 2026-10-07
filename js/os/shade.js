@@ -11,7 +11,7 @@
  * déplacé par transform. Styles : os-sky.css.
  */
 
-import { COLS, ROWS, FRAMES } from '../birds/frames.js?v=10';
+import { COLS, ROWS, FRAMES } from '../birds/frames.js?v=11';
 
 const FIRST_MS = 22000;
 const GAP_MIN_MS = 60000;

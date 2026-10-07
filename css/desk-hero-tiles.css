@@ -1,0 +1,128 @@
+/* ============================================
+   WAB. — Accueil : les cartes du premier écran, suite
+   — .hcard--work : un projet, l'image en plein cadre ;
+   — .hcard--skills, .hcard--plans : ordinateur seulement ;
+   — la place de chaque carte dans la mosaïque (desk-hero.css).
+   ============================================ */
+
+/* ── Les projets ── l'image remplit la carte, le nom en bas. */
+.hcard--work {
+    padding: 0;
+    color: oklch(1 0 0);
+}
+
+.hcard--work img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: scale var(--dur-3) var(--ease-out);
+}
+
+.hcard--work .badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+}
+
+.hcard__caption {
+    position: absolute;
+    inset: auto 0 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 40px 16px 16px;
+    background: linear-gradient(oklch(0 0 0 / 0), oklch(0.12 0.03 266 / 0.55));
+    font-weight: var(--w-strong);
+}
+
+.hcard__caption span {
+    font-weight: var(--w-regular, 400);
+    font-size: var(--t-small);
+    opacity: 0.85;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .hcard--work:hover img {
+        scale: 1.03;
+    }
+}
+
+/* ── Les expertises et les offres ── */
+.hcard__chips,
+.hcard__plans {
+    list-style: none;
+}
+
+.hcard__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.hcard__chips li {
+    padding: 8px 12px;
+    border-radius: var(--r-ctl);
+    box-shadow: 0 0 0 var(--hair) var(--line-strong);
+    font-weight: var(--w-medium);
+}
+
+.hcard__plans li {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 11px 0;
+    border-top: var(--hair) solid var(--line);
+}
+
+.hcard__plans li:last-child {
+    padding-bottom: 0;
+}
+
+.hcard__plans li span:last-child {
+    color: var(--ink-muted);
+    white-space: nowrap;
+}
+
+/* Au téléphone, le premier écran reste court : un projet, ni les
+   expertises ni les offres (elles suivent plus bas dans la page). */
+.hcard--skills,
+.hcard--plans,
+.hcard--side {
+    display: none;
+}
+
+.hcard--work {
+    aspect-ratio: 16 / 10;
+}
+
+@media (min-width: 900px) {
+    .hcard--skills,
+    .hcard--plans,
+    .hcard--side {
+        display: flex;
+    }
+
+    .hcard--title {
+        order: 0;
+        grid-area: title;
+        min-height: 440px;
+        padding: 40px;
+    }
+
+    .hcard--studio { grid-area: studio; }
+    .hcard--place { grid-area: place; }
+    .hcard--side { grid-area: side; }
+    .hcard--skills { grid-area: skills; }
+    .hcard--plans { grid-area: plans; }
+    .hcard--work:not(.hcard--side) { grid-area: work; }
+
+    /* Hauteur minimale sur ordinateur seulement : avec le rapport
+       16/10 du téléphone, elle imposerait une largeur minimale. */
+    .hcard--work {
+        aspect-ratio: auto;
+        min-height: 220px;
+    }
+}
