@@ -7,7 +7,7 @@
    puis les apps du bloc calées sur le bord bas de la fenêtre. Les côtés
    alternent d'un bloc à l'autre ; le texte s'aligne sur le bord
    extérieur. Au téléphone : la fenêtre, les bulles, les apps.
-   Seul le bloc au centre de l'écran est net (js/page-services/focus.js).
+   Chaque bloc se pose en entrant dans l'écran, au rythme du défilement.
    ============================================ */
 
 .svc-family {
@@ -101,15 +101,46 @@
     aspect-ratio: 900 / 495;
 }
 
-/* ── Le focus suit le défilement ── seulement avec le script. Seule
-   l'opacité s'anime ; pas de désaturation : un bleu Klein désaturé
-   vire au lilas. */
-html.js .svc-feats.is-tracking .svc-feat {
-    transition: opacity 0.6s var(--ease-out);
+/* ── L'arrivée de chaque bloc ── liée au défilement, pas au temps :
+   la fenêtre monte et se pose pendant qu'elle entre dans l'écran, la
+   colonne de texte la suit avec un temps de retard. Une fois posé, le
+   bloc reste entièrement net (l'ancien estompage à 40 % virait au
+   lilas sur le Klein). Sans scroll-driven animations ou sous
+   « réduire les animations » : tout est simplement en place. */
+@supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+        .svc-feat__media,
+        .svc-feat__text {
+            animation: svc-arrive linear both;
+            animation-timeline: view();
+        }
+
+        .svc-feat__media {
+            animation-range: entry 0% cover 40%;
+        }
+
+        .svc-feat__text {
+            animation-range: entry 20% cover 48%;
+        }
+    }
 }
 
-html.js .svc-feats.is-tracking .svc-feat:not(.is-current) {
-    opacity: 0.4;
+@keyframes svc-arrive {
+    0% {
+        opacity: 0;
+        translate: 0 64px;
+        scale: 0.96;
+    }
+
+    45% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        translate: 0 0;
+        scale: 1;
+    }
 }
 
 /* ── Ordinateur : fenêtre et colonne côte à côte ── */
@@ -170,11 +201,5 @@ html.js .svc-feats.is-tracking .svc-feat:not(.is-current) {
     .svc-feat--flip .chat__reply {
         justify-self: start;
         border-radius: 14px 14px 14px 4px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    html.js .svc-feats.is-tracking .svc-feat:not(.is-current) {
-        opacity: 1;
     }
 }

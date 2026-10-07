@@ -14,7 +14,7 @@
  */
 
 import { initWatch } from '../desk/watch.js?v=1';
-import { initFocus } from './focus.js?v=1';
+import { initFocus } from './focus.js?v=2';
 import { initNodalLines } from '../desk/nodal-lines.js?v=1';
 
 /** Les notifications attendent leur arrivée, puisque watch.js est là. */
