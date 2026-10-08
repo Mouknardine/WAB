@@ -1,7 +1,7 @@
 /* ============================================
    Page Work — le dossier Work, ouvert sur le bureau
-   La fenêtre mise en avant de la page (.win--framed : cadre Klein au
-   bord intérieur tramé, feuille décalée dessous), une barre d'outils
+   La fenêtre mise en avant de la page, blanche, sans cadre (liseré
+   gris, ombre portée), une barre d'outils
    (le nombre de projets en Sligoil, la bascule Icônes / Liste en
    touches), puis les projets. Vue icônes : la capture en petite
    fenêtre, le nom dessous, sur deux lignes au plus. Vue liste :
@@ -20,17 +20,7 @@
 
 .pw-finder > .win {
     container-type: inline-size;
-    box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--sheet), var(--shadow-lift);
-}
-
-/* Dans le cadre, la barre d'outils et la grille forment une seule
-   feuille : seuls ses coins extérieurs s'arrondissent. */
-.pw-finder > .win--framed > .pw-finder__bar {
-    border-radius: 4px 4px 0 0;
-}
-
-.pw-finder > .win--framed > .pw-finder__items {
-    border-radius: 0 0 4px 4px;
+    box-shadow: 0 0 0 var(--hair) var(--win-edge), var(--shadow-lift);
 }
 
 .pw-finder__bar {
