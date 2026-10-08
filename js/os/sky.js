@@ -6,7 +6,7 @@
  * teinte du ciel et des points. Revu chaque minute.
  */
 
-import { getClock } from './clock.js?v=1';
+import { getClock } from './clock.js?v=2';
 
 const REFRESH_MS = 60000;
 

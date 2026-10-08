@@ -15,7 +15,7 @@
  * @typedef {object} WabClock
  * @property {string} ZONE
  * @property {(date: Date) => LausanneMoment} readLausanne
- * @property {(moment: LausanneMoment) => { text: string, live: boolean }} statusFor
+ * @property {(moment: LausanneMoment) => { text: string }} statusFor
  * @property {(moment: LausanneMoment) => 'matin' | 'jour' | 'soir' | 'nuit'} phaseFor
  */
 

@@ -33,8 +33,3 @@ export function select(target, selector) {
     target.classList.add('is-selected');
     if (document.activeElement !== target) target.focus({ preventScroll: true });
 }
-
-/** @param {string} selector */
-export function clearSelection(selector) {
-    document.querySelectorAll(`${selector}.is-selected`).forEach((node) => node.classList.remove('is-selected'));
-}

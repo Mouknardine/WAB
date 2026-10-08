@@ -27,12 +27,6 @@
     text-wrap: balance;
 }
 
-.section-lede {
-    max-width: 44ch;
-    color: var(--ink-muted);
-    text-wrap: pretty;
-}
-
 .feats {
     --feat-text: 360px;
     --feat-gap: 72px;

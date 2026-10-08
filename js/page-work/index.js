@@ -12,7 +12,7 @@
 
 import { initFinderViews } from './finder.js?v=2';
 import { initFocus } from './focus.js?v=1';
-import { initCaseLinks } from './case-links.js?v=5';
+import { initCaseLinks } from './case-links.js?v=6';
 import { report } from './report.js?v=1';
 
 /** @type {Array<[string, () => void]>} */

@@ -11,7 +11,7 @@
 
 // Même numéro partout où un fichier est importé : sinon le navigateur le charge deux fois.
 import { initWatch } from './watch.js?v=1';
-import { initPixels } from './pixels.js?v=6';
+import { initPixels } from './pixels.js?v=8';
 import { initScramble } from './scramble.js?v=3';
 
 /** @type {Array<[string, () => void]>} */

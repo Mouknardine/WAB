@@ -1,9 +1,8 @@
 /**
  * WAB. — Horloge et statut du studio (Lausanne)
  * Met à jour tous les éléments portant [data-local-time] avec l'heure
- * de Lausanne, et ceux portant [data-local-status] avec ce que fait
- * le studio à ce moment-là : au travail, en soirée, la nuit, le
- * week-end.
+ * de Lausanne. Expose aussi le statut du studio à ce moment-là (au
+ * travail, en soirée, la nuit, le week-end), que le terminal affiche.
  *
  * Le statut ne dépend que du jour et de l'heure : il ne prétend
  * jamais que quelqu'un est connecté. Chargé sur toutes les pages,
@@ -38,15 +37,15 @@ function statusFor({ hour, weekday }) {
     const weekend = weekday === 'Sat' || weekday === 'Sun'
         || (weekday === 'Fri' && hour >= EVENING_HOUR);
 
-    if (weekend) return { text: 'Week-end, réponse lundi', live: false };
-    if (hour >= OPEN_HOUR && hour < EVENING_HOUR) return { text: 'Au studio', live: true };
-    if (hour >= EVENING_HOUR && hour < NIGHT_HOUR) return { text: 'En soirée, réponse demain', live: false };
-    return { text: 'Lausanne dort', live: false };
+    if (weekend) return { text: 'Week-end, réponse lundi' };
+    if (hour >= OPEN_HOUR && hour < EVENING_HOUR) return { text: 'Au studio' };
+    if (hour >= EVENING_HOUR && hour < NIGHT_HOUR) return { text: 'En soirée, réponse demain' };
+    return { text: 'Lausanne dort' };
 }
 
 /**
- * La lumière du jour à Lausanne, pour le bureau de l'accueil
- * (js/desk/sky.js) : matin, jour, soir, nuit.
+ * La lumière du jour à Lausanne, pour le bureau
+ * (js/os/sky.js) : matin, jour, soir, nuit.
  */
 function phaseFor({ hour }) {
     if (hour >= 6 && hour < 10) return 'matin';
@@ -55,14 +54,13 @@ function phaseFor({ hour }) {
     return 'nuit';
 }
 
-/* Une seule implémentation pour tout le site : l'accueil (sky.js, le
-   terminal) la lit ici plutôt que de la recopier. */
+/* Une seule implémentation pour tout le site : la lumière du bureau
+   (js/os/sky.js) et le terminal la lisent ici plutôt que de la recopier. */
 window.WABClock = Object.freeze({ ZONE, readLausanne, statusFor, phaseFor });
 
 document.addEventListener('DOMContentLoaded', () => {
     const clocks = document.querySelectorAll('[data-local-time]');
-    const statuses = document.querySelectorAll('[data-local-status]');
-    if (!clocks.length && !statuses.length) return;
+    if (!clocks.length) return;
 
     const timeFormat = (() => {
         try {
@@ -74,17 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!timeFormat) return;
 
     function update() {
-        const now = new Date();
-        const time = timeFormat.format(now);
+        const time = timeFormat.format(new Date());
         clocks.forEach((el) => {
             el.textContent = time;
-        });
-
-        const status = statusFor(readLausanne(now));
-        statuses.forEach((el) => {
-            el.textContent = status.text;
-            el.classList.toggle('is-live', status.live);
-            el.hidden = false;
         });
     }
 

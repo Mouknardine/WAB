@@ -1,13 +1,13 @@
 {
     "name": "WeAreBrothers Studio",
     "short_name": "WAB.",
-    "description": "Studio digital à Lausanne : sites web sur-mesure, branding et e-commerce.",
+    "description": "Agence web à Lausanne : sites internet sur mesure, applications de gestion, automatisation et IA, image de marque.",
     "lang": "fr-CH",
     "start_url": "/",
     "scope": "/",
     "display": "standalone",
     "background_color": "#ffffff",
-    "theme_color": "#161BF2",
+    "theme_color": "#ffffff",
     "icons": [
         {
             "src": "/assets/icon-192.png?v=4",

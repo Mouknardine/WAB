@@ -5,16 +5,15 @@
  * equipe, contact, heure. La saisie est bornée et nettoyée (caractères
  * de contrôle retirés, 60 signes au plus), et tout s'affiche par
  * textContent : rien de tapé n'est jamais interprété comme du HTML.
- * Flèches haut et bas : les commandes précédentes. Un oiseau se pose
- * sur la barre.
+ * Flèches haut et bas : les commandes précédentes.
  */
 
-import { openWindow } from './wm.js?v=2';
+import { openWindow } from './wm.js?v=3';
 import { el } from './dom.js?v=3';
 import { openContact } from './actions.js?v=1';
 import { report } from './lazy.js?v=1';
-import { run } from './terminal-commands.js?v=2';
-import { launchCase } from './apps.js?v=6';
+import { run } from './terminal-commands.js?v=3';
+import { launchCase } from './apps.js?v=7';
 
 const MAX_INPUT = 60;
 const MAX_LINES = 240;
@@ -24,7 +23,7 @@ const PROMPT = 'invite@wab ~ %';
  * @param {string} raw
  * @returns {{ name: string, arg: string, shown: string }}
  */
-export function parse(raw) {
+function parse(raw) {
     const shown = raw.normalize('NFC').replace(/[\u0000-\u001f\u007f-\u009f]/g, '').trim().slice(0, MAX_INPUT);
     const [word = '', ...rest] = shown.split(/\s+/);
     const name = word.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();

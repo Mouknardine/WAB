@@ -11,7 +11,7 @@
  * dans pixels.js ; les motifs qui restent, dans pixels-patterns.js.
  */
 
-import { GLYPHS, LETTERS, TINTS, shortWords, paintBlocks, paintGlyphs, pick, touches } from './pixels-ink.js?v=3';
+import { GLYPHS, LETTERS, TINTS, shortWords, paintBlocks, paintGlyphs, pick, touches } from './pixels-ink.js?v=4';
 
 /** Durée de vie d'un pavé, en ms : base, plus un écart au hasard. */
 const LIFE_MS = 1100;

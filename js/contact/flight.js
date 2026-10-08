@@ -1,22 +1,19 @@
 // @ts-check
 /**
  * WAB. — L'envol du message
- * Quand le message part, un oiseau du ciel du site traverse le haut
- * de la fenêtre et s'en va : le message est parti, et il est porté
- * par quelqu'un. Le même dessin que les oiseaux du fond.
+ * Quand le message part, un oiseau en pixel art traverse le haut de
+ * la fenêtre et s'en va : le message est parti, et il est porté par
+ * quelqu'un.
  *
  * Sous « réduire les animations », l'oiseau est simplement posé au
  * milieu, immobile.
  */
 
-// Même numéro partout où ces fichiers sont importés : sinon le navigateur les charge deux fois.
-import { createSpriteBank } from '../birds/sprites.js?v=8';
-import { BODY_COLORS } from '../birds/frames.js?v=11';
+import { createSpriteBank } from '../birds/sprites.js?v=9';
 
 const SCALE = 3;
 const DURATION_MS = 1600;
 const BEAT_MS = 110;
-const COLOR = BODY_COLORS[4];
 
 /** @type {ReturnType<typeof createSpriteBank> | null} */
 let sprites = null;
@@ -49,7 +46,7 @@ function prepare(canvas) {
     const ctx = canvas.getContext('2d');
     if (!ctx) return null;
     ctx.imageSmoothingEnabled = false;
-    sprites ??= createSpriteBank();
+    sprites ??= createSpriteBank(SCALE);
     return ctx;
 }
 
@@ -60,7 +57,7 @@ function prepare(canvas) {
  * @param {number} frameIndex
  */
 function drawBird(ctx, x, y, frameIndex) {
-    sprites?.draw(ctx, { x, y, scale: SCALE, dir: 1, frameIndex, color: COLOR }, 1);
+    sprites?.draw(ctx, x, y, frameIndex);
 }
 
 /**
@@ -74,8 +71,8 @@ export function playFlight(canvas) {
     if (!ctx || !sprites) return () => {};
 
     const { width, height } = canvas;
-    const birdWidth = sprites.widthAt(SCALE);
-    const birdHeight = sprites.heightAt(SCALE);
+    const birdWidth = sprites.width;
+    const birdHeight = sprites.height;
     ctx.clearRect(0, 0, width, height);
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

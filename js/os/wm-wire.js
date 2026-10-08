@@ -3,7 +3,7 @@
  * WAB OS — le câblage d'une fenêtre
  * Les pastilles, le double-clic sur la barre (agrandir), le passage
  * au premier plan au clic ou au focus, Échap, et le déplacement par
- * la barre — qui fait s'envoler l'oiseau posé dessus.
+ * la barre.
  */
 
 import { makeMovable } from './wm-frame.js?v=1';

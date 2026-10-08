@@ -42,10 +42,6 @@
     --sym: url('../assets/icons/sym-mail.svg');
 }
 
-.sym--moon {
-    --sym: url('../assets/icons/sym-moon.svg');
-}
-
 .sym--notes {
     --sym: url('../assets/icons/sym-notes.svg');
 }
@@ -58,26 +54,10 @@
     --sym: url('../assets/icons/sym-site.svg');
 }
 
-.sym--sun {
-    --sym: url('../assets/icons/sym-sun.svg');
-}
-
 .sym--team {
     --sym: url('../assets/icons/sym-team.svg');
 }
 
 .sym--terminal {
     --sym: url('../assets/icons/sym-terminal.svg?v=2');
-}
-
-.sym--trash {
-    --sym: url('../assets/icons/sym-trash.svg');
-}
-
-.sym--turn {
-    --sym: url('../assets/icons/sym-turn.svg');
-}
-
-.sym--arrow {
-    --sym: url('../assets/icons/sym-arrow.svg');
 }

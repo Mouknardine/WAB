@@ -16,7 +16,7 @@
 import { CONTACT_EMAIL, createContactDialog } from './markup.js?v=9';
 import { bindContactForm, resetContactForm } from './form.js?v=10';
 import { requireElement } from './dom.js?v=9';
-import { playFlight } from './flight.js?v=12';
+import { playFlight } from './flight.js?v=13';
 
 const OPEN_HASH = '#ecrire';
 const LOCK_CLASS = 'has-modal';

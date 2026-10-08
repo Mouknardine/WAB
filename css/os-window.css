@@ -102,7 +102,6 @@
     margin-bottom: var(--win-frame);
 }
 
-.win--framed > .win__body,
 .win--framed > :not(.win__bar) {
     position: relative;
     z-index: 1;

@@ -54,11 +54,6 @@
     initial-value: transparent;
 }
 
-.key-btn svg,
-.key-btn .sym {
-    flex: none;
-}
-
 /* La flèche ↗ de la touche principale, peinte en masque : elle prend
    la couleur du texte de la touche. */
 .key-btn--klein::after {

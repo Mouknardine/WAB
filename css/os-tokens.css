@@ -84,7 +84,6 @@
     --glass-rim: oklch(1 0 0 / 0.92);
     --glass-edge: oklch(0.18 0.005 265 / 0.12);
     --glass-ink: oklch(0.18 0.005 265);
-    --glass-specular: linear-gradient(180deg, oklch(1 0 0 / 0.14), oklch(1 0 0 / 0) 60%);
     --glass-shadow-lift: var(--shadow-lift);
 
     /* ── Fenêtre ── comme un navigateur : barre blanche, trois pastilles
@@ -124,8 +123,6 @@
     --bar-row: 52px;
     --bar-h: calc(var(--bar-top) + var(--bar-row));
     --dock-space: 96px;
-    --z-desk: 3;
-    --z-win: 130;
     --z-dock: 180;
     --z-bar: 190;
     --z-menu: 210;

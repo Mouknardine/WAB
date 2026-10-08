@@ -7,7 +7,7 @@
  */
 
 import { loadProjects } from './projects.js?v=1';
-import { getClock } from './clock.js?v=1';
+import { getClock } from './clock.js?v=2';
 
 /**
  * @typedef {object} TermIO

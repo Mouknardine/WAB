@@ -1,292 +1,183 @@
 # WAB OS — composants partagés
 
-Référence pour toutes les pages (Work, Services, About, Création de site, Applications, 404). Propriétaire : l'agent de l'accueil. **Ne modifiez pas ces fichiers depuis une page** : si un composant manque, signalez-le ; les styles propres à une page vont dans `css/page-*.css`.
+État au **8 octobre 2026**. Référence pour les sept pages : accueil, Work, Services, About, Création de site, Applications, 404. Principes, jetons et teintes : `DESIGN-SYSTEM.md`.
 
-Direction **Klein** (3 octobre 2026, branche `klein`) : la structure de heyclicky.com gardée telle quelle, l'aspect d'agentcard.sh — un seul accent, le bleu Klein, sur blanc net et gris chaud ; écrans bleus à lignes horizontales, bords tramés en pixels, grain fin ; boutons en touches de clavier ; Instrument Sans pour le texte, Sligoil en signature. Détails et décisions : `DESIGN-SYSTEM.md`, section « Klein ».
+Règle d'or : **les fichiers partagés (`os-*.css`, `key-btn.css`, `desk-keys.css`, `desk-margins.css`, `base*.css`, `js/os/`) ne reçoivent pas de style propre à une page.** Ce qui ne concerne qu'une page va dans `css/page-*.css` (ou `home-*` / `desk-*` pour l'accueil) et `js/page-*/`.
+
+---
 
 ## 1. Mise en place d'une page
 
-1. `<body class="os">` — c'est la classe `os` qui porte les jetons, le fond blanc à grain fin et le bleu système (sélection, focus, curseur). Ajoutez `data-birds="rare"` pour deux à quatre oiseaux, rien pour le régime calme. L'accueil n'a plus de volée depuis le 06.10 : seul l'oiseau-logo de la barre.
-2. Dans le `<head>`, après les balises SEO :
+Le plus sûr : **copier le `<head>` et la fin de `<body>` d'une page existante** (par exemple `services.html`), qui ont les numéros de version à jour. Ordre des feuilles partagées (versions du 08.10) :
 
 ```html
-    <!-- Avant tout rendu (déjà en place sur chaque page) -->
-    <script>document.documentElement.classList.replace('no-js', 'js');</script>
+<link rel="preload" href="assets/fonts/InstrumentSans-Var.woff2" as="font" type="font/woff2" crossorigin>
 
-    <!-- Polices servies depuis le site : Instrument Sans (texte et
-         titres), Sligoil en signature (chargée à la demande). -->
-    <link rel="preload" href="assets/fonts/InstrumentSans-Var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/base.css?v=35">
+<link rel="stylesheet" href="css/base-ui.css?v=1">
+<link rel="stylesheet" href="css/nav-panel.css?v=4">
+<link rel="stylesheet" href="css/contact-modal.css?v=8">
+<link rel="stylesheet" href="css/contact-form.css?v=5">
+<link rel="stylesheet" href="css/os-tokens.css?v=12">
+<link rel="stylesheet" href="css/os-tints.css?v=1">
+<link rel="stylesheet" href="css/os-base.css?v=6">
+<link rel="stylesheet" href="css/os-sky.css?v=6">
+<link rel="stylesheet" href="css/sym.css?v=4">
+<link rel="stylesheet" href="css/key-btn.css?v=3">
+<link rel="stylesheet" href="css/os-bar.css?v=7">
+<link rel="stylesheet" href="css/os-window.css?v=5">
+<link rel="stylesheet" href="css/os-bubbles.css?v=4">   <!-- si la page a des bulles -->
+<link rel="stylesheet" href="css/os-footer.css?v=11">
+<link rel="stylesheet" href="css/desk-keys.css?v=4">    <!-- les touches du logo -->
+<link rel="stylesheet" href="css/os-dock.css?v=6">
+<link rel="stylesheet" href="css/os-dock-toc.css?v=2">
+<link rel="stylesheet" href="css/desk-margins.css?v=3">
+<link rel="stylesheet" href="css/os-overlay.css?v=4">
+<link rel="stylesheet" href="css/os-sticker.css?v=2">   <!-- si la page pose l'autocollant -->
+<!-- puis les feuilles de la page : css/page-*.css -->
 
-    <!-- WAB OS : composants partagés -->
-    <link rel="stylesheet" href="css/base.css?v=34">
-    <link rel="stylesheet" href="css/base-ui.css?v=1">
-    <link rel="stylesheet" href="css/nav-panel.css?v=2">
-    <link rel="stylesheet" href="css/contact-modal.css?v=8">
-    <link rel="stylesheet" href="css/contact-form.css?v=4">
-    <link rel="stylesheet" href="css/os-tokens.css?v=4">
-    <link rel="stylesheet" href="css/os-base.css?v=3">
-    <link rel="stylesheet" href="css/os-sky.css?v=3">
-    <link rel="stylesheet" href="css/sym.css?v=4">
-    <link rel="stylesheet" href="css/key-btn.css?v=1">
-    <link rel="stylesheet" href="css/os-bar.css?v=3">
-    <link rel="stylesheet" href="css/os-window.css?v=3">
-    <link rel="stylesheet" href="css/os-bubbles.css?v=2">
-    <link rel="stylesheet" href="css/os-footer.css?v=3">
-    <link rel="stylesheet" href="css/os-dock.css?v=4">
-    <link rel="stylesheet" href="css/os-overlay.css?v=3">
-    <link rel="stylesheet" href="css/os-sticker.css?v=2"> <!-- si la page pose l'autocollant -->
-    <!-- puis la ou les feuilles propres à la page (css/page-*.css) -->
-
-    <script src="nav-clock.js?v=3" defer></script>
-    <script src="js/nav.js?v=6" defer></script>
-    <script type="module" src="js/birds/index.js?v=9"></script>
-    <script type="module" src="js/contact/index.js?v=11"></script>
-    <script type="module" src="js/os/index.js?v=3"></script>
+<script src="nav-clock.js?v=3" defer></script>
+<script src="js/nav.js?v=6" defer></script>
+<script src="js/reveal.js?v=4" defer></script>          <!-- si la page utilise .reveal -->
+<script type="module" src="js/contact/index.js?v=13"></script>
+<script type="module" src="js/os/index.js?v=11"></script>
+<script type="module" src="js/page-xxx/index.js?v=N"></script>  <!-- le module de la page -->
 ```
 
-3. Ne posez **aucun fond sur `body`** : les oiseaux sont un canevas fixe à z-index négatif qui se peint entre le fond de la racine (blanc, grain, lumière de l'heure) et le corps. Les fonds de section se posent sur les sections.
-5. **Surface bleue** : `class="… on-klein"` + `background: var(--klein-screen)` (ou `--klein-screen-flat` pour un écran étroit). `.on-klein` redéfinit `--ink`, `--ink-muted`, `--accent`, `--line`, `--on-accent`, `--mark` : le texte, les touches et la sélection s'inversent seuls. Exemples : le premier écran de l'accueil, le pied de page.
-4. Pour un contenu borné à la colonne du site : `.os-wrap` (largeur `--measure` + gouttières).
+- `<html lang="fr-CH" class="no-js">` et, en tête du `<head>`, le petit script qui remplace `no-js` par `js`.
+- `<body class="os">` (plus une classe de page si besoin : `page-work`, `page-apps`, `page-404` ; l'accueil : `os desk`).
+- Dans `<main>`, en premier : `<div class="margins" aria-hidden="true" data-margins></div>` (motifs de pixels des marges).
+- Le corps reste transparent : les fonds se posent sur les sections ou les cartes.
+- La 404 utilise des chemins absolus (`/css/…`) : elle est servie à n'importe quelle adresse.
 
-## 2. Jetons — `css/os-tokens.css`
+## 2. La barre du haut — `css/os-bar.css`, `css/nav-panel.css`, `js/nav.js`
 
-Toutes les valeurs vivent ici, en OKLCH, aucune valeur en dur ailleurs. Les principaux :
-
-| Jeton | Rôle |
-|---|---|
-| `--klein` | le bleu Klein, seul accent : aplats, touches, signes ; texte blanc dessus 8,5:1, lisible en petit texte sur blanc (8,5:1) |
-| `--klein-ink`, `--klein-deep`, `--klein-hi` | bleu des petits textes sur bleu clair (8,2:1) ; liserés et lignes sombres ; halo des écrans |
-| `--klein-tint`, `--klein-wash`, `--klein-soft` | barre de fenêtre ; survols ; bleu lisible sur surface sombre |
-| `--on-klein` | le blanc fixe posé sur le Klein (ne s'inverse jamais) |
-| `--accent`, `--on-accent`, `--mark` | texte d'accent et focus ; texte sur l'accent ; sélection (s'inversent sur `.on-klein`) |
-| `--bubble-ask`, `--bubble-reply`, `--bubble-reply-ink`, `--bubble-reply-edge` | les bulles ; sur `.on-klein`, la réponse passe en blanc à texte Klein |
-| `--desk`, `--paper`, `--panel` | blanc de la page ; blanc des cartes ; gris chaud des grands panneaux |
-| `--ink`, `--ink-muted`, `--ink-faint` | encre 18,8:1, gris 7,1:1 et 5,5:1 sur blanc |
-| `--line`, `--line-strong`, `--edge` | filets ; liseré d'un pixel des objets |
-| `--klein-screen`, `--klein-screen-flat`, `--scan-lines`, `--grain` | l'écran bleu à lignes d'écran (avec ou sans vignette) ; la ligne seule ; le grain |
-| `--dither-top/bottom/left/right`, `--dither` | bandes de trame en pixels (`assets/textures/`), en masque |
-| `--relief`, `--shadow-object`, `--shadow-soft`, `--shadow-lift`, `--sheet` | relief éclairé d'en haut ; ombres ; la feuille décalée de 7 px (effet de pile) |
-| `--key-klein`, `--key-light` (+ `-relief`, `--key-pressed`) | les touches |
-| `--win-bar`, `--win-bar-ink`, `--win-frame`, `--win-frame-color`, `--win-tilt` | la fenêtre |
-| `--r-win` 12, `--r-panel` 20, `--r-ctl` 8, `--r-key` 6, `--r-pill` | les rayons |
-| `--font-display` (Instrument Sans), `--font-mono` (Sligoil), `--w-regular/medium/strong` 400/500/600 | typo |
-| `--t-*`, `--track-optical`, `--track-caps`, `--gutter`, `--section`, `--measure` | échelle et rythme |
-| `--sky-dawn/day/dusk/night` | la lumière de l'heure (blanc froid, voile bleu) |
-| `--term-*` | surfaces sombres (terminal) |
-| `--dur-1/2/3`, `--ease-out`, `--ease-spring` | mouvement |
-| `--z-*` | calques |
-
-## 3. La barre du haut — `css/os-bar.css` (+ `nav-panel.css`, `js/nav.js`)
-
-À copier tel quel. Sur la page courante, ajoutez `aria-current="page"` au lien concerné. Sur une autre page que l'accueil, le lien `WAB.` mène à `/`.
+Une pilule de verre blanc qui flotte en haut. À gauche le logo en mini-touches, au centre les pages (la page en cours porte `aria-current="page"`), à droite la recherche ⌘K et Contact. Au téléphone, un bouton à deux traits déroule le panneau dans la pilule. Copier le `<header class="menubar">` et le `<div class="topbar-scrim">` d'une page existante ; sur l'accueil seulement, le lien du logo porte `aria-current="page"`.
 
 ```html
-    <header class="menubar" id="topbar">
-        <div class="topbar__inner menubar__inner" id="topbarBar">
-            <div class="menubar__row">
-                <a href="/" class="menubar__brand">WAB.</a>
-
-                <nav class="menubar__nav" aria-label="Navigation principale">
-                    <a href="/realisations" class="menubar__link">Work</a>
-                    <a href="/services" class="menubar__link">Services</a>
-                    <a href="/studio" class="menubar__link">About</a>
-                </nav>
-
-                <span class="menubar__os" aria-hidden="true" translate="no"><canvas class="menubar__sigil" data-perch="flap" data-scale="1" data-color="4"></canvas></span>
-
-                <div class="menubar__state">
-                    <button type="button" class="menubar__find" data-palette-open data-js-only aria-keyshortcuts="Meta+K Control+K">
-                        <span class="sym sym--search" aria-hidden="true"></span>Rechercher<kbd data-shortcut>⌘K</kbd>
-                    </button>
-                    <span class="menubar__sky" aria-hidden="true"><span class="sym sym--sun" aria-hidden="true"></span><span class="sym sym--moon" aria-hidden="true"></span></span>
-                    <span class="menubar__status" data-local-status hidden></span>
-                    <time class="menubar__time" data-local-time>--:--</time>
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="menubar__cta key-btn key-btn--klein key-btn--sm">Contact</a>
-                    <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
-                        <span class="topbar__dots" aria-hidden="true">
-                            <span></span><span></span><span></span><span></span>
-                        </span>
-                        <span class="sr-only">Menu</span>
-                    </button>
-                </div>
-            </div>
-            <div class="topbar__panel" id="topbarPanel">
-                <div class="topbar__panel-inner">
-                    <nav class="panel__nav" aria-label="Navigation">
-                        <a href="/realisations" class="panel__link">Work<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
-                        <a href="/services" class="panel__link">Services<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
-                        <a href="/studio" class="panel__link">About<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
-                        <a href="mailto:contact@wearebrothers.ch" data-contact class="panel__link">Contact<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
-                    </nav>
-                    <div class="panel__meta">
-                        <p class="panel__row">
-                            <span class="panel__key">Email</span>
-                            <a href="mailto:contact@wearebrothers.ch" class="panel__value">contact@wearebrothers.ch</a>
-                        </p>
-                        <p class="panel__row">
-                            <span class="panel__key">Studio</span>
-                            <span class="panel__value">Lausanne, Suisse — <time data-local-time>--:--</time></span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <div class="topbar-scrim" id="topbarScrim"></div>
+<a href="/" class="menubar__brand" aria-label="WAB., accueil"><span class="keys menubar__keys" aria-hidden="true" translate="no"><span class="key key--tint" data-tint="vert"><span class="key__face">W</span></span><span class="key key--tint" data-tint="jaune"><span class="key__face">A</span></span><span class="key key--tint" data-tint="rose"><span class="key__face">B</span></span><span class="key key--dot"><span class="key__face">.</span></span></span></a>
 ```
 
-## 4. Le bouton « touche » — `css/key-btn.css`
+Le menu ne porte que **Work, Services, About** (+ Contact). Toute nouvelle page se rattache à l'un d'eux.
 
-Un rectangle aux coins de 6 px, en relief comme une touche de clavier : reflet blanc sur l'arête haute, pénombre de 2 px en bas, liseré d'un pixel, ombre courte. À l'appui, la touche descend d'un pixel et son ombre se résorbe (150 ms).
+## 3. Les touches
+
+### Le bouton-touche — `css/key-btn.css`
 
 ```html
 <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein">Démarrer un projet</a>
-<a href="/realisations" class="key-btn">Voir le travail</a>
-<button type="button" class="key-btn key-btn--sm">Petit bouton</button>
+<a href="/realisations" class="key-btn">Voir nos réalisations</a>
 ```
 
-- `.key-btn` : touche blanche, encre fixe `--glass-ink`. `.key-btn--klein` : touche bleue, texte blanc 8,5:1 et petite flèche ↗ peinte en masque — l'action principale, une par écran. `.key-btn--sm` : barres, fenêtres, cartes.
-- Sur une surface `.on-klein`, la touche bleue passe en blanc à texte Klein, la blanche en touche translucide à texte blanc : rien à faire côté page.
-- `:disabled` et `[aria-disabled="true"]` sont gérés ; sous « réduire les animations », l'appui ne bouge plus.
-- Les boutons du formulaire de contact (`.btn--solid`, `.btn--ghost`, `base-ui.css`) ont la même matière.
-- Tout lien `data-contact` ouvre la fenêtre de contact (`js/contact`) ; sans JavaScript, il reste un lien mailto.
+- `.key-btn` : touche blanche. `--klein` : touche pleine de la teinte du bloc, avec petite flèche — l'action principale, une par écran. `--sm` : barre, dock, cartes. `--deep` : touche plus profonde, pour les actions d'un premier écran.
+- Sur une surface `.on-klein`, les touches s'inversent seules.
+- `:disabled` / `aria-disabled="true"` gérés ; l'appui ne bouge plus sous « réduire les animations ».
 
-## 5. Les fenêtres — `css/os-window.css`
+### Les touches de lettre — `css/desk-keys.css`
+
+`.keys > .key > .key__face` : une touche de clavier en volume (jupe, face éclairée). `.key--tint` + `data-tint` : touche colorée ; `.key--dot` : le point bleu. Sert au logo, au pied de page et au nom du premier écran de l'accueil (`css/desk-hero.css`, brouillé par `js/desk/scramble.js` via `[data-scramble]`).
+
+### Le bruit — `js/os/keysound.js`
+
+Toute touche (`.key-btn`, `.key`, `.menubar__link`, `.dock__chip`, `.dock__item`, `.topbar__menu`, onglets…) fait un « clac » à l'appui. Pour qu'un nouveau type de touche sonne, ajouter son sélecteur à la liste `KEYS` du module.
+
+## 4. Les fenêtres — `css/os-window.css`
+
+Dessinées comme un navigateur : barre blanche, trois pastilles rouge / jaune / vert à gauche, adresse en Sligoil au centre.
 
 ```html
 <div class="win">
     <div class="win__bar"><span class="win__lights"></span><span class="win__title">lepetitcentral.ch</span></div>
     <div class="win__body"><img src="…" alt="…" width="1600" height="1000" loading="lazy" decoding="async"></div>
 </div>
-<span class="file-name">lepetitcentral.ch</span>
 ```
 
-- La barre : bleu clair (`--win-bar`), le `span.win__lights` vide devient le ↳ à gauche, le titre est centré en Sligoil, la barre porte elle-même le `[*]` à droite. Un symbole `.sym` dans le titre est masqué : le nom suffit.
-- `.win--framed` : la fenêtre mise en avant (une par écran au plus) — cadre Klein de 12 px dont le bord intérieur s'émiette en pixels (bandes `--dither-*` en masque).
-- `.win--tilt` / `.win--tilt-r` : inclinaison de ±1,2° pour les cartes et les citations.
-- `.win__body` n'a pas de format imposé : donnez-lui le ratio natif de l'image (`16 / 10` pour les captures, `4 / 5` pour les photos).
-- Aucune n'a de `backdrop-filter`, par souci de performance. Les fenêtres qui s'ouvrent (fiche projet, dossier Work, terminal) sont gérées par `js/os` (`os-win.css` : vrais boutons fermer Klein, réduire encre, agrandir blanc).
-- Écran derrière une fenêtre (accueil, Work, Services) : `background: var(--klein-screen-flat)`, liseré `--klein-deep`, feuille `--sheet`.
+- `.win__body` prend le ratio natif de l'image (16/10 pour une capture, 4/5 pour une photo).
+- `.win--framed` (cadre tramé en pixels) : ne reste que sur la 404.
+- Pas de `backdrop-filter` sur les fenêtres posées (performance).
+- **Fenêtres qui s'ouvrent** (fiche projet, dossier Work, terminal, palette ⌘K, menu du clic droit) : `js/os/apps.js` charge à la première ouverture leur feuille (`os-win`, `os-win-states`, `os-finder`, `os-case`, `os-terminal`, `os-palette`, `os-menu`) par `loadStyle()` (`js/os/lazy.js`), puis leur module. Au téléphone, elles deviennent une feuille qui monte du bas.
+- Une carte qui ouvre la fiche d'un projet : `<a href="/realisations#zinema" data-card="zinema" data-title="zinema.ch">…</a>`. Les fiches sont lues dans `work.html` (`js/os/projects.js`) : c'est la seule source des projets.
 
-## 6. Le badge de section — `css/os-base.css`
+## 5. La carte de section — `.os-card` (`css/os-base.css`)
+
+Une grande carte gris chaud posée sur le bureau (rayon 20 px, liseré, relief, feuille décalée dessous). **Elle remplace les bandes pleine largeur** : une section mise en avant se pose dans une `.os-card`, à l'intérieur de `.os-wrap` / `.desk-wrap`.
+
+- `.os-card--wash` : fond très clair de la teinte du bloc au lieu du gris.
+- `.os-card--even` : même retrait en haut et en bas (contenu centré).
+- Exemples : Offres (accueil), Savoir-faire (About), Déroulé (Work), Approche (Applications, `--wash`), Formules (Services), Refonte (Création de site).
+
+Patron complet d'une section colorée : `DESIGN-SYSTEM.md`, dernière section.
+
+## 6. Petits composants
+
+- **Badge** (`os-base.css`) : `<p class="badge">FAQ</p>` — étiquette Sligoil en capitales, carré de la teinte devant.
+- **Bulles** (`css/os-bubbles.css`) : `<div class="chat" aria-hidden="true"><p class="chat__ask">Un site qui tient sur mobile&nbsp;?</p><p class="chat__reply">Nous le codons de A à Z.</p></div>` — question gris chaud, réponse dans la teinte. Mise en scène, jamais témoignage : pas de nom, `aria-hidden`.
+- **Symboles** (`css/sym.css`, `assets/icons/sym-*.svg`) : `<span class="sym sym--search" aria-hidden="true"></span>`, couleur du texte. Disponibles : arrow, bolt, chart, check, file, folder, grid, mail, moon, notes, plus, search, site, sun, team, terminal, trash, turn.
+- **Icônes d'app** (`assets/icons/app-*.svg`) : touches 3D, utilisées dans les fenêtres et le dock de la 404. Générées par script : ne pas retoucher à la main.
+- **Autocollant** « HELLO my name is WAB. » (`css/os-sticker.css`) : sur Work, Services et Applications, toujours droit, dans un conteneur `aria-hidden`. Kaomoji : uniquement le « (o_O) » de la 404 (`css/desk-objects.css`).
+
+## 7. Les marges en pixels — `js/desk/pixels-margins.js`, `css/desk-margins.css`
+
+Sur toutes les pages : des formes de gros pixels de couleur posées de part et d'autre du contenu, jusqu'au pied de page (survol : elles bougent ; clic : elles se redessinent). Il faut le `[data-margins]` dans `<main>` et au moins un `.desk-wrap` (le script mesure la largeur du contenu sur le premier trouvé — souvent celui du pied de page). Rien quand l'écran est trop étroit pour avoir des marges. Chargé par `js/os/index.js`.
+
+L'accueil a en plus le canevas du premier écran (`[data-pixels]`, `js/desk/pixels.js`, `pixels-field.js`, `pixels-patterns.js`, `pixels-ink.js`) : il ne peint jamais sous les éléments `[data-pixels-keep]` (le nom, les boutons).
+
+## 8. Le pied de page — `css/os-footer.css`
+
+Une bande compacte sur papier blanc : logo en mini-touches et phrase du studio, colonnes Studio et Expertises, bloc contact, ligne de mentions. **Les liens Création de site internet et Applications de gestion ne doivent jamais disparaître** : c'est le chemin visible vers ces deux pages (sinon Google les traite comme pages satellites). Copier le `<footer class="foot">` d'une page existante.
+
+## 9. Le dock = sommaire de la page — `css/os-dock.css`, `css/os-dock-toc.css`, `js/os/toc.js`
+
+Sur ordinateur seulement (souris, 900 px et plus), toujours affiché : une pilule blanche en bas avec les sections de la page, chacune d'un pixel de sa teinte ; la section lue s'allume (`aria-current="location"`) et un trait de lecture suit le bord bas de la pilule. Au bout, la touche « Écrire ». Les fenêtres réduites se rangent après (`js/os/dock.js`). Placer juste avant `</body>` :
 
 ```html
-<p class="badge">FAQ</p>
+<nav class="dock dock--toc" aria-label="Sommaire de la page" data-dock data-toc>
+    <ol class="dock__toc">
+        <li><a class="dock__chip" href="#projets" data-tint="bleu">Projets</a></li>
+        <li><a class="dock__chip" href="#deroule" data-tint="vert">Déroulé</a></li>
+    </ol>
+    <a class="dock__cta key-btn key-btn--klein key-btn--sm" href="mailto:contact@wearebrothers.ch" data-contact>Écrire</a>
+    <ul class="dock__shelf" data-dock-shelf aria-label="Fenêtres réduites" hidden></ul>
+    <span class="dock__progress" aria-hidden="true"></span>
+</nav>
 ```
 
-Une étiquette Sligoil en capitales, un petit carré Klein devant, posée comme une touche.
+Chaque `href` doit viser l'`id` d'une section, et la teinte de l'entrée celle de la section. **Exception : la 404** garde l'ancien dock d'apps (`.dock__apps`, icônes Work, Services, About, Lettre, Terminal, Contact) et ne charge pas `os-dock-toc.css`.
 
-## 7. Les bulles — `css/os-bubbles.css`
+## 10. Le système — `js/os/index.js`
 
-```html
-<div class="chat" aria-hidden="true">
-    <p class="chat__ask">Un site qui tient sur mobile&nbsp;?</p>
-    <p class="chat__reply">On le code de A à Z.</p>
-</div>
-```
+Un seul module partagé, chargé par les sept pages. Il démarre, chacun isolé dans un `try` (un module en panne n'emporte pas les autres) :
 
-La question en gris chaud, la réponse de WAB en bleu Klein (texte blanc). Ce sont des répliques de mise en scène, jamais des témoignages : pas de nom, `aria-hidden`, le vrai contenu est porté par le titre et le texte voisins.
+- `sky.js` : la lumière de l'heure de Lausanne (`data-sky` sur la racine) ;
+- `shell.js` : palette ⌘K / Ctrl+K, menu du clic droit, cartes `data-card`, dock ; charge `apps.js` à la demande ;
+- `toc.js` : le sommaire du dock ;
+- `keysound.js` : le bruit des touches ;
+- `../desk/pixels-margins.js` : les marges en pixels.
 
-## 8. Les icônes — `assets/icons/`, `css/sym.css`
+Les erreurs passent par `report()` (`js/os/lazy.js`) : attribut `data-os-error` sur la racine et `window.reportError`, jamais `console.log`. L'heure (`[data-local-time]`) est mise à jour par `nav-clock.js`.
 
-- **Symboles au trait** (masques CSS, couleur du texte) : `<span class="sym sym--search" aria-hidden="true"></span>`. Disponibles : `arrow` (↗), `bolt`, `chart`, `file`, `folder`, `grid`, `mail`, `moon`, `notes`, `search`, `site`, `sun`, `team`, `terminal`, `trash`, `turn` (↳). `sym-check.svg` et `sym-plus.svg` s'emploient en `mask` direct.
-- **Icônes d'app** : des touches de clavier 3D (jupe, face éclairée d'en haut à gauche, pictogramme gravé). Blanches, sauf Terminal (encre) et Contact (Klein) : `<img class="app-icon" src="assets/icons/app-work.svg?v=4" alt="" width="56" height="56">`. Disponibles : `work`, `services`, `about`, `notes`, `terminal`, `mail`, `trash`, `file`. Générées par un script (lumière commune) : ne pas les retoucher à la main.
-- **Objets en relief** (fenêtre, crayon, carte, t-shirt isométriques) : retirés du site le 06.10 (« bureau rangé », rien de travers) ; les SVG restent dans l'historique git.
-- Seuls les oiseaux restent en pixel art ; le grand « WAB. » du pied de page est en lignes.
+## 11. La fenêtre de contact — `js/contact/`, `send-message.php`
 
-## 8 bis. L'autocollant — `css/os-sticker.css`
+Il n'y a pas de page Contact : tout lien `data-contact` ouvre la fenêtre par-dessus la page (sans JavaScript, il reste un `mailto:`). `/contact` et `#ecrire` l'ouvrent à l'arrivée (redirection 301 dans `.htaccess`).
 
-Une seule version pour tout le site : encre Klein, marge de découpe blanche de 3 px (il se détache du blanc comme du bleu), grain, reflet de vinyle, ombre d'objet posé. Toujours dans un conteneur `aria-hidden`, positionné par la feuille de la page.
+- `markup.js` (champs et listes de choix), `form.js` (validation, envoi), `dom.js`, `index.js` ; `flight.js` : l'oiseau qui emporte le message (dessin dans `js/birds/sprites.js` et `frames.js`, seuls restes des oiseaux).
+- Les listes de choix (type de projet, budget, délai) existent **en double** : `js/contact/markup.js` et `send-message.php`, qui refuse toute autre valeur. Les modifier ensemble.
+- Envoi : `send-message.php` → `smtp-mailer.php` (SMTP authentifié Infomaniak ; `mail()` est désactivé chez l'hébergeur). Identifiants dans `mail-config.php`, généré au déploiement depuis les secrets GitHub, jamais dans le dépôt (`.gitignore`).
 
-```html
-<span class="sticker"><span class="sticker__hello">HELLO</span><span class="sticker__mine">my name is</span><span class="sticker__name" translate="no">WAB.</span></span>
-```
+## 12. Numéros de version `?v=`
 
-Kaomoji : un seul sur tout le site, le « (o_O) » de la 404 (l'accueil n'a plus ni autocollant ni kaomoji depuis le 06.10). N'en ajoutez pas.
+Les navigateurs gardent les CSS un mois en cache : **toute modification d'un fichier impose de relever son numéro partout où il est appelé.**
 
-## 8 ter. Les oiseaux — `js/birds/frames.js`
+1. **Feuille CSS** : relever `?v=` dans chaque page qui la charge (`grep -n "nom.css" *.html`).
+2. **Module JS** : les modules s'importent en chaîne avec des numéros (`import { initToc } from './toc.js?v=1'`). Modifier `toc.js` impose de relever son numéro dans `js/os/index.js`, donc de modifier `index.js`, donc de relever `js/os/index.js?v=` dans les sept pages. Remonter ainsi jusqu'au HTML. Un même fichier doit porter le **même numéro** partout où il est importé, sinon il est chargé deux fois.
+3. **Feuilles chargées à la demande** : leur numéro est dans `js/os/apps.js` (`loadStyle(name, 4)` pour les fenêtres, `3` pour le menu). Le relever, puis remonter la chaîne `apps.js` → `shell.js` → `index.js` → HTML.
+4. `.htaccess` sert les `.js` en `no-cache` (revalidés à chaque visite) : un oubli côté JS se voit moins, mais relevez quand même.
 
-Palette bleu, encre et blanc, une seule logique : un oiseau **posé** (`data-color="0"` ou `"4"`) est bleu Klein (en groupe, il alterne avec le bleu ciel) ; les oiseaux **en vol** sont porcelaine ou bleu ciel (`FLIGHT_COLORS`). Bec bleu pâle. Régime `rare` : deux ou trois oiseaux.
+## 13. Règles communes
 
-## 9. Le pied de page — `css/os-footer.css`
-
-À copier tel quel : surface Klein à lignes d'écran (`.on-klein`), colonnes de liens, bandeau qui fait défiler les projets en ligne (arrêté au survol et sous « réduire les animations »), puis « WAB. » en lignes horizontales, une lettre par cellule. Les cases apparaissent de gauche à droite si `js/desk/pixels.js` et `watch.js` sont chargés ; sans eux, le nom reste visible. Sur ordinateur, le pied de page réserve sous lui la place du dock (le bleu va jusqu'en bas).
-
-```html
-    <footer class="foot on-klein">
-        <div class="desk-wrap">
-            <div class="foot__cols">
-                <nav class="foot__col" aria-label="Pages">
-                    <p class="foot__label">Pages</p>
-                    <a href="/realisations">Work</a>
-                    <a href="/services">Services</a>
-                    <a href="/studio">About</a>
-                </nav>
-                <nav class="foot__col" aria-label="Expertises">
-                    <p class="foot__label">Expertises</p>
-                    <a href="/creation-site-internet-lausanne">Création de site internet</a>
-                    <a href="/applications">Applications</a>
-                </nav>
-                <div class="foot__col">
-                    <p class="foot__label">Contact</p>
-                    <a href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
-                    <span>Lausanne, Suisse — <time data-local-time>--:--</time></span>
-                </div>
-                <p class="foot__note">Codé à la main à Lausanne, oiseaux compris.</p>
-            </div>
-        </div>
-        <!-- Le bandeau : les projets en ligne, en boucle (décor : la
-             liste réelle vit sur /realisations). -->
-        <div class="foot__ticker" aria-hidden="true" translate="no"><ul class="foot__track"><li>Zinéma</li><li>Le P’tit Central</li><li>Amarte Studio</li><li>La Slack</li><li>Nadège Mouine</li><li>Commissione Entretien</li><li>LAZIZZE DJ</li><li>Maison Alliani</li><li>LE MEMO</li></ul><ul class="foot__track"><li>Zinéma</li><li>Le P’tit Central</li><li>Amarte Studio</li><li>La Slack</li><li>Nadège Mouine</li><li>Commissione Entretien</li><li>LAZIZZE DJ</li><li>Maison Alliani</li><li>LE MEMO</li></ul></div>
-        <div class="desk-wrap">
-            <svg class="pixel-name" data-watch="once" viewBox="-1 -1 202 72" role="img" aria-label="WAB.">
-                <defs>
-                    <symbol id="wab-px" viewBox="0 0 10 10" width="10" height="10" overflow="visible"><rect class="px__line" x="-0.1" y="0.6" width="10.2" height="1.9"/><rect class="px__line" x="-0.1" y="3.9" width="10.2" height="1.9"/><rect class="px__line" x="-0.1" y="7.2" width="10.2" height="1.9"/></symbol>
-                </defs>
-                <!-- … les <use class="px" href="#wab-px" x="…" y="…"/> du nom, copiés depuis index.html … -->
-            </svg>
-            <p class="foot__legal">&copy; 2026 WeAreBrothers Studio</p>
-        </div>
-    </footer>
-```
-
-## 10. Le dock — `css/os-dock.css`, `js/os/dock.js`
-
-Sur ordinateur seulement (souris, 900 px et plus) : un plateau de verre gris fumé, comme la barre flottante d'agentcard, et les apps en touches. Il se range quand on descend la page. Placez-le juste avant `</body>`. Le lien Lettre pointe vers `/#lettre` hors de l'accueil, Services vers `/services`.
-
-```html
-    <nav class="dock" aria-label="Dock" data-dock>
-        <ul class="dock__apps">
-            <li><a class="dock__item" href="/realisations" data-app="work"><img class="app-icon" src="assets/icons/app-work.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Work</span></a></li>
-            <li><a class="dock__item" href="#services" data-app="services"><img class="app-icon" src="assets/icons/app-services.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Services</span></a></li>
-            <li><a class="dock__item" href="/studio" data-app="about"><img class="app-icon" src="assets/icons/app-about.svg?v=4" alt="" width="48" height="48"><span class="dock__label">About</span></a></li>
-            <li><a class="dock__item" href="#lettre" data-app="notes"><img class="app-icon" src="assets/icons/app-notes.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Lettre</span></a></li>
-            <li><button class="dock__item" type="button" data-app="terminal" data-js-only><img class="app-icon" src="assets/icons/app-terminal.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Terminal</span></button></li>
-            <li><a class="dock__item" href="mailto:contact@wearebrothers.ch" data-contact data-app="contact"><img class="app-icon" src="assets/icons/app-mail.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Contact</span></a></li>
-        </ul>
-        <ul class="dock__shelf" data-dock-shelf aria-label="Fenêtres réduites" hidden></ul>
-    </nav>
-```
-
-## 11. Le système (⌘K, terminal, fenêtres, clic droit) — `js/os/index.js`
-
-Un seul module à charger : `<script type="module" src="js/os/index.js?v=3"></script>`. Il apporte :
-- la palette ⌘K / Ctrl+K, ouverte aussi par le bouton `[data-palette-open]` de la barre ;
-- le terminal (dock, palette) ;
-- le menu du clic droit sur le fond ;
-- la lumière de l'heure de Lausanne (`data-sky` sur la racine) ;
-- la complication de Lausanne : un petit cadran devant l'heure de la barre (`dial.js`, styles dans `os-sky.css`) ;
-- l'ombre d'un oiseau qui passe sur le bureau, de loin en loin (`shade.js`, ordinateur seulement, jamais sous « réduire les animations ») ;
-- les fenêtres à la demande : fiche projet lue sur `/realisations`, dossier Work.
-
-Une carte qui doit ouvrir la fiche d'un projet : `<a href="/realisations#zinema" data-card="zinema" data-title="zinema.ch">…</a>`. Sans JavaScript, c'est un simple lien.
-
-## 12. Règles communes
-
-- Rien d'inventé : contenus réels de `index.html`, `work.html`, `services.html`, `about.html`, `PRODUCT.md`. Prix publics (Eliott, 3.10) : site vitrine 1'000 – 2'500 CHF, site et outils 2'500 – 7'000 CHF, expérience sur mesure dès 7'000 CHF sur devis.
-- Ponctuation : `&nbsp;` avant `? ! : ;` ; jamais de `?` ou `!` seul en début de ligne (vérifier à 320 px).
+- Contenus réels uniquement (voir `PRODUCT.md`) ; prix publics : 1'000 – 2'500 CHF, 2'500 – 7'000 CHF, dès 7'000 CHF.
+- `&nbsp;` avant `? ! : ;` ; jamais de `?` ou `!` seul en début de ligne (vérifier à 320 px).
 - Mobile : une seule ligne grise secondaire par bloc.
-- Contraste AA. `prefers-reduced-motion` fige tout.
-- Fichiers de moins de 200 lignes. JavaScript en `// @ts-check`, zéro `console.log`.
-- Numéros `?v=` à jour à chaque modification.
+- Contraste AA ; `prefers-reduced-motion` fige tout et coupe le son.
+- Rien de penché ; aucun nouvel oiseau décoratif.
+- Fichiers de moins de 200 lignes ; JavaScript en `// @ts-check`, zéro `console.log`.

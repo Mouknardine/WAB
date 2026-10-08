@@ -5,8 +5,7 @@
    ============================================ */
 
 /* La lumière de l'heure (--sky-*, os-sky.css) et le grain sur le fond
-   de la racine. Le corps reste transparent : les oiseaux (canevas à
-   z-index négatif) se peignent entre la racine et lui. */
+   de la racine ; le corps reste transparent par-dessus. */
 :root:has(body.os) {
     background:
         radial-gradient(120% 50% at 50% 0%, var(--sky-glow), transparent 70%),

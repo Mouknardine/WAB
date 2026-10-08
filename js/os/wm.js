@@ -10,7 +10,7 @@
  */
 
 import { buildFrame } from './wm-frame.js?v=1';
-import { wire } from './wm-wire.js?v=2';
+import { wire } from './wm-wire.js?v=3';
 import { markOpen, shelve, unshelve, dockVisible, onDockVisibility } from './dock.js?v=2';
 
 const Z_BASE = 130;
@@ -38,7 +38,7 @@ const sheetQuery = window.matchMedia('(max-width: 759px)');
  * @property {string} title
  * @property {string} icon
  * @property {string} app
- * @property {'lg' | 'md' | 'sm' | 'xs'} size
+ * @property {'lg' | 'md' | 'sm'} size
  * @property {HTMLElement | null} opener
  * @property {(win: OsWindow) => void} build
  * @property {(win: OsWindow) => HTMLElement | null} [focus]
@@ -48,7 +48,7 @@ const sheetQuery = window.matchMedia('(max-width: 759px)');
 const stack = [];
 
 /** @param {string} id */
-export function getWindow(id) {
+function getWindow(id) {
     return stack.find((win) => win.id === id) ?? null;
 }
 
@@ -121,7 +121,7 @@ function handBackFocus(win) {
 }
 
 /** @param {OsWindow} win */
-export function closeWindow(win) {
+function closeWindow(win) {
     const index = stack.indexOf(win);
     if (index === -1) return;
     stack.splice(index, 1);

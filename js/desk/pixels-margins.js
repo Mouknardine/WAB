@@ -12,7 +12,7 @@
  * sinon (téléphone, petit portable), rien n'est posé.
  */
 
-import { createPatterns } from './pixels-patterns.js?v=4';
+import { createPatterns } from './pixels-patterns.js?v=6';
 
 const SIZE = { block: 60, glyph: 20 };
 /** Écart gardé entre le contenu et le premier pavé, en px. */

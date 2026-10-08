@@ -8,12 +8,12 @@
  * La vue choisie est retenue d'une visite à l'autre.
  */
 
-import { openWindow } from './wm.js?v=2';
+import { openWindow } from './wm.js?v=3';
 import { loadProjects, imageFrom } from './projects.js?v=1';
 import { el, showState, keyLink } from './dom.js?v=3';
 import { report } from './lazy.js?v=1';
-import { isOpenGesture, select } from './gesture.js?v=1';
-import { launchCase } from './apps.js?v=6';
+import { isOpenGesture, select } from './gesture.js?v=2';
+import { launchCase } from './apps.js?v=7';
 
 const VIEW_KEY = 'wabos-finder-view';
 

@@ -8,11 +8,11 @@
  *   <script type="module" src="/js/os/index.js?v=N"></script> (N : relevé à chaque changement)
  */
 
-import { initSky } from './sky.js?v=1';
-import { initShell } from './shell.js?v=8';
+import { initSky } from './sky.js?v=2';
+import { initShell } from './shell.js?v=9';
 import { initToc } from './toc.js?v=1';
 import { initKeySound } from './keysound.js?v=1';
-import { initMargins } from '../desk/pixels-margins.js?v=4';
+import { initMargins } from '../desk/pixels-margins.js?v=6';
 import { report } from './lazy.js?v=1';
 
 /** @type {Array<[string, () => void]>} */

@@ -1,3 +1,12 @@
+> **Historique — ne décrit plus le site actuel, voir `DESIGN-SYSTEM.md`.** Proposition du 06.10.2026 (« bureau rangé », d'après eazyclick). Sa **structure d'accueil a été réalisée** et reste en ligne : cartes WAB à tuile, bulles, promesse et puces (Services) ; méthode en quatre étapes ; « Fait à Lausanne. » ; offres à prix affichés ; lettre du studio ; FAQ ; appel final. Le reste est dépassé depuis le 08.10.2026 :
+> - la palette « un seul accent Klein » (§ 7, § 12.12) est remplacée par **six teintes** (`css/os-tints.css`) ;
+> - l'ouverture (§ 5.1) est le nom « WeAreBrothers. » en touches, sans H1 visible en phrase, sans pastilles ni fenêtre Zinéma défilante ; la bande de preuves (§ 5.2) n'a pas été faite ;
+> - le pied de page (§ 5.10) est une bande compacte blanche, sans défilant ni « WAB. » géant ; le dock est le sommaire de la page ;
+> - plus aucun oiseau, y compris l'oiseau-logo (§ 11) ; seul reste celui qui emporte un message envoyé ;
+> - les conflits listés au § 14 ont été résolus dans `PRODUCT.md` et `OS-COMPONENTS.md`.
+>
+> Les interdits du § 12 restent valables, sauf le n° 12 (un seul accent) et les « tuiles multicolores » du n° 5 : chaque carte prend désormais une des six teintes. L'autocollant « HELLO my name is », toujours droit, reste sur Work, Services et Applications.
+
 # Direction artistique — « Le bureau rangé »
 
 Version 1 — 6 octobre 2026. Document de travail, non déployé.

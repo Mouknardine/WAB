@@ -53,30 +53,5 @@
         }
     }
 
-    /* La plaque s'épaissit dès que la page quitte son tout premier
-       écran (nav.css, .is-scrolled) : transparente sur le ciel au
-       repos, lisible par-dessus le contenu ensuite. Un seul calcul par
-       image, quel que soit le nombre d'évènements de défilement. */
-    function initScrolled() {
-        const topbar = document.getElementById('topbar');
-        if (!topbar) return;
-
-        const THRESHOLD = 10;
-        let pending = false;
-
-        const update = () => {
-            pending = false;
-            topbar.classList.toggle('is-scrolled', window.scrollY > THRESHOLD);
-        };
-
-        window.addEventListener('scroll', () => {
-            if (pending) return;
-            pending = true;
-            window.requestAnimationFrame(update);
-        }, { passive: true });
-        update();
-    }
-
     document.addEventListener('DOMContentLoaded', initTopbar);
-    document.addEventListener('DOMContentLoaded', initScrolled);
 })();

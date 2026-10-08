@@ -10,7 +10,7 @@
  * entier un peu plus loin sur son bord.
  */
 
-import { GLYPHS, LETTERS, shortWords, isMoving, paintBlocks, paintGlyphs, pick, pickTint, touches } from './pixels-ink.js?v=3';
+import { GLYPHS, LETTERS, shortWords, isMoving, paintBlocks, paintGlyphs, pick, pickTint, touches } from './pixels-ink.js?v=4';
 
 /** Part de la largeur, de chaque côté, où vivent les motifs. */
 const EDGE_SHARE = 0.2;
@@ -53,6 +53,8 @@ export function createPatterns(size) {
     /** Une forme en escalier qui pousse case par case depuis (col, row). */
     function grow(/** @type {Pattern} */ pattern, /** @type {number} */ count) {
         const list = () => Array.from(pattern.cells.values());
+        // Sans case de départ (bord trop étroit), rien ne peut pousser.
+        if (!pattern.cells.size) return;
         for (let tries = 0; pattern.cells.size < count && tries < count * 30; tries += 1) {
             const from = pick(list());
             const [dc, dr] = pick(STEPS);

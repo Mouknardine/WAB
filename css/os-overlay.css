@@ -1,7 +1,7 @@
 /* ============================================
    WAB OS — ce qui passe par-dessus tout
-   La notification (« Email copié ») et l'oiseau qui vient tenir
-   compagnie au curseur. Toujours au-dessus des fenêtres et du dock.
+   La notification (« Email copié »), toujours au-dessus des fenêtres
+   et du dock.
    ============================================ */
 
 /* ── La notification ── (js/os/toast.js), en bas au centre, au-dessus

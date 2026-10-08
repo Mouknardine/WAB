@@ -1,6 +1,6 @@
 // @ts-check
 /**
- * WAB. — Le premier écran qui se creuse de pixels bleus
+ * WAB. — Le premier écran qui se creuse de pixels de couleur
  * Branche la traînée (pixels-field.js) et les motifs des bords
  * (pixels-patterns.js) sur le canevas du premier écran [data-pixels] :
  * la souris, le doigt (sans empêcher le défilement), le clic sur un
@@ -14,9 +14,9 @@
  * l'écran ne répond qu'à la main du visiteur.
  */
 
-import { keepRects, pickTint } from './pixels-ink.js?v=3';
-import { createField } from './pixels-field.js?v=4';
-import { createPatterns } from './pixels-patterns.js?v=4';
+import { keepRects, pickTint } from './pixels-ink.js?v=4';
+import { createField } from './pixels-field.js?v=5';
+import { createPatterns } from './pixels-patterns.js?v=6';
 
 const GHOST_MS = 2400;
 const GHOST_FIRST_DELAY_MS = 700;

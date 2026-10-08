@@ -16,9 +16,9 @@
     <link rel="icon" href="/favicon.png?v=4" type="image/png" sizes="96x96">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4">
     <link rel="manifest" href="/site.webmanifest?v=3">
-    <title>Services — Sites, Automatisation, IA et Branding | WeAreBrothers Lausanne</title>
+    <title>Services Web à Lausanne — Sites, IA, Branding | WeAreBrothers</title>
     <meta name="description"
-        content="Agence web à Lausanne : création de site internet sur mesure, intégrations (caisse, CMS), automatisation, newsletters, applications web, intégration de l'IA, branding et identité visuelle.">
+        content="Sites sur mesure, intégrations, automatisation, IA, applications de gestion et branding à Lausanne. Trois formules affichées, de 1'000 à plus de 7'000 CHF.">
 
     <!-- SEO -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -28,66 +28,382 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Services — Sites, Automatisation, IA et Branding | WeAreBrothers Lausanne">
-    <meta property="og:description" content="Sites codés sur mesure, intégrations, automatisation, applications web, IA, branding et conseil, à Lausanne.">
+    <meta property="og:title" content="Services Web à Lausanne — Sites, IA, Branding | WeAreBrothers">
+    <meta property="og:description" content="Sites sur mesure, intégrations, automatisation, IA, applications de gestion et branding à Lausanne. Trois formules affichées, de 1'000 à plus de 7'000 CHF.">
     <meta property="og:url" content="https://wearebrothers.ch/services">
     <meta property="og:image" content="https://wearebrothers.ch/assets/og-image.jpg?v=3">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:alt" content="« WeAreBrothers. » écrit en touches de clavier colorées — agence web à Lausanne, sites internet sur mesure">
     <meta property="og:locale" content="fr_CH">
     <meta property="og:site_name" content="WeAreBrothers Studio">
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Services — Sites, Automatisation, IA et Branding | WeAreBrothers Lausanne">
-    <meta name="twitter:description" content="Sites codés sur mesure, intégrations, automatisation, applications web, IA, branding et conseil, à Lausanne.">
+    <meta name="twitter:title" content="Services Web à Lausanne — Sites, IA, Branding | WeAreBrothers">
+    <meta name="twitter:description" content="Sites sur mesure, intégrations, automatisation, IA, applications de gestion et branding à Lausanne. Trois formules affichées, de 1'000 à plus de 7'000 CHF.">
     <meta name="twitter:image" content="https://wearebrothers.ch/assets/og-image.jpg?v=3">
+    <meta name="twitter:image:alt" content="« WeAreBrothers. » écrit en touches de clavier colorées — agence web à Lausanne, sites internet sur mesure">
 
-    <!-- Données structurées (JSON-LD) — fil d'Ariane, page et liste des
-         services. Le studio lui-même est décrit en entier sur l'accueil. -->
+    <!-- Données structurées (JSON-LD) — régénérées le 08.10.2026 d'après le
+         contenu affiché : studio (#organization), site, page, fil d'Ariane, services et formules.
+         Toute FAQ ici reprend mot pour mot les questions affichées. -->
     <script type="application/ld+json">
     {
-    "@context": "https://schema.org",
-    "@graph": [
-        {
-            "@type": "BreadcrumbList",
-            "@id": "https://wearebrothers.ch/services#breadcrumb",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://wearebrothers.ch/" },
-                { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://wearebrothers.ch/services" }
-            ]
-        },
-        {
-            "@type": "WebPage",
-            "@id": "https://wearebrothers.ch/services#webpage",
-            "url": "https://wearebrothers.ch/services",
-            "name": "Services — WeAreBrothers Studio, agence web à Lausanne",
-            "description": "Sites codés sur mesure, intégrations, automatisation, newsletters, applications web, intégration de l'IA, branding, print, vêtements et conseil.",
-            "breadcrumb": { "@id": "https://wearebrothers.ch/services#breadcrumb" },
-            "isPartOf": { "@id": "https://wearebrothers.ch/#website" },
-            "about": { "@id": "https://wearebrothers.ch/#organization" },
-            "mainEntity": { "@id": "https://wearebrothers.ch/services#liste" },
-            "inLanguage": "fr-CH"
-        },
-        {
-            "@type": "ItemList",
-            "@id": "https://wearebrothers.ch/services#liste",
-            "name": "Services WeAreBrothers Studio",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "item": { "@type": "Service", "name": "Création de site internet sur mesure", "description": "Design et développement codés de A à Z.", "provider": { "@id": "https://wearebrothers.ch/#organization" }, "areaServed": "Suisse romande" } },
-                { "@type": "ListItem", "position": 2, "item": { "@type": "Service", "name": "Intégrations", "description": "Système de caisse, CMS et boutique en ligne branchés sur le site.", "provider": { "@id": "https://wearebrothers.ch/#organization" }, "areaServed": "Suisse romande" } },
-                { "@type": "ListItem", "position": 3, "item": { "@type": "Service", "name": "Automatisation", "description": "Création de devis, facturation et suivi client personnalisé automatisés.", "provider": { "@id": "https://wearebrothers.ch/#organization" }, "areaServed": "Suisse romande" } },
-                { "@type": "ListItem", "position": 4, "item": { "@type": "Service", "name": "Newsletters automatiques", "description": "Création et envoi automatiques de newsletters.", "provider": { "@id": "https://wearebrothers.ch/#organization" }, "areaServed": "Suisse romande" } },
-                { "@type": "ListItem", "position": 5, "item": { "@type": "Service", "name": "Application web sur mesure", "url": "https://wearebrothers.ch/applications", "description": "Outils de gestion dessinés autour du métier, livrés module par module.", "provider": { "@id": "https://wearebrothers.ch/#organization" }, "areaServed": "Suisse romande" } },
-                { "@type": "ListItem", "position": 6, "item": { "@type": "Service", "name": "Intégration de l'intelligence artificielle en entreprise", "provider": { "@id": "https://wearebrothers.ch/#organization" }, "areaServed": "Suisse romande" } },
-                { "@type": "ListItem", "position": 7, "item": { "@type": "Service", "name": "Branding et identité visuelle", "description": "Logo et identité visuelle.", "provider": { "@id": "https://wearebrothers.ch/#organization" }, "areaServed": "Suisse romande" } },
-                { "@type": "ListItem", "position": 8, "item": { "@type": "Service", "name": "Print", "description": "Cartes de visite, cartes et supports imprimés.", "provider": { "@id": "https://wearebrothers.ch/#organization" }, "areaServed": "Suisse romande" } },
-                { "@type": "ListItem", "position": 9, "item": { "@type": "Service", "name": "Création de vêtements", "description": "En collaboration avec Memories Store, à Lausanne.", "provider": { "@id": "https://wearebrothers.ch/#organization" }, "areaServed": "Suisse romande" } },
-                { "@type": "ListItem", "position": 10, "item": { "@type": "Service", "name": "Conseil numérique", "description": "Choix des outils, automatisation et intégration de l'IA.", "provider": { "@id": "https://wearebrothers.ch/#organization" }, "areaServed": "Suisse romande" } }
-            ]
-        }
-    ]
-}
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://wearebrothers.ch/services#breadcrumb",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Accueil",
+                        "item": "https://wearebrothers.ch/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Services",
+                        "item": "https://wearebrothers.ch/services"
+                    }
+                ]
+            },
+            {
+                "@type": "ProfessionalService",
+                "@id": "https://wearebrothers.ch/#organization",
+                "name": "WeAreBrothers Studio",
+                "alternateName": [
+                    "WeAreBrothers",
+                    "WAB.",
+                    "WAB Studio"
+                ],
+                "description": "Studio indépendant de design et de développement, fondé à Lausanne par Eliott et Matt Pina : création de sites internet sur mesure, applications de gestion, automatisation et IA, image de marque.",
+                "url": "https://wearebrothers.ch/",
+                "email": "contact@wearebrothers.ch",
+                "image": "https://wearebrothers.ch/assets/og-image.jpg?v=3",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://wearebrothers.ch/assets/icon-512.png",
+                    "contentUrl": "https://wearebrothers.ch/assets/icon-512.png",
+                    "width": 512,
+                    "height": 512
+                },
+                "priceRange": "CHF 1'000 – 7'000+",
+                "currenciesAccepted": "CHF",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Lausanne",
+                    "addressRegion": "VD",
+                    "addressCountry": "CH"
+                },
+                "areaServed": [
+                    {
+                        "@type": "City",
+                        "name": "Lausanne"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Pully"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Renens"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Épalinges"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Morges"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Nyon"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Vevey"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Montreux"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Yverdon-les-Bains"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Genève"
+                    },
+                    {
+                        "@type": "AdministrativeArea",
+                        "name": "Canton de Vaud"
+                    },
+                    {
+                        "@type": "Place",
+                        "name": "Arc lémanique"
+                    },
+                    {
+                        "@type": "Place",
+                        "name": "Suisse romande"
+                    }
+                ],
+                "founder": [
+                    {
+                        "@id": "https://wearebrothers.ch/#eliott"
+                    },
+                    {
+                        "@id": "https://wearebrothers.ch/#matt"
+                    }
+                ],
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "contactType": "customer service",
+                    "email": "contact@wearebrothers.ch",
+                    "availableLanguage": "fr",
+                    "areaServed": "CH"
+                },
+                "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Formules WeAreBrothers Studio",
+                    "itemListElement": [
+                        {
+                            "@type": "Offer",
+                            "name": "Site vitrine",
+                            "description": "Un site vitrine conçu et développé sur mesure. De 3 à 6 semaines.",
+                            "priceCurrency": "CHF",
+                            "priceSpecification": {
+                                "@type": "PriceSpecification",
+                                "priceCurrency": "CHF",
+                                "minPrice": 1000,
+                                "maxPrice": 2500
+                            },
+                            "areaServed": "Suisse romande",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Site vitrine",
+                                "serviceType": "Création de site internet",
+                                "provider": {
+                                    "@id": "https://wearebrothers.ch/#organization"
+                                }
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "name": "Site et outils",
+                            "description": "Le site et les outils numériques de votre activité.",
+                            "priceCurrency": "CHF",
+                            "priceSpecification": {
+                                "@type": "PriceSpecification",
+                                "priceCurrency": "CHF",
+                                "minPrice": 2500,
+                                "maxPrice": 7000
+                            },
+                            "areaServed": "Suisse romande",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Site et outils",
+                                "serviceType": "Site internet et application de gestion",
+                                "provider": {
+                                    "@id": "https://wearebrothers.ch/#organization"
+                                }
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "name": "Expérience sur mesure",
+                            "description": "Une expérience digitale aboutie, avec refonte de marque.",
+                            "priceCurrency": "CHF",
+                            "priceSpecification": {
+                                "@type": "PriceSpecification",
+                                "priceCurrency": "CHF",
+                                "minPrice": 7000
+                            },
+                            "areaServed": "Suisse romande",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Expérience sur mesure",
+                                "serviceType": "Site internet sur mesure et identité de marque",
+                                "provider": {
+                                    "@id": "https://wearebrothers.ch/#organization"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://wearebrothers.ch/#website",
+                "url": "https://wearebrothers.ch/",
+                "name": "WeAreBrothers Studio",
+                "alternateName": "WAB.",
+                "inLanguage": "fr-CH",
+                "publisher": {
+                    "@id": "https://wearebrothers.ch/#organization"
+                }
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://wearebrothers.ch/services#webpage",
+                "url": "https://wearebrothers.ch/services",
+                "name": "Services — WeAreBrothers Studio, agence web à Lausanne",
+                "description": "Sites sur mesure, intégrations, automatisation, newsletters, intelligence artificielle, applications de gestion, branding, print et vêtements. Trois formules, de 1'000 à plus de 7'000 CHF.",
+                "inLanguage": "fr-CH",
+                "isPartOf": {
+                    "@id": "https://wearebrothers.ch/#website"
+                },
+                "about": {
+                    "@id": "https://wearebrothers.ch/#organization"
+                },
+                "breadcrumb": {
+                    "@id": "https://wearebrothers.ch/services#breadcrumb"
+                },
+                "primaryImageOfPage": {
+                    "@type": "ImageObject",
+                    "url": "https://wearebrothers.ch/assets/images/shot-amarte-1600.webp",
+                    "contentUrl": "https://wearebrothers.ch/assets/images/shot-amarte-1600.webp",
+                    "caption": "Page d'accueil d'Amarte Studio, site codé par le studio"
+                },
+                "dateModified": "2026-10-08",
+                "mainEntity": {
+                    "@id": "https://wearebrothers.ch/services#liste"
+                }
+            },
+            {
+                "@type": "ItemList",
+                "@id": "https://wearebrothers.ch/services#liste",
+                "name": "Services WeAreBrothers Studio",
+                "numberOfItems": 9,
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@type": "Service",
+                            "name": "Sites sur mesure",
+                            "description": "Conçus et développés sur mesure, performants et optimisés pour le référencement.",
+                            "provider": {
+                                "@id": "https://wearebrothers.ch/#organization"
+                            },
+                            "areaServed": "Suisse romande",
+                            "url": "https://wearebrothers.ch/creation-site-internet-lausanne"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@type": "Service",
+                            "name": "Intégrations",
+                            "description": "Caisse, CMS et boutique en ligne, administrables en autonomie.",
+                            "provider": {
+                                "@id": "https://wearebrothers.ch/#organization"
+                            },
+                            "areaServed": "Suisse romande"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "item": {
+                            "@type": "Service",
+                            "name": "Automatisation",
+                            "description": "Devis, factures et suivi client, générés sans saisie manuelle.",
+                            "provider": {
+                                "@id": "https://wearebrothers.ch/#organization"
+                            },
+                            "areaServed": "Suisse romande"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 4,
+                        "item": {
+                            "@type": "Service",
+                            "name": "Newsletters",
+                            "description": "Conçues, programmées et envoyées automatiquement.",
+                            "provider": {
+                                "@id": "https://wearebrothers.ch/#organization"
+                            },
+                            "areaServed": "Suisse romande"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 5,
+                        "item": {
+                            "@type": "Service",
+                            "name": "Intelligence artificielle",
+                            "description": "Intégrée là où elle crée de la valeur.",
+                            "provider": {
+                                "@id": "https://wearebrothers.ch/#organization"
+                            },
+                            "areaServed": "Suisse romande"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 6,
+                        "item": {
+                            "@type": "Service",
+                            "name": "Applications de gestion",
+                            "description": "Des outils conçus autour de vos processus et déployés par étapes.",
+                            "provider": {
+                                "@id": "https://wearebrothers.ch/#organization"
+                            },
+                            "areaServed": "Suisse romande",
+                            "url": "https://wearebrothers.ch/applications"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 7,
+                        "item": {
+                            "@type": "Service",
+                            "name": "Branding",
+                            "description": "Logotype et identité visuelle.",
+                            "provider": {
+                                "@id": "https://wearebrothers.ch/#organization"
+                            },
+                            "areaServed": "Suisse romande"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 8,
+                        "item": {
+                            "@type": "Service",
+                            "name": "Print",
+                            "description": "Cartes de visite et supports imprimés.",
+                            "provider": {
+                                "@id": "https://wearebrothers.ch/#organization"
+                            },
+                            "areaServed": "Suisse romande"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 9,
+                        "item": {
+                            "@type": "Service",
+                            "name": "Vêtements",
+                            "description": "Pièces textiles conçues avec Memories Store, à Lausanne.",
+                            "provider": {
+                                "@id": "https://wearebrothers.ch/#organization"
+                            },
+                            "areaServed": "Suisse romande"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
     </script>
 
 
@@ -102,21 +418,21 @@
     <link rel="stylesheet" href="css/nav-panel.css?v=4">
     <link rel="stylesheet" href="css/contact-modal.css?v=8">
     <link rel="stylesheet" href="css/contact-form.css?v=5">
-    <link rel="stylesheet" href="css/os-tokens.css?v=12">
+    <link rel="stylesheet" href="css/os-tokens.css?v=13">
     <link rel="stylesheet" href="css/os-tints.css?v=1">
-    <link rel="stylesheet" href="css/os-base.css?v=6">
+    <link rel="stylesheet" href="css/os-base.css?v=7">
     <link rel="stylesheet" href="css/os-sky.css?v=6">
-    <link rel="stylesheet" href="css/sym.css?v=4">
-    <link rel="stylesheet" href="css/key-btn.css?v=3">
+    <link rel="stylesheet" href="css/sym.css?v=5">
+    <link rel="stylesheet" href="css/key-btn.css?v=4">
     <link rel="stylesheet" href="css/os-bar.css?v=7">
-    <link rel="stylesheet" href="css/os-window.css?v=5">
+    <link rel="stylesheet" href="css/os-window.css?v=6">
     <link rel="stylesheet" href="css/os-bubbles.css?v=4">
     <link rel="stylesheet" href="css/os-footer.css?v=11">
     <link rel="stylesheet" href="css/desk-keys.css?v=4">
     <link rel="stylesheet" href="css/os-dock.css?v=6">
     <link rel="stylesheet" href="css/os-dock-toc.css?v=2">
     <link rel="stylesheet" href="css/desk-margins.css?v=3">
-    <link rel="stylesheet" href="css/os-overlay.css?v=4">
+    <link rel="stylesheet" href="css/os-overlay.css?v=5">
     <link rel="stylesheet" href="css/os-sticker.css?v=2">
     <link rel="stylesheet" href="css/page-services-base.css?v=4">
     <link rel="stylesheet" href="css/page-services-hero.css?v=3">
@@ -130,10 +446,10 @@
     <link rel="stylesheet" href="css/page-services-end.css?v=4">
 
     <!-- Scripts -->
-    <script src="nav-clock.js?v=3" defer></script>
-    <script src="js/nav.js?v=6" defer></script>
-    <script type="module" src="js/contact/index.js?v=13"></script>
-    <script type="module" src="js/os/index.js?v=11"></script>
+    <script src="nav-clock.js?v=4" defer></script>
+    <script src="js/nav.js?v=7" defer></script>
+    <script type="module" src="js/contact/index.js?v=14"></script>
+    <script type="module" src="js/os/index.js?v=13"></script>
     <script type="module" src="js/page-services/index.js?v=5"></script>
 </head>
 

@@ -1,3 +1,5 @@
+> **Historique — ne décrit plus le site actuel.** Passe de finition du 03.10.2026, faite sur une version antérieure (bouton de verre rose `glass-btn.css`, oiseaux, autocollant unique, complication de l'horloge) qui n'existe plus. Le site en ligne depuis le 08.10.2026 est décrit dans `DESIGN-SYSTEM.md` et `OS-COMPONENTS.md`. Restent valables : les trois durées `--dur-1/2/3`, l'anneau de focus de 2 px, la lumière unique venant du haut, le refus du curseur personnalisé et de la réfraction réelle. Le son, écarté ici, a été ajouté depuis (bruit de clavier, `js/os/keysound.js`). La proposition de police Geist a été rejetée.
+
 # WAB OS — finition « plus pro, plus singulière »
 
 Passe du 03.10.2026. Demande d'Eliott : garder la structure, les espacements et la mise en page, et élever la finition.

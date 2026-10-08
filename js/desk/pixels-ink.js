@@ -32,7 +32,7 @@ export function pickTint(/** @type {Tint | undefined} */ not) {
 
 export const GLYPHS = Array.from('{}<>/\\#$%&*+=;:01_|~^?!@[]()▓▒░█⌘⌥⇧↵');
 export const LETTERS = GLYPHS.concat(Array.from('abcdefghijklmnopqrstuvwxyz'));
-export const WORDS = ['hello', 'wab', 'lausanne', '<div>', 'git push', 'design', 'code', 'ok', ':)', 'brothers', 'build', 'v1.0', 'npm i', '</>', 'hi!', '404', 'print', 'run'];
+const WORDS = ['hello', 'wab', 'lausanne', '<div>', 'git push', 'design', 'code', 'ok', ':)', 'brothers', 'build', 'v1.0', 'npm i', '</>', 'hi!', '404', 'print', 'run'];
 
 /**
  * Les mots qui tiennent dans un seul pavé : un mot blanc qui en
@@ -45,9 +45,9 @@ export function shortWords(size) {
 }
 
 /** Temps pendant lequel un caractère se brouille avant de se fixer. */
-export const POP_MS = 260;
+const POP_MS = 260;
 /** Vitesse de frappe d'un mot, en ms par lettre. */
-export const TYPE_MS = 34;
+const TYPE_MS = 34;
 
 /**
  * @typedef {{ x: number, y: number, w: number, h: number }} Rect

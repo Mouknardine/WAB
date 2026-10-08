@@ -45,13 +45,7 @@ jobs:
             **/.DS_Store
             **/.claude/**
             **/.impeccable/**
-            PRODUCT.md
-            DESIGN.md
-            DESIGN-SYSTEM.md
-            DIRECTION-ARTISTIQUE.md
-            OS-COMPONENTS.md
-            FINITION-PRO.md
-            README.md
+            **/*.md
             indexnow.sh
             dev-server.py
 
