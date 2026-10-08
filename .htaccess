@@ -51,6 +51,13 @@ ErrorDocument 404 /404.html
     RewriteRule ^services$ services.html [L]
 </IfModule>
 
+# ── Notes internes ── les documents .md (et les scripts locaux) ne
+# sont pas déployés, mais une ancienne copie peut rester sur le
+# serveur : on en refuse l'accès.
+<FilesMatch "\.(md|sh|py)$">
+    Require all denied
+</FilesMatch>
+
 # ── Compression (gzip / deflate) ──
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
