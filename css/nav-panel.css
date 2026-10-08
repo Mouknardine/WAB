@@ -1,6 +1,6 @@
 /* ============================================
    WAB. — Barre de navigation : le menu du téléphone
-   Le bouton de quatre carrés, le panneau qui se déroule dans la
+   Le bouton rond à deux traits, le panneau qui se déroule dans la
    plaque et le voile derrière. Séparé de nav.css, qui garde la
    barre elle-même.
 
@@ -10,41 +10,54 @@
    ============================================ */
 
 /* ── Bouton menu ──
-   Quatre carrés disposés en carré. À l'ouverture, le groupe pivote
-   d'un quart de tour : la même figure devient une croix, sans qu'on
-   ait à redessiner quoi que ce soit. */
+   Une touche ronde, blanche et en relief, comme la page en cours dans
+   la barre ; deux traits dedans. À l'ouverture, ils pivotent l'un
+   vers l'autre et se croisent en ×, et la touche reste enfoncée. */
 .topbar__menu {
-    margin-left: auto;
-    margin-right: -10px;
-    width: 44px;
-    height: 44px;
-    flex: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.topbar__dots {
     display: grid;
-    grid-template-columns: repeat(2, 6px);
+    place-items: center;
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--key-light);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--key-light-relief);
+    transition: box-shadow var(--dur-1) var(--ease-out), translate var(--dur-1) var(--ease-out);
+}
+
+.topbar__menu[aria-expanded='true'] {
+    translate: 0 1px;
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--key-pressed);
+}
+
+.topbar__lines {
+    display: grid;
     gap: 5px;
-    transition: transform 0.45s var(--ease);
 }
 
-.topbar__dots span {
-    width: 6px;
-    height: 6px;
-    border-radius: 1px;
+.topbar__lines span {
+    width: 16px;
+    height: 2px;
+    border-radius: 2px;
     background: var(--ink);
-    transition: transform 0.45s var(--ease);
+    transition: translate 0.35s var(--ease), rotate 0.35s var(--ease);
 }
 
-.topbar__menu:hover .topbar__dots {
-    transform: scale(1.08);
+.topbar__menu[aria-expanded='true'] .topbar__lines span:first-child {
+    translate: 0 3.5px;
+    rotate: 45deg;
 }
 
-.topbar__menu[aria-expanded='true'] .topbar__dots {
-    transform: rotate(45deg);
+.topbar__menu[aria-expanded='true'] .topbar__lines span:last-child {
+    translate: 0 -3.5px;
+    rotate: -45deg;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .topbar__menu,
+    .topbar__lines span {
+        transition: none;
+    }
 }
 
 /* ── Le menu déroulé ──

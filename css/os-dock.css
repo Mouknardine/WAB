@@ -1,10 +1,9 @@
 /* ============================================
    WAB OS — le dock
    Demandé par Eliott le 3.10 (« comme sur les Mac »). Sur ordinateur
-   seulement (souris, 900 px et plus) : la barre flottante d'agentcard
-   traduite pour WAB — un plateau de verre gris fumé en bas de l'écran,
-   rayon 12 px, liseré blanc et reflet sur l'arête haute, les six apps
-   du studio en touches. Au survol, la touche grandit sur un ressort et
+   seulement (souris, 900 px et plus) : une pilule de verre blanc en
+   bas de l'écran, comme la barre du haut, les apps du studio en
+   touches (sur l'accueil, le sommaire de la page : os-dock-toc.css). Au survol, la touche grandit sur un ressort et
    ses voisines la suivent à moitié. Un point blanc marque une app
    ouverte ; les fenêtres réduites se rangent après le
    séparateur. Il reste affiché en permanence (demande d'Eliott, 6.10).
@@ -37,18 +36,20 @@
         align-items: flex-end;
         gap: 6px;
         padding: 5px 6px;
-        border: var(--hair) solid oklch(1 0 0 / 0.22);
-        border-radius: var(--r-dock);
-        background: var(--glass-specular), var(--dock-bg);
+        border-radius: 22px;
+        background: var(--glass-strong);
         -webkit-backdrop-filter: var(--glass-blur);
         backdrop-filter: var(--glass-blur);
-        box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.32), 0 8px 24px oklch(0.18 0.005 265 / 0.2);
+        box-shadow:
+            0 0 0 var(--hair) var(--glass-edge),
+            inset 0 1px 0 var(--glass-rim),
+            0 10px 30px -14px oklch(0.18 0.005 265 / 0.28);
     }
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     .dock {
-        background: var(--smoke-strong);
+        background: var(--paper);
     }
 }
 
@@ -64,7 +65,7 @@
 .dock__shelf {
     padding-left: 10px;
     margin-left: 4px;
-    box-shadow: inset 1px 0 0 oklch(1 0 0 / 0.24);
+    box-shadow: inset 1px 0 0 var(--line);
 }
 
 .dock__shelf[hidden] {
@@ -145,7 +146,7 @@
     height: 4px;
     margin-left: -2px;
     border-radius: 1px;
-    background: var(--paper);
+    background: var(--ink);
     opacity: 0;
     transition: opacity var(--dur-1) var(--ease-out);
 }

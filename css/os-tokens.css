@@ -87,7 +87,6 @@
     --glass-ink: oklch(0.18 0.005 265);
     --glass-specular: linear-gradient(180deg, oklch(1 0 0 / 0.14), oklch(1 0 0 / 0) 60%);
     --glass-shadow-lift: var(--shadow-lift);
-    --smoke-strong: oklch(0.18 0.005 265 / 0.82);
 
     /* ── Fenêtre ── comme un navigateur : barre blanche, trois pastilles
        rouge, jaune, vert à gauche, l'adresse dans un champ gris au
@@ -125,8 +124,6 @@
     --bar-top: 10px;
     --bar-row: 52px;
     --bar-h: calc(var(--bar-top) + var(--bar-row));
-    --dock-bg: oklch(0.18 0.005 265 / 0.42);
-    --r-dock: 12px;
     --dock-space: 96px;
     --z-desk: 3;
     --z-win: 130;

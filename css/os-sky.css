@@ -38,61 +38,6 @@
     --ink-faint: var(--ink-muted);
 }
 
-/* ── La complication de Lausanne (js/os/dial.js) ── un cadran de
-   16 px devant l'heure de la barre : lunette d'un fil, quatre index,
-   les aiguilles à l'encre, l'axe Klein. Sur ordinateur seulement. */
-.dial {
-    display: none;
-    flex: none;
-    width: 16px;
-    height: 16px;
-    margin-right: -8px;
-    color: var(--ink);
-    overflow: visible;
-}
-
-.dial__bezel {
-    fill: var(--glass-strong);
-    stroke: currentColor;
-    stroke-opacity: 0.5;
-    stroke-width: 1.4;
-}
-
-.dial__index {
-    stroke: currentColor;
-    stroke-opacity: 0.45;
-    stroke-width: 1.4;
-    stroke-linecap: round;
-}
-
-.dial__hand {
-    stroke: currentColor;
-    stroke-linecap: round;
-    transform-box: view-box;
-    transform-origin: 12px 12px;
-    transition: transform var(--dur-3) var(--ease-spring);
-}
-
-.dial__hand--h {
-    stroke-width: 2.3;
-    transform: rotate(var(--dial-h, 0deg));
-}
-
-.dial__hand--m {
-    stroke-width: 1.6;
-    transform: rotate(var(--dial-m, 0deg));
-}
-
-.dial__pin {
-    fill: var(--klein);
-}
-
-@media (min-width: 900px) {
-    .dial {
-        display: block;
-    }
-}
-
 /* ── L'ombre de l'oiseau (js/os/shade.js) ── une silhouette floue à
    7 % d'encre, qui passe sur le bureau et ses fenêtres, sous la barre
    et les fenêtres ouvertes. Les deux images battent des ailes. */
@@ -140,10 +85,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .dial__hand {
-        transition: none;
-    }
-
     .os-shade {
         display: none;
     }

@@ -5,9 +5,8 @@
    Floating Navbar). À gauche « WAB. » en mini-touches de clavier,
    comme le nom du premier écran et le pied de page ; au centre les
    pages, la page en cours posée comme une touche ; à droite la
-   recherche (⌘K, avec JavaScript), l'heure de Lausanne et Contact
-   en touche bleue.
-   Au téléphone : les touches, l'heure, Contact et le menu (nav.js,
+   recherche (⌘K, avec JavaScript) et Contact en touche bleue.
+   Au téléphone : les touches, Contact et le menu (nav.js,
    nav-panel.css), qui se déroule dans la pilule.
    ============================================ */
 
@@ -149,13 +148,6 @@
     }
 }
 
-/* L'heure : la complication (os-sky.css) puis les chiffres, à chasse
-   fixe — ils ne bougent pas d'un pixel quand la minute change. */
-.menubar__time {
-    display: none;
-    color: var(--ink);
-}
-
 /* Contact : une touche bleue, aux coins de la pilule. */
 .menubar__cta {
     min-height: 36px;
@@ -163,10 +155,6 @@
     border-radius: 999px;
 }
 
-/* Le bouton de menu du téléphone (nav-panel.css) se range ici. */
-.menubar .topbar__menu {
-    margin: 0 -2px 0 0;
-}
 
 .menubar .topbar__panel-inner {
     box-shadow: inset 0 1px 0 var(--line);
@@ -174,12 +162,6 @@
 
 .menubar .panel__key {
     color: var(--klein-text);
-}
-
-@media (min-width: 380px) {
-    .menubar__time {
-        display: inline;
-    }
 }
 
 @media (min-width: 900px) {

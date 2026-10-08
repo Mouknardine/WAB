@@ -349,21 +349,22 @@
     <!-- Styles — le socle commun, puis les feuilles de l'accueil -->
     <link rel="stylesheet" href="css/base.css?v=34">
     <link rel="stylesheet" href="css/base-ui.css?v=1">
-    <link rel="stylesheet" href="css/nav-panel.css?v=3">
+    <link rel="stylesheet" href="css/nav-panel.css?v=4">
     <link rel="stylesheet" href="css/contact-modal.css?v=8">
     <link rel="stylesheet" href="css/contact-form.css?v=5">
     <!-- WAB OS : composants partagés par toutes les pages (OS-COMPONENTS.md) -->
-    <link rel="stylesheet" href="css/os-tokens.css?v=10">
+    <link rel="stylesheet" href="css/os-tokens.css?v=11">
     <link rel="stylesheet" href="css/os-tints.css?v=1">
     <link rel="stylesheet" href="css/os-base.css?v=5">
-    <link rel="stylesheet" href="css/os-sky.css?v=4">
+    <link rel="stylesheet" href="css/os-sky.css?v=5">
     <link rel="stylesheet" href="css/sym.css?v=4">
     <link rel="stylesheet" href="css/key-btn.css?v=2">
-    <link rel="stylesheet" href="css/os-bar.css?v=6">
+    <link rel="stylesheet" href="css/os-bar.css?v=7">
     <link rel="stylesheet" href="css/os-window.css?v=5">
     <link rel="stylesheet" href="css/os-bubbles.css?v=3">
     <link rel="stylesheet" href="css/os-footer.css?v=10">
-    <link rel="stylesheet" href="css/os-dock.css?v=5">
+    <link rel="stylesheet" href="css/os-dock.css?v=6">
+    <link rel="stylesheet" href="css/os-dock-toc.css?v=1">
     <link rel="stylesheet" href="css/os-overlay.css?v=3">
     <!-- Accueil « bureau rangé » -->
     <link rel="stylesheet" href="css/desk-objects.css?v=8">
@@ -385,7 +386,7 @@
     <script src="js/nav.js?v=6" defer></script>
     <script src="js/reveal.js?v=4" defer></script>
     <script type="module" src="js/contact/index.js?v=12"></script>
-    <script type="module" src="js/os/index.js?v=5"></script>
+    <script type="module" src="js/os/index.js?v=7"></script>
     <script type="module" src="js/desk/index.js?v=21"></script>
 </head>
 
@@ -394,7 +395,7 @@
     <a class="skip-link" href="#studio-intro">Aller au contenu</a>
 
     <!-- BARRE DE MENUS — une pilule flottante : « WAB. » en mini-touches,
-         les pages au centre, la recherche, l'heure de Lausanne, Contact. -->
+         les pages au centre, la recherche, Contact. -->
     <header class="menubar" id="topbar">
         <div class="topbar__inner menubar__inner" id="topbarBar">
             <div class="menubar__row">
@@ -411,12 +412,9 @@
                     <button type="button" class="menubar__find" data-palette-open data-js-only aria-keyshortcuts="Meta+K Control+K">
                         <span class="sym sym--search" aria-hidden="true"></span>Rechercher<kbd data-shortcut>⌘K</kbd>
                     </button>
-                    <time class="menubar__time" data-local-time>--:--</time>
                     <a href="mailto:contact@wearebrothers.ch" data-contact class="menubar__cta key-btn key-btn--klein key-btn--sm">Contact</a>
                     <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
-                        <span class="topbar__dots" aria-hidden="true">
-                            <span></span><span></span><span></span><span></span>
-                        </span>
+                        <span class="topbar__lines" aria-hidden="true"><span></span><span></span></span>
                         <span class="sr-only">Menu</span>
                     </button>
                 </div>
@@ -846,19 +844,24 @@
         </div>
     </footer>
 
-    <!-- LE DOCK — sur ordinateur, les quatre entrées du menu, en verre.
-         Sans JavaScript, ce sont de simples liens. Un point marque une
-         app ouverte, les fenêtres
-         réduites se rangent après le séparateur (js/os/dock.js). Il se
-         range pendant la lecture et revient quand on remonte. -->
-    <nav class="dock" aria-label="Dock" data-dock>
-        <ul class="dock__apps">
-            <li><a class="dock__item" href="/realisations" data-app="work"><img class="app-icon" src="assets/icons/app-work.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Work</span></a></li>
-            <li><a class="dock__item" href="/services" data-app="services"><img class="app-icon" src="assets/icons/app-services.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Services</span></a></li>
-            <li><a class="dock__item" href="/studio" data-app="about"><img class="app-icon" src="assets/icons/app-about.svg?v=4" alt="" width="48" height="48"><span class="dock__label">About</span></a></li>
-            <li><a class="dock__item" href="mailto:contact@wearebrothers.ch" data-contact data-app="contact"><img class="app-icon" src="assets/icons/app-mail.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Contact</span></a></li>
-        </ul>
+    <!-- LE DOCK — sur ordinateur, le sommaire de la page : une pilule
+         blanche, comme la barre du haut, avec ses sections, chacune d'un
+         pixel de sa teinte ; celle qu'on lit s'allume, un trait suit la
+         lecture (js/os/toc.js). Au bout, la touche pour écrire. Les
+         fenêtres réduites se rangent après le séparateur (js/os/dock.js).
+         Sans JavaScript, ce sont de simples ancres. -->
+    <nav class="dock dock--toc" aria-label="Sommaire de la page" data-dock data-toc>
+        <ol class="dock__toc">
+            <li><a class="dock__chip" href="#services" data-tint="bleu">Services</a></li>
+            <li><a class="dock__chip" href="#methode" data-tint="ciel">Méthode</a></li>
+            <li><a class="dock__chip" href="#travail" data-tint="vert">Réalisations</a></li>
+            <li><a class="dock__chip" href="#offres" data-tint="rouge">Offres</a></li>
+            <li><a class="dock__chip" href="#lettre" data-tint="jaune">Studio</a></li>
+            <li><a class="dock__chip" href="#questions" data-tint="rose">FAQ</a></li>
+        </ol>
+        <a class="dock__cta key-btn key-btn--klein key-btn--sm" href="mailto:contact@wearebrothers.ch" data-contact>Écrire</a>
         <ul class="dock__shelf" data-dock-shelf aria-label="Fenêtres réduites" hidden></ul>
+        <span class="dock__progress" aria-hidden="true"></span>
     </nav>
 
 </body>

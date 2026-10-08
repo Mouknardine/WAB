@@ -1,0 +1,88 @@
+/* ============================================
+   WAB OS — le dock en sommaire de la page
+   Sur une page longue (l'accueil), le dock ne répète pas les pages de
+   la barre du haut : il donne les sections de la page. Chaque entrée
+   porte un pixel de sa teinte (data-tint) ; celle qu'on lit s'allume
+   en touche blanche, comme la page en cours dans la barre du haut
+   (aria-current, js/os/toc.js). Un trait de la teinte bleue suit la
+   lecture sous la pilule. Au bout, la touche pour écrire.
+   ============================================ */
+
+.dock--toc {
+    align-items: center;
+}
+
+.dock__toc {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 3px;
+    border-radius: 999px;
+    background: var(--hover-tint);
+    list-style: none;
+}
+
+.dock__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 34px;
+    padding: 0 14px 0 12px;
+    border-radius: 999px;
+    font-size: var(--t-small);
+    font-weight: var(--w-medium);
+    white-space: nowrap;
+    color: var(--ink-muted);
+    transition: color var(--dur-1) var(--ease-out), background-color var(--dur-1) var(--ease-out), box-shadow var(--dur-1) var(--ease-out);
+}
+
+/* Le pixel de la section, aux couleurs de sa teinte. */
+.dock__chip::before {
+    content: '';
+    flex: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    background: var(--klein);
+    box-shadow: inset 0 0 0 var(--hair) var(--klein-deep);
+}
+
+@media (hover: hover) {
+    .dock__chip:hover {
+        color: var(--ink);
+    }
+}
+
+/* La section qu'on lit : une touche blanche posée dans le rail. */
+.dock__chip[aria-current='location'] {
+    color: var(--ink);
+    background: var(--key-light);
+    box-shadow: var(--key-light-relief);
+}
+
+.dock__cta {
+    min-height: 36px;
+    margin-left: 4px;
+    padding: 0 16px;
+    border-radius: 999px;
+}
+
+/* La lecture : un trait sous la pilule, de la largeur parcourue. */
+.dock__progress {
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--klein);
+    transform: scaleX(var(--read, 0));
+    transform-origin: left center;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dock__chip {
+        transition: none;
+    }
+}
