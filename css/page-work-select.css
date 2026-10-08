@@ -1,8 +1,9 @@
 /* ============================================
    Page Work — la sélection dans le dossier Work
-   Un projet survolé ou pris au clavier prend le bleu Klein, texte
-   blanc (8,5:1), comme une sélection dans le Finder.
-   Toutes les valeurs viennent de os-tokens.css.
+   Un projet survolé ou pris au clavier prend la teinte du bloc et son
+   encre, comme une sélection dans le Finder.
+   L'encre sur la teinte (--on-accent) suit chaque data-tint
+   (os-tokens.css).
    ============================================ */
 
 /* ── Survol et clavier : la sélection Klein ── */

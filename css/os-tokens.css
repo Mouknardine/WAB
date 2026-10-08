@@ -21,7 +21,6 @@
     --klein-tint: oklch(0.9 0.055 268);
     --klein-wash: oklch(0.955 0.022 268);
     --klein-soft: oklch(0.8 0.1 268);
-    --on-accent: oklch(1 0 0);
     --on-klein: oklch(1 0 0);
     /* Le texte d'une touche claire posée sur la teinte. */
     --klein-pair: var(--klein-ink);
@@ -179,6 +178,7 @@
 :root:has(body.os),
 [data-tint] {
     --accent: var(--klein);
+    --on-accent: var(--on-klein);
     --mark: var(--klein);
     --scan-lines: repeating-linear-gradient(0deg, color-mix(in oklch, var(--klein-deep) 30%, transparent) 0 1px, oklch(0 0 0 / 0) 1px 3px);
     --scan-depth:

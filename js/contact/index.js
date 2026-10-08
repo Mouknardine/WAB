@@ -12,11 +12,11 @@
  * lien d'origine à la fermeture.
  */
 
-// Même numéro partout où un fichier est importé : voir js/birds/index.js.
+// Même numéro partout où un fichier est importé : sinon le navigateur le charge deux fois.
 import { CONTACT_EMAIL, createContactDialog } from './markup.js?v=9';
 import { bindContactForm, resetContactForm } from './form.js?v=10';
 import { requireElement } from './dom.js?v=9';
-import { playFlight } from './flight.js?v=11';
+import { playFlight } from './flight.js?v=12';
 
 const OPEN_HASH = '#ecrire';
 const LOCK_CLASS = 'has-modal';

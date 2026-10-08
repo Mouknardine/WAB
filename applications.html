@@ -96,52 +96,51 @@
 
     <!-- Styles — le socle commun, les pièces partagées de WAB OS, puis
          les feuilles de la page (page-apps-*). -->
-    <link rel="stylesheet" href="css/base.css?v=34">
+    <link rel="stylesheet" href="css/base.css?v=35">
     <link rel="stylesheet" href="css/base-ui.css?v=1">
     <link rel="stylesheet" href="css/nav-panel.css?v=4">
     <link rel="stylesheet" href="css/contact-modal.css?v=8">
     <link rel="stylesheet" href="css/contact-form.css?v=5">
-    <link rel="stylesheet" href="css/os-tokens.css?v=11">
+    <link rel="stylesheet" href="css/os-tokens.css?v=12">
     <link rel="stylesheet" href="css/os-tints.css?v=1">
     <link rel="stylesheet" href="css/os-base.css?v=5">
-    <link rel="stylesheet" href="css/os-sky.css?v=5">
+    <link rel="stylesheet" href="css/os-sky.css?v=6">
     <link rel="stylesheet" href="css/sym.css?v=4">
-    <link rel="stylesheet" href="css/key-btn.css?v=2">
+    <link rel="stylesheet" href="css/key-btn.css?v=3">
     <link rel="stylesheet" href="css/os-bar.css?v=7">
     <link rel="stylesheet" href="css/os-window.css?v=5">
-    <link rel="stylesheet" href="css/os-bubbles.css?v=2">
+    <link rel="stylesheet" href="css/os-bubbles.css?v=4">
     <link rel="stylesheet" href="css/os-footer.css?v=10">
     <link rel="stylesheet" href="css/desk-keys.css?v=4">
     <link rel="stylesheet" href="css/os-dock.css?v=6">
-    <link rel="stylesheet" href="css/os-overlay.css?v=3">
+    <link rel="stylesheet" href="css/os-dock-toc.css?v=1">
+    <link rel="stylesheet" href="css/desk-margins.css?v=3">
+    <link rel="stylesheet" href="css/os-overlay.css?v=4">
     <link rel="stylesheet" href="css/os-sticker.css?v=2">
     <!-- Pièces de l'accueil réemployées : autocollant et icônes, blocs
          en quinconce et frappe, questions en accordéon. -->
-    <link rel="stylesheet" href="css/desk-objects.css?v=7">
+    <link rel="stylesheet" href="css/desk-objects.css?v=8">
     <link rel="stylesheet" href="css/desk-blocks.css?v=7">
     <link rel="stylesheet" href="css/desk-chat.css?v=5">
-    <link rel="stylesheet" href="css/desk-faq.css?v=5">
+    <link rel="stylesheet" href="css/desk-faq.css?v=6">
     <link rel="stylesheet" href="css/page-apps-tokens.css?v=2">
     <link rel="stylesheet" href="css/page-apps-hero.css?v=3">
     <link rel="stylesheet" href="css/page-apps-window.css?v=5">
-    <link rel="stylesheet" href="css/page-apps-sections.css?v=5">
+    <link rel="stylesheet" href="css/page-apps-sections.css?v=6">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
     <script src="js/reveal.js?v=4" defer></script>
-    <script type="module" src="js/birds/index.js?v=17"></script>
-    <script type="module" src="js/contact/index.js?v=12"></script>
-    <script type="module" src="js/os/index.js?v=7"></script>
+    <script type="module" src="js/contact/index.js?v=13"></script>
+    <script type="module" src="js/os/index.js?v=9"></script>
     <script type="module" src="js/page-apps/index.js?v=3"></script>
 </head>
 
-<body class="os page-apps" data-birds="rare">
+<body class="os page-apps">
 
     <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-    <!-- Les oiseaux volent sur la trame du bureau, sous les fenêtres. -->
-    <canvas id="birdCanvas" aria-hidden="true"></canvas>
 
     <!-- BARRE DE MENUS — identique à l'accueil. -->
     <header class="menubar" id="topbar">
@@ -195,17 +194,21 @@
 
     <main id="contenu" tabindex="-1">
 
+        <!-- Les marges : formes de pixels de couleur de part et d\'autre du
+             contenu, sur toute la page (js/desk/pixels-margins.js). -->
+        <div class="margins" aria-hidden="true" data-margins></div>
+
         <!-- LE BUREAU — la promesse au centre, puis l'application ouverte
              dans son écran. Ses onglets se parcourent vraiment : chaque
              module montre sa capture (js/page-apps/tabs.js). Sans
              JavaScript, le premier écran seul, les deux autres plus bas. -->
-        <section class="app-hero" aria-labelledby="appTitle">
+        <section class="app-hero" aria-labelledby="appTitle" data-tint="bleu">
             <div class="app-hero__head">
                 <h1 class="app-hero__title" id="appTitle">Des logiciels sur mesure, conçus autour de vos processus</h1>
                 <p class="app-hero__lede">Nous concevons et développons des applications web de gestion pour les PME et les indépendants de l'arc lémanique — Lausanne, Morges, Nyon, Vevey, Genève. Chaque outil part de l'analyse de vos processus et se déploie par étapes.</p>
                 <div class="app-hero__actions">
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein">Démarrer un projet</a>
-                    <a href="#exemple" class="key-btn">Voir l'étude de cas</a>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--deep key-btn--klein">Démarrer un projet</a>
+                    <a href="#exemple" class="key-btn key-btn--deep">Voir l'étude de cas</a>
                 </div>
                 <p class="app-hero__note">Devis sous 24&nbsp;h ouvrées</p>
             </div>
@@ -254,14 +257,14 @@
         <!-- LES MODULES — un bloc par écran, en quinconce, comme les
              services de l'accueil. La question est celle du titre de
              l'ancienne page ; la réponse de WAB la résume. -->
-        <section class="desk-wrap block" id="exemple" aria-labelledby="exempleTitle">
+        <section class="desk-wrap block" id="exemple" aria-labelledby="exempleTitle" data-tint="bleu">
             <div class="section-head reveal">
                 <p class="badge">Étude de cas</p>
                 <h2 class="section-title" id="exempleTitle">Une application de gestion, écran par écran</h2>
             </div>
 
             <div class="feats" data-feats>
-                <article class="feat">
+                <article class="feat" data-tint="bleu">
                     <div class="feat__text">
                         <span class="typing" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
                         <div class="chat">
@@ -278,7 +281,7 @@
                     </figure>
                 </article>
 
-                <article class="feat feat--flip">
+                <article class="feat feat--flip" data-tint="vert">
                     <div class="feat__text">
                         <span class="typing" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
                         <div class="chat">
@@ -295,7 +298,7 @@
                     </figure>
                 </article>
 
-                <article class="feat">
+                <article class="feat" data-tint="rose">
                     <div class="feat__text">
                         <span class="typing" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
                         <div class="chat">
@@ -315,35 +318,36 @@
         </section>
 
         <!-- L'APPROCHE — cinq principes, en cartes blanches sur une bande
-             de gris chaud. -->
-        <section class="app-sky" id="approche" aria-labelledby="approcheTitle">
+             de vert très clair ; chaque carte
+             porte sa touche de couleur. -->
+        <section class="app-sky" id="approche" aria-labelledby="approcheTitle" data-tint="vert">
             <div class="desk-wrap">
                 <div class="section-head reveal">
                     <p class="badge">Approche</p>
                     <h2 class="section-title" id="approcheTitle">Notre approche du développement sur mesure</h2>
                 </div>
                 <ul class="app-ways reveal">
-                    <li class="app-way">
+                    <li class="app-way" data-tint="vert">
                         <span class="app-way__icon"><span class="sym sym--team" aria-hidden="true"></span></span>
                         <h3 class="app-way__title">L'analyse du métier d'abord</h3>
                         <p class="app-way__text">Une phase d'observation précède toute ligne de code. Deux entreprises d'un même secteur ne travaillent jamais de la même manière&nbsp;: cet écart détermine la forme de l'outil.</p>
                     </li>
-                    <li class="app-way">
+                    <li class="app-way" data-tint="jaune">
                         <span class="app-way__icon"><span class="sym sym--grid" aria-hidden="true"></span></span>
                         <h3 class="app-way__title">Chaque écran a une raison d'être</h3>
                         <p class="app-way__text">Une fonctionnalité n'entre dans l'outil que si elle répond à un usage réel. Cette exigence garde l'interface lisible dans la durée et le code simple à faire évoluer.</p>
                     </li>
-                    <li class="app-way">
+                    <li class="app-way" data-tint="ciel">
                         <span class="app-way__icon"><span class="sym sym--clock" aria-hidden="true"></span></span>
                         <h3 class="app-way__title">Le temps gagné comme mesure</h3>
                         <p class="app-way__text">Un outil se juge aux heures qu'il libère chaque semaine. Vingt minutes gagnées par jour représentent près de deux semaines de travail par an et par personne.</p>
                     </li>
-                    <li class="app-way">
+                    <li class="app-way" data-tint="rose">
                         <span class="app-way__icon"><span class="sym sym--phone" aria-hidden="true"></span></span>
                         <h3 class="app-way__title">Pensé pour le mobile d'abord</h3>
                         <p class="app-way__text">Un dossier se consulte chez un client, entre deux rendez-vous. L'interface est conçue pour le petit écran en premier.</p>
                     </li>
-                    <li class="app-way">
+                    <li class="app-way" data-tint="vert">
                         <span class="app-way__icon"><span class="sym sym--folder" aria-hidden="true"></span></span>
                         <h3 class="app-way__title">L'historique reste consultable</h3>
                         <p class="app-way__text">Les données archivées restent accessibles et cherchables. Toute suppression définitive exige une confirmation explicite, qui précise ce qu'elle entraîne.</p>
@@ -354,7 +358,7 @@
 
         <!-- LES QUESTIONS — reprises mot pour mot dans le bloc FAQPage du
              <head> : elles se modifient ensemble. <details> natifs. -->
-        <section class="block" id="questions" aria-labelledby="faqTitle">
+        <section class="block" id="questions" aria-labelledby="faqTitle" data-tint="rose">
             <div class="desk-wrap">
                 <div class="section-head reveal">
                     <p class="badge">FAQ</p>
@@ -382,7 +386,7 @@
         </section>
 
         <!-- L'APPEL FINAL — le titre, une phrase, le bouton. -->
-        <section class="block app-end" id="contact" aria-labelledby="endTitle">
+        <section class="block app-end" id="contact" aria-labelledby="endTitle" data-tint="jaune">
             <div class="desk-wrap app-end__inner reveal">
                 <h2 class="app-end__title" id="endTitle">Parlons de votre projet d'application.</h2>
                 <p class="app-end__lede">Présentez-nous votre fonctionnement actuel. Nous évaluons avec vous si un développement sur mesure se justifie ou si une solution existante suffit. Notre équipe vous répond sous 24&nbsp;h ouvrées.</p>
@@ -433,16 +437,21 @@
         </div>
     </footer>
 
-    <nav class="dock" aria-label="Dock" data-dock>
-        <ul class="dock__apps">
-            <li><a class="dock__item" href="/realisations" data-app="work"><img class="app-icon" src="assets/icons/app-work.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Work</span></a></li>
-            <li><a class="dock__item" href="/services" data-app="services"><img class="app-icon" src="assets/icons/app-services.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Services</span></a></li>
-            <li><a class="dock__item" href="/studio" data-app="about"><img class="app-icon" src="assets/icons/app-about.svg?v=4" alt="" width="48" height="48"><span class="dock__label">About</span></a></li>
-            <li><a class="dock__item" href="/#lettre" data-app="notes"><img class="app-icon" src="assets/icons/app-notes.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Lettre</span></a></li>
-            <li><button class="dock__item" type="button" data-app="terminal" data-js-only><img class="app-icon" src="assets/icons/app-terminal.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Terminal</span></button></li>
-            <li><a class="dock__item" href="mailto:contact@wearebrothers.ch" data-contact data-app="contact"><img class="app-icon" src="assets/icons/app-mail.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Contact</span></a></li>
-        </ul>
+    <!-- LE DOCK — sur ordinateur, le sommaire de la page : ses sections,
+         chacune d'un pixel de sa teinte ; celle qu'on lit s'allume, un
+         trait suit la lecture (js/os/toc.js). Au bout, la touche pour
+         écrire. Les fenêtres réduites se rangent après le séparateur
+         (js/os/dock.js). Sans JavaScript, de simples ancres. -->
+    <nav class="dock dock--toc" aria-label="Sommaire de la page" data-dock data-toc>
+        <ol class="dock__toc">
+            <li><a class="dock__chip" href="#exemple" data-tint="bleu">Exemple</a></li>
+            <li><a class="dock__chip" href="#approche" data-tint="vert">Approche</a></li>
+            <li><a class="dock__chip" href="#questions" data-tint="rose">FAQ</a></li>
+            <li><a class="dock__chip" href="#contact" data-tint="jaune">Contact</a></li>
+        </ol>
+        <a class="dock__cta key-btn key-btn--klein key-btn--sm" href="mailto:contact@wearebrothers.ch" data-contact>Écrire</a>
         <ul class="dock__shelf" data-dock-shelf aria-label="Fenêtres réduites" hidden></ul>
+        <span class="dock__progress" aria-hidden="true"></span>
     </nav>
 
 </body>

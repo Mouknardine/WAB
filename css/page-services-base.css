@@ -8,10 +8,10 @@
 
 .svc {
     /* La tuile d'app : trois matières de touche, comme le clavier du
-       système. Klein : la touche bleue, pictogramme blanc (8,5:1).
-       Encre : le noir du système, pictogramme blanc.
-       Blanc : la touche claire, pictogramme encre. */
-    --app-klein: var(--key-klein);
+       système. Teinte : la touche de couleur (--key-klein, lue sur
+       place pour suivre le data-tint du bloc), pictogramme à l'encre de
+       la teinte (--on-klein). Encre : le noir du système, pictogramme
+       blanc. Blanc : la touche claire, pictogramme encre. */
     --app-ink: linear-gradient(180deg, color-mix(in oklch, var(--ink) 82%, var(--paper)), var(--ink) 60%);
     --app-clear: var(--key-light);
     --app-shade: color-mix(in oklch, var(--ink) 14%, transparent);
@@ -72,7 +72,7 @@
 }
 
 .app--klein::before {
-    background: var(--app-klein);
+    background: var(--key-klein);
     box-shadow: inset 0 0 0 var(--hair) var(--klein-deep), inset 0 1px 0 color-mix(in oklch, var(--paper) 34%, transparent);
 }
 

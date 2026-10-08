@@ -3,8 +3,10 @@
    Une bande pleine largeur gris chaud (--panel), qui se fond dans le
    blanc de la page en haut et en bas. Trois panneaux blancs au même
    gabarit, aucun n'affiche de prix : « Sur devis » tient la place du
-   montant, le périmètre se définit après un premier échange. Celui du
-   milieu porte la barre et la touche Klein, et la feuille décalée.
+   montant, le périmètre se définit après un premier échange. La bande
+   est jaune (data-tint), chaque formule a sa teinte comme les offres
+   de l'accueil : jaune, bleu pour celle du milieu (son liseré, sa
+   touche, la feuille décalée), rouge ; les coches la reprennent.
    ============================================ */
 
 .svc-sky {
@@ -139,7 +141,7 @@
     width: 18px;
     height: 18px;
     margin-top: 1px;
-    background: var(--klein);
+    background: var(--klein-text);
     -webkit-mask: url('../assets/icons/sym-check.svg') center / contain no-repeat;
     mask: url('../assets/icons/sym-check.svg') center / contain no-repeat;
 }

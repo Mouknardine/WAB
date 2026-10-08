@@ -151,17 +151,3 @@ time {
     border-radius: 4px;
 }
 
-/* Les oiseaux traversent le fond de toute la page. Le canevas est
-   fixe et couvre l'écran, mais son z-index négatif le maintient sous
-   tout le contenu : il ne reste visible que là où la page laisse voir
-   son fond papier. Aucun oiseau ne passe jamais devant un texte, une
-   carte ou un aplat. */
-#birdCanvas {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-    image-rendering: pixelated;
-}

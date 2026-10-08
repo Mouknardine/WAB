@@ -40,7 +40,7 @@
     padding: 8px 14px 9px;
     border-radius: 14px 14px 4px 14px;
     background: var(--bubble-reply);
-    box-shadow: 0 0 0 var(--hair) var(--bubble-reply-edge), inset 0 1px 0 oklch(1 0 0 / 0.28), 0 3px 8px oklch(0.45 0.29 266 / 0.22);
+    box-shadow: 0 0 0 var(--hair) var(--bubble-reply-edge), inset 0 1px 0 oklch(1 0 0 / 0.28), 0 3px 8px color-mix(in oklch, var(--klein) 22%, transparent);
     font-size: var(--t-small);
     color: var(--bubble-reply-ink);
 }

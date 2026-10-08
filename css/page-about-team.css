@@ -125,8 +125,9 @@
     letter-spacing: -0.03em;
 }
 
-/* Le rôle : une étiquette en Sligoil, en bleu Klein (lisible en petit
-   texte sur blanc) ; le texte reste la seule ligne grise de la fiche. */
+/* Le rôle : une étiquette en Sligoil, dans la teinte de la fiche
+   (bleu, vert, rose, jaune, ciel ; version lisible sur blanc) ; le texte reste la seule ligne grise
+   de la fiche. */
 .ab-card__role {
     font-family: var(--font-mono);
     font-size: var(--t-cap);

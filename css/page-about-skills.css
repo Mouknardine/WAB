@@ -3,7 +3,8 @@
    Un grand panneau gris chaud (--panel) au rayon des panneaux, liseré
    d'un pixel, relief éclairé d'en haut et feuille décalée dessous (la
    pile). Dedans, trois cartes blanches nettes au même gabarit, chacune
-   une app : sa touche-icône, son nom, ce qu'elle couvre. Aucun flou.
+   une app dans sa teinte (bleu, vert, rose, comme les Services de
+   l'accueil) : sa touche-icône, son nom, ce qu'elle couvre. Aucun flou.
    ============================================ */
 
 .ab-skills {
@@ -61,7 +62,8 @@
     padding: clamp(18px, 5vw, 22px) clamp(16px, 5vw, 22px) 26px;
 }
 
-/* L'icône d'app : une touche de clavier, bleue, noire ou blanche. */
+/* L'icône d'app : une touche de clavier dans la teinte de la carte,
+   l'icône dans son encre (blanc sur bleu, encre sur vert et rose). */
 .ab-app__icon {
     display: grid;
     place-items: center;
@@ -71,18 +73,6 @@
     background: var(--key-klein);
     box-shadow: 0 0 0 var(--hair) var(--key-klein-edge), var(--key-klein-relief);
     color: var(--on-klein);
-}
-
-.ab-app__icon--ink {
-    background: linear-gradient(180deg, color-mix(in oklch, var(--ink), var(--paper) 16%), var(--ink));
-    box-shadow: 0 0 0 var(--hair) var(--ink), var(--shadow-soft);
-    color: var(--paper);
-}
-
-.ab-app__icon--light {
-    background: var(--key-light);
-    box-shadow: 0 0 0 var(--hair) var(--edge), var(--key-light-relief);
-    color: var(--ink);
 }
 
 /* « Accompagnement » tient sur une ligne dès 320 px. */
@@ -109,12 +99,13 @@
     line-height: 1.45;
 }
 
-/* La coche, peinte en masque dans le bleu Klein. */
+/* La coche, peinte en masque dans la teinte de la carte, version
+   lisible sur blanc (--klein-text). */
 .ab-app__list li::before {
     content: '';
     width: 18px;
     height: 18px;
-    background: var(--klein);
+    background: var(--klein-text);
     -webkit-mask: url('../assets/icons/sym-check.svg') center / contain no-repeat;
     mask: url('../assets/icons/sym-check.svg') center / contain no-repeat;
 }

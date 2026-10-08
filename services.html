@@ -97,51 +97,50 @@
 
     <!-- Styles — le socle commun, les composants WAB OS partagés, puis
          les feuilles de cette page (page-services-*). -->
-    <link rel="stylesheet" href="css/base.css?v=34">
+    <link rel="stylesheet" href="css/base.css?v=35">
     <link rel="stylesheet" href="css/base-ui.css?v=1">
     <link rel="stylesheet" href="css/nav-panel.css?v=4">
     <link rel="stylesheet" href="css/contact-modal.css?v=8">
     <link rel="stylesheet" href="css/contact-form.css?v=5">
-    <link rel="stylesheet" href="css/os-tokens.css?v=11">
+    <link rel="stylesheet" href="css/os-tokens.css?v=12">
     <link rel="stylesheet" href="css/os-tints.css?v=1">
     <link rel="stylesheet" href="css/os-base.css?v=5">
-    <link rel="stylesheet" href="css/os-sky.css?v=5">
+    <link rel="stylesheet" href="css/os-sky.css?v=6">
     <link rel="stylesheet" href="css/sym.css?v=4">
-    <link rel="stylesheet" href="css/key-btn.css?v=2">
+    <link rel="stylesheet" href="css/key-btn.css?v=3">
     <link rel="stylesheet" href="css/os-bar.css?v=7">
     <link rel="stylesheet" href="css/os-window.css?v=5">
-    <link rel="stylesheet" href="css/os-bubbles.css?v=2">
+    <link rel="stylesheet" href="css/os-bubbles.css?v=4">
     <link rel="stylesheet" href="css/os-footer.css?v=10">
     <link rel="stylesheet" href="css/desk-keys.css?v=4">
     <link rel="stylesheet" href="css/os-dock.css?v=6">
-    <link rel="stylesheet" href="css/os-overlay.css?v=3">
+    <link rel="stylesheet" href="css/os-dock-toc.css?v=1">
+    <link rel="stylesheet" href="css/desk-margins.css?v=3">
+    <link rel="stylesheet" href="css/os-overlay.css?v=4">
     <link rel="stylesheet" href="css/os-sticker.css?v=2">
-    <link rel="stylesheet" href="css/page-services-base.css?v=3">
+    <link rel="stylesheet" href="css/page-services-base.css?v=4">
     <link rel="stylesheet" href="css/page-services-hero.css?v=3">
     <link rel="stylesheet" href="css/page-services-pad.css?v=3">
     <link rel="stylesheet" href="css/os-nodal.css?v=1">
-    <link rel="stylesheet" href="css/page-services-feats.css?v=5">
+    <link rel="stylesheet" href="css/page-services-feats.css?v=6">
     <link rel="stylesheet" href="css/page-services-typing.css?v=1">
-    <link rel="stylesheet" href="css/page-services-previews.css?v=3">
+    <link rel="stylesheet" href="css/page-services-previews.css?v=4">
     <link rel="stylesheet" href="css/page-services-objects.css?v=3">
-    <link rel="stylesheet" href="css/page-services-sky.css?v=4">
-    <link rel="stylesheet" href="css/page-services-end.css?v=3">
+    <link rel="stylesheet" href="css/page-services-sky.css?v=5">
+    <link rel="stylesheet" href="css/page-services-end.css?v=4">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
-    <script type="module" src="js/birds/index.js?v=17"></script>
-    <script type="module" src="js/contact/index.js?v=12"></script>
-    <script type="module" src="js/os/index.js?v=7"></script>
+    <script type="module" src="js/contact/index.js?v=13"></script>
+    <script type="module" src="js/os/index.js?v=9"></script>
     <script type="module" src="js/page-services/index.js?v=5"></script>
 </head>
 
-<body class="os" data-birds="rare">
+<body class="os">
 
     <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-    <!-- Les oiseaux volent sur la trame du bureau, sous les fenêtres. -->
-    <canvas id="birdCanvas" aria-hidden="true"></canvas>
 
     <header class="menubar" id="topbar">
         <div class="topbar__inner menubar__inner" id="topbarBar">
@@ -210,19 +209,23 @@
 
     <main id="contenu" class="svc">
 
+        <!-- Les marges : formes de pixels de couleur de part et d\'autre du
+             contenu, sur toute la page (js/desk/pixels-margins.js). -->
+        <div class="margins" aria-hidden="true" data-margins></div>
+
         <!-- LE BUREAU — le titre au centre, net ; dessous, le Launchpad du
              studio : les neuf services en apps, rangés par famille. Chaque
              icône descend au bloc qui la présente. Le désordre (l'autocollant)
              reste au bord, et seulement sur grand écran. -->
-        <section class="svc-hero" aria-labelledby="svcTitle">
+        <section class="svc-hero" aria-labelledby="svcTitle" data-tint="bleu">
             <span class="svc-hero__sticker" aria-hidden="true"><span class="sticker"><span class="sticker__hello">HELLO</span><span class="sticker__mine">my name is</span><span class="sticker__name" translate="no">WAB.</span></span></span>
 
             <div class="svc-hero__center">
                 <p class="badge">Services</p>
                 <h1 class="svc-hero__title" id="svcTitle">Stratégie, design et technologie, réunis dans un même studio.<span class="sr-only"> Services de WeAreBrothers, agence web à Lausanne.</span></h1>
                 <div class="svc-hero__actions">
-                    <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="key-btn key-btn--klein">Démarrer un projet</a>
-                    <a href="/realisations" class="key-btn">Voir nos réalisations</a>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="key-btn key-btn--deep key-btn--klein">Démarrer un projet</a>
+                    <a href="/realisations" class="key-btn key-btn--deep">Voir nos réalisations</a>
                 </div>
             </div>
 
@@ -241,7 +244,7 @@
                                 <li><a class="svc-pad__app" href="#gestion"><span class="app app--klein" aria-hidden="true"><svg><use href="#g-board"/></svg></span><span class="svc-pad__name">Applications de gestion</span></a></li>
                             </ul>
                         </div>
-                        <div class="svc-pad__group">
+                        <div class="svc-pad__group" data-tint="rose">
                             <p class="svc-pad__label" id="padBrand">Image de marque <span>3 prestations</span></p>
                             <ul class="svc-pad__grid" aria-labelledby="padBrand">
                                 <li><a class="svc-pad__app" href="#branding"><span class="app app--klein" aria-hidden="true"><svg><use href="#g-pen"/></svg></span><span class="svc-pad__name">Branding</span></a></li>
@@ -257,7 +260,7 @@
         <!-- TECHNOLOGIE — trois blocs en quinconce : une grande fenêtre
              posée dans son écran, et contre elle l'échange en bulles, puis
              les apps du bloc avec leur ligne. -->
-        <section class="svc-family" id="technologie" aria-labelledby="techTitle">
+        <section class="svc-family" id="technologie" aria-labelledby="techTitle" data-tint="bleu">
             <div class="svc-head os-wrap">
                 <p class="badge">6 prestations</p>
                 <h2 class="svc-head__title" id="techTitle">Technologie</h2>
@@ -289,7 +292,7 @@
                     </figure>
                 </article>
 
-                <article class="svc-feat svc-feat--flip" id="automatisation">
+                <article class="svc-feat svc-feat--flip" id="automatisation" data-tint="ciel">
                     <div class="svc-feat__text">
                         <span class="svc-typing" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
                         <div class="chat" aria-hidden="true">
@@ -339,7 +342,7 @@
 
         <!-- IMAGE DE MARQUE — la même grammaire, deux blocs : LAZIZZE pour
              le branding, puis les objets (cartes de visite, vêtements). -->
-        <section class="svc-family" id="image" aria-labelledby="brandTitle">
+        <section class="svc-family" id="image" aria-labelledby="brandTitle" data-tint="rose">
             <div class="svc-head os-wrap">
                 <p class="badge">3 prestations</p>
                 <h2 class="svc-head__title" id="brandTitle">Image de marque</h2>
@@ -365,7 +368,7 @@
                     </figure>
                 </article>
 
-                <article class="svc-feat" id="objets">
+                <article class="svc-feat" id="objets" data-tint="rouge">
                     <div class="svc-feat__text">
                         <span class="svc-typing" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
                         <div class="chat" aria-hidden="true">
@@ -395,7 +398,7 @@
         <!-- LES FORMULES — trois façons de travailler avec nous, sur une
              bande gris chaud. Les mêmes fourchettes de prix que l'accueil
              (validées par Eliott le 03.10.2026). -->
-        <section class="svc-sky" id="formules" aria-labelledby="skyTitle">
+        <section class="svc-sky" id="formules" aria-labelledby="skyTitle" data-tint="jaune">
             <div class="os-wrap">
                 <div class="svc-head">
                     <p class="badge">Tarifs</p>
@@ -404,7 +407,7 @@
                 </div>
                 <ul class="svc-plans">
                     <li>
-                        <article class="svc-plan">
+                        <article class="svc-plan" data-tint="jaune">
                             <div class="svc-plan__bar"><span class="win__lights"></span></div>
                             <div class="svc-plan__body">
                                 <h3 class="svc-plan__name">Site vitrine</h3>
@@ -417,7 +420,7 @@
                         </article>
                     </li>
                     <li>
-                        <article class="svc-plan svc-plan--main">
+                        <article class="svc-plan svc-plan--main" data-tint="bleu">
                             <div class="svc-plan__bar"><span class="win__lights"></span></div>
                             <div class="svc-plan__body">
                                 <h3 class="svc-plan__name">Site et outils</h3>
@@ -430,7 +433,7 @@
                         </article>
                     </li>
                     <li>
-                        <article class="svc-plan">
+                        <article class="svc-plan" data-tint="rouge">
                             <div class="svc-plan__bar"><span class="win__lights"></span></div>
                             <div class="svc-plan__body">
                                 <h3 class="svc-plan__name">Expérience sur mesure</h3>
@@ -448,28 +451,28 @@
 
         <!-- LA MÉTHODE — le déroulé réel d'un projet, en quatre étapes
              reliées par la ligne de points. La seule numérotation du site. -->
-        <section class="svc-method os-wrap" id="methode" aria-labelledby="methodTitle">
+        <section class="svc-method os-wrap" id="methode" aria-labelledby="methodTitle" data-tint="vert">
             <div class="svc-head">
                 <p class="badge">Méthode</p>
                 <h2 class="svc-head__title" id="methodTitle">De la stratégie à la mise en ligne.</h2>
             </div>
             <ol class="svc-steps">
-                <li class="svc-step">
+                <li class="svc-step" data-tint="vert">
                     <span class="svc-step__num" aria-hidden="true">1</span>
                     <h3 class="svc-step__name">Premier échange</h3>
                     <p class="svc-step__line">Votre activité, vos objectifs et vos références. Sans engagement.</p>
                 </li>
-                <li class="svc-step">
+                <li class="svc-step" data-tint="ciel">
                     <span class="svc-step__num" aria-hidden="true">2</span>
                     <h3 class="svc-step__name">Proposition</h3>
                     <p class="svc-step__line">Périmètre, calendrier et devis, remis sous 24&nbsp;h ouvrées.</p>
                 </li>
-                <li class="svc-step">
+                <li class="svc-step" data-tint="jaune">
                     <span class="svc-step__num" aria-hidden="true">3</span>
                     <h3 class="svc-step__name">Design et développement</h3>
                     <p class="svc-step__line">Conception et réalisation, validées à chaque étape.</p>
                 </li>
-                <li class="svc-step">
+                <li class="svc-step" data-tint="rouge">
                     <span class="svc-step__num" aria-hidden="true">4</span>
                     <h3 class="svc-step__name">Mise en ligne et suivi</h3>
                     <p class="svc-step__line">Déploiement, maintenance et évolutions dans la durée.</p>
@@ -479,8 +482,8 @@
 
         <!-- L'APPEL FINAL — l'icône Mail du système, l'invitation, deux
              boutons. -->
-        <section class="svc-end os-wrap" aria-labelledby="endTitle">
-            <img class="svc-end__icon" src="assets/icons/app-mail.svg?v=4" alt="" width="72" height="72" loading="lazy">
+        <section class="svc-end os-wrap" aria-labelledby="endTitle" data-tint="rose">
+            <span class="app app--klein svc-end__icon" aria-hidden="true"><svg><use href="#g-mail"/></svg></span>
             <h2 class="svc-end__title" id="endTitle">Parlons de votre projet.</h2>
             <p class="svc-end__note">Notre équipe vous répond sous 24&nbsp;h ouvrées.</p>
             <div class="svc-end__actions">
@@ -529,17 +532,21 @@
         </div>
     </footer>
 
-    <!-- LE DOCK — sur ordinateur, les apps du studio (js/os/dock.js). -->
-    <nav class="dock" aria-label="Dock" data-dock>
-        <ul class="dock__apps">
-            <li><a class="dock__item" href="/realisations" data-app="work"><img class="app-icon" src="assets/icons/app-work.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Work</span></a></li>
-            <li><a class="dock__item" href="/services" data-app="services" aria-current="page"><img class="app-icon" src="assets/icons/app-services.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Services</span></a></li>
-            <li><a class="dock__item" href="/studio" data-app="about"><img class="app-icon" src="assets/icons/app-about.svg?v=4" alt="" width="48" height="48"><span class="dock__label">About</span></a></li>
-            <li><a class="dock__item" href="/#lettre" data-app="notes"><img class="app-icon" src="assets/icons/app-notes.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Lettre</span></a></li>
-            <li><button class="dock__item" type="button" data-app="terminal" data-js-only><img class="app-icon" src="assets/icons/app-terminal.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Terminal</span></button></li>
-            <li><a class="dock__item" href="mailto:contact@wearebrothers.ch" data-contact data-app="contact"><img class="app-icon" src="assets/icons/app-mail.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Contact</span></a></li>
-        </ul>
+    <!-- LE DOCK — sur ordinateur, le sommaire de la page : ses sections,
+         chacune d'un pixel de sa teinte ; celle qu'on lit s'allume, un
+         trait suit la lecture (js/os/toc.js). Au bout, la touche pour
+         écrire. Les fenêtres réduites se rangent après le séparateur
+         (js/os/dock.js). Sans JavaScript, de simples ancres. -->
+    <nav class="dock dock--toc" aria-label="Sommaire de la page" data-dock data-toc>
+        <ol class="dock__toc">
+            <li><a class="dock__chip" href="#technologie" data-tint="bleu">Technologie</a></li>
+            <li><a class="dock__chip" href="#image" data-tint="rose">Image de marque</a></li>
+            <li><a class="dock__chip" href="#formules" data-tint="jaune">Formules</a></li>
+            <li><a class="dock__chip" href="#methode" data-tint="vert">Méthode</a></li>
+        </ol>
+        <a class="dock__cta key-btn key-btn--klein key-btn--sm" href="mailto:contact@wearebrothers.ch" data-contact>Écrire</a>
         <ul class="dock__shelf" data-dock-shelf aria-label="Fenêtres réduites" hidden></ul>
+        <span class="dock__progress" aria-hidden="true"></span>
     </nav>
 
 </body>

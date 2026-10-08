@@ -7,7 +7,8 @@
    — par défaut : touche blanche, encre fixe (--glass-ink) ;
    — .key-btn--klein : touche bleu Klein, texte blanc (8,5:1) et petite
      flèche ↗ — l'action principale, une par écran ;
-   — .key-btn--sm : barres, fenêtres, cartes.
+   — .key-btn--sm : barres, fenêtres, cartes ;
+   — .key-btn--deep : les actions d'un premier écran, en vraie touche.
    Sur une surface Klein (.on-klein), le bleu plein deviendrait bleu sur
    bleu : la touche principale passe en blanc à texte Klein, la
    secondaire en touche translucide à texte blanc.
@@ -106,6 +107,42 @@
     min-height: 34px;
     padding: 0 12px;
     font-size: var(--t-small);
+}
+
+/* ── La touche profonde (.key-btn--deep) ── les actions d'un premier
+   écran, du même clavier que le nom en touches : la face claire posée
+   sur sa jupe, les coins d'une touche ; la principale en bleu comme le
+   point, l'autre en blanc comme les lettres. Sa taille suit --key (la
+   touche du nom, desk-hero.css), 72 px à défaut. Jamais moins de 48 px
+   de haut au doigt. */
+.key-btn--deep {
+    --skirt: oklch(0.8 0.01 85);
+    --skirt-h: max(4px, calc(var(--key, 72px) * 0.09));
+    --kb-fill: linear-gradient(160deg, oklch(1 0 0), oklch(0.95 0.004 85));
+    --kb-edge: oklch(0.18 0.005 265 / 0.28);
+    --kb-relief:
+        inset 0 calc(-1 * var(--skirt-h)) 0 var(--skirt),
+        inset 0 1px 0 oklch(1 0 0 / 0.9),
+        0 calc(var(--key, 72px) * 0.05) calc(var(--key, 72px) * 0.12) oklch(0.18 0.005 265 / 0.16);
+    min-height: max(48px, calc(var(--key, 72px) * 0.78));
+    padding: 0 max(20px, calc(var(--key, 72px) * 0.3)) var(--skirt-h);
+    border-radius: max(10px, calc(var(--key, 72px) * 0.21));
+    font-size: clamp(0.9375rem, calc(var(--key, 72px) * 0.22), 1.125rem);
+}
+
+.key-btn--deep.key-btn--klein {
+    --skirt: var(--klein-deep);
+    --kb-fill: linear-gradient(160deg, var(--klein-hi), var(--klein));
+    --kb-edge: var(--klein-deep);
+    --kb-ink: var(--on-klein);
+}
+
+/* L'appui : la face descend sur sa jupe, comme une touche du nom. */
+.key-btn--deep:active {
+    translate: 0 calc(var(--skirt-h) / 2);
+    box-shadow:
+        inset 0 calc(-1 * var(--skirt-h) / 2) 0 var(--skirt),
+        0 1px 2px oklch(0.18 0.005 265 / 0.16);
 }
 
 /* ── Sur une surface Klein ── */

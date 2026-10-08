@@ -77,8 +77,8 @@
     box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief), var(--shadow-soft);
 }
 
-/* L'icône : une touche de clavier blanche, le pictogramme en bleu Klein
-   (le bleu plein reste à l'action principale). */
+/* L'icône : une touche de clavier blanche, le pictogramme dans la teinte
+   de la fiche (data-tint ; l'aplat plein reste à l'action principale). */
 .sx-icon {
     display: grid;
     place-items: center;

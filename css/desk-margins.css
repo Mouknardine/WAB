@@ -1,5 +1,5 @@
 /* ============================================
-   WAB. — Accueil : les motifs des marges
+   WAB. — Les motifs des marges (toutes les pages)
    Formes de gros pixels de couleur (une teinte par forme, posée en
    --cell par le script), avec leurs signes, posées de part et
    d'autre du contenu sur toute la page (js/desk/pixels-margins.js).
@@ -8,7 +8,7 @@
    redessinent). Rien sur un écran trop étroit pour avoir des marges.
    ============================================ */
 
-.desk main {
+.os main {
     position: relative;
 }
 

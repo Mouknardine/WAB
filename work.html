@@ -507,30 +507,32 @@
     <link rel="preload" href="assets/fonts/InstrumentSans-Var.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- WAB OS : composants partagés (voir OS-COMPONENTS.md) -->
-    <link rel="stylesheet" href="css/base.css?v=34">
+    <link rel="stylesheet" href="css/base.css?v=35">
     <link rel="stylesheet" href="css/base-ui.css?v=1">
     <link rel="stylesheet" href="css/nav-panel.css?v=4">
     <link rel="stylesheet" href="css/contact-modal.css?v=8">
     <link rel="stylesheet" href="css/contact-form.css?v=5">
-    <link rel="stylesheet" href="css/os-tokens.css?v=11">
+    <link rel="stylesheet" href="css/os-tokens.css?v=12">
     <link rel="stylesheet" href="css/os-tints.css?v=1">
     <link rel="stylesheet" href="css/os-base.css?v=5">
-    <link rel="stylesheet" href="css/os-sky.css?v=5">
+    <link rel="stylesheet" href="css/os-sky.css?v=6">
     <link rel="stylesheet" href="css/sym.css?v=4">
-    <link rel="stylesheet" href="css/key-btn.css?v=2">
+    <link rel="stylesheet" href="css/key-btn.css?v=3">
     <link rel="stylesheet" href="css/os-bar.css?v=7">
     <link rel="stylesheet" href="css/os-window.css?v=5">
-    <link rel="stylesheet" href="css/os-bubbles.css?v=2">
+    <link rel="stylesheet" href="css/os-bubbles.css?v=4">
     <link rel="stylesheet" href="css/os-footer.css?v=10">
     <link rel="stylesheet" href="css/desk-keys.css?v=4">
     <link rel="stylesheet" href="css/os-dock.css?v=6">
-    <link rel="stylesheet" href="css/os-overlay.css?v=3">
+    <link rel="stylesheet" href="css/os-dock-toc.css?v=1">
+    <link rel="stylesheet" href="css/desk-margins.css?v=3">
+    <link rel="stylesheet" href="css/os-overlay.css?v=4">
     <link rel="stylesheet" href="css/os-sticker.css?v=2">
     <!-- La page Work -->
     <link rel="stylesheet" href="css/page-work-hero.css?v=4">
     <link rel="stylesheet" href="css/page-work-finder.css?v=3">
     <link rel="stylesheet" href="css/page-work-list.css?v=2">
-    <link rel="stylesheet" href="css/page-work-select.css?v=1">
+    <link rel="stylesheet" href="css/page-work-select.css?v=3">
     <link rel="stylesheet" href="css/page-work-head.css?v=1">
     <link rel="stylesheet" href="css/page-work-pieces.css?v=2">
     <link rel="stylesheet" href="css/page-work-end.css?v=5">
@@ -538,18 +540,15 @@
     <!-- Scripts -->
     <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
-    <script type="module" src="js/birds/index.js?v=17"></script>
-    <script type="module" src="js/contact/index.js?v=12"></script>
-    <script type="module" src="js/os/index.js?v=7"></script>
+    <script type="module" src="js/contact/index.js?v=13"></script>
+    <script type="module" src="js/os/index.js?v=9"></script>
     <script type="module" src="js/page-work/index.js?v=5"></script>
 </head>
 
-<body class="os page-work" data-birds="rare">
+<body class="os page-work">
 
     <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-    <!-- Les oiseaux volent sur la trame du bureau, sous les fenêtres. -->
-    <canvas id="birdCanvas" aria-hidden="true"></canvas>
 
     <header class="menubar" id="topbar">
         <div class="topbar__inner menubar__inner" id="topbarBar">
@@ -601,12 +600,16 @@
 
     <main id="contenu" tabindex="-1">
 
+        <!-- Les marges : formes de pixels de couleur de part et d\'autre du
+             contenu, sur toute la page (js/desk/pixels-margins.js). -->
+        <div class="margins" aria-hidden="true" data-margins></div>
+
         <!-- LE BUREAU — le dossier Work ouvert au centre, les neuf projets
              en icônes (ou en liste). Un projet ouvre sa fiche dans une
              fenêtre (js/os, attribut data-card) ; sans
              JavaScript, il mène à son bloc plus bas. Le désordre reste
              au bord : l'autocollant et la case libre. -->
-        <section class="pw-hero" aria-labelledby="workTitle">
+        <section class="pw-hero" data-tint="bleu" aria-labelledby="workTitle">
             <div class="pw-hero__head">
                 <h1 class="pw-hero__title" id="workTitle"><span lang="en">Work</span><span class="sr-only"> — sites internet et applications créés à Lausanne</span></h1>
                 <p class="pw-hero__lede">Sites internet, identités de marque et applications métier, conçus et développés sur mesure à Lausanne.</p>
@@ -707,19 +710,20 @@
         </section>
 
         <!-- LES PROJETS — un par un, chaque site dans sa fenêtre posée sur
-             son écran, en quinconce. Les bulles sont une mise en scène
+             son écran, en quinconce ; chaque projet a sa teinte (data-tint),
+             les six à tour de rôle, écran et bulle compris. Les bulles sont une mise en scène
              tirée de la fiche (pas des témoignages), masquées aux lecteurs
              d'écran. Le bloc caché .piece__case est la fiche complète :
              la fenêtre de verre de js/os la lit (js/os/projects.js), sur
              cette page comme depuis l'accueil. -->
-        <section class="pw-pieces" aria-labelledby="piecesTitle">
+        <section class="pw-pieces" id="projets" data-tint="bleu" aria-labelledby="piecesTitle">
             <div class="pw-head">
                 <p class="badge">Réalisations</p>
                 <h2 class="pw-head__title" id="piecesTitle">Neuf études de cas, de Lausanne à Bavois.</h2>
             </div>
 
             <div class="pw-pieces__list" data-pieces>
-                <article class="piece" id="zinema" aria-labelledby="zinema-name">
+                <article class="piece" id="zinema" data-tint="bleu" aria-labelledby="zinema-name">
                     <figure class="piece__media">
                         <a class="piece__link pw-screen" href="https://www.zinema.ch/" target="_blank" rel="noopener noreferrer" data-card="zinema" data-title="zinema.ch" aria-haspopup="dialog">
                             <span class="win">
@@ -772,7 +776,7 @@
                     </div>
                 </article>
 
-                <article class="piece piece--flip" id="memo" aria-labelledby="memo-name">
+                <article class="piece piece--flip" id="memo" data-tint="vert" aria-labelledby="memo-name">
                     <figure class="piece__media">
                         <a class="piece__link pw-screen" href="https://lememo-eight.vercel.app/" target="_blank" rel="noopener noreferrer" data-card="memo" data-title="lememo-eight.vercel.app" aria-haspopup="dialog">
                             <span class="win">
@@ -825,7 +829,7 @@
                     </div>
                 </article>
 
-                <article class="piece" id="central" aria-labelledby="central-name">
+                <article class="piece" id="central" data-tint="jaune" aria-labelledby="central-name">
                     <figure class="piece__media">
                         <a class="piece__link pw-screen" href="https://www.lepetitcentral.ch/" target="_blank" rel="noopener noreferrer" data-card="central" data-title="lepetitcentral.ch" aria-haspopup="dialog">
                             <span class="win">
@@ -878,7 +882,7 @@
                     </div>
                 </article>
 
-                <article class="piece piece--flip" id="alliani" aria-labelledby="alliani-name">
+                <article class="piece piece--flip" id="alliani" data-tint="rose" aria-labelledby="alliani-name">
                     <figure class="piece__media">
                         <a class="piece__link pw-screen" href="https://maison-alliani.com/" target="_blank" rel="noopener noreferrer" data-card="alliani" data-title="maison-alliani.com" aria-haspopup="dialog">
                             <span class="win">
@@ -931,7 +935,7 @@
                     </div>
                 </article>
 
-                <article class="piece" id="amarte" aria-labelledby="amarte-name">
+                <article class="piece" id="amarte" data-tint="ciel" aria-labelledby="amarte-name">
                     <figure class="piece__media">
                         <a class="piece__link pw-screen" href="https://amarte.ch/" target="_blank" rel="noopener noreferrer" data-card="amarte" data-title="amarte.ch" aria-haspopup="dialog">
                             <span class="win">
@@ -984,7 +988,7 @@
                     </div>
                 </article>
 
-                <article class="piece piece--flip" id="nadege" aria-labelledby="nadege-name">
+                <article class="piece piece--flip" id="nadege" data-tint="rouge" aria-labelledby="nadege-name">
                     <figure class="piece__media">
                         <a class="piece__link pw-screen" href="https://nadegemouine.ch" target="_blank" rel="noopener noreferrer" data-card="nadege" data-title="nadegemouine.ch" aria-haspopup="dialog">
                             <span class="win">
@@ -1037,7 +1041,7 @@
                     </div>
                 </article>
 
-                <article class="piece" id="dj" aria-labelledby="dj-name">
+                <article class="piece" id="dj" data-tint="bleu" aria-labelledby="dj-name">
                     <figure class="piece__media">
                         <a class="piece__link pw-screen" href="https://lazizze.com/#/" target="_blank" rel="noopener noreferrer" data-card="dj" data-title="lazizze.com" aria-haspopup="dialog">
                             <span class="win">
@@ -1090,7 +1094,7 @@
                     </div>
                 </article>
 
-                <article class="piece piece--flip" id="slack" aria-labelledby="slack-name">
+                <article class="piece piece--flip" id="slack" data-tint="vert" aria-labelledby="slack-name">
                     <figure class="piece__media">
                         <a class="piece__link pw-screen" href="https://la-slack.com/" target="_blank" rel="noopener noreferrer" data-card="slack" data-title="la-slack.com" aria-haspopup="dialog">
                             <span class="win">
@@ -1143,7 +1147,7 @@
                     </div>
                 </article>
 
-                <article class="piece" id="commissione" aria-labelledby="commissione-name">
+                <article class="piece" id="commissione" data-tint="jaune" aria-labelledby="commissione-name">
                     <figure class="piece__media">
                         <a class="piece__link pw-screen" href="https://commissione-entretien.ch/" target="_blank" rel="noopener noreferrer" data-card="commissione" data-title="commissione-entretien.ch" aria-haspopup="dialog">
                             <span class="win">
@@ -1198,8 +1202,8 @@
             </div>
         </section>
 
-        <!-- LE DÉROULÉ — sur le gris chaud, quatre cartes blanches. -->
-        <section class="pw-steps" id="deroule" aria-labelledby="processTitle">
+        <!-- LE DÉROULÉ — sur le gris chaud, quatre cartes blanches, icônes vertes. -->
+        <section class="pw-steps" id="deroule" data-tint="vert" aria-labelledby="processTitle">
             <div class="os-wrap">
                 <div class="pw-head">
                     <h2 class="pw-head__title" id="processTitle">Notre méthode.</h2>
@@ -1231,9 +1235,9 @@
         </section>
 
         <!-- L'APPEL FINAL — une boîte de dialogue du système, posée sur le
-             bureau dans son cadre Klein, sans barre de titre : l'icône, la question, deux boutons
-             (le bleu est l'action par défaut, à droite, comme sur macOS). -->
-        <section class="pw-end" id="contact" aria-labelledby="endTitle">
+             bureau dans son cadre rose, sans barre de titre : l'icône, la question, deux boutons
+             (la touche teintée est l'action par défaut, à droite, comme sur macOS). -->
+        <section class="pw-end" id="contact" data-tint="rose" aria-labelledby="endTitle">
             <div class="pw-alert">
                 <div class="win win--framed">
                     <div class="pw-alert__body">
@@ -1289,17 +1293,20 @@
         </div>
     </footer>
 
-    <!-- LE DOCK — sur ordinateur (voir OS-COMPONENTS.md, § 10). -->
-    <nav class="dock" aria-label="Dock" data-dock>
-        <ul class="dock__apps">
-            <li><a class="dock__item" href="/realisations" data-app="work" aria-current="page"><img class="app-icon" src="assets/icons/app-work.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Work</span></a></li>
-            <li><a class="dock__item" href="/services" data-app="services"><img class="app-icon" src="assets/icons/app-services.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Services</span></a></li>
-            <li><a class="dock__item" href="/studio" data-app="about"><img class="app-icon" src="assets/icons/app-about.svg?v=4" alt="" width="48" height="48"><span class="dock__label">About</span></a></li>
-            <li><a class="dock__item" href="/#lettre" data-app="notes"><img class="app-icon" src="assets/icons/app-notes.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Lettre</span></a></li>
-            <li><button class="dock__item" type="button" data-app="terminal" data-js-only><img class="app-icon" src="assets/icons/app-terminal.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Terminal</span></button></li>
-            <li><a class="dock__item" href="mailto:contact@wearebrothers.ch" data-contact data-app="contact"><img class="app-icon" src="assets/icons/app-mail.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Contact</span></a></li>
-        </ul>
+    <!-- LE DOCK — sur ordinateur, le sommaire de la page : ses sections,
+         chacune d'un pixel de sa teinte ; celle qu'on lit s'allume, un
+         trait suit la lecture (js/os/toc.js). Au bout, la touche pour
+         écrire. Les fenêtres réduites se rangent après le séparateur
+         (js/os/dock.js). Sans JavaScript, de simples ancres. -->
+    <nav class="dock dock--toc" aria-label="Sommaire de la page" data-dock data-toc>
+        <ol class="dock__toc">
+            <li><a class="dock__chip" href="#projets" data-tint="bleu">Projets</a></li>
+            <li><a class="dock__chip" href="#deroule" data-tint="vert">Déroulé</a></li>
+            <li><a class="dock__chip" href="#contact" data-tint="rose">Contact</a></li>
+        </ol>
+        <a class="dock__cta key-btn key-btn--klein key-btn--sm" href="mailto:contact@wearebrothers.ch" data-contact>Écrire</a>
         <ul class="dock__shelf" data-dock-shelf aria-label="Fenêtres réduites" hidden></ul>
+        <span class="dock__progress" aria-hidden="true"></span>
     </nav>
 
 </body>

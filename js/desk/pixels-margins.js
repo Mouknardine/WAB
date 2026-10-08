@@ -1,6 +1,6 @@
 // @ts-check
 /**
- * WAB. — Les motifs des marges (accueil, sous le premier écran)
+ * WAB. — Les motifs des marges (toutes les pages, sous le premier écran)
  * Les mêmes formes en escalier que sur les bords du premier écran
  * (pixels-patterns.js), posées cette fois dans les marges de toute la
  * page, de part et d'autre du contenu, jusqu'au pied de page. Elles
@@ -28,7 +28,8 @@ export function initMargins() {
     const host = document.querySelector('[data-margins]');
     const wrap = document.querySelector('.desk-wrap');
     if (!(host instanceof HTMLElement) || !(wrap instanceof HTMLElement)) return;
-    const hero = document.querySelector('[data-pixels]');
+    // Le premier écran : celui de l'accueil, ou la première section ailleurs.
+    const hero = document.querySelector('[data-pixels]') ?? host.parentElement?.querySelector(':scope > section') ?? null;
     const patterns = createPatterns(SIZE);
     let lastWidth = 0;
     let lastHeight = 0;

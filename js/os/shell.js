@@ -88,18 +88,9 @@ function wireContextMenu() {
     });
 }
 
-/** L'oiseau qui vient tenir compagnie au curseur : chargé plus tard. */
-function wireIdleBird() {
-    if (!finePointer.matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    window.setTimeout(() => {
-        import('./idle-bird.js?v=3').then((m) => m.initIdleBird()).catch((error) => report('idle-bird', error));
-    }, 4000);
-}
-
 export function initShell() {
     wireWall();
     wireDock();
     wirePalette();
     wireContextMenu();
-    wireIdleBird();
 }

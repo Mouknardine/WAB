@@ -2,25 +2,23 @@
 /**
  * WAB OS — accueil
  * Point d'entrée des comportements propres à l'accueil : les éléments qui s'animent à leur arrivée à l'écran
- * (bulles des cartes et de l'appel final), et le premier écran : pixels bleus au passage, nom qui se brouille ; motifs dans les marges. Le système partagé (shell, ⌘K, fenêtres, lumière de l'heure)
+ * (bulles des cartes et de l'appel final), et le premier écran : pixels bleus au passage, nom qui se brouille. Le système partagé (shell, ⌘K, fenêtres, lumière de l'heure)
  * part de js/os/index.js.
  *
  * Chaque module est indépendant : si l'un échoue, les autres
  * continuent, et la page reste entièrement lisible sans eux.
  */
 
-// Même numéro partout où un fichier est importé : voir js/birds/index.js.
+// Même numéro partout où un fichier est importé : sinon le navigateur le charge deux fois.
 import { initWatch } from './watch.js?v=1';
 import { initPixels } from './pixels.js?v=6';
 import { initScramble } from './scramble.js?v=3';
-import { initMargins } from './pixels-margins.js?v=3';
 
 /** @type {Array<[string, () => void]>} */
 const MODULES = [
     ['watch', initWatch],
     ['scramble', initScramble],
     ['pixels', initPixels],
-    ['margins', initMargins],
 ];
 
 function boot() {

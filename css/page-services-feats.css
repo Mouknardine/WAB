@@ -1,8 +1,8 @@
 /* ============================================
    Services — les deux familles en quinconce
-   Chaque bloc : une grande fenêtre posée dans son écran (le bleu Klein
-   à lignes d'écran, un liseré Klein profond, la feuille décalée
-   dessous), et contre elle une colonne de
+   Chaque bloc : une grande fenêtre posée dans son écran (l'aplat de la
+   teinte du bloc, data-tint, à lignes d'écran, son liseré profond, la
+   feuille décalée dessous), et contre elle une colonne de
    360 px — la frappe en haut, l'échange en bulles (os-bubbles.css),
    puis les apps du bloc calées sur le bord bas de la fenêtre. Les côtés
    alternent d'un bloc à l'autre ; le texte s'aligne sur le bord
@@ -68,16 +68,22 @@
     text-wrap: pretty;
 }
 
-/* ── L'écran ── le bleu Klein et ses lignes nodales animées
-   (os-nodal.css), un liseré Klein profond, la feuille décalée
-   dessous ; la fenêtre flotte dedans. */
+/* ── L'écran ── l'aplat de la teinte, sa lumière en halo, ses lignes
+   nodales animées (os-nodal.css), un liseré profond, la feuille
+   décalée dessous ; la fenêtre flotte dedans. */
 .svc-screen {
     position: relative;
     padding: var(--screen-pad);
     border-radius: calc(var(--r-win) + var(--screen-pad));
-    background: radial-gradient(80% 70% at 30% 20%, oklch(0.6 0.24 266 / 0.5), oklch(0.6 0.24 266 / 0) 70%), var(--klein);
+    background: radial-gradient(80% 70% at 30% 20%, color-mix(in oklch, var(--klein-hi) 50%, transparent), oklch(0 0 0 / 0) 70%), var(--klein);
     box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--sheet), var(--shadow-object);
     isolation: isolate;
+}
+
+/* Les caractères des lignes nodales prennent l'encre de la teinte :
+   blancs sur le bleu et le rouge, encre sur les teintes claires. */
+.svc-screen .nodal-field {
+    color: color-mix(in oklch, var(--on-klein) 55%, transparent);
 }
 
 .svc-screen .win {

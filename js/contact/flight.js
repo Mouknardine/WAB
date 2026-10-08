@@ -9,9 +9,9 @@
  * milieu, immobile.
  */
 
-// Même numéro que partout où ces fichiers sont importés : voir js/birds/index.js.
-import { createSpriteBank } from '../birds/sprites.js?v=7';
-import { BODY_COLORS } from '../birds/frames.js?v=10';
+// Même numéro partout où ces fichiers sont importés : sinon le navigateur les charge deux fois.
+import { createSpriteBank } from '../birds/sprites.js?v=8';
+import { BODY_COLORS } from '../birds/frames.js?v=11';
 
 const SCALE = 3;
 const DURATION_MS = 1600;

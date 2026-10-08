@@ -1,7 +1,7 @@
 /* ============================================
    WAB OS — Création de site internet : les formats en quinconce
-   Chaque bloc : une fenêtre posée dans son écran (bleu Klein à
-   scanlines, liseré Klein profond) et, contre elle, la colonne de texte — l'échange en
+   Chaque bloc : une fenêtre posée dans son écran (l'aplat de sa
+   teinte à scanlines, liseré de la teinte profonde — data-tint) et, contre elle, la colonne de texte — l'échange en
    bulles, puis le titre et la phrase. Les côtés alternent dès 900 px.
    Téléphone : les bulles, la fenêtre, puis le titre et la phrase.
    Le focus suit le défilement (js/page-seo/focus.js) : seules la
@@ -43,7 +43,7 @@
     text-wrap: pretty;
 }
 
-/* ── L'écran ── le bleu à scanlines, le liseré, la fenêtre dedans. */
+/* ── L'écran ── la teinte à scanlines, le liseré, la fenêtre dedans. */
 .sx-screen {
     padding: var(--screen-pad);
     border-radius: calc(var(--r-win) + var(--screen-pad));
@@ -60,7 +60,7 @@
 }
 
 /* La boutique : pas de capture client, les quatre étapes d'une vente
-   en touches blanches sur l'écran bleu. */
+   en touches blanches sur l'écran de la teinte. */
 .sx-shop {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -105,6 +105,12 @@
     opacity: 0.5;
     filter: grayscale(1);
     scale: 0.985;
+}
+
+/* Sur les teintes claires, un gris foncé fondu dans l'aplat virerait au
+   kaki : la fenêtre s'éclaircit d'abord, l'écran garde sa couleur franche. */
+.sx-feats.is-tracking .sx-feat:is([data-tint='ciel'], [data-tint='vert'], [data-tint='jaune'], [data-tint='rose']) .sx-screen > .win {
+    filter: grayscale(1) brightness(1.35) contrast(0.6);
 }
 
 .sx-feats.is-tracking .sx-feat .chat {

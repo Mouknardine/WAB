@@ -2,9 +2,9 @@
    Services — la méthode, puis l'appel final
    La méthode : quatre étapes réelles, chacune dans une petite carte
    blanche, reliées par la ligne de points du bureau (la seule
-   numérotation du site), le numéro sur une touche — la première en
-   bleu Klein. L'appel final : l'icône Mail du système, la question,
-   deux touches.
+   numérotation du site), le numéro sur une touche de la teinte de son
+   étape (data-tint : vert, ciel, jaune, rouge). L'appel final, en
+   rose : l'icône Mail en tuile d'app, la question, deux touches.
    ============================================ */
 
 .svc-method {
@@ -47,8 +47,8 @@
     font-size: var(--t-small);
 }
 
-.svc-step:first-child .svc-step__num {
-    background: var(--app-klein);
+.svc-step[data-tint] .svc-step__num {
+    background: var(--key-klein);
     box-shadow: inset 0 0 0 var(--hair) var(--klein-deep), inset 0 1px 0 color-mix(in oklch, var(--on-klein) 34%, transparent);
     color: var(--on-klein);
 }
@@ -112,9 +112,10 @@
     text-align: center;
 }
 
+/* L'icône Mail : la tuile d'app de la page (page-services-base.css),
+   en grand, à la teinte du bloc. */
 .svc-end__icon {
-    width: 72px;
-    height: 72px;
+    --app-size: 72px;
     filter: drop-shadow(0 1px 1px var(--app-shade)) drop-shadow(0 8px 16px var(--app-shade));
 }
 

@@ -320,47 +320,47 @@
     <link rel="preload" href="assets/fonts/InstrumentSans-Var.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Styles — le socle commun, puis les feuilles de l'accueil bureau -->
-    <link rel="stylesheet" href="css/base.css?v=34">
+    <link rel="stylesheet" href="css/base.css?v=35">
     <link rel="stylesheet" href="css/base-ui.css?v=1">
     <link rel="stylesheet" href="css/nav-panel.css?v=4">
     <link rel="stylesheet" href="css/contact-modal.css?v=8">
     <link rel="stylesheet" href="css/contact-form.css?v=5">
     <!-- WAB OS : composants partagés par toutes les pages (OS-COMPONENTS.md) -->
-    <link rel="stylesheet" href="css/os-tokens.css?v=11">
+    <link rel="stylesheet" href="css/os-tokens.css?v=12">
     <link rel="stylesheet" href="css/os-tints.css?v=1">
     <link rel="stylesheet" href="css/os-base.css?v=5">
-    <link rel="stylesheet" href="css/os-sky.css?v=5">
+    <link rel="stylesheet" href="css/os-sky.css?v=6">
     <link rel="stylesheet" href="css/sym.css?v=4">
-    <link rel="stylesheet" href="css/key-btn.css?v=2">
+    <link rel="stylesheet" href="css/key-btn.css?v=3">
     <link rel="stylesheet" href="css/os-bar.css?v=7">
     <link rel="stylesheet" href="css/os-window.css?v=5">
     <link rel="stylesheet" href="css/os-footer.css?v=10">
     <link rel="stylesheet" href="css/desk-keys.css?v=4">
     <link rel="stylesheet" href="css/os-dock.css?v=6">
-    <link rel="stylesheet" href="css/os-overlay.css?v=3">
+    <link rel="stylesheet" href="css/os-dock-toc.css?v=1">
+    <link rel="stylesheet" href="css/desk-margins.css?v=3">
+    <link rel="stylesheet" href="css/os-overlay.css?v=4">
     <!-- Accueil -->
 
     <!-- Styles de la page About -->
     <link rel="stylesheet" href="css/page-about-base.css?v=2">
-    <link rel="stylesheet" href="css/page-about-team.css?v=6">
-    <link rel="stylesheet" href="css/page-about-advice.css?v=4">
-    <link rel="stylesheet" href="css/page-about-skills.css?v=5">
+    <link rel="stylesheet" href="css/page-about-team.css?v=7">
+    <link rel="stylesheet" href="css/page-about-advice.css?v=5">
+    <link rel="stylesheet" href="css/page-about-skills.css?v=6">
     <link rel="stylesheet" href="css/page-about-end.css?v=3">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
     <script src="js/reveal.js?v=4" defer></script>
-    <script type="module" src="js/birds/index.js?v=17"></script>
-    <script type="module" src="js/contact/index.js?v=12"></script>
-    <script type="module" src="js/os/index.js?v=7"></script>
+    <script type="module" src="js/contact/index.js?v=13"></script>
+    <script type="module" src="js/os/index.js?v=9"></script>
 </head>
 
-<body class="os" data-birds="rare">
+<body class="os">
 
     <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-    <canvas id="birdCanvas" aria-hidden="true"></canvas>
 
     <header class="menubar" id="topbar">
         <div class="topbar__inner menubar__inner" id="topbarBar">
@@ -412,18 +412,22 @@
 
     <main id="contenu">
 
+        <!-- Les marges : formes de pixels de couleur de part et d\'autre du
+             contenu, sur toute la page (js/desk/pixels-margins.js). -->
+        <div class="margins" aria-hidden="true" data-margins></div>
+
         <!-- L'ÉQUIPE — le titre et une phrase au centre, puis trois
              fenêtres « Contacts » : la vraie photo, le nom, le rôle et le
              texte de chacun. La fin du titre reste lue par Google et la
              navigation vocale. -->
-        <section class="ab-hero" id="studio" aria-labelledby="teamTitle">
+        <section class="ab-hero" id="studio" aria-labelledby="teamTitle" data-tint="bleu">
             <div class="ab-hero__center">
                 <h1 class="ab-hero__title" id="teamTitle">L'équipe<span class="sr-only"> de WeAreBrothers, studio digital fondé à Lausanne</span></h1>
                 <p class="ab-hero__lede">Studio indépendant de design et de développement, fondé à Lausanne par Eliott et Matt Pina. <span class="ab-hero__line">Nous accompagnons marques, institutions culturelles et entreprises, de la stratégie à la mise en ligne.</span></p>
             </div>
 
             <ul class="ab-team" data-reveal-group tabindex="0" aria-label="Les membres de l&apos;équipe">
-                <li class="ab-card reveal">
+                <li class="ab-card reveal" data-tint="bleu">
                     <article class="win">
                         <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--team" aria-hidden="true"></span>Contacts</span></div>
                         <div class="win__body">
@@ -437,7 +441,7 @@
                     </article>
                     <span class="file-name" aria-hidden="true">eliott.vcf</span>
                 </li>
-                <li class="ab-card reveal">
+                <li class="ab-card reveal" data-tint="vert">
                     <article class="win">
                         <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--team" aria-hidden="true"></span>Contacts</span></div>
                         <div class="win__body">
@@ -451,7 +455,7 @@
                     </article>
                     <span class="file-name" aria-hidden="true">matt.vcf</span>
                 </li>
-                <li class="ab-card ab-card--ivan reveal">
+                <li class="ab-card ab-card--ivan reveal" data-tint="rose">
                     <article class="win">
                         <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--team" aria-hidden="true"></span>Contacts</span></div>
                         <div class="win__body">
@@ -465,7 +469,7 @@
                     </article>
                     <span class="file-name" aria-hidden="true">ivan.vcf</span>
                 </li>
-                <li class="ab-card reveal">
+                <li class="ab-card reveal" data-tint="jaune">
                     <article class="win">
                         <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--team" aria-hidden="true"></span>Contacts</span></div>
                         <div class="win__body">
@@ -479,7 +483,7 @@
                     </article>
                     <span class="file-name" aria-hidden="true">yael.vcf</span>
                 </li>
-                <li class="ab-card reveal">
+                <li class="ab-card reveal" data-tint="ciel">
                     <article class="win">
                         <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--team" aria-hidden="true"></span>Contacts</span></div>
                         <div class="win__body">
@@ -499,7 +503,7 @@
         <!-- CONSEIL — la note (le texte, un passage surligné, le bouton),
              et le parcours dans la fenêtre sombre. Uniquement des faits
              confirmés par Eliott. -->
-        <section class="block ab-advice" id="conseil" aria-labelledby="adviceTitle">
+        <section class="block ab-advice" id="conseil" aria-labelledby="adviceTitle" data-tint="jaune">
             <div class="os-wrap">
                 <div class="ab-head reveal">
                     <p class="badge">Conseil</p>
@@ -550,7 +554,7 @@
 
         <!-- SAVOIR-FAIRE — trois apps dans un panneau gris chaud. Uniquement ce que
              le studio vend réellement. -->
-        <section class="ab-skills" id="savoir-faire" aria-labelledby="skillsTitle">
+        <section class="ab-skills" id="savoir-faire" aria-labelledby="skillsTitle" data-tint="vert">
             <div class="os-wrap">
                 <div class="ab-skills__panel">
                     <div class="ab-head reveal">
@@ -559,7 +563,7 @@
                     </div>
                     <ul class="ab-apps" data-reveal-group>
                         <li class="reveal">
-                            <article class="ab-app">
+                            <article class="ab-app" data-tint="bleu">
                                 <div class="ab-app__bar"><span class="win__lights"></span></div>
                                 <div class="ab-app__body">
                                     <span class="ab-app__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19 7-7 3 3-7 7-3-3Z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5Z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></span>
@@ -574,10 +578,10 @@
                             </article>
                         </li>
                         <li class="reveal">
-                            <article class="ab-app">
+                            <article class="ab-app" data-tint="vert">
                                 <div class="ab-app__bar"><span class="win__lights"></span></div>
                                 <div class="ab-app__body">
-                                    <span class="ab-app__icon ab-app__icon--ink"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="m13.5 6-3 12"/></svg></span>
+                                    <span class="ab-app__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="m13.5 6-3 12"/></svg></span>
                                     <h3 class="ab-app__name">Développement</h3>
                                     <ul class="ab-app__list">
                                         <li>Sites codés sur mesure</li>
@@ -589,10 +593,10 @@
                             </article>
                         </li>
                         <li class="reveal">
-                            <article class="ab-app">
+                            <article class="ab-app" data-tint="rose">
                                 <div class="ab-app__bar"><span class="win__lights"></span></div>
                                 <div class="ab-app__body">
-                                    <span class="ab-app__icon ab-app__icon--light"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="m5.6 5.6 3.6 3.6M14.8 14.8l3.6 3.6M14.8 9.2l3.6-3.6M5.6 18.4l3.6-3.6"/></svg></span>
+                                    <span class="ab-app__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="m5.6 5.6 3.6 3.6M14.8 14.8l3.6 3.6M14.8 9.2l3.6-3.6M5.6 18.4l3.6-3.6"/></svg></span>
                                     <h3 class="ab-app__name">Accompagnement</h3>
                                     <ul class="ab-app__list">
                                         <li>Hébergement suisse</li>
@@ -609,7 +613,7 @@
         </section>
 
         <!-- L'APPEL FINAL — un nouveau message, déjà adressé au studio. -->
-        <section class="ab-end" id="contact" aria-labelledby="endTitle">
+        <section class="ab-end" id="contact" aria-labelledby="endTitle" data-tint="rose">
             <div class="os-wrap">
                 <article class="win ab-mail reveal">
                     <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--mail" aria-hidden="true"></span>Nouveau message</span></div>
@@ -666,16 +670,21 @@
         </div>
     </footer>
 
-    <nav class="dock" aria-label="Dock" data-dock>
-        <ul class="dock__apps">
-            <li><a class="dock__item" href="/realisations" data-app="work"><img class="app-icon" src="assets/icons/app-work.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Work</span></a></li>
-            <li><a class="dock__item" href="/services" data-app="services"><img class="app-icon" src="assets/icons/app-services.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Services</span></a></li>
-            <li><a class="dock__item" href="/studio" data-app="about" aria-current="page"><img class="app-icon" src="assets/icons/app-about.svg?v=4" alt="" width="48" height="48"><span class="dock__label">About</span></a></li>
-            <li><a class="dock__item" href="/#lettre" data-app="notes"><img class="app-icon" src="assets/icons/app-notes.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Lettre</span></a></li>
-            <li><button class="dock__item" type="button" data-app="terminal" data-js-only><img class="app-icon" src="assets/icons/app-terminal.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Terminal</span></button></li>
-            <li><a class="dock__item" href="mailto:contact@wearebrothers.ch" data-contact data-app="contact"><img class="app-icon" src="assets/icons/app-mail.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Contact</span></a></li>
-        </ul>
+    <!-- LE DOCK — sur ordinateur, le sommaire de la page : ses sections,
+         chacune d'un pixel de sa teinte ; celle qu'on lit s'allume, un
+         trait suit la lecture (js/os/toc.js). Au bout, la touche pour
+         écrire. Les fenêtres réduites se rangent après le séparateur
+         (js/os/dock.js). Sans JavaScript, de simples ancres. -->
+    <nav class="dock dock--toc" aria-label="Sommaire de la page" data-dock data-toc>
+        <ol class="dock__toc">
+            <li><a class="dock__chip" href="#studio" data-tint="bleu">Équipe</a></li>
+            <li><a class="dock__chip" href="#conseil" data-tint="jaune">Conseil</a></li>
+            <li><a class="dock__chip" href="#savoir-faire" data-tint="vert">Savoir-faire</a></li>
+            <li><a class="dock__chip" href="#contact" data-tint="rose">Contact</a></li>
+        </ol>
+        <a class="dock__cta key-btn key-btn--klein key-btn--sm" href="mailto:contact@wearebrothers.ch" data-contact>Écrire</a>
         <ul class="dock__shelf" data-dock-shelf aria-label="Fenêtres réduites" hidden></ul>
+        <span class="dock__progress" aria-hidden="true"></span>
     </nav>
 
 </body>

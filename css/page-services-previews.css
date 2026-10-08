@@ -135,8 +135,9 @@
     color: var(--ink-muted);
 }
 
-/* La demande faite à l'IA : la bulle Klein, texte blanc (8,5:1),
-   l'icône en touche blanche à pictogramme bleu. */
+/* La demande faite à l'IA : la bulle de la teinte du bloc, texte à
+   son encre (--on-klein), l'icône en touche blanche à pictogramme de
+   la teinte. */
 .svc-notif--ask {
     grid-template-columns: auto minmax(0, 1fr);
     background: var(--klein);

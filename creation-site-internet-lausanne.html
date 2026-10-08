@@ -316,38 +316,39 @@
 
     <!-- WAB OS : composants partagés (OS-COMPONENTS.md), puis les
          feuilles propres à cette page (page-seo-*). -->
-    <link rel="stylesheet" href="css/base.css?v=34">
+    <link rel="stylesheet" href="css/base.css?v=35">
     <link rel="stylesheet" href="css/base-ui.css?v=1">
     <link rel="stylesheet" href="css/nav-panel.css?v=4">
     <link rel="stylesheet" href="css/contact-modal.css?v=8">
     <link rel="stylesheet" href="css/contact-form.css?v=5">
-    <link rel="stylesheet" href="css/os-tokens.css?v=11">
+    <link rel="stylesheet" href="css/os-tokens.css?v=12">
     <link rel="stylesheet" href="css/os-tints.css?v=1">
     <link rel="stylesheet" href="css/os-base.css?v=5">
-    <link rel="stylesheet" href="css/os-sky.css?v=5">
+    <link rel="stylesheet" href="css/os-sky.css?v=6">
     <link rel="stylesheet" href="css/sym.css?v=4">
-    <link rel="stylesheet" href="css/key-btn.css?v=2">
+    <link rel="stylesheet" href="css/key-btn.css?v=3">
     <link rel="stylesheet" href="css/os-bar.css?v=7">
     <link rel="stylesheet" href="css/os-window.css?v=5">
-    <link rel="stylesheet" href="css/os-bubbles.css?v=2">
+    <link rel="stylesheet" href="css/os-bubbles.css?v=4">
     <link rel="stylesheet" href="css/os-footer.css?v=10">
     <link rel="stylesheet" href="css/desk-keys.css?v=4">
     <link rel="stylesheet" href="css/os-dock.css?v=6">
-    <link rel="stylesheet" href="css/os-overlay.css?v=3">
+    <link rel="stylesheet" href="css/os-dock-toc.css?v=1">
+    <link rel="stylesheet" href="css/desk-margins.css?v=3">
+    <link rel="stylesheet" href="css/os-overlay.css?v=4">
     <link rel="stylesheet" href="css/page-seo-base.css?v=3">
     <link rel="stylesheet" href="css/page-seo-hero.css?v=3">
-    <link rel="stylesheet" href="css/page-seo-cards.css?v=5">
-    <link rel="stylesheet" href="css/page-seo-steps.css?v=2">
-    <link rel="stylesheet" href="css/page-seo-feats.css?v=5">
-    <link rel="stylesheet" href="css/page-seo-studio.css?v=2">
+    <link rel="stylesheet" href="css/page-seo-cards.css?v=6">
+    <link rel="stylesheet" href="css/page-seo-steps.css?v=3">
+    <link rel="stylesheet" href="css/page-seo-feats.css?v=6">
+    <link rel="stylesheet" href="css/page-seo-studio.css?v=3">
     <link rel="stylesheet" href="css/page-seo-end.css?v=4">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
-    <script type="module" src="js/birds/index.js?v=17"></script>
-    <script type="module" src="js/contact/index.js?v=12"></script>
-    <script type="module" src="js/os/index.js?v=7"></script>
+    <script type="module" src="js/contact/index.js?v=13"></script>
+    <script type="module" src="js/os/index.js?v=9"></script>
     <script type="module" src="js/page-seo/index.js?v=3"></script>
 </head>
 
@@ -355,8 +356,6 @@
 
     <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-    <!-- Les oiseaux volent sur la trame du bureau, sous les fenêtres. -->
-    <canvas id="birdCanvas" aria-hidden="true"></canvas>
 
     <header class="menubar" id="topbar">
         <div class="topbar__inner menubar__inner" id="topbarBar">
@@ -408,6 +407,10 @@
 
     <main id="contenu">
 
+        <!-- Les marges : formes de pixels de couleur de part et d\'autre du
+             contenu, sur toute la page (js/desk/pixels-margins.js). -->
+        <div class="margins" aria-hidden="true" data-margins></div>
+
         <!-- LE BUREAU — le titre porte la requête visée, au centre net ;
              quatre vrais sites posés autour, comme sur le bureau de
              l'accueil (décor : les mêmes sites sont présentés, avec
@@ -421,8 +424,8 @@
                     lémanique.
                 </p>
                 <div class="sx-hero__actions">
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein">Démarrer un projet</a>
-                    <a href="#exemples" class="key-btn">Voir des exemples</a>
+                    <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--deep key-btn--klein">Démarrer un projet</a>
+                    <a href="#exemples" class="key-btn key-btn--deep">Voir des exemples</a>
                 </div>
                 <ul class="sx-facts" aria-label="En bref">
                     <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Site vitrine en 3 à 6 semaines</li>
@@ -452,7 +455,7 @@
         </section>
 
         <!-- EXEMPLES — quatre vrais sites, chacun dans sa fenêtre. -->
-        <section class="sx-block" id="exemples" aria-labelledby="examplesTitle">
+        <section class="sx-block" id="exemples" aria-labelledby="examplesTitle" data-tint="bleu">
             <div class="os-wrap">
                 <div class="sx-head">
                     <p class="badge">Réalisations</p>
@@ -462,7 +465,7 @@
 
                 <ul class="sx-examples">
                     <li>
-                        <a class="sx-example" href="https://www.zinema.ch/" target="_blank" rel="noopener noreferrer">
+                        <a class="sx-example" href="https://www.zinema.ch/" target="_blank" rel="noopener noreferrer" data-tint="bleu">
                             <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">zinema.ch</span></span><span class="win__body"><img src="assets/images/shot-zinema-800.webp" srcset="assets/images/shot-zinema-800.webp 800w, assets/images/shot-zinema-1600.webp 1600w" sizes="(min-width: 760px) 540px, 92vw" alt="Site internet du Zinéma, cinéma d'art et essai de la rue du Maupas à Lausanne, créé par WeAreBrothers" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
                             <div class="sx-example__body">
                                 <h3 class="sx-example__name">Zinéma</h3>
@@ -471,7 +474,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="sx-example" href="https://www.lepetitcentral.ch/" target="_blank" rel="noopener noreferrer">
+                        <a class="sx-example" href="https://www.lepetitcentral.ch/" target="_blank" rel="noopener noreferrer" data-tint="vert">
                             <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">lepetitcentral.ch</span></span><span class="win__body"><img src="assets/images/shot-central-800.webp" srcset="assets/images/shot-central-800.webp 800w, assets/images/shot-central-1600.webp 1600w" sizes="(min-width: 760px) 540px, 92vw" alt="Site internet du café-restaurant Le P'tit Central, rue Centrale à Lausanne, créé par WeAreBrothers" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
                             <div class="sx-example__body">
                                 <h3 class="sx-example__name">Le P'tit Central</h3>
@@ -480,7 +483,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="sx-example" href="https://amarte.ch/" target="_blank" rel="noopener noreferrer">
+                        <a class="sx-example" href="https://amarte.ch/" target="_blank" rel="noopener noreferrer" data-tint="rose">
                             <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">amarte.ch</span></span><span class="win__body"><img src="assets/images/shot-amarte-800.webp" srcset="assets/images/shot-amarte-800.webp 800w, assets/images/shot-amarte-1600.webp 1600w" sizes="(min-width: 760px) 540px, 92vw" alt="Site internet d'Amarte Studio, centre de yoga et de Pilates à Épalinges, créé par WeAreBrothers" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
                             <div class="sx-example__body">
                                 <h3 class="sx-example__name">Amarte Studio</h3>
@@ -489,7 +492,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="sx-example" href="https://commissione-entretien.ch/" target="_blank" rel="noopener noreferrer">
+                        <a class="sx-example" href="https://commissione-entretien.ch/" target="_blank" rel="noopener noreferrer" data-tint="jaune">
                             <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">commissione-entretien.ch</span></span><span class="win__body"><img src="assets/images/shot-commissione-800.webp" srcset="assets/images/shot-commissione-800.webp 800w, assets/images/shot-commissione-1600.webp 1600w" sizes="(min-width: 760px) 540px, 92vw" alt="Site internet de Commissione Entretien, entreprise familiale d'entretien à Bavois, créé par WeAreBrothers" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
                             <div class="sx-example__body">
                                 <h3 class="sx-example__name">Commissione Entretien</h3>
@@ -508,7 +511,7 @@
 
         <!-- CE QUE COMPREND LE SITE — six fiches, chacune avec son icône
              d'app, au format des cartes de l'accueil. -->
-        <section class="sx-block" id="inclus" aria-labelledby="includedTitle">
+        <section class="sx-block" id="inclus" aria-labelledby="includedTitle" data-tint="vert">
             <div class="os-wrap">
                 <div class="sx-head">
                     <p class="badge">Inclus</p>
@@ -517,32 +520,32 @@
                 </div>
 
                 <ul class="sx-cards">
-                    <li class="sx-card">
+                    <li class="sx-card" data-tint="vert">
                         <span class="sx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19 7-7 3 3-7 7-3-3Z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5Z"/><circle cx="11" cy="11" r="2"/></svg></span>
                         <h3 class="sx-card__name">Une direction artistique sur mesure</h3>
                         <p class="sx-card__text">Une identité visuelle tirée de votre métier, de votre marché et de vos clients, jamais d'un gabarit. Des pages précises et lisibles, conçues d'abord pour le mobile.</p>
                     </li>
-                    <li class="sx-card">
+                    <li class="sx-card" data-tint="bleu">
                         <span class="sx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="m13.5 6-3 12"/></svg></span>
                         <h3 class="sx-card__name">Un développement sur mesure</h3>
                         <p class="sx-card__text">Sans WordPress ni Wix&nbsp;: aucune extension à maintenir, rien de superflu à charger. Le site s'affiche presque instantanément, y compris sur une connexion mobile moyenne.</p>
                     </li>
-                    <li class="sx-card">
+                    <li class="sx-card" data-tint="jaune">
                         <span class="sx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span>
                         <h3 class="sx-card__name">L'hébergement suisse inclus</h3>
                         <p class="sx-card__text">Votre site est hébergé chez Infomaniak, en Suisse, avec un nom de domaine à votre nom et un guide pour gérer l'hébergement en autonomie.</p>
                     </li>
-                    <li class="sx-card">
+                    <li class="sx-card" data-tint="rose">
                         <span class="sx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
                         <h3 class="sx-card__name">Le référencement local dès la conception</h3>
                         <p class="sx-card__text">Balises, données structurées, plan du site, adresses de pages propres et textes travaillés avec vous autour de votre activité et de votre région, pour être trouvé à Lausanne et dans le canton de Vaud.</p>
                     </li>
-                    <li class="sx-card">
+                    <li class="sx-card" data-tint="ciel">
                         <span class="sx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                         <h3 class="sx-card__name">Un parcours orienté conversion</h3>
                         <p class="sx-card__text">Chaque page conduit le visiteur vers l'action attendue&nbsp;: un appel, une réservation, une demande de devis, une visite en boutique.</p>
                     </li>
-                    <li class="sx-card">
+                    <li class="sx-card" data-tint="rouge">
                         <span class="sx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v4h-4"/></svg></span>
                         <h3 class="sx-card__name">Un accompagnement dans la durée</h3>
                         <p class="sx-card__text">Maintenance, évolutions, mises à jour de contenu&nbsp;: notre équipe reste disponible après la mise en ligne et suit avec vous le référencement du site.</p>
@@ -554,7 +557,7 @@
         <!-- FORMATS — quatre blocs en quinconce, chaque fenêtre posée dans
              son écran. Les bulles sont une mise en scène (pas des
              témoignages), masquées aux lecteurs d'écran. -->
-        <section class="sx-block" id="formats" aria-labelledby="formatsTitle">
+        <section class="sx-block" id="formats" aria-labelledby="formatsTitle" data-tint="jaune">
             <div class="os-wrap">
                 <div class="sx-head">
                     <p class="badge">Formats</p>
@@ -563,7 +566,7 @@
                 </div>
 
                 <div class="sx-feats" data-sx-feats>
-                    <article class="sx-feat">
+                    <article class="sx-feat" data-tint="jaune">
                         <div class="sx-feat__text">
                             <div class="chat" aria-hidden="true">
                                 <p class="chat__ask">On doit pouvoir m'appeler en un geste.</p>
@@ -576,7 +579,7 @@
                             <div class="sx-screen"><div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--site" aria-hidden="true"></span>maison-alliani.com</span></div><div class="win__body"><img src="assets/images/shot-alliani-800.webp" srcset="assets/images/shot-alliani-800.webp 800w, assets/images/shot-alliani-1600.webp 1600w" sizes="(min-width: 900px) 560px, 92vw" alt="Galerie de Maison Alliani, atelier suisse de grillz sur mesure, sur fond sombre" width="1600" height="1000" loading="lazy" decoding="async"></div></div></div>
                         </figure>
                     </article>
-                    <article class="sx-feat sx-feat--flip">
+                    <article class="sx-feat sx-feat--flip" data-tint="ciel">
                         <div class="sx-feat__text">
                             <div class="chat" aria-hidden="true">
                                 <p class="chat__ask">Nos clients parlent allemand.</p>
@@ -589,7 +592,7 @@
                             <div class="sx-screen"><div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--site" aria-hidden="true"></span>commissione-entretien.ch</span></div><div class="win__body"><img src="assets/images/shot-commissione-800.webp" srcset="assets/images/shot-commissione-800.webp 800w, assets/images/shot-commissione-1600.webp 1600w" sizes="(min-width: 900px) 560px, 92vw" alt="Page d'accueil de Commissione Entretien, entreprise familiale d'entretien dans le canton de Vaud" width="1600" height="1000" loading="lazy" decoding="async"></div></div></div>
                         </figure>
                     </article>
-                    <article class="sx-feat">
+                    <article class="sx-feat" data-tint="rose">
                         <div class="sx-feat__text">
                             <div class="chat" aria-hidden="true">
                                 <p class="chat__ask">Je veux montrer, pas expliquer.</p>
@@ -602,7 +605,7 @@
                             <div class="sx-screen"><div class="win"><div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--site" aria-hidden="true"></span>lazizze.com</span></div><div class="win__body"><img src="assets/images/shot-dj-800.webp" srcset="assets/images/shot-dj-800.webp 800w, assets/images/shot-dj-1600.webp 1600w" sizes="(min-width: 900px) 560px, 92vw" alt="Site de LAZIZZE, DJ house à Lausanne, typographie noire sur aplat rose" width="1600" height="1000" loading="lazy" decoding="async"></div></div></div>
                         </figure>
                     </article>
-                    <article class="sx-feat sx-feat--flip">
+                    <article class="sx-feat sx-feat--flip" data-tint="vert">
                         <div class="sx-feat__text">
                             <div class="chat" aria-hidden="true">
                                 <p class="chat__ask">Vendre dans toute la Suisse romande&nbsp;?</p>
@@ -625,7 +628,7 @@
         </section>
 
         <!-- DÉROULÉ — quatre étapes numérotées : ici, l'ordre est le sujet. -->
-        <section class="sx-block" id="deroule" aria-labelledby="stepsTitle">
+        <section class="sx-block" id="deroule" aria-labelledby="stepsTitle" data-tint="ciel">
             <div class="os-wrap">
                 <div class="sx-head">
                     <p class="badge">Déroulé</p>
@@ -634,22 +637,22 @@
                 </div>
 
                 <ol class="sx-steps">
-                    <li class="sx-step">
+                    <li class="sx-step" data-tint="ciel">
                         <span class="sx-step__num" aria-hidden="true">1</span>
                         <h3 class="sx-step__name">Un premier échange</h3>
                         <p class="sx-step__text">Nous analysons votre activité, vos clients et les objectifs du site. Sans engagement.</p>
                     </li>
-                    <li class="sx-step">
+                    <li class="sx-step" data-tint="jaune">
                         <span class="sx-step__num" aria-hidden="true">2</span>
                         <h3 class="sx-step__name">Une proposition sous 24&nbsp;h ouvrées</h3>
                         <p class="sx-step__text">Périmètre, calendrier et prix, définis ensemble. Le paiement peut être échelonné en plusieurs mensualités.</p>
                     </li>
-                    <li class="sx-step">
+                    <li class="sx-step" data-tint="rouge">
                         <span class="sx-step__num" aria-hidden="true">3</span>
                         <h3 class="sx-step__name">Design, puis développement</h3>
                         <p class="sx-step__text">Direction artistique, maquettes, puis développement. Des points réguliers jalonnent le projet&nbsp;: vous validez chaque étape avant la suivante.</p>
                     </li>
-                    <li class="sx-step">
+                    <li class="sx-step" data-tint="vert">
                         <span class="sx-step__num" aria-hidden="true">4</span>
                         <h3 class="sx-step__name">Mise en ligne et suivi</h3>
                         <p class="sx-step__text">Le site est déployé sur son hébergement suisse, plan du site et balises en place. Notre équipe assure ensuite la maintenance et les évolutions.</p>
@@ -661,7 +664,7 @@
         <!-- LE STUDIO — qui fait le site, et où : les communes servies
              sont écrites en toutes lettres, c'est le texte local que
              Google lit. Elles sont posées en pastilles de verre. -->
-        <section class="sx-block" id="studio" aria-labelledby="studioTitle">
+        <section class="sx-block" id="studio" aria-labelledby="studioTitle" data-tint="rouge">
             <div class="os-wrap sx-studio">
                 <div class="sx-studio__text">
                     <p class="badge">Le studio</p>
@@ -723,7 +726,7 @@
         <!-- QUESTIONS — l'accordéon dans une carte. Les réponses reprennent
              mot pour mot le bloc FAQPage du JSON-LD ; <details> garde
              chaque réponse dans la page, lisible par les moteurs. -->
-        <section class="sx-block" id="questions" aria-labelledby="questionsTitle">
+        <section class="sx-block" id="questions" aria-labelledby="questionsTitle" data-tint="rose">
             <div class="os-wrap sx-faq">
                 <div class="sx-faq__head">
                     <p class="badge">FAQ</p>
@@ -786,7 +789,7 @@
         </section>
 
         <!-- CONTACT — le dernier écran : une fenêtre « Nouveau message ». -->
-        <section class="sx-block sx-end" id="contact" aria-labelledby="closingTitle">
+        <section class="sx-block sx-end" id="contact" aria-labelledby="closingTitle" data-tint="bleu">
             <div class="os-wrap">
                 <div class="win win--framed sx-end__win">
                     <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--mail" aria-hidden="true"></span>Nouveau message</span></div>
@@ -845,16 +848,23 @@
         </div>
     </footer>
 
-    <nav class="dock" aria-label="Dock" data-dock>
-        <ul class="dock__apps">
-            <li><a class="dock__item" href="/realisations" data-app="work"><img class="app-icon" src="assets/icons/app-work.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Work</span></a></li>
-            <li><a class="dock__item" href="/services" data-app="services"><img class="app-icon" src="assets/icons/app-services.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Services</span></a></li>
-            <li><a class="dock__item" href="/studio" data-app="about"><img class="app-icon" src="assets/icons/app-about.svg?v=4" alt="" width="48" height="48"><span class="dock__label">About</span></a></li>
-            <li><a class="dock__item" href="/#lettre" data-app="notes"><img class="app-icon" src="assets/icons/app-notes.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Lettre</span></a></li>
-            <li><button class="dock__item" type="button" data-app="terminal" data-js-only><img class="app-icon" src="assets/icons/app-terminal.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Terminal</span></button></li>
-            <li><a class="dock__item" href="mailto:contact@wearebrothers.ch" data-contact data-app="contact"><img class="app-icon" src="assets/icons/app-mail.svg?v=4" alt="" width="48" height="48"><span class="dock__label">Contact</span></a></li>
-        </ul>
+    <!-- LE DOCK — sur ordinateur, le sommaire de la page : ses sections,
+         chacune d'un pixel de sa teinte ; celle qu'on lit s'allume, un
+         trait suit la lecture (js/os/toc.js). Au bout, la touche pour
+         écrire. Les fenêtres réduites se rangent après le séparateur
+         (js/os/dock.js). Sans JavaScript, de simples ancres. -->
+    <nav class="dock dock--toc" aria-label="Sommaire de la page" data-dock data-toc>
+        <ol class="dock__toc">
+            <li><a class="dock__chip" href="#exemples" data-tint="bleu">Exemples</a></li>
+            <li><a class="dock__chip" href="#inclus" data-tint="vert">Inclus</a></li>
+            <li><a class="dock__chip" href="#formats" data-tint="jaune">Formats</a></li>
+            <li><a class="dock__chip" href="#deroule" data-tint="ciel">Déroulé</a></li>
+            <li><a class="dock__chip" href="#studio" data-tint="rouge">Studio</a></li>
+            <li><a class="dock__chip" href="#questions" data-tint="rose">FAQ</a></li>
+        </ol>
+        <a class="dock__cta key-btn key-btn--klein key-btn--sm" href="mailto:contact@wearebrothers.ch" data-contact>Écrire</a>
         <ul class="dock__shelf" data-dock-shelf aria-label="Fenêtres réduites" hidden></ul>
+        <span class="dock__progress" aria-hidden="true"></span>
     </nav>
 
 </body>
