@@ -1,32 +1,16 @@
 /* ============================================
    Services — le ciel : trois façons de travailler avec nous
-   Une bande pleine largeur gris chaud (--panel), qui se fond dans le
-   blanc de la page en haut et en bas. Trois panneaux blancs au même
+   Dans une carte de section gris chaud (.os-card, os-base.css), trois
+   panneaux blancs au même
    gabarit, aucun n'affiche de prix : « Sur devis » tient la place du
-   montant, le périmètre se définit après un premier échange. La bande
-   est jaune (data-tint), chaque formule a sa teinte comme les offres
+   montant, le périmètre se définit après un premier échange. La
+   section est jaune (data-tint), chaque formule a sa teinte comme les offres
    de l'accueil : jaune, bleu pour celle du milieu (son liseré, sa
    touche, la feuille décalée), rouge ; les coches la reprennent.
    ============================================ */
 
 .svc-sky {
-    position: relative;
-    isolation: isolate;
     margin-top: var(--section);
-    padding: clamp(72px, 9vw, 120px) 0 clamp(80px, 10vw, 140px);
-}
-
-/* Le gris chaud, en calque masqué : il se fond dans le fond de la page
-   quel qu'il soit (la lumière de l'heure le teinte), sans couture. */
-.svc-sky::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    background: var(--panel);
-    -webkit-mask: linear-gradient(180deg, transparent, black 18%, black 82%, transparent);
-    mask: linear-gradient(180deg, transparent, black 18%, black 82%, transparent);
-    pointer-events: none;
 }
 
 .svc-sky__title {

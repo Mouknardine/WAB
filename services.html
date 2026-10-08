@@ -104,7 +104,7 @@
     <link rel="stylesheet" href="css/contact-form.css?v=5">
     <link rel="stylesheet" href="css/os-tokens.css?v=12">
     <link rel="stylesheet" href="css/os-tints.css?v=1">
-    <link rel="stylesheet" href="css/os-base.css?v=5">
+    <link rel="stylesheet" href="css/os-base.css?v=6">
     <link rel="stylesheet" href="css/os-sky.css?v=6">
     <link rel="stylesheet" href="css/sym.css?v=4">
     <link rel="stylesheet" href="css/key-btn.css?v=3">
@@ -126,14 +126,14 @@
     <link rel="stylesheet" href="css/page-services-typing.css?v=1">
     <link rel="stylesheet" href="css/page-services-previews.css?v=4">
     <link rel="stylesheet" href="css/page-services-objects.css?v=3">
-    <link rel="stylesheet" href="css/page-services-sky.css?v=5">
+    <link rel="stylesheet" href="css/page-services-sky.css?v=6">
     <link rel="stylesheet" href="css/page-services-end.css?v=4">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
     <script type="module" src="js/contact/index.js?v=13"></script>
-    <script type="module" src="js/os/index.js?v=10"></script>
+    <script type="module" src="js/os/index.js?v=11"></script>
     <script type="module" src="js/page-services/index.js?v=5"></script>
 </head>
 
@@ -400,52 +400,54 @@
              (validées par Eliott le 03.10.2026). -->
         <section class="svc-sky" id="formules" aria-labelledby="skyTitle" data-tint="jaune">
             <div class="os-wrap">
-                <div class="svc-head">
-                    <p class="badge">Tarifs</p>
-                    <h2 class="svc-sky__title" id="skyTitle">Trois niveaux d'accompagnement.</h2>
-                    <p class="svc-sky__lede">Des fourchettes indicatives. Chaque projet fait l'objet d'une proposition détaillée, établie selon son périmètre. Paiement en plusieurs mensualités possible.</p>
+                <div class="os-card">
+                    <div class="svc-head">
+                        <p class="badge">Tarifs</p>
+                        <h2 class="svc-sky__title" id="skyTitle">Trois niveaux d'accompagnement.</h2>
+                        <p class="svc-sky__lede">Des fourchettes indicatives. Chaque projet fait l'objet d'une proposition détaillée, établie selon son périmètre. Paiement en plusieurs mensualités possible.</p>
+                    </div>
+                    <ul class="svc-plans">
+                        <li>
+                            <article class="svc-plan" data-tint="jaune">
+                                <div class="svc-plan__bar"><span class="win__lights"></span></div>
+                                <div class="svc-plan__body">
+                                    <h3 class="svc-plan__name">Site vitrine</h3>
+                                    <p class="svc-plan__line">Un site vitrine conçu et développé sur mesure.</p>
+                                    <p class="svc-plan__quote">1&#x27;000 – 2&#x27;500&nbsp;CHF</p>
+                                    <p class="svc-plan__for">De 3 à 6 semaines</p>
+                                    <ul class="svc-plan__list"><li>Code sur mesure, sans WordPress ni Wix</li><li>Conçu d’abord pour le mobile</li><li>Optimisé pour le référencement local</li><li>Hébergé en Suisse chez Infomaniak</li></ul>
+                                    <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="key-btn">Demander un devis</a>
+                                </div>
+                            </article>
+                        </li>
+                        <li>
+                            <article class="svc-plan svc-plan--main" data-tint="bleu">
+                                <div class="svc-plan__bar"><span class="win__lights"></span></div>
+                                <div class="svc-plan__body">
+                                    <h3 class="svc-plan__name">Site et outils</h3>
+                                    <p class="svc-plan__line">Le site et les outils numériques de votre activité.</p>
+                                    <p class="svc-plan__quote">2&#x27;500 – 7&#x27;000&nbsp;CHF</p>
+                                    <p class="svc-plan__for">Pour structurer vos processus internes</p>
+                                    <ul class="svc-plan__list"><li>L’ensemble de l’offre Site vitrine</li><li>Une application de gestion sur mesure</li><li>Caisse, CMS et boutique intégrés</li><li>Automatisation et intégration de l’IA</li></ul>
+                                    <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="key-btn key-btn--klein">Demander un devis</a>
+                                </div>
+                            </article>
+                        </li>
+                        <li>
+                            <article class="svc-plan" data-tint="rouge">
+                                <div class="svc-plan__bar"><span class="win__lights"></span></div>
+                                <div class="svc-plan__body">
+                                    <h3 class="svc-plan__name">Expérience sur mesure</h3>
+                                    <p class="svc-plan__line">Une expérience digitale aboutie, avec refonte de marque.</p>
+                                    <p class="svc-plan__quote">Dès 7&#x27;000&nbsp;CHF</p>
+                                    <p class="svc-plan__for">Pour les marques et les projets culturels</p>
+                                    <ul class="svc-plan__list"><li>Refonte de l’identité visuelle</li><li>Direction artistique et motion design</li><li>Cartes de visite et supports imprimés</li><li>Pièces textiles avec Memories Store</li></ul>
+                                    <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="key-btn">Demander un devis</a>
+                                </div>
+                            </article>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="svc-plans">
-                    <li>
-                        <article class="svc-plan" data-tint="jaune">
-                            <div class="svc-plan__bar"><span class="win__lights"></span></div>
-                            <div class="svc-plan__body">
-                                <h3 class="svc-plan__name">Site vitrine</h3>
-                                <p class="svc-plan__line">Un site vitrine conçu et développé sur mesure.</p>
-                                <p class="svc-plan__quote">1&#x27;000 – 2&#x27;500&nbsp;CHF</p>
-                                <p class="svc-plan__for">De 3 à 6 semaines</p>
-                                <ul class="svc-plan__list"><li>Code sur mesure, sans WordPress ni Wix</li><li>Conçu d’abord pour le mobile</li><li>Optimisé pour le référencement local</li><li>Hébergé en Suisse chez Infomaniak</li></ul>
-                                <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="key-btn">Demander un devis</a>
-                            </div>
-                        </article>
-                    </li>
-                    <li>
-                        <article class="svc-plan svc-plan--main" data-tint="bleu">
-                            <div class="svc-plan__bar"><span class="win__lights"></span></div>
-                            <div class="svc-plan__body">
-                                <h3 class="svc-plan__name">Site et outils</h3>
-                                <p class="svc-plan__line">Le site et les outils numériques de votre activité.</p>
-                                <p class="svc-plan__quote">2&#x27;500 – 7&#x27;000&nbsp;CHF</p>
-                                <p class="svc-plan__for">Pour structurer vos processus internes</p>
-                                <ul class="svc-plan__list"><li>L’ensemble de l’offre Site vitrine</li><li>Une application de gestion sur mesure</li><li>Caisse, CMS et boutique intégrés</li><li>Automatisation et intégration de l’IA</li></ul>
-                                <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="key-btn key-btn--klein">Demander un devis</a>
-                            </div>
-                        </article>
-                    </li>
-                    <li>
-                        <article class="svc-plan" data-tint="rouge">
-                            <div class="svc-plan__bar"><span class="win__lights"></span></div>
-                            <div class="svc-plan__body">
-                                <h3 class="svc-plan__name">Expérience sur mesure</h3>
-                                <p class="svc-plan__line">Une expérience digitale aboutie, avec refonte de marque.</p>
-                                <p class="svc-plan__quote">Dès 7&#x27;000&nbsp;CHF</p>
-                                <p class="svc-plan__for">Pour les marques et les projets culturels</p>
-                                <ul class="svc-plan__list"><li>Refonte de l’identité visuelle</li><li>Direction artistique et motion design</li><li>Cartes de visite et supports imprimés</li><li>Pièces textiles avec Memories Store</li></ul>
-                                <a href="mailto:contact@wearebrothers.ch" data-contact aria-haspopup="dialog" class="key-btn">Demander un devis</a>
-                            </div>
-                        </article>
-                    </li>
-                </ul>
             </div>
         </section>
 

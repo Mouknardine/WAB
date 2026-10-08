@@ -92,6 +92,27 @@ body.os {
     padding-inline: var(--gutter);
 }
 
+/* La carte de section : une grande carte gris chaud posée sur le
+   bureau (coins du panneau, liseré, relief, feuille décalée dessous)
+   au lieu d'une bande pleine largeur. --wash : la teinte très claire
+   de la section ; --even : le même retrait en haut et en bas, pour un
+   contenu centré. */
+.os-card {
+    padding: clamp(48px, 7vw, 88px) clamp(16px, 4vw, 48px) clamp(16px, 4vw, 48px);
+    border-radius: var(--r-panel);
+    background: var(--panel);
+    box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief), var(--sheet);
+}
+
+.os-card--wash {
+    background: var(--klein-wash);
+    box-shadow: 0 0 0 var(--hair) var(--klein-tint), var(--relief), var(--sheet);
+}
+
+.os-card--even {
+    padding-block: clamp(48px, 7vw, 88px);
+}
+
 /* Le badge des sections : une petite étiquette en Sligoil, un carré
    Klein devant, comme une touche de légende. */
 .badge {

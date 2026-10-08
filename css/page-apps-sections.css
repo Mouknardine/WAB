@@ -1,8 +1,8 @@
 /* ============================================
    WAB OS — page Applications : l'approche et l'appel final
    L'approche : cinq cartes blanches, liseré d'un pixel et relief
-   éclairé d'en haut, posées sur une bande de la teinte de la section
-   très claire (--klein-wash, vert). Chaque carte porte sa teinte
+   éclairé d'en haut, posées dans une carte de section de la teinte
+   très claire (.os-card--wash, vert). Chaque carte porte sa teinte
    (data-tint) sur la touche de son icône.
    Trois puis deux sur grand écran, en rangée défilante au téléphone.
    L'appel final : l'oiseau, le titre, deux boutons.
@@ -10,9 +10,6 @@
 
 .app-sky {
     margin-top: var(--section);
-    padding: clamp(72px, 9vw, 120px) 0;
-    background: var(--klein-wash);
-    box-shadow: inset 0 var(--hair) 0 var(--klein-tint), inset 0 calc(-1 * var(--hair)) 0 var(--klein-tint);
 }
 
 .app-ways {
@@ -23,16 +20,17 @@
 }
 
 /* Téléphone : une rangée aimantée qu'on fait défiler au doigt, qui
-   sort de la colonne jusqu'aux bords de l'écran. */
+   va jusqu'aux bords de la carte de section (son retrait : 16 px). */
 @media (max-width: 699px) {
     .app-ways {
+        --card-pad: 16px;
         grid-auto-flow: column;
         grid-auto-columns: var(--app-way-w);
-        margin-inline: calc(-1 * var(--gutter));
-        padding: 4px var(--gutter) 16px;
+        margin-inline: calc(-1 * var(--card-pad));
+        padding: 4px var(--card-pad) 16px;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
-        scroll-padding-inline: var(--gutter);
+        scroll-padding-inline: var(--card-pad);
         scrollbar-width: none;
     }
 

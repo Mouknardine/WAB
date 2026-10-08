@@ -93,13 +93,9 @@
     }
 }
 
-/* ── La refonte, sur la bande gris chaud ── le bleu reste rare : il
-   est déjà aux écrans des formats et au pied de page. */
+/* ── La refonte, dans une carte de section (.os-card) ── */
 .sx-sky {
     margin-top: var(--section);
-    padding-block: clamp(72px, 10vw, 128px);
-    background: var(--panel);
-    box-shadow: inset 0 var(--hair) 0 var(--edge), inset 0 calc(-1 * var(--hair)) 0 var(--edge);
 }
 
 .sx-sky__inner {

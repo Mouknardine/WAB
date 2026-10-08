@@ -11,13 +11,6 @@
     margin-top: var(--section);
 }
 
-.ab-skills__panel {
-    padding: clamp(48px, 7vw, 88px) clamp(12px, 4vw, 48px) clamp(12px, 4vw, 48px);
-    border-radius: var(--r-panel);
-    background: var(--panel);
-    box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief), var(--sheet);
-}
-
 .ab-skills__title {
     max-width: 24ch;
     font-size: clamp(2rem, 5vw, 3.4rem);

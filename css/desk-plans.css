@@ -1,7 +1,6 @@
 /* ============================================
    WAB OS — les offres (accueil)
-   Une grande carte gris chaud (--panel) posée sur le bureau, comme le
-   savoir-faire de la page About ; dedans, trois cartes WAB
+   Dans une carte de section (.os-card, os-base.css), trois cartes WAB
    (home-card.css), trois paliers (prix d'Eliott, 3.10). La tuile porte
    l'objectif, le nom et le prix ; le corps, l'accroche, le périmètre
    et ce qui est inclus. Celle du milieu, recommandée, a la tuile
@@ -10,13 +9,6 @@
 
 .plans {
     margin-top: var(--section);
-}
-
-.plans__panel {
-    padding: clamp(48px, 7vw, 88px) clamp(12px, 4vw, 48px) clamp(12px, 4vw, 48px);
-    border-radius: var(--r-panel);
-    background: var(--panel);
-    box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief), var(--sheet);
 }
 
 .plans__grid {

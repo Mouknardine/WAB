@@ -103,7 +103,7 @@
     <link rel="stylesheet" href="css/contact-form.css?v=5">
     <link rel="stylesheet" href="css/os-tokens.css?v=12">
     <link rel="stylesheet" href="css/os-tints.css?v=1">
-    <link rel="stylesheet" href="css/os-base.css?v=5">
+    <link rel="stylesheet" href="css/os-base.css?v=6">
     <link rel="stylesheet" href="css/os-sky.css?v=6">
     <link rel="stylesheet" href="css/sym.css?v=4">
     <link rel="stylesheet" href="css/key-btn.css?v=3">
@@ -126,14 +126,14 @@
     <link rel="stylesheet" href="css/page-apps-tokens.css?v=2">
     <link rel="stylesheet" href="css/page-apps-hero.css?v=3">
     <link rel="stylesheet" href="css/page-apps-window.css?v=5">
-    <link rel="stylesheet" href="css/page-apps-sections.css?v=6">
+    <link rel="stylesheet" href="css/page-apps-sections.css?v=8">
 
     <!-- Scripts -->
     <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
     <script src="js/reveal.js?v=4" defer></script>
     <script type="module" src="js/contact/index.js?v=13"></script>
-    <script type="module" src="js/os/index.js?v=10"></script>
+    <script type="module" src="js/os/index.js?v=11"></script>
     <script type="module" src="js/page-apps/index.js?v=3"></script>
 </head>
 
@@ -322,37 +322,39 @@
              porte sa touche de couleur. -->
         <section class="app-sky" id="approche" aria-labelledby="approcheTitle" data-tint="vert">
             <div class="desk-wrap">
-                <div class="section-head reveal">
-                    <p class="badge">Approche</p>
-                    <h2 class="section-title" id="approcheTitle">Notre approche du développement sur mesure</h2>
+                <div class="os-card os-card--wash">
+                    <div class="section-head reveal">
+                        <p class="badge">Approche</p>
+                        <h2 class="section-title" id="approcheTitle">Notre approche du développement sur mesure</h2>
+                    </div>
+                    <ul class="app-ways reveal">
+                        <li class="app-way" data-tint="vert">
+                            <span class="app-way__icon"><span class="sym sym--team" aria-hidden="true"></span></span>
+                            <h3 class="app-way__title">L'analyse du métier d'abord</h3>
+                            <p class="app-way__text">Une phase d'observation précède toute ligne de code. Deux entreprises d'un même secteur ne travaillent jamais de la même manière&nbsp;: cet écart détermine la forme de l'outil.</p>
+                        </li>
+                        <li class="app-way" data-tint="jaune">
+                            <span class="app-way__icon"><span class="sym sym--grid" aria-hidden="true"></span></span>
+                            <h3 class="app-way__title">Chaque écran a une raison d'être</h3>
+                            <p class="app-way__text">Une fonctionnalité n'entre dans l'outil que si elle répond à un usage réel. Cette exigence garde l'interface lisible dans la durée et le code simple à faire évoluer.</p>
+                        </li>
+                        <li class="app-way" data-tint="ciel">
+                            <span class="app-way__icon"><span class="sym sym--clock" aria-hidden="true"></span></span>
+                            <h3 class="app-way__title">Le temps gagné comme mesure</h3>
+                            <p class="app-way__text">Un outil se juge aux heures qu'il libère chaque semaine. Vingt minutes gagnées par jour représentent près de deux semaines de travail par an et par personne.</p>
+                        </li>
+                        <li class="app-way" data-tint="rose">
+                            <span class="app-way__icon"><span class="sym sym--phone" aria-hidden="true"></span></span>
+                            <h3 class="app-way__title">Pensé pour le mobile d'abord</h3>
+                            <p class="app-way__text">Un dossier se consulte chez un client, entre deux rendez-vous. L'interface est conçue pour le petit écran en premier.</p>
+                        </li>
+                        <li class="app-way" data-tint="vert">
+                            <span class="app-way__icon"><span class="sym sym--folder" aria-hidden="true"></span></span>
+                            <h3 class="app-way__title">L'historique reste consultable</h3>
+                            <p class="app-way__text">Les données archivées restent accessibles et cherchables. Toute suppression définitive exige une confirmation explicite, qui précise ce qu'elle entraîne.</p>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="app-ways reveal">
-                    <li class="app-way" data-tint="vert">
-                        <span class="app-way__icon"><span class="sym sym--team" aria-hidden="true"></span></span>
-                        <h3 class="app-way__title">L'analyse du métier d'abord</h3>
-                        <p class="app-way__text">Une phase d'observation précède toute ligne de code. Deux entreprises d'un même secteur ne travaillent jamais de la même manière&nbsp;: cet écart détermine la forme de l'outil.</p>
-                    </li>
-                    <li class="app-way" data-tint="jaune">
-                        <span class="app-way__icon"><span class="sym sym--grid" aria-hidden="true"></span></span>
-                        <h3 class="app-way__title">Chaque écran a une raison d'être</h3>
-                        <p class="app-way__text">Une fonctionnalité n'entre dans l'outil que si elle répond à un usage réel. Cette exigence garde l'interface lisible dans la durée et le code simple à faire évoluer.</p>
-                    </li>
-                    <li class="app-way" data-tint="ciel">
-                        <span class="app-way__icon"><span class="sym sym--clock" aria-hidden="true"></span></span>
-                        <h3 class="app-way__title">Le temps gagné comme mesure</h3>
-                        <p class="app-way__text">Un outil se juge aux heures qu'il libère chaque semaine. Vingt minutes gagnées par jour représentent près de deux semaines de travail par an et par personne.</p>
-                    </li>
-                    <li class="app-way" data-tint="rose">
-                        <span class="app-way__icon"><span class="sym sym--phone" aria-hidden="true"></span></span>
-                        <h3 class="app-way__title">Pensé pour le mobile d'abord</h3>
-                        <p class="app-way__text">Un dossier se consulte chez un client, entre deux rendez-vous. L'interface est conçue pour le petit écran en premier.</p>
-                    </li>
-                    <li class="app-way" data-tint="vert">
-                        <span class="app-way__icon"><span class="sym sym--folder" aria-hidden="true"></span></span>
-                        <h3 class="app-way__title">L'historique reste consultable</h3>
-                        <p class="app-way__text">Les données archivées restent accessibles et cherchables. Toute suppression définitive exige une confirmation explicite, qui précise ce qu'elle entraîne.</p>
-                    </li>
-                </ul>
             </div>
         </section>
 
