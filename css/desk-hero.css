@@ -1,14 +1,14 @@
 /* ============================================
    WAB. — Accueil : le premier écran
-   Le bureau à trame de points, presque vide : le nom « WeAreBrothers »
-   en bas, sur toute la largeur, et deux touches. Le canevas
+   Le bureau à trame de points, presque vide : le nom « WeAreBrothers. »
+   en bas, tapé en touches de clavier, et deux touches. Le canevas
    .hero__pixels se creuse de gros pixels bleus au passage de la
    souris ou du doigt, avec des signes informatiques qui surgissent
    (js/desk/pixels.js) ; au repos, des motifs tirés au hasard restent
    sur les bords, changent au survol et se redessinent au clic
    (pixels-patterns.js) ; jamais sous le nom ni sous les touches
-   ([data-pixels-keep]). Survolées, les lettres du nom se brouillent
-   en symboles puis reviennent (js/desk/scramble.js).
+   ([data-pixels-keep]). Survolée, une touche du nom se brouille en
+   symboles puis revient (js/desk/scramble.js).
    ============================================ */
 
 .hero {
@@ -35,6 +35,7 @@
 }
 
 .hero__copy {
+    --key: min(84px, (100vw - 2 * var(--gutter)) / 9.9);
     position: relative;
     z-index: 1;
     width: 100%;
@@ -42,32 +43,44 @@
     margin-inline: auto;
 }
 
-/* Le nom d'un seul tenant, aussi large que l'écran le permet. */
-.os .hero__title {
-    font-size: clamp(2.75rem, 12.2vw, 11rem);
-    font-weight: var(--w-strong);
-    line-height: 0.9;
-    letter-spacing: -0.05em;
-    white-space: nowrap;
+/* Le nom en touches de clavier (dessin de desk-keys.css), comme
+   « WAB. » dans le pied de page : W, A et B dans leur teinte, le point
+   en bleu, les autres lettres en touches blanches. Deux rangées
+   (« WeAre » puis « Brothers. ») tant que l'écran est étroit, une
+   seule dès qu'elles tiennent côte à côte. */
+.hero__title {
+    line-height: 1;
 }
 
-.hero__word {
-    display: inline-block;
+.hero__keys {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--key) * 0.14) calc(var(--key) * 0.1);
+    width: fit-content;
 }
 
-/* Chaque lettre garde sa largeur pendant qu'elle se brouille :
-   le mot ne bouge pas (largeur posée par scramble.js). */
-.hero__char {
-    display: inline-block;
-    text-align: center;
+.hero__keys .keys {
+    --key: inherit;
+    gap: calc(var(--key) * 0.1);
 }
 
-.hero__char.is-glyph {
+/* Le symbole qui remplace un instant la lettre d'une touche. */
+.hero__keys .key__face.is-glyph {
     font-family: var(--font-mono);
     font-weight: var(--w-regular);
-    font-size: 0.8em;
-    color: var(--klein);
-    letter-spacing: 0;
+    font-size: calc(var(--key) * 0.42);
+    color: var(--klein-text);
+}
+
+/* Sur une touche de couleur, il garde l'encre de la touche. */
+.hero__keys .key--tint .key__face.is-glyph {
+    color: var(--glyph);
+}
+
+@media (min-width: 1100px) {
+    .hero__copy {
+        --key: min(82px, (100vw - 2 * var(--gutter)) / 15.4);
+    }
 }
 
 .hero__actions {
@@ -77,6 +90,40 @@
     gap: 12px;
     width: min(100%, 300px);
     margin-top: clamp(20px, 3vw, 32px);
+}
+
+/* Les deux touches d'action, du même clavier que le nom : la face
+   claire posée sur sa jupe, les coins d'une touche ; la principale en
+   bleu comme le point, l'autre en blanc comme les lettres. Jamais
+   moins de 48 px de haut au doigt. */
+.hero__actions .key-btn {
+    --skirt: oklch(0.8 0.01 85);
+    --skirt-h: max(4px, calc(var(--key) * 0.09));
+    --kb-fill: linear-gradient(160deg, oklch(1 0 0), oklch(0.95 0.004 85));
+    --kb-edge: oklch(0.18 0.005 265 / 0.28);
+    --kb-relief:
+        inset 0 calc(-1 * var(--skirt-h)) 0 var(--skirt),
+        inset 0 1px 0 oklch(1 0 0 / 0.9),
+        0 calc(var(--key) * 0.05) calc(var(--key) * 0.12) oklch(0.18 0.005 265 / 0.16);
+    min-height: max(48px, calc(var(--key) * 0.78));
+    padding: 0 max(20px, calc(var(--key) * 0.3)) var(--skirt-h);
+    border-radius: max(10px, calc(var(--key) * 0.21));
+    font-size: clamp(0.9375rem, calc(var(--key) * 0.22), 1.125rem);
+}
+
+.hero__actions .key-btn--klein {
+    --skirt: var(--klein-deep);
+    --kb-fill: linear-gradient(160deg, var(--klein-hi), var(--klein));
+    --kb-edge: var(--klein-deep);
+    --kb-ink: var(--on-klein);
+}
+
+/* L'appui : la face descend sur sa jupe, comme une touche du nom. */
+.hero__actions .key-btn:active {
+    translate: 0 calc(var(--skirt-h) / 2);
+    box-shadow:
+        inset 0 calc(-1 * var(--skirt-h) / 2) 0 var(--skirt),
+        0 1px 2px oklch(0.18 0.005 265 / 0.16);
 }
 
 @media (min-width: 600px) {

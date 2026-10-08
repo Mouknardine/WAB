@@ -3,8 +3,9 @@
    Papier blanc, un filet en haut. L'invitation d'abord : l'adresse en
    grand, l'heure du studio. Puis les pages en deux colonnes et la
    promesse. Pour finir, « WAB. » en grandes touches de clavier (le
-   dessin de desk-keys.css) sur toute la largeur, des oiseaux posés
-   dessus (js/birds/perch.js) ; une ligne de mentions dessous.
+   dessin de desk-keys.css) sur toute la largeur, W, A et B chacune de
+   sa teinte, le point en bleu, comme les initiales du nom en touches
+   du premier écran ; une ligne de mentions dessous.
    ============================================ */
 
 .foot {
@@ -123,30 +124,6 @@
 /* La frappe d'ouverture est celle du premier écran, pas du pied de page. */
 .foot__keys .key__face {
     animation: none;
-}
-
-/* Les oiseaux posés sur l'arête haute de leur touche : le bas du
-   dessin est vide sur un quart de sa hauteur, on l'y fait descendre. */
-.foot__bird {
-    position: absolute;
-    bottom: 100%;
-    translate: 0 33%;
-    left: 14%;
-    z-index: 1;
-    image-rendering: pixelated;
-    pointer-events: none;
-}
-
-.foot__bird--far {
-    left: 52%;
-}
-
-/* Au téléphone, les touches sont petites : un oiseau de moitié. */
-@media (max-width: 599px) {
-    .foot__bird {
-        scale: 0.5;
-        transform-origin: bottom left;
-    }
 }
 
 /* ── Les mentions ── */

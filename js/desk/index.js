@@ -12,7 +12,7 @@
 // Même numéro partout où un fichier est importé : voir js/birds/index.js.
 import { initWatch } from './watch.js?v=1';
 import { initPixels } from './pixels.js?v=5';
-import { initScramble } from './scramble.js?v=2';
+import { initScramble } from './scramble.js?v=3';
 import { initMargins } from './pixels-margins.js?v=3';
 
 /** @type {Array<[string, () => void]>} */
