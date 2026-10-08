@@ -1,85 +1,81 @@
 /* ============================================
    WAB OS — le pied de page (partagé)
-   Papier blanc, un filet en haut. L'invitation d'abord : l'adresse en
-   grand, l'heure du studio. Puis les pages en deux colonnes et la
-   promesse. Pour finir, « WAB. » en grandes touches de clavier (le
-   dessin de desk-keys.css) sur toute la largeur, W, A et B chacune de
-   sa teinte, le point en bleu, comme les initiales du nom en touches
-   du premier écran ; une ligne de mentions dessous.
+   Une seule bande, nette, sur papier blanc : « WAB. » en mini-touches
+   (le logo de la barre du haut, dessin de desk-keys.css) et la phrase
+   du studio ; les pages ; les expertises ; le contact (l'adresse,
+   l'heure de Lausanne, le délai de réponse). Une ligne de mentions
+   dessous. Au téléphone : le logo, le contact, puis les deux colonnes
+   de liens côte à côte.
    ============================================ */
 
 .foot {
-    margin-top: clamp(72px, 10vw, 140px);
-    padding: clamp(64px, 8vw, 104px) 0 28px;
+    margin-top: clamp(56px, 7vw, 96px);
+    padding: clamp(40px, 5vw, 56px) 0 24px;
     border-top: var(--hair) solid var(--line);
     background: var(--paper);
     font-size: var(--t-small);
 }
 
-/* ── L'invitation ── */
-.foot__hello {
+.foot__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+        "brand brand"
+        "contact contact"
+        "pages expertise"
+        "bar bar";
+    gap: 32px 24px;
+}
+
+/* ── Le logo et la phrase du studio ── */
+.foot__brand {
+    grid-area: brand;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 14px;
 }
 
-.foot__kicker {
-    font-size: var(--t-lede);
+.foot__logo {
+    display: inline-flex;
+    border-radius: var(--r-ctl);
+}
+
+/* Sélecteur appuyé : desk-keys.css, chargé après, fixe sinon la taille. */
+.foot .foot__keys {
+    --key: 34px;
+    gap: 4px;
+}
+
+/* La frappe d'ouverture est celle du premier écran, pas du pied de page. */
+.foot .foot__keys .key__face {
+    animation: none;
+}
+
+.foot__pitch {
+    max-width: 30ch;
+    line-height: 1.5;
     color: var(--ink-muted);
 }
 
-/* L'adresse tient toujours sur une ligne : sa taille suit la largeur
-   (24 caractères, environ 13,5 cadratins). */
-.foot__mail {
-    font-size: min(4.5rem, (100vw - 2 * var(--gutter)) / 13.5);
-    font-weight: var(--w-medium);
-    line-height: 1.05;
-    letter-spacing: -0.035em;
-    white-space: nowrap;
-    color: var(--ink);
-    text-decoration: underline;
-    text-decoration-thickness: max(2px, 0.04em);
-    text-decoration-color: var(--line-strong);
-    text-underline-offset: 0.16em;
-    transition: color var(--dur-1) var(--ease-out), text-decoration-color var(--dur-1) var(--ease-out);
-}
-
-@media (hover: hover) {
-    .foot__mail:hover {
-        color: var(--klein-text);
-        text-decoration-color: var(--klein);
-    }
-}
-
-.foot__meta {
-    color: var(--ink-muted);
-    text-wrap: balance;
-}
-
-.foot__meta time {
-    font-variant-numeric: tabular-nums;
-    color: var(--ink);
-}
-
-/* ── Les pages et la promesse ── */
-.foot__main {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 32px 24px;
-    margin-top: clamp(48px, 6vw, 80px);
-}
-
+/* ── Les colonnes de liens ── */
 .foot__col {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 2px;
     min-width: 0;
 }
 
+.foot__col[aria-label='Pages'] {
+    grid-area: pages;
+}
+
+.foot__col[aria-label='Expertises'] {
+    grid-area: expertise;
+}
+
 .foot__label {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     font-family: var(--font-mono);
     font-size: var(--t-cap);
     letter-spacing: var(--track-caps);
@@ -104,50 +100,63 @@
     }
 }
 
-.foot__pitch {
-    grid-column: 1 / -1;
-    max-width: 34ch;
-    font-size: 1rem;
-    line-height: 1.5;
+/* ── Le contact ── */
+.foot__contact {
+    grid-area: contact;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+}
+
+.foot__mail {
+    font-size: 1.125rem;
+    font-weight: var(--w-medium);
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--line-strong);
+    text-underline-offset: 0.2em;
+    transition: color var(--dur-1) var(--ease-out), text-decoration-color var(--dur-1) var(--ease-out);
+}
+
+@media (hover: hover) {
+    .foot__mail:hover {
+        color: var(--klein-text);
+        text-decoration-color: var(--klein);
+    }
+}
+
+.foot__meta {
+    margin-top: 6px;
     color: var(--ink-muted);
 }
 
-/* ── « WAB. » en touches ── quatre touches et trois espaces d'un
-   dixième : 4,3 largeurs de touche sur la largeur du contenu
-   (sélecteur appuyé : desk-keys.css, chargé après, fixe sa taille). */
-.foot .foot__keys {
-    --key: min(240px, (100vw - 2 * var(--gutter)) / 4.3);
-    justify-content: space-between;
-    margin-top: clamp(72px, 9vw, 120px);
-}
-
-/* La frappe d'ouverture est celle du premier écran, pas du pied de page. */
-.foot__keys .key__face {
-    animation: none;
+.foot__meta time {
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
 }
 
 /* ── Les mentions ── */
 .foot__bar {
+    grid-area: bar;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 6px 24px;
-    margin-top: clamp(28px, 4vw, 40px);
     padding-top: 20px;
     border-top: var(--hair) solid var(--line);
     font-size: var(--t-cap);
     color: var(--ink-faint);
 }
 
+/* Sur ordinateur : une seule rangée de quatre colonnes. */
 @media (min-width: 900px) {
-    .foot__main {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
-        gap: 32px;
-    }
-
-    .foot__pitch {
-        grid-column: auto;
-        justify-self: end;
-        text-align: right;
+    .foot__grid {
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr) minmax(0, 1fr) minmax(0, 1.2fr);
+        grid-template-areas:
+            "brand pages expertise contact"
+            "bar bar bar bar";
+        gap: 40px 32px;
     }
 }
