@@ -102,13 +102,13 @@
     <link rel="stylesheet" href="css/nav-panel.css?v=3">
     <link rel="stylesheet" href="css/contact-modal.css?v=8">
     <link rel="stylesheet" href="css/contact-form.css?v=5">
-    <link rel="stylesheet" href="css/os-tokens.css?v=9">
+    <link rel="stylesheet" href="css/os-tokens.css?v=10">
     <link rel="stylesheet" href="css/os-tints.css?v=1">
     <link rel="stylesheet" href="css/os-base.css?v=5">
-    <link rel="stylesheet" href="css/os-sky.css?v=3">
+    <link rel="stylesheet" href="css/os-sky.css?v=4">
     <link rel="stylesheet" href="css/sym.css?v=4">
     <link rel="stylesheet" href="css/key-btn.css?v=2">
-    <link rel="stylesheet" href="css/os-bar.css?v=5">
+    <link rel="stylesheet" href="css/os-bar.css?v=6">
     <link rel="stylesheet" href="css/os-window.css?v=5">
     <link rel="stylesheet" href="css/os-bubbles.css?v=2">
     <link rel="stylesheet" href="css/os-footer.css?v=10">
@@ -131,7 +131,6 @@
     <script src="nav-clock.js?v=3" defer></script>
     <script src="js/nav.js?v=6" defer></script>
     <script type="module" src="js/birds/index.js?v=17"></script>
-    <script type="module" src="js/birds/perch.js?v=11"></script>
     <script type="module" src="js/contact/index.js?v=12"></script>
     <script type="module" src="js/os/index.js?v=5"></script>
     <script type="module" src="js/page-services/index.js?v=5"></script>
@@ -147,7 +146,7 @@
     <header class="menubar" id="topbar">
         <div class="topbar__inner menubar__inner" id="topbarBar">
             <div class="menubar__row">
-                <a href="/" class="menubar__brand">WAB.</a>
+                <a href="/" class="menubar__brand" aria-label="WAB., accueil"><span class="keys menubar__keys" aria-hidden="true" translate="no"><span class="key key--tint" data-tint="vert"><span class="key__face">W</span></span><span class="key key--tint" data-tint="jaune"><span class="key__face">A</span></span><span class="key key--tint" data-tint="rose"><span class="key__face">B</span></span><span class="key key--dot"><span class="key__face">.</span></span></span></a>
 
                 <nav class="menubar__nav" aria-label="Navigation principale">
                     <a href="/realisations" class="menubar__link">Work</a>
@@ -155,14 +154,11 @@
                     <a href="/studio" class="menubar__link">About</a>
                 </nav>
 
-                <span class="menubar__os" aria-hidden="true" translate="no"><canvas class="menubar__sigil" data-perch="flap" data-scale="1" data-color="4"></canvas></span>
 
                 <div class="menubar__state">
                     <button type="button" class="menubar__find" data-palette-open data-js-only aria-keyshortcuts="Meta+K Control+K">
                         <span class="sym sym--search" aria-hidden="true"></span>Rechercher<kbd data-shortcut>⌘K</kbd>
                     </button>
-                    <span class="menubar__sky" aria-hidden="true"><span class="sym sym--sun" aria-hidden="true"></span><span class="sym sym--moon" aria-hidden="true"></span></span>
-                    <span class="menubar__status" data-local-status hidden></span>
                     <time class="menubar__time" data-local-time>--:--</time>
                     <a href="mailto:contact@wearebrothers.ch" data-contact class="menubar__cta key-btn key-btn--klein key-btn--sm">Contact</a>
                     <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">

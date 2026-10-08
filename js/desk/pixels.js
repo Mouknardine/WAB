@@ -70,7 +70,7 @@ export function initPixels() {
         canvas.height = Math.round(height * dpr);
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         const keep = keepRects(hero, canvas, KEEP_MARGIN);
-        const bar = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--bar-h')) || 44;
+        const bar = document.getElementById('topbar')?.getBoundingClientRect().bottom ?? 0;
         field = createField(sizeFor());
         field.resize(width, height, keep);
         patterns = createPatterns(sizeFor());

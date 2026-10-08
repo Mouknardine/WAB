@@ -38,16 +38,6 @@
     --ink-faint: var(--ink-muted);
 }
 
-/* L'icône d'état de la barre : le soleil, ou la lune la nuit. */
-.menubar__sky .sym--moon,
-[data-sky='nuit'] .menubar__sky .sym--sun {
-    display: none;
-}
-
-[data-sky='nuit'] .menubar__sky .sym--moon {
-    display: inline-block;
-}
-
 /* ── La complication de Lausanne (js/os/dial.js) ── un cadran de
    16 px devant l'heure de la barre : lunette d'un fil, quatre index,
    les aiguilles à l'encre, l'axe Klein. Sur ordinateur seulement. */

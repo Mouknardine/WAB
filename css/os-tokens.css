@@ -120,8 +120,11 @@
     --sky-night: oklch(0.94 0.024 266 / 0.4);
 
     /* ── Barre, dock, calques (de bas en haut) ── */
-    --bar-h: 44px;
-    --bar-bg: oklch(1 0 0 / 0.9);
+    /* La pilule flotte à --bar-top du haut ; --bar-h est la place
+       qu'elle prend, à réserver au-dessus du contenu. */
+    --bar-top: 10px;
+    --bar-row: 52px;
+    --bar-h: calc(var(--bar-top) + var(--bar-row));
     --dock-bg: oklch(0.18 0.005 265 / 0.42);
     --r-dock: 12px;
     --dock-space: 96px;

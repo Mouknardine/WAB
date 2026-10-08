@@ -1,66 +1,97 @@
 /* ============================================
    WAB OS — la barre de menus
-   Une bande de verre blanc pleine largeur, fixée en haut ; elle passe
-   aussi bien sur le blanc que sur le bleu du premier écran. À gauche le nom et
-   les pages ; au centre l'oiseau ; à droite la recherche (⌘K, avec
-   JavaScript), la lumière du jour à Lausanne (soleil ou lune), le
-   statut du studio, l'heure et Contact en touche Klein.
-   Au téléphone : le nom, l'heure, Contact et le menu existant
-   (nav.js, nav-panel.css) qui se déroule sous la barre.
+   Une pilule de verre blanc qui flotte en haut de l'écran, détachée
+   des bords (d'après les barres flottantes de 21st.dev : Tubelight,
+   Floating Navbar). À gauche « WAB. » en mini-touches de clavier,
+   comme le nom du premier écran et le pied de page ; au centre les
+   pages, la page en cours posée comme une touche ; à droite la
+   recherche (⌘K, avec JavaScript), l'heure de Lausanne et Contact
+   en touche bleue.
+   Au téléphone : les touches, l'heure, Contact et le menu (nav.js,
+   nav-panel.css), qui se déroule dans la pilule.
    ============================================ */
 
 .menubar {
     /* nav-panel.css aligne le menu déroulé sur cette marge. */
-    --pill-pad: var(--gutter);
+    --pill-pad: 16px;
     position: fixed;
-    inset: 0 0 auto;
+    inset: var(--bar-top) 0 auto;
     z-index: var(--z-bar);
+    padding-inline: var(--gutter);
+    pointer-events: none;
 }
 
 .menubar__inner {
-    background: var(--bar-bg);
+    max-width: calc(var(--measure) + 80px);
+    margin-inline: auto;
+    border-radius: calc(var(--bar-row) / 2);
+    background: var(--glass-strong);
     -webkit-backdrop-filter: var(--glass-blur);
     backdrop-filter: var(--glass-blur);
-    box-shadow: inset 0 -1px 0 var(--glass-edge), inset 0 1px 0 var(--glass-rim);
+    box-shadow:
+        0 0 0 var(--hair) var(--glass-edge),
+        inset 0 1px 0 var(--glass-rim),
+        0 10px 30px -14px oklch(0.18 0.005 265 / 0.28);
+    pointer-events: auto;
+    transition: border-radius var(--dur-2) var(--ease-out);
+}
+
+/* Menu déroulé au téléphone : la pilule devient une carte. */
+.menubar__inner.is-open {
+    border-radius: var(--r-panel);
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     .menubar__inner {
-        background: var(--desk);
+        background: var(--paper);
     }
 }
 
 .menubar__row {
-    position: relative;
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
-    gap: 4px;
-    height: var(--bar-h);
-    padding-inline: var(--gutter);
+    height: var(--bar-row);
+    padding-inline: 10px 8px;
     font-size: var(--t-small);
 }
 
+/* « WAB. » en quatre mini-touches (dessin de desk-keys.css). */
 .menubar__brand {
     display: inline-flex;
     align-items: center;
+    justify-self: start;
     min-height: 44px;
-    margin-right: 10px;
-    font-weight: var(--w-strong);
-    font-size: 1rem;
-    letter-spacing: -0.03em;
+    border-radius: var(--r-ctl);
+}
+
+/* Sélecteur appuyé : desk-keys.css, chargé après, fixe sinon la taille. */
+.menubar .menubar__keys {
+    --key: 28px;
+    gap: 3px;
+}
+
+/* La frappe d'ouverture appartient au premier écran, pas à la barre. */
+.menubar .menubar__keys .key__face {
+    animation: none;
 }
 
 .menubar__nav {
     display: none;
     align-items: center;
+    gap: 2px;
+    padding: 3px;
+    border-radius: 999px;
+    background: var(--hover-tint);
 }
 
 .menubar__link {
     display: inline-flex;
     align-items: center;
-    min-height: 32px;
-    padding: 0 10px;
-    border-radius: var(--r-ctl);
+    min-height: 34px;
+    padding: 0 16px;
+    border-radius: 999px;
+    font-weight: var(--w-medium);
     color: var(--ink-muted);
     transition: color var(--dur-1) var(--ease-out), background-color var(--dur-1) var(--ease-out);
 }
@@ -68,82 +99,53 @@
 @media (hover: hover) {
     .menubar__link:hover {
         color: var(--ink);
-        background: var(--hover-tint);
     }
 }
 
-/* Le centre : l'oiseau en pixel, la mascotte ; il bat des ailes au
-   survol (perch.js). Décor, masqué aux lecteurs d'écran. */
-.menubar__os {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    translate: -50% -50%;
-    display: none;
-    align-items: center;
-    gap: 8px;
-    font-size: var(--t-cap);
-    letter-spacing: 0.08em;
-    color: var(--ink-faint);
-    white-space: nowrap;
-    pointer-events: none;
-}
-
-.menubar__sigil {
-    display: block;
-    image-rendering: pixelated;
-    pointer-events: auto;
+/* La page en cours : une touche blanche posée dans le rail. */
+.menubar__link[aria-current='page'] {
+    color: var(--ink);
+    background: var(--key-light);
+    box-shadow: var(--key-light-relief);
 }
 
 .menubar__state {
     display: flex;
     align-items: center;
-    gap: 14px;
-    margin-left: auto;
+    justify-content: flex-end;
+    grid-column: 3;
+    gap: 12px;
     color: var(--ink-muted);
 }
 
-/* La recherche : un champ factice qui ouvre la palette. */
+/* La recherche : un champ factice, arrondi, qui ouvre la palette. */
 .menubar__find {
     display: none;
     align-items: center;
     gap: 8px;
-    min-height: 30px;
-    padding: 0 6px 0 10px;
-    border-radius: var(--r-key);
-    border: var(--hair) solid var(--edge);
-    background: var(--key-light);
-    box-shadow: var(--relief), 0 1px 2px oklch(0.18 0.005 265 / 0.08);
+    min-height: 34px;
+    padding: 0 6px 0 12px;
+    border-radius: 999px;
+    background: var(--hover-tint);
     font-size: var(--t-cap);
     color: var(--ink-muted);
-    transition: border-color var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out);
+    transition: color var(--dur-1) var(--ease-out), background-color var(--dur-1) var(--ease-out);
 }
 
 .menubar__find kbd {
-    padding: 1px 6px;
-    border-radius: 4px;
-    background: var(--hover-tint);
+    padding: 2px 7px;
+    border-radius: 999px;
+    background: var(--paper);
+    box-shadow: 0 0 0 var(--hair) var(--edge);
     font-family: var(--font-mono);
     font-size: 11px;
     color: var(--ink);
 }
 
-/* Les icônes d'état, fines : le soleil le jour, la lune la nuit
-   (os-sky.css choisit). */
-.menubar__sky {
-    display: none;
-    color: var(--ink);
-}
-
-.menubar__status {
-    display: none;
-    white-space: nowrap;
-}
-
 @media (hover: hover) {
     .menubar__find:hover {
-        border-color: var(--line-strong);
         color: var(--ink);
+        background: color-mix(in oklch, var(--ink) 8%, transparent);
     }
 }
 
@@ -154,15 +156,16 @@
     color: var(--ink);
 }
 
-/* Contact : une petite touche Klein (key-btn.css). */
+/* Contact : une touche bleue, aux coins de la pilule. */
 .menubar__cta {
-    min-height: 32px;
-    padding: 0 14px;
+    min-height: 36px;
+    padding: 0 16px;
+    border-radius: 999px;
 }
 
 /* Le bouton de menu du téléphone (nav-panel.css) se range ici. */
 .menubar .topbar__menu {
-    margin-left: 0;
+    margin: 0 -2px 0 0;
 }
 
 .menubar .topbar__panel-inner {
@@ -180,25 +183,8 @@
 }
 
 @media (min-width: 900px) {
-    .menubar__nav,
-    .menubar__os,
-    .menubar__sky {
-        display: inline-flex;
-    }
-}
-
-/* Sur ordinateur à la souris, la navigation passe par le dock en bas
-   de l'écran (Eliott, 03.10) : les liens du haut s'effacent. Sur une
-   tablette tactile, sans dock, ils restent. */
-@media (min-width: 900px) and (hover: hover) and (pointer: fine) {
     .menubar__nav {
-        display: none;
-    }
-}
-
-@media (min-width: 1180px) {
-    .menubar__status:not([hidden]) {
-        display: inline;
+        display: inline-flex;
     }
 }
 
