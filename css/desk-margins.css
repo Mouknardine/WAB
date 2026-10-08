@@ -1,0 +1,71 @@
+/* ============================================
+   WAB. — Accueil : les motifs des marges
+   Formes de gros pixels bleus, avec leurs signes, posées de part et
+   d'autre du contenu sur toute la page (js/desk/pixels-margins.js).
+   La couche couvre <main> sans rien recouvrir : seules les formes
+   reçoivent la souris (survol : elles bougent ; clic : elles se
+   redessinent). Rien sur un écran trop étroit pour avoir des marges.
+   ============================================ */
+
+.desk main {
+    position: relative;
+}
+
+.margins {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: clip;
+    pointer-events: none;
+}
+
+.margins__shape {
+    position: absolute;
+    inset: 0 auto auto 0;
+}
+
+.margins__cell,
+.margins__mark {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.margins__cell {
+    width: 60px;
+    height: 60px;
+    background: var(--klein);
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.margins__mark {
+    font-family: var(--font-mono);
+    font-size: 21px;
+    line-height: 1;
+    white-space: nowrap;
+    color: var(--on-klein);
+    pointer-events: none;
+}
+
+.margins__mark--klein {
+    color: var(--klein);
+}
+
+/* Un signe neuf surgit en trois images, comme un écran qui se rafraîchit. */
+.margins__mark.is-fresh {
+    animation: margins-pop 0.26s steps(3) both;
+}
+
+@keyframes margins-pop {
+    0% { opacity: 0; }
+    34% { opacity: 1; filter: blur(1px); }
+    67% { opacity: 0.4; }
+    100% { opacity: 1; filter: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .margins__mark.is-fresh {
+        animation: none;
+    }
+}

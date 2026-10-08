@@ -366,7 +366,8 @@
     <link rel="stylesheet" href="css/os-overlay.css?v=3">
     <!-- Accueil « bureau rangé » -->
     <link rel="stylesheet" href="css/desk-objects.css?v=8">
-    <link rel="stylesheet" href="css/desk-hero.css?v=19">
+    <link rel="stylesheet" href="css/desk-hero.css?v=20">
+    <link rel="stylesheet" href="css/desk-margins.css?v=1">
     <link rel="stylesheet" href="css/desk-keys.css?v=3">
     <link rel="stylesheet" href="css/home-head.css?v=4">
     <link rel="stylesheet" href="css/home-card.css?v=1">
@@ -385,7 +386,7 @@
     <script type="module" src="js/birds/perch.js?v=11"></script>
     <script type="module" src="js/contact/index.js?v=12"></script>
     <script type="module" src="js/os/index.js?v=4"></script>
-    <script type="module" src="js/desk/index.js?v=14"></script>
+    <script type="module" src="js/desk/index.js?v=18"></script>
 </head>
 
 <body class="os desk">
@@ -449,6 +450,10 @@
     <div class="topbar-scrim" id="topbarScrim"></div>
 
     <main>
+
+        <!-- Les marges : formes de pixels bleus de part et d'autre du
+             contenu, sur toute la page (js/desk/pixels-margins.js). -->
+        <div class="margins" aria-hidden="true" data-margins></div>
 
         <!-- LE PREMIER ÉCRAN — presque vide : le nom en bas, deux touches.
              Au passage de la souris (ou du doigt), le bureau se creuse de

@@ -4,7 +4,9 @@
    en bas, sur toute la largeur, et deux touches. Le canevas
    .hero__pixels se creuse de gros pixels bleus au passage de la
    souris ou du doigt, avec des signes informatiques qui surgissent
-   (js/desk/pixels.js) ; jamais sous le nom ni sous les touches
+   (js/desk/pixels.js) ; au repos, des motifs tirés au hasard restent
+   sur les bords, changent au survol et se redessinent au clic
+   (pixels-patterns.js) ; jamais sous le nom ni sous les touches
    ([data-pixels-keep]). Survolées, les lettres du nom se brouillent
    en symboles puis reviennent (js/desk/scramble.js).
    ============================================ */
@@ -17,6 +19,11 @@
     min-height: max(560px, 100svh);
     padding: calc(var(--bar-h) + 24px) var(--gutter) clamp(40px, 7vh, 64px);
     overflow: clip;
+}
+
+/* Un motif des bords se redessine au clic : la main le dit. */
+.hero.is-over-pattern {
+    cursor: pointer;
 }
 
 .hero__pixels {

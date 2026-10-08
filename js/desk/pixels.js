@@ -1,8 +1,10 @@
 // @ts-check
 /**
  * WAB. — Le premier écran qui se creuse de pixels bleus
- * Branche la grille (pixels-field.js) sur le canevas du premier écran
- * [data-pixels] : la souris, le doigt (sans empêcher le défilement),
+ * Branche la traînée (pixels-field.js) et les motifs des bords
+ * (pixels-patterns.js) sur le canevas du premier écran [data-pixels] :
+ * la souris, le doigt (sans empêcher le défilement), le clic sur un
+ * motif,
  * et un passage fantôme qui montre que l'écran réagit — une fois à
  * l'arrivée, puis de temps en temps sur un écran tactile, où aucune
  * souris ne survole.
@@ -12,7 +14,8 @@
  * l'écran ne répond qu'à la main du visiteur.
  */
 
-import { createField } from './pixels-field.js?v=1';
+import { createField } from './pixels-field.js?v=3';
+import { createPatterns } from './pixels-patterns.js?v=3';
 
 const GHOST_MS = 2400;
 const GHOST_FIRST_DELAY_MS = 700;
@@ -22,6 +25,8 @@ const GHOST_QUIET_MS = 5000;
 /** Au-delà de ce délai, deux positions ne sont plus reliées. */
 const JOIN_MS = 140;
 const KEEP_MARGIN = 10;
+/** Espace laissé libre sous la barre de menus, en plus de sa hauteur. */
+const BAR_GAP = 12;
 
 export function initPixels() {
     const hero = document.querySelector('[data-pixels]');
@@ -35,6 +40,9 @@ export function initPixels() {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     let field = createField(sizeFor());
+    let patterns = createPatterns(sizeFor());
+    let width = 0;
+    let height = 0;
     /** @type {{ x: number, y: number, t: number } | null} */
     let last = null;
     let frame = 0;
@@ -59,14 +67,18 @@ export function initPixels() {
 
     function resize() {
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
-        const w = hero.clientWidth;
-        const h = hero.clientHeight;
-        canvas.width = Math.round(w * dpr);
-        canvas.height = Math.round(h * dpr);
+        width = hero.clientWidth;
+        height = hero.clientHeight;
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        const keep = keepRects();
+        const bar = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--bar-h')) || 44;
         field = createField(sizeFor());
-        field.resize(w, h, keepRects());
-        ctx.clearRect(0, 0, w, h);
+        field.resize(width, height, keep);
+        patterns = createPatterns(sizeFor());
+        patterns.generate(width, height, keep, bar + BAR_GAP, performance.now());
+        wake();
     }
 
     /** Relie la position à la précédente : pas de trou si le geste est vif. */
@@ -88,9 +100,24 @@ export function initPixels() {
     /** @param {number} clientX @param {number} clientY */
     function human(clientX, clientY) {
         const origin = canvas.getBoundingClientRect();
+        const x = clientX - origin.left;
+        const y = clientY - origin.top;
         lastHuman = performance.now();
         ghostStart = null;
-        point(clientX - origin.left, clientY - origin.top, lastHuman);
+        const over = patterns.find(x, y);
+        hero.classList.toggle('is-over-pattern', over !== null);
+        if (over) patterns.mutate(over, lastHuman);
+        point(x, y, lastHuman);
+    }
+
+    /** Un clic (ou un toucher) sur un motif le redessine en entier. */
+    function press(/** @type {MouseEvent} */ event) {
+        if (event.target instanceof Element && event.target.closest('a, button')) return;
+        const origin = canvas.getBoundingClientRect();
+        const over = patterns.find(event.clientX - origin.left, event.clientY - origin.top);
+        if (!over) return;
+        patterns.regenerate(over, performance.now());
+        wake();
     }
 
     /** Le passage fantôme : une boucle lente dans le haut de l'écran. */
@@ -129,8 +156,11 @@ export function initPixels() {
         frame = 0;
         ghostAt(now);
         const busy = field.prune(now);
-        field.draw(ctx, now, reducedMotion.matches);
-        if (busy || ghostStart !== null) wake();
+        const still = reducedMotion.matches;
+        ctx.clearRect(0, 0, width, height);
+        patterns.draw(ctx, now, still);
+        field.draw(ctx, now, still);
+        if (busy || patterns.moving(now) || ghostStart !== null) wake();
     }
 
     function wake() {
@@ -140,7 +170,11 @@ export function initPixels() {
     hero.addEventListener('pointermove', (event) => {
         if (event.pointerType !== 'touch') human(event.clientX, event.clientY);
     });
-    hero.addEventListener('pointerleave', () => { last = null; });
+    hero.addEventListener('pointerleave', () => {
+        last = null;
+        hero.classList.remove('is-over-pattern');
+    });
+    hero.addEventListener('click', press);
     const onTouch = (/** @type {TouchEvent} */ event) => {
         const touch = event.touches[0];
         if (touch) human(touch.clientX, touch.clientY);
