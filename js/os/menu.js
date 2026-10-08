@@ -1,7 +1,7 @@
 // @ts-check
 /**
  * WAB OS — le menu du clic droit
- * Sur le bureau : Nouveau projet…, Voir le travail, Copier l'email,
+ * Sur le bureau : Nouveau projet…, Voir nos réalisations, Copier l'email,
  * Rechercher. Le menu natif reste sur les liens, les champs, le texte
  * sélectionné et dans les fenêtres (voir shell.js).
  * Modèle menu ARIA : le premier choix prend le focus, flèches haut et
@@ -11,7 +11,7 @@
 
 import { el } from './dom.js?v=3';
 import { openContact, copyEmail, SHORTCUT } from './actions.js?v=1';
-import { launchFinder, launchPalette } from './apps.js?v=5';
+import { launchFinder, launchPalette } from './apps.js?v=6';
 
 /** @type {HTMLElement | null} */
 let menu = null;
@@ -23,7 +23,7 @@ let outside = null;
 /** @type {Array<{ label: string, hint?: string, run: () => void }>} */
 const ENTRIES = [
     { label: 'Nouveau projet…', run: () => openContact() },
-    { label: 'Voir le travail', run: () => launchFinder(returnFocus) },
+    { label: 'Voir nos réalisations', run: () => launchFinder(returnFocus) },
     { label: 'Copier l’email', run: () => { copyEmail(); } },
     { label: 'Rechercher…', hint: SHORTCUT, run: () => launchPalette(returnFocus) },
 ];

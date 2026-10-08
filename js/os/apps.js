@@ -33,7 +33,7 @@ function launch(name, task, fallback) {
 export function launchFinder(opener) {
     launch('finder', async () => {
         await styles('os-finder');
-        (await import('./finder.js?v=4')).openFinder(opener);
+        (await import('./finder.js?v=5')).openFinder(opener);
     }, () => goTo('/realisations'));
 }
 
@@ -53,7 +53,7 @@ export function launchCase(id, title, opener) {
 export function launchTerminal(opener) {
     launch('terminal', async () => {
         await styles('os-terminal');
-        (await import('./terminal.js?v=6')).openTerminal(opener);
+        (await import('./terminal.js?v=7')).openTerminal(opener);
     }, () => toast('Le terminal n’a pas pu s’ouvrir.'));
 }
 
@@ -61,7 +61,7 @@ export function launchTerminal(opener) {
 export function launchPalette(opener) {
     launch('palette', async () => {
         await loadStyle('os-palette', 4);
-        (await import('./palette.js?v=4')).togglePalette(opener);
+        (await import('./palette.js?v=5')).togglePalette(opener);
     }, () => toast('La recherche n’a pas pu s’ouvrir.'));
 }
 
@@ -69,6 +69,6 @@ export function launchPalette(opener) {
 export function launchMenu(x, y) {
     launch('menu', async () => {
         await loadStyle('os-menu', 3);
-        (await import('./menu.js?v=4')).openMenu(x, y);
+        (await import('./menu.js?v=5')).openMenu(x, y);
     }, () => {});
 }

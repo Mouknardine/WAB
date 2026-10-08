@@ -9,7 +9,7 @@
  * restent des liens vers /realisations, le dock des liens.
  */
 
-import { launchFinder, launchCase, launchTerminal, launchPalette, launchMenu } from './apps.js?v=5';
+import { launchFinder, launchCase, launchTerminal, launchPalette, launchMenu } from './apps.js?v=6';
 import { SHORTCUT } from './actions.js?v=1';
 import { report } from './lazy.js?v=1';
 

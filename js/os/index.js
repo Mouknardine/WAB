@@ -9,7 +9,7 @@
  */
 
 import { initSky } from './sky.js?v=1';
-import { initShell } from './shell.js?v=7';
+import { initShell } from './shell.js?v=8';
 import { initToc } from './toc.js?v=1';
 import { initMargins } from '../desk/pixels-margins.js?v=4';
 import { report } from './lazy.js?v=1';
