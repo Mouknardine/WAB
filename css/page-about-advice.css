@@ -2,11 +2,9 @@
    WAB OS — About : le conseil
    À gauche, la note : le texte du conseil dans une fenêtre Notes, un passage
    surligné dans la teinte de la section (jaune), le curseur, puis le bouton. À
-   droite, le parcours dans une fenêtre sombre — le seul aplat foncé
-   de la page, qui donne le rythme — dont la première ligne, le prix,
-   est un écran jaune à scanlines (.on-klein). Chaque surface
-   redéfinit sa gamme (--ink, --ink-muted, --line, --accent) : aucun
-   élément intérieur ne connaît la couleur de son fond.
+   droite, le parcours dans une fenêtre blanche, comme les autres,
+   dont la première ligne, le prix, est un écran jaune à scanlines
+   (.on-klein).
    ============================================ */
 
 .ab-advice__grid {
@@ -58,24 +56,10 @@
     }
 }
 
-/* ── La fenêtre sombre ── */
-.ab-dark {
-    --ink: var(--term-ink);
-    --ink-muted: var(--term-muted);
-    --line: color-mix(in oklch, var(--term-ink) 12%, transparent);
-    --accent: var(--term-accent);
-    /* Sur le fond sombre, la teinte écrit dans sa version claire. */
-    --klein-text: var(--term-accent);
-    --win-bg: var(--term-bg);
-    --win-edge: color-mix(in oklch, var(--term-ink) 8%, transparent);
-    --win-bar: color-mix(in oklch, var(--term-bg), var(--term-ink) 7%);
-    --win-bar-ink: var(--term-muted);
-    color: var(--ink);
-    box-shadow: 0 0 0 var(--hair) var(--win-edge), var(--win-shadow), var(--sheet);
-}
-
-.ab-dark .win__title {
-    color: var(--ink-muted);
+/* ── Le parcours ── une fenêtre blanche (demande d'Eliott, 08.10 :
+   plus de fond noir). */
+.ab-path {
+    box-shadow: 0 0 0 var(--hair) var(--win-edge), var(--win-shadow);
 }
 
 .ab-facts {
@@ -106,9 +90,8 @@
     color: var(--ink);
 }
 
-/* Le repère de chaque ligne, en Sligoil, dans la teinte claire du
-   terminal (--klein-soft) ; l'encre de la teinte sur l'écran. Au téléphone,
-   la note reste la seule ligne grise. */
+/* Le repère de chaque ligne, en Sligoil, dans la teinte de la section
+   (sa version lisible sur blanc) ; l'encre de la teinte sur l'écran. */
 .ab-fact__label {
     font-family: var(--font-mono);
     font-size: var(--t-cap);
@@ -132,7 +115,7 @@
 }
 
 /* Le prix : un écran à scanlines dans la teinte de la section en tête
-   de la fenêtre sombre, son encre (--on-klein), une arête foncée pour le poser. */
+   de la fenêtre, son encre (--on-klein), une arête foncée pour le poser. */
 .ab-fact--prize {
     background: var(--klein-screen);
     box-shadow: inset 0 -1px 0 var(--klein-deep);
@@ -153,7 +136,7 @@
         gap: clamp(24px, 3vw, 40px);
     }
 
-    /* La note descend d'un cran, la fenêtre sombre reste haute : le
+    /* La note descend d'un cran, la fenêtre du parcours reste haute : le
        même quinconce que les fiches de l'équipe. */
     .ab-note {
         margin-top: 56px;
