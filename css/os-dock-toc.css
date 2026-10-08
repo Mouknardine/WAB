@@ -67,17 +67,15 @@
     border-radius: 999px;
 }
 
-/* La lecture : un trait sous la pilule, de la largeur parcourue. */
+/* La lecture : un trait qui épouse le bord bas de la pilule, courbes
+   des coins comprises (un bord bas arrondi comme elle), dévoilé de
+   gauche à droite selon la part parcourue (--read, js/os/toc.js). */
 .dock__progress {
     position: absolute;
-    left: 22px;
-    right: 22px;
-    bottom: 0;
-    height: 2px;
-    border-radius: 2px;
-    background: var(--klein);
-    transform: scaleX(var(--read, 0));
-    transform-origin: left center;
+    inset: 0;
+    border-radius: inherit;
+    border-bottom: 2px solid var(--klein);
+    clip-path: inset(0 calc((1 - var(--read, 0)) * 100%) 0 0);
     pointer-events: none;
 }
 
