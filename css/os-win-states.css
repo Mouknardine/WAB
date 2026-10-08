@@ -68,17 +68,17 @@
 
 .oswin__ctl--close::after {
     content: '×';
-    color: var(--ink);
+    color: oklch(0.18 0.005 265 / 0.7);
 }
 
 .oswin__ctl--min::after {
     content: '–';
-    color: var(--paper);
+    color: oklch(0.18 0.005 265 / 0.7);
 }
 
 .oswin__ctl--max::after {
     content: '+';
-    color: var(--ink);
+    color: oklch(0.18 0.005 265 / 0.7);
 }
 
 .oswin__bar:hover .oswin__ctl::after,

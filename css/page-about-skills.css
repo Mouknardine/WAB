@@ -43,7 +43,7 @@
     box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief), var(--shadow-soft);
 }
 
-/* La barre : le bleu clair des fenêtres, le ↳ à gauche. */
+/* La barre : celle des fenêtres, blanche, les trois pastilles à gauche. */
 .ab-app__bar {
     display: flex;
     align-items: center;

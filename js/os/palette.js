@@ -10,7 +10,7 @@
  */
 
 import { el, symIcon } from './dom.js?v=3';
-import { baseItems, projectItems, filterItems } from './palette-items.js?v=3';
+import { baseItems, projectItems, filterItems } from './palette-items.js?v=4';
 import { report } from './lazy.js?v=1';
 
 /** @typedef {import('./palette-items.js').PaletteItem} PaletteItem */

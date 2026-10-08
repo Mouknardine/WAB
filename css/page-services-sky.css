@@ -59,7 +59,7 @@
     overflow: hidden;
 }
 
-/* La barre : celle des fenêtres, le ↳ à gauche, le [*] à droite. */
+/* La barre : celle des fenêtres, blanche, les trois pastilles à gauche. */
 .svc-plan__bar {
     display: flex;
     align-items: center;
@@ -72,21 +72,9 @@
     color: var(--win-bar-ink);
 }
 
-.svc-plan__bar::after {
-    content: '[*]';
-    font-size: 10px;
-    line-height: 1;
-    letter-spacing: 0.04em;
-}
-
-/* La formule mise en avant : barre Klein, feuille décalée dessous. */
+/* La formule mise en avant : liseré de sa teinte, feuille décalée dessous. */
 .svc-plan--main {
     box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--relief), var(--sheet), var(--shadow-object);
-}
-
-.svc-plan--main .svc-plan__bar {
-    background: var(--klein-screen);
-    color: var(--on-klein);
 }
 
 .svc-plan__body {

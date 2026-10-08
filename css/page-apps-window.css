@@ -25,7 +25,7 @@
     box-shadow: 0 0 0 var(--hair) var(--win-edge), var(--win-shadow-lift);
 }
 
-/* ── La barre ── la grille partagée (↳ · titre · [*]) : les onglets
+/* ── La barre ── la grille partagée (pastilles · titre) : les onglets
    prennent la place du titre au centre ; au téléphone, ils passent
    sur une seconde rangée, sur toute la largeur. Sans script, pas
    d'onglets : le nom de fichier reste au centre. */

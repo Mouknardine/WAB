@@ -10,7 +10,7 @@
  */
 
 import { initSky } from './sky.js?v=1';
-import { initShell } from './shell.js?v=5';
+import { initShell } from './shell.js?v=6';
 import { initDial } from './dial.js?v=2';
 import { initShade } from './shade.js?v=2';
 import { report } from './lazy.js?v=1';

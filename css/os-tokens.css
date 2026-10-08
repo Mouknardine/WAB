@@ -89,7 +89,16 @@
     --glass-shadow-lift: var(--shadow-lift);
     --smoke-strong: oklch(0.18 0.005 265 / 0.82);
 
-    /* ── Fenêtre ── barre bleu clair, ↳, nom centré, [*] ; cadre tramé. */
+    /* ── Fenêtre ── comme un navigateur : barre blanche, trois pastilles
+       rouge, jaune, vert à gauche, l'adresse dans un champ gris au
+       centre ; cadre tramé. */
+    --light-close: oklch(0.7 0.19 27);
+    --light-min: oklch(0.84 0.16 82);
+    --light-max: oklch(0.76 0.18 145);
+    --win-lights:
+        radial-gradient(circle at 6px 50%, var(--light-close) 5px, color-mix(in oklch, var(--light-close), black 12%) 5.5px, oklch(0 0 0 / 0) 6px),
+        radial-gradient(circle at 24px 50%, var(--light-min) 5px, color-mix(in oklch, var(--light-min), black 12%) 5.5px, oklch(0 0 0 / 0) 6px),
+        radial-gradient(circle at 42px 50%, var(--light-max) 5px, color-mix(in oklch, var(--light-max), black 12%) 5.5px, oklch(0 0 0 / 0) 6px);
     --win-bg: oklch(1 0 0);
     --win-edge: var(--edge);
     --win-bar-h: 28px;
@@ -182,8 +191,8 @@
     --key-klein: linear-gradient(180deg, color-mix(in oklch, var(--klein-hi) 45%, var(--klein)), var(--klein) 60%);
     --key-klein-edge: var(--klein-deep);
     --key-klein-relief: inset 0 1px 0 oklch(1 0 0 / 0.34), inset 0 -2px 0 color-mix(in oklch, var(--klein-deep) 22%, transparent), 0 1px 2px oklch(0.18 0.005 265 / 0.24), 0 3px 8px color-mix(in oklch, var(--klein) 22%, transparent);
-    --win-bar: linear-gradient(90deg, var(--klein-tint), var(--klein-wash) 50%, var(--klein-tint));
-    --win-bar-ink: var(--klein-ink);
+    --win-bar: var(--paper);
+    --win-bar-ink: var(--ink-muted);
     --win-frame-color: var(--klein-ink);
     --win-frame-dither: var(--klein-hi);
     --bubble-reply: var(--klein);
@@ -207,9 +216,9 @@
     --on-accent: var(--klein-pair);
     --mark: var(--on-klein);
     --hover-tint: color-mix(in oklch, var(--on-klein) 10%, transparent);
-    /* Réponse de WAB : de la couleur du texte, écrite dans la teinte. */
-    --bubble-reply: var(--on-klein);
+    /* Réponse de WAB : blanche, écrite dans la teinte foncée. */
+    --bubble-reply: var(--paper);
     --bubble-reply-ink: var(--klein-pair);
-    --bubble-reply-edge: color-mix(in oklch, var(--on-klein) 60%, transparent);
+    --bubble-reply-edge: oklch(1 0 0 / 0.6);
     color: var(--ink);
 }
