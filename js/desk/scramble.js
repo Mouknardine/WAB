@@ -11,6 +11,9 @@
  */
 
 const GLYPHS = Array.from('{}<>/\\#$%&*+=;:01_|~^?!@[]▓▒░█');
+/** Les teintes que prend un symbole (os-tints.css) ; le jaune, trop
+    pâle sur le bureau clair, n'en est pas. */
+const TINTS = ['bleu', 'ciel', 'vert', 'rose', 'rouge'];
 const STEPS = 5;
 const STEP_MS = 55;
 const WAVE_MS = 35;
@@ -44,6 +47,7 @@ export function initScramble() {
         if (busy.has(span) || reducedMotion.matches) return;
         busy.add(span);
         span.classList.add('is-glyph');
+        span.dataset.tint = TINTS[Math.floor(Math.random() * TINTS.length)];
         let step = 0;
         const timer = window.setInterval(() => {
             step += 1;
@@ -51,6 +55,7 @@ export function initScramble() {
                 window.clearInterval(timer);
                 span.textContent = letter;
                 span.classList.remove('is-glyph');
+                delete span.dataset.tint;
                 busy.delete(span);
                 return;
             }

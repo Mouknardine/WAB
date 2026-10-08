@@ -46,7 +46,7 @@
 
 @media (hover: hover) {
     .foot__mail:hover {
-        color: var(--klein);
+        color: var(--klein-text);
         text-decoration-color: var(--klein);
     }
 }

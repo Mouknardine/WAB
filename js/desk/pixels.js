@@ -14,8 +14,9 @@
  * l'écran ne répond qu'à la main du visiteur.
  */
 
-import { createField } from './pixels-field.js?v=3';
-import { createPatterns } from './pixels-patterns.js?v=3';
+import { keepRects, pickTint } from './pixels-ink.js?v=3';
+import { createField } from './pixels-field.js?v=4';
+import { createPatterns } from './pixels-patterns.js?v=4';
 
 const GHOST_MS = 2400;
 const GHOST_FIRST_DELAY_MS = 700;
@@ -25,6 +26,8 @@ const GHOST_QUIET_MS = 5000;
 /** Au-delà de ce délai, deux positions ne sont plus reliées. */
 const JOIN_MS = 140;
 const KEEP_MARGIN = 10;
+/** La traînée change de teinte au bout de ce temps de mouvement. */
+const TINT_EVERY_MS = 900;
 /** Espace laissé libre sous la barre de menus, en plus de sa hauteur. */
 const BAR_GAP = 12;
 
@@ -42,6 +45,8 @@ export function initPixels() {
     let field = createField(sizeFor());
     let patterns = createPatterns(sizeFor());
     let width = 0;
+    let tint = pickTint();
+    let tintSince = 0;
     let height = 0;
     /** @type {{ x: number, y: number, t: number } | null} */
     let last = null;
@@ -57,14 +62,6 @@ export function initPixels() {
         return wide.matches ? { block: 60, glyph: 20 } : { block: 48, glyph: 16 };
     }
 
-    function keepRects() {
-        const origin = canvas.getBoundingClientRect();
-        return Array.from(hero.querySelectorAll('[data-pixels-keep]')).map((el) => {
-            const r = el.getBoundingClientRect();
-            return { x: r.left - origin.left - KEEP_MARGIN, y: r.top - origin.top - KEEP_MARGIN, w: r.width + KEEP_MARGIN * 2, h: r.height + KEEP_MARGIN * 2 };
-        });
-    }
-
     function resize() {
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
         width = hero.clientWidth;
@@ -72,7 +69,7 @@ export function initPixels() {
         canvas.width = Math.round(width * dpr);
         canvas.height = Math.round(height * dpr);
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        const keep = keepRects();
+        const keep = keepRects(hero, canvas, KEEP_MARGIN);
         const bar = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--bar-h')) || 44;
         field = createField(sizeFor());
         field.resize(width, height, keep);
@@ -83,15 +80,19 @@ export function initPixels() {
 
     /** Relie la position à la précédente : pas de trou si le geste est vif. */
     function point(x, y, now) {
+        if (now - tintSince > TINT_EVERY_MS) {
+            tint = pickTint(tint);
+            tintSince = now;
+        }
         const step = sizeFor().block / 2;
         if (last && now - last.t < JOIN_MS) {
             const dist = Math.hypot(x - last.x, y - last.y);
             const steps = Math.min(40, Math.ceil(dist / step));
             for (let i = 1; i <= steps; i += 1) {
-                field.stamp(last.x + ((x - last.x) * i) / steps, last.y + ((y - last.y) * i) / steps, now);
+                field.stamp(last.x + ((x - last.x) * i) / steps, last.y + ((y - last.y) * i) / steps, now, tint);
             }
         } else {
-            field.stamp(x, y, now);
+            field.stamp(x, y, now, tint);
         }
         last = { x, y, t: now };
         wake();

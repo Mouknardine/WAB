@@ -133,7 +133,7 @@
     line-height: 1.45;
     letter-spacing: var(--track-caps);
     text-transform: uppercase;
-    color: var(--klein);
+    color: var(--klein-text);
 }
 
 .ab-card__bio {

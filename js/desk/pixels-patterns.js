@@ -10,7 +10,7 @@
  * entier un peu plus loin sur son bord.
  */
 
-import { GLYPHS, KLEIN, LETTERS, WHITE, shortWords, isMoving, paintBlocks, paintGlyphs, pick, touches } from './pixels-ink.js?v=2';
+import { GLYPHS, LETTERS, shortWords, isMoving, paintBlocks, paintGlyphs, pick, pickTint, touches } from './pixels-ink.js?v=3';
 
 /** Part de la largeur, de chaque côté, où vivent les motifs. */
 const EDGE_SHARE = 0.2;
@@ -20,7 +20,7 @@ const STEPS = [[1, 0], [-1, 0], [0, 1], [0, -1]];
 
 /** @typedef {import('./pixels-ink.js').Rect} Rect */
 /** @typedef {import('./pixels-ink.js').Glyph & { key: string | null }} Mark */
-/** @typedef {{ side: 'left' | 'right', cells: Map<string, { col: number, row: number }>, marks: Mark[], changedAt: number }} Pattern */
+/** @typedef {{ side: 'left' | 'right', tint: import('./pixels-ink.js').Tint, cells: Map<string, { col: number, row: number }>, marks: Mark[], changedAt: number }} Pattern */
 /** @typedef {{ left: [number, number] | null, right: [number, number] | null }} Zones colonnes permises de chaque côté, ou null */
 /** @typedef {{ zones?: Zones, perSide?: number }} Layout */
 
@@ -63,13 +63,13 @@ export function createPatterns(size) {
     }
 
     /** Les signes d'une case : un caractère, parfois un mot, parfois rien. */
-    function marksFor(/** @type {string} */ key, /** @type {{ col: number, row: number }} */ cell, /** @type {number} */ now) {
+    function marksFor(/** @type {Pattern} */ pattern, /** @type {string} */ key, /** @type {{ col: number, row: number }} */ cell, /** @type {number} */ now) {
         const per = Math.floor(size.block / size.glyph);
         const x = cell.col * size.block;
         const y = cell.row * size.block + Math.floor(Math.random() * per) * size.glyph;
         const roll = Math.random();
-        if (roll < 0.12) return [{ key, x: x + size.glyph * 0.4, y, text: pick(words), color: WHITE, born: now, until: Infinity }];
-        if (roll < 0.72) return [{ key, x: x + Math.floor(Math.random() * per) * size.glyph, y, text: pick(GLYPHS), color: WHITE, born: now, until: Infinity }];
+        if (roll < 0.12) return [{ key, x: x + size.glyph * 0.4, y, text: pick(words), color: pattern.tint.ink, born: now, until: Infinity }];
+        if (roll < 0.72) return [{ key, x: x + Math.floor(Math.random() * per) * size.glyph, y, text: pick(GLYPHS), color: pattern.tint.ink, born: now, until: Infinity }];
         return [];
     }
 
@@ -83,21 +83,21 @@ export function createPatterns(size) {
             const col = cell.col + pick([-2, -1, 1, 2]);
             const row = cell.row + pick([-1, 0, 1]);
             if (pattern.cells.has(`${col},${row}`) || !allowed(col, row, pattern.side)) continue;
-            marks.push({ key: null, x: col * size.block + size.glyph, y: row * size.block + size.glyph, text: pick(LETTERS), color: KLEIN, born: now, until: Infinity });
+            marks.push({ key: null, x: col * size.block + size.glyph, y: row * size.block + size.glyph, text: pick(LETTERS), color: pattern.tint.stray, born: now, until: Infinity });
         }
         return marks;
     }
 
     function dress(/** @type {Pattern} */ pattern, /** @type {number} */ now) {
         pattern.marks = [];
-        for (const [key, cell] of pattern.cells) pattern.marks.push(...marksFor(key, cell, now));
+        for (const [key, cell] of pattern.cells) pattern.marks.push(...marksFor(pattern, key, cell, now));
         pattern.marks.push(...strays(pattern, now));
     }
 
     /** Une forme neuve, posée au hasard dans la bande [top, bottom] de son bord. */
     function shape(/** @type {'left' | 'right'} */ side, /** @type {number} */ top, /** @type {number} */ bottom, /** @type {number} */ now) {
         /** @type {Pattern} */
-        const pattern = { side, cells: new Map(), marks: [], changedAt: now };
+        const pattern = { side, tint: pickTint(), cells: new Map(), marks: [], changedAt: now };
         const [from, to] = zone(side);
         for (let tries = 0; tries < 40 && !pattern.cells.size; tries += 1) {
             const col = from + Math.floor(Math.random() * (to - from + 1));
@@ -155,12 +155,12 @@ export function createPatterns(size) {
         const before = new Set(pattern.cells.keys());
         grow(pattern, pattern.cells.size + 1 + Math.round(Math.random()));
         for (const [key, cell] of pattern.cells) {
-            if (!before.has(key)) pattern.marks.push(...marksFor(key, cell, now));
+            if (!before.has(key)) pattern.marks.push(...marksFor(pattern, key, cell, now));
         }
         for (let i = 0; i < 2; i += 1) {
             const mark = pick(pattern.marks);
             if (mark && mark.text.length === 1) {
-                mark.text = pick(mark.color === WHITE ? GLYPHS : LETTERS);
+                mark.text = pick(mark.key === null ? LETTERS : GLYPHS);
                 mark.born = now;
             }
         }
@@ -178,7 +178,7 @@ export function createPatterns(size) {
     /** @param {CanvasRenderingContext2D} ctx @param {number} now @param {boolean} still */
     function draw(ctx, now, still) {
         for (const pattern of patterns) {
-            paintBlocks(ctx, pattern.cells.values(), size.block);
+            paintBlocks(ctx, pattern.cells.values(), size.block, pattern.tint.fill);
             paintGlyphs(ctx, pattern.marks, size, now, still);
         }
     }

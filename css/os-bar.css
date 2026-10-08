@@ -170,7 +170,7 @@
 }
 
 .menubar .panel__key {
-    color: var(--accent);
+    color: var(--klein-text);
 }
 
 @media (min-width: 380px) {

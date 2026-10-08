@@ -1,6 +1,7 @@
 /* ============================================
    WAB. — Accueil : les motifs des marges
-   Formes de gros pixels bleus, avec leurs signes, posées de part et
+   Formes de gros pixels de couleur (une teinte par forme, posée en
+   --cell par le script), avec leurs signes, posées de part et
    d'autre du contenu sur toute la page (js/desk/pixels-margins.js).
    La couche couvre <main> sans rien recouvrir : seules les formes
    reçoivent la souris (survol : elles bougent ; clic : elles se
@@ -34,7 +35,7 @@
 .margins__cell {
     width: 60px;
     height: 60px;
-    background: var(--klein);
+    background: var(--cell, var(--klein));
     pointer-events: auto;
     cursor: pointer;
 }
@@ -46,10 +47,6 @@
     white-space: nowrap;
     color: var(--on-klein);
     pointer-events: none;
-}
-
-.margins__mark--klein {
-    color: var(--klein);
 }
 
 /* Un signe neuf surgit en trois images, comme un écran qui se rafraîchit. */

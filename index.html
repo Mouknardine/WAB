@@ -349,34 +349,35 @@
     <!-- Styles — le socle commun, puis les feuilles de l'accueil -->
     <link rel="stylesheet" href="css/base.css?v=34">
     <link rel="stylesheet" href="css/base-ui.css?v=1">
-    <link rel="stylesheet" href="css/nav-panel.css?v=2">
+    <link rel="stylesheet" href="css/nav-panel.css?v=3">
     <link rel="stylesheet" href="css/contact-modal.css?v=8">
-    <link rel="stylesheet" href="css/contact-form.css?v=4">
+    <link rel="stylesheet" href="css/contact-form.css?v=5">
     <!-- WAB OS : composants partagés par toutes les pages (OS-COMPONENTS.md) -->
-    <link rel="stylesheet" href="css/os-tokens.css?v=6">
-    <link rel="stylesheet" href="css/os-base.css?v=4">
+    <link rel="stylesheet" href="css/os-tokens.css?v=7">
+    <link rel="stylesheet" href="css/os-tints.css?v=1">
+    <link rel="stylesheet" href="css/os-base.css?v=5">
     <link rel="stylesheet" href="css/os-sky.css?v=3">
     <link rel="stylesheet" href="css/sym.css?v=4">
-    <link rel="stylesheet" href="css/key-btn.css?v=1">
-    <link rel="stylesheet" href="css/os-bar.css?v=4">
+    <link rel="stylesheet" href="css/key-btn.css?v=2">
+    <link rel="stylesheet" href="css/os-bar.css?v=5">
     <link rel="stylesheet" href="css/os-window.css?v=4">
     <link rel="stylesheet" href="css/os-bubbles.css?v=3">
-    <link rel="stylesheet" href="css/os-footer.css?v=8">
+    <link rel="stylesheet" href="css/os-footer.css?v=9">
     <link rel="stylesheet" href="css/os-dock.css?v=5">
     <link rel="stylesheet" href="css/os-overlay.css?v=3">
     <!-- Accueil « bureau rangé » -->
     <link rel="stylesheet" href="css/desk-objects.css?v=8">
     <link rel="stylesheet" href="css/desk-hero.css?v=20">
-    <link rel="stylesheet" href="css/desk-margins.css?v=1">
-    <link rel="stylesheet" href="css/desk-keys.css?v=3">
-    <link rel="stylesheet" href="css/home-head.css?v=4">
+    <link rel="stylesheet" href="css/desk-margins.css?v=2">
+    <link rel="stylesheet" href="css/desk-keys.css?v=4">
+    <link rel="stylesheet" href="css/home-head.css?v=5">
     <link rel="stylesheet" href="css/home-card.css?v=1">
-    <link rel="stylesheet" href="css/home-tiles.css?v=1">
-    <link rel="stylesheet" href="css/home-steps.css?v=1">
-    <link rel="stylesheet" href="css/desk-wall.css?v=5">
+    <link rel="stylesheet" href="css/home-tiles.css?v=2">
+    <link rel="stylesheet" href="css/home-steps.css?v=2">
+    <link rel="stylesheet" href="css/desk-wall.css?v=6">
     <link rel="stylesheet" href="css/desk-plans.css?v=4">
-    <link rel="stylesheet" href="css/desk-letter.css?v=7">
-    <link rel="stylesheet" href="css/desk-faq.css?v=5">
+    <link rel="stylesheet" href="css/desk-letter.css?v=8">
+    <link rel="stylesheet" href="css/desk-faq.css?v=6">
     <link rel="stylesheet" href="css/home-call.css?v=1">
 
     <!-- Scripts -->
@@ -386,7 +387,7 @@
     <script type="module" src="js/birds/perch.js?v=11"></script>
     <script type="module" src="js/contact/index.js?v=12"></script>
     <script type="module" src="js/os/index.js?v=4"></script>
-    <script type="module" src="js/desk/index.js?v=18"></script>
+    <script type="module" src="js/desk/index.js?v=19"></script>
 </head>
 
 <body class="os desk">
@@ -484,7 +485,7 @@
                     <h2 class="home-title" id="servicesTitle">Ce que nous faisons. Et ce que cela change pour votre entreprise.</h2>
                 </div>
                 <div class="wgrid" data-reveal-group>
-                    <article class="wcard reveal" data-watch="once">
+                    <article class="wcard reveal" data-watch="once" data-tint="bleu">
                         <div class="wcard__tile on-klein" aria-hidden="true">
                             <p class="wcard__label">Site · Le P’tit Central</p>
                             <div class="win tile-win"><div class="win__bar"><span class="win__lights"></span><span class="win__title">lepetitcentral.ch</span></div><div class="win__body"><img src="assets/images/shot-central-800.webp" alt="" width="800" height="500" loading="lazy" decoding="async"></div></div>
@@ -500,7 +501,7 @@
                         <p class="wcard__end">Votre métier, c’est le vôtre. Le site, c’est le nôtre.</p>
                         <a href="/realisations" class="key-btn wcard__cta">Voir nos réalisations</a>
                     </article>
-                    <article class="wcard reveal" data-watch="once">
+                    <article class="wcard reveal" data-watch="once" data-tint="vert">
                         <div class="wcard__tile wcard__tile--wash">
                             <p class="wcard__label" aria-hidden="true">Application · Finances</p>
                             <div class="win tile-win tile-win--app"><div class="win__bar" aria-hidden="true"><span class="win__lights"></span><span class="win__title">Finances</span></div><div class="win__body"><img src="assets/images/app-agenda-finances-1280.webp" alt="L’écran Finances d’une application de gestion conçue par le studio&nbsp;: encaissé, facturé et derniers paiements" width="1280" height="1000" loading="lazy" decoding="async"><span class="win__demo">Données de démonstration</span></div></div>
@@ -516,7 +517,7 @@
                         <p class="wcard__end">Moins d’outils, moins de ressaisie.</p>
                         <a href="/applications" class="key-btn wcard__cta">Découvrir les applications</a>
                     </article>
-                    <article class="wcard reveal" data-watch="once">
+                    <article class="wcard reveal" data-watch="once" data-tint="rose">
                         <div class="wcard__tile on-klein" aria-hidden="true">
                             <p class="wcard__label">Automatisation · Devis et factures</p>
                             <div class="notifs">
@@ -550,22 +551,22 @@
                     <h2 class="home-title" id="methodTitle">De la première conversation à la mise en ligne.</h2>
                 </div>
                 <ol class="steps reveal">
-                    <li class="step">
+                    <li class="step" data-tint="ciel">
                         <p class="step__num">Étape 1</p>
                         <h3 class="step__name">Premier échange</h3>
                         <p class="step__line">Votre activité, vos objectifs et vos références. Sans engagement.</p>
                     </li>
-                    <li class="step">
+                    <li class="step" data-tint="jaune">
                         <p class="step__num">Étape 2</p>
                         <h3 class="step__name">Proposition</h3>
                         <p class="step__line">Périmètre, calendrier et prix, remis par écrit sous 24&nbsp;h ouvrées.</p>
                     </li>
-                    <li class="step">
+                    <li class="step" data-tint="rouge">
                         <p class="step__num">Étape 3</p>
                         <h3 class="step__name">Design et développement</h3>
                         <p class="step__line">Chaque étape est validée avec vous. Yael Peccatus coordonne le projet, du cadrage à la livraison.</p>
                     </li>
-                    <li class="step">
+                    <li class="step" data-tint="vert">
                         <p class="step__num">Étape 4</p>
                         <h3 class="step__name">Mise en ligne et suivi</h3>
                         <p class="step__line">Hébergement en Suisse, maintenance et évolutions dans la durée.</p>
@@ -577,7 +578,7 @@
         <!-- LES RÉALISATIONS — les neuf projets en ligne, en grille
              régulière : la fenêtre, le nom, le contexte (repris de
              /realisations). Une fenêtre ouvre la fiche du projet. -->
-        <section class="block wall" id="travail" aria-labelledby="wallTitle">
+        <section class="block wall" id="travail" aria-labelledby="wallTitle" data-tint="vert">
             <div class="desk-wrap">
                 <div class="home-head reveal">
                     <p class="badge">Réalisations</p>
@@ -664,7 +665,7 @@
                     <p class="home-lede">Trois niveaux d’accompagnement, chacun avec son périmètre et sa fourchette. Vous savez où vous allez avant de nous écrire.</p>
                 </div>
                 <ul class="plans__grid" data-reveal-group>
-                    <li class="wcard plan reveal">
+                    <li class="wcard plan reveal" data-tint="jaune">
                         <div class="wcard__tile wcard__tile--wash plan__tile">
                             <p class="wcard__label">Objectif · Être présent en ligne</p>
                             <h3 class="plan__name">Site vitrine</h3>
@@ -676,7 +677,7 @@
                         <ul class="wcard__list"><li>Développement sur mesure, sans WordPress ni Wix</li><li>Conception mobile d’abord</li><li>Optimisé pour le référencement local</li><li>Hébergement en Suisse chez Infomaniak inclus</li><li>Le domaine, le code et les contenus vous appartiennent</li></ul>
                         <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn wcard__cta">Nous contacter</a>
                     </li>
-                    <li class="wcard plan plan--main reveal">
+                    <li class="wcard plan plan--main reveal" data-tint="bleu">
                         <div class="wcard__tile on-klein plan__tile">
                             <p class="wcard__label">Objectif · Structurer votre activité</p>
                             <p class="plan__badge">Recommandé</p>
@@ -689,7 +690,7 @@
                         <ul class="wcard__list"><li>L’ensemble de l’offre Site vitrine</li><li>Un outil de gestion conçu autour de vos processus</li><li>Une boutique en ligne, en option</li><li>Caisse, CMS et boutique en gestion autonome</li><li>Automatisation et IA, là où elles créent de la valeur</li></ul>
                         <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein wcard__cta">Nous contacter</a>
                     </li>
-                    <li class="wcard plan reveal">
+                    <li class="wcard plan reveal" data-tint="rouge">
                         <div class="wcard__tile wcard__tile--wash plan__tile">
                             <p class="wcard__label">Objectif · Marquer les esprits</p>
                             <h3 class="plan__name">Expérience sur mesure</h3>
@@ -708,7 +709,7 @@
 
         <!-- LE STUDIO — la présentation de WAB dans Notes, une carte nette,
              signée par les fondateurs, puis l'équipe. -->
-        <section class="block letter-wrap" id="lettre" aria-labelledby="letterTitle">
+        <section class="block letter-wrap" id="lettre" aria-labelledby="letterTitle" data-tint="jaune">
             <div class="desk-wrap letter-zone">
                 <h2 class="badge reveal" id="letterTitle">Le studio</h2>
                 <article class="win letter reveal">
@@ -737,7 +738,7 @@
 
         <!-- LA FAQ — huit questions, des réponses qui commencent par la
              réponse. Deux colonnes au-delà de 1000 px. -->
-        <section class="block faq-home" id="questions" aria-labelledby="faqTitle">
+        <section class="block faq-home" id="questions" aria-labelledby="faqTitle" data-tint="rose">
             <div class="desk-wrap">
                 <div class="home-head reveal">
                     <p class="badge">FAQ</p>
@@ -787,7 +788,7 @@
         <!-- L'APPEL FINAL — une carte Klein : l'invitation et la touche à
              gauche, l'échange en bulles à droite. La surface redéfinit sa
              gamme (.on-klein) : touches et bulles s'inversent seules. -->
-        <section class="block call-wrap" id="contact" aria-labelledby="callTitle">
+        <section class="block call-wrap" id="contact" aria-labelledby="callTitle" data-tint="rouge">
             <div class="desk-wrap">
                 <div class="call on-klein reveal">
                     <div class="call__text">
@@ -835,9 +836,9 @@
                 <p class="foot__pitch">Studio de design et de technologie à&nbsp;Lausanne. Marques, sites et produits numériques.</p>
             </div>
             <div class="foot__keys keys" aria-hidden="true" translate="no">
-                <span class="key" data-perch-host><canvas class="foot__bird" data-perch="flap" data-scale="3" data-color="1"></canvas><span class="key__face">W</span></span>
-                <span class="key"><span class="key__face">A</span></span>
-                <span class="key" data-perch-host><canvas class="foot__bird foot__bird--far" data-perch="flap" data-scale="2" data-color="2"></canvas><span class="key__face">B</span></span>
+                <span class="key key--tint" data-tint="vert" data-perch-host><canvas class="foot__bird" data-perch="flap" data-scale="3" data-color="1"></canvas><span class="key__face">W</span></span>
+                <span class="key key--tint" data-tint="jaune"><span class="key__face">A</span></span>
+                <span class="key key--tint" data-tint="rose" data-perch-host><canvas class="foot__bird foot__bird--far" data-perch="flap" data-scale="2" data-color="2"></canvas><span class="key__face">B</span></span>
                 <span class="key key--dot" data-perch-host><canvas class="foot__bird" data-perch="flap" data-scale="3" data-color="3"></canvas><span class="key__face">.</span></span>
             </div>
             <div class="foot__bar">

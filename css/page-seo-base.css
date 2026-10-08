@@ -66,7 +66,7 @@
 
 @media (hover: hover) {
     .sx-link:hover {
-        color: var(--accent);
+        color: var(--klein-text);
         text-decoration-color: currentColor;
     }
 }

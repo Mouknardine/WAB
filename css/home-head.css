@@ -37,7 +37,7 @@
 }
 
 .home-more a {
-    color: var(--klein);
+    color: var(--klein-text);
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;

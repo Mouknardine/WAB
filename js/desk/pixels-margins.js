@@ -12,8 +12,7 @@
  * sinon (téléphone, petit portable), rien n'est posé.
  */
 
-import { WHITE } from './pixels-ink.js?v=2';
-import { createPatterns } from './pixels-patterns.js?v=3';
+import { createPatterns } from './pixels-patterns.js?v=4';
 
 const SIZE = { block: 60, glyph: 20 };
 /** Écart gardé entre le contenu et le premier pavé, en px. */
@@ -62,6 +61,7 @@ export function initMargins() {
         shape.className = 'margins__shape';
         shape.setAttribute('data-index', String(index));
         shape.replaceChildren();
+        shape.style.setProperty('--cell', pattern.tint.fill);
         for (const cell of pattern.cells.values()) {
             const block = document.createElement('span');
             block.className = 'margins__cell';
@@ -70,7 +70,8 @@ export function initMargins() {
         }
         for (const mark of pattern.marks) {
             const sign = document.createElement('span');
-            sign.className = mark.color === WHITE ? 'margins__mark' : 'margins__mark margins__mark--klein';
+            sign.className = 'margins__mark';
+            sign.style.color = mark.color;
             if (now - mark.born < FRESH_MS) sign.classList.add('is-fresh');
             sign.style.transform = `translate(${mark.x}px, ${mark.y}px)`;
             sign.textContent = mark.text;

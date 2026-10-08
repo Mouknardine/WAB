@@ -112,7 +112,7 @@
     font-size: var(--t-cap);
     letter-spacing: var(--track-caps);
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--klein-text);
 }
 
 .ab-fact__value {

@@ -67,7 +67,7 @@
     aspect-ratio: 1;
     border-radius: var(--r-key);
     background: var(--klein-wash);
-    color: var(--klein);
+    color: var(--klein-text);
 }
 
 .notif__name {

@@ -94,7 +94,7 @@
 
 .sx-facts svg {
     flex: none;
-    color: var(--accent);
+    color: var(--klein-text);
 }
 
 /* ── Le bureau ── téléphone : deux fenêtres qui se chevauchent. */

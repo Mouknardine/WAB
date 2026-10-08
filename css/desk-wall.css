@@ -58,7 +58,7 @@
     }
 
     .shot:hover .shot__name {
-        color: var(--klein);
+        color: var(--klein-text);
     }
 }
 

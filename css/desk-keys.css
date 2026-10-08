@@ -58,6 +58,16 @@
     transition: translate var(--dur-1) var(--ease-out);
 }
 
+/* Une touche de couleur : celle de sa teinte (data-tint, os-tints.css),
+   la lettre à l'encre qui s'y lit. */
+.key--tint {
+    --skirt-top: var(--klein-hi);
+    --skirt-bottom: var(--klein-deep);
+    --face-top: var(--klein-hi);
+    --face-bottom: var(--klein);
+    --glyph: var(--on-klein);
+}
+
 /* Le point : la touche bleue. */
 .key--dot {
     --skirt-top: var(--klein-hi);

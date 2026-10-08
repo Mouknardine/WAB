@@ -1,7 +1,7 @@
 /* ============================================
    WAB OS — jetons « Klein » (partagés par toutes les pages : body.os)
-   Un seul accent, le bleu Klein, sur blanc et gris chaud ; le reste est
-   encre et gris. Toutes les valeurs vivent ici, en OKLCH.
+   Le bleu Klein par défaut, et cinq autres teintes (os-tints.css) que
+   prend un bloc avec data-tint ; le reste est encre et gris. Toutes les valeurs vivent ici, en OKLCH.
    Voir DESIGN-SYSTEM.md (section « Klein ») et OS-COMPONENTS.md.
    ============================================ */
 
@@ -21,10 +21,13 @@
     --klein-tint: oklch(0.9 0.055 268);
     --klein-wash: oklch(0.955 0.022 268);
     --klein-soft: oklch(0.8 0.1 268);
-    --accent: var(--klein);
     --on-accent: oklch(1 0 0);
     --on-klein: oklch(1 0 0);
-    --mark: var(--klein);
+    /* Le texte d'une touche claire posée sur la teinte. */
+    --klein-pair: var(--klein-ink);
+    /* La teinte quand elle écrit : l'aplat s'il se lit sur blanc, sinon
+       sa version foncée (les teintes claires, os-tints.css). */
+    --klein-text: var(--klein);
 
     /* ── Neutres ── --ink 18,8:1, --ink-muted 7,1:1, --ink-faint 5,5:1
        sur blanc ; sur --panel : 6,4:1 et 4,9:1. --desk : sous les points. */
@@ -45,14 +48,7 @@
        pixel tous les trois, vignette, bords assombris, halo ; trame :
        bandes SVG (assets/textures) en masque, bord qui s'émiette. */
     --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .03 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    --scan-lines: repeating-linear-gradient(0deg, oklch(0.16 0.08 266 / 0.3) 0 1px, oklch(0 0 0 / 0) 1px 3px);
-    --scan-depth:
-        radial-gradient(closest-side, oklch(0 0 0 / 0) 55%, oklch(0.12 0.06 266 / 0.4)),
-        linear-gradient(90deg, oklch(0.12 0.06 266 / 0.34), oklch(0 0 0 / 0) 16% 84%, oklch(0.12 0.06 266 / 0.34));
-    --scan-glow: radial-gradient(60% 55% at 50% 42%, oklch(0.6 0.24 266 / 0.85), oklch(0.6 0.24 266 / 0) 72%);
-    --klein-screen: var(--scan-lines), var(--scan-depth), var(--scan-glow), var(--klein);
     /* Sans vignette : écran étroit autour d'une fenêtre. */
-    --klein-screen-flat: var(--scan-lines), radial-gradient(80% 70% at 30% 20%, oklch(0.6 0.24 266 / 0.55), oklch(0.6 0.24 266 / 0) 70%), var(--klein);
     --dither-top: url('../assets/textures/dither-top.svg');
     --dither-bottom: url('../assets/textures/dither-bottom.svg');
     --dither-left: url('../assets/textures/dither-left.svg');
@@ -78,9 +74,6 @@
     --sheet: 7px 7px 0 oklch(0.18 0.005 265 / 0.1);
 
     /* ── Touches ── (key-btn.css) bleu plein et blanc. */
-    --key-klein: linear-gradient(180deg, oklch(0.5 0.27 266), var(--klein) 60%);
-    --key-klein-edge: var(--klein-deep);
-    --key-klein-relief: inset 0 1px 0 oklch(1 0 0 / 0.34), inset 0 -2px 0 oklch(0.12 0.06 266 / 0.22), 0 1px 2px oklch(0.18 0.005 265 / 0.24), 0 3px 8px oklch(0.45 0.29 266 / 0.22);
     --key-light: linear-gradient(180deg, oklch(1 0 0), oklch(0.975 0.002 265));
     --key-light-relief: inset 0 1px 0 oklch(1 0 0), inset 0 -2px 0 oklch(0.18 0.005 265 / 0.08), 0 1px 2px oklch(0.18 0.005 265 / 0.2), 0 3px 8px oklch(0.18 0.005 265 / 0.1);
     --key-pressed: inset 0 1px 2px oklch(0.12 0.02 266 / 0.22), 0 0 0 oklch(0 0 0 / 0);
@@ -98,13 +91,9 @@
 
     /* ── Fenêtre ── barre bleu clair, ↳, nom centré, [*] ; cadre tramé. */
     --win-bg: oklch(1 0 0);
-    --win-bar: linear-gradient(90deg, var(--klein-tint), var(--klein-wash) 50%, var(--klein-tint));
-    --win-bar-ink: var(--klein-ink);
     --win-edge: var(--edge);
     --win-bar-h: 28px;
     --win-frame: 12px;
-    --win-frame-color: var(--klein-ink);
-    --win-frame-dither: oklch(0.62 0.21 266);
     --win-shadow: var(--relief), var(--shadow-object);
     --win-shadow-lift: var(--relief), var(--shadow-lift);
     --win-shadow-active: var(--relief), var(--shadow-lift);
@@ -112,9 +101,6 @@
 
     /* ── Bulles ── question gris chaud, réponse de WAB en bleu. */
     --bubble-ask: var(--panel);
-    --bubble-reply: var(--klein);
-    --bubble-reply-ink: var(--on-klein);
-    --bubble-reply-edge: var(--klein-deep);
 
     /* ── La lumière de l’heure (os-sky.css) ── blanc froid, voile bleu. */
     --sky-top: oklch(1 0 0 / 0);
@@ -164,7 +150,6 @@
     --term-bg: oklch(0.17 0.012 266);
     --term-ink: oklch(0.95 0.005 266);
     --term-muted: oklch(0.74 0.015 266);
-    --term-accent: var(--klein-soft);
 
     /* ── Mouvement ── trois durées : retour, état, déplacement. */
     --dur-1: 150ms;
@@ -177,23 +162,54 @@
     color: var(--ink);
 }
 
+/* ── Dérivés de la teinte ── tout ce qui se calcule à partir de la
+   gamme --klein-* : redéclaré sur chaque [data-tint] (os-tints.css),
+   pour qu'un bloc vert ait ses touches, ses écrans, ses fenêtres et
+   ses bulles verts sans qu'aucun composant ne le sache. */
+.os,
+:root:has(body.os),
+[data-tint] {
+    --accent: var(--klein);
+    --mark: var(--klein);
+    --scan-lines: repeating-linear-gradient(0deg, color-mix(in oklch, var(--klein-deep) 30%, transparent) 0 1px, oklch(0 0 0 / 0) 1px 3px);
+    --scan-depth:
+        radial-gradient(closest-side, oklch(0 0 0 / 0) 55%, color-mix(in oklch, var(--klein-deep) 40%, transparent)),
+        linear-gradient(90deg, color-mix(in oklch, var(--klein-deep) 34%, transparent), oklch(0 0 0 / 0) 16% 84%, color-mix(in oklch, var(--klein-deep) 34%, transparent));
+    --scan-glow: radial-gradient(60% 55% at 50% 42%, color-mix(in oklch, var(--klein-hi) 85%, transparent), oklch(0 0 0 / 0) 72%);
+    --klein-screen: var(--scan-lines), var(--scan-depth), var(--scan-glow), var(--klein);
+    /* Sans vignette : écran étroit autour d'une fenêtre. */
+    --klein-screen-flat: var(--scan-lines), radial-gradient(80% 70% at 30% 20%, color-mix(in oklch, var(--klein-hi) 55%, transparent), oklch(0 0 0 / 0) 70%), var(--klein);
+    --key-klein: linear-gradient(180deg, color-mix(in oklch, var(--klein-hi) 45%, var(--klein)), var(--klein) 60%);
+    --key-klein-edge: var(--klein-deep);
+    --key-klein-relief: inset 0 1px 0 oklch(1 0 0 / 0.34), inset 0 -2px 0 color-mix(in oklch, var(--klein-deep) 22%, transparent), 0 1px 2px oklch(0.18 0.005 265 / 0.24), 0 3px 8px color-mix(in oklch, var(--klein) 22%, transparent);
+    --win-bar: linear-gradient(90deg, var(--klein-tint), var(--klein-wash) 50%, var(--klein-tint));
+    --win-bar-ink: var(--klein-ink);
+    --win-frame-color: var(--klein-ink);
+    --win-frame-dither: var(--klein-hi);
+    --bubble-reply: var(--klein);
+    --bubble-reply-ink: var(--on-klein);
+    --bubble-reply-edge: var(--klein-deep);
+    --term-accent: var(--klein-soft);
+}
+
 /* ── Surface Klein ── un bloc bleu (premier écran, pied de page,
    écrans) redéfinit la gamme pour lui et ses enfants : aucun
    composant n'a besoin de connaître son fond. Texte blanc 8,5:1,
    gris clair (blanc à 80 %) 5,9:1. */
 .on-klein {
-    --ink: oklch(1 0 0);
-    --ink-muted: oklch(1 0 0 / 0.8);
-    --ink-faint: oklch(1 0 0 / 0.8);
-    --line: oklch(1 0 0 / 0.18);
-    --line-strong: oklch(1 0 0 / 0.36);
-    --accent: oklch(1 0 0);
-    --on-accent: var(--klein-ink);
-    --mark: oklch(1 0 0);
-    --hover-tint: oklch(1 0 0 / 0.1);
-    /* Réponse de WAB : blanche, texte Klein (8,2:1). */
-    --bubble-reply: oklch(1 0 0);
-    --bubble-reply-ink: var(--klein-ink);
-    --bubble-reply-edge: oklch(1 0 0 / 0.6);
+    --ink: var(--on-klein);
+    --ink-muted: color-mix(in oklch, var(--on-klein) 80%, transparent);
+    --ink-faint: color-mix(in oklch, var(--on-klein) 80%, transparent);
+    --line: color-mix(in oklch, var(--on-klein) 18%, transparent);
+    --line-strong: color-mix(in oklch, var(--on-klein) 36%, transparent);
+    --accent: var(--on-klein);
+    --klein-text: var(--on-klein);
+    --on-accent: var(--klein-pair);
+    --mark: var(--on-klein);
+    --hover-tint: color-mix(in oklch, var(--on-klein) 10%, transparent);
+    /* Réponse de WAB : de la couleur du texte, écrite dans la teinte. */
+    --bubble-reply: var(--on-klein);
+    --bubble-reply-ink: var(--klein-pair);
+    --bubble-reply-edge: color-mix(in oklch, var(--on-klein) 60%, transparent);
     color: var(--ink);
 }

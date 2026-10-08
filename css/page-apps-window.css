@@ -79,7 +79,7 @@
 .app-tab[aria-selected='true'] {
     background: var(--tab-on);
     box-shadow: 0 0 0 var(--hair) var(--edge), var(--tab-shadow);
-    color: var(--klein);
+    color: var(--klein-text);
 }
 
 .app-tab:focus-visible {

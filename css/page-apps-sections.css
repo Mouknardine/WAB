@@ -64,7 +64,7 @@
     border-radius: var(--r-key);
     background: var(--key-light);
     box-shadow: 0 0 0 var(--hair) var(--edge), var(--key-light-relief);
-    color: var(--klein);
+    color: var(--klein-text);
 }
 
 .app-way__icon .sym {

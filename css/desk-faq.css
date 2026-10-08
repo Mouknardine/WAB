@@ -34,7 +34,7 @@
 }
 
 .qa[open] .qa__q {
-    color: var(--klein);
+    color: var(--klein-text);
 }
 
 .qa__q {

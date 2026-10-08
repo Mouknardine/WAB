@@ -11,7 +11,7 @@
  * dans pixels.js ; les motifs qui restent, dans pixels-patterns.js.
  */
 
-import { GLYPHS, KLEIN, LETTERS, WHITE, shortWords, paintBlocks, paintGlyphs, pick, touches } from './pixels-ink.js?v=2';
+import { GLYPHS, LETTERS, TINTS, shortWords, paintBlocks, paintGlyphs, pick, touches } from './pixels-ink.js?v=3';
 
 /** Durée de vie d'un pavé, en ms : base, plus un écart au hasard. */
 const LIFE_MS = 1100;
@@ -20,10 +20,11 @@ const LIFE_SPREAD_MS = 700;
 /** @typedef {import('./pixels-ink.js').Rect} Rect */
 /** @typedef {import('./pixels-ink.js').Glyph} Glyph */
 /** @typedef {import('./pixels-ink.js').Size} Size */
+/** @typedef {import('./pixels-ink.js').Tint} Tint */
 
 /** @param {Size} size taille d'un pavé et d'une case de texte, en px */
 export function createField(size) {
-    /** @type {Map<string, { col: number, row: number, until: number }>} */
+    /** @type {Map<string, { col: number, row: number, until: number, fill: string }>} */
     const blocks = new Map();
     const words = shortWords(size);
     /** @type {Glyph[]} */
@@ -33,8 +34,8 @@ export function createField(size) {
     let width = 0;
     let height = 0;
 
-    /** @param {number} col @param {number} row @param {number} now */
-    function light(col, row, now) {
+    /** @param {number} col @param {number} row @param {number} now @param {Tint} tint */
+    function light(col, row, now, tint) {
         if (col < 0 || row < 0 || col * size.block > width || row * size.block > height) return;
         if (touches(keep, size.block, col, row)) return;
 
@@ -46,45 +47,45 @@ export function createField(size) {
         }
 
         const until = now + LIFE_MS + Math.random() * LIFE_SPREAD_MS;
-        blocks.set(key, { col, row, until });
-        spawnInside(col, row, now, until);
+        blocks.set(key, { col, row, until, fill: tint.fill });
+        spawnInside(col, row, now, until, tint);
     }
 
     /** Un signe blanc, ou parfois un mot, posé sur la grille du texte. */
-    function spawnInside(/** @type {number} */ col, /** @type {number} */ row, /** @type {number} */ now, /** @type {number} */ until) {
+    function spawnInside(/** @type {number} */ col, /** @type {number} */ row, /** @type {number} */ now, /** @type {number} */ until, /** @type {Tint} */ tint) {
         const cells = Math.floor(size.block / size.glyph);
         const x = col * size.block + Math.floor(Math.random() * cells) * size.glyph;
         const y = row * size.block + Math.floor(Math.random() * cells) * size.glyph;
         const roll = Math.random();
         if (roll < 0.14) {
-            glyphs.push({ x: col * size.block + size.glyph * 0.5, y, text: pick(words), color: WHITE, born: now, until });
+            glyphs.push({ x: col * size.block + size.glyph * 0.5, y, text: pick(words), color: tint.ink, born: now, until });
         } else if (roll < 0.7) {
-            glyphs.push({ x, y, text: pick(GLYPHS), color: WHITE, born: now, until });
+            glyphs.push({ x, y, text: pick(GLYPHS), color: tint.ink, born: now, until });
         }
     }
 
     /** Une lettre bleue isolée, sur le bureau, près du passage. */
-    function scatter(/** @type {number} */ x, /** @type {number} */ y, /** @type {number} */ now) {
+    function scatter(/** @type {number} */ x, /** @type {number} */ y, /** @type {number} */ now, /** @type {Tint} */ tint) {
         const reach = size.block * 2.5;
         const gx = Math.round((x + (Math.random() * 2 - 1) * reach) / size.glyph) * size.glyph;
         const gy = Math.round((y + (Math.random() * 2 - 1) * reach) / size.glyph) * size.glyph;
         const col = Math.floor(gx / size.block);
         const row = Math.floor(gy / size.block);
         if (blocks.has(`${col},${row}`) || touches(keep, size.block, col, row)) return;
-        glyphs.push({ x: gx, y: gy, text: pick(LETTERS), color: KLEIN, born: now, until: now + 700 + Math.random() * 500 });
+        glyphs.push({ x: gx, y: gy, text: pick(LETTERS), color: tint.stray, born: now, until: now + 700 + Math.random() * 500 });
     }
 
-    /** Un passage en (x, y) : le pavé touché et quelques voisins. */
-    function stamp(/** @type {number} */ x, /** @type {number} */ y, /** @type {number} */ now) {
+    /** Un passage en (x, y) : le pavé touché et quelques voisins, dans la teinte donnée. */
+    function stamp(/** @type {number} */ x, /** @type {number} */ y, /** @type {number} */ now, tint = TINTS[0]) {
         const col = Math.floor(x / size.block);
         const row = Math.floor(y / size.block);
-        light(col, row, now);
+        light(col, row, now, tint);
         for (let dc = -1; dc <= 1; dc += 1) {
             for (let dr = -1; dr <= 1; dr += 1) {
-                if ((dc || dr) && Math.random() < 0.38) light(col + dc, row + dr, now);
+                if ((dc || dr) && Math.random() < 0.38) light(col + dc, row + dr, now, tint);
             }
         }
-        if (Math.random() < 0.3) scatter(x, y, now);
+        if (Math.random() < 0.3) scatter(x, y, now, tint);
     }
 
     /** @param {CanvasRenderingContext2D} ctx @param {number} now @param {boolean} still sans brouillage */

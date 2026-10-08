@@ -26,11 +26,24 @@
 }
 
 .step__num {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-family: var(--font-mono);
     font-size: var(--t-cap);
     letter-spacing: var(--track-caps);
     text-transform: uppercase;
-    color: var(--klein-ink);
+    color: var(--klein-text);
+}
+
+/* Le pixel de l'étape : un carré plein de sa teinte (data-tint). */
+.step__num::before {
+    content: '';
+    flex: none;
+    width: 12px;
+    height: 12px;
+    background: var(--klein);
+    box-shadow: inset 0 0 0 var(--hair) var(--klein-deep);
 }
 
 .step__name {

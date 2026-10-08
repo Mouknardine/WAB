@@ -103,7 +103,7 @@
     font-size: 1.6rem;
     font-weight: var(--w-strong);
     letter-spacing: -0.05em;
-    color: var(--klein);
+    color: var(--klein-text);
 }
 
 /* Au téléphone, une seule ligne grise : les noms suffisent. */

@@ -44,7 +44,7 @@ body.os {
 }
 
 .os {
-    caret-color: var(--klein);
+    caret-color: var(--klein-text);
 }
 
 /* L'anneau de focus : 2 px, décollé de 2 px, sans délai. Sur une
