@@ -1,8 +1,8 @@
 /* ============================================
    Page Work — les projets, un par un
-   Chaque bloc : le site dans sa fenêtre, posée sur son écran (le bleu
-   Klein à scanlines, un liseré Klein profond, la feuille décalée
-   dessous comme une pile), et collée contre elle une colonne
+   Chaque bloc : le site dans sa fenêtre, posée seule sur le bureau
+   (liseré gris, ombre douce, sans cadre de couleur), et contre elle
+   une colonne
    de texte — l'échange en bulles en haut, le nom, le contexte, les
    disciplines et « Ouvrir la fiche » calés sur le bord bas. Les côtés
    alternent. Au téléphone : la fenêtre, les bulles, le nom.
@@ -31,21 +31,16 @@
     position: relative;
 }
 
-/* ── L'écran ── le bleu Klein franc et ses lignes d'écran, sans la
-   vignette (sur 12 px de bord, elle ne laisserait voir que du bleu
-   nuit) ; le retrait et le rayon extérieur suivent la fenêtre.
-   Liseré profond, feuille décalée dessous. */
+/* ── La fenêtre du site ── posée seule, comme un vrai navigateur :
+   pas de cadre de couleur autour (demande d'Eliott, 08.10). */
 .pw-screen {
     display: block;
-    padding: var(--screen-pad);
-    border-radius: calc(var(--r-win) + var(--screen-pad));
-    background: var(--scan-lines), var(--klein);
-    box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--sheet), var(--shadow-object);
+    border-radius: var(--r-win);
     -webkit-tap-highlight-color: transparent;
 }
 
 .pw-screen .win {
-    box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--shadow-soft);
+    box-shadow: 0 0 0 var(--hair) var(--win-edge), var(--shadow-object);
     transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
 }
 
@@ -110,7 +105,7 @@
 @media (hover: hover) {
     .pw-screen:hover .win {
         transform: translateY(-4px);
-        box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--shadow-lift);
+        box-shadow: 0 0 0 var(--hair) var(--win-edge), var(--shadow-lift);
     }
 }
 
@@ -130,7 +125,7 @@
         order: -1;
         justify-content: space-between;
         gap: 24px;
-        padding-block: calc(var(--screen-pad) + 6px);
+        padding-block: 6px;
     }
 
     .piece--flip {
