@@ -3,8 +3,8 @@
    Le déroulé : une bande pleine largeur sur le gris chaud, quatre
    cartes blanches au liseré fin et en relief (l'icône dans sa touche,
    le titre sur la même ligne, la phrase dessous).
-   L'appel final : une boîte de dialogue du système dans son cadre
-   Klein — l'icône, la question, deux boutons, le bleu à droite
+   L'appel final : une boîte de dialogue du système, fenêtre blanche
+   sans cadre — l'icône, la question, deux boutons, la teinte à droite
    (l'action par défaut, comme sur macOS ; au téléphone, en haut).
    ============================================ */
 
@@ -97,13 +97,7 @@
 }
 
 .pw-alert > .win {
-    padding-top: var(--win-frame);
-    box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--sheet), var(--shadow-lift);
-}
-
-/* Sans barre de titre : le cadre tramé fait le tour complet. */
-.pw-alert > .win::before {
-    inset: 0;
+    box-shadow: 0 0 0 var(--hair) var(--win-edge), var(--shadow-lift);
 }
 
 .pw-alert .pw-alert__body {
