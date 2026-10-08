@@ -1,49 +1,66 @@
 /* ============================================
    WAB. — Accueil : le premier écran
-   Sur le bureau à trame de points, tout l'écran : une nuée d'oiseaux
-   de toutes les couleurs (js/birds, data-birds « dense », « vives »,
-   « top ») ; le nom en touches, la promesse et deux touches au
-   centre sur ordinateur, en bas au téléphone sous le ciel. Les
-   services suivent juste en dessous.
+   Le bureau à trame de points, presque vide : le nom « WeAreBrothers »
+   en bas, sur toute la largeur, et deux touches. Le canevas
+   .hero__pixels se creuse de gros pixels bleus au passage de la
+   souris ou du doigt, avec des signes informatiques qui surgissent
+   (js/desk/pixels.js) ; jamais sous le nom ni sous les touches
+   ([data-pixels-keep]). Survolées, les lettres du nom se brouillent
+   en symboles puis reviennent (js/desk/scramble.js).
    ============================================ */
 
 .hero {
     position: relative;
-    display: grid;
-    place-items: end center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     min-height: max(560px, 100svh);
-    overflow-x: clip;
+    padding: calc(var(--bar-h) + 24px) var(--gutter) clamp(40px, 7vh, 64px);
+    overflow: clip;
 }
 
-/* Le ciel est attaché au premier écran (et non fixé à la fenêtre) :
-   il défile avec lui, sous le texte. */
-.hero > #birdCanvas {
+.hero__pixels {
     position: absolute;
     inset: 0;
     z-index: 0;
+    width: 100%;
+    height: 100%;
 }
 
-.hero__center {
+.hero__copy {
     position: relative;
     z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: calc(var(--bar-h) + 32px) var(--gutter) clamp(48px, 9vh, 72px);
+    width: 100%;
+    max-width: calc(var(--measure) + 160px);
+    margin-inline: auto;
+}
+
+/* Le nom d'un seul tenant, aussi large que l'écran le permet. */
+.os .hero__title {
+    font-size: clamp(2.75rem, 12.2vw, 11rem);
+    font-weight: var(--w-strong);
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    white-space: nowrap;
+}
+
+.hero__word {
+    display: inline-block;
+}
+
+/* Chaque lettre garde sa largeur pendant qu'elle se brouille :
+   le mot ne bouge pas (largeur posée par scramble.js). */
+.hero__char {
+    display: inline-block;
     text-align: center;
 }
 
-/* Le nom en touches de clavier : leur dessin est dans desk-keys.css. */
-.hero__title {
-    line-height: 1;
-}
-
-.hero__lede {
-    margin-top: clamp(18px, 2.4vw, 26px);
-    max-width: 44ch;
-    font-size: var(--t-lede);
-    line-height: 1.45;
-    text-wrap: balance;
+.hero__char.is-glyph {
+    font-family: var(--font-mono);
+    font-weight: var(--w-regular);
+    font-size: 0.8em;
+    color: var(--klein);
+    letter-spacing: 0;
 }
 
 .hero__actions {
@@ -52,18 +69,13 @@
     align-items: stretch;
     gap: 12px;
     width: min(100%, 300px);
-    margin-top: clamp(26px, 3vw, 32px);
-}
-
-.hero__nowrap {
-    white-space: nowrap;
+    margin-top: clamp(20px, 3vw, 32px);
 }
 
 @media (min-width: 600px) {
     .hero__actions {
         flex-direction: row;
-        justify-content: center;
-        width: auto;
+        width: fit-content;
         gap: 16px;
     }
 }
@@ -74,14 +86,9 @@
     outline: none;
 }
 
-/* Sur ordinateur, le nom et la promesse reviennent au centre de
-   l'écran, la volée tout autour ; le bas garde la place du dock. */
+/* Sur ordinateur, le bas garde la place du dock. */
 @media (min-width: 900px) {
     .hero {
-        place-items: center;
-    }
-
-    .hero__center {
-        padding-bottom: 96px;
+        padding-bottom: var(--dock-space);
     }
 }
