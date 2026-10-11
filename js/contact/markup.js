@@ -28,8 +28,7 @@ const ARROW = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" strok
 const TEAM = [
     { name: 'Eliott', file: 'avatar-eliott.webp' },
     { name: 'Matt', file: 'avatar-matt.webp' },
-    { name: 'Ivan', file: 'avatar-ivan.webp' },
-    { name: 'Yael', file: 'avatar-yael.webp' },
+    { name: 'Bryan', file: 'avatar-bryan.webp' },
     { name: 'Anaïs', file: 'avatar-anais.webp' },
 ];
 

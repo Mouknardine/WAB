@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://wearebrothers.ch/</loc>
-        <lastmod>2026-10-08</lastmod>
+        <lastmod>2026-10-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
         <image:image>
@@ -117,7 +117,7 @@
     </url>
     <url>
         <loc>https://wearebrothers.ch/studio</loc>
-        <lastmod>2026-10-08</lastmod>
+        <lastmod>2026-10-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -129,12 +129,8 @@
             <image:caption>Matt Pina, lead développeur full-stack chez WeAreBrothers Studio, agence web à Lausanne</image:caption>
         </image:image>
         <image:image>
-            <image:loc>https://wearebrothers.ch/assets/images/team-ivan.webp</image:loc>
-            <image:caption>Ivan Jakovlevski, commercial et relation client chez WeAreBrothers Studio, agence web à Lausanne</image:caption>
-        </image:image>
-        <image:image>
-            <image:loc>https://wearebrothers.ch/assets/images/team-yael.webp</image:loc>
-            <image:caption>Yael Peccatus, gestionnaire de projet chez WeAreBrothers Studio, agence web à Lausanne</image:caption>
+            <image:loc>https://wearebrothers.ch/assets/images/team-bryan.webp</image:loc>
+            <image:caption>Bryan Morin, commercial et relation client chez WeAreBrothers Studio, agence web à Lausanne</image:caption>
         </image:image>
         <image:image>
             <image:loc>https://wearebrothers.ch/assets/images/team-anais.webp</image:loc>

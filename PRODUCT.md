@@ -30,7 +30,7 @@ Second différenciateur, en montée : WAB ne s'arrête pas au site vitrine. Le s
 
 Priorité commerciale : les sites web restent le cœur de l'activité ; les logiciels métier sont l'axe de croissance. Le site sert les deux sans que la seconde offre écrase la première.
 
-Formulations à éviter : « interlocuteur unique », « sans chef de projet » (l'équipe compte un gestionnaire de projet), tout registre familier.
+Formulations à éviter : « interlocuteur unique », « sans chef de projet », tout registre familier.
 
 ## Operating Context
 
@@ -54,7 +54,7 @@ Formulations à éviter : « interlocuteur unique », « sans chef de projet » 
 | `/` | `index.html` | Premier écran « WeAreBrothers. » en touches + deux boutons ; Services (trois cartes : sites, applications, automatisation) ; Méthode (quatre étapes) ; Réalisations (« Fait à Lausanne. », grille de captures) ; Offres (trois prix) ; Le studio (lettre signée) ; FAQ ; appel final |
 | `/realisations` | `work.html` | « Neuf études de cas, de Lausanne à Bavois. » — vue en icônes ou en liste, fiche de chaque projet ; méthode ; contact |
 | `/services` | `services.html` | Technologie ; Image de marque ; Formules (les trois prix) ; Méthode |
-| `/studio` | `about.html` | Équipe (cinq portraits en fenêtres, nom et rôle) ; Conseil (fenêtre « Parcours ») ; Savoir-faire ; contact |
+| `/studio` | `about.html` | Équipe (quatre portraits en fenêtres, nom et rôle) ; Conseil (fenêtre « Parcours ») ; Savoir-faire ; contact |
 | `/creation-site-internet-lausanne` | `creation-site-internet-lausanne.html` | Page d'atterrissage SEO : exemples, ce qui est inclus, formats, déroulé, studio et communes servies, refonte, FAQ |
 | `/applications` | `applications.html` | L'application de gestion écran par écran, approche, FAQ, contact |
 | (toute adresse inconnue) | `404.html` | Page introuvable, vrai code 404, `noindex` |
@@ -82,8 +82,7 @@ Formulations à éviter : « interlocuteur unique », « sans chef de projet » 
 - Équipe nommée publiquement (page About) :
   - **Eliott Pina** — lead designer, direction artistique ; bachelor en droit, master en cours en systèmes d'information et innovation digitale, lauréat du programme UCreate (10'000 CHF pour le développement d'une application) ;
   - **Matt Pina** — lead développeur full-stack ; également en poste au Centre Patronal ;
-  - **Ivan Jakovlevski** — commercial et relation client ; également en R&D chez VEG Consulting, fiduciaire lausannoise ;
-  - **Yael Peccatus** — gestionnaire de projet (a notamment piloté Memories Store et le label LE MEMO) ;
+  - **Bryan Morin** — commercial et relation client (depuis octobre 2026) ;
   - **Anaïs Polo** — web designeuse, étudiante en Bachelor Media & Interaction Design à l'ECAL.
 - Quatre valeurs internes, non affichées : Proximité, Craft, Performance, Transparence.
 - Voix : française, directe, concrète, sans jargon ; le client est vouvoyé. Affirmations vérifiables plutôt que formules creuses. Les bulles de dialogue (question / réponse) sont une signature à garder.

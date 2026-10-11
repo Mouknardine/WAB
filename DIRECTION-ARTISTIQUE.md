@@ -219,7 +219,7 @@ Sous la grille, une ligne-lien : « Image de marque, print, vêtements : voir to
 ### 5.7 Le studio
 
 - Badge « Le studio » + la lettre actuelle, dans une **carte nette** (plus de cadre tramé), largeur 720 px.
-- Signatures : Eliott Pina (Lead designer), Matt Pina (Lead développeur) ; sous elles, une rangée « L'équipe » avec Yael Peccatus (gestion de projet) et Anaïs Polo (web design) — portraits **à fournir** s'ils n'existent pas.
+- Signatures : Eliott Pina (Lead designer), Matt Pina (Lead développeur) ; sous elles, une rangée « L'équipe » avec Bryan Morin (relation client) et Anaïs Polo (web design) — portraits **à fournir** s'ils n'existent pas.
 - Aucun oiseau autour.
 
 ### 5.8 Questions fréquentes
