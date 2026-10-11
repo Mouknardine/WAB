@@ -6,8 +6,7 @@
    rôle en Sligoil, le texte) — jamais posée sur le portrait, où elle
    masquait le visage. Une fiche sur deux descend d'un
    cran (quinconce, comme le bureau de l'accueil).
-   Au téléphone : les fiches défilent au doigt, le nom de fichier
-   disparaît.
+   Au téléphone : les fiches défilent au doigt.
    Toutes les valeurs viennent des jetons (os-tokens.css).
    ============================================ */
 
@@ -139,10 +138,6 @@
     text-wrap: pretty;
 }
 
-.ab-card > .file-name {
-    display: none;
-}
-
 /* ── Ordinateur : quatre fiches, deux par rangée puis toutes sur une
    seule au-delà de 1200 px ; une sur deux descend d'un cran (quinconce). ── */
 @media (min-width: 860px) {
@@ -159,10 +154,6 @@
 
     .ab-card:nth-child(2n) {
         translate: 0 48px;
-    }
-
-    .ab-card > .file-name {
-        display: block;
     }
 }
 
