@@ -42,6 +42,8 @@ const SERVICES = [
 const TEAM = [
     'Eliott Pina   Lead designer',
     'Matt Pina     Lead développeur',
+    'Bryan Morin   Commercial et relation client',
+    'Anaïs Polo    Web designeuse',
     'Studio indépendant de design et de développement, fondé à Lausanne.',
     'Nous accompagnons marques, institutions et entreprises, de la stratégie à la mise en ligne.',
 ];

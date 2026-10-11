@@ -2,7 +2,8 @@
 /**
  * WAB OS — le Terminal
  * Une petite fenêtre sombre où l'on tape aide, projets, services,
- * equipe, contact, heure. La saisie est bornée et nettoyée (caractères
+ * equipe, contact, heure. Une rangée de raccourcis lance les
+ * principales d'un clic, sans rien savoir taper. La saisie est bornée et nettoyée (caractères
  * de contrôle retirés, 60 signes au plus), et tout s'affiche par
  * textContent : rien de tapé n'est jamais interprété comme du HTML.
  * Flèches haut et bas : les commandes précédentes.
@@ -12,12 +13,13 @@ import { openWindow } from './wm.js?v=3';
 import { el } from './dom.js?v=3';
 import { openContact } from './actions.js?v=1';
 import { report } from './lazy.js?v=1';
-import { run } from './terminal-commands.js?v=3';
+import { run } from './terminal-commands.js?v=4';
 import { launchCase } from './apps.js?v=7';
 
 const MAX_INPUT = 60;
 const MAX_LINES = 240;
 const PROMPT = 'invite@wab ~ %';
+const SHORTCUTS = ['projets', 'services', 'équipe', 'contact', 'aide'];
 
 /**
  * @param {string} raw
@@ -42,6 +44,26 @@ function makePrinter(log) {
     };
 }
 
+/**
+ * Les commandes principales en boutons : un clic les lance comme si
+ * on les avait tapées.
+ * @param {(command: string) => void} execute
+ * @returns {HTMLElement}
+ */
+function buildShortcuts(execute) {
+    const list = el('ul', 'term__shortcuts');
+    list.setAttribute('aria-label', 'Commandes rapides');
+    SHORTCUTS.forEach((command) => {
+        const button = el('button', 'term__shortcut', command);
+        button.type = 'button';
+        button.addEventListener('click', () => execute(command));
+        const item = el('li');
+        item.append(button);
+        list.append(item);
+    });
+    return list;
+}
+
 /** @param {import('./wm.js').OsWindow} win */
 function build(win) {
     const term = el('div', 'term');
@@ -57,7 +79,7 @@ function build(win) {
     input.id = `term-input-${Date.now()}`;
     input.name = 'commande';
     label.htmlFor = input.id;
-    Object.assign(input, { type: 'text', maxLength: MAX_INPUT, autocomplete: 'off', spellcheck: false, enterKeyHint: 'send' });
+    Object.assign(input, { type: 'text', maxLength: MAX_INPUT, autocomplete: 'off', spellcheck: false, enterKeyHint: 'send', placeholder: 'tapez ici…' });
     input.setAttribute('autocapitalize', 'none');
     input.setAttribute('aria-describedby', `${input.id}-hint`);
     const hint = el('span', 'sr-only', 'Tapez une commande puis Entrée. Tapez aide pour la liste.');
@@ -76,10 +98,9 @@ function build(win) {
         openCase: (id, title) => launchCase(id, title, input),
     };
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const { name, arg, shown } = parse(input.value);
-        input.value = '';
+    /** @param {string} raw */
+    const execute = (raw) => {
+        const { name, arg, shown } = parse(raw);
         if (!shown) return;
         history.push(shown);
         cursor = history.length;
@@ -88,6 +109,13 @@ function build(win) {
             report('terminal', error);
             print('Quelque chose a coincé. Réessayez.', 'error');
         });
+    };
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const raw = input.value;
+        input.value = '';
+        execute(raw);
     });
 
     input.addEventListener('keydown', (event) => {
@@ -104,8 +132,9 @@ function build(win) {
         if (event.target === term || event.target === log) input.focus();
     });
 
-    print(['WAB OS, Terminal.', 'Tapez aide pour commencer.'], 'accent');
-    term.append(log, form);
+    print('Bienvenue dans le terminal de WAB.', 'accent');
+    print('Tapez une commande, ou choisissez-en une ci-dessous.', 'muted');
+    term.append(log, buildShortcuts(execute), form);
     win.body.append(term);
 }
 

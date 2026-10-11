@@ -52,8 +52,8 @@ export function launchCase(id, title, opener) {
 /** @param {HTMLElement | null} opener */
 export function launchTerminal(opener) {
     launch('terminal', async () => {
-        await styles('os-terminal');
-        (await import('./terminal.js?v=8')).openTerminal(opener);
+        await Promise.all([styles(), loadStyle('os-terminal', 6)]);
+        (await import('./terminal.js?v=9')).openTerminal(opener);
     }, () => toast('Le terminal n’a pas pu s’ouvrir.'));
 }
 
