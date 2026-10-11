@@ -9,8 +9,8 @@
  * À la fermeture, le focus revient à ce qui a ouvert la fenêtre.
  */
 
-import { buildFrame } from './wm-frame.js?v=1';
-import { wire } from './wm-wire.js?v=3';
+import { buildFrame } from './wm-frame.js?v=2';
+import { wire } from './wm-wire.js?v=4';
 import { markOpen, shelve, unshelve, dockVisible, onDockVisibility } from './dock.js?v=2';
 
 const Z_BASE = 130;
@@ -42,6 +42,7 @@ const sheetQuery = window.matchMedia('(max-width: 759px)');
  * @property {HTMLElement | null} opener
  * @property {(win: OsWindow) => void} build
  * @property {(win: OsWindow) => HTMLElement | null} [focus]
+ * @property {boolean} [dismissible]  bouton « Fermer », clic à côté
  */
 
 /** @type {OsWindow[]} Les fenêtres ouvertes, la dernière dessus. */

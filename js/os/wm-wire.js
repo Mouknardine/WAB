@@ -2,11 +2,12 @@
 /**
  * WAB OS — le câblage d'une fenêtre
  * Les pastilles, le double-clic sur la barre (agrandir), le passage
- * au premier plan au clic ou au focus, Échap, et le déplacement par
- * la barre.
+ * au premier plan au clic ou au focus, Échap, le déplacement par
+ * la barre, et les gestes qui referment (wm-dismiss.js).
  */
 
-import { makeMovable } from './wm-frame.js?v=1';
+import { makeMovable } from './wm-frame.js?v=2';
+import { makeDismissible } from './wm-dismiss.js?v=1';
 
 /**
  * @typedef {object} Actions
@@ -23,7 +24,18 @@ import { makeMovable } from './wm-frame.js?v=1';
  */
 export function wire(win, frame, actions) {
     const { el, bar } = frame;
+    const forget = makeDismissible({
+        el,
+        isSheet: () => win.sheet,
+        isActive: () => el.classList.contains('is-active'),
+        opener: () => win.opener,
+        close: () => actions.close(win),
+    }, Boolean(frame.done));
+    el.addEventListener('close', () => {
+        if (!el.isConnected) forget();
+    });
     frame.close.addEventListener('click', () => actions.close(win));
+    frame.done?.addEventListener('click', () => actions.close(win));
     frame.min.addEventListener('click', () => actions.minimize(win));
     const toggleMax = () => {
         const max = el.classList.toggle('is-max');

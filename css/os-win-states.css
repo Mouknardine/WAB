@@ -1,8 +1,9 @@
 /* ============================================
    WAB OS — les fenêtres : modes et états
    Agrandie (toute la place entre la barre et le dock), feuille au
-   téléphone, et le contenu d'attente ou d'erreur d'une fenêtre,
-   jamais vide : une phrase, et une issue.
+   téléphone, fenêtre « à congédier » (la fiche projet : une vraie
+   touche « Fermer »), et le contenu d'attente ou d'erreur d'une
+   fenêtre, jamais vide : une phrase, et une issue.
    ============================================ */
 
 /* ── Agrandie ── toute la place entre la barre de menus et le dock. */
@@ -50,6 +51,60 @@
         transform: translateY(40px);
         opacity: 0;
     }
+}
+
+/* La poignée : la feuille se tire vers le bas pour se fermer. */
+.oswin.is-sheet .oswin__bar {
+    position: relative;
+}
+
+.oswin.is-sheet .oswin__bar::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    width: 36px;
+    height: 4px;
+    margin-left: -18px;
+    border-radius: var(--r-pill);
+    background: var(--line-strong);
+}
+
+/* ── À congédier ── une barre plus haute pour une vraie touche
+   « Fermer » au bout, précédée d'une croix. En feuille, elle remplace
+   les pastilles : un seul moyen visible, bien gros. */
+.oswin--dismissible .oswin__bar {
+    height: 52px;
+    padding-right: 10px;
+}
+
+.oswin__done {
+    flex: none;
+    margin-left: auto;
+    gap: 6px;
+}
+
+.oswin__done::before {
+    content: '';
+    width: 0.9em;
+    height: 0.9em;
+    background: currentColor;
+    -webkit-mask: url('../assets/icons/sym-close.svg') center / contain no-repeat;
+    mask: url('../assets/icons/sym-close.svg') center / contain no-repeat;
+}
+
+.oswin--dismissible.is-sheet .oswin__bar {
+    height: 60px;
+    padding: 6px 12px 0 16px;
+}
+
+.oswin--dismissible.is-sheet .oswin__ctls {
+    display: none;
+}
+
+.oswin--dismissible.is-sheet .oswin__done {
+    min-height: 44px;
+    padding: 0 16px;
 }
 
 /* ── Les signes des pastilles ── ils n'apparaissent qu'au survol de la

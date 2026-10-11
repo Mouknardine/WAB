@@ -5,9 +5,11 @@
  * droite (contexte, nom, disciplines, description, démarche) et le
  * bouton « Voir le site ». Contenu lu sur la page Work (projects.js).
  * En feuille au téléphone : la photo en haut, le texte dessous.
+ * Elle se referme d'un clic à côté, d'un glissé vers le bas au
+ * téléphone, ou par son bouton « Fermer ».
  */
 
-import { openWindow } from './wm.js?v=3';
+import { openWindow } from './wm.js?v=4';
 import { loadProjects, imageFrom } from './projects.js?v=1';
 import { el, showState, keyLink } from './dom.js?v=3';
 import { report } from './lazy.js?v=1';
@@ -89,6 +91,7 @@ export function openCase(id, title, opener) {
         icon: 'file',
         app: 'work',
         size: 'lg',
+        dismissible: true,
         opener,
         build: (win) => { fill(win, id); },
         focus: (win) => win.body.querySelector('.case-os__name'),

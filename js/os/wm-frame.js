@@ -16,6 +16,7 @@ let uid = 0;
  * @property {HTMLButtonElement} close
  * @property {HTMLButtonElement} min
  * @property {HTMLButtonElement} max
+ * @property {HTMLButtonElement | null} done  le grand bouton « Fermer »
  * @property {HTMLElement} titleText
  */
 
@@ -33,7 +34,19 @@ function control(label, modifier) {
 }
 
 /**
- * @param {{ title: string, icon: string, size: string }} spec
+ * Le grand bouton « Fermer », une touche du site, au bout de la barre.
+ * @returns {HTMLButtonElement}
+ */
+function doneButton() {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'key-btn key-btn--sm oswin__done';
+    button.textContent = 'Fermer';
+    return button;
+}
+
+/**
+ * @param {{ title: string, icon: string, size: string, dismissible?: boolean }} spec
  * @returns {Frame}
  */
 export function buildFrame(spec) {
@@ -41,7 +54,7 @@ export function buildFrame(spec) {
     const titleId = `oswin-title-${uid}`;
 
     const el = document.createElement('dialog');
-    el.className = `oswin oswin--${spec.size}`;
+    el.className = `oswin oswin--${spec.size}${spec.dismissible ? ' oswin--dismissible' : ''}`;
     el.setAttribute('aria-labelledby', titleId);
     el.tabIndex = -1;
 
@@ -66,13 +79,15 @@ export function buildFrame(spec) {
     titleText.textContent = spec.title;
     title.append(icon, titleText);
 
+    const done = spec.dismissible ? doneButton() : null;
     bar.append(controls, title);
+    if (done) bar.append(done);
 
     const body = document.createElement('div');
     body.className = 'oswin__body';
 
     el.append(bar, body);
-    return { el, bar, body, close, min, max, titleText };
+    return { el, bar, body, close, min, max, done, titleText };
 }
 
 /**
@@ -83,7 +98,7 @@ export function buildFrame(spec) {
  * @param {() => boolean} hooks.canMove
  * @param {() => { x: number, y: number }} hooks.get
  * @param {(x: number, y: number) => void} hooks.set
- * @param {() => void} hooks.onStart
+ * @param {() => void} [hooks.onStart]
  */
 export function makeMovable(bar, hooks) {
     bar.addEventListener('pointerdown', (down) => {
@@ -99,7 +114,7 @@ export function makeMovable(bar, hooks) {
             const dx = move.clientX - down.clientX;
             const dy = move.clientY - down.clientY;
             if (!moved && Math.hypot(dx, dy) < 3) return;
-            if (!moved) hooks.onStart();
+            if (!moved) hooks.onStart?.();
             moved = true;
             hooks.set(start.x + dx, start.y + dy);
         };

@@ -9,12 +9,12 @@
  * Flèches haut et bas : les commandes précédentes.
  */
 
-import { openWindow } from './wm.js?v=3';
+import { openWindow } from './wm.js?v=4';
 import { el } from './dom.js?v=3';
 import { openContact } from './actions.js?v=1';
 import { report } from './lazy.js?v=1';
 import { run } from './terminal-commands.js?v=4';
-import { launchCase } from './apps.js?v=7';
+import { launchCase } from './apps.js?v=8';
 
 const MAX_INPUT = 60;
 const MAX_LINES = 240;
