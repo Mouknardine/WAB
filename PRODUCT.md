@@ -82,7 +82,7 @@ Formulations à éviter : « interlocuteur unique », « sans chef de projet »,
 - Équipe nommée publiquement (page About) :
   - **Eliott Pina** — lead designer, direction artistique ; bachelor en droit, master en cours en systèmes d'information et innovation digitale, lauréat du programme UCreate (10'000 CHF pour le développement d'une application) ;
   - **Matt Pina** — lead développeur full-stack ; également en poste au Centre Patronal ;
-  - **Bryan Morin** — commercial et relation client (depuis octobre 2026) ;
+  - **Bryan Morin** — commercial et relation client (depuis octobre 2026) ; accompagne aussi de grands clients au sein d'une startup ;
   - **Anaïs Polo** — web designeuse, étudiante en Bachelor Media & Interaction Design à l'ECAL.
 - Quatre valeurs internes, non affichées : Proximité, Craft, Performance, Transparence.
 - Voix : française, directe, concrète, sans jargon ; le client est vouvoyé. Affirmations vérifiables plutôt que formules creuses. Les bulles de dialogue (question / réponse) sont une signature à garder.

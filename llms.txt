@@ -8,7 +8,7 @@
 - **Équipe** :
   - Eliott Pina — lead designer, direction artistique (identités visuelles, interfaces, motion design). Bachelor en droit, master en cours en systèmes d'information ; 10'000 CHF remportés au programme UCreate pour le développement d'une application.
   - Matt Pina — lead développeur full-stack (architecture technique, développement, mise en ligne). Également en poste au Centre Patronal.
-  - Bryan Morin — commercial et relation client, suit chaque client de la prise de contact au lancement.
+  - Bryan Morin — commercial et relation client, suit chaque client de la prise de contact au lancement ; accompagne aussi de grands clients au sein d'une startup.
   - Anaïs Polo — web designeuse, en Bachelor Media & Interaction Design à l'ECAL.
 - **Méthode** : 1. premier échange sans engagement ; 2. proposition écrite (périmètre, calendrier, prix) sous 24 h ouvrées ; 3. design et développement, validés étape par étape ; 4. mise en ligne, hébergement en Suisse, maintenance et évolutions.
 - **Engagements** : chaque site est dessiné et codé de A à Z, sans WordPress ni Wix ; pensé d'abord pour le mobile ; référencement local inclus ; hébergement en Suisse chez Infomaniak inclus ; le domaine, le code et les contenus appartiennent au client. Un site vitrine prend 3 à 6 semaines.
