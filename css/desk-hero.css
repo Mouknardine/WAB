@@ -1,7 +1,8 @@
 /* ============================================
    WAB. — Accueil : le premier écran
    Le bureau à trame de points, presque vide : le nom « WeAreBrothers. »
-   en bas, tapé en touches de clavier, et deux touches. Le canevas
+   en bas, tapé en touches de clavier, une ligne qui dit le métier et
+   le lieu, et deux touches. Le canevas
    .hero__pixels se creuse de gros pixels de couleur au passage de la
    souris ou du doigt, avec des signes informatiques qui surgissent
    (js/desk/pixels.js) ; au repos, des motifs tirés au hasard restent
@@ -81,6 +82,16 @@
     .hero__copy {
         --key: min(82px, (100vw - 2 * var(--gutter)) / 15.4);
     }
+}
+
+/* Sous le nom, une ligne qui dit le métier et le lieu (« Agence web à
+   Lausanne… ») : le visiteur sait où il est, Google aussi. */
+.hero__lede {
+    margin-top: clamp(18px, 2.4vw, 26px);
+    max-width: 44ch;
+    font-size: var(--t-lede);
+    line-height: 1.45;
+    text-wrap: balance;
 }
 
 .hero__actions {

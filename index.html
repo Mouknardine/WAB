@@ -250,7 +250,11 @@
                 "@id": "https://wearebrothers.ch/#website",
                 "url": "https://wearebrothers.ch/",
                 "name": "WeAreBrothers Studio",
-                "alternateName": "WAB.",
+                "alternateName": [
+                    "WeAreBrothers",
+                    "WAB Studio",
+                    "WAB."
+                ],
                 "inLanguage": "fr-CH",
                 "publisher": {
                     "@id": "https://wearebrothers.ch/#organization"
@@ -424,7 +428,7 @@
     <link rel="stylesheet" href="css/os-overlay.css?v=5">
     <!-- Accueil « bureau rangé » -->
     <link rel="stylesheet" href="css/desk-objects.css?v=8">
-    <link rel="stylesheet" href="css/desk-hero.css?v=25">
+    <link rel="stylesheet" href="css/desk-hero.css?v=26">
     <link rel="stylesheet" href="css/desk-margins.css?v=3">
     <link rel="stylesheet" href="css/desk-keys.css?v=4">
     <link rel="stylesheet" href="css/home-head.css?v=5">
@@ -510,7 +514,8 @@
              contenu, sur toute la page (js/desk/pixels-margins.js). -->
         <div class="margins" aria-hidden="true" data-margins></div>
 
-        <!-- LE PREMIER ÉCRAN — presque vide : le nom en bas, deux touches.
+        <!-- LE PREMIER ÉCRAN — presque vide : le nom en bas, une ligne qui
+             dit le métier et le lieu, deux touches.
              Au passage de la souris (ou du doigt), le bureau se creuse de
              gros pixels bleus où surgissent des signes informatiques
              (js/desk/pixels*.js) ; ils s'éteignent case par case. Le nom est
@@ -521,8 +526,13 @@
             <canvas class="hero__pixels" aria-hidden="true" data-pixels-canvas></canvas>
             <div class="hero__copy">
                 <!-- « agence web » et « site internet » à Lausanne restent
-                     dans le H1, lus par Google et la navigation vocale. -->
+                     dans le H1, lus par Google et la navigation vocale ; la
+                     ligne visible juste dessous (.hero__lede) les répète
+                     pour le visiteur. Elle avait disparu le 08.10 ; trois
+                     jours plus tard, l'accueil reculait de la 1re à la
+                     3e page de Google sur « agence web lausanne ». -->
                 <h1 class="hero__title" id="heroTitle"><span class="hero__keys" aria-hidden="true" translate="no" data-scramble data-pixels-keep><span class="keys"><span class="key key--tint" data-tint="vert" style="--i: 0"><span class="key__face">W</span></span><span class="key" style="--i: 1"><span class="key__face">e</span></span><span class="key key--tint" data-tint="jaune" style="--i: 2"><span class="key__face">A</span></span><span class="key" style="--i: 3"><span class="key__face">r</span></span><span class="key" style="--i: 4"><span class="key__face">e</span></span></span><span class="keys"><span class="key key--tint" data-tint="rose" style="--i: 5"><span class="key__face">B</span></span><span class="key" style="--i: 6"><span class="key__face">r</span></span><span class="key" style="--i: 7"><span class="key__face">o</span></span><span class="key" style="--i: 8"><span class="key__face">t</span></span><span class="key" style="--i: 9"><span class="key__face">h</span></span><span class="key" style="--i: 10"><span class="key__face">e</span></span><span class="key" style="--i: 11"><span class="key__face">r</span></span><span class="key" style="--i: 12"><span class="key__face">s</span></span><span class="key key--dot" style="--i: 13"><span class="key__face">.</span></span></span></span><span class="sr-only" translate="no">WeAreBrothers.</span><span class="sr-only">, agence web et création de site internet à Lausanne.</span></h1>
+                <p class="hero__lede" data-pixels-keep>Agence web à&nbsp;Lausanne. Sites internet, applications et automatisation, conçus sur&nbsp;mesure.</p>
                 <div class="hero__actions" data-pixels-keep>
                     <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--deep key-btn--klein">Démarrer un projet</a>
                     <a href="/realisations" class="key-btn key-btn--deep">Voir nos réalisations</a>
@@ -555,7 +565,7 @@
                         <p class="wcard__text">Chaque site est dessiné et codé sur mesure, sans WordPress ni Wix. Rapide sur téléphone, structuré pour Google, il vous appartient&nbsp;: domaine, code et contenus.</p>
                         <ul class="wcard__list"><li>Design et code sur mesure</li><li>Pensé d’abord pour le mobile</li><li>Référencement local inclus</li></ul>
                         <p class="wcard__end">Votre métier, c’est le vôtre. Le site, c’est le nôtre.</p>
-                        <a href="/realisations" class="key-btn wcard__cta">Voir nos réalisations</a>
+                        <a href="/creation-site-internet-lausanne" class="key-btn wcard__cta">Découvrir la création de site</a>
                     </article>
                     <article class="wcard reveal" data-watch="once" data-tint="vert">
                         <div class="wcard__tile wcard__tile--wash">
