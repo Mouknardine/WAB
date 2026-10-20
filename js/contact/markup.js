@@ -70,7 +70,7 @@ const TEMPLATE = `
 
     <div data-view="form">
         <h2 class="contact-modal__title" id="contactModalTitle">Démarrer un projet</h2>
-        <p class="contact-modal__lede">Présentez-nous votre projet&nbsp;: notre équipe revient vers vous sous 24&nbsp;h ouvrées.</p>
+        <p class="contact-modal__lede">Présentez-nous votre projet&nbsp;: notre équipe revient vers vous sous 24&nbsp;h ouvrées. Une question&nbsp;? Appelez-nous au <a class="contact-modal__tel" href="tel:+41793115840">079&nbsp;311&nbsp;58&nbsp;40</a>.</p>
 
         <form class="contact-form" action="/send-message.php" method="POST" novalidate>
             <!-- Piège anti-spam : hors du champ visuel, jamais atteint au clavier -->

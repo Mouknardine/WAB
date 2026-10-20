@@ -13,7 +13,7 @@
  */
 
 // Même numéro partout où un fichier est importé : sinon le navigateur le charge deux fois.
-import { CONTACT_EMAIL, createContactDialog } from './markup.js?v=10';
+import { CONTACT_EMAIL, createContactDialog } from './markup.js?v=11';
 import { bindContactForm, resetContactForm } from './form.js?v=10';
 import { requireElement } from './dom.js?v=9';
 import { playFlight } from './flight.js?v=13';

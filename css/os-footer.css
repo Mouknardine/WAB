@@ -127,6 +127,10 @@
     }
 }
 
+.foot__tel {
+    margin-top: 4px;
+}
+
 .foot__meta {
     margin-top: 6px;
     color: var(--ink-muted);
