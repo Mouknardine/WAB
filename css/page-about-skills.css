@@ -37,22 +37,12 @@
     box-shadow: 0 0 0 var(--hair) var(--edge), var(--relief), var(--shadow-soft);
 }
 
-/* La barre : celle des fenêtres, blanche, les trois pastilles à gauche. */
-.ab-app__bar {
-    display: flex;
-    align-items: center;
-    height: var(--win-bar-h);
-    padding: 0 10px;
-    background: var(--win-bar);
-    color: var(--win-bar-ink);
-}
-
 .ab-app__body {
     display: grid;
     grid-template-columns: 56px minmax(0, 1fr);
     gap: 18px 16px;
     align-items: center;
-    padding: clamp(18px, 5vw, 22px) clamp(16px, 5vw, 22px) 26px;
+    padding: 26px clamp(16px, 5vw, 22px);
 }
 
 /* L'icône d'app : une touche de clavier dans la teinte de la carte,
