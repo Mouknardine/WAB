@@ -139,8 +139,9 @@
 }
 
 /* Le trait s'épaissit et passe à l'encre : le champ actif se repère
-   sans que rien ne bouge autour. */
-.contact-field__input:focus {
+   sans que rien ne bouge autour. Préfixé par le formulaire pour
+   passer devant l'anneau bleu général (.os :focus-visible). */
+.contact-form .contact-field__input:focus {
     outline: none;
     box-shadow: inset 0 -2px 0 var(--ink);
 }
