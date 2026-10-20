@@ -51,7 +51,7 @@ Formulations à éviter : « interlocuteur unique », « sans chef de projet »,
 
 | Adresse | Fichier | Contenu |
 |---|---|---|
-| `/` | `index.html` | Premier écran « WeAreBrothers. » en touches + deux boutons ; Services (trois cartes : sites, applications, automatisation) ; Méthode (quatre étapes) ; Réalisations (« Fait à Lausanne. », grille de captures) ; Offres (trois prix) ; Le studio (lettre signée) ; FAQ ; appel final |
+| `/` | `index.html` | Premier écran « WeAreBrothers. » en touches, une ligne « Agence web à Lausanne… » + deux boutons ; Services (trois cartes : sites, applications, automatisation) ; Méthode (quatre étapes) ; Réalisations (« Fait à Lausanne. », grille de captures) ; Offres (trois prix) ; Le studio (lettre signée) ; FAQ ; appel final |
 | `/realisations` | `work.html` | « Neuf études de cas, de Lausanne à Bavois. » — vue en icônes ou en liste, fiche de chaque projet ; méthode ; contact |
 | `/services` | `services.html` | Technologie ; Image de marque ; Formules (les trois prix) ; Méthode |
 | `/studio` | `about.html` | Équipe (quatre portraits en fenêtres, nom et rôle) ; Conseil (fenêtre « Parcours ») ; Savoir-faire ; contact |
@@ -68,7 +68,7 @@ Formulations à éviter : « interlocuteur unique », « sans chef de projet »,
 
 **Stack** : HTML, CSS et JavaScript statiques écrits à la main, sans framework ni étape de build ; PHP seulement pour l'envoi du formulaire. Tout doit tenir en fichiers plats servis par FTP. Détail des dossiers : `README.md`.
 
-**SEO local prioritaire** : JSON-LD complet sur chaque page (Organization, Person, WebPage, FAQPage, BreadcrumbList), `sitemap.xml` avec images, `llms.txt`, `robots.txt`, IndexNow (à chaque déploiement, et `indexnow.sh` / workflow `submit-urls.yml` à la demande). Requêtes cibles : « agence web Lausanne » et « site internet Lausanne », présentes dans le titre, la description et le H1 de l'accueil (le H1 visible est le nom en touches ; la suite est réservée aux lecteurs d'écran et aux moteurs). Les réponses de FAQ affichées et celles du bloc FAQPage sont identiques mot pour mot. À maintenir à chaque ajout de page ou d'image.
+**SEO local prioritaire** : JSON-LD complet sur chaque page (Organization, Person, WebPage, FAQPage, BreadcrumbList), `sitemap.xml` avec images, `llms.txt`, `robots.txt`, IndexNow (à chaque déploiement, et `indexnow.sh` / workflow `submit-urls.yml` à la demande). Requêtes cibles : « agence web Lausanne » et « site internet Lausanne », présentes dans le titre, la description et le H1 de l'accueil (le H1 visible est le nom en touches ; la suite est réservée aux lecteurs d'écran et aux moteurs), et en clair dans la ligne visible sous le nom (« Agence web à Lausanne… »). Cette ligne ne doit pas disparaître : retirée le 08.10.2026, l'accueil a reculé de la 1re à la 3e page sur « agence web lausanne » dans les jours suivants. Décision d'Eliott (20.10.2026) : `/creation-site-internet-lausanne` n'est liée **que** depuis la colonne « Expertises » du pied de page, nulle part ailleurs dans le contenu. Les réponses de FAQ affichées et celles du bloc FAQPage sont identiques mot pour mot. À maintenir à chaque ajout de page ou d'image.
 
 **Langue** : français (`fr-CH`) uniquement. Une version anglaise est envisagée : garder le contenu séparable de la structure.
 
