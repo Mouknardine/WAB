@@ -157,6 +157,7 @@
     --term-muted: oklch(0.74 0.015 266);
 
     /* ── Mouvement ── trois durées : retour, état, déplacement. */
+    --error: oklch(0.5 0.21 20);
     --dur-1: 150ms;
     --dur-2: 250ms;
     --dur-3: 400ms;
@@ -164,58 +165,5 @@
     --ease-spring: linear(0, 0.2 6%, 0.56 14%, 0.86 23%, 1.01 32%, 1.03 40%, 1.01 54%, 0.998 70%, 1);
 
     background: var(--desk);
-    color: var(--ink);
-}
-
-/* ── Dérivés de la teinte ── tout ce qui se calcule à partir de la
-   gamme --klein-* : redéclaré sur chaque [data-tint] (os-tints.css),
-   pour qu'un bloc vert ait ses touches, ses écrans, ses fenêtres et
-   ses bulles verts sans qu'aucun composant ne le sache. */
-.os,
-:root:has(body.os),
-[data-tint] {
-    --accent: var(--klein);
-    --on-accent: var(--on-klein);
-    --mark: var(--klein);
-    --scan-lines: repeating-linear-gradient(0deg, color-mix(in oklch, var(--klein-deep) 30%, transparent) 0 1px, oklch(0 0 0 / 0) 1px 3px);
-    --scan-depth:
-        radial-gradient(closest-side, oklch(0 0 0 / 0) 55%, color-mix(in oklch, var(--klein-deep) 40%, transparent)),
-        linear-gradient(90deg, color-mix(in oklch, var(--klein-deep) 34%, transparent), oklch(0 0 0 / 0) 16% 84%, color-mix(in oklch, var(--klein-deep) 34%, transparent));
-    --scan-glow: radial-gradient(60% 55% at 50% 42%, color-mix(in oklch, var(--klein-hi) 85%, transparent), oklch(0 0 0 / 0) 72%);
-    --klein-screen: var(--scan-lines), var(--scan-depth), var(--scan-glow), var(--klein);
-    /* Sans vignette : écran étroit autour d'une fenêtre. */
-    --klein-screen-flat: var(--scan-lines), radial-gradient(80% 70% at 30% 20%, color-mix(in oklch, var(--klein-hi) 55%, transparent), oklch(0 0 0 / 0) 70%), var(--klein);
-    --key-klein: linear-gradient(180deg, color-mix(in oklch, var(--klein-hi) 45%, var(--klein)), var(--klein) 60%);
-    --key-klein-edge: var(--klein-deep);
-    --key-klein-relief: inset 0 1px 0 oklch(1 0 0 / 0.34), inset 0 -2px 0 color-mix(in oklch, var(--klein-deep) 22%, transparent), 0 1px 2px oklch(0.18 0.005 265 / 0.24), 0 3px 8px color-mix(in oklch, var(--klein) 22%, transparent);
-    --win-bar: var(--paper);
-    --win-bar-ink: var(--ink-muted);
-    --win-frame-color: var(--klein-ink);
-    --win-frame-dither: var(--klein-hi);
-    --bubble-reply: var(--klein);
-    --bubble-reply-ink: var(--on-klein);
-    --bubble-reply-edge: var(--klein-deep);
-    --term-accent: var(--klein-soft);
-}
-
-/* ── Surface Klein ── un bloc bleu (premier écran, pied de page,
-   écrans) redéfinit la gamme pour lui et ses enfants : aucun
-   composant n'a besoin de connaître son fond. Texte blanc 8,5:1,
-   gris clair (blanc à 80 %) 5,9:1. */
-.on-klein {
-    --ink: var(--on-klein);
-    --ink-muted: color-mix(in oklch, var(--on-klein) 80%, transparent);
-    --ink-faint: color-mix(in oklch, var(--on-klein) 80%, transparent);
-    --line: color-mix(in oklch, var(--on-klein) 18%, transparent);
-    --line-strong: color-mix(in oklch, var(--on-klein) 36%, transparent);
-    --accent: var(--on-klein);
-    --klein-text: var(--on-klein);
-    --on-accent: var(--klein-pair);
-    --mark: var(--on-klein);
-    --hover-tint: color-mix(in oklch, var(--on-klein) 10%, transparent);
-    /* Réponse de WAB : blanche, écrite dans la teinte foncée. */
-    --bubble-reply: var(--paper);
-    --bubble-reply-ink: var(--klein-pair);
-    --bubble-reply-edge: oklch(1 0 0 / 0.6);
     color: var(--ink);
 }

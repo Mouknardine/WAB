@@ -70,7 +70,11 @@ html.js .feats.is-tracking :is(.feat__text, .screen > .win) {
     transition: opacity 0.6s var(--ease-out);
 }
 
-html.js .feats.is-tracking .feat:not(.is-current) :is(.feat__text, .screen > .win) {
+html.js .feats.is-tracking .feat:not(.is-current) .feat__text {
+    opacity: 0.7;
+}
+
+html.js .feats.is-tracking .feat:not(.is-current) .screen > .win {
     opacity: 0.35;
 }
 

@@ -46,7 +46,6 @@
 
 @media (hover: hover) {
     .sx-example:hover .win {
-        translate: 0 -3px;
         box-shadow: 0 0 0 1px var(--win-edge), var(--win-shadow-lift);
     }
 

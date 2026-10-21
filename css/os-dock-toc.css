@@ -84,3 +84,11 @@
         transition: none;
     }
 }
+
+/* Au doigt : cible de 44 px au minimum. */
+@media (pointer: coarse) {
+    .dock__chip,
+    .dock__cta {
+        min-height: 44px;
+    }
+}

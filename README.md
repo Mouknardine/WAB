@@ -43,7 +43,7 @@ Après une modification d'un CSS ou d'un JS, **relever son numéro `?v=`** parto
 | `js/page-<page>/` | le module propre à une page |
 | `js/contact/` | la fenêtre de contact et l'oiseau qui emporte le message |
 | `js/birds/` | le dessin de cet oiseau (seul reste des anciens oiseaux) |
-| `js/nav.js`, `js/reveal.js`, `nav-clock.js` | menu du téléphone, apparitions au défilement, heure de Lausanne |
+| `js/nav.js`, `nav-clock.js` | menu du téléphone, heure de Lausanne |
 | `send-message.php`, `smtp-mailer.php` | envoi du formulaire par SMTP Infomaniak (`mail-config.php` n'existe qu'en ligne) |
 | `assets/fonts/` | Instrument Sans et Sligoil (licences OFL jointes) |
 | `assets/images/` | captures des projets (`shot-*`), portraits (`team-*`), écrans de l'application (`app-agenda-*`) |

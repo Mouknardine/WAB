@@ -8,71 +8,14 @@
  * n'est pas parti.
  */
 
-import { CONTACT_EMAIL } from './markup.js?v=9';
+import { CONTACT_EMAIL } from './markup.js?v=12';
 import { requireElement } from './dom.js?v=9';
+import { fieldNamed, rulesFor, validate } from './validation.js?v=1';
 
 const ENDPOINT = '/send-message.php';
 const TIMEOUT_MS = 15000;
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const LABEL_IDLE = 'Envoyer le message';
 const LABEL_SENDING = 'Envoi en cours…';
-
-/**
- * @typedef {HTMLInputElement | HTMLTextAreaElement} TextField
- * @typedef {{ field: TextField, isValid: (value: string) => boolean }} Rule
- */
-
-/**
- * @param {HTMLFormElement} form
- * @param {string} name
- * @returns {TextField}
- */
-function fieldNamed(form, name) {
-    const field = form.elements.namedItem(name);
-    if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement) return field;
-    throw new Error(`Fenêtre de contact : champ « ${name} » introuvable.`);
-}
-
-/**
- * @param {HTMLFormElement} form
- * @returns {Rule[]}
- */
-function rulesFor(form) {
-    /** @param {string} value */
-    const filled = (value) => value.length > 0;
-
-    return [
-        { field: fieldNamed(form, 'Nom'), isValid: filled },
-        { field: fieldNamed(form, 'Email'), isValid: (value) => EMAIL_PATTERN.test(value) },
-        { field: fieldNamed(form, 'Message'), isValid: filled },
-    ];
-}
-
-/**
- * Le champ fautif est signalé par un trait ET par un message : la
- * couleur seule ne dit rien à qui ne la distingue pas.
- * @param {TextField} field
- * @param {boolean} invalid
- */
-function markField(field, invalid) {
-    field.closest('.contact-field')?.classList.toggle('has-error', invalid);
-    field.setAttribute('aria-invalid', String(invalid));
-}
-
-/**
- * Signale chaque champ fautif et place le curseur sur le premier.
- * @param {Rule[]} rules
- * @returns {boolean}
- */
-function validate(rules) {
-    const invalid = rules.filter(({ field, isValid }) => {
-        const ok = isValid(field.value.trim());
-        markField(field, !ok);
-        return !ok;
-    });
-    invalid[0]?.field.focus();
-    return invalid.length === 0;
-}
 
 /**
  * @param {HTMLFormElement} form

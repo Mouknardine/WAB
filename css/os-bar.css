@@ -137,7 +137,7 @@
     background: var(--paper);
     box-shadow: 0 0 0 var(--hair) var(--edge);
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: var(--t-cap);
     color: var(--ink);
 }
 
@@ -173,5 +173,14 @@
 @media (min-width: 1080px) and (hover: hover) and (pointer: fine) {
     .menubar__find {
         display: inline-flex;
+    }
+}
+
+/* Au doigt : cible de 44 px au minimum. */
+@media (pointer: coarse) {
+    .menubar__link,
+    .menubar__find,
+    .menubar__cta {
+        min-height: 44px;
     }
 }

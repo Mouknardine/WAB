@@ -1,0 +1,68 @@
+/* WAB OS — fenêtre de contact : visages, Fermer et envol (le reste : contact-modal.css) */
+
+/* ── Visages et Fermer ──
+   Sur leur propre ligne, au-dessus du titre : sur un téléphone, le
+   titre garde toute la largeur au lieu de se replier autour. Les
+   visages de l'équipe à gauche occupent une ligne qui existait déjà. */
+.contact-modal__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: calc(-1 * clamp(10px, 3vw, 24px));
+    margin-bottom: 14px;
+}
+
+.contact-faces {
+    display: flex;
+    list-style: none;
+}
+
+/* Les portraits se chevauchent comme une petite pile ; un anneau de
+   la couleur du verre les détache l'un de l'autre. */
+.contact-faces li + li {
+    margin-left: -9px;
+}
+
+.contact-faces__img {
+    display: block;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 2.5px var(--paper);
+    background: var(--paper);
+    transition: box-shadow 0.3s var(--ease-out);
+}
+
+@media (hover: hover) {
+    .contact-faces li:hover .contact-faces__img {
+        box-shadow: 0 0 0 2.5px var(--accent);
+    }
+}
+
+/* ── Envol ── l'oiseau traverse la carte ; pixel art net. */
+.contact-flight {
+    display: block;
+    width: 100%;
+    height: 120px;
+    margin-bottom: 8px;
+    image-rendering: pixelated;
+}
+
+.contact-modal__close {
+    min-height: 44px;
+    padding: 0 14px;
+    border-radius: var(--r-key);
+    font-family: var(--font-mono);
+    font-size: var(--t-cap);
+    font-weight: var(--w-regular);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    transition: color 0.2s var(--ease-out), background-color 0.2s var(--ease-out);
+}
+
+.contact-modal__close:hover {
+    color: var(--ink);
+    background: var(--hover-tint);
+}

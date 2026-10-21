@@ -182,3 +182,10 @@
         font-size: 1rem;
     }
 }
+
+/* Au doigt : cible de 44 px au minimum. */
+@media (pointer: coarse) {
+    .key-btn--sm {
+        min-height: 44px;
+    }
+}

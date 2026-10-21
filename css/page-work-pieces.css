@@ -104,7 +104,6 @@
 
 @media (hover: hover) {
     .pw-screen:hover .win {
-        transform: translateY(-4px);
         box-shadow: 0 0 0 var(--hair) var(--win-edge), var(--shadow-lift);
     }
 }
@@ -160,12 +159,16 @@
 
 /* ── Le focus suit le défilement ── posé seulement par le script, sur
    un écran large avec souris. Le bloc pris au clavier reste net. */
-.pw-pieces__list.is-tracking .piece {
+.pw-pieces__list.is-tracking :is(.piece__media, .piece__text) {
     transition: opacity 0.5s var(--ease-out);
 }
 
-.pw-pieces__list.is-tracking .piece:not(.is-current):not(:focus-within) {
+.pw-pieces__list.is-tracking .piece:not(.is-current):not(:focus-within) .piece__media {
     opacity: 0.4;
+}
+
+.pw-pieces__list.is-tracking .piece:not(.is-current):not(:focus-within) .piece__text {
+    opacity: 0.7;
 }
 
 @media (prefers-reduced-motion: reduce) {

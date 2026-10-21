@@ -16,7 +16,7 @@ Le décor dit « studio de création » ; la mise en page dit « on peut nous co
 
 ## 2. Couleur
 
-Toutes les valeurs sont en OKLCH, dans deux fichiers seulement : `css/os-tokens.css` (neutres, matières, dérivés) et `css/os-tints.css` (les six teintes). Aucune couleur en dur ailleurs.
+Toutes les valeurs sont en OKLCH, dans trois fichiers seulement : `css/os-tokens.css` (neutres, matières), `css/os-tokens-tint.css` (dérivés de la teinte) et `css/os-tints.css` (les six teintes). Aucune couleur en dur ailleurs.
 
 ### Les neutres (`os-tokens.css`)
 
@@ -55,7 +55,7 @@ Chaque teinte redéfinit la même gamme — les noms gardent le préfixe `klein`
 | `--klein-pair` | le texte d'une touche claire posée sur l'aplat |
 | `--klein-text` | la teinte quand elle écrit sur blanc : l'aplat pour bleu et rouge, sa version foncée pour les teintes claires |
 
-**Les dérivés suivent seuls.** `os-tokens.css` recalcule sur chaque `[data-tint]` tout ce qui dépend de la gamme : `--accent`, `--on-accent`, `--mark` (sélection), l'écran à lignes (`--klein-screen`, `--klein-screen-flat`), les touches (`--key-klein`…), les bulles (`--bubble-reply…`), le cadre des fenêtres. Un composant n'a jamais besoin de savoir dans quelle teinte il se trouve.
+**Les dérivés suivent seuls.** `os-tokens-tint.css` recalcule sur chaque `[data-tint]` tout ce qui dépend de la gamme : `--accent`, `--on-accent`, `--mark` (sélection), l'écran à lignes (`--klein-screen`, `--klein-screen-flat`), les touches (`--key-klein`…), les bulles (`--bubble-reply…`), le cadre des fenêtres. Un composant n'a jamais besoin de savoir dans quelle teinte il se trouve.
 
 **Surface pleine.** Un élément posé sur l'aplat prend la classe `.on-klein` : l'encre, les gris, les filets, la sélection et les touches s'inversent pour rester lisibles (blanc sur bleu/rouge, encre sur les teintes claires).
 
@@ -94,7 +94,7 @@ Chaque teinte redéfinit la même gamme — les noms gardent le préfixe `klein`
 ## 6. Mouvement et son
 
 - Trois durées : `--dur-1` 150 ms (retour d'appui, survol), `--dur-2` 250 ms (changement d'état), `--dur-3` 400 ms (déplacement). Courbes `--ease-out` et `--ease-spring` (rebond de 3 %).
-- Apparitions au défilement : `.reveal` (`js/reveal.js`, `base-ui.css`), une seule fois, en décalé dans un `[data-reveal-group]`.
+- Pas d'apparition au défilement : le contenu est là d'emblée, sur toutes les pages.
 - **Pixels** : au premier écran de l'accueil, le canevas se creuse de gros pixels de couleur au passage de la souris ou du doigt, puis s'éteint case par case ; des motifs en escalier restent dans les marges de toutes les pages (survol : ils bougent ; clic : ils se redessinent).
 - **Bruit de clavier** : un « clac » mécanique synthétisé (Web Audio, aucun fichier) à l'appui d'une touche (`js/os/keysound.js`), uniquement sur un geste du visiteur.
 - `prefers-reduced-motion` : tout se fige, le son se coupe, le nom ne se brouille plus, pas de passage fantôme des pixels.

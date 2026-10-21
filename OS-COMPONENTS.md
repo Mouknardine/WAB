@@ -18,7 +18,8 @@ Le plus sûr : **copier le `<head>` et la fin de `<body>` d'une page existante**
 <link rel="stylesheet" href="css/nav-panel.css?v=4">
 <link rel="stylesheet" href="css/contact-modal.css?v=8">
 <link rel="stylesheet" href="css/contact-form.css?v=5">
-<link rel="stylesheet" href="css/os-tokens.css?v=12">
+<link rel="stylesheet" href="css/os-tokens.css?v=14">
+<link rel="stylesheet" href="css/os-tokens-tint.css?v=1">
 <link rel="stylesheet" href="css/os-tints.css?v=1">
 <link rel="stylesheet" href="css/os-base.css?v=6">
 <link rel="stylesheet" href="css/os-sky.css?v=6">
@@ -38,7 +39,6 @@ Le plus sûr : **copier le `<head>` et la fin de `<body>` d'une page existante**
 
 <script src="nav-clock.js?v=3" defer></script>
 <script src="js/nav.js?v=6" defer></script>
-<script src="js/reveal.js?v=4" defer></script>          <!-- si la page utilise .reveal -->
 <script type="module" src="js/contact/index.js?v=13"></script>
 <script type="module" src="js/os/index.js?v=11"></script>
 <script type="module" src="js/page-xxx/index.js?v=N"></script>  <!-- le module de la page -->

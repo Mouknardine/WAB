@@ -9,7 +9,7 @@
  * restent des liens vers /realisations, le dock des liens.
  */
 
-import { launchFinder, launchCase, launchTerminal, launchPalette, launchMenu } from './apps.js?v=8';
+import { launchFinder, launchCase, launchTerminal, launchPalette, launchMenu } from './apps.js?v=9';
 import { SHORTCUT } from './actions.js?v=1';
 
 const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');

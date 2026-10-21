@@ -164,3 +164,10 @@
         gap: 40px 32px;
     }
 }
+
+/* Au doigt : cible de 44 px au minimum. */
+@media (pointer: coarse) {
+    .foot__col a {
+        min-height: 44px;
+    }
+}

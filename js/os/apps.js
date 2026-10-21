@@ -14,7 +14,7 @@ import { goTo } from './actions.js?v=1';
 
 /** @param {...string} names */
 function styles(...names) {
-    return Promise.all(['os-win', 'os-win-states', ...names].map((name) => loadStyle(name, 6)));
+    return Promise.all(['os-win', 'os-win-states', ...names].map((name) => loadStyle(name, 7)));
 }
 
 /**
@@ -33,7 +33,7 @@ function launch(name, task, fallback) {
 export function launchFinder(opener) {
     launch('finder', async () => {
         await styles('os-finder');
-        (await import('./finder.js?v=7')).openFinder(opener);
+        (await import('./finder.js?v=8')).openFinder(opener);
     }, () => goTo('/realisations'));
 }
 
@@ -52,16 +52,16 @@ export function launchCase(id, title, opener) {
 /** @param {HTMLElement | null} opener */
 export function launchTerminal(opener) {
     launch('terminal', async () => {
-        await Promise.all([styles(), loadStyle('os-terminal', 6)]);
-        (await import('./terminal.js?v=10')).openTerminal(opener);
+        await Promise.all([styles(), loadStyle('os-terminal', 7)]);
+        (await import('./terminal.js?v=11')).openTerminal(opener);
     }, () => toast('Le terminal n’a pas pu s’ouvrir.'));
 }
 
 /** @param {HTMLElement | null} opener */
 export function launchPalette(opener) {
     launch('palette', async () => {
-        await loadStyle('os-palette', 4);
-        (await import('./palette.js?v=7')).togglePalette(opener);
+        await loadStyle('os-palette', 5);
+        (await import('./palette.js?v=8')).togglePalette(opener);
     }, () => toast('La recherche n’a pas pu s’ouvrir.'));
 }
 
@@ -69,6 +69,6 @@ export function launchPalette(opener) {
 export function launchMenu(x, y) {
     launch('menu', async () => {
         await loadStyle('os-menu', 3);
-        (await import('./menu.js?v=7')).openMenu(x, y);
+        (await import('./menu.js?v=8')).openMenu(x, y);
     }, () => {});
 }
