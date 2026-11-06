@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://wearebrothers.ch/</loc>
-        <lastmod>2026-10-11</lastmod>
+        <lastmod>2026-11-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
         <image:image>
@@ -14,10 +14,18 @@
             <image:loc>https://wearebrothers.ch/assets/images/app-agenda-finances-1280.webp</image:loc>
             <image:caption>Écran Finances d'une application de gestion conçue par WeAreBrothers à Lausanne (données de démonstration)</image:caption>
         </image:image>
+        <image:image>
+            <image:loc>https://wearebrothers.ch/assets/images/shot-stidy-1600.webp</image:loc>
+            <image:caption>Stidy, application de révision pour les étudiants de l'UNIL et de l'EPFL, conçue et lancée par WeAreBrothers</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://wearebrothers.ch/assets/images/shot-artisano-1600.webp</image:loc>
+            <image:caption>Artisano, plateforme qui relie particuliers et artisans de Suisse romande, en développement chez WeAreBrothers</image:caption>
+        </image:image>
     </url>
     <url>
         <loc>https://wearebrothers.ch/creation-site-internet-lausanne</loc>
-        <lastmod>2026-10-08</lastmod>
+        <lastmod>2026-11-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
         <image:image>
@@ -39,9 +47,13 @@
     </url>
     <url>
         <loc>https://wearebrothers.ch/realisations</loc>
-        <lastmod>2026-10-08</lastmod>
+        <lastmod>2026-11-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://wearebrothers.ch/assets/images/work-stidy-1440.webp</image:loc>
+            <image:caption>Stidy — application de révision lancée par WeAreBrothers, pour l'UNIL et l'EPFL</image:caption>
+        </image:image>
         <image:image>
             <image:loc>https://wearebrothers.ch/assets/images/work-zinema-1440.webp</image:loc>
             <image:caption>Zinéma — site du cinéma d'art et essai de la rue du Maupas à Lausanne, conçu par WeAreBrothers</image:caption>
@@ -53,6 +65,10 @@
         <image:image>
             <image:loc>https://wearebrothers.ch/assets/images/work-central-1440.webp</image:loc>
             <image:caption>Le P'tit Central — site d'un café-restaurant de la rue Centrale à Lausanne, conçu par WeAreBrothers</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://wearebrothers.ch/assets/images/work-artisano-1440.webp</image:loc>
+            <image:caption>Artisano — plateforme d'artisans de Suisse romande, conçue par WeAreBrothers</image:caption>
         </image:image>
         <image:image>
             <image:loc>https://wearebrothers.ch/assets/images/work-alliani-1440.webp</image:loc>
@@ -81,7 +97,7 @@
     </url>
     <url>
         <loc>https://wearebrothers.ch/services</loc>
-        <lastmod>2026-10-08</lastmod>
+        <lastmod>2026-11-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
         <image:image>

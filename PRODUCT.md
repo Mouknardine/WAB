@@ -2,7 +2,7 @@
 
 <!-- impeccable:product-schema 1 -->
 
-État au **8 octobre 2026**. Ce qui est durable (public, offres, prix, ton, équipe, contraintes) ; l'aspect visuel est dans `DESIGN-SYSTEM.md`, les composants dans `OS-COMPONENTS.md`.
+État au **6 novembre 2026**. Ce qui est durable (public, offres, prix, ton, équipe, contraintes) ; l'aspect visuel est dans `DESIGN-SYSTEM.md`, les composants dans `OS-COMPONENTS.md`.
 
 ## Platform
 
@@ -38,7 +38,7 @@ Formulations à éviter : « interlocuteur unique », « sans chef de projet »,
 - Contact direct par email et formulaire, réponse annoncée sous 24 h ouvrées, sans engagement.
 - Déroulé d'un projet site : premier échange, proposition (périmètre, calendrier, prix), design et développement validés étape par étape, puis mise en ligne, hébergement en Suisse (Infomaniak), maintenance et évolutions.
 - Déroulé d'un projet logiciel : observation du métier, puis livraison module par module, chaque module utilisable dès qu'il est terminé, reprise des données existantes.
-- Délai type d'un site vitrine : 3 à 6 semaines.
+- Délai type d'un site vitrine : 3 à 6 semaines. **C'est un repère, pas une échéance** (Eliott, 06.11.2026) : le studio ne referme pas un projet à date fixe, il le travaille **jusqu'à l'entière satisfaction du client**. Formulation publique : « jusqu'à votre entière satisfaction », « sans échéance qui coupe le travail ». À dire partout où un délai est annoncé (méthode, FAQ, offres).
 - **Prix publics** (validés par Eliott le 03.10.2026), affichés sur l'accueil et Services :
   - **Site vitrine** — 1'000 – 2'500 CHF — « Être présent en ligne » ;
   - **Site et outils** (recommandé) — 2'500 – 7'000 CHF — outil de gestion, e-commerce et options ;
@@ -51,8 +51,8 @@ Formulations à éviter : « interlocuteur unique », « sans chef de projet »,
 
 | Adresse | Fichier | Contenu |
 |---|---|---|
-| `/` | `index.html` | Premier écran « WeAreBrothers. » en touches + deux boutons ; Services (trois cartes : sites, applications, automatisation) ; Méthode (quatre étapes) ; Réalisations (« Fait à Lausanne. », grille de captures) ; Offres (trois prix) ; Le studio (lettre signée) ; FAQ ; appel final |
-| `/realisations` | `work.html` | « Neuf études de cas, de Lausanne à Bavois. » — vue en icônes ou en liste, fiche de chaque projet ; méthode ; contact |
+| `/` | `index.html` | Premier écran « WeAreBrothers. » en touches + deux boutons ; Services (trois cartes : sites, applications, automatisation) ; À la une (Stidy, Artisano, chacun avec son état) ; Méthode (quatre étapes + l'engagement « Jusqu'à votre entière satisfaction ») ; Réalisations (« Fait à Lausanne. », grille de captures) ; Offres (trois prix) ; Le studio (lettre signée) ; FAQ ; appel final |
+| `/realisations` | `work.html` | « Onze études de cas, de Lausanne à Bavois. » — vue en icônes ou en liste, fiche de chaque projet ; méthode ; contact |
 | `/services` | `services.html` | Technologie ; Image de marque ; Formules (les trois prix) ; Méthode |
 | `/studio` | `about.html` | Équipe (quatre portraits en fenêtres, nom et rôle) ; Conseil (fenêtre « Parcours ») ; Savoir-faire ; contact |
 | `/creation-site-internet-lausanne` | `creation-site-internet-lausanne.html` | Page d'atterrissage SEO : exemples, ce qui est inclus, formats, déroulé, studio et communes servies, refonte, FAQ |
@@ -90,7 +90,13 @@ Formulations à éviter : « interlocuteur unique », « sans chef de projet »,
 
 ## Evidence on Hand
 
-**Réalisations réelles** (neuf, dans `work.html`, source unique lue aussi par les fenêtres de l'accueil) : Zinéma (cinéma d'art et essai, Lausanne), LE MEMO (collectif artistique et boutique, Lausanne), Le P'tit Central (café-restaurant, Lausanne), Maison Alliani (haute joaillerie, grillz sur mesure), Amarte Studio (yoga et Pilates, Épalinges), Nadège Mouine (site personnel, architecte en formation à l'EPFL), LAZIZZE DJ (portfolio immersif), La Slack (portfolio en bureau virtuel), Commissione Entretien (entreprise familiale d'entretien, Bavois).
+**Réalisations réelles** (onze, dans `work.html`, source unique lue aussi par les fenêtres de l'accueil ; depuis le 06.11, les plus travaillées d'abord) : Stidy (application de révision lancée par le studio), Zinéma (cinéma d'art et essai, Lausanne), LE MEMO (collectif artistique et boutique, Lausanne), Le P'tit Central (café-restaurant, Lausanne), Maison Alliani (haute joaillerie, grillz sur mesure), Amarte Studio (yoga et Pilates, Épalinges), Nadège Mouine (site personnel, architecte en formation à l'EPFL), LAZIZZE DJ (portfolio immersif), La Slack (portfolio en bureau virtuel), Commissione Entretien (entreprise familiale d'entretien, Bavois), Artisano (ci-dessous).
+
+**Projets à la une** (accueil, section `#a-la-une`, depuis le 06.11.2026), chacun avec son état réel. Visuels des fiches (`work-stidy-*`, `work-artisano-*`) : pour l'instant la capture mobile brute du site ; à remplacer par une photo d'appareil habillée avec le WAB. Mockup Studio (artifact), comme les neuf autres, dès qu'Eliott fournit les photos d'appareil.
+
+- **Stidy** — *en ligne* (https://stidy-app.com/). Application de révision **conçue et lancée par le studio** (produit propre, pas un client), pour les étudiants de l'UNIL et de l'EPFL : un chrono que l'on lance avant de poser son téléphone ; les amis voient la durée et la branche, jamais les notes ; pas de classement ; gratuite, sans application à installer ; le temps est compté par le serveur. Les GIF du fil de démonstration sont masqués sur les captures.
+- **Artisano** — *en développement, bêta ouverte* (https://artisano-one.vercel.app/, dépôt `Mouknardine/Start`). Plateforme qui relie particuliers et artisans de Suisse romande (recherche par métier et localité, avis, disponibilités) et application de gestion de l'artisan (demandes, devis, factures avec QR-facture, agenda, équipe) ; IDE contrôlé au registre du commerce. Gratuite pendant la bêta. Les chiffres d'inscrits de l'accueil d'Artisano sont masqués sur les captures (ils changent).
+- **BluePoint** (Blue Point Distribution, Lutry) — retiré le 06.11.2026 à la demande d'Eliott : les captures faites n'étaient pas celles du bon site. Ne pas le remettre avant qu'Eliott ait donné le bon site.
 
 **Application de gestion réelle**, conçue pour une agence : projets, tâches, temps, clients, documents, facturation. Trois écrans sur `/applications`, **avec données de démonstration** — la mention doit rester visible. Le nom de l'agence cliente n'est pas public.
 

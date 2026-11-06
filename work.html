@@ -18,7 +18,7 @@
     <link rel="manifest" href="/site.webmanifest?v=3">
     <title>Réalisations — sites &amp; applications | WeAreBrothers Lausanne</title>
     <meta name="description"
-        content="Neuf études de cas de notre agence web à Lausanne : sites internet, identités de marque et applications conçus sur mesure, du Zinéma au P’tit Central.">
+        content="Onze études de cas de notre agence web à Lausanne : sites internet et applications conçus sur mesure, de Stidy au Zinéma et au P’tit Central.">
 
     <!-- SEO -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -29,7 +29,7 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Réalisations — sites &amp; applications | WeAreBrothers Lausanne">
-    <meta property="og:description" content="Neuf études de cas de notre agence web à Lausanne : sites internet, identités de marque et applications conçus sur mesure, du Zinéma au P’tit Central.">
+    <meta property="og:description" content="Onze études de cas de notre agence web à Lausanne : sites internet et applications conçus sur mesure, de Stidy au Zinéma et au P’tit Central.">
     <meta property="og:url" content="https://wearebrothers.ch/realisations">
     <meta property="og:image" content="https://wearebrothers.ch/assets/og-image.jpg?v=3">
     <meta property="og:image:width" content="1200">
@@ -42,7 +42,7 @@
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Réalisations — sites &amp; applications | WeAreBrothers Lausanne">
-    <meta name="twitter:description" content="Neuf études de cas de notre agence web à Lausanne : sites internet, identités de marque et applications conçus sur mesure, du Zinéma au P’tit Central.">
+    <meta name="twitter:description" content="Onze études de cas de notre agence web à Lausanne : sites internet et applications conçus sur mesure, de Stidy au Zinéma et au P’tit Central.">
     <meta name="twitter:image" content="https://wearebrothers.ch/assets/og-image.jpg?v=3">
     <meta name="twitter:image:alt" content="« WeAreBrothers. » écrit en touches de clavier colorées — agence web à Lausanne, sites internet sur mesure">
 
@@ -187,7 +187,7 @@
                 "@id": "https://wearebrothers.ch/realisations#webpage",
                 "url": "https://wearebrothers.ch/realisations",
                 "name": "Réalisations — sites internet créés à Lausanne",
-                "description": "Neuf études de cas : sites internet, identités de marque et applications métier, conçus et développés sur mesure à Lausanne par WeAreBrothers.",
+                "description": "Onze études de cas : sites internet et applications, conçus et développés sur mesure à Lausanne par WeAreBrothers.",
                 "inLanguage": "fr-CH",
                 "isPartOf": {
                     "@id": "https://wearebrothers.ch/#website"
@@ -204,24 +204,29 @@
                     "contentUrl": "https://wearebrothers.ch/assets/images/work-zinema-1440.webp",
                     "caption": "Site du Zinéma, cinéma d’art et essai à Lausanne"
                 },
-                "dateModified": "2026-10-08",
+                "dateModified": "2026-11-06",
                 "mainEntity": {
                     "@type": "ItemList",
                     "@id": "https://wearebrothers.ch/realisations#projets",
                     "name": "Réalisations WeAreBrothers Studio",
-                    "numberOfItems": 9,
+                    "numberOfItems": 11,
                     "itemListElement": [
                         {
                             "@type": "ListItem",
                             "position": 1,
                             "item": {
-                                "@type": "WebSite",
-                                "@id": "https://wearebrothers.ch/realisations#zinema",
-                                "name": "Zinéma",
-                                "url": "https://www.zinema.ch/",
-                                "description": "Cinéma d’art et essai, rue du Maupas à Lausanne",
-                                "image": "https://wearebrothers.ch/assets/images/work-zinema-1440.webp",
+                                "@type": "WebApplication",
+                                "@id": "https://wearebrothers.ch/realisations#stidy",
+                                "name": "Stidy",
+                                "url": "https://stidy-app.com/",
+                                "applicationCategory": "EducationalApplication",
+                                "operatingSystem": "Web",
+                                "description": "Application de révision lancée par le studio, pour les étudiants de l’UNIL et de l’EPFL",
+                                "image": "https://wearebrothers.ch/assets/images/work-stidy-1440.webp",
                                 "creator": {
+                                    "@id": "https://wearebrothers.ch/#organization"
+                                },
+                                "publisher": {
                                     "@id": "https://wearebrothers.ch/#organization"
                                 }
                             }
@@ -231,11 +236,11 @@
                             "position": 2,
                             "item": {
                                 "@type": "WebSite",
-                                "@id": "https://wearebrothers.ch/realisations#memo",
-                                "name": "LE MEMO",
-                                "url": "https://le-memo.ch/",
-                                "description": "Collectif artistique et boutique à Lausanne",
-                                "image": "https://wearebrothers.ch/assets/images/work-memo-1440.webp",
+                                "@id": "https://wearebrothers.ch/realisations#zinema",
+                                "name": "Zinéma",
+                                "url": "https://www.zinema.ch/",
+                                "description": "Cinéma d’art et essai, rue du Maupas à Lausanne",
+                                "image": "https://wearebrothers.ch/assets/images/work-zinema-1440.webp",
                                 "creator": {
                                     "@id": "https://wearebrothers.ch/#organization"
                                 }
@@ -260,6 +265,38 @@
                             "@type": "ListItem",
                             "position": 4,
                             "item": {
+                                "@type": "WebApplication",
+                                "@id": "https://wearebrothers.ch/realisations#artisano",
+                                "name": "Artisano",
+                                "url": "https://artisano-one.vercel.app/",
+                                "applicationCategory": "BusinessApplication",
+                                "operatingSystem": "Web",
+                                "description": "Plateforme qui relie particuliers et artisans de Suisse romande, en développement (bêta)",
+                                "image": "https://wearebrothers.ch/assets/images/work-artisano-1440.webp",
+                                "creator": {
+                                    "@id": "https://wearebrothers.ch/#organization"
+                                }
+                            }
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 5,
+                            "item": {
+                                "@type": "WebSite",
+                                "@id": "https://wearebrothers.ch/realisations#memo",
+                                "name": "LE MEMO",
+                                "url": "https://le-memo.ch/",
+                                "description": "Collectif artistique et boutique à Lausanne",
+                                "image": "https://wearebrothers.ch/assets/images/work-memo-1440.webp",
+                                "creator": {
+                                    "@id": "https://wearebrothers.ch/#organization"
+                                }
+                            }
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 6,
+                            "item": {
                                 "@type": "WebSite",
                                 "@id": "https://wearebrothers.ch/realisations#alliani",
                                 "name": "Maison Alliani",
@@ -273,7 +310,7 @@
                         },
                         {
                             "@type": "ListItem",
-                            "position": 5,
+                            "position": 7,
                             "item": {
                                 "@type": "WebSite",
                                 "@id": "https://wearebrothers.ch/realisations#amarte",
@@ -288,7 +325,7 @@
                         },
                         {
                             "@type": "ListItem",
-                            "position": 6,
+                            "position": 8,
                             "item": {
                                 "@type": "WebSite",
                                 "@id": "https://wearebrothers.ch/realisations#nadege",
@@ -303,7 +340,7 @@
                         },
                         {
                             "@type": "ListItem",
-                            "position": 7,
+                            "position": 9,
                             "item": {
                                 "@type": "WebSite",
                                 "@id": "https://wearebrothers.ch/realisations#dj",
@@ -318,7 +355,7 @@
                         },
                         {
                             "@type": "ListItem",
-                            "position": 8,
+                            "position": 10,
                             "item": {
                                 "@type": "WebSite",
                                 "@id": "https://wearebrothers.ch/realisations#slack",
@@ -333,7 +370,7 @@
                         },
                         {
                             "@type": "ListItem",
-                            "position": 9,
+                            "position": 11,
                             "item": {
                                 "@type": "WebSite",
                                 "@id": "https://wearebrothers.ch/realisations#commissione",
@@ -389,7 +426,8 @@
     <link rel="stylesheet" href="css/page-work-list.css?v=2">
     <link rel="stylesheet" href="css/page-work-select.css?v=4">
     <link rel="stylesheet" href="css/page-work-head.css?v=1">
-    <link rel="stylesheet" href="css/page-work-pieces.css?v=4">
+    <link rel="stylesheet" href="css/os-status.css?v=1">
+    <link rel="stylesheet" href="css/page-work-pieces.css?v=5">
     <link rel="stylesheet" href="css/page-work-end.css?v=7">
 
     <!-- Scripts -->
@@ -463,7 +501,7 @@
              contenu, sur toute la page (js/desk/pixels-margins.js). -->
         <div class="margins" aria-hidden="true" data-margins></div>
 
-        <!-- LE BUREAU — le dossier Work ouvert au centre, les neuf projets
+        <!-- LE BUREAU — le dossier Work ouvert au centre, les onze projets
              en icônes (ou en liste). Un projet ouvre sa fiche dans une
              fenêtre (js/os, attribut data-card) ; sans
              JavaScript, il mène à son bloc plus bas. Le désordre reste
@@ -479,13 +517,20 @@
                     <div class="win">
                         <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--folder" aria-hidden="true"></span>Work</span></div>
                         <div class="pw-finder__bar">
-                            <p class="pw-finder__count">9 projets</p>
+                            <p class="pw-finder__count">11 projets</p>
                             <div class="pw-finder__views" role="group" aria-label="Présentation des projets" data-js-only>
                                 <button type="button" class="pw-finder__view" data-view="icons" aria-pressed="true"><span class="sym sym--grid" aria-hidden="true"></span>Icônes</button>
                                 <button type="button" class="pw-finder__view" data-view="list" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>Liste</button>
                             </div>
                         </div>
                         <ul class="pw-finder__items" data-view="icons" aria-label="Projets">
+                    <li>
+                        <a class="pw-finder__item" href="#stidy" data-card="stidy" data-title="stidy-app.com" aria-haspopup="dialog">
+                            <span class="pw-finder__thumb"><img src="assets/images/finder-stidy.webp" alt="" width="400" height="250" decoding="async"></span>
+                            <span class="pw-finder__name">Stidy</span>
+                            <span class="pw-finder__context">Application de révision lancée par le studio</span>
+                        </a>
+                    </li>
                     <li>
                         <a class="pw-finder__item" href="#zinema" data-card="zinema" data-title="zinema.ch" aria-haspopup="dialog">
                             <span class="pw-finder__thumb"><img src="assets/images/finder-zinema.webp" alt="" width="400" height="250" decoding="async"></span>
@@ -494,17 +539,24 @@
                         </a>
                     </li>
                     <li>
-                        <a class="pw-finder__item" href="#memo" data-card="memo" data-title="le-memo.ch" aria-haspopup="dialog">
-                            <span class="pw-finder__thumb"><img src="assets/images/finder-memo.webp" alt="" width="400" height="250" decoding="async"></span>
-                            <span class="pw-finder__name">LE MEMO</span>
-                            <span class="pw-finder__context">Collectif artistique et boutique à Lausanne</span>
-                        </a>
-                    </li>
-                    <li>
                         <a class="pw-finder__item" href="#central" data-card="central" data-title="lepetitcentral.ch" aria-haspopup="dialog">
                             <span class="pw-finder__thumb"><img src="assets/images/finder-central.webp" alt="" width="400" height="250" decoding="async"></span>
                             <span class="pw-finder__name">Le P’tit Central</span>
                             <span class="pw-finder__context">Café-restaurant de quartier, rue Centrale à Lausanne</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="pw-finder__item" href="#artisano" data-card="artisano" data-title="artisano-one.vercel.app" aria-haspopup="dialog">
+                            <span class="pw-finder__thumb"><img src="assets/images/finder-artisano.webp" alt="" width="400" height="250" decoding="async"></span>
+                            <span class="pw-finder__name">Artisano</span>
+                            <span class="pw-finder__context">Plateforme d’artisans en Suisse romande, en bêta</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="pw-finder__item" href="#memo" data-card="memo" data-title="le-memo.ch" aria-haspopup="dialog">
+                            <span class="pw-finder__thumb"><img src="assets/images/finder-memo.webp" alt="" width="400" height="250" decoding="async"></span>
+                            <span class="pw-finder__name">LE MEMO</span>
+                            <span class="pw-finder__context">Collectif artistique et boutique à Lausanne</span>
                         </a>
                     </li>
                     <li>
@@ -557,10 +609,10 @@
                     <span class="pw-sticker" aria-hidden="true"><span class="sticker"><span class="sticker__hello">HELLO</span><span class="sticker__mine">my name is</span><span class="sticker__name" translate="no">WAB.</span></span></span>
                 </div>
 
-                <!-- LA CASE LIBRE — la dixième place, pour le prochain projet. -->
+                <!-- LA CASE LIBRE — la douzième place, pour le prochain projet. -->
                 <a class="pw-slot" href="mailto:contact@wearebrothers.ch" data-contact>
                     <span class="pw-slot__frame">
-                        <span class="pw-slot__label">Case n°&nbsp;10 — libre</span>
+                        <span class="pw-slot__label">Case n°&nbsp;12 — libre</span>
                     </span>
                     <span class="file-name pw-slot__name">Votre projet</span>
                     <span class="sr-only">&nbsp;: un emplacement réservé à votre projet. Démarrer un projet avec le studio.</span>
@@ -578,11 +630,65 @@
         <section class="pw-pieces" id="projets" data-tint="bleu" aria-labelledby="piecesTitle">
             <div class="pw-head">
                 <p class="badge">Réalisations</p>
-                <h2 class="pw-head__title" id="piecesTitle">Neuf études de cas, de Lausanne à Bavois.</h2>
+                <h2 class="pw-head__title" id="piecesTitle">Onze études de cas, de Lausanne à Bavois.</h2>
             </div>
 
             <div class="pw-pieces__list" data-pieces>
-                <article class="piece" id="zinema" data-tint="bleu" aria-labelledby="zinema-name">
+                <article class="piece" id="stidy" data-tint="bleu" aria-labelledby="stidy-name">
+                    <figure class="piece__media">
+                        <a class="piece__link pw-screen" href="https://stidy-app.com/" target="_blank" rel="noopener noreferrer" data-card="stidy" data-title="stidy-app.com" aria-haspopup="dialog">
+                            <span class="win">
+                                <span class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--site" aria-hidden="true"></span>stidy-app.com</span></span>
+                                <span class="win__body"><img class="window__img" src="assets/images/shot-stidy-800.webp" srcset="assets/images/shot-stidy-800.webp 800w, assets/images/shot-stidy-1600.webp 1600w" sizes="(min-width: 900px) 640px, 92vw" alt="Page d’accueil de l’application Stidy" loading="lazy" decoding="async" width="1600" height="1000"></span>
+                            </span>
+                        </a>
+                    </figure>
+                    <div class="piece__text">
+                        <div class="chat" aria-hidden="true">
+                            <p class="chat__ask">On révise mieux à plusieurs.</p>
+                            <p class="chat__reply">Le chrono se partage.</p>
+                        </div>
+                        <div class="piece__copy">
+                            <p class="status" data-state="live" data-tint="vert">En ligne</p>
+                            <h3 class="piece__name" id="stidy-name">Stidy</h3>
+                            <p class="piece__context">Application de révision lancée par le studio, pour l’UNIL et l’EPFL</p>
+                            <ul class="piece__tags" aria-label="Disciplines"><li>Produit</li><li>Design d’interface</li><li>Développement</li><li>Application web</li></ul>
+                            <a class="key-btn key-btn--sm piece__open" href="#stidy" data-card="stidy" data-title="stidy-app.com" aria-haspopup="dialog" data-js-only>Ouvrir la fiche<span class="sr-only"> Stidy</span></a>
+                        </div>
+                    </div>
+
+                    <div class="piece__case" hidden>
+                        <img data-case-photo src="assets/images/work-stidy-720.webp"
+                            srcset="assets/images/work-stidy-720.webp 720w, assets/images/work-stidy-1440.webp 1440w"
+                            sizes="(min-width: 1000px) 40vw, 100vw"
+                            alt="L’accueil de l’application Stidy sur téléphone, conçue et lancée par WeAreBrothers Lausanne" loading="lazy" decoding="async"
+                            width="1440" height="1800">
+                        <div data-case-summary>
+                            <p>Stidy est une application de révision conçue, développée et lancée par le studio. L’étudiant lance un chrono avant de poser son téléphone&nbsp;: ses amis voient l’effort fourni, la durée et la branche, jamais ses notes.</p>
+                            <p>Elle est en ligne, gratuite et sans application à installer. Elle s’adresse d’abord aux étudiants de l’UNIL et de l’EPFL.</p>
+                        </div>
+                        <dl data-case-approach>
+                            <div>
+                                <dt>La problématique</dt>
+                                <dd>Réviser est un effort solitaire, qui ne se voit pas. Le rendre visible devait motiver, sans transformer les révisions en compétition.</dd>
+                            </div>
+                            <div>
+                                <dt>L’enjeu</dt>
+                                <dd>Donner envie de s’y mettre et d’y revenir&nbsp;: lancer une session en un geste, retrouver ses amis et ses communautés, recevoir des encouragements.</dd>
+                            </div>
+                            <div>
+                                <dt>Notre réponse</dt>
+                                <dd>Un chrono que l’on lance avant de poser son téléphone, et un fil où chacun voit la durée et la branche travaillées. Pas de classement&nbsp;: seulement un bouton pour encourager.</dd>
+                            </div>
+                            <div>
+                                <dt>Difficultés et solutions</dt>
+                                <dd>Dans une page web, un chrono s’arrête dès qu’on verrouille l’écran ou qu’on change d’onglet. Le temps est donc compté par le serveur, pas par la page&nbsp;: il continue, téléphone posé sur la table.</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </article>
+
+                <article class="piece piece--flip" id="zinema" data-tint="vert" aria-labelledby="zinema-name">
                     <figure class="piece__media">
                         <a class="piece__link pw-screen" href="https://www.zinema.ch/" target="_blank" rel="noopener noreferrer" data-card="zinema" data-title="zinema.ch" aria-haspopup="dialog">
                             <span class="win">
@@ -630,59 +736,6 @@
                             <div>
                                 <dt>Difficultés et solutions</dt>
                                 <dd>Les affiches n’ont jamais le même format. Plutôt que de les rogner, nous avons construit une grille qui les accueille telles qu’elles sont, en les chargeant au fil du défilement pour que la page reste rapide.</dd>
-                            </div>
-                        </dl>
-                    </div>
-                </article>
-
-                <article class="piece piece--flip" id="memo" data-tint="vert" aria-labelledby="memo-name">
-                    <figure class="piece__media">
-                        <a class="piece__link pw-screen" href="https://le-memo.ch/" target="_blank" rel="noopener noreferrer" data-card="memo" data-title="le-memo.ch" aria-haspopup="dialog">
-                            <span class="win">
-                                <span class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--site" aria-hidden="true"></span>le-memo.ch</span></span>
-                                <span class="win__body"><img class="window__img" src="assets/images/shot-memo-800.webp" srcset="assets/images/shot-memo-800.webp 800w, assets/images/shot-memo-1600.webp 1600w" sizes="(min-width: 900px) 640px, 92vw" alt="Page d’accueil du site LE MEMO" loading="lazy" decoding="async" width="1600" height="1000"></span>
-                            </span>
-                        </a>
-                    </figure>
-                    <div class="piece__text">
-                        <div class="chat" aria-hidden="true">
-                            <p class="chat__ask">On est un collectif, pas une entreprise.</p>
-                            <p class="chat__reply">L’accueil se joue comme une boîte à rythmes.</p>
-                        </div>
-                        <div class="piece__copy">
-                            <h3 class="piece__name" id="memo-name">LE MEMO</h3>
-                            <p class="piece__context">Collectif artistique et boutique à Lausanne</p>
-                            <ul class="piece__tags" aria-label="Disciplines"><li>Direction artistique</li><li>Web design</li><li>Développement</li><li>Interaction</li></ul>
-                            <a class="key-btn key-btn--sm piece__open" href="#memo" data-card="memo" data-title="le-memo.ch" aria-haspopup="dialog" data-js-only>Ouvrir la fiche<span class="sr-only"> LE MEMO</span></a>
-                        </div>
-                    </div>
-
-                    <div class="piece__case" hidden>
-                        <img data-case-photo src="assets/images/work-memo-720.webp?v=3"
-                            srcset="assets/images/work-memo-720.webp?v=3 720w, assets/images/work-memo-1440.webp?v=3 1440w"
-                            sizes="(min-width: 1000px) 40vw, 100vw"
-                            alt="Capture du site de LE MEMO, collectif lausannois, dont l’accueil est un séquenceur musical, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
-                            width="1440" height="1800">
-                        <div data-case-summary>
-                            <p>LE MEMO est un collectif lausannois&nbsp;: des événements, du soutien aux artistes et une boutique de vêtements.</p>
-                            <p>Son site s’ouvre sur un séquenceur à jouer. Chaque ligne porte une valeur du collectif&nbsp;: PEACE, UNITY, LOVE, HAVING FUN.</p>
-                        </div>
-                        <dl data-case-approach>
-                            <div>
-                                <dt>La problématique</dt>
-                                <dd>Un collectif qui organise des soirées ne se présente pas comme une entreprise. Une page d’accueil classique aurait gommé ce qui le rend unique.</dd>
-                            </div>
-                            <div>
-                                <dt>L’enjeu</dt>
-                                <dd>Donner envie de rester et de revenir, tout en menant vers l’essentiel&nbsp;: les membres, les dates, l’histoire du collectif et la boutique.</dd>
-                            </div>
-                            <div>
-                                <dt>Notre réponse</dt>
-                                <dd>Un accueil interactif, une grille de pas qui se joue comme une boîte à rythmes. Autour, une navigation sobre en noir et rouge.</dd>
-                            </div>
-                            <div>
-                                <dt>Difficultés et solutions</dt>
-                                <dd>Les navigateurs bloquent le son tant que le visiteur n’a pas interagi avec la page, et seize pas tiennent mal sur un téléphone. Le son démarre donc au premier geste, et la grille s’adapte à l’écran pour rester jouable au doigt.</dd>
                             </div>
                         </dl>
                     </div>
@@ -741,7 +794,114 @@
                     </div>
                 </article>
 
-                <article class="piece piece--flip" id="alliani" data-tint="rose" aria-labelledby="alliani-name">
+                <article class="piece piece--flip" id="artisano" data-tint="rose" aria-labelledby="artisano-name">
+                    <figure class="piece__media">
+                        <a class="piece__link pw-screen" href="https://artisano-one.vercel.app/" target="_blank" rel="noopener noreferrer" data-card="artisano" data-title="artisano-one.vercel.app" aria-haspopup="dialog">
+                            <span class="win">
+                                <span class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--site" aria-hidden="true"></span>artisano-one.vercel.app</span></span>
+                                <span class="win__body"><img class="window__img" src="assets/images/shot-artisano-800.webp" srcset="assets/images/shot-artisano-800.webp 800w, assets/images/shot-artisano-1600.webp 1600w" sizes="(min-width: 900px) 640px, 92vw" alt="Page d’accueil de la plateforme Artisano" loading="lazy" decoding="async" width="1600" height="1000"></span>
+                            </span>
+                        </a>
+                    </figure>
+                    <div class="piece__text">
+                        <div class="chat" aria-hidden="true">
+                            <p class="chat__ask">Mes devis, je les fais le soir.</p>
+                            <p class="chat__reply">Une minute, depuis le chantier.</p>
+                        </div>
+                        <div class="piece__copy">
+                            <p class="status" data-state="beta" data-tint="jaune">En développement · bêta</p>
+                            <h3 class="piece__name" id="artisano-name">Artisano</h3>
+                            <p class="piece__context">Plateforme qui relie particuliers et artisans de Suisse romande</p>
+                            <ul class="piece__tags" aria-label="Disciplines"><li>Produit</li><li>Design d’interface</li><li>Développement</li><li>Application de gestion</li></ul>
+                            <a class="key-btn key-btn--sm piece__open" href="#artisano" data-card="artisano" data-title="artisano-one.vercel.app" aria-haspopup="dialog" data-js-only>Ouvrir la fiche<span class="sr-only"> Artisano</span></a>
+                        </div>
+                    </div>
+
+                    <div class="piece__case" hidden>
+                        <img data-case-photo src="assets/images/work-artisano-720.webp"
+                            srcset="assets/images/work-artisano-720.webp 720w, assets/images/work-artisano-1440.webp 1440w"
+                            sizes="(min-width: 1000px) 40vw, 100vw"
+                            alt="L’accueil de la plateforme Artisano sur téléphone, conçue par WeAreBrothers Lausanne" loading="lazy" decoding="async"
+                            width="1440" height="1800">
+                        <div data-case-summary>
+                            <p>Artisano met en relation les particuliers et les artisans de Suisse romande&nbsp;: plombiers, électriciens, serruriers, chauffagistes… On cherche par métier et par localité, on compare les profils, les avis et les disponibilités, puis on contacte l’artisan directement.</p>
+                            <p>Pour l’artisan, une application de gestion tient dans le téléphone&nbsp;: demandes, devis, factures avec QR-facture, agenda et équipe. La plateforme est en développement&nbsp;; une bêta est ouverte, gratuite pendant les essais.</p>
+                        </div>
+                        <dl data-case-approach>
+                            <div>
+                                <dt>La problématique</dt>
+                                <dd>Pour un particulier, trouver près de chez soi un artisan de confiance reste difficile. Pour l’artisan, devis, factures et planning se font entre deux interventions.</dd>
+                            </div>
+                            <div>
+                                <dt>L’enjeu</dt>
+                                <dd>Inspirer confiance des deux côtés&nbsp;: des entreprises vérifiées et de vrais avis pour le client, un outil assez simple pour servir sur le chantier.</dd>
+                            </div>
+                            <div>
+                                <dt>Notre réponse</dt>
+                                <dd>Un devis prêt en une minute, les tarifs déjà remplis, envoyé par WhatsApp, SMS ou e-mail et accepté en ligne par le client, puis transformé en facture avec QR-facture.</dd>
+                            </div>
+                            <div>
+                                <dt>Difficultés et solutions</dt>
+                                <dd>S’assurer que chaque artisan est une vraie entreprise. À l’inscription, son numéro IDE est contrôlé au registre du commerce, et le badge «&nbsp;Vérifié&nbsp;» l’affiche sur son profil.</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </article>
+
+                <article class="piece" id="memo" data-tint="ciel" aria-labelledby="memo-name">
+                    <figure class="piece__media">
+                        <a class="piece__link pw-screen" href="https://le-memo.ch/" target="_blank" rel="noopener noreferrer" data-card="memo" data-title="le-memo.ch" aria-haspopup="dialog">
+                            <span class="win">
+                                <span class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--site" aria-hidden="true"></span>le-memo.ch</span></span>
+                                <span class="win__body"><img class="window__img" src="assets/images/shot-memo-800.webp" srcset="assets/images/shot-memo-800.webp 800w, assets/images/shot-memo-1600.webp 1600w" sizes="(min-width: 900px) 640px, 92vw" alt="Page d’accueil du site LE MEMO" loading="lazy" decoding="async" width="1600" height="1000"></span>
+                            </span>
+                        </a>
+                    </figure>
+                    <div class="piece__text">
+                        <div class="chat" aria-hidden="true">
+                            <p class="chat__ask">On est un collectif, pas une entreprise.</p>
+                            <p class="chat__reply">L’accueil se joue comme une boîte à rythmes.</p>
+                        </div>
+                        <div class="piece__copy">
+                            <h3 class="piece__name" id="memo-name">LE MEMO</h3>
+                            <p class="piece__context">Collectif artistique et boutique à Lausanne</p>
+                            <ul class="piece__tags" aria-label="Disciplines"><li>Direction artistique</li><li>Web design</li><li>Développement</li><li>Interaction</li></ul>
+                            <a class="key-btn key-btn--sm piece__open" href="#memo" data-card="memo" data-title="le-memo.ch" aria-haspopup="dialog" data-js-only>Ouvrir la fiche<span class="sr-only"> LE MEMO</span></a>
+                        </div>
+                    </div>
+
+                    <div class="piece__case" hidden>
+                        <img data-case-photo src="assets/images/work-memo-720.webp?v=3"
+                            srcset="assets/images/work-memo-720.webp?v=3 720w, assets/images/work-memo-1440.webp?v=3 1440w"
+                            sizes="(min-width: 1000px) 40vw, 100vw"
+                            alt="Capture du site de LE MEMO, collectif lausannois, dont l’accueil est un séquenceur musical, conçu par WeAreBrothers Lausanne" loading="lazy" decoding="async"
+                            width="1440" height="1800">
+                        <div data-case-summary>
+                            <p>LE MEMO est un collectif lausannois&nbsp;: des événements, du soutien aux artistes et une boutique de vêtements.</p>
+                            <p>Son site s’ouvre sur un séquenceur à jouer. Chaque ligne porte une valeur du collectif&nbsp;: PEACE, UNITY, LOVE, HAVING FUN.</p>
+                        </div>
+                        <dl data-case-approach>
+                            <div>
+                                <dt>La problématique</dt>
+                                <dd>Un collectif qui organise des soirées ne se présente pas comme une entreprise. Une page d’accueil classique aurait gommé ce qui le rend unique.</dd>
+                            </div>
+                            <div>
+                                <dt>L’enjeu</dt>
+                                <dd>Donner envie de rester et de revenir, tout en menant vers l’essentiel&nbsp;: les membres, les dates, l’histoire du collectif et la boutique.</dd>
+                            </div>
+                            <div>
+                                <dt>Notre réponse</dt>
+                                <dd>Un accueil interactif, une grille de pas qui se joue comme une boîte à rythmes. Autour, une navigation sobre en noir et rouge.</dd>
+                            </div>
+                            <div>
+                                <dt>Difficultés et solutions</dt>
+                                <dd>Les navigateurs bloquent le son tant que le visiteur n’a pas interagi avec la page, et seize pas tiennent mal sur un téléphone. Le son démarre donc au premier geste, et la grille s’adapte à l’écran pour rester jouable au doigt.</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </article>
+
+                <article class="piece piece--flip" id="alliani" data-tint="rouge" aria-labelledby="alliani-name">
                     <figure class="piece__media">
                         <a class="piece__link pw-screen" href="https://maison-alliani.com/" target="_blank" rel="noopener noreferrer" data-card="alliani" data-title="maison-alliani.com" aria-haspopup="dialog">
                             <span class="win">
@@ -794,7 +954,7 @@
                     </div>
                 </article>
 
-                <article class="piece" id="amarte" data-tint="ciel" aria-labelledby="amarte-name">
+                <article class="piece" id="amarte" data-tint="bleu" aria-labelledby="amarte-name">
                     <figure class="piece__media">
                         <a class="piece__link pw-screen" href="https://amarte.ch/" target="_blank" rel="noopener noreferrer" data-card="amarte" data-title="amarte.ch" aria-haspopup="dialog">
                             <span class="win">
@@ -847,7 +1007,7 @@
                     </div>
                 </article>
 
-                <article class="piece piece--flip" id="nadege" data-tint="rouge" aria-labelledby="nadege-name">
+                <article class="piece piece--flip" id="nadege" data-tint="vert" aria-labelledby="nadege-name">
                     <figure class="piece__media">
                         <a class="piece__link pw-screen" href="https://nadegemouine.ch" target="_blank" rel="noopener noreferrer" data-card="nadege" data-title="nadegemouine.ch" aria-haspopup="dialog">
                             <span class="win">
@@ -900,7 +1060,7 @@
                     </div>
                 </article>
 
-                <article class="piece" id="dj" data-tint="bleu" aria-labelledby="dj-name">
+                <article class="piece" id="dj" data-tint="jaune" aria-labelledby="dj-name">
                     <figure class="piece__media">
                         <a class="piece__link pw-screen" href="https://lazizze.com/#/" target="_blank" rel="noopener noreferrer" data-card="dj" data-title="lazizze.com" aria-haspopup="dialog">
                             <span class="win">
@@ -953,7 +1113,7 @@
                     </div>
                 </article>
 
-                <article class="piece piece--flip" id="slack" data-tint="vert" aria-labelledby="slack-name">
+                <article class="piece piece--flip" id="slack" data-tint="rose" aria-labelledby="slack-name">
                     <figure class="piece__media">
                         <a class="piece__link pw-screen" href="https://la-slack.com/" target="_blank" rel="noopener noreferrer" data-card="slack" data-title="la-slack.com" aria-haspopup="dialog">
                             <span class="win">
@@ -1006,7 +1166,7 @@
                     </div>
                 </article>
 
-                <article class="piece" id="commissione" data-tint="jaune" aria-labelledby="commissione-name">
+                <article class="piece" id="commissione" data-tint="ciel" aria-labelledby="commissione-name">
                     <figure class="piece__media">
                         <a class="piece__link pw-screen" href="https://commissione-entretien.ch/" target="_blank" rel="noopener noreferrer" data-card="commissione" data-title="commissione-entretien.ch" aria-haspopup="dialog">
                             <span class="win">
@@ -1067,7 +1227,7 @@
                 <div class="os-card">
                     <div class="pw-head">
                         <h2 class="pw-head__title" id="processTitle">Notre méthode.</h2>
-                        <p class="pw-head__lede">De 3&nbsp;à&nbsp;6&nbsp;semaines pour un site vitrine.</p>
+                        <p class="pw-head__lede">Pas d’échéance qui coupe le travail&nbsp;: nous avançons jusqu’à votre entière satisfaction.</p>
                     </div>
                     <ol class="pw-steps__list" aria-label="Les étapes d’un projet">
                         <li class="pw-step">
@@ -1083,7 +1243,7 @@
                         <li class="pw-step">
                             <span class="pw-step__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="m13.5 6-3 12"/></svg></span>
                             <h3 class="pw-step__name">Design et développement.</h3>
-                            <p class="pw-step__desc">Un point d’avancement chaque semaine. Chaque étape est soumise à votre validation.</p>
+                            <p class="pw-step__desc">Un point d’avancement chaque semaine. Chaque étape est soumise à votre validation, et reprise tant qu’elle ne vous convient pas.</p>
                         </li>
                         <li class="pw-step">
                             <span class="pw-step__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18Z"/></svg></span>

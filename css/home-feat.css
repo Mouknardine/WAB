@@ -1,0 +1,157 @@
+/* ============================================
+   WAB OS — accueil : À la une
+   Les projets du moment, chacun dans une carte blanche à liseré net
+   (la matière de la carte WAB, home-card.css) : une scène en aplat
+   de la teinte, où est posée la fenêtre du site (une vraie capture,
+   comme dans les tuiles des services), puis le corps — l'état du
+   projet (os-status.css), le nom, le contexte, l'échange, une
+   phrase, les touches. Sur ordinateur, chaque carte prend toute la
+   largeur, le texte d'un côté et la scène de l'autre, en quinconce
+   (.fcard--flip : la scène à gauche).
+   ============================================ */
+
+.fgrid {
+    display: grid;
+    gap: 12px;
+}
+
+.fcard {
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+    border-radius: var(--r-win);
+    background: var(--paper);
+    box-shadow: 0 0 0 var(--hair) var(--line);
+}
+
+/* ── La scène ── l'aplat coupe net la fenêtre, qui sort par la droite
+   et par le bas, comme posée sur un bureau plus grand. */
+.fcard__stage {
+    position: relative;
+    height: 240px;
+    padding: 16px 18px;
+    border-radius: var(--r-ctl);
+    background: var(--klein);
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.fcard__label {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-mono);
+    font-size: var(--t-cap);
+    line-height: 1.3;
+    letter-spacing: var(--track-caps);
+    text-transform: uppercase;
+    color: var(--ink);
+}
+
+.fcard__win {
+    position: absolute;
+    top: 48px;
+    bottom: -14px;
+    left: 8%;
+    right: -14%;
+    box-shadow: 0 0 0 var(--hair) var(--klein-deep), var(--shadow-object);
+}
+
+.fcard__win .win__body img {
+    object-position: top left;
+}
+
+/* ── Le corps ── */
+.fcard__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 20px 22px;
+}
+
+.fcard__name {
+    margin-top: 16px;
+    font-size: 1.625rem;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+.fcard__context {
+    margin-top: 6px;
+    font-size: 1.0625rem;
+    line-height: 1.45;
+    text-wrap: pretty;
+}
+
+.fcard .chat {
+    margin-top: 18px;
+}
+
+.fcard .chat__ask {
+    font-size: 0.9375rem;
+}
+
+.fcard__text {
+    margin-top: 16px;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+}
+
+.fcard__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 20px;
+}
+
+@media (min-width: 600px) {
+    .fcard__stage {
+        height: 320px;
+    }
+}
+
+@media (min-width: 900px) {
+    /* La carte large : le texte d'un côté, la scène de l'autre, sur
+       toute la hauteur de la carte. */
+    .fcard--wide {
+        display: grid;
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+        gap: 6px;
+    }
+
+    .fcard--wide .fcard__stage {
+        order: 2;
+        height: auto;
+        min-height: 420px;
+    }
+
+    .fcard--wide .fcard__body {
+        justify-content: center;
+        padding: 40px 36px;
+    }
+
+    .fcard--wide .fcard__name {
+        font-size: 2.25rem;
+    }
+
+    .fcard--wide .fcard__actions {
+        padding-top: 28px;
+    }
+
+    .fcard--wide .fcard__win {
+        top: 56px;
+        left: 7%;
+        right: -8%;
+    }
+
+    /* En quinconce : la scène à gauche ; la fenêtre sort toujours par
+       la droite et par le bas, pastilles visibles. */
+    .fcard--flip {
+        grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    }
+
+    .fcard--flip .fcard__stage {
+        order: 0;
+    }
+}

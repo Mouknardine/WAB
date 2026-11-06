@@ -11,7 +11,7 @@
   - Bryan Morin — commercial et relation client, suit chaque client de la prise de contact au lancement ; accompagne aussi de grands clients au sein d’une startup.
   - Anaïs Polo — web designeuse, en Bachelor Media & Interaction Design à l’ECAL.
 - **Méthode** : 1. premier échange sans engagement ; 2. proposition écrite (périmètre, calendrier, prix) sous 24 h ouvrées ; 3. design et développement, validés étape par étape ; 4. mise en ligne, hébergement en Suisse, maintenance et évolutions.
-- **Engagements** : chaque site est dessiné et codé de A à Z, sans WordPress ni Wix ; pensé d’abord pour le mobile ; référencement local inclus ; hébergement en Suisse chez Infomaniak inclus ; le domaine, le code et les contenus appartiennent au client. Un site vitrine prend 3 à 6 semaines.
+- **Engagements** : chaque site est dessiné et codé de A à Z, sans WordPress ni Wix ; pensé d’abord pour le mobile ; référencement local inclus ; hébergement en Suisse chez Infomaniak inclus ; le domaine, le code et les contenus appartiennent au client. Un site vitrine prend en général 3 à 6 semaines ; ce délai est un repère, pas une échéance : un projet n’est pas refermé à date fixe, il est travaillé jusqu’à l’entière satisfaction du client.
 - **Contact** : contact@wearebrothers.ch — réponse sous 24 h ouvrées. Téléphone : 079 311 58 40 (+41 79 311 58 40), pour toute question. Le lien « Contact » de chaque page ouvre aussi un formulaire.
 
 ## Prix (affichés sur le site)
@@ -19,16 +19,18 @@
 - **Site vitrine** — 1’000 à 2’500 CHF : site vitrine conçu et développé sur mesure, livré en 3 à 6 semaines, mobile d’abord, référencement local, hébergement suisse inclus.
 - **Site et outils** — 2’500 à 7’000 CHF (formule recommandée) : l’offre Site vitrine, plus un outil de gestion conçu autour des processus de l’entreprise, une boutique en ligne en option, caisse / CMS / boutique en gestion autonome, automatisation et IA.
 - **Expérience sur mesure** — dès 7’000 CHF : refonte de marque (logo, identité visuelle), direction artistique et motion design, site conçu comme une pièce unique, cartes de visite et imprimés, pièces textiles avec Memories Store.
-- Paiement en plusieurs mensualités possible.
+- Chaque formule est travaillée jusqu’à l’entière satisfaction du client. Paiement en plusieurs mensualités possible.
 
 ## Pages
 
-- [Accueil](https://wearebrothers.ch/) : présentation du studio — sites internet, applications de gestion, automatisation et IA ; la méthode en quatre étapes ; neuf réalisations ; les trois formules avec leurs prix ; l’équipe ; huit questions fréquentes (prix, délais, WordPress, maintenance, propriété du site, référencement, refonte, préparation).
+- [Accueil](https://wearebrothers.ch/) : présentation du studio — sites internet, applications de gestion, automatisation et IA ; deux projets à la une (Stidy, Artisano) ; la méthode en quatre étapes et l’engagement de travailler chaque projet jusqu’à l’entière satisfaction du client ; neuf réalisations en ligne ; les trois formules avec leurs prix ; l’équipe ; huit questions fréquentes (prix, délais, WordPress, maintenance, propriété du site, référencement, refonte, préparation).
 - [Création de site internet à Lausanne](https://wearebrothers.ch/creation-site-internet-lausanne) : quatre exemples lausannois et vaudois, ce que comprend un site, les formats (site vitrine, site d’entreprise, portfolio créatif, boutique en ligne), le déroulé, la zone d’intervention, la refonte de site et douze questions fréquentes.
-- [Réalisations](https://wearebrothers.ch/realisations) : neuf études de cas, chacune reliée au site en ligne :
+- [Réalisations](https://wearebrothers.ch/realisations) : onze études de cas :
+  - Stidy — application de révision conçue et lancée par le studio, pour les étudiants de l’UNIL et de l’EPFL ; en ligne, gratuite, sans application à installer (https://stidy-app.com/)
   - Zinéma — cinéma d’art et essai, rue du Maupas à Lausanne (https://www.zinema.ch/)
   - LE MEMO — collectif artistique et boutique à Lausanne, accueil en séquenceur musical (https://le-memo.ch/)
   - Le P’tit Central — café-restaurant de quartier, rue Centrale à Lausanne (https://www.lepetitcentral.ch/)
+  - Artisano — plateforme qui relie particuliers et artisans de Suisse romande, avec une application de gestion pour l’artisan (demandes, devis, factures avec QR-facture, agenda, équipe) ; en développement, bêta ouverte (https://artisano-one.vercel.app/)
   - Maison Alliani — haute joaillerie, grillz sur mesure (https://maison-alliani.com/)
   - Amarte Studio — centre de yoga et de Pilates à Épalinges (https://amarte.ch/)
   - Nadège Mouine — site personnel d’une architecte en formation à l’EPFL (https://nadegemouine.ch)

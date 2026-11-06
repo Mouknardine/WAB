@@ -59,6 +59,38 @@
     text-wrap: pretty;
 }
 
+/* L'engagement : une seconde carte sous les étapes — le texte, puis
+   l'échange en bulles. Le projet se termine quand le client est
+   entièrement satisfait, pas à une date fixée d'avance. */
+.promise {
+    display: grid;
+    gap: 20px;
+    margin-top: 12px;
+    padding: 22px 20px;
+    border-radius: var(--r-win);
+    background: var(--paper);
+    box-shadow: 0 0 0 var(--hair) var(--line);
+}
+
+.promise__text {
+    display: grid;
+    gap: 8px;
+}
+
+.promise__title {
+    font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.promise__line {
+    max-width: 54ch;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+}
+
 @media (min-width: 600px) {
     .steps {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -93,5 +125,12 @@
 
     .step:nth-child(n + 3) {
         border-top: 0;
+    }
+
+    .promise {
+        grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+        align-items: center;
+        gap: 40px;
+        padding: 32px 32px 32px 24px;
     }
 }

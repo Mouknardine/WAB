@@ -1,6 +1,6 @@
 # WAB OS — composants partagés
 
-État au **8 octobre 2026**. Référence pour les sept pages : accueil, Work, Services, About, Création de site, Applications, 404. Principes, jetons et teintes : `DESIGN-SYSTEM.md`.
+État au **6 novembre 2026**. Référence pour les sept pages : accueil, Work, Services, About, Création de site, Applications, 404. Principes, jetons et teintes : `DESIGN-SYSTEM.md`.
 
 Règle d'or : **les fichiers partagés (`os-*.css`, `key-btn.css`, `desk-keys.css`, `desk-margins.css`, `base*.css`, `js/os/`) ne reçoivent pas de style propre à une page.** Ce qui ne concerne qu'une page va dans `css/page-*.css` (ou `home-*` / `desk-*` pour l'accueil) et `js/page-*/`.
 
@@ -115,6 +115,9 @@ Patron complet d'une section colorée : `DESIGN-SYSTEM.md`, dernière section.
 - **Symboles** (`css/sym.css`, `assets/icons/sym-*.svg`) : `<span class="sym sym--search" aria-hidden="true"></span>`, couleur du texte. Disponibles : arrow, bolt, chart, check, file, folder, grid, mail, moon, notes, plus, search, site, sun, team, terminal, trash, turn.
 - **Icônes d'app** (`assets/icons/app-*.svg`) : touches 3D, utilisées dans les fenêtres et le dock de la 404. Générées par script : ne pas retoucher à la main.
 - **Autocollant** « HELLO my name is WAB. » (`css/os-sticker.css`) : sur Work, Services et Applications, toujours droit, dans un conteneur `aria-hidden`. Kaomoji : uniquement le « (o_O) » de la 404 (`css/desk-objects.css`).
+- **État d'un projet** (`css/os-status.css`, accueil et Work) : `<p class="status" data-state="live" data-tint="vert">En ligne</p>` — même matière que le badge, pastille ronde. Trois états seulement : `live` (en ligne, pastille de la teinte : `data-tint="vert"`), `beta` (en développement, `data-tint="jaune"`), `soon` (en préparation, pastille vide, sans `data-tint`). Seulement pour un projet dont l'état n'est pas évident (produit lancé, bêta, boutique pas encore ouverte) ; jamais sur un site client déjà en ligne.
+- **Carte À la une** (`css/home-feat.css`, accueil `#a-la-une`) : `.fcard` (carte blanche à liseré, comme `.wcard`) = `.fcard__stage.on-klein` (aplat de la teinte, étiquette `.fcard__label`, fenêtre `.fcard__win` avec la vraie capture `assets/images/shot-*`) + `.fcard__body` (état, `h3.fcard__name`, contexte, bulles, `.fcard__text`, `.fcard__actions`). `.fcard--wide` : pleine largeur sur ordinateur, texte à gauche, scène à droite ; `.fcard--flip` : en quinconce, scène à gauche. Chaque « Lire la fiche » porte `data-card` : la fiche vient de `work.html`.
+- **Engagement** (`css/home-steps.css`, accueil, sous les étapes de la Méthode) : `.promise` — carte blanche, `.step__num` « Notre engagement », `h3.promise__title`, `.promise__line`, puis l'échange en bulles.
 
 ## 7. Les marges en pixels — `js/desk/pixels-margins.js`, `css/desk-margins.css`
 

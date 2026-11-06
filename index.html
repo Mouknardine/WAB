@@ -306,7 +306,7 @@
                     "height": 630,
                     "caption": "« WeAreBrothers. » écrit en touches de clavier colorées — agence web à Lausanne, sites internet sur mesure"
                 },
-                "dateModified": "2026-10-08"
+                "dateModified": "2026-11-06"
             },
             {
                 "@type": "FAQPage",
@@ -329,7 +329,7 @@
                         "name": "Combien de temps prend la création d’un site ?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Comptez 3 à 6 semaines pour un site vitrine, davantage pour un projet sur mesure ou une boutique en ligne. Le calendrier est fixé ensemble au départ, avec des points réguliers jusqu’à la mise en ligne."
+                            "text": "Comptez 3 à 6 semaines pour un site vitrine, davantage pour un projet sur mesure ou une boutique en ligne. Ce délai est un repère, pas une échéance : nous ne refermons pas un projet à date fixe, nous le travaillons jusqu’à votre entière satisfaction."
                         }
                     },
                     {
@@ -433,7 +433,9 @@
     <link rel="stylesheet" href="css/home-head.css?v=5">
     <link rel="stylesheet" href="css/home-card.css?v=1">
     <link rel="stylesheet" href="css/home-tiles.css?v=2">
-    <link rel="stylesheet" href="css/home-steps.css?v=2">
+    <link rel="stylesheet" href="css/os-status.css?v=1">
+    <link rel="stylesheet" href="css/home-feat.css?v=1">
+    <link rel="stylesheet" href="css/home-steps.css?v=3">
     <link rel="stylesheet" href="css/desk-wall.css?v=7">
     <link rel="stylesheet" href="css/desk-plans.css?v=6">
     <link rel="stylesheet" href="css/desk-letter.css?v=9">
@@ -600,6 +602,64 @@
             </div>
         </section>
 
+        <!-- À LA UNE — les projets du moment, chacun avec son état réel :
+             Stidy (application lancée par le studio), Artisano (en
+             développement, bêta ouverte).
+             Scène : fenêtre et téléphone, de vraies captures. Les
+             fiches complètes sont sur /realisations (data-card). -->
+        <section class="block" id="a-la-une" aria-labelledby="featTitle" data-tint="rose">
+            <div class="desk-wrap">
+                <div class="home-head">
+                    <p class="badge">À la une</p>
+                    <h2 class="home-title" id="featTitle">En ce moment à l’atelier.</h2>
+                    <p class="home-lede">Une application que nous avons lancée, une plateforme en bêta&nbsp;: nos projets les plus aboutis, montrés tels qu’ils sont.</p>
+                </div>
+                <div class="fgrid">
+                    <article class="fcard fcard--wide" data-tint="bleu" aria-labelledby="feat-stidy">
+                        <div class="fcard__stage on-klein" aria-hidden="true">
+                            <p class="fcard__label">Application · Étudiants</p>
+                            <div class="win fcard__win"><div class="win__bar"><span class="win__lights"></span><span class="win__title">stidy-app.com</span></div><div class="win__body"><img src="assets/images/shot-stidy-800.webp" srcset="assets/images/shot-stidy-800.webp 800w, assets/images/shot-stidy-1600.webp 1600w" sizes="(min-width: 900px) 700px, 110vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></div></div>
+                        </div>
+                        <div class="fcard__body">
+                            <p class="status" data-state="live" data-tint="vert">En ligne</p>
+                            <h3 class="fcard__name" id="feat-stidy">Stidy</h3>
+                            <p class="fcard__context">L’application de révision conçue et lancée par le studio, pour les étudiants de l’UNIL et de l’EPFL.</p>
+                            <div class="chat" aria-hidden="true">
+                                <p class="chat__ask">On révise mieux à plusieurs.</p>
+                                <p class="chat__reply">Le chrono se partage.</p>
+                            </div>
+                            <p class="fcard__text">L’étudiant lance le chrono et pose son téléphone&nbsp;: ses amis voient le temps travaillé et la branche, jamais ses notes. Pas de classement, seulement des encouragements. Gratuite, sans application à installer.</p>
+                            <div class="fcard__actions">
+                                <a class="key-btn key-btn--klein" href="https://stidy-app.com/" target="_blank" rel="noopener noreferrer">Ouvrir Stidy<span class="sr-only"> (nouvel onglet)</span></a>
+                                <a class="key-btn" href="/realisations#stidy" data-card="stidy" data-title="stidy-app.com">Lire la fiche<span class="sr-only"> Stidy</span></a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="fcard fcard--wide fcard--flip" data-tint="jaune" aria-labelledby="feat-artisano">
+                        <div class="fcard__stage on-klein" aria-hidden="true">
+                            <p class="fcard__label">Plateforme · Artisans</p>
+                            <div class="win fcard__win"><div class="win__bar"><span class="win__lights"></span><span class="win__title">artisano-one.vercel.app</span></div><div class="win__body"><img src="assets/images/shot-artisano-800.webp" srcset="assets/images/shot-artisano-800.webp 800w, assets/images/shot-artisano-1600.webp 1600w" sizes="(min-width: 900px) 700px, 110vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></div></div>
+                        </div>
+                        <div class="fcard__body">
+                            <p class="status" data-state="beta" data-tint="jaune">En développement · bêta</p>
+                            <h3 class="fcard__name" id="feat-artisano">Artisano</h3>
+                            <p class="fcard__context">La plateforme qui relie particuliers et artisans de Suisse romande.</p>
+                            <div class="chat" aria-hidden="true">
+                                <p class="chat__ask">Mes devis, je les fais le soir.</p>
+                                <p class="chat__reply">Une minute, depuis le chantier.</p>
+                            </div>
+                            <p class="fcard__text">Une recherche par métier et par localité, avec avis et disponibilités. Pour l’artisan, une application de gestion sur téléphone&nbsp;: demandes, devis, factures avec QR-facture, agenda et équipe.</p>
+                            <div class="fcard__actions">
+                                <a class="key-btn key-btn--klein" href="https://artisano-one.vercel.app/" target="_blank" rel="noopener noreferrer">Voir la bêta<span class="sr-only"> Artisano (nouvel onglet)</span></a>
+                                <a class="key-btn" href="/realisations#artisano" data-card="artisano" data-title="artisano-one.vercel.app">Lire la fiche<span class="sr-only"> Artisano</span></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <p class="home-more">Sites et applications&nbsp;: <a href="/realisations">toutes nos études de cas</a></p>
+            </div>
+        </section>
+
         <!-- LA MÉTHODE — quatre étapes, reprises de la page Services, dans
              une seule carte partagée par des filets. -->
         <section class="block" id="methode" aria-labelledby="methodTitle" data-tint="ciel">
@@ -630,6 +690,20 @@
                         <p class="step__line">Hébergement en Suisse, maintenance et évolutions dans la durée.</p>
                     </li>
                 </ol>
+                <!-- L'ENGAGEMENT — pas d'échéance qui coupe le travail : le
+                     projet se termine quand le client est entièrement
+                     satisfait (Eliott, 06.11). -->
+                <div class="promise" data-tint="vert">
+                    <div class="promise__text">
+                        <p class="step__num">Notre engagement</p>
+                        <h3 class="promise__title">Jusqu’à votre entière satisfaction.</h3>
+                        <p class="promise__line">Un projet ne s’arrête pas à une date fixée d’avance. Nous travaillons votre site tant qu’il ne vous convient pas entièrement&nbsp;: chaque retour est repris, sans compte à rebours.</p>
+                    </div>
+                    <div class="chat" aria-hidden="true">
+                        <p class="chat__ask">Et si le résultat ne me plaît pas&nbsp;?</p>
+                        <p class="chat__reply">Nous le reprenons, jusqu’à ce qu’il vous plaise.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -652,17 +726,17 @@
                         </a>
                     </li>
                     <li>
-                        <a class="shot" href="/realisations#memo" data-card="memo" data-title="le-memo.ch">
-                            <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">le-memo.ch</span></span><span class="win__body"><img src="assets/images/shot-memo-800.webp" srcset="assets/images/shot-memo-800.webp 800w, assets/images/shot-memo-1600.webp 1600w" sizes="(min-width: 960px) 360px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
-                            <span class="shot__name">LE MEMO</span>
-                            <span class="shot__context">Collectif artistique et boutique à Lausanne</span>
-                        </a>
-                    </li>
-                    <li>
                         <a class="shot" href="/realisations#central" data-card="central" data-title="lepetitcentral.ch">
                             <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">lepetitcentral.ch</span></span><span class="win__body"><img src="assets/images/shot-central-800.webp" srcset="assets/images/shot-central-800.webp 800w, assets/images/shot-central-1600.webp 1600w" sizes="(min-width: 960px) 360px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
                             <span class="shot__name">Le P’tit Central</span>
                             <span class="shot__context">Café-restaurant de quartier à Lausanne</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="shot" href="/realisations#memo" data-card="memo" data-title="le-memo.ch">
+                            <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">le-memo.ch</span></span><span class="win__body"><img src="assets/images/shot-memo-800.webp" srcset="assets/images/shot-memo-800.webp 800w, assets/images/shot-memo-1600.webp 1600w" sizes="(min-width: 960px) 360px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
+                            <span class="shot__name">LE MEMO</span>
+                            <span class="shot__context">Collectif artistique et boutique à Lausanne</span>
                         </a>
                     </li>
                     <li>
@@ -762,7 +836,7 @@
                             <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn wcard__cta">Nous contacter</a>
                         </li>
                     </ul>
-                    <p class="home-more">Paiement en plusieurs mensualités possible. Besoin d’un périmètre différent&nbsp;? <a href="mailto:contact@wearebrothers.ch" data-contact>Écrivez-nous</a>.</p>
+                    <p class="home-more">Chaque formule est travaillée jusqu’à votre entière satisfaction. Paiement en plusieurs mensualités possible. Besoin d’un périmètre différent&nbsp;? <a href="mailto:contact@wearebrothers.ch" data-contact>Écrivez-nous</a>.</p>
                 </div>
             </div>
         </section>
@@ -812,7 +886,7 @@
                         </details>
                         <details class="qa">
                             <summary class="qa__q">Combien de temps prend la création d’un site&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
-                            <div class="qa__a"><p>Comptez 3&nbsp;à&nbsp;6&nbsp;semaines pour un site vitrine, davantage pour un projet sur mesure ou une boutique en ligne. Le calendrier est fixé ensemble au départ, avec des points réguliers jusqu’à la mise en ligne.</p></div>
+                            <div class="qa__a"><p>Comptez 3&nbsp;à&nbsp;6&nbsp;semaines pour un site vitrine, davantage pour un projet sur mesure ou une boutique en ligne. Ce délai est un repère, pas une échéance&nbsp;: nous ne refermons pas un projet à date fixe, nous le travaillons jusqu’à votre entière satisfaction.</p></div>
                         </details>
                         <details class="qa">
                             <summary class="qa__q">Utilisez-vous WordPress ou Wix&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
@@ -912,6 +986,7 @@
     <nav class="dock dock--toc" aria-label="Sommaire de la page" data-dock data-toc>
         <ol class="dock__toc">
             <li><a class="dock__chip" href="#services" data-tint="bleu">Services</a></li>
+            <li><a class="dock__chip" href="#a-la-une" data-tint="rose">À la une</a></li>
             <li><a class="dock__chip" href="#methode" data-tint="ciel">Méthode</a></li>
             <li><a class="dock__chip" href="#travail" data-tint="vert">Réalisations</a></li>
             <li><a class="dock__chip" href="#offres" data-tint="rouge">Offres</a></li>

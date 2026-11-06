@@ -65,6 +65,11 @@
     gap: 6px;
 }
 
+/* L'état d'un projet en cours (os-status.css), au-dessus du nom. */
+.piece__copy .status {
+    margin-bottom: 6px;
+}
+
 .piece__name {
     font-size: clamp(1.3rem, 2vw, 1.6rem);
     font-weight: var(--w-medium);
