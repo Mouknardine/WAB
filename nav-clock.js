@@ -30,17 +30,18 @@ function readLausanne(date) {
 }
 
 /**
- * Le vendredi soir appartient déjà au week-end : la réponse viendra
- * lundi, pas « demain ».
+ * L'équipe répond aussi le soir et le week-end (Eliott, 06.11.2026) :
+ * le statut le dit, sans prétendre que quelqu'un est connecté. La nuit
+ * seulement, la réponse vient au réveil.
  */
 function statusFor({ hour, weekday }) {
     const weekend = weekday === 'Sat' || weekday === 'Sun'
         || (weekday === 'Fri' && hour >= EVENING_HOUR);
 
-    if (weekend) return { text: 'Week-end, réponse lundi' };
+    if (weekend && hour >= 7 && hour < NIGHT_HOUR) return { text: 'Week-end, on vous répond quand même' };
     if (hour >= OPEN_HOUR && hour < EVENING_HOUR) return { text: 'Au studio' };
-    if (hour >= EVENING_HOUR && hour < NIGHT_HOUR) return { text: 'En soirée, réponse demain' };
-    return { text: 'Lausanne dort' };
+    if (!weekend && hour >= EVENING_HOUR && hour < NIGHT_HOUR) return { text: 'En soirée, on vous répond quand même' };
+    return { text: 'Lausanne dort, réponse au réveil' };
 }
 
 /**

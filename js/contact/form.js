@@ -8,7 +8,7 @@
  * n'est pas parti.
  */
 
-import { CONTACT_EMAIL } from './markup.js?v=12';
+import { CONTACT_EMAIL } from './markup.js?v=13';
 import { requireElement } from './dom.js?v=9';
 import { fieldNamed, rulesFor, validate } from './validation.js?v=1';
 

@@ -12,7 +12,7 @@
   - Anaïs Polo — web designeuse, en Bachelor Media & Interaction Design à l’ECAL.
 - **Méthode** : 1. premier échange sans engagement ; 2. proposition écrite (périmètre, calendrier, prix) sous 24 h ouvrées ; 3. design et développement, validés étape par étape ; 4. mise en ligne, hébergement en Suisse, maintenance et évolutions.
 - **Engagements** : chaque site est dessiné et codé de A à Z, sans WordPress ni Wix ; pensé d’abord pour le mobile ; référencement local inclus ; hébergement en Suisse chez Infomaniak inclus ; le domaine, le code et les contenus appartiennent au client. Un site vitrine prend en général 3 à 6 semaines ; ce délai est un repère, pas une échéance : un projet n’est pas refermé à date fixe, il est travaillé jusqu’à l’entière satisfaction du client.
-- **Contact** : contact@wearebrothers.ch — réponse sous 24 h ouvrées. Téléphone : 079 311 58 40 (+41 79 311 58 40), pour toute question. Le lien « Contact » de chaque page ouvre aussi un formulaire.
+- **Contact** : contact@wearebrothers.ch — l’équipe (de vraies personnes, celles qui conçoivent les sites) répond rapidement, y compris le soir et le week-end ; devis et propositions écrites sous 24 h ouvrées. Téléphone : 079 311 58 40 (+41 79 311 58 40), pour toute question. Le lien « Contact » de chaque page ouvre aussi un formulaire.
 
 ## Prix (affichés sur le site)
 
@@ -23,7 +23,7 @@
 
 ## Pages
 
-- [Accueil](https://wearebrothers.ch/) : présentation du studio — sites internet, applications de gestion, automatisation et IA ; deux projets à la une (Stidy, Artisano) ; la méthode en quatre étapes et l’engagement de travailler chaque projet jusqu’à l’entière satisfaction du client ; neuf réalisations en ligne ; les trois formules avec leurs prix ; l’équipe ; huit questions fréquentes (prix, délais, WordPress, maintenance, propriété du site, référencement, refonte, préparation).
+- [Accueil](https://wearebrothers.ch/) : présentation du studio — sites internet, applications de gestion, automatisation et IA ; deux projets à la une (Stidy, Artisano) ; le service client (l’équipe joignable, réponse rapide à toute heure, présente après la mise en ligne) ; la méthode en quatre étapes et l’engagement de travailler chaque projet jusqu’à l’entière satisfaction du client ; neuf réalisations en ligne ; les trois formules avec leurs prix ; l’équipe ; huit questions fréquentes (prix, délais, WordPress, maintenance, propriété du site, référencement, refonte, préparation).
 - [Création de site internet à Lausanne](https://wearebrothers.ch/creation-site-internet-lausanne) : quatre exemples lausannois et vaudois, ce que comprend un site, les formats (site vitrine, site d’entreprise, portfolio créatif, boutique en ligne), le déroulé, la zone d’intervention, la refonte de site et douze questions fréquentes.
 - [Réalisations](https://wearebrothers.ch/realisations) : onze études de cas :
   - Stidy — application de révision conçue et lancée par le studio, pour les étudiants de l’UNIL et de l’EPFL ; en ligne, gratuite, sans application à installer (https://stidy-app.com/)

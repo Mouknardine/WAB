@@ -1,0 +1,151 @@
+/* ============================================
+   WAB OS — accueil : le service client
+   Une carte blanche à liseré net (la matière de la méthode,
+   home-steps.css) : en haut, les visages de l'équipe, l'heure de
+   Lausanne et les deux touches pour écrire ou appeler, avec l'échange
+   en bulles ; dessous, trois points séparés par des filets.
+   L'heure vient de nav-clock.js ([data-local-time]) : elle dit
+   l'heure, jamais que quelqu'un est connecté.
+   ============================================ */
+
+.here {
+    display: grid;
+    border-radius: var(--r-win);
+    background: var(--paper);
+    box-shadow: 0 0 0 var(--hair) var(--line);
+}
+
+.here__now {
+    display: grid;
+    gap: 16px;
+    padding: 24px 20px 4px;
+}
+
+/* ── Les visages ── une petite pile, un anneau blanc les détache. */
+.here__who {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.here__faces {
+    display: flex;
+    list-style: none;
+}
+
+.here__faces li + li {
+    margin-left: -12px;
+}
+
+.here__faces img {
+    display: block;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--paper);
+    box-shadow: 0 0 0 3px var(--paper);
+}
+
+.here__names {
+    font-size: var(--t-small);
+    color: var(--ink-muted);
+}
+
+.here__line {
+    max-width: 46ch;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    text-wrap: pretty;
+}
+
+/* L'heure en Sligoil, la signature du site, un cran plus petite
+   pour s'aligner sur la phrase. */
+.here__line time {
+    font-size: 0.88em;
+    font-variant-numeric: tabular-nums;
+}
+
+.here__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* ── L'échange ── */
+.here__chat {
+    padding: 20px 20px 24px;
+}
+
+.here__chat .chat__ask {
+    font-size: 0.9375rem;
+}
+
+/* ── Les trois points ── une rangée au téléphone chacun, trois
+   colonnes sur ordinateur, partagées par des filets. */
+.here__list {
+    display: grid;
+    list-style: none;
+    border-top: var(--hair) solid var(--line);
+}
+
+.here__item {
+    display: grid;
+    align-content: start;
+    gap: 8px;
+    padding: 22px 20px;
+}
+
+.here__item + .here__item {
+    border-top: var(--hair) solid var(--line);
+}
+
+.here__item .sym {
+    color: var(--klein-text);
+    font-size: 1.25rem;
+}
+
+.here__name {
+    font-size: 1.125rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+
+.here__text {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+}
+
+@media (min-width: 900px) {
+    .here {
+        grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    }
+
+    .here__now {
+        gap: 20px;
+        padding: 36px 24px 32px 32px;
+    }
+
+    .here__chat {
+        align-self: center;
+        padding: 32px 32px 32px 0;
+    }
+
+    .here__list {
+        grid-column: 1 / -1;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .here__item {
+        padding: 28px 24px;
+    }
+
+    .here__item + .here__item {
+        border-top: 0;
+        border-left: var(--hair) solid var(--line);
+    }
+}

@@ -436,6 +436,7 @@
     <link rel="stylesheet" href="css/os-status.css?v=1">
     <link rel="stylesheet" href="css/home-feat.css?v=1">
     <link rel="stylesheet" href="css/home-steps.css?v=3">
+    <link rel="stylesheet" href="css/home-here.css?v=1">
     <link rel="stylesheet" href="css/desk-wall.css?v=7">
     <link rel="stylesheet" href="css/desk-plans.css?v=6">
     <link rel="stylesheet" href="css/desk-letter.css?v=9">
@@ -443,9 +444,9 @@
     <link rel="stylesheet" href="css/home-call.css?v=1">
 
     <!-- Scripts -->
-    <script src="nav-clock.js?v=4" defer></script>
+    <script src="nav-clock.js?v=5" defer></script>
     <script src="js/nav.js?v=7" defer></script>
-    <script type="module" src="js/contact/index.js?v=17"></script>
+    <script type="module" src="js/contact/index.js?v=18"></script>
     <script type="module" src="js/os/index.js?v=15"></script>
     <script type="module" src="js/desk/index.js?v=24"></script>
 </head>
@@ -707,6 +708,60 @@
             </div>
         </section>
 
+        <!-- LE SERVICE CLIENT — des personnes derrière chaque site, et une
+             réponse rapide à toute heure, soir et week-end compris
+             (Eliott, 06.11). Les visages de l'équipe, l'heure de Lausanne
+             (nav-clock.js) et l'échange en bulles ; trois points courts.
+             L'heure ne prétend jamais que quelqu'un est connecté. -->
+        <section class="block" id="equipe" aria-labelledby="hereTitle" data-tint="jaune">
+            <div class="desk-wrap">
+                <div class="home-head">
+                    <p class="badge">Service client</p>
+                    <h2 class="home-title" id="hereTitle">Derrière chaque site, des personnes. Joignables.</h2>
+                    <p class="home-lede">Vous ne parlez ni à un robot ni à un guichet, mais à l’équipe qui dessine et code votre site.</p>
+                </div>
+                <div class="here">
+                    <div class="here__now">
+                        <div class="here__who">
+                            <ul class="here__faces" aria-label="L’équipe du studio">
+                                <li><img src="assets/images/avatar-eliott.webp" alt="Eliott Pina" width="144" height="144" loading="lazy" decoding="async"></li>
+                                <li><img src="assets/images/avatar-matt.webp" alt="Matt Pina" width="144" height="144" loading="lazy" decoding="async"></li>
+                                <li><img src="assets/images/avatar-bryan.webp" alt="Bryan Morin" width="144" height="144" loading="lazy" decoding="async"></li>
+                                <li><img src="assets/images/avatar-anais.webp" alt="Anaïs Polo" width="144" height="144" loading="lazy" decoding="async"></li>
+                            </ul>
+                            <p class="here__names">Eliott, Matt, Bryan et Anaïs</p>
+                        </div>
+                        <p class="here__line">Il est <time data-local-time>--:--</time> à Lausanne. Quelle que soit l’heure, écrivez-nous&nbsp;: l’un de nous vous répond rapidement.</p>
+                        <div class="here__actions">
+                            <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein">Écrire à l’équipe</a>
+                            <a href="tel:+41793115840" class="key-btn">079&nbsp;311&nbsp;58&nbsp;40</a>
+                        </div>
+                    </div>
+                    <div class="chat here__chat" aria-hidden="true">
+                        <p class="chat__ask">Mon site a un souci, et on est dimanche.</p>
+                        <p class="chat__reply">On s’en occupe.</p>
+                    </div>
+                    <ul class="here__list">
+                        <li class="here__item">
+                            <span class="sym sym--team" aria-hidden="true"></span>
+                            <h3 class="here__name">Des visages, pas un guichet</h3>
+                            <p class="here__text">Vous savez qui dessine et code votre site&nbsp;: c’est à eux que vous parlez, du premier échange à la mise en ligne.</p>
+                        </li>
+                        <li class="here__item">
+                            <span class="sym sym--bolt" aria-hidden="true"></span>
+                            <h3 class="here__name">Une réponse rapide, à toute heure</h3>
+                            <p class="here__text">Le soir comme le week-end, un message n’attend pas lundi pour trouver sa réponse.</p>
+                        </li>
+                        <li class="here__item">
+                            <span class="sym sym--site" aria-hidden="true"></span>
+                            <h3 class="here__name">Présents après la mise en ligne</h3>
+                            <p class="here__text">Hébergement en Suisse, maintenance, évolutions&nbsp;: nous restons à vos côtés aussi longtemps que votre site vit.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
         <!-- LES RÉALISATIONS — les neuf projets en ligne, en grille
              régulière : la fenêtre, le nom, le contexte (repris de
              /realisations). Une fenêtre ouvre la fiche du projet. -->
@@ -931,7 +986,7 @@
                         <p class="call__lede">Un premier échange, sans engagement. Nous regardons votre site actuel et vos objectifs, puis nous vous disons concrètement par où commencer.</p>
                         <div class="call__actions">
                             <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein">Démarrer un projet</a>
-                            <p class="call__note">Réponse sous 24&nbsp;h ouvrées</p>
+                            <p class="call__note">Réponse rapide, même le week-end</p>
                         </div>
                     </div>
                     <div class="chat call__chat" aria-hidden="true" data-watch="once">
@@ -968,7 +1023,7 @@
                 <p class="foot__label">Un projet, une question&nbsp;?</p>
                 <a class="foot__mail" href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
                 <a class="foot__mail foot__tel" href="tel:+41793115840">079&nbsp;311&nbsp;58&nbsp;40</a>
-                <p class="foot__meta">Lausanne · <time data-local-time>--:--</time> · réponse sous 24&nbsp;h ouvrées</p>
+                <p class="foot__meta">Lausanne · <time data-local-time>--:--</time> · réponse rapide, même le week-end</p>
             </div>
             <div class="foot__bar">
                 <p>&copy; 2026 WeAreBrothers Studio</p>
@@ -988,6 +1043,7 @@
             <li><a class="dock__chip" href="#services" data-tint="bleu">Services</a></li>
             <li><a class="dock__chip" href="#a-la-une" data-tint="rose">À la une</a></li>
             <li><a class="dock__chip" href="#methode" data-tint="ciel">Méthode</a></li>
+            <li><a class="dock__chip" href="#equipe" data-tint="jaune">Équipe</a></li>
             <li><a class="dock__chip" href="#travail" data-tint="vert">Réalisations</a></li>
             <li><a class="dock__chip" href="#offres" data-tint="rouge">Offres</a></li>
             <li><a class="dock__chip" href="#lettre" data-tint="jaune">Studio</a></li>

@@ -35,7 +35,7 @@ Formulations à éviter : « interlocuteur unique », « sans chef de projet »,
 ## Operating Context
 
 - Zone d'intervention : arc lémanique et Suisse romande. Studio basé à **Lausanne** — jamais Genève comme siège (Genève n'apparaît que comme zone desservie).
-- Contact direct par email et formulaire, réponse annoncée sous 24 h ouvrées, sans engagement.
+- Contact direct par email, formulaire et téléphone, sans engagement. **Service client** (Eliott, 06.11.2026) : l'équipe répond rapidement, y compris le soir et le week-end ; la réponse ne s'annonce plus « sous 24 h ouvrées » (ce délai reste celui des devis et propositions écrites). Le dire sans insister : une section sur l'accueil (`#equipe`, visages de l'équipe, heure de Lausanne, bulles, trois points), puis une ligne dans les appels finaux, les pieds de page et la fenêtre de contact. L'heure de Lausanne ne prétend jamais que quelqu'un est connecté.
 - Déroulé d'un projet site : premier échange, proposition (périmètre, calendrier, prix), design et développement validés étape par étape, puis mise en ligne, hébergement en Suisse (Infomaniak), maintenance et évolutions.
 - Déroulé d'un projet logiciel : observation du métier, puis livraison module par module, chaque module utilisable dès qu'il est terminé, reprise des données existantes.
 - Délai type d'un site vitrine : 3 à 6 semaines. **C'est un repère, pas une échéance** (Eliott, 06.11.2026) : le studio ne referme pas un projet à date fixe, il le travaille **jusqu'à l'entière satisfaction du client**. Formulation publique : « jusqu'à votre entière satisfaction », « sans échéance qui coupe le travail ». À dire partout où un délai est annoncé (méthode, FAQ, offres).
@@ -51,7 +51,7 @@ Formulations à éviter : « interlocuteur unique », « sans chef de projet »,
 
 | Adresse | Fichier | Contenu |
 |---|---|---|
-| `/` | `index.html` | Premier écran « WeAreBrothers. » en touches + deux boutons ; Services (trois cartes : sites, applications, automatisation) ; À la une (Stidy, Artisano, chacun avec son état) ; Méthode (quatre étapes + l'engagement « Jusqu'à votre entière satisfaction ») ; Réalisations (« Fait à Lausanne. », grille de captures) ; Offres (trois prix) ; Le studio (lettre signée) ; FAQ ; appel final |
+| `/` | `index.html` | Premier écran « WeAreBrothers. » en touches + deux boutons ; Services (trois cartes : sites, applications, automatisation) ; À la une (Stidy, Artisano, chacun avec son état) ; Méthode (quatre étapes + l'engagement « Jusqu'à votre entière satisfaction ») ; Service client (« Derrière chaque site, des personnes. Joignables. ») ; Réalisations (« Fait à Lausanne. », grille de captures) ; Offres (trois prix) ; Le studio (lettre signée) ; FAQ ; appel final |
 | `/realisations` | `work.html` | « Onze études de cas, de Lausanne à Bavois. » — vue en icônes ou en liste, fiche de chaque projet ; méthode ; contact |
 | `/services` | `services.html` | Technologie ; Image de marque ; Formules (les trois prix) ; Méthode |
 | `/studio` | `about.html` | Équipe (quatre portraits en fenêtres, nom et rôle) ; Conseil (fenêtre « Parcours ») ; Savoir-faire ; contact |
