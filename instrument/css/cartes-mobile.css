@@ -1,13 +1,7 @@
-/* Les cartes sur téléphone (< 768 px) : une rubrique à la fois. La zone
-   de l'instrument reste visible, la carte blanche se pose en haut,
-   et la navigation se fait au pouce, en bas : carrés de progression (ou
-   « 4/10 »), puis « ← Précédent » et « Suivant → ». */
-
-.paquet__nav,
-.paquet__indice,
-.paquet__compte {
-    display: none;
-}
+/* Les cartes sur téléphone (< 768 px) : une rubrique à la fois. Toutes
+   ses cartes sont posées l'une sous l'autre, chacune avec son en-tête
+   (« Projets 3/11 », ×), et flottent sur la grille qui reste visible
+   entre elles. On fait défiler la zone pour les lire, comme Contact. */
 
 @media (max-width: 47.99rem) {
     .cartes {
@@ -31,30 +25,32 @@
         display: none;
     }
 
-    /* Carte seule (Contact) : pas de bande de navigation dessous, on
-       laisse le même espace qu'en haut avant le panneau du bas. */
-    .rubrique:not([data-paquet]) {
-        padding-bottom: calc(var(--u) * 1.5);
-    }
-
-    /* Paquet : le même espace entre la carte et la bande Précédent /
-       Suivant, même quand la carte est assez haute pour la toucher. */
-    .rubrique[data-paquet] .rubrique__cartes {
-        margin-bottom: calc(var(--u) * 1.5);
-    }
-
+    /* La pile de cartes défile ; le même espace en haut, entre les
+       cartes et en bas, avant le panneau du bas. Le défilement s'arrête
+       à la pile : la page ne bouge pas derrière. */
     .rubrique__cartes {
         display: flex;
         flex: 0 1 auto;
         flex-direction: column;
+        gap: calc(var(--u) * 1.5);
         min-height: 0;
+        margin-inline: calc(-1 * var(--gouttiere));
+        padding: 0 var(--gouttiere) calc(var(--u) * 1.5);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: none;
     }
 
-    /* La carte suit son contenu ; trop longue, elle défile à l'intérieur */
+    .rubrique__cartes::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Chaque carte suit son contenu, en entier */
     .carte {
-        min-height: 0;
-        max-height: 100%;
-        touch-action: pan-y;
+        flex-shrink: 0;
+        min-height: auto;
+        max-height: none;
+        overflow: visible;
     }
 
     .carte > * {
@@ -81,7 +77,6 @@
     }
 
     .carte__nav,
-    .carte__numero,
     .carte__fermer-mot {
         display: none;
     }
@@ -93,96 +88,5 @@
     .carte__texte {
         font-size: 1rem;
         line-height: 1.5;
-    }
-
-    .paquet__indice:not([hidden]) {
-        display: block;
-        width: fit-content;
-        margin: var(--u) auto 0;
-        padding: calc(var(--u) * 0.5) var(--u);
-        background: var(--papier);
-        font-family: var(--police-machine);
-        font-size: var(--txt-s);
-        font-weight: 700;
-        text-align: center;
-    }
-
-    .paquet__nav {
-        display: flex;
-        flex-direction: column;
-        gap: var(--u);
-        /* Bande pleine largeur posée sur le panneau du bas */
-        margin: auto calc(-1 * var(--gouttiere)) 0;
-        padding: var(--u) var(--gouttiere) calc(var(--u) + var(--touche));
-        border-top: var(--filet) solid var(--encre);
-        background: var(--papier);
-    }
-
-    .paquet__points {
-        display: flex;
-        justify-content: center;
-    }
-
-    .paquet__nav[data-mode='compte'] .paquet__points {
-        display: none;
-    }
-
-    .paquet__nav[data-mode='compte'] .paquet__compte {
-        display: block;
-        font-family: var(--police-machine);
-        font-size: 0.875rem;
-        font-weight: 700;
-        text-align: center;
-    }
-
-    /* Un carré de 12 px, une cible de 44 px autour */
-    .paquet__point {
-        display: grid;
-        flex: 0 0 var(--cible);
-        place-items: center;
-        height: var(--cible);
-        padding: 0;
-        border: 0;
-        background: none;
-        cursor: pointer;
-    }
-
-    .paquet__point::before {
-        content: '';
-        width: 0.75rem;
-        height: 0.75rem;
-        border: 2px solid var(--encre-noire);
-        background: var(--papier);
-    }
-
-    .paquet__point[aria-current]::before {
-        background: var(--aplat);
-    }
-
-    .paquet__pas2 {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--u);
-    }
-
-    .paquet__pas {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: var(--u);
-        min-height: 3rem;
-        border: 2px solid var(--encre-noire);
-        background: var(--papier);
-        color: var(--encre-noire);
-        font-family: var(--police-machine);
-        font-size: 0.875rem;
-        font-weight: 700;
-        cursor: pointer;
-    }
-
-    .paquet__signe {
-        font-family: var(--police-signes);
-        font-size: 1.125rem;
-        font-weight: 400;
     }
 }

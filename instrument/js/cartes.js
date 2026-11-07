@@ -1,20 +1,18 @@
 /**
  * Les cartes posées sur l'instrument : Nous, Projets, Services, Contact.
- * Chaque rubrique ouverte est un paquet : une carte visible à la fois,
- * ← → pour passer à la suivante (et les flèches du clavier, ou un glisser
- * horizontal au doigt), × ou Échap pour le fermer. Au bureau, plusieurs
- * paquets peuvent être ouverts ; sur téléphone, un seul, qui couvre la
- * zone de l'instrument.
- * Ouvrir ou fermer se fait d'un coup ; passer d'une carte à l'autre
- * glisse en douceur (js/cartes-transition.js).
+ * Au bureau, chaque rubrique ouverte est un paquet : une carte visible à
+ * la fois, ← → pour passer à la suivante (et les flèches du clavier),
+ * × ou Échap pour le fermer ; plusieurs paquets peuvent être ouverts, et
+ * passer d'une carte à l'autre glisse en douceur (js/cartes-transition.js).
+ * Sur téléphone, une seule rubrique à la fois : toutes ses cartes sont
+ * posées l'une sous l'autre, flottant sur la grille, et l'on fait défiler
+ * pour les lire (demande d'Eliott du 07.11, comme Contact).
  */
 
 import { RUBRIQUES } from './cartes-donnees.js';
 import { remplirRubrique } from './cartes-rendu.js';
 import { auPremierPlan, rang, placerPaquet, garderDansZone, rendreDeplacable } from './cartes-bureau.js';
 import { petitEcran } from './jetons.js';
-import { relierGlisser } from './cartes-glisser.js';
-import { creerNav, creerIndice } from './cartes-nav.js';
 import { passerCarte } from './cartes-transition.js';
 
 /**
@@ -23,9 +21,7 @@ import { passerCarte } from './cartes-transition.js';
  * @property {HTMLElement} region
  * @property {HTMLButtonElement} bouton
  * @property {HTMLElement[]} cartes
- * @property {number} courante
- * @property {import('./cartes-nav.js').Nav | null} nav  navigation au pouce (téléphone)
- * @property {() => void} indice  « Glissez pour la suite », une fois par visite
+ * @property {number} courante  carte montrée au bureau
  * @typedef {{ ouvrir: (id: string, options?: { focus?: boolean }) => void }} Cartes
  */
 
@@ -50,11 +46,7 @@ export function creerCartes(calque) {
         const cartes = remplirRubrique(region, rubrique);
         region.toggleAttribute('data-paquet', cartes.length > 1);
         /** @type {Paquet} */
-        const p = { id: rubrique.id, region, bouton, cartes, courante: 0, nav: null, indice: () => {} };
-        if (cartes.length > 1) {
-            p.nav = creerNav(region, cartes.length, (i) => changer(p, i - p.courante, 'carte'), (sens) => changer(p, sens, 'carte'));
-            p.indice = creerIndice(region);
-        }
+        const p = { id: rubrique.id, region, bouton, cartes, courante: 0 };
         paquets.push(p);
         rendreDeplacable(region, () => !petitEcran());
     }
@@ -63,12 +55,11 @@ export function creerCartes(calque) {
     const ouverts = () => paquets.filter((p) => !p.region.hidden);
     const devant = () => ouverts().reduce((/** @type {Paquet | null} */ a, p) => (!a || rang(p.region) > rang(a.region) ? p : a), null);
 
-    /** Seule la carte courante est montrée. @param {Paquet} p */
+    /** Bureau : seule la carte courante. Téléphone : toutes, l'une sous l'autre. @param {Paquet} p */
     function afficher(p) {
-        p.cartes.forEach((c, i) => { c.hidden = i !== p.courante; });
-        p.nav?.maj(p.courante);
+        const toutes = petitEcran();
+        p.cartes.forEach((c, i) => { c.hidden = !toutes && i !== p.courante; });
     }
-
 
     /** @param {Paquet} p @param {boolean} rendreFocus */
     function fermer(p, rendreFocus) {
@@ -86,7 +77,6 @@ export function creerCartes(calque) {
         const hauteurAvant = avant.offsetHeight;
         p.courante = (p.courante + sens + p.cartes.length) % p.cartes.length;
         afficher(p);
-        p.region.querySelectorAll('.paquet__indice').forEach((i) => { i.hidden = true; });
         garderDansZone(p.region);
         const carte = p.cartes[p.courante];
         if (carte !== avant) passerCarte(avant, carte, sens, hauteurAvant);
@@ -105,13 +95,10 @@ export function creerCartes(calque) {
         p.region.hidden = false;
         p.bouton.setAttribute('aria-expanded', 'true');
         afficher(p);
-        if (mobile) {
-            p.cartes[p.courante].scrollTop = 0;
-            p.nav?.ajuster();
-            p.indice();
-        } else if (etaitFerme) placerPaquet(p.region, precedent && precedent !== p ? precedent.region : null);
+        if (mobile) p.region.querySelector('.rubrique__cartes')?.scrollTo({ top: 0 });
+        else if (etaitFerme) placerPaquet(p.region, precedent && precedent !== p ? precedent.region : null);
         else auPremierPlan(p.region);
-        if (focus) p.cartes.find((c) => !c.hidden)?.focus({ preventScroll: true });
+        if (focus) (mobile ? p.cartes[0] : p.cartes[p.courante])?.focus({ preventScroll: true });
     }
 
     for (const p of paquets) {
@@ -123,9 +110,8 @@ export function creerCartes(calque) {
             if (nav instanceof HTMLElement) return changer(p, Number(nav.dataset.sens), 'bouton');
             if (e.target.closest('.carte__fermer')) fermer(p, true);
         });
-        relierGlisser(p.region, (sens) => { if (p.cartes.length > 1) changer(p, sens, 'carte'); });
         p.region.addEventListener('keydown', (e) => {
-            if (p.cartes.length < 2 || (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight')) return;
+            if (petitEcran() || p.cartes.length < 2 || (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight')) return;
             e.preventDefault();
             changer(p, e.key === 'ArrowLeft' ? -1 : 1, 'carte');
         });

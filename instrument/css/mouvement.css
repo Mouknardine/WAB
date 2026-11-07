@@ -43,28 +43,10 @@
     }
 }
 
-/* Les touches (Précédent, Suivant, et au téléphone Nous, Projets, Services,
-   Contact) ont une épaisseur d'encre sous elles : à l'appui, elles
-   descendent de cette épaisseur et la recouvrent, comme une vraie touche
-   qu'on enfonce. Remontée un peu plus lente au relâché. */
-.paquet__pas {
-    box-shadow: 0 var(--touche) 0 0 var(--encre-noire);
-    transition:
-        background-color 220ms ease,
-        color 220ms ease,
-        translate 200ms var(--ease-out),
-        box-shadow 200ms var(--ease-out);
-}
-
-.paquet__pas:active,
-.paquet__pas[data-appui] {
-    scale: 1;
-    translate: 0 var(--touche);
-    box-shadow: 0 0 0 0 var(--encre-noire);
-    transition-duration: 70ms;
-}
-
-/* Les rubriques (téléphone et bureau) sont les mêmes touches. */
+/* Les rubriques (Nous, Projets, Services, Contact) ont une épaisseur
+   d'encre sous elles : à l'appui, elles descendent de cette épaisseur et
+   la recouvrent, comme une vraie touche qu'on enfonce. Remontée un peu
+   plus lente au relâché. */
 .jeu__rubrique {
     box-shadow: 0 var(--touche) 0 0 var(--encre-noire);
     transition:
@@ -102,34 +84,9 @@
     }
 }
 
-/* Les petits carrés de progression sont des touches miniatures : 2 px
-   d'épaisseur, enfoncés à l'appui, et le carré de la carte courante
-   reste enfoncé, rempli de la teinte. */
-.paquet__point::before {
-    box-shadow: 0 var(--touche-mini) 0 0 var(--encre-noire);
-    transition:
-        background-color 220ms ease,
-        translate 200ms var(--ease-out),
-        box-shadow 200ms var(--ease-out);
-}
-
-.paquet__point:active::before,
-.paquet__point[data-appui]::before,
-.paquet__point[aria-current]::before {
-    translate: 0 var(--touche-mini);
-    box-shadow: 0 0 0 0 var(--encre-noire);
-}
-
-.paquet__point:active::before,
-.paquet__point[data-appui]::before {
-    transition-duration: 70ms;
-}
-
 /* Mouvement réduit : la touche s'enfonce et remonte sans glissement */
 @media (prefers-reduced-motion: reduce) {
-    .paquet__pas,
-    .jeu__rubrique,
-    .paquet__point::before {
+    .jeu__rubrique {
         transition-property: background-color, color;
     }
 }
@@ -185,12 +142,4 @@
 
 .carte[data-fantome] > .carte__tete {
     visibility: hidden;
-}
-
-/* Retour d'une carte relâchée sans changer (glisser au doigt trop court) ;
-   en mouvement réduit, elle revient d'un coup. */
-@media (prefers-reduced-motion: no-preference) {
-    .carte[data-retour] {
-        transition: translate 200ms var(--ease-tiroir);
-    }
 }

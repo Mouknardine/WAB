@@ -25,7 +25,7 @@ export function activerAppuiTactile() {
 }
 
 /** Tout ce qui s'enfonce à l'appui (css/mouvement.css). */
-const TOUCHES = '.paquet__pas, .jeu__rubrique, .paquet__point, .jeu__lien, .carte__fermer, .carte__nav, .choix__touche, .formulaire__envoyer';
+const TOUCHES = '.jeu__rubrique, .jeu__lien, .carte__fermer, .carte__nav, .choix__touche, .formulaire__envoyer';
 /** Un clic éclair dure ~60 ms : la touche reste enfoncée au moins ce temps-là. */
 const APPUI_MIN = 140;
 
