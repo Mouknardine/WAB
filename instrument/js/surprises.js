@@ -4,7 +4,7 @@
  * (jamais deux fois de suite, 6 actions d'écart au moins) ; parfois une
  * apparition animée (Hello Kitty, les Super Nanas, les cœurs) ; parfois
  * une pluie de billets (environ 1 fois sur 10, et toujours sur Entrée).
- * Le pilote n'en déclenche jamais. En mouvement réduit :
+ * Le pilote, lui, ne fait surgir que des messages. En mouvement réduit :
  * messages seulement.
  */
 
@@ -22,11 +22,12 @@ const CHANCE_APPARITION = 1 / 4;
 
 /**
  * @typedef {(options?: { billets?: boolean }) => void} Surprendre
+ * @typedef {{ surprendre: Surprendre, message: (texte?: string) => void }} Surprises
  */
 
 /**
  * @param {{ calque: HTMLElement, toileBillets: HTMLCanvasElement }} elements
- * @returns {Surprendre}
+ * @returns {Surprises}
  */
 export function creerSurprises({ calque, toileBillets }) {
     const message = creerMessages(calque);
@@ -51,7 +52,8 @@ export function creerSurprises({ calque, toileBillets }) {
     /** @param {number} chance @param {string} nom */
     const tirer = (chance, nom) => dernier !== nom && Math.random() < chance;
 
-    return (options = {}) => {
+    /** @type {Surprendre} */
+    const surprendre = (options = {}) => {
         if (mouvementReduit()) {
             message();
             return;
@@ -74,4 +76,6 @@ export function creerSurprises({ calque, toileBillets }) {
         dernier = 'message';
         message();
     };
+
+    return { surprendre, message };
 }

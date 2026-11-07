@@ -1,7 +1,7 @@
 /**
- * Compositions toutes faites : l'image d'accueil (toujours la même, pour
- * que l'écran ne soit jamais vide) et la composition au hasard de la
- * touche Entrée.
+ * Compositions toutes faites : l'ouverture (la vague qui se forme à
+ * l'arrivée), l'image d'accueil posée d'un coup en mouvement réduit, et
+ * la composition au hasard de la touche Entrée.
  */
 
 import { fabriquer } from './gestes.js';
@@ -13,6 +13,13 @@ const GRAINE_ACCUEIL = 20261106;
 const ECART_CASCADE = 45;
 // Téléphone : WAB d'un seul tenant, centré, une lettre tous les 0,92 de hauteur
 const AVANCE_WAB = 0.92;
+// Ouverture : six couches de vague parallèles, une par teinte, lancées
+// l'une après l'autre ; WAB se pose quand la vague a traversé.
+const OUVERTURE = { attente: 250, couche: 1300, ecart: 140, pas: 0.075, lettres: 1500, ecartLettres: 120 };
+// Téléphone : des bandes plus épaisses qui couvrent l'écran, une onde
+// et demie, et une vague plus rapide (l'écran est étroit).
+const VAGUE_TELEPHONE = { amplitude: 0.1, periodes: 1.4, pas: 0.1 };
+const RYTHME_TELEPHONE = { couche: 750, ecart: 80, lettres: 950 };
 
 /**
  * @typedef {import('./gestes-dessin.js').Geste} Geste
@@ -97,3 +104,39 @@ export function compositionAccueil(dim) {
 export function compositionHasard(maintenant, dim) {
     return suite(hasard(Math.floor(Math.random() * 1e9)), maintenant, ECART_CASCADE, dim);
 }
+
+/**
+ * L'ouverture : une vague aux six teintes traverse l'écran de gauche à
+ * droite, couche après couche, puis WAB se pose par-dessus, détouré.
+ * @param {number} maintenant
+ * @param {Dimensions} dim
+ * @returns {{ gestes: Geste[], duree: number }}
+ */
+export function compositionOuverture(maintenant, dim) {
+    const rnd = hasard(GRAINE_ACCUEIL);
+    const graine = Math.floor(rnd() * 1e9);
+    const debut = maintenant + OUVERTURE.attente;
+    const milieu = (NB_TEINTES - 1) / 2;
+    const telephone = petitEcran();
+    const forme = telephone ? VAGUE_TELEPHONE : { pas: OUVERTURE.pas };
+    const rythme = telephone ? { ...OUVERTURE, ...RYTHME_TELEPHONE } : OUVERTURE;
+    /** @type {Geste[]} */
+    const gestes = Array.from({ length: NB_TEINTES }, (_, i) => fabriquer('vague', {
+        ...forme,
+        graine,
+        teinte: i + 1,
+        y: 0.5 + (i - milieu) * forme.pas,
+        duree: rythme.couche,
+    }, rnd, debut + i * rythme.ecart));
+    const t = debut + rythme.lettres;
+    if (telephone) gestes.push(...wabCentre(dim, rnd, t, OUVERTURE.ecartLettres));
+    else {
+        Array.from('wab').forEach((lettre, i) => {
+            const note = noteDeLettre(lettre);
+            if (note) gestes.push(fabriquer(note.type, { ...note.reglages, detoure: true }, rnd, t + i * OUVERTURE.ecartLettres));
+        });
+    }
+    const fin = Math.max(...gestes.map((g) => g.t0 + g.duree));
+    return { gestes, duree: fin - maintenant };
+}
+

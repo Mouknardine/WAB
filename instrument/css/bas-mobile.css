@@ -1,4 +1,4 @@
-/* Le bas de l'écran sur téléphone (< 768 px) : Nous, Projets, Prix et
+/* Le bas de l'écran sur téléphone (< 768 px) : Nous, Projets, Services et
    Contact deviennent une rangée de quatre touches, la rubrique ouverte
    enfoncée et remplie de sa teinte. Pas de bouton Pause (demande
    d'Eliott, 07.11) : toucher la grille suspend déjà le jeu automatique.
@@ -18,7 +18,9 @@
        la marge du bas laisse la place à leur épaisseur (css/mouvement.css). */
     .jeu__liens {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        /* Chaque touche au moins aussi large que son mot (« Services »
+           est le plus long), le reste partagé à parts égales */
+        grid-template-columns: repeat(4, minmax(max-content, 1fr));
         gap: calc(var(--u) * 0.75);
         width: 100%;
         padding-bottom: var(--touche);
@@ -27,6 +29,7 @@
     .jeu__rubrique {
         justify-content: center;
         min-height: 3rem;
+        padding-inline: calc(var(--u) * 0.5);
         border: 2px solid var(--encre-noire);
         background: var(--papier);
         color: var(--encre-noire);

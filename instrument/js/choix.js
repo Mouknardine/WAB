@@ -1,25 +1,19 @@
 /**
  * Le choix du pilote : quel geste jouer, selon la densité de l'écran.
- * Trop plein (plus de 55 % de cases) : il éclaircit. Trop vide (moins
- * de 40 %) : il ajoute de la matière. Entre les deux : la table entière.
+ * Trop plein (plus de 46 % de cases) : il éclaircit. Trop vide (moins
+ * de 34 %) : il ajoute de la matière, surtout des motifs. Entre les
+ * deux : la table entière. Il n'écrit plus WAB : les lettres sont au
+ * visiteur et à l'ouverture.
  */
 
 import { fabriquer } from './gestes.js';
-import { noteDeLettre, noteGrande } from './clavier.js';
-import { petitEcran } from './jetons.js';
-import { NB_TEINTES } from './grille.js';
 
-// Une page claire : le blanc domine, les aplats respirent.
-export const DENSITE_MIN = 0.22;
-export const DENSITE_MAX = 0.32;
-const MOTS = ['WAB', 'FORME', 'PIXEL', 'TRAME', 'SIGNE'];
-const LETTRES = 'wab';
-const AVANCE = 0.78;
-const ECART_LETTRES = 110;
+// Un écran bien rempli, mais où le fond se voit encore.
+export const DENSITE_MIN = 0.34;
+export const DENSITE_MAX = 0.46;
 
 /**
  * @typedef {import('./gestes-dessin.js').Geste} Geste
- * @typedef {{ cols: number, rows: number }} Dimensions
  */
 
 /** @param {readonly string[]} liste @returns {string} */
@@ -32,72 +26,68 @@ const auHasard = (liste) => liste[Math.floor(Math.random() * liste.length)];
 const geste = (type, reglages, t0) => fabriquer(type, reglages, Math.random, t0);
 
 /**
- * Un mot court, lettre après lettre, sur une ligne lisible.
- * @param {Dimensions} dim
+ * Un motif : une forme ou un aplat posé, aussitôt éclaté en pixels
+ * épars, puis recopié en miroir. Donne ces trames symétriques de
+ * petits carrés, comme une broderie.
  * @param {number} t0
  * @returns {Geste[]}
  */
-function mot(dim, t0) {
-    const lettres = Array.from(auHasard(MOTS));
-    const cote = Math.min(dim.cols, dim.rows);
-    const hauteur = Math.min((dim.cols * 0.86) / (AVANCE * lettres.length), dim.rows * 0.3);
-    const avance = (AVANCE * hauteur) / dim.cols;
-    const depart = 0.5 - (avance * lettres.length) / 2;
-    const y = 0.25 + Math.random() * 0.45;
-    const teinte = 1 + Math.floor(Math.random() * NB_TEINTES);
-    return lettres.map((lettre, i) => geste('lettre', {
-        lettre, teinte, y,
-        x: depart + avance * (i + 0.5),
-        taille: hauteur / cote,
-    }, t0 + i * ECART_LETTRES));
-}
-
-/**
- * Une lettre de WAB, à sa place sur le clavier, comme jouée à la main ;
- * sur téléphone, en grand.
- * @param {Dimensions} dim
- * @param {number} t0
- * @returns {Geste[]}
- */
-function lettre(dim, t0) {
-    const choisie = auHasard(Array.from(LETTRES));
-    const teinte = 1 + Math.floor(Math.random() * NB_TEINTES);
-    const note = petitEcran() ? noteGrande(choisie, dim, teinte) : noteDeLettre(choisie);
-    return note ? [geste(note.type, note.reglages, t0)] : [];
+function motif(t0) {
+    const x = 0.25 + Math.random() * 0.5;
+    const y = 0.2 + Math.random() * 0.6;
+    const base = Math.random() < 0.5
+        ? geste('forme', { x, y, forme: auHasard(['carre', 'cercle', 'croix']), taille: 0.22 + Math.random() * 0.14 }, t0)
+        : geste('aplat', { x, y }, t0);
+    return [
+        base,
+        geste('pluie', {}, t0 + 120),
+        geste('dispersion', { x, y, taille: 0.45 }, t0 + 300),
+        geste('miroir', { axe: Math.random() < 0.75 ? 'v' : 'h' }, t0 + 700),
+    ];
 }
 
 /** @param {number} t0 @returns {Geste[]} */
 const forme = (t0) => [geste('forme', { forme: auHasard(['carre', 'cercle', 'croix']), taille: 0.14 + Math.random() * 0.12 }, t0)];
 
-/** @type {Record<string, (dim: Dimensions, t0: number) => Geste[]>} */
-const AJOUTS = {
-    forme: (_d, t0) => forme(t0),
-    aplat: (_d, t0) => [geste('aplat', {}, t0)],
-    pluie: (_d, t0) => [geste('pluie', {}, t0)],
-    lettre: (d, t0) => lettre(d, t0),
-    mot: (d, t0) => mot(d, t0),
-};
+/** Quand l'écran est trop vide : de la matière. Le motif revient le plus souvent. @type {Array<(t0: number) => Geste[]>} */
+const AJOUTS = [
+    motif, motif, motif,
+    (t0) => forme(t0),
+    (t0) => [geste('aplat', {}, t0)],
+    (t0) => [geste('pluie', {}, t0)],
+];
 
-/** @type {Record<string, (dim: Dimensions, t0: number) => Geste[]>} */
-const TABLE = {
+/** Une explosion : les pixels autour d'un point partent en éclats. @param {number} t0 @returns {Geste[]} */
+const explosion = (t0) => [geste('dispersion', { taille: 0.3 + Math.random() * 0.25 }, t0)];
+
+/** Une averse : deux pluies de teintes différentes, l'une après l'autre. @param {number} t0 @returns {Geste[]} */
+const averse = (t0) => [geste('pluie', {}, t0), geste('pluie', {}, t0 + 220)];
+
+/** Un miroir, parfois dans les deux sens : une figure à quatre côtés. @param {number} t0 @returns {Geste[]} */
+const reflet = (t0) => (Math.random() < 0.4
+    ? [geste('miroir', { axe: 'v' }, t0), geste('miroir', { axe: 'h' }, t0 + 320)]
+    : [geste('miroir', { axe: Math.random() < 0.6 ? 'v' : 'h' }, t0)]);
+
+/** Le reste du temps : la table entière, riche en pluies, explosions et miroirs. @type {Array<(t0: number) => Geste[]>} */
+const TABLE = [
     ...AJOUTS,
-    vague: (_d, t0) => [geste('vague', {}, t0)],
-    miroir: (_d, t0) => [geste('miroir', { axe: Math.random() < 0.5 ? 'v' : 'h' }, t0)],
-    decalage: (_d, t0) => [geste('decalage', {}, t0)],
-    dispersion: (_d, t0) => [geste('dispersion', { taille: 0.3 }, t0)],
-};
+    motif,
+    averse, averse,
+    explosion, explosion, explosion,
+    reflet, reflet, reflet,
+    (t0) => [geste('vague', {}, t0)],
+    (t0) => [geste('decalage', {}, t0)],
+];
 
 /**
  * @param {number} densite  part des cases pleines
- * @param {Dimensions} dim
  * @param {number} t0
  * @returns {Geste[]}
  */
-export function choisirGestes(densite, dim, t0) {
+export function choisirGestes(densite, t0) {
     if (densite > DENSITE_MAX) {
         return [geste('eclaircir', { taille: 0.2 + Math.random() * 0.1 }, t0)];
     }
     const table = densite < DENSITE_MIN ? AJOUTS : TABLE;
-    const nom = auHasard(Object.keys(table));
-    return table[nom](dim, t0);
+    return table[Math.floor(Math.random() * table.length)](t0);
 }

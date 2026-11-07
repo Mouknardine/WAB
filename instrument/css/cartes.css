@@ -191,7 +191,7 @@
 
 .carte__fleche { font-family: var(--police-signes); font-weight: 400; } /* Sligoil n'a pas de ↗ */
 
-/* Boutons du bas : 44 px de large au moins, même pour « Prix » */
+/* Boutons du bas : 44 px de large au moins, même pour le plus court */
 .jeu__rubrique {
     min-width: var(--cible);
     justify-content: center;

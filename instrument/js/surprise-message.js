@@ -28,7 +28,7 @@ function ajuster(el, calque) {
 
 /**
  * @param {HTMLElement} calque  conteneur décoratif (aria-hidden)
- * @returns {() => void} affiche un message
+ * @returns {(texte?: string) => void} affiche un message (au hasard, ou celui donné)
  */
 export function creerMessages(calque) {
     /** @type {HTMLElement[]} */
@@ -49,8 +49,8 @@ export function creerMessages(calque) {
         return dernier;
     };
 
-    return () => {
-        const texte = choisir();
+    return (impose) => {
+        const texte = impose ?? choisir();
         if (!texte) return;
         if (visibles.length >= MAX_ECRAN) retirer(visibles[0]);
 

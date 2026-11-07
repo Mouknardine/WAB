@@ -23,6 +23,8 @@ import { glyphe } from './glyphes.js';
  * @property {string} [lettre]
  * @property {boolean} [detoure]  la lettre vide d'abord son rectangle (téléphone)
  * @property {string} [forme]  carre, cercle ou croix
+ * @property {number} [amplitude]  vague : hauteur des ondes, relative à la grille
+ * @property {number} [periodes]  vague : nombre d'ondes sur la largeur
  * @property {string} [axe]  v ou h
  * @property {Array<[number, number]>} [points]  tracé relatif
  * @typedef {{ famille: string }} Contexte
@@ -142,8 +144,9 @@ export function pluie(g, geste, p) {
 export function vague(g, geste, p) {
     const fin = decelerer(p) * g.cols;
     const centre = (geste.y ?? 0.5) * g.rows;
-    const amplitude = g.rows * 0.18;
-    const frequence = (Math.PI * 2 * (1.5 + bruit(1, 1, geste.graine) * 1.5)) / g.cols;
+    const amplitude = g.rows * (geste.amplitude ?? 0.18);
+    const periodes = geste.periodes ?? 1.5 + bruit(1, 1, geste.graine) * 1.5;
+    const frequence = (Math.PI * 2 * periodes) / g.cols;
     const epaisseur = Math.max(3, g.rows * 0.07);
     for (let c = 0; c < fin; c += 1) {
         const milieu = centre + Math.sin(c * frequence + geste.graine) * amplitude;

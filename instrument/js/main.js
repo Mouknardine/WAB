@@ -1,5 +1,5 @@
 import { creerInstrument } from './instrument.js';
-import { compositionAccueil, compositionHasard } from './composition.js';
+import { compositionAccueil, compositionHasard, compositionOuverture } from './composition.js';
 import { fabriquer } from './gestes.js';
 import { relierClavier } from './controles.js';
 import { creerTouchesDessinees } from './touches-dessinees.js';
@@ -13,6 +13,9 @@ import { creerEcritures } from './ecritures.js';
 import { creerCartes } from './cartes.js';
 
 const POLICE_MACHINE = '700 40px Sligoil';
+// Le mot qui salue la vague, puis un message tous les trois gestes environ
+const MESSAGE_OUVERTURE = 'Magnifique.';
+const CHANCE_MESSAGE_PILOTE = 0.35;
 
 /**
  * @template {Element} T
@@ -46,17 +49,31 @@ async function demarrer() {
     } catch {
         ecritures = null;
     }
-    instrument.poser(compositionAccueil(instrument.dimensions()));
     document.documentElement.setAttribute('data-instrument', 'pret');
 
-    // Le pilote ne tourne pas en mouvement réduit : la composition reste figée.
-    const pilote = mouvementReduit() ? null : creerPilote(instrument, () => ecritures?.vivre());
-    const interrompre = () => pilote?.interrompre();
-
-    const surprendre = creerSurprises({
+    const { surprendre, message } = creerSurprises({
         calque: trouver('#surprises', HTMLElement),
         toileBillets: trouver('#billets', HTMLCanvasElement),
     });
+
+    // À l'arrivée, la vague se forme puis WAB se pose ; le pilote prend la
+    // main ensuite. En mouvement réduit, l'image d'accueil est posée
+    // d'un coup et reste figée.
+    /** @type {import('./pilote.js').Pilote | null} */
+    let pilote = null;
+    if (mouvementReduit()) instrument.poser(compositionAccueil(instrument.dimensions()));
+    else {
+        const ouverture = compositionOuverture(performance.now(), instrument.dimensions());
+        instrument.jouer(ouverture.gestes);
+        window.setTimeout(() => {
+            message(MESSAGE_OUVERTURE);
+            pilote = creerPilote(instrument, () => ecritures?.vivre(), () => {
+                if (Math.random() < CHANCE_MESSAGE_PILOTE) message();
+            });
+        }, ouverture.duree);
+    }
+    const interrompre = () => pilote?.interrompre();
+
 
     const actions = {
         surprendre,

@@ -37,6 +37,12 @@
         padding-bottom: calc(var(--u) * 1.5);
     }
 
+    /* Paquet : le même espace entre la carte et la bande Précédent /
+       Suivant, même quand la carte est assez haute pour la toucher. */
+    .rubrique[data-paquet] .rubrique__cartes {
+        margin-bottom: calc(var(--u) * 1.5);
+    }
+
     .rubrique__cartes {
         display: flex;
         flex: 0 1 auto;
@@ -62,12 +68,11 @@
         object-position: top;
     }
 
-    /* Au téléphone : carrée, jusqu'à 42 % de l'écran ; on rogne un peu
-       le décor autour, jamais l'appareil, qui est au centre. */
+    /* Au téléphone aussi, la photo est entière (4:5), jamais coupée
+       (demande d'Eliott, 07.11) : le texte défile dessous si besoin. */
     .carte__image--mockup {
-        aspect-ratio: 1;
-        max-height: 42svh;
-        object-position: center;
+        aspect-ratio: 4 / 5;
+        max-height: none;
     }
 
     .carte__tete {

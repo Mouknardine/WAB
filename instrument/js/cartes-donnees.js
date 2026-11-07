@@ -9,7 +9,7 @@
  * @typedef {Object} Carte
  * @property {string} titre
  * @property {string} texte
- * @property {string} [prix]  montant, sous le titre (Prix)
+ * @property {string} [prix]  montant, sous le titre (Services)
  * @property {string} [image]  capture : /assets/images/shot-<image>-800.webp
  * @property {string} [mockup]  photo de mise en situation (iPhone ou MacBook) : /assets/images/work-<mockup>-720.webp
  * @property {string} [avatar]  portrait : /assets/images/avatar-<avatar>.webp
@@ -53,8 +53,8 @@ export const RUBRIQUES = [
         ],
     },
     {
-        id: 'prix',
-        nom: 'Prix',
+        id: 'services',
+        nom: 'Services',
         teinte: 'jaune',
         cartes: [
             { titre: 'Nos prix sont affichés.', texte: 'Parce qu’un devis surprise, personne n’aime ça. Paiement en plusieurs fois possible.' },

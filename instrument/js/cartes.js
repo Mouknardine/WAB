@@ -1,5 +1,5 @@
 /**
- * Les cartes posées sur l'instrument : Nous, Projets, Prix, Contact.
+ * Les cartes posées sur l'instrument : Nous, Projets, Services, Contact.
  * Chaque rubrique ouverte est un paquet : une carte visible à la fois,
  * ← → pour passer à la suivante (et les flèches du clavier, ou un glisser
  * horizontal au doigt), × ou Échap pour le fermer. Au bureau, plusieurs
