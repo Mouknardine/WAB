@@ -136,8 +136,8 @@
 
 @media (hover: hover) and (pointer: fine) {
     .bord--contact a:hover {
-        background: var(--t-jaune);
-        color: var(--encre-noire);
+        background: var(--encre-noire);
+        color: var(--papier);
     }
 }
 

@@ -64,8 +64,8 @@ a {
 }
 
 ::selection {
-    background: var(--t-jaune);
-    color: var(--encre-noire);
+    background: var(--encre-noire);
+    color: var(--papier);
 }
 
 :focus-visible {

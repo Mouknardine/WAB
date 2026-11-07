@@ -44,10 +44,6 @@
         color: var(--sur-aplat);
     }
 
-    .jeu__rubrique[aria-expanded='true']::before {
-        display: none;
-    }
-
     /* Une rubrique ouverte : on n'est plus sur l'accueil, la présentation
        s'efface et la carte prend sa place (demande d'Eliott, 07.11). */
     .instrument:has(.rubrique:not([hidden])) .bord--phrases {

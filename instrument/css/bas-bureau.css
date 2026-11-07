@@ -114,10 +114,6 @@
         color: var(--sur-aplat);
     }
 
-    .jeu__rubrique[aria-expanded='true']::before {
-        display: none;
-    }
-
     /* « Jouez » et ses touches, sous un filet */
     .jeu__consigne {
         display: flex;

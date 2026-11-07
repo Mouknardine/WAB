@@ -80,7 +80,6 @@ function fabriquerCarte(rubrique, carte, i) {
     article.setAttribute('aria-labelledby', idTitre);
 
     const tete = el('div', 'carte__tete');
-    tete.dataset.tint = rubrique.teinte;
     const nom = el('span', 'carte__rubrique', rubrique.nom);
     if (rubrique.cartes.length > 1) nom.append(el('span', 'carte__numero', ` ${i + 1}/${rubrique.cartes.length}`));
     const actions = el('div', 'carte__actions');
@@ -131,7 +130,6 @@ function fabriquerCarte(rubrique, carte, i) {
  * @returns {HTMLElement[]} les cartes, dans l'ordre
  */
 export function remplirRubrique(region, rubrique) {
-    region.dataset.tint = rubrique.teinte;
     const liste = el('div', 'rubrique__cartes');
     const cartes = rubrique.cartes.map((carte, i) => fabriquerCarte(rubrique, carte, i));
     liste.append(...cartes);

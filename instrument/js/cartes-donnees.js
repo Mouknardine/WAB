@@ -1,5 +1,5 @@
 /**
- * Les textes des cartes : qui on est, nos projets, nos prix, le contact.
+ * Les textes des cartes : qui on est, nos projets, nos services, le contact.
  * À éditer ici, et seulement ici. Les espaces avant ? ! : ; et dans
  * « 24 h » ou « 1’000 CHF » sont insécables : garder-les en recopiant.
  */
@@ -16,7 +16,7 @@
  * @property {Lien[]} [liens]
  * @property {string} [lieu]
  * @property {boolean} [formulaire]  le formulaire de contact, sous le texte
- * @typedef {{ id: string, nom: string, teinte: string, cartes: Carte[] }} Rubrique
+ * @typedef {{ id: string, nom: string, cartes: Carte[] }} Rubrique
  */
 
 /** @type {Rubrique[]} */
@@ -24,54 +24,49 @@ export const RUBRIQUES = [
     {
         id: 'nous',
         nom: 'Nous',
-        teinte: 'rose',
         cartes: [
-            { titre: 'On est quatre, à Lausanne.', texte: 'WeAreBrothers, c’est un studio fondé par deux frères, Eliott et Matt Pina. On dessine des interfaces et on les code nous-mêmes. Pas de gabarit, pas de WordPress, pas de Wix.' },
-            { titre: 'Eliott Pina', avatar: 'eliott', texte: 'Design et direction artistique. Bachelor en droit, master en systèmes d’information en cours : le cadre juridique de votre projet est réglé avant la première ligne de code.' },
-            { titre: 'Matt Pina', avatar: 'matt', texte: 'Développement, de l’architecture à la mise en ligne. Il travaille aussi au Centre Patronal : il sait comment tournent les entreprises vaudoises.' },
-            { titre: 'Bryan Morin', avatar: 'bryan', texte: 'Relation client. C’est lui qui vous répond et qui suit votre projet, du premier appel au lancement.' },
-            { titre: 'Anaïs Polo', avatar: 'anais', texte: 'Web design. Elle étudie le Media & Interaction Design à l’ECAL.' },
-            { titre: 'Et l’IA ?', texte: 'On s’en sert, franchement. Pour explorer plus de pistes en moins de temps, et pour automatiser ce qui vous prend des heures. Elle ne décide pas à notre place, et on ne vous la vend pas là où elle ne sert à rien.' },
+            { titre: 'Une équipe de fous.', texte: 'WeAreBrothers® est un studio créatif qui se sert de l’intelligence artificielle pour élargir sa créativité et concevoir les meilleurs outils. Nos yeux et notre expérience sont nos outils les plus essentiels pour naviguer dans un monde rempli de bruit et de différences. Nous collaborons avec des secteurs et des univers culturels divers : nous cherchons à comprendre leurs processus afin de proposer les solutions les plus simples et les plus efficaces.' },
+            { titre: 'Eliott Pina', avatar: 'eliott', texte: 'Couteau suisse. Jamais de non : on trouvera toujours la solution, ou la personne qu’il faut. Bachelor en droit, master en systèmes d’information et une sacrée curiosité : j’aime faire plein de choses.' },
+            { titre: 'Matt Pina', avatar: 'matt', texte: 'Deuxième couteau suisse. Je gère principalement le déploiement et la finalisation de vos projets. J’adore sincèrement le défi de concevoir des outils efficaces qui vous font gagner du temps ou de l’argent.' },
+            { titre: 'Bryan Morin', avatar: 'bryan', texte: 'Commercial. C’est moi qui vous appelle et qui vous étonne avec ma sincère envie de vous aider ;)' },
+            { titre: 'Anaïs Polo', avatar: 'anais', texte: 'Design. J’étudie le Media & Interaction Design à l’ECAL et j’interviens sur les projets qui demandent un œil neuf.' },
+            { titre: 'L’IA', texte: 'Je permets à l’équipe d’aller plus vite, plus loin, et de proposer la meilleure qualité. Je ne suis qu’un outil, mais combinée à leur savoir, on forme la paire <3' },
         ],
     },
     {
         id: 'projets',
         nom: 'Projets',
-        teinte: 'bleu',
         cartes: [
-            { titre: 'Stidy', mockup: 'stidy', texte: 'Notre propre application, lancée pour l’UNIL et l’EPFL. On lance un chrono avant de poser son téléphone : les amis voient l’effort, jamais les notes. En ligne, gratuite.', liens: [{ href: 'https://stidy-app.com', texte: 'stidy-app.com', externe: true }] },
-            { titre: 'Zinéma', mockup: 'zinema', texte: 'Un cinéma d’art et essai dont la programmation change chaque semaine. On a fait des affiches la page d’accueil.', liens: [{ href: 'https://zinema.ch', texte: 'zinema.ch', externe: true }] },
-            { titre: 'Le P’tit Central', mockup: 'central', texte: 'Les gens veulent savoir : c’est ouvert ? On mange quoi ? La réponse est en haut de la page.', liens: [{ href: 'https://lepetitcentral.ch', texte: 'lepetitcentral.ch', externe: true }] },
-            { titre: 'Artisano', mockup: 'artisano', texte: 'Trouver un artisan de confiance près de chez soi. Et pour l’artisan, ses devis et ses factures depuis le chantier. En développement, bêta ouverte.', liens: [{ href: 'https://artisano-one.vercel.app', texte: 'artisano-one.vercel.app', externe: true }] },
-            { titre: 'LE MEMO', mockup: 'memo', texte: 'Un collectif, pas une entreprise. Son site s’ouvre sur une boîte à rythmes qu’on joue.', liens: [{ href: 'https://le-memo.ch', texte: 'le-memo.ch', externe: true }] },
+            { titre: 'Stidy', mockup: 'stidy', texte: 'Notre propre application, lancée pour l’UNIL et l’EPFL. On lance un chrono, on fait le bilan de sa session de travail et on partage ses efforts avec ses amis. Nous avons gagné 10’000 CHF grâce au programme Ucreat pour travailler sur ce projet. Son développement terminé, nous travaillons aujourd’hui à sa diffusion. En ligne et gratuite : n’hésitez pas à la tester.', liens: [{ href: 'https://stidy-app.com', texte: 'stidy-app.com', externe: true }] },
+            { titre: 'Zinéma', mockup: 'zinema', texte: 'Un cinéma singulier, à l’ambiance intimiste et à la programmation originale. Nous avons fait des affiches la page d’accueil. Simple, efficace et inspiré des tableaux de Mondrian, ce site est devenu un vrai outil de vente et de gestion. Avec un outil de gestion développé sur mesure, des tâches chronophages de plusieurs heures sont devenues un jeu d’enfant de quelques secondes.', liens: [{ href: 'https://zinema.ch', texte: 'zinema.ch', externe: true }] },
+            { titre: 'Le P’tit Central', mockup: 'central', texte: 'Les gens veulent savoir : c’est ouvert ? On mange quoi ? La réponse s’affiche sur un fond d’azulejos, la signature du café.', liens: [{ href: 'https://lepetitcentral.ch', texte: 'lepetitcentral.ch', externe: true }] },
+            { titre: 'Artisano', mockup: 'artisano', texte: 'Trouver un artisan de confiance près de chez soi. Et pour l’artisan, ses devis et ses factures, automatiquement. En développement, bêta ouverte.', liens: [{ href: 'https://artisano-one.vercel.app', texte: 'artisano-one.vercel.app', externe: true }] },
+            { titre: 'LE MEMO', mockup: 'memo', texte: 'Un label tout frais qui gère déjà les artistes émergents les plus suivis du moment. Son site s’ouvre sur un séquenceur : à vous de jouer.', liens: [{ href: 'https://le-memo.ch', texte: 'le-memo.ch', externe: true }] },
             { titre: 'Maison Alliani', mockup: 'alliani', texte: 'Le grillz, c’est de la joaillerie. Chaque pièce est montrée comme un bijou.', liens: [{ href: 'https://maison-alliani.com', texte: 'maison-alliani.com', externe: true }] },
-            { titre: 'Amarte Studio', mockup: 'amarte', texte: 'Beaucoup viennent pour un premier cours. Deux boutons : première fois, ou réserver.', liens: [{ href: 'https://amarte.ch', texte: 'amarte.ch', externe: true }] },
+            { titre: 'Amarte Studio', mockup: 'amarte', texte: 'Beaucoup viennent pour un premier cours. Le site est pensé pour en convertir un maximum.', liens: [{ href: 'https://amarte.ch', texte: 'amarte.ch', externe: true }] },
             { titre: 'Nadège Mouine', mockup: 'nadege', texte: 'Une architecte dont les projets doivent passer avant tout. L’interface s’efface.', liens: [{ href: 'https://nadegemouine.ch', texte: 'nadegemouine.ch', externe: true }] },
-            { titre: 'LAZIZZE DJ', mockup: 'dj', texte: 'Un DJ, ça s’écoute d’abord. Le ton est donné en une seconde.', liens: [{ href: 'https://lazizze.com', texte: 'lazizze.com', externe: true }] },
-            { titre: 'La Slack', mockup: 'slack', texte: 'Trois disciplines, un seul menu ? Non : un bureau, avec des dossiers à ouvrir.', liens: [{ href: 'https://la-slack.com', texte: 'la-slack.com', externe: true }] },
-            { titre: 'Commissione Entretien', mockup: 'commissione', texte: 'On les appelle dans l’urgence. Le numéro reste toujours sous le pouce.', liens: [{ href: 'https://commissione-entretien.ch', texte: 'commissione-entretien.ch', externe: true }] },
+            { titre: 'LAZIZZE DJ', mockup: 'dj', texte: 'Un DJ lausannois qui voulait une interface à l’image de son style, pour transmettre facilement son presskit. (Le DJ, c’est Eliott.)', liens: [{ href: 'https://lazizze.com', texte: 'lazizze.com', externe: true }] },
+            { titre: 'La Slack', mockup: 'slack', texte: 'Un bureau, avec des dossiers à ouvrir pour découvrir son travail.', liens: [{ href: 'https://la-slack.com', texte: 'la-slack.com', externe: true }] },
         ],
     },
     {
         id: 'services',
         nom: 'Services',
-        teinte: 'jaune',
         cartes: [
-            { titre: 'Nos prix sont affichés.', texte: 'Parce qu’un devis surprise, personne n’aime ça. Paiement en plusieurs fois possible.' },
-            { titre: 'Site vitrine', prix: '1’000 à 2’500 CHF', texte: 'L’essentiel, codé à la main. Livré en 3 à 6 semaines.' },
-            { titre: 'Site et outils', prix: '2’500 à 7’000 CHF', texte: 'Votre site et vos outils de gestion, enfin reliés. Boutique en ligne en option. Automatisation et IA là où elles vous font gagner du temps.' },
-            { titre: 'Sur mesure', prix: 'dès 7’000 CHF', texte: 'Une pièce unique, de la marque au site. Sur devis, après un premier échange.' },
-            { titre: 'Ce qui est à vous', texte: 'Le domaine, le code et les contenus vous appartiennent. Hébergement en Suisse, chez Infomaniak.' },
+            { titre: 'Nos services', texte: 'Nous proposons plusieurs services pour vous faire gagner du temps, de l’argent ou de la visibilité.' },
+            { titre: 'Interface', prix: 'Selon le niveau d’interaction souhaité', texte: 'Un site internet ou une application : nous cherchons à créer des expériences uniques et originales.' },
+            { titre: 'Outils', prix: '2’500 à 7’000 CHF', texte: 'Des outils sur mesure pour la formation, la gestion de vos équipes ou la vente : nous réfléchissons ensemble à ce qui vous sera utile pour développer votre activité.' },
+            { titre: 'Expérience complète', prix: 'dès 7’000 CHF', texte: 'Des interfaces, des outils et une nouvelle image : nous nous chargeons de tout pour faire grandir votre activité.' },
+            { titre: 'Ce qui vous appartient après notre passage ?', texte: 'Tout. Pas de frais mensuels de notre part, et nous faisons en sorte que vous puissiez tout gérer en autonomie. Nous répondrons toujours à vos demandes, même des années après la fin de notre collaboration. Nous en sommes convaincus : un client satisfait est notre meilleure publicité.' },
         ],
     },
     {
         id: 'contact',
         nom: 'Contact',
-        teinte: 'vert',
         cartes: [
             {
                 titre: 'Écrivez-nous.',
-                texte: 'Trois champs obligatoires, le reste si vous voulez. On répond sous 24 h ouvrées.',
+                texte: 'Trois champs obligatoires, le reste si vous voulez. Nous répondons sous 24 h ouvrées par mail, et tout de suite par téléphone.',
                 formulaire: true,
             },
         ],

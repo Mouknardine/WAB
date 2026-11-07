@@ -17,9 +17,11 @@
        messages) reste sur du papier blanc posé dessus. */
     --fond: oklch(0.965 0 0);
     --encre: var(--encre-noire);
-    --aplat: var(--t-bleu);
+    /* Les rubriques sont en noir et blanc (demande d'Eliott, 07.11) : les
+       six teintes restent à la grille et aux messages. */
+    --aplat: var(--encre-noire);
     --sur-aplat: var(--papier);
-    --focus: var(--t-bleu);
+    --focus: var(--encre-noire);
 
     --police-machine: 'Sligoil', ui-monospace, monospace;
     /* Une seule police sur toute la page. Sligoil n'a ni ← → lisibles ni ↗ :
@@ -90,10 +92,3 @@
         --filet: 2px;
     }
 }
-
-[data-tint='bleu'] { --aplat: var(--t-bleu); --sur-aplat: var(--papier); }
-[data-tint='ciel'] { --aplat: var(--t-ciel); --sur-aplat: var(--encre-noire); }
-[data-tint='vert'] { --aplat: var(--t-vert); --sur-aplat: var(--encre-noire); }
-[data-tint='jaune'] { --aplat: var(--t-jaune); --sur-aplat: var(--encre-noire); }
-[data-tint='rose'] { --aplat: var(--t-rose); --sur-aplat: var(--encre-noire); }
-[data-tint='rouge'] { --aplat: var(--t-rouge); --sur-aplat: var(--papier); }

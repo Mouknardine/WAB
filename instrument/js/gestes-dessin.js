@@ -4,7 +4,7 @@
  * donne toujours la même image, donc un geste peut être rejoué.
  */
 
-import { peindre, bruit, decelerer } from './grille.js';
+import { peindre, lire, bruit, decelerer } from './grille.js';
 import { glyphe } from './glyphes.js';
 
 /**
@@ -22,6 +22,7 @@ import { glyphe } from './glyphes.js';
  * @property {number} [h]  hauteur relative (aplat)
  * @property {string} [lettre]
  * @property {boolean} [detoure]  la lettre vide d'abord son rectangle (téléphone)
+ * @property {boolean} [contraste]  chaque pixel de la lettre prend la teinte opposée à celle dessous
  * @property {string} [forme]  carre, cercle ou croix
  * @property {number} [amplitude]  vague : hauteur des ondes, relative à la grille
  * @property {number} [periodes]  vague : nombre d'ondes sur la largeur
@@ -48,6 +49,14 @@ function detourer(g, points, ox, oy, limite) {
 }
 
 /**
+ * Teinte opposée en clarté : sur les teintes sombres (bleu, rouge), la
+ * lettre est jaune ; sur les claires (rose, jaune, ciel, vert), bleue.
+ * Deux encres seulement : la lettre se lit d'un bloc, quelles que soient
+ * les bandes qu'elle traverse (index = teinte, 0 = vide).
+ */
+const OPPOSEE = [0, 3, 1, 1, 3, 1, 1];
+
+/**
  * La lettre se pose en balayant de haut en bas.
  * @param {Grille} g @param {Geste} geste @param {number} p @param {Contexte} ctx
  */
@@ -59,7 +68,9 @@ export function lettre(g, geste, p, ctx) {
     const limite = decelerer(p) * gl.hauteur;
     if (geste.detoure) detourer(g, gl.points, ox, oy, limite);
     for (const [c, r] of gl.points) {
-        if (r <= limite) peindre(g, ox + c, oy + r, geste.teinte);
+        if (r > limite) continue;
+        const dessous = geste.contraste ? lire(g, ox + c, oy + r) : 0;
+        peindre(g, ox + c, oy + r, dessous ? OPPOSEE[dessous] : geste.teinte);
     }
 }
 

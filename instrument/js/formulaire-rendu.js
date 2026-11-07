@@ -16,6 +16,7 @@ const PROJETS = [
     { valeur: 'Application métier', texte: 'Application' },
     { valeur: 'E-commerce', texte: 'Boutique' },
     { valeur: 'Branding', texte: 'Identité' },
+    { valeur: 'Expérience', texte: 'Expérience' },
 ];
 
 /** @type {{ valeur: string, texte: string }[]} */

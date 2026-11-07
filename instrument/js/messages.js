@@ -18,6 +18,6 @@ export const MESSAGES = [
     'Tout va bien.',
     'Excellent choix.',
     'Respirez.',
-    'Voilà.',
+    'Polalalala.',
     'Merci.',
 ];
