@@ -1,0 +1,196 @@
+/* Le mouvement de l'interface (relecture Emil Kowalski, 07.11.2026).
+   Règles : seuls transform, scale et opacity bougent ; ease-out marqué ;
+   moins de 200 ms ; rien sur ce qui se répète au clavier (changer de
+   carte reste instantané) ; mouvement réduit = opacité seule, sans
+   déplacement ni changement d'échelle. */
+
+/* Appui : tout ce qui se presse répond en douceur. La couleur arrive vite
+   à l'appui (90 ms) et repart plus lentement au relâché (220 ms) ; le
+   bouton s'enfonce à 0,96. Les changements d'état (rubrique ouverte,
+   carré courant) passent en fondu de couleur au lieu de claquer. */
+.jeu__lien,
+.bord--contact a,
+.carte__liens a,
+.carte__fermer,
+.carte__nav {
+    transition:
+        background-color 220ms ease,
+        color 220ms ease,
+        scale 220ms var(--ease-out);
+}
+
+.jeu__lien:active,
+.jeu__lien[data-appui],
+.bord--contact a:active,
+.bord--contact a[data-appui],
+.carte__liens a:active,
+.carte__liens a[data-appui],
+.carte__fermer:active,
+.carte__fermer[data-appui],
+.carte__nav:active,
+.carte__nav[data-appui] {
+    transition-duration: 90ms;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .jeu__lien:active,
+    .jeu__lien[data-appui],
+    .carte__fermer:active,
+    .carte__fermer[data-appui],
+    .carte__nav:active,
+    .carte__nav[data-appui] {
+        scale: 0.96;
+    }
+}
+
+/* Les touches (Précédent, Suivant, et au téléphone Nous, Projets, Prix,
+   Contact) ont une épaisseur d'encre sous elles : à l'appui, elles
+   descendent de cette épaisseur et la recouvrent, comme une vraie touche
+   qu'on enfonce. Remontée un peu plus lente au relâché. */
+.paquet__pas {
+    box-shadow: 0 var(--touche) 0 0 var(--encre-noire);
+    transition:
+        background-color 220ms ease,
+        color 220ms ease,
+        translate 200ms var(--ease-out),
+        box-shadow 200ms var(--ease-out);
+}
+
+.paquet__pas:active,
+.paquet__pas[data-appui] {
+    scale: 1;
+    translate: 0 var(--touche);
+    box-shadow: 0 0 0 0 var(--encre-noire);
+    transition-duration: 70ms;
+}
+
+/* Les rubriques (téléphone et bureau) sont les mêmes touches. */
+.jeu__rubrique {
+    box-shadow: 0 var(--touche) 0 0 var(--encre-noire);
+    transition:
+        background-color 220ms ease,
+        color 220ms ease,
+        translate 200ms var(--ease-out),
+        box-shadow 200ms var(--ease-out);
+}
+
+.jeu__rubrique:active,
+.jeu__rubrique[data-appui] {
+    scale: 1;
+    translate: 0 var(--touche);
+    box-shadow: 0 0 0 0 var(--encre-noire);
+    transition-duration: 70ms;
+}
+
+/* La rubrique ouverte reste enfoncée : on voit laquelle est active */
+.jeu__rubrique[aria-expanded='true'] {
+    translate: 0 var(--touche);
+    box-shadow: 0 0 0 0 var(--encre-noire);
+}
+
+/* Les touches dessinées (bureau) s'enfoncent quand on tape vraiment la
+   touche ; en mouvement réduit, l'état change d'un coup. */
+@media (prefers-reduced-motion: no-preference) {
+    .jeu__touches kbd {
+        transition:
+            translate 200ms var(--ease-out),
+            box-shadow 200ms var(--ease-out);
+    }
+
+    .jeu__touches kbd[data-appui] {
+        transition-duration: 70ms;
+    }
+}
+
+/* Les petits carrés de progression sont des touches miniatures : 2 px
+   d'épaisseur, enfoncés à l'appui, et le carré de la carte courante
+   reste enfoncé, rempli de la teinte. */
+.paquet__point::before {
+    box-shadow: 0 var(--touche-mini) 0 0 var(--encre-noire);
+    transition:
+        background-color 220ms ease,
+        translate 200ms var(--ease-out),
+        box-shadow 200ms var(--ease-out);
+}
+
+.paquet__point:active::before,
+.paquet__point[data-appui]::before,
+.paquet__point[aria-current]::before {
+    translate: 0 var(--touche-mini);
+    box-shadow: 0 0 0 0 var(--encre-noire);
+}
+
+.paquet__point:active::before,
+.paquet__point[data-appui]::before {
+    transition-duration: 70ms;
+}
+
+/* Mouvement réduit : la touche s'enfonce et remonte sans glissement */
+@media (prefers-reduced-motion: reduce) {
+    .paquet__pas,
+    .jeu__rubrique,
+    .paquet__point::before {
+        transition-property: background-color, color;
+    }
+}
+
+/* Ouverture d'une rubrique (occasionnelle) : la carte se pose depuis les
+   boutons du bas, 0,97 → 1 et 0 → 1 d'opacité. Changer de carte ensuite
+   ne rejoue rien : seule la rubrique qui apparaît est concernée. */
+.rubrique__cartes {
+    transform-origin: 100% 100%;
+    transition:
+        opacity var(--duree-ouverture) var(--ease-out),
+        scale var(--duree-ouverture) var(--ease-out);
+
+    @starting-style {
+        opacity: 0;
+        scale: 0.97;
+    }
+}
+
+@media (max-width: 47.99rem) {
+    .rubrique__cartes {
+        transform-origin: 50% 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rubrique__cartes {
+        transition: opacity var(--duree-ouverture) ease;
+
+        @starting-style {
+            opacity: 0;
+            scale: 1;
+        }
+    }
+}
+
+/* Passage d'une carte à l'autre (js/cartes-transition.js) : l'ancienne
+   reste posée par-dessus le temps que son texte s'efface, sans fond, sans
+   bord, sans en-tête (celui de la nouvelle est au même endroit). */
+.rubrique__cartes {
+    position: relative;
+}
+
+.carte[data-fantome] {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    border-color: transparent;
+    background: transparent;
+    pointer-events: none;
+}
+
+.carte[data-fantome] > .carte__tete {
+    visibility: hidden;
+}
+
+/* Retour d'une carte relâchée sans changer (glisser au doigt trop court) ;
+   en mouvement réduit, elle revient d'un coup. */
+@media (prefers-reduced-motion: no-preference) {
+    .carte[data-retour] {
+        transition: translate 200ms var(--ease-tiroir);
+    }
+}

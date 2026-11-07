@@ -1,0 +1,83 @@
+@font-face {
+    font-family: 'Sligoil';
+    src: url('../../assets/fonts/Sligoil-MicroBold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sligoil';
+    src: url('../../assets/fonts/Sligoil-Micro.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    overscroll-behavior: none;
+}
+
+/* Le curseur du studio : une flèche en losanges de pixels, rose. C'est
+   un curseur natif du navigateur (rien ne suit la souris en retard), la
+   main reste sur ce qui se clique. */
+html {
+    cursor: url('../assets/curseur.svg') 2 2, auto;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    background: var(--fond);
+    color: var(--encre);
+    font-family: var(--police-machine);
+    font-size: var(--txt);
+    line-height: var(--interligne);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+p {
+    margin: 0;
+}
+
+a,
+button {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+a {
+    color: inherit;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+}
+
+::selection {
+    background: var(--t-jaune);
+    color: var(--encre-noire);
+}
+
+:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+}
+
+.visuellement-cache {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}

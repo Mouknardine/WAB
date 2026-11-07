@@ -1,0 +1,119 @@
+/* Téléphone (< 768 px) : trois bandes. En haut, la marque et le contact ;
+   au milieu, l'instrument, qui prend toute la place restante et finit net
+   entre deux filets ; en bas, un seul panneau (présentation et
+   rubriques). Au-delà de 768 px, rien ici ne s'applique : le bureau ne change pas. */
+
+.phrases__court {
+    display: none;
+}
+
+@media (max-width: 47.99rem) {
+    .instrument {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        grid-template-rows: auto minmax(0, 1fr) auto;
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
+        background: var(--fond);
+    }
+
+    /* La grille, les surprises et les billets partagent la même case :
+       rien ne déborde sur le contact ni sur le panneau du bas. Placés en
+       absolu, ils exigent les deux lignes : « 2 » seul irait jusqu'en bas. */
+    .instrument__toile,
+    .ecritures,
+    .surprises,
+    .billets {
+        grid-row: 2 / 3;
+        grid-column: 1 / -1;
+    }
+
+    .instrument__toile {
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+    }
+
+    .bord,
+    .bas {
+        position: relative;
+        inset: auto;
+    }
+
+    /* Bandeau du haut : une seule ligne, filet dessous */
+    .bord--marque,
+    .bord--contact {
+        grid-row: 1;
+        border-bottom: var(--filet) solid var(--encre);
+    }
+
+    .bord--marque {
+        display: flex;
+        align-items: center;
+        padding: 0 var(--u) 0 var(--gouttiere);
+        font-size: 1.375rem;
+        line-height: 1;
+    }
+
+    .bord--contact {
+        grid-column: 2;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: stretch;
+        font-size: 0.75rem;
+    }
+
+    .bord--contact a {
+        padding: 0 calc(var(--u) * 0.75);
+    }
+
+    .bord--contact a:last-child {
+        padding-right: var(--gouttiere);
+    }
+
+    .bord--contact a + a {
+        border-top: 0;
+    }
+
+    /* Panneau du bas : continu, pleine largeur, filet dessus */
+    .bas {
+        grid-row: 3;
+        grid-column: 1 / -1;
+        gap: 0;
+        padding: 0 var(--gouttiere) calc(var(--gouttiere) + env(safe-area-inset-bottom));
+        border-top: var(--filet) solid var(--encre);
+        background: var(--papier);
+        pointer-events: auto;
+    }
+
+    .bord--phrases,
+    .bord--jeu {
+        max-width: none;
+        padding: 0;
+    }
+
+    .bord--phrases {
+        padding: calc(var(--u) * 1.5) 0;
+    }
+
+    .bord--phrases h1 {
+        font-size: 1rem;
+    }
+
+    .phrases__long {
+        display: none;
+    }
+
+    .phrases__court {
+        display: block;
+        font-size: var(--txt-s);
+    }
+
+    .bord--jeu {
+        flex-wrap: nowrap;
+        column-gap: calc(var(--u) * 2);
+    }
+
+    .jeu__liens {
+        column-gap: calc(var(--u) * 2);
+    }
+}

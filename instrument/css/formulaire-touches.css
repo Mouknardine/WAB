@@ -1,0 +1,103 @@
+/* Les touches du formulaire de contact : les choix (projet, budget) et
+   « Envoyer ». Elles s'enfoncent à l'appui, sans couleur ; un choix coché
+   reste enfoncé, rempli de la teinte de la rubrique. */
+
+/* Les choix : des touches, la case native reste dessous pour le clavier
+   et les lecteurs d'écran. */
+.choix__touches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--u);
+    padding-bottom: var(--touche-mini);
+}
+
+.choix__touche {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--cible);
+    padding: 0 0.75rem;
+    border: 2px solid var(--encre-noire);
+    background: var(--papier);
+    color: var(--encre-noire);
+    font-family: var(--police-machine);
+    font-size: var(--txt-s);
+    font-weight: 700;
+    box-shadow: 0 var(--touche-mini) 0 0 var(--encre-noire);
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.choix__case {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.choix__touche:has(.choix__case:checked) {
+    background: var(--aplat);
+    color: var(--sur-aplat);
+}
+
+.choix__touche:has(.choix__case:checked),
+.choix__touche:active,
+.choix__touche[data-appui] {
+    translate: 0 var(--touche-mini);
+    box-shadow: 0 0 0 0 var(--encre-noire);
+}
+
+.choix__touche:has(.choix__case:focus-visible) {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+}
+
+/* Envoyer : la grande touche du formulaire */
+.formulaire__envoyer {
+    min-height: 3rem;
+    margin-bottom: var(--touche);
+    border: 2px solid var(--encre-noire);
+    border-radius: 0;
+    background: var(--aplat);
+    color: var(--sur-aplat);
+    font-family: var(--police-machine);
+    font-size: 1rem;
+    font-weight: 700;
+    box-shadow: 0 var(--touche) 0 0 var(--encre-noire);
+    cursor: pointer;
+}
+
+.formulaire__envoyer:active,
+.formulaire__envoyer[data-appui],
+.formulaire__envoyer[aria-disabled='true'] {
+    translate: 0 var(--touche);
+    box-shadow: 0 0 0 0 var(--encre-noire);
+}
+
+.formulaire__envoyer[aria-disabled='true'] {
+    cursor: progress;
+}
+
+.formulaire__envoyer:focus-visible,
+.formulaire__encore:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .choix__touche,
+    .formulaire__envoyer {
+        transition:
+            translate 200ms var(--ease-out),
+            box-shadow 200ms var(--ease-out);
+    }
+
+    .choix__touche:active,
+    .choix__touche[data-appui],
+    .formulaire__envoyer:active,
+    .formulaire__envoyer[data-appui] {
+        transition-duration: 70ms;
+    }
+}

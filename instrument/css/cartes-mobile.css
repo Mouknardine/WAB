@@ -1,0 +1,183 @@
+/* Les cartes sur téléphone (< 768 px) : une rubrique à la fois. La zone
+   de l'instrument reste visible, la carte blanche se pose en haut,
+   et la navigation se fait au pouce, en bas : carrés de progression (ou
+   « 4/10 »), puis « ← Précédent » et « Suivant → ». */
+
+.paquet__nav,
+.paquet__indice,
+.paquet__compte {
+    display: none;
+}
+
+@media (max-width: 47.99rem) {
+    .cartes {
+        grid-row: 2 / 3;
+        grid-column: 1 / -1;
+    }
+
+    .rubrique {
+        display: flex;
+        flex-direction: column;
+        padding: calc(var(--u) * 1.5) var(--gouttiere) 0;
+        /* La grille reste visible et vivante autour de la carte */
+        background: none;
+    }
+
+    .rubrique > * {
+        pointer-events: auto;
+    }
+
+    .rubrique[hidden] {
+        display: none;
+    }
+
+    /* Carte seule (Contact) : pas de bande de navigation dessous, on
+       laisse le même espace qu'en haut avant le panneau du bas. */
+    .rubrique:not([data-paquet]) {
+        padding-bottom: calc(var(--u) * 1.5);
+    }
+
+    .rubrique__cartes {
+        display: flex;
+        flex: 0 1 auto;
+        flex-direction: column;
+        min-height: 0;
+    }
+
+    /* La carte suit son contenu ; trop longue, elle défile à l'intérieur */
+    .carte {
+        min-height: 0;
+        max-height: 100%;
+        touch-action: pan-y;
+    }
+
+    .carte > * {
+        flex-shrink: 0;
+    }
+
+    /* La capture garde le haut de la page du projet, sur un tiers d'écran au plus */
+    .carte__image {
+        max-height: 34svh;
+        object-fit: cover;
+        object-position: top;
+    }
+
+    /* Au téléphone : carrée, jusqu'à 42 % de l'écran ; on rogne un peu
+       le décor autour, jamais l'appareil, qui est au centre. */
+    .carte__image--mockup {
+        aspect-ratio: 1;
+        max-height: 42svh;
+        object-position: center;
+    }
+
+    .carte__tete {
+        cursor: auto;
+        touch-action: manipulation;
+    }
+
+    .carte__nav,
+    .carte__numero,
+    .carte__fermer-mot {
+        display: none;
+    }
+
+    .carte__croix {
+        display: inline;
+    }
+
+    .carte__texte {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .paquet__indice:not([hidden]) {
+        display: block;
+        width: fit-content;
+        margin: var(--u) auto 0;
+        padding: calc(var(--u) * 0.5) var(--u);
+        background: var(--papier);
+        font-family: var(--police-machine);
+        font-size: var(--txt-s);
+        font-weight: 700;
+        text-align: center;
+    }
+
+    .paquet__nav {
+        display: flex;
+        flex-direction: column;
+        gap: var(--u);
+        /* Bande pleine largeur posée sur le panneau du bas */
+        margin: auto calc(-1 * var(--gouttiere)) 0;
+        padding: var(--u) var(--gouttiere) calc(var(--u) + var(--touche));
+        border-top: var(--filet) solid var(--encre);
+        background: var(--papier);
+    }
+
+    .paquet__points {
+        display: flex;
+        justify-content: center;
+    }
+
+    .paquet__nav[data-mode='compte'] .paquet__points {
+        display: none;
+    }
+
+    .paquet__nav[data-mode='compte'] .paquet__compte {
+        display: block;
+        font-family: var(--police-machine);
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    /* Un carré de 12 px, une cible de 44 px autour */
+    .paquet__point {
+        display: grid;
+        flex: 0 0 var(--cible);
+        place-items: center;
+        height: var(--cible);
+        padding: 0;
+        border: 0;
+        background: none;
+        cursor: pointer;
+    }
+
+    .paquet__point::before {
+        content: '';
+        width: 0.75rem;
+        height: 0.75rem;
+        border: 2px solid var(--encre-noire);
+        background: var(--papier);
+    }
+
+    .paquet__point[aria-current]::before {
+        background: var(--aplat);
+    }
+
+    .paquet__pas2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--u);
+    }
+
+    .paquet__pas {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--u);
+        min-height: 3rem;
+        border: 2px solid var(--encre-noire);
+        background: var(--papier);
+        color: var(--encre-noire);
+        font-family: var(--police-machine);
+        font-size: 0.875rem;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .paquet__signe {
+        font-family: var(--police-signes);
+        font-size: 1.125rem;
+        font-weight: 400;
+    }
+}

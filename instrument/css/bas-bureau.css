@@ -1,0 +1,167 @@
+/* Les deux blocs du bas au bureau (≥ 768 px), de la même famille que les
+   cartes et les touches : papier, bordure d'encre pleine de 2 px, coins
+   droits, même marge intérieure, bas alignés sur la même ligne. Les
+   deux cases du haut prennent le même cadre.
+   À gauche, la présentation (titre et deux phrases) ; à droite, les
+   rubriques en touches puis « Jouez » et les touches du clavier dessinées. Le téléphone ne lit rien d'ici. */
+
+@media (min-width: 48rem) {
+    .bas {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: var(--bord);
+    }
+
+    .bord--phrases,
+    .bord--jeu {
+        padding: calc(var(--u) * 2);
+        border: 2px solid var(--encre-noire);
+        background: var(--papier);
+    }
+
+    /* Les deux cases du haut (WAB, contact) : même cadre que les blocs
+       du bas ; le filet entre e-mail et téléphone passe à 2 px aussi. */
+    .bord--marque,
+    .bord--contact {
+        border: 2px solid var(--encre-noire);
+    }
+
+    /* Empilés (sous 896 px), le filet traverse toute la case */
+    .bord--contact {
+        align-items: stretch;
+    }
+
+    .bord--contact a {
+        justify-content: flex-end;
+    }
+
+    .bord--contact a + a {
+        border-color: var(--encre-noire);
+        border-width: 2px;
+    }
+
+    .bord--phrases {
+        flex: 0 0 auto;
+    }
+
+    /* Texte justifié d'un bord à l'autre (demande d'Eliott, 07.11).
+       Sligoil est à chasse fixe : le bloc fait 47 signes de texte, la
+       longueur de la phrase la plus longue, qui tient donc sur une ligne.
+       Le titre tient en trois lignes de 21 signes (« WeAreBrothers
+       dessine » / « des interfaces et des » / « systèmes, à Lausanne. ») :
+       sa taille est calculée pour que 21 signes remplissent ces 47. Un
+       filet sépare le titre des phrases. */
+    .bord--phrases {
+        width: min-content;
+        font-size: var(--txt);
+    }
+
+    .bord--phrases h1 {
+        width: auto;
+        font-size: calc(var(--txt) * 47 / 21 * 0.97);
+        line-height: 1.1;
+        letter-spacing: 0;
+        text-align: justify;
+        text-align-last: justify;
+        hyphens: none;
+    }
+
+    .phrases__long {
+        width: 47ch;
+        font-size: var(--txt);
+        font-weight: 400;
+        letter-spacing: 0;
+        text-align: justify;
+        text-align-last: justify;
+    }
+
+    .bord--phrases h1 + .phrases__long {
+        margin-top: calc(var(--u) * 1.5);
+        padding-top: calc(var(--u) * 1.5);
+        border-top: 1px solid var(--encre-noire);
+    }
+
+    .bord--jeu {
+        display: flex;
+        flex: 0 1 26rem;
+        flex-direction: column;
+        align-items: stretch;
+        gap: calc(var(--u) * 1.5);
+        min-width: 20rem;
+        max-width: 26rem;
+    }
+
+    /* Les rubriques, en touches : la rangée la plus visible du bloc */
+    .jeu__liens {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: var(--u);
+        padding-bottom: var(--touche);
+    }
+
+    .jeu__rubrique {
+        min-height: var(--cible);
+        border: 2px solid var(--encre-noire);
+        background: var(--papier);
+        color: var(--encre-noire);
+        font-size: 0.875rem;
+        text-decoration: none;
+    }
+
+    .jeu__rubrique[aria-expanded='true'] {
+        background: var(--aplat);
+        color: var(--sur-aplat);
+    }
+
+    .jeu__rubrique[aria-expanded='true']::before {
+        display: none;
+    }
+
+    /* « Jouez » et ses touches, sous un filet */
+    .jeu__consigne {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: calc(var(--u) * 0.75);
+        padding-top: calc(var(--u) * 1.5);
+        border-top: 1px solid var(--encre-noire);
+        font-size: var(--txt-s);
+        font-weight: 700;
+    }
+
+    .jeu__touches {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: calc(var(--u) * 0.75);
+        padding-bottom: var(--touche-mini);
+    }
+
+    .jeu__touches kbd {
+        padding: 0.1em 0.45em;
+        border: 2px solid var(--encre-noire);
+        background: var(--papier);
+        color: var(--encre-noire);
+        font-family: var(--police-machine);
+        font-size: var(--txt-s);
+        font-weight: 700;
+        line-height: 1.3;
+        box-shadow: 0 var(--touche-mini) 0 0 var(--encre-noire);
+    }
+
+    .jeu__touches kbd[data-appui] {
+        translate: 0 var(--touche-mini);
+        box-shadow: 0 0 0 0 var(--encre-noire);
+    }
+}
+
+/* Téléphone, et tablette sans clavier : pas de consigne au clavier */
+.jeu__consigne {
+    display: none;
+}
+
+@media (min-width: 48rem) and (hover: hover) and (pointer: fine) {
+    .jeu__consigne {
+        display: flex;
+    }
+}

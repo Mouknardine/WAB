@@ -1,0 +1,88 @@
+/* Le calque d'écritures se pose juste au-dessus de la grille (ordre du
+   document, sans z-index). Les surprises : par-dessus les pixels, sous les bords (le contact et
+   la présentation restent lisibles). Décoratives : elles ne prennent
+   jamais le pointeur ni le focus. */
+
+.ecritures,
+.surprises,
+.billets {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Les billets passent sous les messages et le chat : le message reste lisible
+   pendant une pluie. */
+.billets {
+    z-index: 1;
+}
+
+.surprises {
+    z-index: 2;
+}
+
+.bord,
+.bas {
+    z-index: 3;
+}
+
+.surprise-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* Toujours sur une ligne, cadre ajusté au texte : un message trop
+       long rapetisse (js/surprise-message.js) au lieu de passer à la ligne. */
+    width: max-content;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0.08em 0.22em 0.12em;
+    font-family: var(--police-machine);
+    font-size: calc((var(--msg-min) + var(--taille, 0.5) * var(--msg-ecart)) * 1vw);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.surprise-message[data-fond='blanc'] {
+    background: var(--papier);
+    color: var(--encre-noire);
+}
+
+.surprise-message[data-fond='noir'] {
+    background: var(--encre-noire);
+    color: var(--papier);
+}
+
+.surprise-chat {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    background: transparent;
+    /* Taille posée en JS (largeur et hauteur) : la vidéo s'y loge entière */
+    object-fit: contain;
+}
+
+.surprise-chat[hidden] {
+    display: none;
+}
+
+/* Apparitions : petites animations détourées posées à plat, en pixels,
+   agrandies sans lissage pour garder des carrés nets. */
+.surprise-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: auto;
+    background: transparent;
+    image-rendering: pixelated;
+    /* Taille posée en JS (largeur et hauteur) : la vidéo s'y loge entière */
+    object-fit: contain;
+}
+
+.surprise-image[hidden] {
+    display: none;
+}

@@ -1,0 +1,198 @@
+/* Les cartes posées sur l'instrument : papier plein, bordure d'encre
+   pleine, coins droits, aucune ombre, jamais penchées. En-tête en aplat
+   d'une des six teintes. Au bureau, chaque rubrique est un paquet (une
+   carte visible, ← →), déplaçable, comme sur téléphone (cartes-mobile.css). */
+
+.cartes {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.rubrique {
+    position: absolute;
+    inset: 0;
+}
+
+.rubrique[hidden],
+.carte[hidden] {
+    display: none;
+}
+
+.carte {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    background: var(--papier);
+    color: var(--encre-noire);
+    border: 2px solid var(--encre-noire);
+    pointer-events: auto;
+    overscroll-behavior: contain;
+}
+
+.carte:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+}
+
+/* Le focus posé par le script à l'ouverture ne se montre qu'au clavier */
+[data-modalite='souris'] .carte:focus-visible {
+    outline: none;
+}
+
+.carte__tete {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: calc(var(--u) * 1.5);
+    background: var(--aplat);
+    color: var(--sur-aplat);
+    font-family: var(--police-machine);
+    font-size: var(--txt-s);
+    font-weight: 700;
+    cursor: grab;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.carte__tete:active {
+    cursor: grabbing;
+}
+
+.carte__actions {
+    display: flex;
+}
+
+.carte__fermer,
+.carte__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--cible);
+    min-height: var(--cible);
+    padding: 0 var(--u);
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+.carte__nav {
+    /* Sligoil dessine → comme un chevron : les flèches viennent du texte */
+    font-family: var(--police-signes);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.carte__croix {
+    font-size: 1.375rem;
+    line-height: 1;
+}
+
+.carte__fermer-mot {
+    display: none;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+}
+
+.carte__fermer:focus-visible,
+.carte__nav:focus-visible {
+    outline: 3px solid var(--sur-aplat);
+    outline-offset: -5px;
+}
+
+.carte__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid var(--encre-noire);
+}
+
+/* Photo de mise en situation (4:5) : entière au bureau, rien n'est coupé */
+.carte__image--mockup { aspect-ratio: 4 / 5; object-fit: cover; }
+
+.carte__corps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--u);
+    padding: calc(var(--u) * 1.5) calc(var(--u) * 2) calc(var(--u) * 2);
+}
+
+.carte__personne {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--u) * 1.5);
+}
+
+.carte__avatar {
+    width: 3rem;
+    height: 3rem;
+    flex: none;
+}
+
+.carte__titre {
+    margin: 0;
+    font-family: var(--police-machine);
+    font-size: 1.375rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+}
+
+.carte__prix,
+.carte__lieu,
+.carte__liens a {
+    font-family: var(--police-machine);
+    font-size: var(--txt-s);
+    font-weight: 700;
+}
+
+.carte__texte {
+    font-size: 1rem;
+    line-height: 1.45;
+}
+
+.carte__liens {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.carte__liens a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--cible);
+    text-decoration: underline;
+}
+
+/* Bouton d'une rubrique ouverte : un carré de sa teinte devant le mot */
+.jeu__rubrique[aria-expanded='true']::before {
+    content: '';
+    display: inline-block;
+    width: 0.6em;
+    height: 0.6em;
+    margin-right: 0.3em;
+    background: var(--aplat);
+    outline: 1px solid var(--encre-noire);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .carte__liens a:hover {
+        background: var(--t-jaune);
+    }
+}
+
+.carte__fleche { font-family: var(--police-signes); font-weight: 400; } /* Sligoil n'a pas de ↗ */
+
+/* Boutons du bas : 44 px de large au moins, même pour « Prix » */
+.jeu__rubrique {
+    min-width: var(--cible);
+    justify-content: center;
+}

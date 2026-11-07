@@ -1,0 +1,68 @@
+/* Le bas de l'écran sur téléphone (< 768 px) : Nous, Projets, Prix et
+   Contact deviennent une rangée de quatre touches, la rubrique ouverte
+   enfoncée et remplie de sa teinte. Pas de bouton Pause (demande
+   d'Eliott, 07.11) : toucher la grille suspend déjà le jeu automatique.
+   En 320 px, le contact du
+   haut tient sur une ligne : le numéro et « E-mail ». */
+
+.contact__court {
+    display: none;
+}
+
+@media (max-width: 47.99rem) {
+    .bord--jeu {
+        padding: 0;
+    }
+
+    /* Quatre touches séparées, de la même famille que Précédent / Suivant ;
+       la marge du bas laisse la place à leur épaisseur (css/mouvement.css). */
+    .jeu__liens {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: calc(var(--u) * 0.75);
+        width: 100%;
+        padding-bottom: var(--touche);
+    }
+
+    .jeu__rubrique {
+        justify-content: center;
+        min-height: 3rem;
+        border: 2px solid var(--encre-noire);
+        background: var(--papier);
+        color: var(--encre-noire);
+        font-family: var(--police-machine);
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .jeu__rubrique[aria-expanded='true'] {
+        background: var(--aplat);
+        color: var(--sur-aplat);
+    }
+
+    .jeu__rubrique[aria-expanded='true']::before {
+        display: none;
+    }
+
+    /* Une rubrique ouverte : on n'est plus sur l'accueil, la présentation
+       s'efface et la carte prend sa place (demande d'Eliott, 07.11). */
+    .instrument:has(.rubrique:not([hidden])) .bord--phrases {
+        display: none;
+    }
+
+    /* Sans la présentation, les touches gardent leur air sous le filet */
+    .instrument:has(.rubrique:not([hidden])) .bas {
+        padding-top: var(--gouttiere);
+    }
+}
+
+@media (max-width: 22.5rem) {
+    .contact__long {
+        display: none;
+    }
+
+    .contact__court {
+        display: inline;
+    }
+}

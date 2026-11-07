@@ -1,0 +1,36 @@
+/* Bureau : un paquet par rubrique, posé où il y a de la place. Sous la
+   carte visible, deux bords pleins décalés de 6 px disent qu'il y en
+   a d'autres, sans montrer leur contenu. */
+@media (min-width: 48rem) {
+    .rubrique {
+        inset: auto;
+        top: 0;
+        left: 0;
+        width: min(22rem, calc(100% - 2rem));
+        translate: var(--x, 1rem) var(--y, 1rem);
+    }
+
+    .rubrique__cartes {
+        position: relative;
+        isolation: isolate;
+    }
+
+    .rubrique[data-paquet] .rubrique__cartes::before,
+    .rubrique[data-paquet] .rubrique__cartes::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: var(--papier);
+        border: 2px solid var(--encre-noire);
+        translate: 6px 6px;
+    }
+
+    .rubrique[data-paquet] .rubrique__cartes::before {
+        translate: 12px 12px;
+    }
+
+    .carte {
+        max-height: calc(100dvh - 3rem);
+    }
+}

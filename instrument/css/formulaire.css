@@ -1,0 +1,189 @@
+/* Le formulaire de la carte Contact. Même famille que le reste : Sligoil,
+   bordures d'encre de 2 px, coins droits. Les choix et « Envoyer » sont
+   des touches qui s'enfoncent ; un choix coché reste enfoncé, rempli de
+   la teinte de la rubrique. Au focus d'un champ, seul le trait du dessous
+   fonce (pas de cadre bleu, demande d'Eliott du 06.11). */
+
+.formulaire,
+.formulaire__champs {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--u) * 2);
+}
+
+.formulaire {
+    margin-top: var(--u);
+}
+
+.formulaire__champs[hidden],
+.formulaire__fait[hidden],
+.formulaire__alerte[hidden],
+.champ__erreur[hidden] {
+    display: none;
+}
+
+.champ,
+.choix {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--u) * 0.75);
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.champ__libelle {
+    padding: 0;
+    font-family: var(--police-machine);
+    font-size: var(--txt-s);
+    font-weight: 700;
+}
+
+/* Une légende de groupe échappe à l'écart du flex : on le lui donne */
+.choix > legend {
+    margin-bottom: calc(var(--u) * 0.75);
+}
+
+.champ__facultatif {
+    font-weight: 400;
+}
+
+/* 16 px au moins : Safari sur iPhone ne zoome pas en entrant dans le champ */
+.champ__saisie {
+    width: 100%;
+    margin: 0;
+    padding: 0.625rem 0.75rem;
+    border: 2px solid var(--encre-noire);
+    border-radius: 0;
+    background: var(--papier);
+    color: var(--encre-noire);
+    font-family: var(--police-machine);
+    font-size: 1rem;
+    line-height: 1.4;
+    appearance: none;
+}
+
+textarea.champ__saisie {
+    min-height: 7rem;
+    resize: vertical;
+}
+
+.champ__saisie:focus {
+    outline: none;
+    box-shadow: inset 0 -4px 0 0 var(--encre-noire);
+}
+
+.champ__saisie[aria-invalid='true'] {
+    border-color: var(--t-rouge);
+}
+
+.champ__erreur,
+.formulaire__alerte {
+    margin: 0;
+    color: var(--t-rouge);
+    font-size: var(--txt-s);
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.formulaire__alerte {
+    padding: calc(var(--u) * 1.5);
+    border: 2px solid var(--t-rouge);
+}
+
+.formulaire__alerte a {
+    color: inherit;
+}
+
+/* Après l'envoi */
+.formulaire__fait {
+    display: flex;
+    flex-direction: column;
+    gap: var(--u);
+    outline: none;
+}
+
+.formulaire__fait p {
+    margin: 0;
+}
+
+.formulaire__merci {
+    font-size: 1.375rem;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.formulaire__encore {
+    align-self: flex-start;
+    min-height: var(--cible);
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    font-size: var(--txt-s);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    cursor: pointer;
+}
+
+.formulaire__direct {
+    margin: 0;
+    padding-top: calc(var(--u) * 1.5);
+    border-top: 1px solid var(--encre-noire);
+    font-size: var(--txt-s);
+    line-height: 1.6;
+}
+
+.formulaire__direct {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.formulaire__direct a {
+    color: inherit;
+    font-weight: 700;
+}
+
+/* Bureau : la carte Contact est plus large, nom et e-mail côte à côte,
+   pour que le formulaire tienne sans défiler. */
+@media (min-width: 48rem) {
+    #rubrique-contact {
+        width: min(34rem, calc(100% - 2rem));
+    }
+
+    textarea.champ__saisie {
+        min-height: 5.5rem;
+    }
+
+    .formulaire__direct {
+        flex-flow: row wrap;
+        column-gap: calc(var(--u) * 1.5);
+    }
+
+    .formulaire__champs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: calc(var(--u) * 1.5);
+    }
+
+    .formulaire__champs > * {
+        grid-column: 1 / -1;
+    }
+
+    .formulaire__champs > .champ:nth-child(-n + 2) {
+        grid-column: auto;
+    }
+}
+
+/* Champ piège pour les robots : hors de l'écran, jamais atteint au clavier */
+.formulaire__piege {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}

@@ -1,0 +1,163 @@
+/* L'écran-instrument : la grille occupe tout, les textes sont posés aux
+   bords sur des aplats de papier, lisibles par-dessus le bruit. */
+
+.instrument {
+    position: fixed;
+    inset: 0;
+    height: 100dvh;
+}
+
+.instrument__toile {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+    cursor: url('../assets/curseur.svg') 2 2, crosshair;
+}
+
+.instrument__toile:focus-visible {
+    outline-offset: -3px;
+}
+
+.bord {
+    position: absolute;
+    background: var(--papier);
+    color: var(--encre);
+}
+
+.bord--marque {
+    top: var(--bord);
+    left: var(--bord);
+    padding: 0 calc(var(--u) * 1.5);
+    font-family: var(--police-machine);
+    font-size: var(--txt-marque);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+}
+
+.bord--contact {
+    top: var(--bord);
+    right: var(--bord);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-family: var(--police-machine);
+    font-size: var(--txt-s);
+    font-weight: 700;
+}
+
+.bord--contact a {
+    display: flex;
+    align-items: center;
+    min-height: var(--cible);
+    padding: 0 calc(var(--u) * 1.5);
+    text-decoration: none;
+}
+
+.bord--contact a + a {
+    border-top: 1px solid var(--encre);
+}
+
+.bas {
+    position: absolute;
+    inset: auto var(--bord) var(--bord);
+    display: flex;
+    flex-direction: column;
+    gap: var(--u);
+    padding-bottom: env(safe-area-inset-bottom);
+    pointer-events: none;
+}
+
+.bas > * {
+    pointer-events: auto;
+}
+
+.bord--phrases,
+.bord--jeu {
+    position: static;
+    padding: var(--u) calc(var(--u) * 1.5);
+}
+
+.bord--phrases {
+    align-self: flex-start;
+    max-width: 30rem;
+}
+
+.bord--phrases h1 {
+    font-size: var(--txt-titre);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+}
+
+.bord--jeu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: calc(var(--u) * 3);
+}
+
+.jeu__liens {
+    display: flex;
+    column-gap: calc(var(--u) * 2.5);
+}
+
+.jeu__lien {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--cible);
+}
+
+/* Une seule police, Sligoil : en gras pour ce qui sert à agir et pour
+   les titres, en normal pour ce qui se lit. */
+.jeu__rubrique {
+    font-family: var(--police-machine);
+    font-size: var(--txt-s);
+    font-weight: 700;
+}
+
+/* Les boutons ont l'allure d'un lien du bord : texte souligné, sans cadre */
+.jeu__rubrique {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+    cursor: pointer;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .bord--contact a:hover {
+        background: var(--t-jaune);
+        color: var(--encre-noire);
+    }
+}
+
+@media (min-width: 56rem) {
+    .bord--contact {
+        flex-direction: row;
+    }
+
+    .bord--contact a + a {
+        border-top: 0;
+        border-left: 1px solid var(--encre);
+    }
+
+    .bas {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+
+    .bord--jeu {
+        max-width: 26rem;
+    }
+}

@@ -1,0 +1,8 @@
+# ID | fichier concerné (ou *) | raison et source
+TE-36 | * | Maquette servie en local uniquement (noindex) ; les en-têtes CSP et frame-ancestors relèvent du serveur Infomaniak au moment de la mise en ligne
+MV-06 | js/pilote.js | Boucle d'animation continue décidée explicitement par Eliott (« animation qui bouge tout le temps sur le site », 06.11.2026) : pause par bouton (WCAG 2.2.2), arrêt onglet caché, absente en mouvement réduit
+MV-18 | * | Rotation et retournement des billets qui tombent, chat qui danse et messages en plus des gestes de pixels : mouvements demandés par Eliott le 06.11.2026 (« des billets qui tombent de partout »)
+IM-07 | assets/billets | Billets détourés et chat qui danse : visuels choisis et fournis par Eliott, demande du 06.11.2026
+IM-07 | assets/anim | Apparitions animées (Hello Kitty, Super Nanas, cœurs) : vidéos fournies par Eliott, demande du 06.11.2026 (« ajoute-les aux surprises du clavier », puis « enlève les images statiques ») ; personnages protégés, à remplacer avant toute mise en ligne
+TE-24 | css/cartes.css | Contour retiré seulement sur la carte (conteneur focalisé par le script à l'ouverture) quand la dernière action était à la souris, demande d'Eliott du 06.11.2026 ; au clavier, le contour 3 px reste (vérifié au Tab et à l'ouverture par Entrée)
+TE-24 | css/formulaire.css | Champs : contour remplacé par un trait de 4 px sous le champ (demande d'Eliott du 06.11 : pas de cadre bleu, seul le trait du dessous fonce) ; bloc « Merci » : focus posé par le script pour l'annoncer, il ne se tabule pas

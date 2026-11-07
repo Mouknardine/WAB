@@ -1,10 +1,7 @@
 <!DOCTYPE html>
-<html lang="fr-CH" class="no-js">
-
+<html lang="fr-CH">
 <head>
     <meta charset="UTF-8">
-    <!-- Avant tout rendu : signale au CSS que JavaScript est disponible. -->
-    <script>document.documentElement.classList.replace('no-js', 'js');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#ffffff">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -45,959 +42,351 @@
     <meta name="twitter:image" content="https://wearebrothers.ch/assets/og-image.jpg?v=3">
     <meta name="twitter:image:alt" content="« WeAreBrothers. » écrit en touches de clavier colorées — agence web à Lausanne, sites internet sur mesure">
 
-    <!-- Données structurées (JSON-LD) — régénérées le 08.10.2026 d'après le
+    <!-- Données structurées (JSON-LD), mises à jour le 07.11.2026 (sans FAQ, qui n’est plus affichée) d'après le
          contenu affiché : studio (#organization), site, page, fil d'Ariane, formules et prix, FAQ.
          Toute FAQ ici reprend mot pour mot les questions affichées. -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "ProfessionalService",
-                "@id": "https://wearebrothers.ch/#organization",
-                "name": "WeAreBrothers Studio",
-                "alternateName": [
-                    "WeAreBrothers",
-                    "WAB.",
-                    "WAB Studio"
-                ],
-                "description": "Studio indépendant de design et de développement, fondé à Lausanne par Eliott et Matt Pina : création de sites internet sur mesure, applications de gestion, automatisation et IA, image de marque.",
-                "url": "https://wearebrothers.ch/",
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "ProfessionalService",
+            "@id": "https://wearebrothers.ch/#organization",
+            "name": "WeAreBrothers Studio",
+            "alternateName": [
+                "WeAreBrothers",
+                "WAB.",
+                "WAB Studio"
+            ],
+            "description": "Studio indépendant de design et de développement, fondé à Lausanne par Eliott et Matt Pina : création de sites internet sur mesure, applications de gestion, automatisation et IA, image de marque.",
+            "url": "https://wearebrothers.ch/",
+            "email": "contact@wearebrothers.ch",
+            "telephone": "+41 79 311 58 40",
+            "image": "https://wearebrothers.ch/assets/og-image.jpg?v=3",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://wearebrothers.ch/assets/icon-512.png",
+                "contentUrl": "https://wearebrothers.ch/assets/icon-512.png",
+                "width": 512,
+                "height": 512
+            },
+            "priceRange": "CHF 1’000 – 7’000+",
+            "currenciesAccepted": "CHF",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Lausanne",
+                "addressRegion": "VD",
+                "addressCountry": "CH"
+            },
+            "areaServed": [
+                {
+                    "@type": "City",
+                    "name": "Lausanne"
+                },
+                {
+                    "@type": "City",
+                    "name": "Pully"
+                },
+                {
+                    "@type": "City",
+                    "name": "Renens"
+                },
+                {
+                    "@type": "City",
+                    "name": "Épalinges"
+                },
+                {
+                    "@type": "City",
+                    "name": "Morges"
+                },
+                {
+                    "@type": "City",
+                    "name": "Nyon"
+                },
+                {
+                    "@type": "City",
+                    "name": "Vevey"
+                },
+                {
+                    "@type": "City",
+                    "name": "Montreux"
+                },
+                {
+                    "@type": "City",
+                    "name": "Yverdon-les-Bains"
+                },
+                {
+                    "@type": "City",
+                    "name": "Genève"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "Canton de Vaud"
+                },
+                {
+                    "@type": "Place",
+                    "name": "Arc lémanique"
+                },
+                {
+                    "@type": "Place",
+                    "name": "Suisse romande"
+                }
+            ],
+            "founder": [
+                {
+                    "@id": "https://wearebrothers.ch/#eliott"
+                },
+                {
+                    "@id": "https://wearebrothers.ch/#matt"
+                }
+            ],
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
                 "email": "contact@wearebrothers.ch",
                 "telephone": "+41 79 311 58 40",
-                "image": "https://wearebrothers.ch/assets/og-image.jpg?v=3",
-                "logo": {
-                    "@type": "ImageObject",
-                    "url": "https://wearebrothers.ch/assets/icon-512.png",
-                    "contentUrl": "https://wearebrothers.ch/assets/icon-512.png",
-                    "width": 512,
-                    "height": 512
+                "availableLanguage": "fr",
+                "areaServed": "CH"
+            },
+            "foundingLocation": {
+                "@type": "Place",
+                "name": "Lausanne, Suisse"
+            },
+            "employee": [
+                {
+                    "@id": "https://wearebrothers.ch/#bryan"
                 },
-                "priceRange": "CHF 1’000 – 7’000+",
-                "currenciesAccepted": "CHF",
-                "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Lausanne",
-                    "addressRegion": "VD",
-                    "addressCountry": "CH"
-                },
-                "areaServed": [
-                    {
-                        "@type": "City",
-                        "name": "Lausanne"
-                    },
-                    {
-                        "@type": "City",
-                        "name": "Pully"
-                    },
-                    {
-                        "@type": "City",
-                        "name": "Renens"
-                    },
-                    {
-                        "@type": "City",
-                        "name": "Épalinges"
-                    },
-                    {
-                        "@type": "City",
-                        "name": "Morges"
-                    },
-                    {
-                        "@type": "City",
-                        "name": "Nyon"
-                    },
-                    {
-                        "@type": "City",
-                        "name": "Vevey"
-                    },
-                    {
-                        "@type": "City",
-                        "name": "Montreux"
-                    },
-                    {
-                        "@type": "City",
-                        "name": "Yverdon-les-Bains"
-                    },
-                    {
-                        "@type": "City",
-                        "name": "Genève"
-                    },
-                    {
-                        "@type": "AdministrativeArea",
-                        "name": "Canton de Vaud"
-                    },
-                    {
-                        "@type": "Place",
-                        "name": "Arc lémanique"
-                    },
-                    {
-                        "@type": "Place",
-                        "name": "Suisse romande"
-                    }
-                ],
-                "founder": [
-                    {
-                        "@id": "https://wearebrothers.ch/#eliott"
-                    },
-                    {
-                        "@id": "https://wearebrothers.ch/#matt"
-                    }
-                ],
-                "contactPoint": {
-                    "@type": "ContactPoint",
-                    "contactType": "customer service",
-                    "email": "contact@wearebrothers.ch",
-                    "telephone": "+41 79 311 58 40",
-                    "availableLanguage": "fr",
-                    "areaServed": "CH"
-                },
-                "foundingLocation": {
-                    "@type": "Place",
-                    "name": "Lausanne, Suisse"
-                },
-                "employee": [
-                    {
-                        "@id": "https://wearebrothers.ch/#bryan"
-                    },
-                    {
-                        "@id": "https://wearebrothers.ch/#anais"
-                    }
-                ],
-                "knowsAbout": [
-                    "Création de site internet",
-                    "Refonte de site internet",
-                    "Web design",
-                    "Direction artistique",
-                    "Identité visuelle",
-                    "Motion design",
-                    "E-commerce",
-                    "Applications de gestion",
-                    "Automatisation",
-                    "Intelligence artificielle",
-                    "Référencement local"
-                ],
-                "hasOfferCatalog": {
-                    "@type": "OfferCatalog",
-                    "name": "Formules WeAreBrothers Studio",
-                    "itemListElement": [
-                        {
-                            "@type": "Offer",
-                            "name": "Site vitrine",
-                            "description": "Un site vitrine conçu et développé sur mesure, livré en 3 à 6 semaines.",
-                            "priceCurrency": "CHF",
-                            "priceSpecification": {
-                                "@type": "PriceSpecification",
-                                "priceCurrency": "CHF",
-                                "minPrice": 1000,
-                                "maxPrice": 2500
-                            },
-                            "areaServed": "Suisse romande",
-                            "itemOffered": {
-                                "@type": "Service",
-                                "name": "Site vitrine",
-                                "serviceType": "Création de site internet",
-                                "provider": {
-                                    "@id": "https://wearebrothers.ch/#organization"
-                                }
-                            }
-                        },
-                        {
-                            "@type": "Offer",
-                            "name": "Site et outils",
-                            "description": "Votre site et les outils métier de votre entreprise : outil de gestion, e-commerce et options.",
-                            "priceCurrency": "CHF",
-                            "priceSpecification": {
-                                "@type": "PriceSpecification",
-                                "priceCurrency": "CHF",
-                                "minPrice": 2500,
-                                "maxPrice": 7000
-                            },
-                            "areaServed": "Suisse romande",
-                            "itemOffered": {
-                                "@type": "Service",
-                                "name": "Site et outils",
-                                "serviceType": "Site internet et application de gestion",
-                                "provider": {
-                                    "@id": "https://wearebrothers.ch/#organization"
-                                }
-                            }
-                        },
-                        {
-                            "@type": "Offer",
-                            "name": "Expérience sur mesure",
-                            "description": "Une expérience digitale singulière, avec refonte de marque. Sur devis, après un premier échange.",
-                            "priceCurrency": "CHF",
-                            "priceSpecification": {
-                                "@type": "PriceSpecification",
-                                "priceCurrency": "CHF",
-                                "minPrice": 7000
-                            },
-                            "areaServed": "Suisse romande",
-                            "itemOffered": {
-                                "@type": "Service",
-                                "name": "Expérience sur mesure",
-                                "serviceType": "Site internet sur mesure et identité de marque",
-                                "provider": {
-                                    "@id": "https://wearebrothers.ch/#organization"
-                                }
-                            }
-                        }
-                    ]
+                {
+                    "@id": "https://wearebrothers.ch/#anais"
                 }
-            },
-            {
-                "@type": "WebSite",
-                "@id": "https://wearebrothers.ch/#website",
-                "url": "https://wearebrothers.ch/",
-                "name": "WeAreBrothers Studio",
-                "alternateName": "WAB.",
-                "inLanguage": "fr-CH",
-                "publisher": {
-                    "@id": "https://wearebrothers.ch/#organization"
-                }
-            },
-            {
-                "@type": "Person",
-                "@id": "https://wearebrothers.ch/#eliott",
-                "name": "Eliott Pina",
-                "jobTitle": "Lead designer, direction artistique",
-                "description": "Identités visuelles, interfaces et motion design. Il assure la direction artistique de chaque projet.",
-                "worksFor": {
-                    "@id": "https://wearebrothers.ch/#organization"
-                },
-                "hasCredential": {
-                    "@type": "EducationalOccupationalCredential",
-                    "credentialCategory": "degree",
-                    "name": "Bachelor en droit"
-                },
-                "award": "Programme UCreate : 10’000 CHF pour le développement d’une application"
-            },
-            {
-                "@type": "Person",
-                "@id": "https://wearebrothers.ch/#matt",
-                "name": "Matt Pina",
-                "jobTitle": "Lead développeur full-stack",
-                "description": "Architecture technique, développement et mise en ligne. Des sites rapides, fiables et évolutifs.",
-                "worksFor": {
-                    "@id": "https://wearebrothers.ch/#organization"
-                }
-            },
-            {
-                "@type": "WebPage",
-                "@id": "https://wearebrothers.ch/#webpage",
-                "url": "https://wearebrothers.ch/",
-                "name": "Agence web à Lausanne — création de site internet sur mesure",
-                "description": "Agence web à Lausanne : création de site internet sur mesure, applications de gestion, automatisation et IA. Prix affichés, de 1’000 à plus de 7’000 CHF.",
-                "inLanguage": "fr-CH",
-                "isPartOf": {
-                    "@id": "https://wearebrothers.ch/#website"
-                },
-                "about": {
-                    "@id": "https://wearebrothers.ch/#organization"
-                },
-                "breadcrumb": {
-                    "@id": "https://wearebrothers.ch/#breadcrumb"
-                },
-                "primaryImageOfPage": {
-                    "@type": "ImageObject",
-                    "url": "https://wearebrothers.ch/assets/og-image.jpg?v=3",
-                    "contentUrl": "https://wearebrothers.ch/assets/og-image.jpg?v=3",
-                    "width": 1200,
-                    "height": 630,
-                    "caption": "« WeAreBrothers. » écrit en touches de clavier colorées — agence web à Lausanne, sites internet sur mesure"
-                },
-                "dateModified": "2026-11-06"
-            },
-            {
-                "@type": "FAQPage",
-                "@id": "https://wearebrothers.ch/#faq",
-                "isPartOf": {
-                    "@id": "https://wearebrothers.ch/#webpage"
-                },
-                "inLanguage": "fr-CH",
-                "mainEntity": [
-                    {
-                        "@type": "Question",
-                        "name": "Combien coûte un site internet chez WAB ?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Beaucoup d’agences répondent « cela dépend », puis envoient un devis des semaines plus tard. Nous affichons nos fourchettes sur cette page : de 1’000 à 2’500 CHF pour un site vitrine, de 2’500 à 7’000 CHF avec outil de gestion ou boutique, dès 7’000 CHF pour une expérience sur mesure avec refonte de marque. Après un premier échange, vous recevez une proposition écrite sous 24 h ouvrées. Le paiement peut être échelonné en plusieurs mensualités."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Combien de temps prend la création d’un site ?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Comptez 3 à 6 semaines pour un site vitrine, davantage pour un projet sur mesure ou une boutique en ligne. Ce délai est un repère, pas une échéance : nous ne refermons pas un projet à date fixe, nous le travaillons jusqu’à votre entière satisfaction."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Utilisez-vous WordPress ou Wix ?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Non. Un site WordPress assemble un thème et des extensions qu’il faut maintenir et mettre à jour. Nous écrivons le code de votre site de A à Z : rien d’inutile n’est chargé, la page s’affiche presque instantanément sur téléphone, et le site vous appartient de bout en bout."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Devrai-je gérer le site seul après la mise en ligne ?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Non. Le studio assure l’hébergement en Suisse, la maintenance et les évolutions de votre site. Un guide vous est remis si vous souhaitez modifier vous-même vos contenus."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "À qui appartient le site ?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "À vous. Le nom de domaine, le code et les contenus vous appartiennent. Le site est hébergé en Suisse chez Infomaniak, hébergement inclus."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Mon site sera-t-il bien référencé sur Google ?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Il part avec des bases solides : un site rapide, lisible par Google et structuré pour le référencement local — balises, données structurées, plan du site, textes travaillés avec vous autour de votre activité et de votre région. Le référencement se construit ensuite dans la durée, et nous restons disponibles pour le faire progresser."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Faites-vous aussi la refonte d’un site existant ?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Oui. Nous gardons ce qui fonctionne — contenus, adresses des pages, référencement acquis — et nous redessinons et recodons le reste. Les anciennes adresses sont conservées ou redirigées, et le nouveau site remplace l’ancien sans interruption."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Que dois-je préparer avant le premier échange ?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Rien d’obligatoire. Venez avec votre activité, ce que vous attendez du site et, si vous en avez, des sites que vous aimez. Logo, textes et photos existants sont bienvenus ; s’ils manquent, nous voyons ensemble comment les produire, et cela entre dans la proposition."
-                        }
-                    }
-                ]
-            },
-            {
-                "@type": "BreadcrumbList",
-                "@id": "https://wearebrothers.ch/#breadcrumb",
+            ],
+            "knowsAbout": [
+                "Création de site internet",
+                "Refonte de site internet",
+                "Web design",
+                "Direction artistique",
+                "Identité visuelle",
+                "Motion design",
+                "E-commerce",
+                "Applications de gestion",
+                "Automatisation",
+                "Intelligence artificielle",
+                "Référencement local"
+            ],
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Formules WeAreBrothers Studio",
                 "itemListElement": [
                     {
-                        "@type": "ListItem",
-                        "position": 1,
-                        "name": "Accueil",
-                        "item": "https://wearebrothers.ch/"
+                        "@type": "Offer",
+                        "name": "Site vitrine",
+                        "description": "Un site vitrine conçu et développé sur mesure, livré en 3 à 6 semaines.",
+                        "priceCurrency": "CHF",
+                        "priceSpecification": {
+                            "@type": "PriceSpecification",
+                            "priceCurrency": "CHF",
+                            "minPrice": 1000,
+                            "maxPrice": 2500
+                        },
+                        "areaServed": "Suisse romande",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Site vitrine",
+                            "serviceType": "Création de site internet",
+                            "provider": {
+                                "@id": "https://wearebrothers.ch/#organization"
+                            }
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "name": "Site et outils",
+                        "description": "Votre site et les outils métier de votre entreprise : outil de gestion, e-commerce et options.",
+                        "priceCurrency": "CHF",
+                        "priceSpecification": {
+                            "@type": "PriceSpecification",
+                            "priceCurrency": "CHF",
+                            "minPrice": 2500,
+                            "maxPrice": 7000
+                        },
+                        "areaServed": "Suisse romande",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Site et outils",
+                            "serviceType": "Site internet et application de gestion",
+                            "provider": {
+                                "@id": "https://wearebrothers.ch/#organization"
+                            }
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "name": "Expérience sur mesure",
+                        "description": "Une expérience digitale singulière, avec refonte de marque. Sur devis, après un premier échange.",
+                        "priceCurrency": "CHF",
+                        "priceSpecification": {
+                            "@type": "PriceSpecification",
+                            "priceCurrency": "CHF",
+                            "minPrice": 7000
+                        },
+                        "areaServed": "Suisse romande",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Expérience sur mesure",
+                            "serviceType": "Site internet sur mesure et identité de marque",
+                            "provider": {
+                                "@id": "https://wearebrothers.ch/#organization"
+                            }
+                        }
                     }
                 ]
             }
-        ]
-    }
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://wearebrothers.ch/#website",
+            "url": "https://wearebrothers.ch/",
+            "name": "WeAreBrothers Studio",
+            "alternateName": "WAB.",
+            "inLanguage": "fr-CH",
+            "publisher": {
+                "@id": "https://wearebrothers.ch/#organization"
+            }
+        },
+        {
+            "@type": "Person",
+            "@id": "https://wearebrothers.ch/#eliott",
+            "name": "Eliott Pina",
+            "jobTitle": "Lead designer, direction artistique",
+            "description": "Identités visuelles, interfaces et motion design. Il assure la direction artistique de chaque projet.",
+            "worksFor": {
+                "@id": "https://wearebrothers.ch/#organization"
+            },
+            "hasCredential": {
+                "@type": "EducationalOccupationalCredential",
+                "credentialCategory": "degree",
+                "name": "Bachelor en droit"
+            },
+            "award": "Programme UCreate : 10’000 CHF pour le développement d’une application"
+        },
+        {
+            "@type": "Person",
+            "@id": "https://wearebrothers.ch/#matt",
+            "name": "Matt Pina",
+            "jobTitle": "Lead développeur full-stack",
+            "description": "Architecture technique, développement et mise en ligne. Des sites rapides, fiables et évolutifs.",
+            "worksFor": {
+                "@id": "https://wearebrothers.ch/#organization"
+            }
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://wearebrothers.ch/#webpage",
+            "url": "https://wearebrothers.ch/",
+            "name": "Agence web à Lausanne — création de site internet sur mesure",
+            "description": "Agence web à Lausanne : création de site internet sur mesure, applications de gestion, automatisation et IA. Prix affichés, de 1’000 à plus de 7’000 CHF.",
+            "inLanguage": "fr-CH",
+            "isPartOf": {
+                "@id": "https://wearebrothers.ch/#website"
+            },
+            "about": {
+                "@id": "https://wearebrothers.ch/#organization"
+            },
+            "breadcrumb": {
+                "@id": "https://wearebrothers.ch/#breadcrumb"
+            },
+            "primaryImageOfPage": {
+                "@type": "ImageObject",
+                "url": "https://wearebrothers.ch/assets/og-image.jpg?v=3",
+                "contentUrl": "https://wearebrothers.ch/assets/og-image.jpg?v=3",
+                "width": 1200,
+                "height": 630,
+                "caption": "« WeAreBrothers. » écrit en touches de clavier colorées — agence web à Lausanne, sites internet sur mesure"
+            },
+            "dateModified": "2026-11-07"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://wearebrothers.ch/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Accueil",
+                    "item": "https://wearebrothers.ch/"
+                }
+            ]
+        }
+    ]
+}
     </script>
 
-    <!-- Polices servies depuis le site : Instrument Sans (texte et
-         titres), Sligoil en signature (chargée à la demande). -->
-    <link rel="preload" href="assets/fonts/InstrumentSans-Var.woff2" as="font" type="font/woff2" crossorigin>
-
-    <!-- Styles — le socle commun, puis les feuilles de l'accueil -->
-    <link rel="stylesheet" href="css/base.css?v=35">
-    <link rel="stylesheet" href="css/base-ui.css?v=2">
-    <link rel="stylesheet" href="css/nav-button.css?v=1">
-    <link rel="stylesheet" href="css/nav-panel.css?v=5">
-    <link rel="stylesheet" href="css/contact-modal.css?v=10">
-    <link rel="stylesheet" href="css/contact-faces.css?v=1">
-    <link rel="stylesheet" href="css/contact-form.css?v=7">
-    <!-- WAB OS : composants partagés par toutes les pages (OS-COMPONENTS.md) -->
-    <link rel="stylesheet" href="css/os-tokens.css?v=15">
-    <link rel="stylesheet" href="css/os-tokens-tint.css?v=1">
-    <link rel="stylesheet" href="css/os-tints.css?v=1">
-    <link rel="stylesheet" href="css/os-base.css?v=7">
-    <link rel="stylesheet" href="css/os-sky.css?v=6">
-    <link rel="stylesheet" href="css/sym.css?v=5">
-    <link rel="stylesheet" href="css/key-btn.css?v=5">
-    <link rel="stylesheet" href="css/os-bar.css?v=8">
-    <link rel="stylesheet" href="css/os-window.css?v=7">
-    <link rel="stylesheet" href="css/os-bubbles.css?v=4">
-    <link rel="stylesheet" href="css/os-footer.css?v=13">
-    <link rel="stylesheet" href="css/os-dock.css?v=6">
-    <link rel="stylesheet" href="css/os-dock-toc.css?v=3">
-    <link rel="stylesheet" href="css/os-overlay.css?v=5">
-    <!-- Accueil « bureau rangé » -->
-    <link rel="stylesheet" href="css/desk-objects.css?v=9">
-    <link rel="stylesheet" href="css/desk-hero.css?v=25">
-    <link rel="stylesheet" href="css/desk-margins.css?v=3">
-    <link rel="stylesheet" href="css/desk-keys.css?v=4">
-    <link rel="stylesheet" href="css/home-head.css?v=5">
-    <link rel="stylesheet" href="css/home-card.css?v=1">
-    <link rel="stylesheet" href="css/home-tiles.css?v=2">
-    <link rel="stylesheet" href="css/os-status.css?v=1">
-    <link rel="stylesheet" href="css/home-feat.css?v=1">
-    <link rel="stylesheet" href="css/home-steps.css?v=3">
-    <link rel="stylesheet" href="css/desk-wall.css?v=7">
-    <link rel="stylesheet" href="css/desk-plans.css?v=6">
-    <link rel="stylesheet" href="css/desk-letter.css?v=9">
-    <link rel="stylesheet" href="css/desk-faq.css?v=6">
-    <link rel="stylesheet" href="css/home-call.css?v=1">
-
-    <!-- Scripts -->
-    <script src="nav-clock.js?v=4" defer></script>
-    <script src="js/nav.js?v=7" defer></script>
-    <script type="module" src="js/contact/index.js?v=17"></script>
-    <script type="module" src="js/os/index.js?v=15"></script>
-    <script type="module" src="js/desk/index.js?v=24"></script>
+    <!-- Accueil « l'instrument » (07.11.2026) : fichiers dans instrument/ -->
+    <link rel="preload" href="/assets/fonts/Sligoil-MicroBold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/instrument/css/jetons.css?v=1">
+    <link rel="stylesheet" href="/instrument/css/base.css?v=1">
+    <link rel="stylesheet" href="/instrument/css/bords.css?v=1">
+    <link rel="stylesheet" href="/instrument/css/surprises.css?v=1">
+    <link rel="stylesheet" href="/instrument/css/mobile.css?v=1">
+    <link rel="stylesheet" href="/instrument/css/cartes.css?v=1">
+    <link rel="stylesheet" href="/instrument/css/cartes-bureau.css?v=1">
+    <link rel="stylesheet" href="/instrument/css/cartes-mobile.css?v=1">
+    <link rel="stylesheet" href="/instrument/css/bas-mobile.css?v=1">
+    <link rel="stylesheet" href="/instrument/css/bas-bureau.css?v=1">
+    <link rel="stylesheet" href="/instrument/css/formulaire.css?v=1">
+    <link rel="stylesheet" href="/instrument/css/formulaire-touches.css?v=1">
+    <link rel="stylesheet" href="/instrument/css/mouvement.css?v=1">
 </head>
+<body>
+    <main class="instrument">
+        <canvas class="instrument__toile" id="toile" tabindex="0" role="img"
+            aria-label="Instrument WAB : une grille de pixels aux six couleurs du studio, qui se joue au clavier, au clic et au doigt."
+            aria-describedby="partition"></canvas>
+        <canvas class="ecritures" id="ecritures" aria-hidden="true"></canvas>
 
-<body class="os desk">
+        <div class="surprises" id="surprises" aria-hidden="true"></div>
+        <canvas class="billets" id="billets" aria-hidden="true"></canvas>
 
-    <a class="skip-link" href="#studio-intro">Aller au contenu</a>
+        <div class="cartes" id="cartes">
+            <section class="rubrique" id="rubrique-nous" aria-label="Nous" hidden></section>
+            <section class="rubrique" id="rubrique-projets" aria-label="Projets" hidden></section>
+            <section class="rubrique" id="rubrique-prix" aria-label="Prix" hidden></section>
+            <section class="rubrique" id="rubrique-contact" aria-label="Contact" hidden></section>
+        </div>
 
-    <!-- BARRE DE MENUS — une pilule flottante : « WAB. » en mini-touches,
-         les pages au centre, la recherche, Contact. -->
-    <header class="menubar" id="topbar">
-        <div class="topbar__inner menubar__inner" id="topbarBar">
-            <div class="menubar__row">
-                <a href="/" class="menubar__brand" aria-current="page" aria-label="WAB., accueil"><span class="keys menubar__keys" aria-hidden="true" translate="no"><span class="key key--tint" data-tint="vert"><span class="key__face">W</span></span><span class="key key--tint" data-tint="jaune"><span class="key__face">A</span></span><span class="key key--tint" data-tint="rose"><span class="key__face">B</span></span><span class="key key--dot"><span class="key__face">.</span></span></span></a>
+        <p class="bord bord--marque" aria-hidden="true">WAB</p>
 
-                <nav class="menubar__nav" aria-label="Navigation principale">
-                    <a href="/realisations" class="menubar__link">Work</a>
-                    <a href="/services" class="menubar__link">Services</a>
-                    <a href="/studio" class="menubar__link">About</a>
-                </nav>
+        <nav class="bord bord--contact" aria-label="Contact">
+            <a href="mailto:contact@wearebrothers.ch"><span class="contact__long">contact@wearebrothers.ch</span><span class="contact__court">E-mail</span></a>
+            <a href="tel:+41793115840">079&nbsp;311&nbsp;58&nbsp;40</a>
+        </nav>
 
+        <div class="bas">
+            <section class="bord bord--phrases" aria-labelledby="titre">
+                <h1 id="titre">WeAreBrothers dessine des interfaces et des systèmes, à&nbsp;Lausanne.</h1>
+                <p class="phrases__long">Sites, applications métier, automatisations.</p>
+                <p class="phrases__long">L’IA nous sert à pousser chaque idée plus&nbsp;loin.</p>
+                <p class="phrases__court">Sites, applications, automatisations, IA.</p>
+            </section>
 
-                <div class="menubar__state">
-                    <button type="button" class="menubar__find" data-palette-open data-js-only aria-keyshortcuts="Meta+K Control+K">
-                        <span class="sym sym--search" aria-hidden="true"></span>Rechercher<kbd data-shortcut>⌘K</kbd>
-                    </button>
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="menubar__cta key-btn key-btn--klein key-btn--sm">Contact</a>
-                    <button type="button" class="topbar__menu" id="menuToggle" aria-expanded="false" aria-controls="topbarPanel">
-                        <span class="topbar__lines" aria-hidden="true"><span></span><span></span></span>
-                        <span class="sr-only">Menu</span>
-                    </button>
-                </div>
-            </div>
-            <div class="topbar__panel" id="topbarPanel">
-                <div class="topbar__panel-inner">
-                    <nav class="panel__nav" aria-label="Navigation">
-                        <a href="/realisations" class="panel__link">Work<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
-                        <a href="/services" class="panel__link">Services<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
-                        <a href="/studio" class="panel__link">About<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
-                        <a href="mailto:contact@wearebrothers.ch" data-contact class="panel__link">Contact<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg></a>
-                    </nav>
-                    <div class="panel__meta">
-                        <p class="panel__row">
-                            <span class="panel__key">Email</span>
-                            <a href="mailto:contact@wearebrothers.ch" class="panel__value">contact@wearebrothers.ch</a>
-                        </p>
-                        <p class="panel__row">
-                            <span class="panel__key">Téléphone</span>
-                            <a href="tel:+41793115840" class="panel__value">079&nbsp;311&nbsp;58&nbsp;40</a>
-                        </p>
-                        <p class="panel__row">
-                            <span class="panel__key">Studio</span>
-                            <span class="panel__value">Lausanne, Suisse — <time data-local-time>--:--</time></span>
-                        </p>
-                    </div>
-                </div>
+            <div class="bord bord--jeu">
+                <span class="jeu__liens">
+                    <button type="button" class="jeu__lien jeu__rubrique" data-tint="rose" aria-expanded="false" aria-controls="rubrique-nous">Nous</button>
+                    <button type="button" class="jeu__lien jeu__rubrique" data-tint="bleu" aria-expanded="false" aria-controls="rubrique-projets">Projets</button>
+                    <button type="button" class="jeu__lien jeu__rubrique" data-tint="jaune" aria-expanded="false" aria-controls="rubrique-prix">Prix</button>
+                    <button type="button" class="jeu__lien jeu__rubrique" data-tint="vert" aria-expanded="false" aria-controls="rubrique-contact">Contact</button>
+                </span>
+                <p class="jeu__consigne">
+                    <span class="jeu__jouez">Jouez</span>
+                    <span class="jeu__touches"><kbd data-touche="lettres">A–Z</kbd> <kbd data-touche="chiffres">0–9</kbd> <kbd data-touche="espace">Espace</kbd> <kbd data-touche="entree">Entrée</kbd></span>
+                </p>
             </div>
         </div>
-    </header>
 
-    <div class="topbar-scrim" id="topbarScrim"></div>
-
-    <main>
-
-        <!-- Les marges : formes de pixels bleus de part et d'autre du
-             contenu, sur toute la page (js/desk/pixels-margins.js). -->
-        <div class="margins" aria-hidden="true" data-margins></div>
-
-        <!-- LE PREMIER ÉCRAN — presque vide : le nom en bas, deux touches.
-             Au passage de la souris (ou du doigt), le bureau se creuse de
-             gros pixels bleus où surgissent des signes informatiques
-             (js/desk/pixels*.js) ; ils s'éteignent case par case. Le nom est
-             tapé en touches de clavier, comme « WAB. » dans le pied de page
-             (les initiales W, A, B de la même teinte) ; survolée, une touche
-             se brouille en symboles puis revient (js/desk/scramble.js). -->
-        <section class="hero" id="studio-intro" tabindex="-1" aria-labelledby="heroTitle" data-pixels>
-            <canvas class="hero__pixels" aria-hidden="true" data-pixels-canvas></canvas>
-            <div class="hero__copy">
-                <!-- « agence web » et « site internet » à Lausanne restent
-                     dans le H1, lus par Google et la navigation vocale. -->
-                <h1 class="hero__title" id="heroTitle"><span class="hero__keys" aria-hidden="true" translate="no" data-scramble data-pixels-keep><span class="keys"><span class="key key--tint" data-tint="vert" style="--i: 0"><span class="key__face">W</span></span><span class="key" style="--i: 1"><span class="key__face">e</span></span><span class="key key--tint" data-tint="jaune" style="--i: 2"><span class="key__face">A</span></span><span class="key" style="--i: 3"><span class="key__face">r</span></span><span class="key" style="--i: 4"><span class="key__face">e</span></span></span><span class="keys"><span class="key key--tint" data-tint="rose" style="--i: 5"><span class="key__face">B</span></span><span class="key" style="--i: 6"><span class="key__face">r</span></span><span class="key" style="--i: 7"><span class="key__face">o</span></span><span class="key" style="--i: 8"><span class="key__face">t</span></span><span class="key" style="--i: 9"><span class="key__face">h</span></span><span class="key" style="--i: 10"><span class="key__face">e</span></span><span class="key" style="--i: 11"><span class="key__face">r</span></span><span class="key" style="--i: 12"><span class="key__face">s</span></span><span class="key key--dot" style="--i: 13"><span class="key__face">.</span></span></span></span><span class="sr-only" translate="no">WeAreBrothers.</span><span class="sr-only">, agence web et création de site internet à Lausanne.</span></h1>
-                <div class="hero__actions" data-pixels-keep>
-                    <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--deep key-btn--klein">Démarrer un projet</a>
-                    <a href="/realisations" class="key-btn key-btn--deep">Voir nos réalisations</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- SERVICES — trois cartes WAB : la tuile (un vrai aperçu), puis
-             l'échange en bulles, le bénéfice, le comment, trois puces, une
-             chute et la touche. Les niveaux s'alignent d'une carte à
-             l'autre (sous-grille, home-card.css). -->
-        <section class="block" id="services" aria-labelledby="servicesTitle" data-tint="bleu">
-            <div class="desk-wrap">
-                <div class="home-head">
-                    <p class="badge">Services</p>
-                    <h2 class="home-title" id="servicesTitle">Ce que nous faisons. Et ce que cela change pour votre entreprise.</h2>
-                </div>
-                <div class="wgrid">
-                    <article class="wcard" data-watch="once" data-tint="bleu">
-                        <div class="wcard__tile on-klein" aria-hidden="true">
-                            <p class="wcard__label">Site · Le P’tit Central</p>
-                            <div class="win tile-win"><div class="win__bar"><span class="win__lights"></span><span class="win__title">lepetitcentral.ch</span></div><div class="win__body"><img src="assets/images/shot-central-800.webp" alt="" width="800" height="500" loading="lazy" decoding="async"></div></div>
-                        </div>
-                        <div class="chat" aria-hidden="true">
-                            <p class="chat__ask">Un site qui tient sur mobile&nbsp;?</p>
-                            <p class="chat__reply">Nous le codons de A à Z.</p>
-                        </div>
-                        <h3 class="wcard__title">Sites internet</h3>
-                        <p class="wcard__promise">Votre site est souvent le premier rendez-vous. Il doit convaincre avant même qu’on vous appelle.</p>
-                        <p class="wcard__text">Chaque site est dessiné et codé sur mesure, sans WordPress ni Wix. Rapide sur téléphone, structuré pour Google, il vous appartient&nbsp;: domaine, code et contenus.</p>
-                        <ul class="wcard__list"><li>Design et code sur mesure</li><li>Pensé d’abord pour le mobile</li><li>Référencement local inclus</li></ul>
-                        <p class="wcard__end">Votre métier, c’est le vôtre. Le site, c’est le nôtre.</p>
-                        <a href="/realisations" class="key-btn wcard__cta">Voir nos réalisations</a>
-                    </article>
-                    <article class="wcard" data-watch="once" data-tint="vert">
-                        <div class="wcard__tile wcard__tile--wash">
-                            <p class="wcard__label" aria-hidden="true">Application · Finances</p>
-                            <div class="win tile-win tile-win--app"><div class="win__bar" aria-hidden="true"><span class="win__lights"></span><span class="win__title">Finances</span></div><div class="win__body"><img src="assets/images/app-agenda-finances-1280.webp" alt="L’écran Finances d’une application de gestion conçue par le studio&nbsp;: encaissé, facturé et derniers paiements" width="1280" height="1000" loading="lazy" decoding="async"><span class="win__demo">Données de démonstration</span></div></div>
-                        </div>
-                        <div class="chat" aria-hidden="true">
-                            <p class="chat__ask">Tout vit dans un tableur.</p>
-                            <p class="chat__reply">Nous en faisons votre outil.</p>
-                        </div>
-                        <h3 class="wcard__title">Applications de gestion</h3>
-                        <p class="wcard__promise">Un tableur partagé n’est pas un outil de gestion. C’est un risque.</p>
-                        <p class="wcard__text">Nous observons d’abord votre façon de travailler, puis nous livrons l’outil module par module. Vos données existantes sont reprises.</p>
-                        <ul class="wcard__list"><li>Conçu autour de vos processus</li><li>Livré par étapes, utile tout de suite</li><li>Pensé pour le téléphone</li></ul>
-                        <p class="wcard__end">Moins d’outils, moins de ressaisie.</p>
-                        <a href="/applications" class="key-btn wcard__cta">Découvrir les applications</a>
-                    </article>
-                    <article class="wcard" data-watch="once" data-tint="rose">
-                        <div class="wcard__tile on-klein" aria-hidden="true">
-                            <p class="wcard__label">Automatisation · Devis et factures</p>
-                            <div class="notifs">
-                                <div class="notif"><span class="notif__icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7V3Z"/><path d="M14 3v5h5"/></svg></span><span class="notif__name">Devis</span><span class="notif__state"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17 19 7"/></svg>Généré</span></div>
-                                <div class="notif"><span class="notif__icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7V3Z"/><path d="M14 3v5h5"/><path d="M10 13h6M10 17h4"/></svg></span><span class="notif__name">Facture</span><span class="notif__state"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17 19 7"/></svg>Envoyée</span></div>
-                                <div class="notif"><span class="notif__icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span class="notif__name">Newsletter</span><span class="notif__state">Programmée</span></div>
-                            </div>
-                        </div>
-                        <div class="chat" aria-hidden="true">
-                            <p class="chat__ask">Les devis me prennent mes soirées.</p>
-                            <p class="chat__reply">Ils partiront tout seuls.</p>
-                        </div>
-                        <h3 class="wcard__title">Automatisation et IA</h3>
-                        <p class="wcard__promise">Chaque devis recopié à la main est une heure qui n’est pas facturée.</p>
-                        <p class="wcard__text">Devis, factures, relances, newsletters&nbsp;: nous automatisons les tâches qui reviennent chaque semaine, et nous intégrons l’IA là où elle fait gagner du temps.</p>
-                        <ul class="wcard__list"><li>Devis et factures générés sans saisie</li><li>Newsletters programmées et envoyées</li><li>IA intégrée là où elle est utile</li></ul>
-                        <p class="wcard__end">Vos soirées vous appartiennent.</p>
-                        <a href="/services#automatisation" class="key-btn wcard__cta">Voir les automatisations</a>
-                    </article>
-                </div>
-                <p class="home-more">Image de marque, print et vêtements&nbsp;: <a href="/services">voir tous nos services</a></p>
-            </div>
-        </section>
-
-        <!-- À LA UNE — les projets du moment, chacun avec son état réel :
-             Stidy (application lancée par le studio), Artisano (en
-             développement, bêta ouverte).
-             Scène : fenêtre et téléphone, de vraies captures. Les
-             fiches complètes sont sur /realisations (data-card). -->
-        <section class="block" id="a-la-une" aria-labelledby="featTitle" data-tint="rose">
-            <div class="desk-wrap">
-                <div class="home-head">
-                    <p class="badge">À la une</p>
-                    <h2 class="home-title" id="featTitle">En ce moment à l’atelier.</h2>
-                    <p class="home-lede">Une application que nous avons lancée, une plateforme en bêta&nbsp;: nos projets les plus aboutis, montrés tels qu’ils sont.</p>
-                </div>
-                <div class="fgrid">
-                    <article class="fcard fcard--wide" data-tint="bleu" aria-labelledby="feat-stidy">
-                        <div class="fcard__stage on-klein" aria-hidden="true">
-                            <p class="fcard__label">Application · Étudiants</p>
-                            <div class="win fcard__win"><div class="win__bar"><span class="win__lights"></span><span class="win__title">stidy-app.com</span></div><div class="win__body"><img src="assets/images/shot-stidy-800.webp" srcset="assets/images/shot-stidy-800.webp 800w, assets/images/shot-stidy-1600.webp 1600w" sizes="(min-width: 900px) 700px, 110vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></div></div>
-                        </div>
-                        <div class="fcard__body">
-                            <p class="status" data-state="live" data-tint="vert">En ligne</p>
-                            <h3 class="fcard__name" id="feat-stidy">Stidy</h3>
-                            <p class="fcard__context">L’application de révision conçue et lancée par le studio, pour les étudiants de l’UNIL et de l’EPFL.</p>
-                            <div class="chat" aria-hidden="true">
-                                <p class="chat__ask">On révise mieux à plusieurs.</p>
-                                <p class="chat__reply">Le chrono se partage.</p>
-                            </div>
-                            <p class="fcard__text">L’étudiant lance le chrono et pose son téléphone&nbsp;: ses amis voient le temps travaillé et la branche, jamais ses notes. Pas de classement, seulement des encouragements. Gratuite, sans application à installer.</p>
-                            <div class="fcard__actions">
-                                <a class="key-btn key-btn--klein" href="https://stidy-app.com/" target="_blank" rel="noopener noreferrer">Ouvrir Stidy<span class="sr-only"> (nouvel onglet)</span></a>
-                                <a class="key-btn" href="/realisations#stidy" data-card="stidy" data-title="stidy-app.com">Lire la fiche<span class="sr-only"> Stidy</span></a>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="fcard fcard--wide fcard--flip" data-tint="jaune" aria-labelledby="feat-artisano">
-                        <div class="fcard__stage on-klein" aria-hidden="true">
-                            <p class="fcard__label">Plateforme · Artisans</p>
-                            <div class="win fcard__win"><div class="win__bar"><span class="win__lights"></span><span class="win__title">artisano-one.vercel.app</span></div><div class="win__body"><img src="assets/images/shot-artisano-800.webp" srcset="assets/images/shot-artisano-800.webp 800w, assets/images/shot-artisano-1600.webp 1600w" sizes="(min-width: 900px) 700px, 110vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></div></div>
-                        </div>
-                        <div class="fcard__body">
-                            <p class="status" data-state="beta" data-tint="jaune">En développement · bêta</p>
-                            <h3 class="fcard__name" id="feat-artisano">Artisano</h3>
-                            <p class="fcard__context">La plateforme qui relie particuliers et artisans de Suisse romande.</p>
-                            <div class="chat" aria-hidden="true">
-                                <p class="chat__ask">Mes devis, je les fais le soir.</p>
-                                <p class="chat__reply">Une minute, depuis le chantier.</p>
-                            </div>
-                            <p class="fcard__text">Une recherche par métier et par localité, avec avis et disponibilités. Pour l’artisan, une application de gestion sur téléphone&nbsp;: demandes, devis, factures avec QR-facture, agenda et équipe.</p>
-                            <div class="fcard__actions">
-                                <a class="key-btn key-btn--klein" href="https://artisano-one.vercel.app/" target="_blank" rel="noopener noreferrer">Voir la bêta<span class="sr-only"> Artisano (nouvel onglet)</span></a>
-                                <a class="key-btn" href="/realisations#artisano" data-card="artisano" data-title="artisano-one.vercel.app">Lire la fiche<span class="sr-only"> Artisano</span></a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <p class="home-more">Sites et applications&nbsp;: <a href="/realisations">toutes nos études de cas</a></p>
-            </div>
-        </section>
-
-        <!-- LA MÉTHODE — quatre étapes, reprises de la page Services, dans
-             une seule carte partagée par des filets. -->
-        <section class="block" id="methode" aria-labelledby="methodTitle" data-tint="ciel">
-            <div class="desk-wrap">
-                <div class="home-head">
-                    <p class="badge">Méthode</p>
-                    <h2 class="home-title" id="methodTitle">De la première conversation à la mise en ligne.</h2>
-                </div>
-                <ol class="steps">
-                    <li class="step" data-tint="ciel">
-                        <p class="step__num">Étape 1</p>
-                        <h3 class="step__name">Premier échange</h3>
-                        <p class="step__line">Votre activité, vos objectifs et vos références. Sans engagement.</p>
-                    </li>
-                    <li class="step" data-tint="jaune">
-                        <p class="step__num">Étape 2</p>
-                        <h3 class="step__name">Proposition</h3>
-                        <p class="step__line">Périmètre, calendrier et prix, remis par écrit sous 24&nbsp;h ouvrées.</p>
-                    </li>
-                    <li class="step" data-tint="rouge">
-                        <p class="step__num">Étape 3</p>
-                        <h3 class="step__name">Design et développement</h3>
-                        <p class="step__line">Chaque étape est validée avec vous. Bryan Morin assure le suivi, de la prise de contact au lancement.</p>
-                    </li>
-                    <li class="step" data-tint="vert">
-                        <p class="step__num">Étape 4</p>
-                        <h3 class="step__name">Mise en ligne et suivi</h3>
-                        <p class="step__line">Hébergement en Suisse, maintenance et évolutions dans la durée.</p>
-                    </li>
-                </ol>
-                <!-- L'ENGAGEMENT — pas d'échéance qui coupe le travail : le
-                     projet se termine quand le client est entièrement
-                     satisfait (Eliott, 06.11). -->
-                <div class="promise" data-tint="vert">
-                    <div class="promise__text">
-                        <p class="step__num">Notre engagement</p>
-                        <h3 class="promise__title">Jusqu’à votre entière satisfaction.</h3>
-                        <p class="promise__line">Un projet ne s’arrête pas à une date fixée d’avance. Nous travaillons votre site tant qu’il ne vous convient pas entièrement&nbsp;: chaque retour est repris, sans compte à rebours.</p>
-                    </div>
-                    <div class="chat" aria-hidden="true">
-                        <p class="chat__ask">Et si le résultat ne me plaît pas&nbsp;?</p>
-                        <p class="chat__reply">Nous le reprenons, jusqu’à ce qu’il vous plaise.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- LES RÉALISATIONS — les neuf projets en ligne, en grille
-             régulière : la fenêtre, le nom, le contexte (repris de
-             /realisations). Une fenêtre ouvre la fiche du projet. -->
-        <section class="block wall" id="travail" aria-labelledby="wallTitle" data-tint="vert">
-            <div class="desk-wrap">
-                <div class="home-head">
-                    <p class="badge">Réalisations</p>
-                    <h2 class="home-title" id="wallTitle">Fait à Lausanne.</h2>
-                    <p class="home-lede">Chaque projet part d’un besoin précis. Voici ce que nous avons construit.</p>
-                </div>
-                <ul class="wall__grid">
-                    <li>
-                        <a class="shot" href="/realisations#zinema" data-card="zinema" data-title="zinema.ch">
-                            <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">zinema.ch</span></span><span class="win__body"><img src="assets/images/shot-zinema-800.webp" srcset="assets/images/shot-zinema-800.webp 800w, assets/images/shot-zinema-1600.webp 1600w" sizes="(min-width: 960px) 360px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
-                            <span class="shot__name">Zinéma</span>
-                            <span class="shot__context">Cinéma d’art et essai à Lausanne</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="shot" href="/realisations#central" data-card="central" data-title="lepetitcentral.ch">
-                            <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">lepetitcentral.ch</span></span><span class="win__body"><img src="assets/images/shot-central-800.webp" srcset="assets/images/shot-central-800.webp 800w, assets/images/shot-central-1600.webp 1600w" sizes="(min-width: 960px) 360px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
-                            <span class="shot__name">Le P’tit Central</span>
-                            <span class="shot__context">Café-restaurant de quartier à Lausanne</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="shot" href="/realisations#memo" data-card="memo" data-title="le-memo.ch">
-                            <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">le-memo.ch</span></span><span class="win__body"><img src="assets/images/shot-memo-800.webp" srcset="assets/images/shot-memo-800.webp 800w, assets/images/shot-memo-1600.webp 1600w" sizes="(min-width: 960px) 360px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
-                            <span class="shot__name">LE MEMO</span>
-                            <span class="shot__context">Collectif artistique et boutique à Lausanne</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="shot" href="/realisations#alliani" data-card="alliani" data-title="maison-alliani.com">
-                            <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">maison-alliani.com</span></span><span class="win__body"><img src="assets/images/shot-alliani-800.webp" srcset="assets/images/shot-alliani-800.webp 800w, assets/images/shot-alliani-1600.webp 1600w" sizes="(min-width: 960px) 360px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
-                            <span class="shot__name">Maison Alliani</span>
-                            <span class="shot__context">Haute joaillerie, grillz sur mesure</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="shot" href="/realisations#amarte" data-card="amarte" data-title="amarte.ch">
-                            <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">amarte.ch</span></span><span class="win__body"><img src="assets/images/shot-amarte-800.webp" srcset="assets/images/shot-amarte-800.webp 800w, assets/images/shot-amarte-1600.webp 1600w" sizes="(min-width: 960px) 360px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
-                            <span class="shot__name">Amarte Studio</span>
-                            <span class="shot__context">Centre de yoga et de Pilates à Épalinges</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="shot" href="/realisations#nadege" data-card="nadege" data-title="nadegemouine.ch">
-                            <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">nadegemouine.ch</span></span><span class="win__body"><img src="assets/images/shot-nadege-800.webp" srcset="assets/images/shot-nadege-800.webp 800w, assets/images/shot-nadege-1600.webp 1600w" sizes="(min-width: 960px) 360px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
-                            <span class="shot__name">Nadège Mouine</span>
-                            <span class="shot__context">Site d’une architecte en formation à l’EPFL</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="shot" href="/realisations#dj" data-card="dj" data-title="lazizze.com">
-                            <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">lazizze.com</span></span><span class="win__body"><img src="assets/images/shot-dj-800.webp" srcset="assets/images/shot-dj-800.webp 800w, assets/images/shot-dj-1600.webp 1600w" sizes="(min-width: 960px) 360px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
-                            <span class="shot__name">LAZIZZE DJ</span>
-                            <span class="shot__context">Portfolio d’un DJ house lausannois</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="shot" href="/realisations#slack" data-card="slack" data-title="la-slack.com">
-                            <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">la-slack.com</span></span><span class="win__body"><img src="assets/images/shot-slack-800.webp" srcset="assets/images/shot-slack-800.webp 800w, assets/images/shot-slack-1600.webp 1600w" sizes="(min-width: 960px) 360px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
-                            <span class="shot__name">La Slack</span>
-                            <span class="shot__context">Portfolio créatif en bureau virtuel</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="shot" href="/realisations#commissione" data-card="commissione" data-title="commissione-entretien.ch">
-                            <span class="win"><span class="win__bar"><span class="win__lights"></span><span class="win__title">commissione-entretien.ch</span></span><span class="win__body"><img src="assets/images/shot-commissione-800.webp" srcset="assets/images/shot-commissione-800.webp 800w, assets/images/shot-commissione-1600.webp 1600w" sizes="(min-width: 960px) 360px, (min-width: 600px) 45vw, 92vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
-                            <span class="shot__name">Commissione Entretien</span>
-                            <span class="shot__context">Entreprise familiale d’entretien à Bavois</span>
-                        </a>
-                    </li>
-                </ul>
-                <p class="wall__more"><a href="/realisations" class="key-btn">Voir toutes les réalisations</a></p>
-            </div>
-        </section>
-
-        <!-- LES OFFRES — trois niveaux, prix publics (Eliott, 3.10). La
-             tuile porte le nom, l'objectif et le prix ; le corps,
-             l'accroche, le périmètre et ce qui est inclus. -->
-        <section class="plans" id="offres" aria-labelledby="plansTitle" data-tint="rouge">
-            <div class="desk-wrap">
-                <div class="os-card">
-                    <div class="home-head">
-                        <p class="badge">Offres</p>
-                        <h2 class="home-title" id="plansTitle">Des prix affichés. Avant même le premier échange.</h2>
-                        <p class="home-lede">Trois niveaux d’accompagnement, chacun avec son périmètre et sa fourchette. Vous savez où vous allez avant de nous écrire.</p>
-                    </div>
-                    <ul class="plans__grid">
-                        <li class="wcard plan" data-tint="jaune">
-                            <div class="wcard__tile wcard__tile--wash plan__tile">
-                                <p class="wcard__label">Objectif · Être présent en ligne</p>
-                                <h3 class="plan__name">Site vitrine</h3>
-                                <p class="plan__amount">1’000 – 2’500&nbsp;CHF</p>
-                            </div>
-                            <p class="wcard__promise">L’essentiel, fait avec exigence.</p>
-                            <p class="wcard__text">Un site vitrine conçu et développé sur mesure, livré en 3&nbsp;à&nbsp;6&nbsp;semaines.</p>
-                            <p class="plan__inc">Inclus</p>
-                            <ul class="wcard__list"><li>Développement sur mesure, sans WordPress ni Wix</li><li>Conception mobile d’abord</li><li>Optimisé pour le référencement local</li><li>Hébergement en Suisse chez Infomaniak inclus</li><li>Le domaine, le code et les contenus vous appartiennent</li></ul>
-                            <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn wcard__cta">Nous contacter</a>
-                        </li>
-                        <li class="wcard plan plan--main" data-tint="bleu">
-                            <div class="wcard__tile on-klein plan__tile">
-                                <p class="wcard__label">Objectif · Structurer votre activité</p>
-                                <p class="plan__badge">Recommandé</p>
-                                <h3 class="plan__name">Site et outils</h3>
-                                <p class="plan__amount">2’500 – 7’000&nbsp;CHF</p>
-                            </div>
-                            <p class="wcard__promise">Votre site et vos outils, enfin reliés.</p>
-                            <p class="wcard__text">Votre site et les outils métier de votre entreprise&nbsp;: outil de gestion, e-commerce et options.</p>
-                            <p class="plan__inc">Inclus</p>
-                            <ul class="wcard__list"><li>L’ensemble de l’offre Site vitrine</li><li>Un outil de gestion conçu autour de vos processus</li><li>Une boutique en ligne, en option</li><li>Caisse, CMS et boutique en gestion autonome</li><li>Automatisation et IA, là où elles créent de la valeur</li></ul>
-                            <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein wcard__cta">Nous contacter</a>
-                        </li>
-                        <li class="wcard plan" data-tint="rouge">
-                            <div class="wcard__tile wcard__tile--wash plan__tile">
-                                <p class="wcard__label">Objectif · Marquer les esprits</p>
-                                <h3 class="plan__name">Expérience sur mesure</h3>
-                                <p class="plan__amount">Dès 7’000&nbsp;CHF</p>
-                            </div>
-                            <p class="wcard__promise">Une pièce unique, de la marque au site.</p>
-                            <p class="wcard__text">Une expérience digitale singulière, avec refonte de marque. Sur devis, après un premier échange.</p>
-                            <p class="plan__inc">Inclus</p>
-                            <ul class="wcard__list"><li>Refonte de marque&nbsp;: logo et identité visuelle</li><li>Direction artistique et motion design</li><li>Un site conçu comme une pièce unique</li><li>Cartes de visite et imprimés</li><li>Pièces réalisées avec Memories Store</li></ul>
-                            <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn wcard__cta">Nous contacter</a>
-                        </li>
-                    </ul>
-                    <p class="home-more">Chaque formule est travaillée jusqu’à votre entière satisfaction. Paiement en plusieurs mensualités possible. Besoin d’un périmètre différent&nbsp;? <a href="mailto:contact@wearebrothers.ch" data-contact>Écrivez-nous</a>.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- LE STUDIO — la présentation de WAB dans Notes, une carte nette,
-             signée par les fondateurs, puis l'équipe. -->
-        <section class="block letter-wrap" id="lettre" aria-labelledby="letterTitle" data-tint="jaune">
-            <div class="desk-wrap letter-zone">
-                <h2 class="badge" id="letterTitle">Le studio</h2>
-                <article class="win letter">
-                    <div class="win__bar"><span class="win__lights"></span><span class="win__title"><span class="sym sym--notes" aria-hidden="true"></span>Notes</span></div>
-                    <div class="letter__body">
-                        <p>WAB est un studio indépendant de design et de développement, fondé à Lausanne par Eliott et Matt Pina. Nous accompagnons marques, institutions culturelles et entreprises, de la stratégie à la mise en ligne.</p>
-                        <p>Identité de marque, direction artistique, expérience utilisateur et développement sont réunis dans un même studio. <mark>Chaque projet est conçu et développé sur mesure, sans gabarit.</mark></p>
-                        <p>Notre exigence&nbsp;: des interfaces claires, un code performant et des choix de design guidés par vos objectifs. Rien n’est ajouté pour l’effet.</p>
-                        <p>Après la mise en ligne, nous assurons l’hébergement en Suisse, la maintenance et l’évolution de chaque site et de chaque application.</p>
-                        <p>Nous serions heureux de découvrir votre projet.</p>
-                        <div class="letter__sign">
-                            <p class="signer"><img src="assets/images/avatar-eliott.webp" alt="" width="144" height="144" loading="lazy" decoding="async"><span><span class="signer__name">Eliott Pina</span><span class="signer__role">Lead designer</span></span></p>
-                            <p class="signer"><img src="assets/images/avatar-matt.webp" alt="" width="144" height="144" loading="lazy" decoding="async"><span><span class="signer__name">Matt Pina</span><span class="signer__role">Lead développeur</span></span></p>
-                            <p class="letter__mark" aria-hidden="true" translate="no">WAB.</p>
-                        </div>
-                        <div class="letter__team">
-                            <p class="letter__with">Avec</p>
-                            <p class="signer"><img src="assets/images/avatar-bryan.webp" alt="" width="144" height="144" loading="lazy" decoding="async"><span><span class="signer__name">Bryan Morin</span><span class="signer__role">Relation client</span></span></p>
-                            <p class="signer"><img src="assets/images/avatar-anais.webp" alt="" width="144" height="144" loading="lazy" decoding="async"><span><span class="signer__name">Anaïs Polo</span><span class="signer__role">Web design</span></span></p>
-                        </div>
-                    </div>
-                </article>
-                <a href="/studio" class="key-btn key-btn--sm">Rencontrer l’équipe</a>
-            </div>
-        </section>
-
-        <!-- LA FAQ — huit questions, des réponses qui commencent par la
-             réponse. Deux colonnes au-delà de 1000 px. -->
-        <section class="block faq-home" id="questions" aria-labelledby="faqTitle" data-tint="rose">
-            <div class="desk-wrap">
-                <div class="home-head">
-                    <p class="badge">FAQ</p>
-                    <h2 class="home-title" id="faqTitle">Les questions que l’on nous pose. Des réponses claires.</h2>
-                </div>
-                <div class="faq-home__list faq-home__list--cols">
-                    <div class="faq-col">
-                        <details class="qa" open>
-                            <summary class="qa__q">Combien coûte un site internet chez WAB&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
-                            <div class="qa__a"><p>Beaucoup d’agences répondent «&nbsp;cela dépend&nbsp;», puis envoient un devis des semaines plus tard. Nous affichons nos fourchettes sur cette page&nbsp;: de 1’000 à 2’500&nbsp;CHF pour un site vitrine, de 2’500 à 7’000&nbsp;CHF avec outil de gestion ou boutique, dès 7’000&nbsp;CHF pour une expérience sur mesure avec refonte de marque. Après un premier échange, vous recevez une proposition écrite sous 24&nbsp;h ouvrées. Le paiement peut être échelonné en plusieurs mensualités.</p></div>
-                        </details>
-                        <details class="qa">
-                            <summary class="qa__q">Combien de temps prend la création d’un site&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
-                            <div class="qa__a"><p>Comptez 3&nbsp;à&nbsp;6&nbsp;semaines pour un site vitrine, davantage pour un projet sur mesure ou une boutique en ligne. Ce délai est un repère, pas une échéance&nbsp;: nous ne refermons pas un projet à date fixe, nous le travaillons jusqu’à votre entière satisfaction.</p></div>
-                        </details>
-                        <details class="qa">
-                            <summary class="qa__q">Utilisez-vous WordPress ou Wix&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
-                            <div class="qa__a"><p>Non. Un site WordPress assemble un thème et des extensions qu’il faut maintenir et mettre à jour. Nous écrivons le code de votre site de A à Z&nbsp;: rien d’inutile n’est chargé, la page s’affiche presque instantanément sur téléphone, et le site vous appartient de bout en bout.</p></div>
-                        </details>
-                        <details class="qa">
-                            <summary class="qa__q">Devrai-je gérer le site seul après la mise en ligne&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
-                            <div class="qa__a"><p>Non. Le studio assure l’hébergement en Suisse, la maintenance et les évolutions de votre site. Un guide vous est remis si vous souhaitez modifier vous-même vos contenus.</p></div>
-                        </details>
-                    </div>
-                    <div class="faq-col">
-                        <details class="qa">
-                            <summary class="qa__q">À qui appartient le site&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
-                            <div class="qa__a"><p>À vous. Le nom de domaine, le code et les contenus vous appartiennent. Le site est hébergé en Suisse chez Infomaniak, hébergement inclus.</p></div>
-                        </details>
-                        <details class="qa">
-                            <summary class="qa__q">Mon site sera-t-il bien référencé sur Google&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
-                            <div class="qa__a"><p>Il part avec des bases solides&nbsp;: un site rapide, lisible par Google et structuré pour le référencement local — balises, données structurées, plan du site, textes travaillés avec vous autour de votre activité et de votre région. Le référencement se construit ensuite dans la durée, et nous restons disponibles pour le faire progresser.</p></div>
-                        </details>
-                        <details class="qa">
-                            <summary class="qa__q">Faites-vous aussi la refonte d’un site existant&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
-                            <div class="qa__a"><p>Oui. Nous gardons ce qui fonctionne — contenus, adresses des pages, référencement acquis — et nous redessinons et recodons le reste. Les anciennes adresses sont conservées ou redirigées, et le nouveau site remplace l’ancien sans interruption.</p></div>
-                        </details>
-                        <details class="qa">
-                            <summary class="qa__q">Que dois-je préparer avant le premier échange&nbsp;?<span class="qa__mark" aria-hidden="true"></span></summary>
-                            <div class="qa__a"><p>Rien d’obligatoire. Venez avec votre activité, ce que vous attendez du site et, si vous en avez, des sites que vous aimez. Logo, textes et photos existants sont bienvenus&nbsp;; s’ils manquent, nous voyons ensemble comment les produire, et cela entre dans la proposition.</p></div>
-                        </details>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- L'APPEL FINAL — une carte Klein : l'invitation et la touche à
-             gauche, l'échange en bulles à droite. La surface redéfinit sa
-             gamme (.on-klein) : touches et bulles s'inversent seules. -->
-        <section class="block call-wrap" id="contact" aria-labelledby="callTitle" data-tint="ciel">
-            <div class="desk-wrap">
-                <div class="call on-klein">
-                    <div class="call__text">
-                        <p class="call__label">Premier échange</p>
-                        <h2 class="call__title" id="callTitle">Parlons de votre projet.</h2>
-                        <p class="call__lede">Un premier échange, sans engagement. Nous regardons votre site actuel et vos objectifs, puis nous vous disons concrètement par où commencer.</p>
-                        <div class="call__actions">
-                            <a href="mailto:contact@wearebrothers.ch" data-contact class="key-btn key-btn--klein">Démarrer un projet</a>
-                            <p class="call__note">Réponse sous 24&nbsp;h ouvrées</p>
-                        </div>
-                    </div>
-                    <div class="chat call__chat" aria-hidden="true" data-watch="once">
-                        <p class="chat__ask">J’ai un projet, mais je ne sais pas par où commencer.</p>
-                        <p class="chat__reply">C’est justement l’objet du premier échange.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+        <p class="visuellement-cache" id="partition">Les lettres se posent en grand, à leur place sur le clavier. Chiffres&nbsp;: 1 carré, 2 anneau, 3 croix, 4 vague, 5 pluie, 6 aplat, 7 et 8 miroirs, 9 dispersion, 0 décalage des teintes. Espace efface tout, Entrée compose au hasard. Un clic fait éclore une forme, glisser trace un trait.</p>
+        <p class="visuellement-cache" id="annonce" aria-live="polite"></p>
     </main>
 
-    <!-- PIED DE PAGE — une seule bande : « WAB. » en mini-touches et la
-         phrase du studio, les pages, les expertises, le contact ; les
-         mentions dessous. -->
-    <footer class="foot">
-        <div class="desk-wrap foot__grid">
-            <div class="foot__brand">
-                <a href="/" class="foot__logo" aria-label="WAB., accueil"><span class="keys foot__keys" aria-hidden="true" translate="no"><span class="key key--tint" data-tint="vert"><span class="key__face">W</span></span><span class="key key--tint" data-tint="jaune"><span class="key__face">A</span></span><span class="key key--tint" data-tint="rose"><span class="key__face">B</span></span><span class="key key--dot"><span class="key__face">.</span></span></span></a>
-                <p class="foot__pitch">Studio de design et de technologie à&nbsp;Lausanne. Marques, sites et produits numériques.</p>
-            </div>
-            <nav class="foot__col" aria-label="Pages">
-                <p class="foot__label">Studio</p>
-                <a href="/realisations">Work</a>
-                <a href="/services">Services</a>
-                <a href="/studio">About</a>
-            </nav>
-            <nav class="foot__col" aria-label="Expertises">
-                <p class="foot__label">Expertises</p>
-                <a href="/creation-site-internet-lausanne">Création de site internet</a>
-                <a href="/applications">Applications de gestion</a>
-            </nav>
-            <div class="foot__contact">
-                <p class="foot__label">Un projet, une question&nbsp;?</p>
-                <a class="foot__mail" href="mailto:contact@wearebrothers.ch">contact@wearebrothers.ch</a>
-                <a class="foot__mail foot__tel" href="tel:+41793115840">079&nbsp;311&nbsp;58&nbsp;40</a>
-                <p class="foot__meta">Lausanne · <time data-local-time>--:--</time> · réponse sous 24&nbsp;h ouvrées</p>
-            </div>
-            <div class="foot__bar">
-                <p>&copy; 2026 WeAreBrothers Studio</p>
-                <p>Conçu et développé à&nbsp;Lausanne</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- LE DOCK — sur ordinateur, le sommaire de la page : une pilule
-         blanche, comme la barre du haut, avec ses sections, chacune d'un
-         pixel de sa teinte ; celle qu'on lit s'allume, un trait suit la
-         lecture (js/os/toc.js). Au bout, la touche pour écrire. Les
-         fenêtres réduites se rangent après le séparateur (js/os/dock.js).
-         Sans JavaScript, ce sont de simples ancres. -->
-    <nav class="dock dock--toc" aria-label="Sommaire de la page" data-dock data-toc>
-        <ol class="dock__toc">
-            <li><a class="dock__chip" href="#services" data-tint="bleu">Services</a></li>
-            <li><a class="dock__chip" href="#a-la-une" data-tint="rose">À la une</a></li>
-            <li><a class="dock__chip" href="#methode" data-tint="ciel">Méthode</a></li>
-            <li><a class="dock__chip" href="#travail" data-tint="vert">Réalisations</a></li>
-            <li><a class="dock__chip" href="#offres" data-tint="rouge">Offres</a></li>
-            <li><a class="dock__chip" href="#lettre" data-tint="jaune">Studio</a></li>
-            <li><a class="dock__chip" href="#questions" data-tint="rose">FAQ</a></li>
-        </ol>
-        <a class="dock__cta key-btn key-btn--klein key-btn--sm" href="mailto:contact@wearebrothers.ch" data-contact>Écrire</a>
-        <ul class="dock__shelf" data-dock-shelf aria-label="Fenêtres réduites" hidden></ul>
-        <span class="dock__progress" aria-hidden="true"></span>
-    </nav>
-
+    <script type="module" src="/instrument/js/main.js?v=1"></script>
 </body>
-
 </html>
