@@ -30,7 +30,7 @@ export const RUBRIQUES = [
             { titre: 'Matt Pina', avatar: 'matt', texte: 'Deuxième couteau suisse. Je gère principalement le déploiement et la finalisation de vos projets. J’adore sincèrement le défi de concevoir des outils efficaces qui vous font gagner du temps ou de l’argent.' },
             { titre: 'Bryan Morin', avatar: 'bryan', texte: 'Commercial. C’est moi qui vous appelle et qui vous étonne avec ma sincère envie de vous aider ;)' },
             { titre: 'Anaïs Polo', avatar: 'anais', texte: 'Design. J’étudie le Media & Interaction Design à l’ECAL et j’interviens sur les projets qui demandent un œil neuf.' },
-            { titre: 'L’IA', texte: 'Je permets à l’équipe d’aller plus vite, plus loin, et de proposer la meilleure qualité. Je ne suis qu’un outil, mais combinée à leur savoir, on forme la paire <3' },
+            { titre: 'L’IA', texte: 'L’IA permet à l’équipe d’aller plus vite, plus loin, et de proposer la meilleure qualité. Elle n’est qu’un outil, mais combinée à leur savoir, elle forme avec eux la paire <3' },
         ],
     },
     {
