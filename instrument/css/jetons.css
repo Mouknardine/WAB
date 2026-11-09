@@ -82,11 +82,11 @@
     }
 }
 
-/* Téléphone (< 768 px) : cellules plus grosses, pour qu'un doigt voie ce
-   qu'il pose ; filets des bandes du haut et du bas. */
+/* Téléphone (< 768 px) : cellules fines (8 px) pour une grille aussi dense qu'à l'écran d'ordinateur ;
+   filets des bandes du haut et du bas. */
 @media (max-width: 47.99rem) {
     :root {
-        --cellule: 16;
+        --cellule: 8;
         /* Une seule marge latérale pour tout : barre, cartes, panneau du bas */
         --gouttiere: 1rem;
         --filet: 2px;
