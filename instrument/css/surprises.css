@@ -70,7 +70,7 @@
     display: none;
 }
 
-/* Apparitions : petites animations détourées posées à plat, en pixels,
+/* Apparitions : petites images animées détournées, posées à plat, en pixels,
    agrandies sans lissage pour garder des carrés nets. */
 .surprise-image {
     position: absolute;
@@ -79,7 +79,7 @@
     height: auto;
     background: transparent;
     image-rendering: pixelated;
-    /* Taille posée en JS (largeur et hauteur) : la vidéo s'y loge entière */
+    /* Taille posée en JS (largeur et hauteur) : l'image s'y loge entière */
     object-fit: contain;
 }
 
