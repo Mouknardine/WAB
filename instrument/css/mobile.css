@@ -8,6 +8,21 @@
 }
 
 @media (max-width: 47.99rem) {
+    /* Safari iOS ne rabat sa barre d'adresse que si la page défile sous le
+       doigt. La page devient donc un peu plus haute que l'écran, barre
+       rabattue comprise : un glissé vers le haut sur les bandeaux la
+       rabat. L'instrument, fixe, couvre tout et suit la hauteur (dvh) ;
+       la grille garde touch-action: none et sert toujours à dessiner. */
+    html,
+    body {
+        height: auto;
+        overflow: visible;
+    }
+
+    body {
+        min-height: calc(100lvh + 4rem);
+    }
+
     .instrument {
         display: grid;
         grid-template-columns: auto minmax(0, 1fr);
