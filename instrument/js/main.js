@@ -11,6 +11,7 @@ import { mouvementReduit, petitEcran } from './jetons.js';
 import { creerSurprises } from './surprises.js';
 import { creerEcritures } from './ecritures.js';
 import { creerCartes } from './cartes.js';
+import { relierBarreSafari } from './barre-safari.js';
 
 const POLICE_MACHINE = '700 40px Sligoil';
 // Le mot qui salue la vague, puis un message tous les trois gestes environ
@@ -112,6 +113,8 @@ function demarrerCartes() {
     const cartes = creerCartes(trouver('#cartes', HTMLElement));
     if (!petitEcran()) cartes.ouvrir('nous', { focus: false });
 }
+
+relierBarreSafari();
 
 // Si l'instrument ne démarre pas (canvas indisponible), les textes, le
 // contact et les cartes restent en place : la page reste utile.

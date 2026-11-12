@@ -9,10 +9,10 @@
 
 @media (max-width: 47.99rem) {
     /* Safari iOS ne rabat sa barre d'adresse que si la page défile sous le
-       doigt. La page devient donc un peu plus haute que l'écran, barre
-       rabattue comprise : un glissé vers le haut sur les bandeaux la
-       rabat. L'instrument, fixe, couvre tout et suit la hauteur (dvh) ;
-       la grille garde touch-action: none et sert toujours à dessiner. */
+       doigt, et la ressort dès qu'on touche le bas de la page. La page est
+       donc bien plus haute que l'écran : le premier glissé vers le haut la
+       fait défiler (et rabat la barre) sans jamais atteindre le bas.
+       L'instrument, fixe, couvre tout et suit la hauteur (dvh). */
     html,
     body {
         height: auto;
@@ -20,7 +20,18 @@
     }
 
     body {
-        min-height: calc(100lvh + 4rem);
+        min-height: calc(100lvh * 8);
+    }
+
+    /* Tant que la page n'a pas défilé, la grille laisse passer le glissé
+       vertical (le trait horizontal dessine toujours). Ensuite
+       (js/barre-safari.js), elle reprend tout le doigt pour dessiner. */
+    .instrument__toile {
+        touch-action: pan-y;
+    }
+
+    [data-barre='rabattue'] .instrument__toile {
+        touch-action: none;
     }
 
     .instrument {
