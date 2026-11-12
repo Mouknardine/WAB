@@ -23,14 +23,19 @@
         min-height: calc(100lvh * 8);
     }
 
-    /* Tant que la page n'a pas défilé, la grille laisse passer le glissé
-       vertical (le trait horizontal dessine toujours). Ensuite
-       (js/barre-safari.js), elle reprend tout le doigt pour dessiner. */
+    /* Tant que la barre est sortie, la grille laisse passer le glissé
+       vertical (le trait horizontal dessine toujours). Barre rabattue
+       (js/barre-safari.js), la grille reprend tout le doigt pour dessiner
+       et les bandeaux ne font plus défiler la page : la barre reste
+       rabattue pendant la visite. Les boutons restent cliquables. */
     .instrument__toile {
         touch-action: pan-y;
     }
 
-    [data-barre='rabattue'] .instrument__toile {
+    [data-barre='rabattue'] .instrument__toile,
+    [data-barre='rabattue'] .bord--marque,
+    [data-barre='rabattue'] .bord--contact,
+    [data-barre='rabattue'] .bas {
         touch-action: none;
     }
 

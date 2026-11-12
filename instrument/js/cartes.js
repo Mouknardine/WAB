@@ -65,7 +65,7 @@ export function creerCartes(calque) {
     function fermer(p, rendreFocus) {
         p.region.hidden = true;
         p.bouton.setAttribute('aria-expanded', 'false');
-        if (rendreFocus) p.bouton.focus();
+        if (rendreFocus) p.bouton.focus({ preventScroll: true });
     }
 
     /**
