@@ -130,7 +130,7 @@
     z-index: 1;
 }
 
-.sx-desk__item--amarte,
+.sx-desk__item--bluepoint,
 .sx-desk__item--commissione {
     display: none;
 }
@@ -164,7 +164,7 @@
         width: var(--sx-desk-land);
     }
 
-    .sx-desk__item--amarte {
+    .sx-desk__item--bluepoint {
         display: block;
         left: 3%;
         top: 66%;

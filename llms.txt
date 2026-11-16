@@ -23,16 +23,15 @@
 
 ## Pages
 
-- [Accueil](https://wearebrothers.ch/) : présentation du studio — sites internet, applications de gestion, automatisation et IA ; deux projets à la une (Stidy, Artisano) ; la méthode en quatre étapes et l’engagement de travailler chaque projet jusqu’à l’entière satisfaction du client ; neuf réalisations en ligne ; les trois formules avec leurs prix ; l’équipe ; huit questions fréquentes (prix, délais, WordPress, maintenance, propriété du site, référencement, refonte, préparation).
+- [Accueil](https://wearebrothers.ch/) : présentation du studio en cartes à ouvrir — l’équipe, neuf projets (Stidy, Zinéma, Le P’tit Central, LE MEMO, Maison Alliani, Blue Point, Nadège Mouine, LAZIZZE DJ, La Slack), les services avec leurs prix et un formulaire de contact.
 - [Création de site internet à Lausanne](https://wearebrothers.ch/creation-site-internet-lausanne) : quatre exemples lausannois et vaudois, ce que comprend un site, les formats (site vitrine, site d’entreprise, portfolio créatif, boutique en ligne), le déroulé, la zone d’intervention, la refonte de site et douze questions fréquentes.
-- [Réalisations](https://wearebrothers.ch/realisations) : onze études de cas :
+- [Réalisations](https://wearebrothers.ch/realisations) : dix études de cas :
   - Stidy — application de révision conçue et lancée par le studio, pour les étudiants de l’UNIL et de l’EPFL ; en ligne, gratuite, sans application à installer (https://stidy-app.com/)
   - Zinéma — cinéma d’art et essai, rue du Maupas à Lausanne (https://www.zinema.ch/)
   - LE MEMO — collectif artistique et boutique à Lausanne, accueil en séquenceur musical (https://le-memo.ch/)
   - Le P’tit Central — café-restaurant de quartier, rue Centrale à Lausanne (https://www.lepetitcentral.ch/)
-  - Artisano — plateforme qui relie particuliers et artisans de Suisse romande, avec une application de gestion pour l’artisan (demandes, devis, factures avec QR-facture, agenda, équipe) ; en développement, bêta ouverte (https://artisano-one.vercel.app/)
   - Maison Alliani — haute joaillerie, grillz sur mesure (https://maison-alliani.com/)
-  - Amarte Studio — centre de yoga et de Pilates à Épalinges (https://amarte.ch/)
+  - Blue Point — boutique en ligne d’un importateur de vins d’Italie et de Suisse romande à Lutry, pour les particuliers et les restaurants, avec facturation automatique, agenda des livraisons sur mesure et connexion au logiciel de comptabilité (https://bluepointdistribution.com/)
   - Nadège Mouine — site personnel d’une architecte en formation à l’EPFL (https://nadegemouine.ch)
   - LAZIZZE DJ — portfolio immersif d’un DJ house lausannois (https://lazizze.com/#/)
   - La Slack — portfolio créatif en forme de bureau virtuel (https://la-slack.com/)
